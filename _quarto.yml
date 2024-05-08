@@ -7,7 +7,7 @@ execute:
   freeze: true
   
 book:
-  title: "{{< var course_num >}}: {{< var course_title >}} | {{< var academic_term >}} | {{< var cohort_type >}}"
+  title: "{{< var course_num >}}: {{< var course_title >}}"
   author: "Rafael C. Alvarado"
   date: "05/08/2024"
   reader-mode: false

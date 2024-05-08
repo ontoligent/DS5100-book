@@ -1,0 +1,149 @@
+---
+title: "Activity: Using Git and GitHub"
+---
+
+::: {.callout}
+
+**Goal:** Use Git and GitHub to put course materials on your Rivanna account.
+
+:::
+
+In this activity, you will go through steps of using Git and GitHub covered in the [the reading on GitHub](../../topics/git-and-github.qmd). You can also draw on the what you learned in the [Technical Orientation](https://github.com/UVADS/orientation-technical). At this point, you also should be able check off the following items:
+
+- Understand the difference between Git and GitHub.
+- Understand the purpose of Git and Github for data science work.
+- Ensure Git is installed on your computer.
+- Understand how to find a repository on GitHub.
+
+Let's apply and extend this knowledge now with our course repo. 
+
+Be sure you are inside the course directory on Rivanna we created earlier. 
+
+We assume you have already created a GitHub account.
+
+Also, before you get started, follow [these instructions](../../topics/setting-up-ssh.qmd) to set an SSH key. You can create this on both your computer and Rivanna, but for the assignment you need only create it on Rivanna.
+
+
+**_Fork_ the course GitHub hosted repository ("repo") to your GitHub account.**
+
+Go to [{{< var github_url >}}]({{< var github_url >}}) in your web browser.
+
+::: {.callout-note}
+This is the course repo --- all of the course notebooks and other code will be available here.\ Each week, you will access your course materials here.
+:::
+
+Click on the Fork icon in the upper right and follow the prompts to finish the process.
+
+You should end up at the web page of your newly forked repo.
+
+You will now have a copy of the repo in your GitHub account.
+
+**_Clone_ the forked repo for this course inside of your course directory on Rivanna.**
+
+Find the green Code button and click on it. You should see something like this:
+
+<!--
+![](../../media/git-clone.png)
+-->
+<img src="../../media/git-clone.png" height=400 />
+
+Make sure you have selected the SSH option.
+
+::: {.callout-important}
+Note: This requires that you have SSH set up.
+:::
+
+Then click on the copy icon and paste the value into the following command:
+
+```bash
+git clone https://github.com:<github_user_name>/{{< var course_code >}}.git
+```
+
+::: {.callout-important}
+Be sure to clone the repo from _your_ GitHub account, replacing `<github_user_name>` with your GitHub user name. Do not just cut-and-paste the line above!
+:::
+
+You now have a copy the course repo to your account on Rivanna.
+
+This will be the directory you created in your pre-class activities under Documents/.
+
+**_Create_ a new file in your newly cloned repo.**
+
+Go to your command line window on Rivanna.
+
+Use `cd` to move into the directory just created by the clone operation.
+
+Move into the directory `notebooks/M01_GettingStarted/hello`
+
+::: {.callout-important}
+Make sure you are in this directory before proceeding.
+:::
+
+If you get lost – for example if you moved around the file system before this step – you can cd to the absolute path:
+
+```bash
+cd ~/Documents/MSDS/DS5100/{{< var course_code >}}/notebooks/M01_GettingStarted/hello 
+```
+
+Note that the tilde sign `~` stands for the path to your home directory.
+
+Using the file editor on Rivanna, create and save new file called `<userid>_hello.txt`, replacing  `<userid>` with your actual user ID, e.g. `rca2t_hello.txt`.
+
+In the file, introduce yourself by answering the question: What is the most recent film you watched and enjoyed?  
+
+Save the file.
+
+**_Add_ and _commit_ the changes you made.**
+
+Now do the following:
+
+```bash
+git add <userid>_hello.txt
+git commit -m "Created file for class"
+```
+ 
+**_Push_ your new file to the repo on GitHub.**
+
+Since you have SSH set up, you can issue the following command without having to enter a password:
+
+<!--
+Before proceeding, you will need to create personal access token to be able to write to your repo on GitHub. To get one, follow the instructions here --- [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+
+Once you have created and copied your PAT to a safe place, do the following:
+-->
+
+```bash
+git push
+```
+
+<!-- 
+When prompted for a password, use your PAT instead. 
+
+Note: A more efficient way to work with GitHub is to use SSH. You are free to use this option if you are comfortable following through with [the instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
+-->
+
+**Create a _Pull Request_**
+
+Finally, make a pull request to have your file added to the original site. To do this, follow these steps:
+
+Click on the "Pull requests" menu item (see image below) on the web page for your repo.
+
+![Image of pull request button on GitHub](../../media/pull-request-button.jpg)
+
+Click on the green "New pull request" button.
+
+Click on the green "Create pull request" button.
+
+Give the request the title "In-class activity" and then press the green "Create pull request" button at the bottom of the form.
+
+Now the ball is in the instructor's court to merge the request with the original. If you put your file in the right place and named it properly, it will be merged.
+
+## Going Forward
+
+During the semester, you will not be making pull requests to submit your work. We do it here to demonstrate the concept since it is so basic to working with GitHub in the real world.  
+
+Instead of making pull requests, you will be using a separate repository for your work So, you will be working with two repositories going forard:
+
+1. **The Course Repo**, which is where you will get course materials. This should be [updated each day](../../topics/refreshing-the-course-repo.qmd).
+
+2. **Your Assessments Repo**, which is where you will be your finished work as assigned.

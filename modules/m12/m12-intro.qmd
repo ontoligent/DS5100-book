@@ -1,0 +1,30 @@
+# M12 Visualization
+
+## Topics
+
+-   R's basic visualization tools
+-   GGPlot2
+-   RMarkown
+
+## Readings
+
+### Required
+
+-   [W3Schools R Graphics](https://www.w3schools.com/r/r_graph_plot.asp)
+-   [RFDS Explore 3 Data Visualization](https://r4ds.had.co.nz/data-visualisation.html)
+    -   `ggplot2`
+-   [RDFS Communicate 27 R Markdown](https://r4ds.had.co.nz/r-markdown.html)
+-   [RDFS Communicate 28 Graphics for Communication](https://r4ds.had.co.nz/graphics-for-communication.html)
+
+### Optional
+
+-   [ggplot2 (Tidyverse)](https://ggplot2.tidyverse.org/)
+-   [The Complete ggplot2 Tutorial (r-statitics.co)](http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html)
+-   [R Markdown (RStudio)](https://rmarkdown.rstudio.com/lesson-1.html)
+-   [Overview (RStudio)](https://rmarkdown.rstudio.com/lesson-1.html)
+-   [Index of Pages (RStudio)](https://rmarkdown.rstudio.com/articles.html)
+-   [knitr (Yihui Xie)](https://yihui.org/knitr/)
+-   [R Markdown: the Definitive Guide (Yihui Xie, J. J. Allaire, Garrett Grolemund)](https://bookdown.org/yihui/rmarkdown)
+-   [R Markdown Cookbook (Yihui Xie, Christophe Dervieux, Emily Riederer)](https://bookdown.org/yihui/rmarkdown-cookbook/)
+-   [Getting Started with R Markdown — Guide and Cheatsheet (Dataquest)](https://www.dataquest.io/blog/r-markdown-guide-cheatsheet/)
+-   [Gallery (RStudio)](https://rmarkdown.rstudio.com/gallery.html)

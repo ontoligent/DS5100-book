@@ -1,0 +1,8 @@
+# M01 Getting Started
+
+## Topics
+
+* Introduce the course
+* Access Rivanna
+* Explore the Unix command line
+* Explore use of Git and GitHub

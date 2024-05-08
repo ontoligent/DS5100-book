@@ -1,0 +1,1046 @@
+---
+editor_options:
+  markdown:
+    wrap: 72
+---
+
+# Metadata
+
+-   Course: DS 5100
+-   Module: 10 R Programming 1
+-   Topic: Getting Started
+-   Date: 5 July 2022
+-   Author: R.C. Alvarado (adapted)
+
+# Preliminaries
+
+## Installing and Loading Packages
+
+Packages need to be installed once.
+
+```{r}
+# install.packages("tm")  
+```
+
+You can also install thing using the Package window.
+
+Once they are installed, you import them with the `library()` function:
+
+```{r}
+library(tm)
+```
+
+Note that the library name is quoted in when installing, but not when
+using `library`.
+
+## R's Design
+
+-   Designed to support statistical computing
+-   Very strong community
+-   Many domain-specific functions are built in
+-   Vector first thinking
+-   Everything is an object
+
+## R Syntax
+
+-   Syntax loosely follows traditional `C`-style
+    -   **Braces** `{` and `}` are used to form blocks.
+    -   **Semi-colons** are used optionally to end statements, required
+        if on same line.
+-   **Assignments** are made with `<-` or `->`
+-   **Dots** `.` have no special meaning -- they are not operators.
+-   Single and double **quotes** have the same meaning, but double
+    quotes tend to be preferred.
+    -   Use single quotes if you expect your string to contain double
+        quotes.
+
+    -   Backslash escape applies to R strings, although since there are
+        no raw strings -- Python's `r" "` -- we often have to supply
+        double backslashes in regular expressions.\
+
+# R Data Types
+
+There are several basic R data types.
+
+-   Numeric
+-   Integer
+-   Complex
+-   Logical
+-   Character
+
+## Numeric
+
+Decimal values are called "numerics" in R.
+
+It is the **default** computational data type.
+
+If we assign a decimal value to a variable x, x will be of numeric type:
+
+```{r}
+x <- 10.5       # assign a decimal value 
+x              # print the value of x 
+```
+
+```{r}
+class(x)      # print the class name of x 
+```
+
+Eve if we assign an integer to a variable k, it is will still be saved
+as a numeric value.
+
+```{r}
+k <- 1
+k              # print the value of k 
+```
+
+```{r}
+class(k)       # print the class name of k 
+```
+
+That k is not an integer can be confirmed with `is.integer()`:
+
+```{r}
+is.integer(k)  # is k an integer? 
+```
+
+## Integers
+
+To create an integer variable in R, we use `as.integer()`.
+
+```{r}
+y <- as.integer(3) 
+y              # print the value of y 
+```
+
+```{r}
+class(y)       # print the class name of y 
+is.integer(y)  # is y an integer? 
+```
+
+We can also declare an integer by appending an `L` suffix.
+
+```{r}
+y <- 3L 
+is.integer(y)  # is y an integer? 
+```
+
+We can coerce, or cast, a numeric value into an integer with
+`as.integer()`.
+
+```{r}
+as.integer(3.14)    # coerce a numeric value 
+```
+
+And we can parse a string for decimal values in much the same way.
+
+```{r}
+as.integer("5.27")  # coerce a decimal string 
+```
+
+On the other hand, it is erroneous trying to parse a non-decimal string.
+
+```{r}
+as.integer("Joe")   # coerce an non-decimal string 
+```
+
+We can convert booleans to numbers this way, too.
+
+```{r}
+as.integer(TRUE)    # the numeric value of TRUE 
+as.integer(FALSE)   # the numeric value of FALSE 
+```
+
+### Math Operators
+
+| **Operator**   | **Description**             |
+|----------------|-----------------------------|
+| **+**          | addition                    |
+| **-**          | subtraction                 |
+| **\***         | multiplication              |
+| **/**          | division                    |
+| **\^ or \*\*** | exponentiation              |
+| **x %% y**     | modulus (x mod y) 5%%2 is 1 |
+| **x %/% y**    | integer division 5%/%2 is 2 |
+
+## Logical (Boolean)
+
+A logical value is often created via comparison between variables.
+
+```{r}
+x <- 1
+y <- 2   # sample values 
+z <- x > y      # is x larger than y? 
+z              # print the logical value 
+```
+
+```{r}
+class(z)       # print the class name of z 
+```
+
+### Logical Operators
+
+Standard logical operations are `&` (and), `|` (or), and `!` (negation).
+
+```{r}
+u <- TRUE
+v <- FALSE
+u & v          # u AND v 
+```
+
+```{r}
+u | v          # u OR v 
+```
+
+```{r}
+!u             # negation of u 
+```
+
+Note that you can use `T` and `F` instead of `TRUE` and `FALSE`.
+
+```{r}
+a <- T
+b <- F
+a & b
+```
+
+## Characters
+
+A character object is used to represent string values in R.
+
+We convert objects into character values with the `as.character()`
+function:
+
+```{r}
+x <- as.character(3.14) 
+x
+```
+
+```{r}
+class(x)       # print the class name of x 
+```
+
+### `paste()`
+
+Two character values can be concatenated with the `paste()` function.
+
+```{r}
+fname <- "Joe"
+lname <-"Smith" 
+paste(fname, lname) 
+```
+
+`paste()` takes a `sep` argument:
+
+```{r}
+paste("A", "B", "C", sep="--")
+```
+
+### `sprintf()`
+
+However, it is often more convenient to create a readable string with
+the `sprintf()` function, which has a C language syntax.
+
+```{r}
+sprintf("%s has %d dollars", "Sam", 100) 
+```
+
+### `substr()`
+
+To extract a substring, we apply the `substr()` function.
+
+Here is an example showing how to extract the substring between the
+third and twelfth positions in a string.
+
+```{r}
+substr("Mary has a little lamb.", start=3, stop=12) 
+```
+
+### `sub()`
+
+And to replace the first occurrence of the word "little" by another word
+"big" in the string, we apply the `sub()` function.
+
+```{r}
+sub("little", "big", "Mary has a little lamb.") 
+```
+
+# R Data Structures
+
+Basic R comes with several data structures:
+
+-   Vector
+-   Matrix
+-   Array
+-   List
+-   Data frame
+
+A **vector** is what is called an array in many other programming
+languages
+
+> A collection of cells with **a fixed size** where all cells hold the
+> **same data type** (integers or characters or reals or whatever).
+
+A **matrix** is a two-dimensional vector (fixed size, all cell types the
+same).
+
+An **array** is a vector with one or more dimensions.
+
+> So, an array with one dimension is (almost) the same as a vector.\
+> An array with two dimensions is (almost) the same as a matrix.\
+> An array with three or more dimensions is an n-dimensional array.
+
+A **list** can hold items of different types and the list size can be
+increased on the fly.
+
+> List contents can be accessed either by **index** (like `mylist[[1]]`)
+> or by **name** (like `mylist$age`).
+
+A **data frame** is called a *table* in many languages.
+
+> Each column holds the same type, and the columns can have header
+> names.\
+> A data frame is essential a kind of a list --- a list of vectors each
+> with the same length, but of varying data types.
+
+**The two most frequently uses are Vector and Data frame.**
+
+So, we will look at vectors and data frames.
+
+> We will also look at lists since they are used internally to construct
+> data frames.
+
+## Vectors and `c()`
+
+A vector is a sequence of data elements of the same basic type.
+
+Members in a vector are officially called *components*, but many call
+them *members*.
+
+Vectors may be created with the `c()` function ("c" stands for combine).
+
+Here is a vector of three numeric values 2, 3 and 5.
+
+```{r}
+c(2, 3, 5) 
+```
+
+And here is a vector of logical values.
+
+```{r}
+c(TRUE, FALSE, TRUE, FALSE, FALSE) 
+```
+
+A vector can contain character strings.
+
+```{r}
+c("aa", "bb", "cc", "dd", "ee") 
+```
+
+### Vectors from sequences using `:`, `seq()`, and `rep()`
+
+Vectors can be made out of sequences which may be generated in a few
+ways.
+
+```{r}
+s1 <- 2:5
+s1
+```
+
+The `seq()` function is like Python's `range()`.
+
+```{r}
+s2 <- seq(from=1, to=5, by=2)  # You can drop the argument names write seq(1,5,2)
+s2
+```
+
+The `rep()` function will create a series of repeated values:
+
+```{r}
+s3 <- rep(1, 5)
+s3
+```
+
+### `length()`
+
+The number of members in a vector is given by the `length()` function.
+
+```{r}
+length(c("aa", "bb", "cc", "dd", "ee")) 
+```
+
+### Combining Vectors with `c()`
+
+Vectors can be combined via the function `c()`.
+
+```{r}
+n <- c(2, 3, 5) 
+s <- c("aa", "bb", "cc", "dd", "ee") 
+ c(n, s) 
+```
+
+### Value Coercion
+
+Notice how **the numeric values are being coerced into character
+strings** when the two vectors are combined.
+
+This is necessary so as to maintain the same primitive data type for
+members in the same vector.
+
+### Vector Math
+
+Arithmetic operations of vectors are performed member-by-member, i.e.,
+**member-wise**.
+
+For example, suppose we have two vectors a and b.
+
+```{r}
+a <- c(1, 3, 5, 7) 
+b <- c(1, 2, 4, 8)
+```
+
+Then, if we multiply a by 5, we would get a vector with each of its
+members multiplied by 5.
+
+```{r}
+5 * a 
+```
+
+And if we add a and b together, the sum would be a vector whose members
+are the sum of the corresponding members from a and b.
+
+```{r}
+a + b
+```
+
+Similarly for subtraction, multiplication and division, we get new
+vectors via member-wise operations.
+
+```{r}
+a - b 
+```
+
+```{r}
+a * b 
+```
+
+```{r}
+a / b 
+```
+
+### The Recycling Rule
+
+If two vectors are of unequal length, the **shorter one will be
+recycled** in order to match the longer vector.
+
+For example, the following vectors u and v have different lengths, and
+their sum is computed by recycling values of the shorter vector u.
+
+```{r}
+u <- c(10, 20, 30) 
+v <- c(1, 2, 3, 4, 5, 6, 7, 8, 9) 
+u + v 
+```
+
+### Vector Indexes
+
+We retrieve values in a vector by declaring an index inside a single
+square bracket index `[]` operator.
+
+Vector indexes are 1-based.
+
+```{r}
+s <- c("aa", "bb", "cc", "dd", "ee") 
+s[3] 
+```
+
+### Negative Indexing
+
+Unlike Python, if the index is negative, **it will remove the member**
+whose position has the same absolute value as the negative index.
+
+It really does mean subtraction!
+
+For example, the following creates a vector slice with the third member
+removed.
+
+```{r}
+s[-3] 
+```
+
+### Out-of-Range Indexes
+
+Values for out-of-range indexes are reported as NA.
+
+```{r}
+s[10] 
+```
+
+### Numeric Index Vectors
+
+A new vector can be sliced from a given vector with a numeric vector
+passed to the indexing operator.
+
+Index vectors consist of member positions of the original vector to be
+retrieved.
+
+Here we see how to retrieve a vector slice containing the second and
+third members of a given vector `s`.
+
+```{r}
+s <- c("aa", "bb", "cc", "dd", "ee") 
+s[c(2, 3)] 
+```
+
+### Duplicate Indexes
+
+The index vector allows duplicate values. Hence the following retrieves
+a member twice in one operation.
+
+```{r}
+s[c(2, 3, 3)] 
+```
+
+### Out-of-Order Indexes
+
+The index vector can even be out-of-order. Here is a vector slice with
+the order of first and second members reversed.
+
+```{r}
+s[c(2, 1, 3)] 
+```
+
+### Range Index
+
+To produce a vector slice between two indexes, we can use the colon
+operator ":". This can be convenient for situations involving large
+vectors.
+
+```{r}
+s[2:4] 
+```
+
+### Logical Index Vectors
+
+A new vector can be sliced from a given vector with a logical index
+vector.
+
+The logical vector must the same length as the original vector.
+
+Its members are TRUE if the corresponding members in the original vector
+are to be included in the slice, and FALSE if otherwise.
+
+> This is what we called **boolean filtering** and masking in Python.
+
+For example, consider the following vector s of length 5.
+
+```{r}
+s <- c("aa", "bb", "cc", "dd", "ee")
+```
+
+To retrieve the the second and fourth members of s, we define a logical
+vector L of the same length, and have its second and fourth members set
+as TRUE.
+
+```{r}
+L = c(FALSE, TRUE, FALSE, TRUE, FALSE)
+s[L] 
+```
+
+The code can be abbreviated into a single line.
+
+```{r}
+s[c(FALSE, TRUE, FALSE, TRUE, FALSE)]
+```
+
+### Naming Vector Members with `names()`
+
+We can assign names to vector members.
+
+```{r}
+v <- c("Mary", "Sue") 
+names(v) <- c("First", "Last") 
+v 
+```
+
+Now we can retrieve the first member by name.
+
+```{r}
+v["First"] 
+```
+
+We can also reverse the order with a character string index vector.
+
+```{r}
+v[c("Last", "First")] 
+```
+
+## Lists
+
+A list is a generic vector containing other objects.
+
+The following variable `x` is a list containing copies of three vectors
+`n`, `s`, `b`, and `a` numeric value 3.
+
+```{r}
+n <- c(2, 3, 5) 
+s <- c("aa", "bb", "cc", "dd", "ee") 
+b <- c(TRUE, FALSE, TRUE, FALSE, FALSE) 
+
+x <- list(n, s, b, 3)   # x contains copies of n, s, b
+x
+```
+
+Note that odd bracket notation.
+
+Each list member **contains** a vector.
+
+### List Slicing
+
+We retrieve a list slice with the single square bracket `[]` operator.
+
+The following is a slice containing the second member of `x`, which is a
+copy of `s`.
+
+```{r}
+x[2] 
+```
+
+With an index vector, we can retrieve a slice with multiple members.
+
+Here a slice containing the second and fourth members of x.
+
+```{r}
+x[c(2, 4)] 
+```
+
+### Member Reference with `[[]]`
+
+To reference a list member directly, we use the double square bracket
+`[[]]` operator.
+
+The following object `x[[2]]` is the second member of `x`.
+
+In other words, **`x[[2]]` is a copy of `s`, but is not a slice
+containing `s` or its copy**.
+
+```{r}
+x[2]
+```
+
+```{r}
+x[[2]]
+```
+
+We can modify its content directly.
+
+```{r}
+x[[2]][1] = "ta" 
+x[[2]] 
+```
+
+And `s` is unaffected.
+
+```{r}
+s 
+```
+
+## Data Frames
+
+A data frame is used for storing data tables.
+
+It is essentially **a list of vectors of equal length**. For example,
+the following variable df is a data frame containing three vectors `n`,
+`s`, `b`.
+
+You can think of a data frame is a special kind of list.
+
+```{r}
+n <- c(2, 3, 5) 
+s <- c("aa", "bb", "cc") 
+b <- c(TRUE, FALSE, TRUE) 
+df <- data.frame(n, s, b) # df is a data frame
+df
+```
+
+Notice that data frames are built **column-wise** -- this is true of
+Pandas data frames as well.
+
+The top line of the data frame is the **header**; it contains the column
+names.
+
+The data type is list below the column name.
+
+Each horizontal line afterward denotes a data row, which begins with the
+name of the row, and then followed by the actual data.
+
+Each data member of a row is called a cell.
+
+### Built-in Data Frames
+
+Here is a built-in data frame in R, called `mtcars`.
+
+```{r}
+mtcars 
+```
+
+To retrieve data in a cell, we would enter its **row** and **column**
+coordinates in the single square bracket `[ ]` operator.
+
+The two coordinates are separated by a comma, e.g. `[row, col]`.
+
+Here is the cell value from the first row, second column of mtcars.
+
+```{r}
+mtcars[1, 2] 
+```
+
+We can use names instead of the numeric coordinates.
+
+```{r}
+mtcars["Mazda RX4", "cyl"] 
+```
+
+Lastly, the number of data rows in the data frame is given by the
+`nrow()` function.
+
+```{r}
+nrow(mtcars)    # number of data rows 
+```
+
+And the number of columns of a data frame is given by the `ncol()`
+function.
+
+```{r}
+ncol(mtcars)    # number of columns 
+```
+
+```{r}
+dim(mtcars)
+```
+
+Further details of the mtcars data set is available in the R
+documentation.
+
+```{r}
+help(mtcars)
+```
+
+### Preview with `head()`
+
+Instead of printing out the entire data frame, it is often desirable to
+preview it with the head function beforehand
+
+```{r}
+head(mtcars) 
+```
+
+### Data Frame Column Vectors
+
+We reference a data frame column with the double square bracket `[[]]`
+operator, just as we do for lists.
+
+For example, to retrieve the ninth column vector of the built-in data
+set mtcars, we write mtcars[[9]]
+
+```{r}
+mtcars[[9]] 
+```
+
+We can retrieve the same column vector by its name
+
+```{r}
+mtcars[["am"]] 
+```
+
+We can also retrieve with the "\$" operator in lieu of the double square
+bracket operator
+
+```{r}
+mtcars$am 
+```
+
+Yet another way to retrieve the same column vector is to use the single
+square bracket "[]" operator. We prepend the column name with a comma
+character, which signals a wildcard match for the row position
+
+```{r}
+mtcars[, "am"] 
+```
+
+### Data Frame Column Slice
+
+We retrieve a data frame column **slice** with the single square bracket
+`[ ]` operator.
+
+Note: This is like a one-column dataframe in Pandas, as opposed to a
+Series.
+
+#### Numeric Indexing
+
+The following is a slice containing the first column of the built-in
+data set mtcars
+
+```{r}
+mtcars[1] 
+```
+
+#### Name Indexing
+
+We can retrieve the same column slice by its name
+
+```{r}
+mtcars["mpg"] 
+```
+
+Compare to accessing the column vector data directly:
+
+```{r}
+mtcars[["mpg"]]
+```
+
+This is similar to the `.values()` method in Pandas, which returns the
+raw NumPy array
+
+To retrieve a data frame slice with the two columns mpg and hp, we pack
+the column names in an index vector inside the single square bracket
+operator
+
+```{r}
+mtcars[c("mpg", "hp")] 
+```
+
+### Data Frame Row Slice
+
+We retrieve rows from a data frame with the single square bracket
+operator, just like what we did with columns. However, in additional to
+an index vector of row positions, we append an extra comma character.
+This is important, as the extra comma signals a wildcard match for the
+second coordinate for column positions.
+
+#### Numeric Indexing
+
+For example, the following retrieves a row record of the built-in data
+set mtcars. Please notice the extra comma in the square bracket
+operator, and it is not a typo. It states that the 1974 Camaro Z28 has a
+gas mileage of 13.3 miles per gallon, and an eight cylinder 245 horse
+power engine, ..., etc
+
+```{r}
+mtcars[24,] 
+```
+
+To retrieve more than one rows, we use a numeric index vector
+
+```{r}
+mtcars[c(3, 24),] 
+```
+
+#### Name Indexing
+
+We can retrieve a row by its name.
+
+```{r}
+mtcars["Camaro Z28",] 
+```
+
+And we can pack the row names in an index vector in order to retrieve
+multiple rows.
+
+```{r}
+mtcars[c("Datsun 710", "Camaro Z28"),] 
+```
+
+#### Logical Indexing
+
+Lastly, we can retrieve rows with a logical index vector. In the
+following vector L, the member value is TRUE if the car has automatic
+transmission, and FALSE if otherwise.
+
+```{r}
+L <- mtcars$am == 0 
+L 
+```
+
+Here is the list of vehicles with automatic transmission
+
+```{r}
+mtcars[L,] 
+```
+
+And here is the gas mileage data for automatic transmission
+
+```{r}
+mtcars[L,]$mpg 
+```
+
+#### Change the name of a column
+
+```{r}
+names(df)[names(df) == 'old.var.name'] <- 'new.var.name'
+```
+
+### Importing Data
+
+It is often necessary to import sample textbook data into R before you
+start working on your homework.
+
+**Excel Files**
+
+Quite frequently, the sample data is in Excel format, and needs to be
+imported into R prior to use. For this, we can use the function read.xls
+from the gdata package. It reads from an Excel spreadsheet and returns a
+data frame. The following shows how to load an Excel spreadsheet named
+"mydata.xls". This method requires Perl runtime to be present in the
+system
+
+```{r}
+#library(gdata)                   # load gdata package 
+#help(read.xls)                   # documentation 
+#mydata <- read.xls("mydata.xls")  # read from first sheet
+```
+
+Alternatively, we can use the function loadWorkbook from the XLConnect
+package to read the entire workbook, and then load the worksheets with
+readWorksheet. The XLConnect package requires Java to be pre-installed
+
+```{r}
+#library(XLConnect)               # load XLConnect package 
+#wk <- loadWorkbook("mydata.xls") 
+#df <- readWorksheet(wk, sheet="Sheet1")
+```
+
+**Table Files**
+
+A data table can resides in a text file.
+
+The cells inside the table are separated by blank characters.
+
+Here is an example of a table with 4 rows and 3 columns.
+
+```         
+100 a1 b1 
+200 a2 b2 
+300 a3 b3 
+400 a4 b4
+```
+
+Now copy and paste the table above in a file named "mydata.txt" with a
+text editor.
+
+Then load the data into the workspace with the function read.table
+
+```{r}
+mydata <- read.table("mydata.txt")  # read text file 
+mydata                             # print data frame 
+```
+
+**CSV Files**
+
+The sample data can also be in comma separated values (CSV) format. Each
+cell inside such data file is separated by a special character, which
+usually is a comma, although other characters can be used as well.
+
+The first row of the data file should contain the column names instead
+of the actual data. Here is a sample of the expected format.
+
+```         
+Col1,Col2,Col3 
+100,a1,b1 
+200,a2,b2 
+300,a3,b3
+```
+
+After we copy and paste the data above in a file named "mydata.csv" with
+a text editor, we can read the data with the function read.csv
+
+```{r}
+mydata <- read.csv("mydata.csv")  # read csv file 
+mydata 
+```
+
+In various European locales, as the comma character serves as the
+decimal point, the function read.csv2 should be used instead. For
+further detail of the read.csv and read.csv2 functions, please consult
+the R documentation
+
+```{r}
+help(read.csv)
+```
+
+### Working Directory
+
+Finally, the code samples above assume the data files are located in the
+R working directory, which can be found with the function `getwd()`.
+
+Note that these things can also be set using the RStudio's GUI.
+
+```{r}
+getwd()               # get current working directory
+```
+
+You can select a different working directory with the function setwd(),
+and thus avoid entering the full path of the data files
+
+```{r}
+# setwd("<new path>")   # set working directory
+```
+
+Note that the forward slash should be used as the path separator even on
+Windows platform
+
+```{r}
+# setwd("C:/MyDoc")
+```
+
+# Extra
+
+## Plots with `plot()`
+
+R is know for its high-quality visualizations, and we'll explore at
+these in more detail when we look at GGPlot.
+
+For now, consider the `plot()` function.
+
+Let's plot the data from the built in data frame `airquality`.
+
+```{r}
+airquality
+```
+
+```{r}
+plot(airquality)
+```
+
+```{r}
+plot(airquality[, c("Temp", "Wind")])
+```
+
+```{r}
+plot(airquality$Temp, type='l')
+```
+
+```{r}
+?plot
+```
+
+## Value Counts with `table()`
+
+This function is like `.value_counts()` in Pandas. It does a quick count
+of all the value types of a feature or combination of them.
+
+Here we get a table of values and their counts for `airquality$Temp`,
+convert this into a data frame, and then plot the results.
+
+```{r}
+temps <- table(airquality$Temp)
+temps
+```
+
+```{r}
+temps.df <- data.frame(temps)
+temps.df
+```
+
+```{r}
+plot(temps.df, xlab="Temp", type="b")
+```

@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.262">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>DS 5100: Programming for Data Science | Spring 2024 | Online - 22&nbsp; NB: Introduction to Functions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../notebooks/M04_PythonFunctions/M04-01-Importing.html" rel="next">
+<link href="../../modules/m04/m04-intro.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar docked">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-title">NB: Introduction to Functions</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">DS 5100: Programming for Data Science | Spring 2024 | Online</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/ontoligent/DS5100-2023-08-O" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m01/m01-intro.html" class="sidebar-item-text sidebar-link">M01 Getting Started</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/rivanna.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">About Rivanna</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/unix.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Using Unix</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/setting-up-ssh.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">SSH for GitHub</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/git-and-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Git and GitHub</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/m01/m01-using-rivanna.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Activity: Using Rivanna</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/m01/m01-activity-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Activity: Using Git and GitHub</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m02/m02-intro.html" class="sidebar-item-text sidebar-link">M02 Introducing Python</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/on-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data and Code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/python-object-types.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python Object Types</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/m02/m02-activity-hello-world.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Activity: Hello, World!</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/m02/m02-activity-jupyter-lab-on-rivanna.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Activity: Jupyter Lab</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M02_BasicPython/M02-01-DataTypes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Data Types, Operators, and Expressions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M02_BasicPython/M02-02-Numbers.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Numbers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M02_BasicPython/M02-03-Booleans.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Booleans</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M02_BasicPython/M02-04-Strings.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Strings</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M02_BasicPython/M02-05-Structures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Structures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M02_BasicPython/M02-Notes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">M02 Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m03/m03-intro.html" class="sidebar-item-text sidebar-link">M03 Control Structures</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/vals-vars-expressions-statements.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Values, Variables, Expressions, and Statements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M03_ControlStructures/M03-01-ControlStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Control Structures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M03_ControlStructures/M03-02-IterablesAndIterators.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Iterables and Iterators</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M03_ControlStructures/M03-03-Comprehensions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Comprehensions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m04/m04-intro.html" class="sidebar-item-text sidebar-link">M04 Functions</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M04_PythonFunctions/M04-02-Functions.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: Introduction to Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M04_PythonFunctions/M04-01-Importing.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Importing Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M04_PythonFunctions/M04-03-LambdaFunctions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Lambda Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Recursion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M04_PythonFunctions/M04-05-Scope.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Variable Scope</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Functions Calling Functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m05/m05-intro.html" class="sidebar-item-text sidebar-link">M05 NumPy</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M05_NumPy/M05-02-NumpyBasics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: NumPy First Steps</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M05_NumPy/M05-03-NumpyBasicsContinued.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: NumPy Continued</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M05_NumPy/M05-00-Time.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Python Timing Experiment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M05_NumPy/M05-01-BasicFileIO.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Basic File I/O</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m06/m06-intro.html" class="sidebar-item-text sidebar-link">M06 Pandas</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M06_Pandas/M06-01-Pandas1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Introducting Pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M06_Pandas/M06-02-Pandas2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Introducing Pandas II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M06_Pandas/M06-03-NarrowWide.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Narrow vs Wide Tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M06_Pandas/M06-04-MethodChaining.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Method Chaining</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M06_Pandas/M06-05-Pandas-and-SQL.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Pandas and SQL</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m07/m07-intro.html" class="sidebar-item-text sidebar-link">M07 Classes</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/what-is-oop.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">What is OOP?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M07_PythonClasses/M07-01-Classes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Introducing Classes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M07_PythonClasses/M07-02-ClassesExample.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Classes Example</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M07_PythonClasses/M07-03-MoreOnClasses.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: More About Classes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M07_PythonClasses/M07-05-Example.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Example</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M07_PythonClasses/M07-04-ClassAttributeWeirdness.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Understanding Class Attributes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m08/m08-intro.html" class="sidebar-item-text sidebar-link">M08 Testing</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/m08/m08-testing-and-verification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Testing and Verification</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Exception Handling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Unit Testing with Unittest</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m09/m09-intro.html" class="sidebar-item-text sidebar-link">M09 Modules</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M09_PythonModules/M09-01-PackagesIntro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Packages, Modules, and Imports</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M09_PythonModules/M09-01a-Globals.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: More on Classes and Globals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M09_PythonModules/M09-02-MakingYourOwn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Building Your Own Package</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M09_PythonModules/M09-02a-InitPyDemo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Demonstrations of Import and <strong>init</strong>.py()</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/m09/m09-review.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m10/m10-intro.html" class="sidebar-item-text sidebar-link">M10 Basic R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M10_RBasics/M10-01-DataTypesAndStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Getting Started</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M10_RBasics/M10-02-ControlStructuresAndFunctions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Control Structures and Functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m11/m11-intro.html" class="sidebar-item-text sidebar-link">M11 Dplyr</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M11_RDplyr/M11-01-Tibbles.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Introducing Tibbles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M11_RDplyr/M11-02-Dplyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: The <code>dplyr</code> package</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m12/m12-intro.html" class="sidebar-item-text sidebar-link">M12 Visualization</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M12_RViz/M12-01-GGPlot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: GGPlot2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M12_RViz/M12-02-RMarkdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Markdown</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Loose Ends</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M12_RViz/M12-04-Plotnine.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: GGPlot in Python with Plotnine</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m13/m13-intro.html" class="sidebar-item-text sidebar-link">M13 Agile</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/project-management.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Project Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/agile-dev.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Agile Development</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/user-stories.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">User Stories</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">Appendices</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/oreilly-accounts.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Setting Up O’Reilly</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/refreshing-the-course-repo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Refreshing the Course Repo</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#built-in-functions" id="toc-built-in-functions" class="nav-link" data-scroll-target="#built-in-functions">Built-in Functions</a></li>
+  <li><a href="#imported-functions" id="toc-imported-functions" class="nav-link" data-scroll-target="#imported-functions">Imported Functions</a></li>
+  <li><a href="#user-defined-functions" id="toc-user-defined-functions" class="nav-link" data-scroll-target="#user-defined-functions">User-Defined Functions</a>
+  <ul class="collapse">
+  <li><a href="#about-the-docstring" id="toc-about-the-docstring" class="nav-link" data-scroll-target="#about-the-docstring">About the docstring</a></li>
+  <li><a href="#lets-test-our-function" id="toc-lets-test-our-function" class="nav-link" data-scroll-target="#lets-test-our-function">Let’s test our function</a></li>
+  <li><a href="#users-can-print-the-docstring" id="toc-users-can-print-the-docstring" class="nav-link" data-scroll-target="#users-can-print-the-docstring">Users can print the docstring</a></li>
+  </ul></li>
+  <li><a href="#passing-parameters" id="toc-passing-parameters" class="nav-link" data-scroll-target="#passing-parameters">Passing Parameters</a>
+  <ul class="collapse">
+  <li><a href="#parameter-order" id="toc-parameter-order" class="nav-link" data-scroll-target="#parameter-order">Parameter Order</a></li>
+  <li><a href="#weirdness-alert" id="toc-weirdness-alert" class="nav-link" data-scroll-target="#weirdness-alert">Weirdness Alert</a></li>
+  </ul></li>
+  <li><a href="#unpacking-list-likes-with-args" id="toc-unpacking-list-likes-with-args" class="nav-link" data-scroll-target="#unpacking-list-likes-with-args">Unpacking List-likes with <code>*args</code></a></li>
+  <li><a href="#default-arguments" id="toc-default-arguments" class="nav-link" data-scroll-target="#default-arguments">Default Arguments</a></li>
+  <li><a href="#returning-values" id="toc-returning-values" class="nav-link" data-scroll-target="#returning-values">Returning Values</a></li>
+  <li><a href="#function-design" id="toc-function-design" class="nav-link" data-scroll-target="#function-design">Function Design</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/ontoligent/DS5100-2023-08-O/blob/main/notebooks/M04_PythonFunctions/M04-02-Functions.ipynb" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-title">NB: Introduction to Functions</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><strong>Objectives</strong> - Explain the benefits of functions - Illustrate how to use built-in functions - Illustrate how to create and use your own (user-defined) functions - Demonstrate the scope and lifetime of a variable - Illustrate global and local nature of variables through functions - Demonstrate function parameter use - Provide recommendations on how to create and document functions - Show how to print and write docstrings</p>
+<p><strong>Concepts</strong> - functions - built-in functions - user-defined functions - variable scope - global versus local variables - default arguments - *args - function call - docstring</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>A function is piece of source code, separate fom the larger program, that performs a specific task.</p>
+<p>This section of code is given a name and can be called from the main program. It is called by using its given name.</p>
+<p>Functions are the <strong>verbs</strong> of a programming language. They signify action, and take subjects and objects (as it were).</p>
+<p>Functions take <strong>input</strong> and produce <strong>output</strong>.</p>
+<ul>
+<li>Function inputs are called both <strong>parameters</strong> and <strong>arguments</strong>.</li>
+<li>Outputs are called <strong>return</strong> values</li>
+</ul>
+<p>Functions are always written with parentheses at the end of their names, e.g.</p>
+<p><code>len(some_list)</code></p>
+<p>Internally, they contain a block of code to do their work.</p>
+<p>Often the producte a <strong>transformation</strong> … from simple to complex.</p>
+<p>When you use a function, we say you <strong>call</strong> a function. Programmers speak of “function calls” and “callbacks”.</p>
+</section>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
+<p>Reduce complex tasks into simpler tasks.</p>
+<p>Eliminate duplicate code – no need to re-write, reuse function as needed.</p>
+<p>Code reuse. Once function is written, you can reuse it in any other program.</p>
+<p>Distribute tasks to multiple programmers. For example, each function can be written by someone.</p>
+<p>Hide implementation details, i.e.&nbsp;abstraction.</p>
+<p>Increase code readability.</p>
+<p>Improve debugging by improving traceability. Things are easier to follow; you can jump from function to function.</p>
+</section>
+<section id="built-in-functions" class="level2">
+<h2 class="anchored" data-anchor-id="built-in-functions">Built-in Functions</h2>
+<p>Python provides many <strong>built-in</strong> functions. See <a href="https://docs.python.org/3/library/functions.html">Python built-in functions</a>.</p>
+<p>We’ve looked at many of these already.</p>
+<p>These are functions that are available to use any time your are running Python.</p>
+<p>To take one simple example, this is a built-in function: <code>bool()</code>.</p>
+<p>Takes an argument <span class="math inline">\(x\)</span> and returns a boolean value, i.e.&nbsp;<code>True</code> or <code>False</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="dv">0</span>), <span class="bu">bool</span>(<span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="imported-functions" class="level2">
+<h2 class="anchored" data-anchor-id="imported-functions">Imported Functions</h2>
+<p>Python is meant to be a highly modular language.<br>
+It is not designed to have a lot of special purpose functions built into it.<br>
+These keeps it light and highly customizable.</p>
+<p>Many functions (and other stuff) can be imported into a program to add to the functions that you can call in a script.</p>
+<p>There are also many <strong>packages</strong> to bring in additional functions.</p>
+<p>Packages and Libraries</p>
+</section>
+<section id="user-defined-functions" class="level2">
+<h2 class="anchored" data-anchor-id="user-defined-functions">User-Defined Functions</h2>
+<p>Python makes it easy for you to write your own functions. These are called <strong>user-defined</strong> functions.</p>
+<p>Let’s write a function to compare the list against a threshold.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vals_greater_than_or_equal_to_threshold(vals, thresh):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    This is the "docstring" of a function. It is optional but expected. It describes it's </span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">    purpose and the nature of the input and return values, as well as a sense of what it does.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    More elaborate information should appear in external documentation packages with the function.</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    PURPOSE: Given a list of values, compare each value against a threshold</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">    INPUTS</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">    vals    list of ints or floats</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">    thresh  int or float</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">    OUTPUT</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">    bools  list of booleans</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    bools <span class="op">=</span> [val <span class="op">&gt;=</span> thresh <span class="cf">for</span> val <span class="kw">in</span> vals]</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> bools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Let’s break down the components</strong></p>
+<p>The function definition starts with <code>def</code>, followed by name, one or more arguments in parenthesis, and then a colon.</p>
+<p>Next comes a <strong>docstring</strong> to provide information to users about how and why to use the function.</p>
+<p>The function <strong>body</strong> follows.</p>
+<p>:astly is a <code>return</code> statement</p>
+<p>The <strong>function call</strong> allows for the function to be used.<br>
+It consists of function name and required arguments:</p>
+<p><code>vals_greater_than_or_equal_to_threshold(arg1, arg2)</code> where <code>arg1</code>, <code>arg2</code> are arbitrary names.</p>
+<section id="about-the-docstring" class="level3">
+<h3 class="anchored" data-anchor-id="about-the-docstring">About the docstring</h3>
+<p>A <strong>docstring</strong> m occurs as first statement in module, function, class, or method definition</p>
+<p>Internally, it is saved in <code>__doc__</code> attribute of the function object.</p>
+<p>It needs to be indented.</p>
+<p>It can be a single line or a multi-line string.</p>
+</section>
+<section id="lets-test-our-function" class="level3">
+<h3 class="anchored" data-anchor-id="lets-test-our-function">Let’s test our function</h3>
+<p>The function body used a <code>list comprehension</code> for the compare:</p>
+<p><code>[val &gt;= thresh for val in vals]</code></p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">## validate that it works for ints</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>thr <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>vals_greater_than_or_equal_to_threshold(x, thr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>[False, True]</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">## validate that it works for floats</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">3.0</span>, <span class="fl">4.2</span>]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>thr <span class="op">=</span> <span class="fl">4.2</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>vals_greater_than_or_equal_to_threshold(x, thr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">## vals_greater_than_or_equal_to_threshold("foo", "bar")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This gives correct results and does exactly what we want.</p>
+</section>
+<section id="users-can-print-the-docstring" class="level3">
+<h3 class="anchored" data-anchor-id="users-can-print-the-docstring">Users can print the docstring</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vals_greater_than_or_equal_to_threshold.__doc__)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>print the help</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(vals_greater_than_or_equal_to_threshold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>?vals_greater_than_or_equal_to_threshold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Let’s test our function</strong></p>
+<p>The function body used a <code>list comprehension</code> for the comparison:</p>
+<p><code>[val &gt;= thresh for val in vals]</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">## validate that it works for ints</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>thr <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>vals_greater_than_or_equal_to_threshold(x, thr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">## validate that it works for floats</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">3.0</span>, <span class="fl">4.2</span>]</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>thr <span class="op">=</span> <span class="fl">4.2</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>vals_greater_than_or_equal_to_threshold(x, thr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This gives correct results and does exactly what we want.</p>
+<p>Print the docstring</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vals_greater_than_or_equal_to_threshold.__doc__)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Print the help</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(vals_greater_than_or_equal_to_threshold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Use the <code>?</code> prefix …</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>?vals_greater_than_or_equal_to_threshold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="passing-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="passing-parameters">Passing Parameters</h2>
+<p>Functions need to be called with correct number of parameters.</p>
+<p>This function requires two params, but the function call includes only one param.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fcn_bad_args(x, y):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>fcn_bad_args(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: fcn_bad_args() missing 1 required positional argument: 'y'</code></pre>
+</div>
+</div>
+<section id="parameter-order" class="level3">
+<h3 class="anchored" data-anchor-id="parameter-order">Parameter Order</h3>
+<p>When calling a function, <strong>parameter order matters</strong>.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fcn_swapped_args(x, y):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> <span class="dv">5</span> <span class="op">*</span> x <span class="op">+</span> y</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>fcn_swapped_args(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>7</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fcn_swapped_args(y, x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>11</code></pre>
+</div>
+</div>
+<p>Generally it’s best to keep parameters in order.</p>
+<p>You can swap the order by putting the parameter names in the function call.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fcn_swapped_args(y<span class="op">=</span>y, x<span class="op">=</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="weirdness-alert" class="level3">
+<h3 class="anchored" data-anchor-id="weirdness-alert">Weirdness Alert</h3>
+<p>Note that the same name can be used for the parameter names and the variables passed to them.</p>
+<p>The names themselves have nothng to do with each other!</p>
+<p>In other words, just because a function names an argument <code>foo</code>,<br>
+the variables passed to it don’t have to name <code>foo</code> or anything like it.<br>
+They can even be named the same thing – it does not matter.</p>
+</section>
+</section>
+<section id="unpacking-list-likes-with-args" class="level2">
+<h2 class="anchored" data-anchor-id="unpacking-list-likes-with-args">Unpacking List-likes with <code>*args</code></h2>
+<p>The <code>*</code> prefix operator can be passed to avoid specifying the arguments individually.</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_arg_expansion(<span class="op">*</span>models):</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"models          :"</span>, models)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"input arg type  :"</span>,  <span class="bu">type</span>(models))</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"input arg length:"</span>, <span class="bu">len</span>(models))</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"-----------------------------"</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> mod <span class="kw">in</span> models:</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(mod)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can pass a tuple of values to the function …</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>show_arg_expansion(<span class="st">"logreg"</span>, <span class="st">"naive_bayes"</span>, <span class="st">"gbm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>models          : ('logreg', 'naive_bayes', 'gbm')
+input arg type  : &lt;class 'tuple'&gt;
+input arg length: 3
+-----------------------------
+logreg
+naive_bayes
+gbm</code></pre>
+</div>
+</div>
+<p>You can also pass a list to the function.</p>
+<p>If you want the elements unpacked, put <code>*</code> before the list.</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>models <span class="op">=</span> [<span class="st">"logreg"</span>, <span class="st">"naive_bayes"</span>, <span class="st">"gbm"</span>]</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>show_arg_expansion(<span class="op">*</span>models)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>models          : ('logreg', 'naive_bayes', 'gbm')
+input arg type  : &lt;class 'tuple'&gt;
+input arg length: 3
+-----------------------------
+logreg
+naive_bayes
+gbm</code></pre>
+</div>
+</div>
+<p>This approach allows your function to accept an arbitrary number of arguments.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>show_arg_expansion(<span class="st">'a b c d e f g'</span>.split())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>The reverse is true, too.</strong></p>
+<p>You can use the <code>*</code> prefix to pass list-like objects to a function that specifies its arguments.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> arg_expansion_example(x, y):</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">**</span>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>my_args <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">8</span>]</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>arg_expansion_example(<span class="op">*</span>my_args)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>But, the passed object must be the right length.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>my_args2 <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">5</span>]</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>arg_expansion_example(<span class="op">*</span>my_args2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">## **my_dict</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="default-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="default-arguments">Default Arguments</h2>
+<p>Use default arguments to set the value of arguments when left unspecified.</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_results(precision, printing<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    precision <span class="op">=</span> <span class="bu">round</span>(precision, <span class="dv">2</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> printing:</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="st">'precision ='</span>, precision)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> precision</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>pr <span class="op">=</span> <span class="fl">0.912</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> show_results(pr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>precision = 0.91</code></pre>
+</div>
+</div>
+<p>The function call didn’t specify <code>printing</code>, so it defaulted to True.</p>
+<p><strong>NOTE:</strong> Default arguments must follow non-default arguments. This causes trouble:</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_results(precision, printing<span class="op">=</span><span class="va">True</span>, uhoh):</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    precision <span class="op">=</span> <span class="bu">round</span>(precision, <span class="dv">2</span>)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> printing:</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="st">'precision ='</span>, precision)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> precision</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>SyntaxError: non-default argument follows default argument (&lt;ipython-input-19-29f5905a75a5&gt;, line 1)</code></pre>
+</div>
+</div>
+</section>
+<section id="returning-values" class="level2">
+<h2 class="anchored" data-anchor-id="returning-values">Returning Values</h2>
+<p>Functions are not required to have return statement.</p>
+<p>If there is no return statement, a function returns <code>None</code>.</p>
+<p>Functions can return no value (<code>None</code>), one value, or many.</p>
+<p>Many values are returned as a tuple.</p>
+<p>Any Python object can be returned.</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">## returns None, and prints.</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fcn_nothing_to_return(x, y):</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> <span class="st">'nothing to see here!'</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>fcn_nothing_to_return(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>nothing to see here!</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> fcn_nothing_to_return(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>nothing to see here!
+None</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">## returns three values</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> negate_coords(x, y, z):</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>x, <span class="op">-</span>y, <span class="op">-</span>z </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>a, b, c <span class="op">=</span> negate_coords(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'a ='</span>, a)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'b ='</span>, b)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'c ='</span>, c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a = -10
+b = -20
+c = -30</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>foo <span class="op">=</span> negate_coords(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>foo, <span class="bu">len</span>(foo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>((-10, -20, -30), 3)</code></pre>
+</div>
+</div>
+<p><strong>If you don’t need an output, use the dummy variable <code>_</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>d, e, _ <span class="op">=</span> negate_coords(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'d ='</span>, d)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'e ='</span>, e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Note:</strong> It’s generally a good idea to include return statements, even if not returning a value.</p>
+<p>This shows that you did not forget to consider the return value.</p>
+<p>You can use <code>return</code> or <code>return None</code>.</p>
+<p><strong>Functions can contain multiple return statements</strong>.</p>
+<p>These may be used under different logical conditions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> absolute_value(num):</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> num <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> num</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>num</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>absolute_value(<span class="op">-</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>absolute_value(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For non-negative values, the first <code>return</code> is reached.<br>
+For negative values, the second <code>return</code> is reached.</p>
+</section>
+<section id="function-design" class="level2">
+<h2 class="anchored" data-anchor-id="function-design">Function Design</h2>
+<p>A function is not just a bag of code!</p>
+<p>Some good practices for creating and using functions:</p>
+<ul>
+<li>design a function to do one thing</li>
+</ul>
+<p>Make them as simple as possible, which makes them:</p>
+<ul>
+<li>more comprehensible</li>
+<li>easier to maintain</li>
+<li>reusable</li>
+</ul>
+<p>This helps avoid situations where a team has 20 variations of similar functions.</p>
+<p>Give your function a good name.</p>
+<ul>
+<li>It should reflect the action it performs.</li>
+<li>Be consistent in your naming conventions.</li>
+<li>A name like <code>compute_variances_sort_save_print</code> suggests the function is overworked!</li>
+</ul>
+<p>If the function <code>compute_variances</code> also produces plots and updates variables, it will cause confusion.</p>
+<p>Always give your function a docstring - Particularly important since indicating data types is not required.<br>
+- As a side note, you can include this information by using <strong>type annotation</strong>.</p>
+<p>Finally, at some point you may be interested to learn some of the formatting languages that have been developed to write docstrings. See <a href="https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch15.html">Lutz 2019</a> and this web page about <a href="https://realpython.com/documenting-python-code/">Documenting Python Code</a> for more info.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../modules/m04/m04-intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">M04 Functions</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../notebooks/M04_PythonFunctions/M04-01-Importing.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">NB: Importing Functions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

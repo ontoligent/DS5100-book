@@ -1,0 +1,77 @@
+# Activity: Hello, World!
+
+In this activity, you will run Python from the command line and become acquainted with its most basic mode of operation.
+
+To get started, log onto the Rivanna shell and move into in the course directory you created for this class. 
+
+## Which Python?
+
+Once you are in Rivanna, you will want to know which version of Python you have installed as the default.
+
+To find out, from the command line type:
+
+```bash
+which python
+```
+
+This will show you the "path" to a python interpreter. For example:
+
+![](../../media/which-python.png)
+
+If you do not see "anaconda" in that path, then run the following command:
+
+```bash
+module load anaconda
+```
+
+This will update your environment to use Anaconda's distribution of Python. 
+
+After running the command, enter the command to see which pythion is being used to confirm that it is the one from Ancaconda.
+
+## Aside
+
+Note that you can use `module` to run other programs on your Rivanna account. 
+
+Type `module list` to see which programs have already been installed on your account.
+
+Type `module spider` to see all the programs you can install.
+
+## The Python Interactive Shell
+
+From the command line, enter python 
+
+You should get the Python Shell:
+
+![](../../media/python-prompt.png)
+
+This is also called the Python standard REPL, which stands for "Read-Eval-Print Loop".
+
+Make sure you see that you are using version 3 of Python.
+
+If you see Python 2, exit the shell by entering `quit()` and try again by entering python3 at the command line.
+
+At the `>>>` prompt type `print("Hello, World!")` and press return.
+
+If you've never used Python, you've just completed an important ritual. If you have used Python, well, you did it again :-) 
+
+## Try `this`
+
+Now, enter following line at the prompt and press return:
+
+```python
+import this
+```
+
+What do you see?
+
+To exit the Python Shell, enter `quit()`  or `exit()` and hit return.
+
+## Running Python Files
+
+Now create a file called `hello.py` using the command line editor `nano`. Enter the same commands you used above.
+
+Then run it from the command line by directly invoking the Python interpreter python.
+
+::: {.callout-note}
+See [video](https://343772-1.kaf.kaltura.com/media/M02%20Activity%3A%20Hello%2C%20World!/1_mk92k4i5) in Canvas.
+:::

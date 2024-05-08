@@ -1,0 +1,90 @@
+# Review
+
+<ul>
+<li>Method arguments and Class Attributes</li>
+<li>Understanding Modules and Packages</li>
+</ul>
+<ol>
+<li>
+<div><strong>Modules</strong></div>
+</li>
+<ol>
+<li>
+<div>A module is <strong>a single namespace</strong> with many possible values (functions, classes, constants, etc.)</div>
+</li>
+<li>
+<div>Usually corresponds to a <strong>file</strong>.</div>
+</li>
+<li>
+<div>All modules have a <strong>name</strong>.</div>
+</li>
+<li>
+<div><span>Python has only one type of </span><strong><span>module</span></strong><span> object.</span></div>
+</li>
+</ol>
+<li>
+<div>A <strong>Package</strong> is just a module that may contain other modules (or packages).</div>
+</li>
+<ol>
+<li>
+<div>It is module with a <span data-fontfamily="monospace"><strong>__path__</strong></span> attribute.</div>
+</li>
+<li>
+<div><span>Packages</span><span> organize modules into a named hierarchy</span>.</div>
+</li>
+<li>
+<div>Packages : modules :: directories : files</div>
+</li>
+<li>
+<div>Usually corresponds to a directory with with an <span data-fontfamily="monospace">__init__.py</span> file in it.</div>
+</li>
+</ol>
+<li>
+<div>There are <strong>two kinds of packages (as of 3.3)</strong></div>
+</li>
+<ol>
+<li>
+<div><strong>Regular packages</strong> are traditional (2 and up to 3.2), they are a directory with an <span data-fontfamily="monospace">__init__.py</span> file. They are dependent on the file system.</div>
+</li>
+<li>
+<div><strong>Namespace packages</strong> are composed of <strong>portions</strong>. They do not have an __init__.py file. Portions can be anywhere. They are not dependent on the file system. They may be virtual.</div>
+</li>
+</ol>
+<li>
+<div><strong>Import</strong> statements bring modules into modules. Combines two operations:</div>
+</li>
+<ol>
+<li>
+<div><strong>Searches</strong> for named module.</div>
+</li>
+<li>
+<div><strong>Binds</strong> results to local name, i.e. the fully qualified path or an alias.</div>
+</li>
+<li>
+<div>Compiles and runs the files and packages it imports.</div>
+</li>
+</ol>
+<li>
+<div><strong>Some general ideas</strong></div>
+</li>
+<ol>
+<li>
+<div>You can think of a module as a <strong>supplemental file</strong> relative to a top-level program or script.</div>
+</li>
+<li>
+<div><span>Module files generally don&rsquo;t do anything when run directly -- they are used by other files.</span></div>
+</li>
+<li>
+<div><span>When modules are imported, their elements are called </span><strong><span>attributes</span></strong></div>
+</li>
+<li>
+<div>Imports execute <span data-fontfamily="monospace">__init__.py</span> files from the context of the directory of execution. Think of this as the <strong>project</strong> directory.</div>
+</li>
+<li>
+<div>File and directory names should follow variable and function naming conventions since they will be used to create the names used in the importing program.</div>
+</li>
+<li>
+<div><span>Global scope </span>is always the <strong>file</strong> enclosing it, regardless of which module it is ultimately called from.</div>
+</li>
+</ol>
+</ol>

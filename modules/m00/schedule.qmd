@@ -1,0 +1,28 @@
+# Schedule
+
+| Week | Date  | Topic | Assignments |
+|------|-------|-------|-------------|
+| 01   | 08/22 | [M01 Getting Started](../m01/m01-intro.qmd)        |  P Q H |
+| 02   | 08/29 | [M02 Introducing Python](../m02/m02-intro.qmd)     |  P Q H |
+| 03   | 09/05 | [M03 Control Structures](../m03/m03-intro.qmd)     |  P Q H |
+| 04   | 09/12 | [M04 Functions](../m04/m04-intro.qmd)              |  P Q H |
+| 05   | 09/19 | [M05 NumPy](../m05/m05-intro.qmd)                  |  P Q H |
+| 06   | 09/26 | [M06 Pandas](../m06/m06-intro.qmd)                 |  P Q H |
+| 07   | 10/03 | [M07 Classes](../m07/m07-intro.qmd)                |  P Q H |
+| 08   | 10/10 | Reading Days                                       |  |
+| 09   | 10/17 | [M08 Testing](../m08/m08-intro.qmd)                |  P Q H |
+| 10   | 10/24 | [M09 Modules and Packages](../m09/m09-intro.qmd)   |  P Q H |
+| 11   | 10/31 | [M10 Basic R](../m10/m10-intro.qmd)                |  P Q H |
+| 12   | 11/07 | Election Day                                       |  |
+| 13   | 11/14 | [M11 Dplyr](../m11/m11-intro.qmd)                  |  P Q H |
+| 14   | 11/21 | Thanksgiving                                       |  |
+| 15   | 11/28 | [M12 Visualization](../m12/m12-intro.qmd)          |  P |
+| 16   | 12/05 | [M13 Agile](../m13/m13-intro.qmd)                  |  P FP |
+| 17   | 12/12 | Final Exam                                         |  |
+
+| Key | Value |
+|-----|-------|
+| P  | Participation |
+| Q  | Quiz |
+| H  | Homework |
+| FP | Final Project | 

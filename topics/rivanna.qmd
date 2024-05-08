@@ -1,0 +1,72 @@
+# About Rivanna
+
+## Introduction
+
+A useful infrastructural resource for this course is Rivanna, UVA's high-performance computing (HPC) cluster. Each student has an account on Rivanna and access to resources there based on participation in this course. We will use Rivanna in our class for both Python and R.  
+
+This page describes some of the tools available for your use in this course. For information about Rivanna, see this introduction. Resources for getting help, including a knowledge base and ticket system, are found at [the Support Option's Page](http://www.rc.virginia.edu/support/) on UVA's Research Computing website.
+
+You may need to use VPN to access Rivanna from an off-grounds location. To install VPN on your computer, go to the ITS VPN page for instructions. Note that you should connect to "UVA Anywhere," not to any of the higher security options.
+Course Allocation
+
+This course has been allocated compute and space resources on Rivanna. The names of the resources are given below. The allocation ID needs to be entered to access certain tools. The storage path is accessible to you on the remote server.
+
+* Allocation ID: `msds_ds5100`
+* Storage path: `/project/MSDS_DS5100`  (Don't use unless directed to.)
+
+## Tools 
+
+UVA Research Computing provides you with a suite of tools to access Rivanna. These tools are accessible through the menu on the UVA OpenOnDemand Dashboard page. Below are some brief descriptions of the tools.
+
+**File Explorer**. A web-based GUI to access the file system of the remote server. Can be used to create, move, and delete directories and files, and to edit the contents of files (see Editor). You can also upload and download files through this interface. The File Explorer is useful to view your remote content and manage files and directories without having to use the command line. Note that not all operations can be performed through this interface.
+
+Find under "Files" in the menu. 
+
+**Editor**. A web-based text editor launched from the File Explorer to view and edit text files on the remote server.  Although not as sophisticated as VS Code (below), this is very useful for editing data and code files without having to use a command line editor. One advantage over VS Code is that it does not need to be launched – which means it does not time out like the Interactive Apps listed below.
+
+The Editor is launched from the File Explorer.
+
+**SSH Shell Access (Terminal)**. Access to the command line of the remote server.  Use this to open a terminal window to perform Linux commands directly.  Note that It is necessary to use a terminal to install and run certain programs on the remote server.
+
+Find under "Clusters" in the menu. 
+
+You can also access the remote command line via SSH on your local computer. Just enter the following on the command line of either a PC or Mac:
+
+```bash
+ssh -Y <userid>@rivanna.hpc.virginia.edu
+```
+
+Replace `<userid>` with your UVA Net ID, e.g. `abc2x`. 
+
+Be suer to be running VPN if you are accessing Rivanna from an off-grounds location.
+
+## Interactive Apps
+
+These tools must be launched by specifying a set of parameters, including the allocation you are using. They are also timed and will close when time is up. Be sure to give yourself enough time when launching these, and to be aware of how much time you have when working.
+
+Note also that you should allocate the fewest resources necessary to do the work you plan to do. This saves resources on the remote host, but also allows your app to launch more quickly. If you ask for an excessive amount of resources, you may wait a long time (e.g. hours) to have your app launched.
+
+**Desktop**. Access to a GUI desktop to the remote server. This provides a access to various applications on the server, including a web browser, a file explorer, and terminal windows.  Using this is not necessary if you can get by with the tools listed above.
+
+Find under "Interactive Apps > Desktop" in the menu.
+
+**VS Code**. Access to Visual Studio Code on the remote server. This is a fully functional instance of the IDE.
+
+Find under "Interactive Apps > Code Server" in the menu.
+
+**Jupyter**. Access to Jupyter Lab on the remote server. Find under "Interactive Apps > Jupyter Lab" in the menu.
+
+**RStudio**. Access to Jupyter Lab on the remote server.
+
+Find under "Interactive Apps > RStudio Server" in the menu.
+
+## For More Information
+
+UVA's [Research Computing Learning Portal](https://learning.rc.virginia.edu/)  provides resources for learning how to use Rivanna. Here are two slide decks that you may find useful:
+
+* [Introduction to Rivanna](https://learning.rc.virginia.edu/notes/rivanna-intro/)
+* [Using Rivanna from the Command Line](https://learning.rc.virginia.edu/notes/rivanna-command-line/)
+
+::: {.callout-note}
+See [video](https://canvas.its.virginia.edu/courses/75059/modules/items/821826) on Canvas.
+:::

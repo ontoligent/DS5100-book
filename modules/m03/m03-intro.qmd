@@ -1,0 +1,28 @@
+# M03 Control Structures
+
+## Topics
+
+-   More on Statements and Syntax
+-   Control Structures and Loops
+-   Conditional Logic
+-   Iterators
+-   Comprehensions
+
+## Readings
+
+### Required
+
+-   [Lutz, 2019, Part III, Chapter 10. Introducing Python Statements](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch10.html)
+-   [Lutz, 2019, Part III, Chapter 11. Assignments, Expressions, and Prints](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch11.html)
+    -   Read only up to and including "The Python 3.X print Function."
+-   [Lutz, 2019, Part III, Chapter 12. if Tests and Syntax Rules](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch12.html)
+-   [Lutz, 2019, Part III, Chapter 13. while and for Loops](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch13.html)
+-   [Lutz, 2019, Part III, Chapter 14. Iterations and Comprehensions](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch14.html)
+-   [Lutz, 2019, Part III, Chapter 15: The Documentations Interlude](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch15.html)
+
+### Optional
+
+-   [Variables, Expressions, Statements, Types (Python Notes)](https://thomas-cokelaer.info/tutorials/python/variables.html)
+-   [More Control Flow Tools (Python Docs)](https://docs.python.org/3/tutorial/controlflow.html)
+-   [If ... Then (W3S)](https://www.w3schools.com/python/python_conditions.asp)
+-   [Iterators (GFG)](https://www.geeksforgeeks.org/iterators-in-python/)

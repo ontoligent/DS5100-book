@@ -1,0 +1,93 @@
+# SSH for GitHub
+
+## Overview
+
+- This method will allow you to interact with your repos hosted on GitHub without having to enter your login credentials each time.
+
+- You will create an SSH key on your local machine. By "local machine," we mean the machine where you will be working and pulling to, e.g your laptop or Rivanna. In other words, it's local relative to GitHub.
+
+- SSH keys have a public and private component. These are hash strings that are stored in files. Both will be generated on your machine.
+
+- You will copy and paste the generate public key to your GitHub account.
+
+- Going forward, you will clone from your account using the SSH protocol.
+
+## Steps
+
+### Part A
+
+**On your local machine**
+
+1. Get to the command line on the computer from which you will be pushing and pulling to your GitHub repo.
+
+- If you are using **Rivanna**, you can access this through the [Dashboard](https://rivanna-portal.hpc.virginia.edu/pun/sys/shell/ssh/rivanna.hpc.virginia.edu) or connect via SSH.
+- If you are using a **Mac**, open Terminal.
+- If you are using **Windows** and you have admin rights, first install `git-bash`. Otherwise follow [this tutorial from Microsoft](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement).
+
+2. Move into your **root directory**. If on a Unix-based system (Rivanna or a Mac), you can do this by entering `cd` by itself.
+
+3. Generate the key:
+
+- Enter: `ssh-keygen -t ed25519 -C "your_email_id@example.com"`, using your email address.
+- The value `ed25519` is the key type and must not be changed.
+- Be sure to use the email address associated with your GitHub account in the above command.
+
+4. At the prompt, type in a secure passphrase.
+
+- You don't have to do this, but it is advised.
+- Create a memorable sentence.
+- A good passphrase should have at least 15, preferably 20 characters and be difficult to guess. It should contain upper case letters, lower case letters, digits, and preferably at least one punctuation character.
+
+5. Add the key to `ssh-agent`: 
+
+- Enter: `eval "$(ssh-agent -s)"`
+- Enter: `ssh-add ~/.ssh/id_ed25519`
+
+::: {.callout-tip}
+If you are on a Mac and the `ssh-add` command gives an error saying that the file is not found or that you do not have permission, try running the following command then re-running `ssh-add`:
+
+`ls -al`
+:::
+
+::: {.callout-note}
+If you're using macOS Sierra 10.12.2 or later, you will need to modify your `~/.ssh/config` file to automatically load keys into the ssh-agent and store passphrases in your keychain. Follow the instructions [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=mac#adding-your-ssh-key-to-the-ssh-agent) (at step 2).
+:::
+
+### Part B
+
+**On your GitHub account**
+
+1. Get the public key that was just generated.
+
+- Enter: `more ~/.ssh/id_ed25519.pub`
+- Copy the result to your clipboard (e.g. by blocking off the line and
+    entering Ctrl-C).
+- The key should begin `ssh-ed25519` and end with the email address you used in generating the key. In between it will have a long string of alphanumeric characters.
+
+2. On GitHub, go to your account settings and select "SSH and GPG Keys" from the side menu. 
+
+- A link to your account settings can be found in the drop-down list
+    produced by clicking on your user icon in the upper right of the
+    website.
+
+3. Under "SSH keys," press the "New SSH Key" button.
+
+- Add a brief title describing the context of the key, i.e. the local machine where it was generated, e.g. Rivanna.
+- Choose "Authentication Key" as the Key type.
+- Paste the key into the Key text area.
+- Submit the form by pressing "Add SSH key."
+
+**You are now good to go.** Whenever you clone a site from your GitHub
+account, choose the SSH link.
+
+## Information Sources
+
+The [GitHub site](https://docs.github.com) has lots of excellent documentation. 
+
+Here are some pages you may find useful:
+
+* [About SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh)
+* [Generate the key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+* [About pass phrases](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases)
+* [Adding the key to GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+* [Updating repos with SSH](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#switching-remote-urls-from-https-to-ssh)

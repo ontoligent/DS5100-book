@@ -1,0 +1,341 @@
+---
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# NB: Control Structures and Functions
+
+## `if`/`else` Statements
+
+You've seen this in Python.
+
+They work the same way in both languages.
+
+Here's their syntax in R.
+
+```         
+if(<condition>) {
+        ## do something
+} 
+
+if(<condition>) {
+        ## do something
+} 
+else {
+        ## do something else
+}
+
+if(<condition1>) {
+        ## do something
+} else if(<condition2>)  {
+        ## do something different
+} else {
+        ## do something different
+}
+```
+
+Generate a uniform random number:
+
+```{r}
+x <- runif(1, 0, 10) # From the Uniform Distribution
+
+if(x > 3) {
+    y <- 10
+} else {
+    y <- 0
+}
+
+x
+y
+```
+
+You assign an `if` statement to a variable.
+
+```{r}
+z <- if(x > 3) {
+  10
+} else { 
+  0
+}
+
+z
+```
+
+You can stack `if` blocks, too.
+
+```         
+if(<condition1>) {
+
+}
+
+if(<condition2>) {
+
+}
+```
+
+## Control Structures
+
+### `for` Loops
+
+For loops are straight-forward. The take an interator variable, e.g.
+`i`, and assign it successive values from a sequence or vector.
+
+For loops are often used to iteratE over the elements of an object
+(list, vector, etc.).
+
+```{r}
+for(i in 1:10) {
+  print(i)
+}
+```
+
+According to Hadley Wickham, loops are pretty much the only looping
+construct that you will need in R.
+
+The following three loops all have the same behavior.
+
+```{r}
+x <- c("a", "b", "c", "d")
+for (i in 1:4) {
+  # Print out each element of 'x'
+  print(x[i])  
+}
+```
+
+### `seq_along()`
+
+The `seq_along()` function is commonly used in conjunction with for
+loops in order to generate an integer sequence based on the length of an
+object (in this case, the object x).
+
+```{r}
+x
+```
+
+Generate a sequence based on length of 'x':
+
+```{r}
+for(i in seq_along(x)) {   
+  print(x[i])
+}
+```
+
+It is not necessary to use an index-type variable.
+
+```{r}
+for(letter in x) {
+  print(letter)
+}
+```
+
+For one line loops, the curly braces are not strictly necessary.
+
+```{r}
+for(i in 1:4) print(x[i])
+```
+
+### Nested `for` loops
+
+Dor loops can be nested inside of each other.
+
+```{r}
+x <- matrix(1:6, 2, 3)
+for(i in seq_len(nrow(x))) {
+  for(j in seq_len(ncol(x))) {
+    print(x[i, j])
+  }   
+}
+```
+
+Nested loops are used to generate multidimensional or hierarchical data
+structures (e.g. matrices, lists).
+
+## `while` Loops
+
+As with Python, while loops start with a condition. It loops while the
+condition is true and stops when it is false.
+
+Remembe, while loops can go on forever is the truth condition is never
+met.
+
+```{r}
+count <- 0
+while(count < 10) {
+  print(count)
+  count <- count + 1
+}
+```
+
+## `repeat` Loops
+
+`repeat` loops are using by R. They initiate an infinite loop right from
+the start.
+
+The only way to exit a repeat loop is to call break on an internal
+condition.
+
+```{r eval=FALSE, include=FALSE}
+x0 <- 1
+tol <- 1e-8
+
+repeat {
+  x1 <- computeEstimate()
+  if (abs(x1 - x0) < tol) {  ## Close enough?
+    break
+  } else {
+    x0 <- x1
+  } 
+}
+```
+
+## `next` and `break`
+
+next is used to skip an iteration of a loop. Same as Python `continue`.
+
+```{r}
+for (i in 1:100) {
+  if (i <= 20) {
+    # Skip the first 20 iterations
+    next                
+  }      # Do something here
+}
+```
+
+`break` is used to exit a loop immediately.
+
+```{r}
+for (i in 1:100) {
+  print(i)
+  if (i > 20) {
+    # Stop loop after 20 iterations
+    break  
+  }     
+}
+```
+
+## Functions
+
+Define some data
+
+```{r}
+x <- 5                
+xx <- c(4, 6, 7, 8, 2, 11)
+```
+
+Now, define a function that does the following: - takes a value, vector
+of values as inputs - normalizes the value against the vector by
+subtracting the vector mean from value, and dividing by vector standard
+deviation.
+
+```{r}
+compute_zscore <- function(val, vec) {
+  z <- (val - mean(vec)) / sd(vec)
+}
+
+print(compute_zscore(x, xx))
+```
+
+If vector contains identical values, `sd` is zero, and so the z-score is
+undefined.
+
+```{r}
+print(compute_zscore(x, c(1, 1, 1, 1)))
+```
+
+If vector contains missing values, the result will be `NA`.
+
+```{r}
+xx_na <- c(1, NA, 3, 5) 
+print(compute_zscore(x, xx_na))
+```
+
+## Using conditions in functions
+
+A function returns 1 if passed value is odd, 0 if even
+
+## %% is mod operator (returns remainder)
+
+```{r}
+is_odd <- function(x){ if (x %% 2 == 1) { 
+    return(1) 
+  } else { 
+    return(0)
+  } 
+}
+```
+
+Call to test some cases:
+
+```{r}
+is_odd(4)
+is_odd(3)
+```
+
+Function arguments can use default values:
+
+```{r}
+threshold_vals <- function(p, thresh = 0.5) {
+  # for each element in p, returns TRUE if value > thresh, else FALSE
+  p > thresh
+}
+```
+
+```{r}
+threshold_vals(c(0.6, 0.4, 0.1, 1))
+```
+
+Now, pass a threshhold:
+
+```{r}
+threshold_vals(c(0.6, 0.4, 0.1, 1), 0.7)
+```
+
+Assert important preconditions
+
+```{r}
+add_vectors <- function(x, y) {
+  # assert the lengths of vectors x and y match
+  # if they do, sum elementwise, else throw error with stop()
+
+  if (length(x) != length(y)) {
+    stop("x and y must be the same length", call. = FALSE)
+  }
+  x + y
+}
+```
+
+```{r}
+add_vectors(c(1, 2, 3), c(3, 3, 3))
+```
+
+```{r}
+#| eval: false
+add_vectors(c(1, 2, 3), c(3, 3, 3, 3)) # breaks
+```
+
+## Scoping Rules
+
+```{r}
+z <- 4
+test_fcn <- function(x) {
+  x^z
+}
+```
+
+Now look at this:
+
+```{r}
+test_fcn(2)
+```
+
+If `z` isn't defined in the function, how does this work?
+
+R's scoping rules are similar to Python's.
+
+Since `z` isn't in the function, **R looks in the function's
+environment** for it.
+
+For more on scoping rules, see [Chapter 15: Scoping Rules of
+R](https://bookdown.org/rdpeng/rprogdatascience/scoping-rules-of-r.html)
+in Peng's *R Programming For Data Science*.

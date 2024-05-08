@@ -1,0 +1,71 @@
+# Agile Development
+
+## Backstory
+
+Agile development is essentially a **philosophy** developed in response to **bureaucratic** software development processes.
+
+It is an approach that focuses on the realities of software:
+
+- **Individuals and interactions** over **processes and tools**
+- **Working software** over **comprehensive documentation**
+- **Customer collaboration** over **contract negotiation**
+- **Responding to change** over **following a plan**
+
+Essentially, it is based on a **mistrust** of machines, plans, contracts, documents, etc.
+
+The [Agile Manifesto](https://agilemanifesto.org/principles.html) was written in 2001 after a number of lighter and more flexible approaches were developed in the 1990s.
+
+- SCRUM
+- XP (Extreme Program)&nbsp;
+- Etc.
+
+It is also a collection of **methods and tools**:
+
+- User stories
+- Scrum meetings
+- Sprints
+- Task weighting with cards
+- Etc.
+
+Agile is also **counter-cultural**, like many of the software movements that attended the rise of the web.
+
+![](https://alistair.cockburn.us/wp-content/uploads/2018/09/ronaldok.jpg)
+
+## Principles
+
+Here are the 12 Principles of Agile SD:
+
+1. Customer satisfaction by **early and continuous delivery** of valuable software. &rarr; The "early and often" of open source development.
+
+2. **Welcome changing requirements**, even in **late** development.
+
+3. Deliver working software **frequently** (weeks rather than months).
+
+4. Close, **daily** cooperation between business people and developers.
+
+5. Projects are built around **motivated individuals**, who should be **trusted**.
+
+6. **Face-to-face** conversation is the best form of communication (co-location).
+
+7. **Working software** is the primary measure of progress.
+
+8. **Sustainable** development, able to maintain a constant pace.
+
+9. **Continuous** attention to technical excellence and good design.
+
+10. **Simplicity**&mdash;the art of maximizing the amount of work not done&mdash;is essential.
+
+11. Best [architectures](https://en.wikipedia.org/wiki/Agile_Architecture), requirements, and designs emerge from **self-organizing** teams.
+
+12. Regularly, **the team reflects** on how to become more effective, and adjusts accordingly.
+
+As you can see, it's all about **giving teams the freedom and trust** to creatively respond to client needs and change.
+
+## Aside
+
+As an aside, it's worth noting the effect of the Web on these developments.
+
+- Agile was spurred by the **affordances of the Web** and **open source software**
+- And for teams to **organize organically**,&nbsp;without the oversight of governmental bodies or corporations
+- Influenced by the success of Open Source tools like **Linux**
+- Consistent with **Git** as a tool for organically organizing software development.

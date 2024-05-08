@@ -1,0 +1,15 @@
+# Refreshing the Course Repo
+
+Each day you will want to update the forked version of the course repo you created for your homework in Module 01.
+
+Here are the steps to do that: 
+
+**First**, if you have made any changes to the course notebooks and want to keep your changes, make copies of these files in your private repo. 
+
+**Second**, enter the command `git stash` within your local repo to hide the changes you've made to the current branch. To learn more about how to use `stash`, check out the [docs on GitHub](https://www.git-scm.com/docs/git-stash). For now, we are just using it clean up the repo so when you pull, you don't run into a conflict between local and remote changes.
+
+**Third**, go to the forked version of the course repo on GitHub and issue a Sync Fork command to refresh the content of your repo with the new course content. The screenshot below shows where this command is located on your repo's web page:
+
+![](../media/sync-fork-page.png)
+
+**Fourth**, go back to your local repo and run `git pull`. You should now have the most recent content from the course repo.

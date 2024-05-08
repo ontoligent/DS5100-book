@@ -1,0 +1,67 @@
+# Using Unix
+
+## Introduction
+
+The Unix family of operating systems provide users with a command line interface (CLI) to execute commands and get things done. They also, typically provide GUIs but we won't go into those here.
+
+The Unix family includes all varieties of Linux and the Mac OS (which is based on FreeBSD).
+
+The command line that you actually interact with – the set of commands available to you – is called a shell, and there are several shells that you can run on your system. The most typical shell in use today is called bash which stands for Bourne Again Shell, since it is an improved version of bsh (The Bourne Shell). New versions of MacOS use the Z shell (zsh). The commands in these two shells are mostly similar, but there are subtle differences.
+
+Windows has shells too for its command line interface. The default shell is DOS, but is also has PowerShell  as an advanced (and very capable) option.
+
+For more information, check out these resources:
+
+* UVA Research Computing's [Unix tutorial](https://learning.rc.virginia.edu/notes/unix-tutorial/).
+* Newham, 2005, [Learning the bash Shell](https://learning.oreilly.com/library/view/learning-the-bash/0596009658/), O'Reilly Media.
+* Jeroen Janssens, 2021, [Data Science From the Command Line](https://datascienceatthecommandline.com/2e/), O’Reilly Media.
+* Neal Stephenson, 1999, [In the Beginning Was The Command Line](http://project.cyberpunk.ru/lib/in_the_beginning_was_the_command_line/). ([PDF version](http://public-library.uk/ebooks/23/31.pdf).)
+
+## Basic Commands
+
+In this course, you don't need to know very many Unix shell commands, but you should be comfortable working from the command line to perform basic tasks. This is because some things can only be performed from the command line, such as installing some essential software. Here is a list of basic commands.
+
+Navigating filesystems and managing directories:
+
+* `cd` – change directory
+* `pwd` – show the current directory
+* `ln` – make links and symlinks to files and directories
+* `mkdir` – make new directory
+* `rmdir` – remove directories in Unix
+
+Navigating filesystem and managing files and access permissions:
+
+* `ls` – list files and directories
+* `cp` – copy files (work in progress)
+* `rm` – remove files and directories (work in progress)
+* `mv` – rename or move files and directories to another location
+* `chmod` – change file/directory access permissions
+* `chown` – change file/directory ownership
+
+## Text file commands
+
+Most of important configuration in Unix is in plain text files, these commands will let you quickly inspect files or view logs:
+
+* `cat` – concatenate files and show contents to the standard output
+* `more` – basic pagination when viewing text files or parsing Unix commands output
+* `less` – an improved pagination tool for viewing text files (better than more command)
+* `head` – show the first 10 lines of text file (you can specify any number of lines)
+* `tail` – show the last 10 lines of text file (any number can be specified)
+* `grep` – search for patterns in text files
+
+## Miscellaneous
+
+* `clear` – clear screen
+* `history` – show history of previous commands
+
+## Command Line Cool
+
+Although we will not be using the command line to this degree, you should know that it is a powerful environment for doing data science work. The book [Data Science from the Command Line](https://datascienceatthecommandline.com/2e/) makes the case for using the command line to perform many tasks that we often perform with more resource intensive (i.e. bloated) tools such as Python and R.  At some point in your early DS career, you may want to look at this. The book itself is also a great introduction to data science!
+
+![](../media/dsatcl-cover-small.png)
+
+One last thing – for fun you may want to read Neal Stephenson's ["In the Beginning Was The Command Line"](http://project.cyberpunk.ru/lib/in_the_beginning_was_the_command_line/), a kind of cyberpunk history of the topic. Stephenson, by the way, is the author who coined the term "metaverse" in the novel _Snowcrash_.
+
+::: {.callout-note}
+See [video](https://canvas.its.virginia.edu/courses/75059/modules/items/821823) on Canvas.
+:::

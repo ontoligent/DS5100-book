@@ -1,0 +1,497 @@
+---
+jupyter: python3
+---
+
+```
+title: "M02 Python Basics"
+author: R.C. Alvarado
+date: 21 June 2022 (Modified 28 January 2023)
+format: html
+```
+
+## Python Data Types
+
+We declare a number of variables with different value types.
+
+By 'type' we mean object type. 
+
+Data types and data structures are both types of object.
+
+Data types are created by the way they are written or as keywords ...
+
+Here is a series of literal values (called **literals**):
+
+**Integers**
+
+```{python}
+10
+```
+
+**Floats (decimals)**
+
+```{python}
+3.14 
+```
+
+**Strings**
+
+Type of quote does not matter, but they must be straight quotes, not "smart quotes" that some word processors use.
+
+Note that there is no explicit **character** type as in Java and other languages.
+
+```{python}
+"foo" 
+```
+
+```{python}
+'foo'
+```
+
+**Boolean**
+
+```{python}
+True, False
+```
+
+**Nothing**
+
+It evaluates to nothing!
+
+```{python}
+None
+```
+
+```{python}
+print(None)
+```
+
+**Complex**
+
+For the physicists and signal processors.
+
+```{python}
+5+0j
+```
+
+## Getting the type of a value
+
+You can always find out what kind of type you are working with by calling the `type()` function.
+
+```{python}
+print(type(3.14))
+print(type("foo"))
+print(type('foo'))
+print(type(True))
+print(type(None))
+```
+
+## Assignment
+
+Data are assigned to **variables** using the assignment **operator** `=`.
+
+The variable is always on the **left**, the value assigned to it on the **right**.
+
+This is not the same as mathemtical equality.
+
+Variables are assigned types **dynamically**. 
+
+This is in contrast to static typing, where you have define variables by asserting what kind of data values they can hold.
+
+Python figures out what type of data is being set to the variable and implicitly stores that info.
+
+```{python}
+integerEx = 8
+longIntEx = 22000000000000000000000
+floatEx = 2.2
+stringEx = "Hello"
+booleanEx = True
+noneEx = None
+```
+
+**Note that `type()` returns the type of the value that a variable holds, not the type "variable".
+
+```{python}
+print(type(integerEx))
+```
+
+## Deleting variables with `del()`
+
+```{python}
+x = 101.25
+```
+
+```{python}
+x
+```
+
+```{python}
+del(x)  # delete the variable x
+```
+
+```{python}
+x
+```
+
+You can't delete values!
+
+```{python}
+del("foo")
+```
+
+# Get Object Indenity with `id()`
+
+This function returns the identity of an object. 
+
+The identity is a number that is guaranteed to be unique and constant for this object during its lifetime (during the program session).
+
+You can think of it as the address of the object in memory.
+
+```{python}
+print(id(integerEx))
+```
+
+# Convert Types with Casting Functions
+
+It is possible to convert between types (when it makes sense to do so).
+
+Sometimes conversions are "lossy" -- you lose information in the process
+
+## `int()` 
+
+```{python}
+int?
+```
+
+**Float to Int**
+
+```{python}
+val = 3.8
+print(val, type(val))
+```
+
+```{python}
+val_int = int(val)
+print(val_int, type(val_int))
+```
+
+**String to Float**
+
+```{python}
+val = '3.8'
+print(val, type(val))
+```
+
+```{python}
+val_int = float(val)
+print(val_int, type(val_int))
+```
+
+**Converting string decimal to integer will fail:**
+
+```{python}
+val = '3.8'
+print(val, type(val))
+```
+
+```{python}
+val_int = int(val)
+print(val_int, type(val_int))
+```
+
+## `ord()`
+
+**Converting a character to it's code point**
+
+```{python}
+ord?
+```
+
+```{python}
+ord('a'), ord('A')
+```
+
+# Operators
+
+If variables are **nouns**, and values **meanings**, then operators are **verbs**.
+
+In effect, they are **elementary functions** that are expressed in sequential syntax.
+
+`a + b` could have been expressed as `add(a, b)`.
+
+Basically, **each data type is associated with a set of operators** that allow you to manipulate the data in way that makes sense for its type. Numeric data types are subject to mathematical operations, booleans to logical ones, and so forth.
+
+There are also **operations appropriate to structures**. For example, list-like things have membership.
+
+The relationship between types and operators is a microcosm of the relationship betweed data structures and algorithms. **Data structures imply algorithms and algorithms assume data structures.**
+
+The w3schools site has [a good summary](https://www.w3schools.com/python/python_operators.asp).
+
+Here are some you may not have seen.
+
+## Arithmetic Operators
+
+### floor division `//`
+
+```{python}
+5 // 2
+```
+
+```{python}
+-5 // 2
+```
+
+```{python}
+5.5 // 2
+```
+
+### modulus `%`
+
+Returns the remainder
+
+```{python}
+5 % 2
+```
+
+odd integers % 2 = 1  
+even integers % 2 = 0
+
+Look at this ... 
+
+```{python}
+5.5 / 2, 5.5 // 2, 5.5 % 2
+```
+
+### exponentiation `**`
+
+```{python}
+5**3
+```
+
+## String Operators
+
+### concatenation `+`
+
+The plus sign is an **ovderloaded** operator in Python.
+
+```{python}
+myString = 'This: '
+```
+
+```{python}
+my2ndString = myString + ' Goodbye, world!'
+```
+
+```{python}
+my2ndString
+```
+
+### repetition `*`
+
+```{python}
+myString*2                     
+```
+
+```{python}
+myString * 5
+```
+
+```{python}
+bart_S1E3 = 'I will not skateboard in the halls'
+```
+
+```{python}
+print((bart_S1E3 + '\n') * 5)
+```
+
+```{python}
+print('-' * 80)
+```
+
+[See them all](https://simpsonswiki.com/wiki/List_of_chalkboard_gags) :-)
+
+## Assignment Operator `=`
+
+We've used this already, but it too is an operator.
+
+```{python}
+epoch = 20
+print('epoch:', epoch)
+```
+
+## Comparison Operators
+
+Comparisons are questions.
+
+They return a boolean value. 
+
+### equality `==`
+
+```{python}
+0 == (10 % 5)
+```
+
+```{python}
+'Boo' == 'Hoo'
+```
+
+Can we compare strings
+
+```{python}
+'A' < 'B'
+```
+
+```{python}
+ord('A'), ord('B')
+```
+
+### inequality `!=`
+
+```{python}
+5/9 != 0.5555
+```
+
+## Logical Operators
+
+Python uses words where other languages will use other symbols.
+
+### Conjunctions `and`, `or`, `not`
+
+Note the we group comparisons with parentheses.
+
+```{python}
+x = 10
+
+(x % 10 == 0) or (x < -1)
+```
+
+```{python}
+(x % 10 == 0) and (x < -1)
+```
+
+```{python}
+not x == 5
+```
+
+### Identity `is`
+
+The `is` keyword is used to test if two variables refer to the same object.
+
+The test returns `True` if the two objects are the same object.
+
+The test returns False if they are not the same object, even if the two objects are 100% equal.
+
+Use the `==` operator to test if two variables are equal.
+
+-- from [W3Schools on Identity Operators](https://www.w3schools.com/python/gloss_python_identity_operators.asp)
+
+`is`
+
+```{python}
+x = 'fail'
+```
+
+```{python}
+x is 'fail'
+```
+
+`is not`
+
+```{python}
+x is not 'fail'
+```
+
+```{python}
+x = 'foo'
+y = 'foo'
+x is y
+```
+
+```{python}
+x = ['a']
+y = ['a']
+x is y
+```
+
+### Negation `not`
+
+```{python}
+not True, not False, not 0, not 1, not 1000, not None
+```
+
+# Unary Operators
+
+Python offers a short-cut for most operators. When updating a variable with an operation to that variable, such as:
+```python
+my_var = my_var + 1  # Incrementing
+```
+
+You can do this:
+```python
+my_var += 1
+```
+
+Python supports many operators this way. Here are some:
+```python
+a -= a
+a \= a
+a \\= a
+a %= a
+a *= a
+a **= a
+```
+
+# Expressions
+
+Variables, literal values, and operators are the building blocks of ebxpressions.
+
+For example, the following combines three operators and four variables:
+
+```{python}
+1 + 2 * 3 / 2
+```
+
+Python employs **operator precedence** when evaluating expressions:
+
+```
+P – Parentheses
+E – Exponentiation
+M – Multiplication
+D – Division
+A – Addition
+S – Subtraction
+```
+
+You can use parentheses to group them to force the order of operations you want:
+
+```{python}
+(1 + 2) * (3 / 2)
+```
+
+Variables and literal values can be combined:
+
+```{python}
+y = 5
+m = 2.5
+b = 10
+```
+
+```{python}
+y = m * 10 + b
+y
+```
+
+```{python}
+y = m * 5 + b
+y
+```
+
+Expresssion can be very complex.
+
+Expressions evaluate to a value, just as single variables do. 
+
+Therefore, they can be put anywhere a value is accepted.
+
+```{python}
+int((y + 10) ** 8)
+```
+

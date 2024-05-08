@@ -1,0 +1,22 @@
+# Try / Except / Finally
+
+`finally`  executes no matter what happens.
+
+It is used to clean up anything that was created for the purpose of the test.
+
+It will run even if you call `exit()` in the `try` block.
+
+```
+try:
+    x = 10/0
+except ZeroDivisionError as e:
+    print(e)
+    exit(0)
+finally:
+    print("finally")
+```
+
+```
+division by zero
+finally
+```

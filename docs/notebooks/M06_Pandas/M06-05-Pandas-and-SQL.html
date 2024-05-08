@@ -1,0 +1,2282 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.262">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>DS 5100: Programming for Data Science | Spring 2024 | Online - 36&nbsp; NB: Pandas and SQL</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../modules/m07/m07-intro.html" rel="next">
+<link href="../../notebooks/M06_Pandas/M06-04-MethodChaining.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-title">NB: Pandas and SQL</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">DS 5100: Programming for Data Science | Spring 2024 | Online</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/ontoligent/DS5100-2023-08-O" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m01/m01-intro.html" class="sidebar-item-text sidebar-link">M01 Getting Started</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/rivanna.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">About Rivanna</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/unix.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Using Unix</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/setting-up-ssh.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">SSH for GitHub</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/git-and-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Git and GitHub</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/m01/m01-using-rivanna.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Activity: Using Rivanna</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/m01/m01-activity-github.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Activity: Using Git and GitHub</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m02/m02-intro.html" class="sidebar-item-text sidebar-link">M02 Introducing Python</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/on-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data and Code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/python-object-types.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python Object Types</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/m02/m02-activity-hello-world.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Activity: Hello, World!</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/m02/m02-activity-jupyter-lab-on-rivanna.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Activity: Jupyter Lab</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M02_BasicPython/M02-01-DataTypes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Data Types, Operators, and Expressions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M02_BasicPython/M02-02-Numbers.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Numbers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M02_BasicPython/M02-03-Booleans.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Booleans</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M02_BasicPython/M02-04-Strings.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Strings</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M02_BasicPython/M02-05-Structures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Structures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M02_BasicPython/M02-Notes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">M02 Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m03/m03-intro.html" class="sidebar-item-text sidebar-link">M03 Control Structures</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/vals-vars-expressions-statements.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Values, Variables, Expressions, and Statements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M03_ControlStructures/M03-01-ControlStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Control Structures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M03_ControlStructures/M03-02-IterablesAndIterators.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Iterables and Iterators</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M03_ControlStructures/M03-03-Comprehensions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Comprehensions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m04/m04-intro.html" class="sidebar-item-text sidebar-link">M04 Functions</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M04_PythonFunctions/M04-02-Functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Introduction to Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M04_PythonFunctions/M04-01-Importing.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Importing Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M04_PythonFunctions/M04-03-LambdaFunctions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Lambda Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Recursion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M04_PythonFunctions/M04-05-Scope.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Variable Scope</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Functions Calling Functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m05/m05-intro.html" class="sidebar-item-text sidebar-link">M05 NumPy</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M05_NumPy/M05-02-NumpyBasics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: NumPy First Steps</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M05_NumPy/M05-03-NumpyBasicsContinued.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: NumPy Continued</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M05_NumPy/M05-00-Time.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Python Timing Experiment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M05_NumPy/M05-01-BasicFileIO.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Basic File I/O</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m06/m06-intro.html" class="sidebar-item-text sidebar-link">M06 Pandas</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M06_Pandas/M06-01-Pandas1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Introducting Pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M06_Pandas/M06-02-Pandas2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Introducing Pandas II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M06_Pandas/M06-03-NarrowWide.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Narrow vs Wide Tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M06_Pandas/M06-04-MethodChaining.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Method Chaining</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M06_Pandas/M06-05-Pandas-and-SQL.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: Pandas and SQL</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m07/m07-intro.html" class="sidebar-item-text sidebar-link">M07 Classes</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/what-is-oop.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">What is OOP?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M07_PythonClasses/M07-01-Classes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Introducing Classes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M07_PythonClasses/M07-02-ClassesExample.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Classes Example</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M07_PythonClasses/M07-03-MoreOnClasses.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: More About Classes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M07_PythonClasses/M07-05-Example.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Example</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M07_PythonClasses/M07-04-ClassAttributeWeirdness.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Understanding Class Attributes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m08/m08-intro.html" class="sidebar-item-text sidebar-link">M08 Testing</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/m08/m08-testing-and-verification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Testing and Verification</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Exception Handling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Unit Testing with Unittest</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m09/m09-intro.html" class="sidebar-item-text sidebar-link">M09 Modules</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M09_PythonModules/M09-01-PackagesIntro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Packages, Modules, and Imports</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M09_PythonModules/M09-01a-Globals.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: More on Classes and Globals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M09_PythonModules/M09-02-MakingYourOwn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Building Your Own Package</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M09_PythonModules/M09-02a-InitPyDemo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Demonstrations of Import and <strong>init</strong>.py()</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/m09/m09-review.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Review</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m10/m10-intro.html" class="sidebar-item-text sidebar-link">M10 Basic R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M10_RBasics/M10-01-DataTypesAndStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Getting Started</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M10_RBasics/M10-02-ControlStructuresAndFunctions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Control Structures and Functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m11/m11-intro.html" class="sidebar-item-text sidebar-link">M11 Dplyr</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M11_RDplyr/M11-01-Tibbles.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Introducing Tibbles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M11_RDplyr/M11-02-Dplyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: The <code>dplyr</code> package</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m12/m12-intro.html" class="sidebar-item-text sidebar-link">M12 Visualization</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M12_RViz/M12-01-GGPlot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: GGPlot2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M12_RViz/M12-02-RMarkdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Markdown</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Loose Ends</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M12_RViz/M12-04-Plotnine.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: GGPlot in Python with Plotnine</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m13/m13-intro.html" class="sidebar-item-text sidebar-link">M13 Agile</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/project-management.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Project Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/agile-dev.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Agile Development</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/user-stories.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">User Stories</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">Appendices</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/oreilly-accounts.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Setting Up O’Reilly</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../topics/refreshing-the-course-repo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Refreshing the Course Repo</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#connect-to-the-database" id="toc-connect-to-the-database" class="nav-link" data-scroll-target="#connect-to-the-database">Connect to the database</a></li>
+  <li><a href="#get-the-raw-review-table" id="toc-get-the-raw-review-table" class="nav-link" data-scroll-target="#get-the-raw-review-table">Get the raw review table</a></li>
+  <li><a href="#remove-rows-with-missing-data" id="toc-remove-rows-with-missing-data" class="nav-link" data-scroll-target="#remove-rows-with-missing-data">Remove rows with missing data</a></li>
+  <li><a href="#create-implied-subject-tables" id="toc-create-implied-subject-tables" class="nav-link" data-scroll-target="#create-implied-subject-tables">Create implied subject tables</a>
+  <ul class="collapse">
+  <li><a href="#the-artist-table" id="toc-the-artist-table" class="nav-link" data-scroll-target="#the-artist-table">The <code>artist</code> table</a>
+  <ul class="collapse">
+  <li><a href="#pattern" id="toc-pattern" class="nav-link" data-scroll-target="#pattern">Pattern</a></li>
+  </ul></li>
+  <li><a href="#the-genre-table" id="toc-the-genre-table" class="nav-link" data-scroll-target="#the-genre-table">The <code>genre</code> table</a></li>
+  <li><a href="#the-album-table" id="toc-the-album-table" class="nav-link" data-scroll-target="#the-album-table">The <code>album</code> table</a></li>
+  <li><a href="#the-review-table" id="toc-the-review-table" class="nav-link" data-scroll-target="#the-review-table">The <code>review</code> table</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#use-.join" id="toc-use-.join" class="nav-link" data-scroll-target="#use-.join">Use <code>.join()</code></a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/ontoligent/DS5100-2023-08-O/blob/main/notebooks/M06_Pandas/M06-05-Pandas-and-SQL.ipynb" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-title">NB: Pandas and SQL</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p>In this exercise, we split the raw table into tables corresponding the <strong>implied subjects</strong> we discovered.</p>
+<p>Then we use joins to reassemble the data.</p>
+<p>We will assumed that the implied subjects are ARTIST, GENRE, ALBUM, and REVIEW.</p>
+<p>To do this, we use Pandas to store the initial table as a dataframe, and then we create variations of that dataframe and save those to the database as new tables.</p>
+</section>
+<section id="connect-to-the-database" class="level1">
+<h1>Connect to the database</h1>
+<div class="cell" data-tags="[]" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We create an empty database to store our work.</p>
+<div class="cell" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">'./data/pitchfork.db'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="get-the-raw-review-table" class="level1">
+<h1>Get the raw review table</h1>
+<p>Get the review data.</p>
+<div class="cell" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> pd.read_csv(<span class="st">"./data/pitchfork.csv"</span>).set_index(<span class="st">'id'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>album</th>
+      <th>artist</th>
+      <th>best</th>
+      <th>date</th>
+      <th>genre</th>
+      <th>review</th>
+      <th>score</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A.M./Being There</td>
+      <td>Wilco</td>
+      <td>1</td>
+      <td>December 6 2017</td>
+      <td>Rock</td>
+      <td>Best new reissue 1 / 2 Albums Newly reissued a...</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>No Shame</td>
+      <td>Hopsin</td>
+      <td>0</td>
+      <td>December 6 2017</td>
+      <td>Rap</td>
+      <td>On his corrosive fifth album, the rapper takes...</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Material Control</td>
+      <td>Glassjaw</td>
+      <td>0</td>
+      <td>December 6 2017</td>
+      <td>Rock</td>
+      <td>On their first album in 15 years, the Long Isl...</td>
+      <td>6.6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Weighing of the Heart</td>
+      <td>Nabihah Iqbal</td>
+      <td>0</td>
+      <td>December 6 2017</td>
+      <td>Pop/R&amp;B</td>
+      <td>On her debut LP, British producer Nabihah Iqba...</td>
+      <td>7.7</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>The Visitor</td>
+      <td>Neil Young / Promise of the Real</td>
+      <td>0</td>
+      <td>December 5 2017</td>
+      <td>Rock</td>
+      <td>While still pointedly political, Neil Youngís ...</td>
+      <td>6.7</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>19551</th>
+      <td>1999</td>
+      <td>Cassius</td>
+      <td>0</td>
+      <td>January 26 1999</td>
+      <td>Electronic</td>
+      <td>Well, it's been two weeks now, and I guess it'...</td>
+      <td>4.8</td>
+    </tr>
+    <tr>
+      <th>19552</th>
+      <td>Let Us Replay!</td>
+      <td>Coldcut</td>
+      <td>0</td>
+      <td>January 26 1999</td>
+      <td>Electronic</td>
+      <td>The marketing guys of yer average modern megac...</td>
+      <td>8.9</td>
+    </tr>
+    <tr>
+      <th>19553</th>
+      <td>Singles Breaking Up, Vol. 1</td>
+      <td>Don Caballero</td>
+      <td>0</td>
+      <td>January 12 1999</td>
+      <td>Experimental</td>
+      <td>Well, kids, I just went back and re-read my re...</td>
+      <td>7.2</td>
+    </tr>
+    <tr>
+      <th>19554</th>
+      <td>Out of Tune</td>
+      <td>Mojave 3</td>
+      <td>0</td>
+      <td>January 12 1999</td>
+      <td>Rock</td>
+      <td>Out of Tune is a Steve Martin album. Yes, I'll...</td>
+      <td>6.3</td>
+    </tr>
+    <tr>
+      <th>19555</th>
+      <td>Left for Dead in Malaysia</td>
+      <td>Neil Hamburger</td>
+      <td>0</td>
+      <td>January 5 1999</td>
+      <td>None</td>
+      <td>Neil Hamburger's third comedy release is a des...</td>
+      <td>6.5</td>
+    </tr>
+  </tbody>
+</table>
+<p>19555 rows × 7 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="remove-rows-with-missing-data" class="level1">
+<h1>Remove rows with missing data</h1>
+<p>Here’s a quick to inventory which columns have missing data.</p>
+<div class="cell" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>raw.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>album     5
+artist    0
+best      0
+date      0
+genre     0
+review    1
+score     0
+dtype: int64</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>raw[raw.album.isna()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>album</th>
+      <th>artist</th>
+      <th>best</th>
+      <th>date</th>
+      <th>genre</th>
+      <th>review</th>
+      <th>score</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>58</th>
+      <td>NaN</td>
+      <td>Gord Downie</td>
+      <td>0</td>
+      <td>November 17 2017</td>
+      <td>Rock</td>
+      <td>Recorded in his final months and released 10 d...</td>
+      <td>7.4</td>
+    </tr>
+    <tr>
+      <th>261</th>
+      <td>NaN</td>
+      <td>Yves Tumor</td>
+      <td>0</td>
+      <td>September 23 2017</td>
+      <td>Experimental</td>
+      <td>This self-released compilation from Yves Tumor...</td>
+      <td>7.8</td>
+    </tr>
+    <tr>
+      <th>273</th>
+      <td>NaN</td>
+      <td>Lee Ranaldo</td>
+      <td>0</td>
+      <td>September 20 2017</td>
+      <td>Experimental</td>
+      <td>Lee Ranaldoís latest album is his finest post-...</td>
+      <td>6.5</td>
+    </tr>
+    <tr>
+      <th>351</th>
+      <td>NaN</td>
+      <td>Queens of the Stone Age</td>
+      <td>0</td>
+      <td>August 28 2017</td>
+      <td>Rock</td>
+      <td>With production flourishes from Mark Ronson, J...</td>
+      <td>6.9</td>
+    </tr>
+    <tr>
+      <th>6795</th>
+      <td>NaN</td>
+      <td>Inverloch</td>
+      <td>0</td>
+      <td>April 9 2012</td>
+      <td>None</td>
+      <td>The Melbourne metal band forges a strong bridg...</td>
+      <td>6.7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>raw[raw.review.isna()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>album</th>
+      <th>artist</th>
+      <th>best</th>
+      <th>date</th>
+      <th>genre</th>
+      <th>review</th>
+      <th>score</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>13301</th>
+      <td>Shine On</td>
+      <td>Jet</td>
+      <td>0</td>
+      <td>October 2 2006</td>
+      <td>Rock</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> raw.dropna()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Drop dupicate rows, too.</p>
+<div class="cell" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> raw.drop_duplicates()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> raw.reset_index().set_index(<span class="st">'id'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>raw.to_sql(<span class="st">'raw'</span>, db, if_exists<span class="op">=</span><span class="st">'replace'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>19544</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>album</th>
+      <th>artist</th>
+      <th>best</th>
+      <th>date</th>
+      <th>genre</th>
+      <th>review</th>
+      <th>score</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A.M./Being There</td>
+      <td>Wilco</td>
+      <td>1</td>
+      <td>December 6 2017</td>
+      <td>Rock</td>
+      <td>Best new reissue 1 / 2 Albums Newly reissued a...</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>No Shame</td>
+      <td>Hopsin</td>
+      <td>0</td>
+      <td>December 6 2017</td>
+      <td>Rap</td>
+      <td>On his corrosive fifth album, the rapper takes...</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Material Control</td>
+      <td>Glassjaw</td>
+      <td>0</td>
+      <td>December 6 2017</td>
+      <td>Rock</td>
+      <td>On their first album in 15 years, the Long Isl...</td>
+      <td>6.6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Weighing of the Heart</td>
+      <td>Nabihah Iqbal</td>
+      <td>0</td>
+      <td>December 6 2017</td>
+      <td>Pop/R&amp;B</td>
+      <td>On her debut LP, British producer Nabihah Iqba...</td>
+      <td>7.7</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>The Visitor</td>
+      <td>Neil Young / Promise of the Real</td>
+      <td>0</td>
+      <td>December 5 2017</td>
+      <td>Rock</td>
+      <td>While still pointedly political, Neil Youngís ...</td>
+      <td>6.7</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>19551</th>
+      <td>1999</td>
+      <td>Cassius</td>
+      <td>0</td>
+      <td>January 26 1999</td>
+      <td>Electronic</td>
+      <td>Well, it's been two weeks now, and I guess it'...</td>
+      <td>4.8</td>
+    </tr>
+    <tr>
+      <th>19552</th>
+      <td>Let Us Replay!</td>
+      <td>Coldcut</td>
+      <td>0</td>
+      <td>January 26 1999</td>
+      <td>Electronic</td>
+      <td>The marketing guys of yer average modern megac...</td>
+      <td>8.9</td>
+    </tr>
+    <tr>
+      <th>19553</th>
+      <td>Singles Breaking Up, Vol. 1</td>
+      <td>Don Caballero</td>
+      <td>0</td>
+      <td>January 12 1999</td>
+      <td>Experimental</td>
+      <td>Well, kids, I just went back and re-read my re...</td>
+      <td>7.2</td>
+    </tr>
+    <tr>
+      <th>19554</th>
+      <td>Out of Tune</td>
+      <td>Mojave 3</td>
+      <td>0</td>
+      <td>January 12 1999</td>
+      <td>Rock</td>
+      <td>Out of Tune is a Steve Martin album. Yes, I'll...</td>
+      <td>6.3</td>
+    </tr>
+    <tr>
+      <th>19555</th>
+      <td>Left for Dead in Malaysia</td>
+      <td>Neil Hamburger</td>
+      <td>0</td>
+      <td>January 5 1999</td>
+      <td>None</td>
+      <td>Neil Hamburger's third comedy release is a des...</td>
+      <td>6.5</td>
+    </tr>
+  </tbody>
+</table>
+<p>19544 rows × 7 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="create-implied-subject-tables" class="level1">
+<h1>Create implied subject tables</h1>
+<section id="the-artist-table" class="level2">
+<h2 class="anchored" data-anchor-id="the-artist-table">The <code>artist</code> table</h2>
+<p>We get the unique artist names and save them to a new dataframe, and change the column name and the index name in the process so that we have well-named columns in our table.</p>
+<div class="cell" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>artists <span class="op">=</span> raw.artist.value_counts().to_frame(<span class="st">'n_reviews'</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>artists.index.name <span class="op">=</span> <span class="st">'artist_id'</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>artists.to_sql(<span class="st">'artist'</span>, db, index<span class="op">=</span><span class="va">True</span>, if_exists<span class="op">=</span><span class="st">'replace'</span>, index_label<span class="op">=</span><span class="st">'artist_id'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>9249</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>artists.sample(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>n_reviews</th>
+    </tr>
+    <tr>
+      <th>artist_id</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Flying Canyon</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Florence and the Machine</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Larkin Grimm</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Dylan LeBlanc</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Devo</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Tory Lanez</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Sacred Paws</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Little Wings</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Boris / Ian Astbury</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>The Sight Below</th>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>How many albums does Wilco have?</p>
+<div class="cell" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>artists.loc[<span class="st">'Wilco'</span>].n_reviews</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>14</code></pre>
+</div>
+</div>
+<section id="pattern" class="level3">
+<h3 class="anchored" data-anchor-id="pattern">Pattern</h3>
+<ol type="1">
+<li>Import the columns that you want from raw table into a new dataframe. <code>value_counts()</code> is your friend.</li>
+<li>Rename columns and index as desired.</li>
+<li>Put the new dataframe into the database as a new table. No need to define the schema!</li>
+</ol>
+</section>
+</section>
+<section id="the-genre-table" class="level2">
+<h2 class="anchored" data-anchor-id="the-genre-table">The <code>genre</code> table</h2>
+<div class="cell" data-tags="[]" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>genres <span class="op">=</span> raw.genre.value_counts().to_frame(<span class="st">'n_reviews'</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>genres.index.name <span class="op">=</span> <span class="st">'genre_id'</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>genres.to_sql(<span class="st">'genre'</span>, db, index<span class="op">=</span><span class="va">True</span>, if_exists<span class="op">=</span><span class="st">'replace'</span>, index_label<span class="op">=</span><span class="st">'genre_id'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>10</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>genres</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>n_reviews</th>
+    </tr>
+    <tr>
+      <th>genre_id</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Rock</th>
+      <td>6954</td>
+    </tr>
+    <tr>
+      <th>Electronic</th>
+      <td>4020</td>
+    </tr>
+    <tr>
+      <th>None</th>
+      <td>2320</td>
+    </tr>
+    <tr>
+      <th>Experimental</th>
+      <td>1696</td>
+    </tr>
+    <tr>
+      <th>Rap</th>
+      <td>1481</td>
+    </tr>
+    <tr>
+      <th>Pop/R&amp;B</th>
+      <td>1157</td>
+    </tr>
+    <tr>
+      <th>Metal</th>
+      <td>781</td>
+    </tr>
+    <tr>
+      <th>Folk/Country</th>
+      <td>700</td>
+    </tr>
+    <tr>
+      <th>Jazz</th>
+      <td>257</td>
+    </tr>
+    <tr>
+      <th>Global</th>
+      <td>178</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>genres.plot.barh()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="M06-05-Pandas-and-SQL_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="the-album-table" class="level2">
+<h2 class="anchored" data-anchor-id="the-album-table">The <code>album</code> table</h2>
+<div class="cell" data-tags="[]" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>albums <span class="op">=</span> raw[[<span class="st">'album'</span>,<span class="st">'artist'</span>,<span class="st">'genre'</span>]].value_counts().to_frame(<span class="st">'n_reviews'</span>).reset_index().set_index([<span class="st">'artist'</span>,<span class="st">'album'</span>])</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>albums.index.names <span class="op">=</span> [<span class="st">'artist_id'</span>,<span class="st">'album_id'</span>]</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>albums <span class="op">=</span> albums.rename(columns<span class="op">=</span>{<span class="st">'genre'</span>:<span class="st">'genre_id'</span>})</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>albums.to_sql(<span class="st">'album'</span>, db, index<span class="op">=</span><span class="va">True</span>, if_exists<span class="op">=</span><span class="st">'replace'</span>, index_label<span class="op">=</span>albums.index.names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>19506</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>albums</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>genre_id</th>
+      <th>n_reviews</th>
+    </tr>
+    <tr>
+      <th>artist_id</th>
+      <th>album_id</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>NÙze</th>
+      <th>Songs on the Rocks</th>
+      <td>None</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>The Postal Service</th>
+      <th>Give Up</th>
+      <td>Electronic</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Enon</th>
+      <th>Believo!</th>
+      <td>Rock</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Tim Hecker</th>
+      <th>Radio Amor</th>
+      <td>Experimental</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Of Montreal</th>
+      <th>If He Is Protecting Our Nation, Then Who Will Protect Big Oil, Our Children?</th>
+      <td>Rock</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Russian Circles</th>
+      <th>Guidance</th>
+      <td>Metal</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Various Artists</th>
+      <th>Guess Who This Is: A Tribute to Dom Leone</th>
+      <td>None</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Beck</th>
+      <th>Guerolito</th>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Guero</th>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Pretty Girls Make Graves</th>
+      <th>…lan Vital</th>
+      <td>None</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>19506 rows × 2 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="the-review-table" class="level2">
+<h2 class="anchored" data-anchor-id="the-review-table">The <code>review</code> table</h2>
+<div class="cell" data-tags="[]" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>reviews <span class="op">=</span> raw[[<span class="st">'album'</span>, <span class="st">'artist'</span>, <span class="st">'best'</span>, <span class="st">'date'</span>, <span class="st">'review'</span>, <span class="st">'score'</span>]].copy()</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>reviews.columns <span class="op">=</span> [<span class="st">'album_id'</span>, <span class="st">'artist_id'</span>, <span class="st">'is_best'</span>, <span class="st">'review_date'</span>, <span class="st">'review_content'</span>, <span class="st">'album_score'</span>]</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>reviews <span class="op">=</span> reviews.set_index([<span class="st">'artist_id'</span>,<span class="st">'album_id'</span>,<span class="st">'review_date'</span>])</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>reviews.to_sql(<span class="st">'review'</span>, db, index<span class="op">=</span><span class="va">True</span>, if_exists<span class="op">=</span><span class="st">'replace'</span>, index_label<span class="op">=</span>reviews.index.names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>19544</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>reviews.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>is_best</th>
+      <th>review_content</th>
+      <th>album_score</th>
+    </tr>
+    <tr>
+      <th>artist_id</th>
+      <th>album_id</th>
+      <th>review_date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Wilco</th>
+      <th>A.M./Being There</th>
+      <th>December 6 2017</th>
+      <td>1</td>
+      <td>Best new reissue 1 / 2 Albums Newly reissued a...</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>Hopsin</th>
+      <th>No Shame</th>
+      <th>December 6 2017</th>
+      <td>0</td>
+      <td>On his corrosive fifth album, the rapper takes...</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>Glassjaw</th>
+      <th>Material Control</th>
+      <th>December 6 2017</th>
+      <td>0</td>
+      <td>On their first album in 15 years, the Long Isl...</td>
+      <td>6.6</td>
+    </tr>
+    <tr>
+      <th>Nabihah Iqbal</th>
+      <th>Weighing of the Heart</th>
+      <th>December 6 2017</th>
+      <td>0</td>
+      <td>On her debut LP, British producer Nabihah Iqba...</td>
+      <td>7.7</td>
+    </tr>
+    <tr>
+      <th>Neil Young / Promise of the Real</th>
+      <th>The Visitor</th>
+      <th>December 5 2017</th>
+      <td>0</td>
+      <td>While still pointedly political, Neil Youngís ...</td>
+      <td>6.7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>reviews.loc[<span class="st">'Wilco'</span>].sort_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>is_best</th>
+      <th>review_content</th>
+      <th>album_score</th>
+    </tr>
+    <tr>
+      <th>album_id</th>
+      <th>review_date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A Ghost Is Born</th>
+      <th>June 21 2004</th>
+      <td>0</td>
+      <td>At the time of Yankee Hotel Foxtrot's non-trad...</td>
+      <td>6.6</td>
+    </tr>
+    <tr>
+      <th>A.M./Being There</th>
+      <th>December 6 2017</th>
+      <td>1</td>
+      <td>Best new reissue 1 / 2 Albums Newly reissued a...</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>Alpha Mike Foxtrot: Rare Tracks 1994ñ2014/What's Your 20? Essential Tracks 1994ñ2014</th>
+      <th>November 19 2014</th>
+      <td>0</td>
+      <td>1 / 2 Albums Both the†Alpha Mike Foxtrot†rarit...</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>Kicking Television: Live in Chicago</th>
+      <th>November 13 2005</th>
+      <td>0</td>
+      <td>This 2xCD live album finds the now six-piece b...</td>
+      <td>8.3</td>
+    </tr>
+    <tr>
+      <th>More Like the Moon EP</th>
+      <th>April 27 2003</th>
+      <td>0</td>
+      <td>Okay, show of hands: how many of you people ha...</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>Schmilco</th>
+      <th>September 9 2016</th>
+      <td>0</td>
+      <td>Wilco's 10th album is a largely acoustic affai...</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>Sky Blue Sky</th>
+      <th>May 14 2007</th>
+      <td>0</td>
+      <td>Despite the experimental pedigree of their new...</td>
+      <td>5.2</td>
+    </tr>
+    <tr>
+      <th>Star Wars</th>
+      <th>July 23 2015</th>
+      <td>0</td>
+      <td>With its $0 asking price, lawsuit-baiting titl...</td>
+      <td>7.7</td>
+    </tr>
+    <tr>
+      <th>Summerteeth</th>
+      <th>February 28 1999</th>
+      <td>0</td>
+      <td>After parting ways with Uncle Tupelo partner J...</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>The Whole Love</th>
+      <th>September 26 2011</th>
+      <td>0</td>
+      <td>Wilco's adventurous, self-produced eighth LP f...</td>
+      <td>6.9</td>
+    </tr>
+    <tr>
+      <th>The Wilco Book</th>
+      <th>October 31 2004</th>
+      <td>0</td>
+      <td>We don't usually review books, but seeing that...</td>
+      <td>7.5</td>
+    </tr>
+    <tr>
+      <th>Wilco (The Album)</th>
+      <th>June 29 2009</th>
+      <td>0</td>
+      <td>Jeff Tweedy and co.'s latest does what its tit...</td>
+      <td>7.3</td>
+    </tr>
+    <tr>
+      <th>Yankee Hotel Foxtrot</th>
+      <th>April 21 2002</th>
+      <td>0</td>
+      <td>Myth, it has been said, is the buried part of ...</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>iTunes Session</th>
+      <th>February 2 2012</th>
+      <td>0</td>
+      <td>This eight-song EP, comprised primarily of tra...</td>
+      <td>6.7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>reviews.loc[<span class="st">'Wilco'</span>].album_score.mean().<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>7.4</code></pre>
+</div>
+</div>
+<p>Note how the new <code>review</code> table has fewer columns – e.g.&nbsp;we no longer have genre.</p>
+</section>
+</section>
+<section id="results" class="level1">
+<h1>Results</h1>
+<p>So, we have create four primary tables from our raw data.</p>
+<div class="cell" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>artists.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>n_reviews</th>
+    </tr>
+    <tr>
+      <th>artist_id</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Various Artists</th>
+      <td>717</td>
+    </tr>
+    <tr>
+      <th>Guided by Voices</th>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>David Bowie</th>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>Mogwai</th>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>The Beatles</th>
+      <td>21</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>albums.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>genre_id</th>
+      <th>n_reviews</th>
+    </tr>
+    <tr>
+      <th>artist_id</th>
+      <th>album_id</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>NÙze</th>
+      <th>Songs on the Rocks</th>
+      <td>None</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>The Postal Service</th>
+      <th>Give Up</th>
+      <td>Electronic</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Enon</th>
+      <th>Believo!</th>
+      <td>Rock</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Tim Hecker</th>
+      <th>Radio Amor</th>
+      <td>Experimental</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Of Montreal</th>
+      <th>If He Is Protecting Our Nation, Then Who Will Protect Big Oil, Our Children?</th>
+      <td>Rock</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>genres.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>n_reviews</th>
+    </tr>
+    <tr>
+      <th>genre_id</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Rock</th>
+      <td>6954</td>
+    </tr>
+    <tr>
+      <th>Electronic</th>
+      <td>4020</td>
+    </tr>
+    <tr>
+      <th>None</th>
+      <td>2320</td>
+    </tr>
+    <tr>
+      <th>Experimental</th>
+      <td>1696</td>
+    </tr>
+    <tr>
+      <th>Rap</th>
+      <td>1481</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>reviews.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>is_best</th>
+      <th>review_content</th>
+      <th>album_score</th>
+    </tr>
+    <tr>
+      <th>artist_id</th>
+      <th>album_id</th>
+      <th>review_date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Wilco</th>
+      <th>A.M./Being There</th>
+      <th>December 6 2017</th>
+      <td>1</td>
+      <td>Best new reissue 1 / 2 Albums Newly reissued a...</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>Hopsin</th>
+      <th>No Shame</th>
+      <th>December 6 2017</th>
+      <td>0</td>
+      <td>On his corrosive fifth album, the rapper takes...</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>Glassjaw</th>
+      <th>Material Control</th>
+      <th>December 6 2017</th>
+      <td>0</td>
+      <td>On their first album in 15 years, the Long Isl...</td>
+      <td>6.6</td>
+    </tr>
+    <tr>
+      <th>Nabihah Iqbal</th>
+      <th>Weighing of the Heart</th>
+      <th>December 6 2017</th>
+      <td>0</td>
+      <td>On her debut LP, British producer Nabihah Iqba...</td>
+      <td>7.7</td>
+    </tr>
+    <tr>
+      <th>Neil Young / Promise of the Real</th>
+      <th>The Visitor</th>
+      <th>December 5 2017</th>
+      <td>0</td>
+      <td>While still pointedly political, Neil Youngís ...</td>
+      <td>6.7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="use-.join" class="level1">
+<h1>Use <code>.join()</code></h1>
+<p>If we want to see genre in the review, we can create a join.</p>
+<div class="cell" data-tags="[]" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>reviews.join(albums)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>is_best</th>
+      <th>review_content</th>
+      <th>album_score</th>
+      <th>genre_id</th>
+      <th>n_reviews</th>
+    </tr>
+    <tr>
+      <th>artist_id</th>
+      <th>album_id</th>
+      <th>review_date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">!!!</th>
+      <th>As If</th>
+      <th>October 21 2015</th>
+      <td>0</td>
+      <td>Despite popular perception, !!! never quite fi...</td>
+      <td>6.9</td>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Jamie, My Intentions Are Bass EP</th>
+      <th>November 1 2010</th>
+      <td>0</td>
+      <td>The dance-rock fixtures enlist Bibio, Tim Gold...</td>
+      <td>6.8</td>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Louden Up Now</th>
+      <th>June 7 2004</th>
+      <td>0</td>
+      <td>For club-friendly artists to become or remain ...</td>
+      <td>7.0</td>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Myth Takes</th>
+      <th>March 2 2007</th>
+      <td>0</td>
+      <td>Nic Offer, now focused solely on this band aft...</td>
+      <td>8.0</td>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Shake the Shudder</th>
+      <th>May 24 2017</th>
+      <td>0</td>
+      <td>The new !!! album finds them working with a sl...</td>
+      <td>7.3</td>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">”lafur Arnalds</th>
+      <th>Found Songs</th>
+      <th>February 16 2010</th>
+      <td>0</td>
+      <td>The young Icelandic composer who has opened fo...</td>
+      <td>6.3</td>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Living Room Songs / Another Happy Day OST</th>
+      <th>February 16 2012</th>
+      <td>0</td>
+      <td>1 / 2 Albums The Icelandic composer, known for...</td>
+      <td>4.5</td>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Now I Am Winter</th>
+      <th>April 9 2013</th>
+      <td>0</td>
+      <td>The Icelandic composer who has toured with†Sig...</td>
+      <td>5.5</td>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>”lˆf Arnalds</th>
+      <th>Innundir Skinni</th>
+      <th>October 26 2010</th>
+      <td>0</td>
+      <td>Icelandic singer/songwriter continues to slowl...</td>
+      <td>8.0</td>
+      <td>Pop/R&amp;B</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>∆vangelist</th>
+      <th>Omen Ex Simulacra</th>
+      <th>December 11 2013</th>
+      <td>0</td>
+      <td>On their second album Omen Ex Simulacra, the O...</td>
+      <td>7.0</td>
+      <td>None</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>19544 rows × 5 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>albums.join(artists, rsuffix<span class="op">=</span><span class="st">'_artist'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>genre_id</th>
+      <th>n_reviews</th>
+      <th>n_reviews_artist</th>
+    </tr>
+    <tr>
+      <th>artist_id</th>
+      <th>album_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>NÙze</th>
+      <th>Songs on the Rocks</th>
+      <td>None</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>The Postal Service</th>
+      <th>Give Up</th>
+      <td>Electronic</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Enon</th>
+      <th>Believo!</th>
+      <td>Rock</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>Tim Hecker</th>
+      <th>Radio Amor</th>
+      <td>Experimental</td>
+      <td>2</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>Of Montreal</th>
+      <th>If He Is Protecting Our Nation, Then Who Will Protect Big Oil, Our Children?</th>
+      <td>Rock</td>
+      <td>2</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Russian Circles</th>
+      <th>Guidance</th>
+      <td>Metal</td>
+      <td>1</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>Various Artists</th>
+      <th>Guess Who This Is: A Tribute to Dom Leone</th>
+      <td>None</td>
+      <td>1</td>
+      <td>717</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Beck</th>
+      <th>Guerolito</th>
+      <td>Rock</td>
+      <td>1</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>Guero</th>
+      <td>Rock</td>
+      <td>1</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>Pretty Girls Make Graves</th>
+      <th>…lan Vital</th>
+      <td>None</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+<p>19506 rows × 3 columns</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../notebooks/M06_Pandas/M06-04-MethodChaining.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">NB: Method Chaining</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../modules/m07/m07-intro.html" class="pagination-link">
+        <span class="nav-page-text">M07 Classes</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

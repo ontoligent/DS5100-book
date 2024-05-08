@@ -1,0 +1,12 @@
+# Values, Variables, Expressions, and Statements
+
+## Definitions
+
+* __Values__: Raw data elements represented in a program, e.g. numbers and strings.
+* __Variables__: Names to which values are assigned.
+* __Expressions__: Combinations of values, variables, operators, functions, and other expressions that evaluate to a value.
+* __Statements__: Groupings of expressions that produce some result. Statements **do** things.
+
+## Statement Types
+
+See [Statement Types](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch10.html#python_statements) in Lutz.

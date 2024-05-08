@@ -1,0 +1,688 @@
+---
+title: "R Notebook"
+output: html_notebook
+editor_options: 
+  markdown: 
+    wrap: 80
+---
+
+# GGPlot2
+
+## Introduction
+
+Today we'll look at GGPlot2, the graphics package associated with the
+**Tidyverse**.
+
+## Learning Goal
+
+You will be introduced into how and why to use **visualizations** in DS 6001.
+
+-   Visualizations in EDA
+
+-   Visualization in creating data products that communicate results, such as
+    scientific publications, infographics, and interactive visualizations.
+
+These things come at the end of the data science **pipeline**.
+
+Today, I just want to introduce you to the thinking and **design logic** behind
+the package, so you can be confident in learning more as you need to.
+
+## The Grammar of Graphics
+
+As with Dplyr, GGPlot2 is a an entirely new system that **supplants** the older
+graph functions that are built into R.
+
+And just as with Dplyr, it is founded on a principled analysis of its domain and
+approaches code design through developing a basic **grammar** which can then be
+expressed in R.
+
+In effect, Dplyr is built on a **grammar of data** by defining a set of
+**verbs** that can be used to build phrases that are put together into larger
+constructs.
+
+These verbs correspond to a **process** of data transformation.
+
+GGPlot2 is built on a **grammar of graphics** that defines a set of **nouns**
+that correspond to **the architecture of a graphic** (aka plot).
+
+The phrase "grammar of graphics" actually comes from the book by that name
+written by statistician and computer scientist **Leland Wilkinson** in 1999 and
+later revised:
+
+[![The Second
+Edition](images/paste-39DF579F.png)](https://www.google.com/books/edition/The_Grammar_of_Graphics/YGgUswEACAAJ?hl=en)
+
+It's worth reading if you want to get a solid grounding in visualization, which
+belongs to the **design area of data science**.
+
+## A Layered Model
+
+Wilkinson takes an **object-oriented approach** to visualization and formalizes
+two main **principles**:
+
+I.  **Graphics** are built out of distinct ***layers*** of grammatical
+    **elements.**
+II. In each layer, meaningful **plots** are constructed through **mappings of
+    data onto aesthetics.**
+
+The essential grammatical elements to create any visualization are:
+
+![](images/paste-E167991C.png)
+
+According to Wickham, who adopted these principles and applied them to R,
+
+> A grammar of graphics is a tool that enables us to **concisely describe the
+> components of a graphic**. Such a grammar allows us to **move beyond named
+> graphics** (e.g., the "scatterplot") and gain insight into **the deep
+> structure** that underlies statistical graphics ([Wickham
+> 2012](https://www.tandfonline.com/doi/abs/10.1198/jcgs.2009.07098)).
+
+Wickham takes this idea and develops it into this:
+
+![](images/paste-D2214B2A.png)
+
+[Source](https://blog.gramener.com/grammar-of-graphics-data-stories/) (see also
+[ScienceCraft](https://www.science-craft.com/2014/07/08/introducing-the-grammar-of-graphics-plotting-concept/)).
+
+You can see that everything starts with **data.**
+
+Then data are mapped on **aesthetics** within **geometries.**
+
+-   **Geometries** are geometric things like points, lines, and bars.
+
+-   **Aesthetics** are visual things like position, size, color and shape.
+
+You can see how the latter are properties of the former.
+
+Also note that aesthetics make use of visual channels to signify
+
+-   Size can means greater than, which is good for numeric scale but not
+    categories
+
+-   Color can signify things like value, e.g. via
+    `red : dangerous : : green : safe`.
+
+These are the primary layers. The other layers apply **downstream
+modifications** that add more **information** and **style** to the graph.
+
+## The Bare Minimum
+
+Everything starts with `ggplot()` which is part of the Tidyverse.
+
+```{r}
+library(tidyverse)
+```
+
+Here is a basic graph -- a scatterplot comparing two features in the iris
+dataset. I've broken out the functions and arguments so you can see how the
+grammar is implemented:
+
+```{r}
+iris %>%
+ggplot(
+  mapping = aes(
+    x = Sepal.Length, 
+    y = Sepal.Width)
+  ) + 
+  geom_point(size=3, aes(color=Species))
+```
+
+`ggplot()` starts by creating a **coordinate system** that you can add
+**layers** to.
+
+-   The **coordinate system** can be changed after the graph is initiated.
+
+These **layers** are created by **geometry functions.**
+
+-   For example, `geom_point` creates a point-based visualization.
+-   There are many `geom_` functions, and they can be layered on top of each
+    other:
+    -   `geom_point()`
+    -   `geom_bar()`
+    -   `geom_histogram()`
+    -   `geom_boxplot()`
+    -   etc.
+
+Here we have a plot with two layers. The second layer is created by a **stat**
+function, which is similar to geom, but applies a statistical transformation to
+the data.
+
+```{r}
+iris %>%
+ggplot(aes(
+  x = Sepal.Length, 
+  y = Sepal.Width)) + 
+  geom_point(size=3, aes(color=Species)) + 
+  stat_smooth(method = lm)
+```
+
+The core the process is that each layer **maps** **data** onto what are called
+**aesthetics (`aes`).**
+
+Aesthetics are **visual objects and properties** that can used to represent
+numeric and categorical values
+
+-   x and y positions (in a two-dimensional system)
+-   Color
+-   Size
+-   Shape
+-   Text
+
+In addition to these elements, ggplot also provides **faceting**, which is the
+visual equivalent of grouping by. Just as with group by, a data feature is used
+to divide the visualization into groups, each taking the same form but showing a
+different subset of data.
+
+```{r}
+iris %>%
+ggplot(aes(
+  x = Sepal.Length, 
+  y = Sepal.Width)) + 
+  geom_point(size=3, aes(color=Species)) + 
+  stat_smooth(method = lm) +
+  facet_wrap(facets = vars(Species))
+```
+
+> By the way, this is an example of Simpson's Paradox. The overall trend is
+> downward, but each group trend upward.
+
+```{r}
+iris %>%
+  ggplot(aes(
+    x = Sepal.Length, 
+    y = Sepal.Width)) + 
+    geom_point(size=3, aes(color=Species)) + 
+    stat_smooth(method = lm) +
+    stat_smooth(method = lm, se=FALSE, aes(color=Species))
+```
+
+Anyway, the **general structure** of a ggplot statement is the following:
+
+    ggplot(data = <DATA>) + 
+      <GEOM_FUNCTION>(
+         mapping = aes(<MAPPINGS>),
+         stat = <STAT>, 
+         position = <POSITION>
+      ) +
+      <COORDINATE_FUNCTION> +
+      <FACET_FUNCTION>
+
+## The `+` operator
+
+You will notice the use of the `+` operator to connect ggplot functions together
+to produce a final product. Theses are not quite the same as pipes `%>%`.
+
+The difference is that pipes feed data from one function to another, whereas the
+`+` operation combines elements to produce an increasingly developed
+visualization.
+
+Another thing to keep in mind: the `+` always goes at the **end of a line**, not
+at the beginning.
+
+# Examples
+
+Let look at how to build out graphics using the built-in diamonds data.
+
+```{r}
+diamonds
+```
+
+```{r}
+diamonds %>%
+    ggplot(aes(x=carat, y=price)) + 
+    geom_point()
+```
+
+Here's another way to construct a graphic. By assigning it a variable, we can
+keep adding to it and showing out work.
+
+```{r}
+gg <- ggplot(diamonds, aes(x=carat, y=price)) 
+gg + geom_point()
+```
+
+`stroke` controls the thickness of point boundary
+
+```{r}
+gg + geom_point(
+  size=1, 
+  shape=1, 
+  color="steelblue", 
+  stroke=2)  
+```
+
+Let's map the variables carat, cut and color to various aesthetics in our
+geometry function:
+
+```{r}
+gg + geom_point(aes(
+  size=carat, 
+  shape=cut, 
+  color=color, 
+  stroke=carat))
+```
+
+## Add Title, X and Y axis labels with `labs()`
+
+```{r}
+gg1 <- gg + geom_point(aes(color=color))
+gg2 <- gg1 + labs(title="Diamonds", x="Carat", y="Price") 
+gg2
+```
+
+## Change color of all text with `theme()`
+
+```{r}
+gg2 + theme(text=element_text(color="blue"))  # all text turns blue.
+```
+
+## Change title, X and Y axis label and text size
+
+-   `plot.title`: Controls plot title.
+-   `axis.title.x`: Controls X axis title
+-   `axis.title.y`: Controls Y axis title
+-   `axis.text.x`: Controls X axis text
+-   `axis.text.y`: Controls y axis text
+
+```{r}
+gg3 <- gg2 + 
+  theme(plot.title=element_text(size=25), 
+        axis.title.x=element_text(size=20),
+        axis.title.y=element_text(size=20),
+        axis.text.x=element_text(size=15),
+        axis.text.y=element_text(size=15)
+        )
+gg3
+```
+
+## Change title face, color, line height
+
+```{r}
+gg3 + 
+  labs(title = "Plot Title\nSecond Line of Plot Title") +
+  theme(plot.title = element_text(
+    face="bold", 
+    color="steelblue", 
+    lineheight=1.2)
+  )
+```
+
+## Change point color
+
+```{r}
+gg3 + scale_colour_manual(
+  name='Legend', 
+  values=c('D'='grey', 
+           'E'='red', 
+           'F'='blue', 
+           'G'='yellow', 
+           'H'='black', 
+           'I'='green', 
+           'J'='firebrick'))
+```
+
+## Adjust X and Y axis limits
+
+Method 1: Zoom in
+
+```{r}
+gg3 + coord_cartesian(xlim=c(0,3), ylim=c(0, 5000)) + geom_smooth()  # zoom in
+```
+
+Method 2: Deletes the points outside limits
+
+```{r}
+gg3 + 
+  xlim(c(0,3)) + 
+  ylim(c(0, 5000)) + 
+  geom_smooth()  # deletes the points 
+```
+
+Method 3: Deletes the points outside limits
+
+```{r}
+gg3 + scale_x_continuous(limits=c(0,3)) + 
+  scale_y_continuous(limits=c(0, 5000)) +
+  geom_smooth()  # deletes the points outside limits
+```
+
+Notice the change in smoothing line because of deleted points. This could
+sometimes be misleading in your analysis.
+
+## Change X and Y axis labels
+
+```{r}
+gg3 + scale_x_continuous(
+  labels=c("zero", "one", "two", "three", "four", "five")) 
+  scale_y_continuous(breaks=seq(0, 20000, 4000))  # if Y is continuous, if X is a factor
+```
+
+Use scale_x\_discrete instead, if X variable is a factor.
+
+Rotate axis text
+
+```{r}
+gg3 + theme(axis.text.x=element_text(angle=45), axis.text.y=element_text(angle=45))
+```
+
+## Flip X and Y Axis
+
+```{r}
+gg3 + coord_flip()  # flips X and Y axis.
+```
+
+## Grid lines and panel background
+
+```{r}
+gg3 + theme(panel.background = element_rect(fill = 'springgreen'),
+  panel.grid.major = element_line(colour = "firebrick", size=3),
+  panel.grid.minor = element_line(colour = "blue", size=1))
+```
+
+## Plot margin and background
+
+```{r}
+gg3 + theme(plot.background=element_rect(fill="yellowgreen"), plot.margin = unit(c(2, 4, 1, 3), "cm")) # top, right, bottom, left
+```
+
+# Legend
+
+## Hide legend
+
+```{r}
+gg3 + theme(legend.position="none")  # hides the legend
+```
+
+## Change legend title
+
+```{r}
+gg3 + scale_color_discrete(name="")  # Remove legend title (method1)
+
+# Remove legend title (method)
+p1 <- gg3 + theme(legend.title=element_blank())  
+
+# Change legend title
+p2 <- gg3 + scale_color_discrete(name="Diamonds")  
+```
+
+```{r}
+# install.packages("gridExtra")
+```
+
+```{r}
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)  # arrange
+```
+
+## Change legend and point color
+
+```{r}
+gg3 + scale_colour_manual(name='Legend', values=c('D'='grey', 'E'='red', 'F'='blue', 'G'='yellow', 'H'='black', 'I'='green', 'J'='firebrick'))
+```
+
+## Change legend position
+
+Outside plot
+
+```{r}
+p1 <- gg3 + theme(legend.position="top")  # top / bottom / left / right
+```
+
+Inside plot
+
+```{r}
+p2 <- gg3 + theme(legend.justification=c(1,0), legend.position=c(1,0))  # legend justification is the anchor point on the legend, considering the bottom left of legend as (0,0)
+gridExtra::grid.arrange(p1, p2, ncol=2)
+```
+
+## Change order of legend items
+
+```{r}
+#df$newLegendColumn <- factor(df$legendcolumn, levels=c(new_order_of_legend_items), ordered = TRUE) 
+```
+
+Create a new factor variable used in the legend, ordered as you need. Then use
+this variable instead in the plot.
+
+## Legend title, text, box, symbol
+
+-   `legend.title` - Change legend title
+-   `legend.text` - Change legend text
+-   `legend.key` - Change legend box
+-   `guides` - Change legend symbols
+
+```{r}
+gg3 + theme(legend.title = element_text(size=20, color = "firebrick"), legend.text = element_text(size=15), legend.key=element_rect(fill='steelblue')) + guides(colour = guide_legend(override.aes = list(size=2, shape=4, stroke=2)))  # legend title color and size, box color, symbol color, size and shape.
+```
+
+# Plot text and annotation
+
+## Add text in chart
+
+```{r}
+# Not Run: gg + geom_text(aes(xcol, ycol, label=round(labelCol), size=3)) 
+# general format 
+gg + geom_text(aes(label=color, color=color), size=4)
+```
+
+##Annotation
+
+```{r}
+library(grid) 
+my_grob = grobTree(textGrob("My Custom Text", x=0.8, y=0.2, 
+                            gp=gpar(col="firebrick", fontsize=25, fontface="bold"))) 
+
+gg3 + annotation_custom(my_grob)
+```
+
+# Multiple plots
+
+## Multiple chart panels
+
+```{r}
+p1 <- gg1 + facet_grid(color ~ cut) # arrange in a grid. More space for plots. Free X and Y axis scales
+```
+
+By setting scales='free', the scales of both X and Y axis is freed. Use
+scales='free_x' to free only X-axis and scales='free_y' to free only Y-axis.
+
+```{r}
+p2 <- gg1 + facet_wrap(color ~ cut, scales="free") # free the x and yaxis scales. 
+```
+
+## Arrange multiple plots
+
+```{r}
+library(gridExtra) 
+grid.arrange(p1, p2, ncol=2)
+```
+
+# Geom layers
+
+## Add smoothing line
+
+```{r}
+gg3 + geom_smooth(aes(color=color)) # method could be - 'lm', 'loess', 'gam'
+```
+
+## Add horizontal / vertical line
+
+```{r}
+p1 <- gg3 + geom_hline(yintercept=5000, size=2, linetype="dotted", color="blue") # linetypes: solid, dashed, dotted, dotdash, longdash and twodash 
+p2 <- gg3 + geom_vline(xintercept=4, size=2, color="firebrick") 
+p3 <- gg3 + geom_segment(aes(x=4, y=5000, xend=4, yend=10000, size=2, lineend="round")) 
+p4 <- gg3 + geom_segment(aes(x=carat, y=price,
+xend=carat, yend=price-500, color=color), size=2) + coord_cartesian(xlim=c(3, 5)) # x, y: start points. xend, yend: endpoints 
+gridExtra::grid.arrange(p1,p2,p3,p4, ncol=2)
+```
+
+## Add bar chart
+
+```{r}
+# Frequency bar chart: Specify only X axis. 
+gg <- ggplot(mtcars, aes(x=cyl)) 
+gg + geom_bar() # frequency table
+```
+
+```{r}
+gg <- ggplot(mtcars, aes(x=cyl)) 
+p1 <- gg + geom_bar(position="dodge", aes(fill=factor(vs))) # side-by-side 
+p2 <- gg + geom_bar(aes(fill=factor(vs))) # stacked 
+gridExtra::grid.arrange(p1, p2, ncol=2)
+
+```
+
+```{r}
+# Absolute bar chart: Specify both X adn Y axis. Set stat="identity"
+df <- aggregate(mtcars$mpg, by=list(mtcars$cyl), FUN=mean)  # mean of mpg for every 'cyl'
+names(df) <- c("cyl", "mpg")
+head(df)
+#>   cyl    mpg
+#> 1   4  26.66
+#> 2   6  19.74
+#> 3   8  15.10
+
+gg_bar <- ggplot(df, aes(x=cyl, y=mpg)) + geom_bar(stat = "identity")  # Y axis is explicit. 'stat=identity'
+print(gg_bar)
+```
+
+## Distinct color for bars
+
+```{r}
+gg_bar <- ggplot(df, aes(x=cyl, y=mpg)) + geom_bar(stat = "identity", aes(fill=cyl))
+print(gg_bar)
+```
+
+## Change color and width of bars
+
+```{r}
+df$cyl <- as.factor(df$cyl)
+gg_bar <- ggplot(df, aes(x=cyl, y=mpg)) + geom_bar(stat = "identity", aes(fill=cyl), width = 0.25)
+gg_bar + scale_fill_manual(values=c("4"="steelblue", "6"="firebrick", "8"="darkgreen"))
+```
+
+## Change color palette
+
+```{r}
+library(RColorBrewer)
+display.brewer.all(n=20, exact.n=FALSE)  # display available color palettes
+ggplot(mtcars, aes(x=cyl, y=carb, fill=factor(cyl))) + geom_bar(stat="identity") + scale_fill_brewer(palette="Reds")  # "Reds" is palette name
+```
+
+# Line chart
+
+```{r}
+# Method 1:
+gg <- ggplot(economics, aes(x=date))  # setup
+gg + geom_line(aes(y=psavert), size=2, color="firebrick") + geom_line(aes(y=uempmed), size=1, color="steelblue", linetype="twodash")  # No legend
+# available linetypes: solid, dashed, dotted, dotdash, longdash and twodash
+
+```
+
+```{r}
+# Method 2:
+#install.packages("reshape2")
+library(reshape2)
+df_melt <- melt(economics[, c("date", "psavert", "uempmed")], id="date")  # melt by date. 
+gg <- ggplot(df_melt, aes(x=date))  # setup
+gg + geom_line(aes(y=value, color=variable), size=1) + scale_color_discrete(name="Legend")  # gets legend.
+```
+
+## Line chart from timeseries
+
+```{r}
+# One step method.
+install.packages("ggfortify")
+library(ggfortify)
+autoplot(AirPassengers, size=2) + labs(title="AirPassengers")
+```
+
+# Ribbons
+
+Filled time series can be plotted using geom_ribbon(). It takes two compulsory
+arguments ymin and ymax.
+
+```{r}
+# Prepare the dataframe
+st_year <- start(AirPassengers)[1]
+st_month <- "01"
+st_date <- as.Date(paste(st_year, st_month, "01", sep="-"))
+dates <- seq.Date(st_date, length=length(AirPassengers), by="month")
+df <- data.frame(dates, AirPassengers, AirPassengers/2)
+head(df)
+#>        dates AirPassengers AirPassengers.2
+#> 1 1949-01-01           112            56.0
+#> 2 1949-02-01           118            59.0
+#> 3 1949-03-01           132            66.0
+#> 4 1949-04-01           129            64.5
+#> 5 1949-05-01           121            60.5
+#> 6 1949-06-01           135            67.5
+# Plot ribbon with ymin=0
+gg <- ggplot(df, aes(x=dates)) + labs(title="AirPassengers") + theme(plot.title=element_text(size=30), axis.title.x=element_text(size=20), axis.text.x=element_text(size=15))
+gg + geom_ribbon(aes(ymin=0, ymax=AirPassengers)) + geom_ribbon(aes(ymin=0, ymax=AirPassengers.2), fill="green")
+```
+
+```{r}
+gg + geom_ribbon(aes(ymin=AirPassengers-20, ymax=AirPassengers+20)) + geom_ribbon(aes(ymin=AirPassengers.2-20, ymax=AirPassengers.2+20), fill="green")
+```
+
+## Area
+
+geom_area is similar to geom_ribbon, except that the ymin is set to 0. If you
+want to make overlapping area plot, use the alpha aesthetic to make the top
+layer translucent.
+
+```{r}
+# Method1: Non-Overlapping Area
+df <- reshape2::melt(economics[, c("date", "psavert", "uempmed")], id="date")
+head(df, 3)
+#>         date variable value
+#> 1 1967-07-01  psavert  12.5
+#> 2 1967-08-01  psavert  12.5
+#> 3 1967-09-01  psavert  11.7
+p1 <- ggplot(df, aes(x=date)) + geom_area(aes(y=value, fill=variable)) + labs(title="Non-Overlapping - psavert and uempmed")
+
+# Method2: Overlapping Area
+p2 <- ggplot(economics, aes(x=date)) + geom_area(aes(y=psavert), fill="yellowgreen", color="yellowgreen") + geom_area(aes(y=uempmed), fill="dodgerblue", alpha=0.7, linetype="dotted") + labs(title="Overlapping - psavert and uempmed")
+gridExtra::grid.arrange(p1, p2, ncol=2)
+```
+
+# Boxplot and Violin
+
+The oulier points are controlled by the following aesthetics:
+
+-   outlier.shape
+-   outlier.stroke
+-   outlier.size
+-   outlier.colour
+
+If the notch is turned on (by setting it TRUE), the below boxplot is produced.
+Else, you would get the standard rectangular boxplots.
+
+```{r}
+p1 <- ggplot(mtcars, aes(factor(cyl), mpg)) + geom_boxplot(aes(fill = factor(cyl)), width=0.5, outlier.colour = "dodgerblue", outlier.size = 4, outlier.shape = 16, outlier.stroke = 2, notch=T) + labs(title="Box plot")  # boxplot
+p2 <- ggplot(mtcars, aes(factor(cyl), mpg)) + geom_violin(aes(fill = factor(cyl)), width=0.5, trim=F) + labs(title="Violin plot (untrimmed)")  # violin plot
+gridExtra::grid.arrange(p1, p2, ncol=2)
+```
+
+# Density
+
+```{r}
+ggplot(mtcars, aes(mpg)) + geom_density(aes(fill = factor(cyl)),
+size=2) + labs(title="Density plot") 
+```
+
+# Tiles
+
+```{r}
+corr <- round(cor(mtcars), 2)
+df <- reshape2::melt(corr)
+gg <- ggplot(df, aes(x=Var1, y=Var2, fill=value, label=value)) + geom_tile() + theme_bw() + geom_text(aes(label=value, size=value), color="white") + labs(title="mtcars - Correlation plot") + theme(text=element_text(size=20), legend.position="none")
+
+library(RColorBrewer)
+p2 <- gg + scale_fill_distiller(palette="Reds")
+p3 <- gg + scale_fill_gradient2()
+gridExtra::grid.arrange(gg, p2, p3, ncol=3)
+```
+
+> <http://r-statistics.co/ggplot2-cheatsheet.html>

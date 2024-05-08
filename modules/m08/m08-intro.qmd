@@ -1,0 +1,15 @@
+# M08 Testing
+
+## Topics
+
+- Become acquainted with Exception Handling, Testing, and Debuggings
+- Understand the cyclical relationship among these
+- Understand the relation to function and class design 
+- Understand benefits of literate and well-styled coding
+
+## Readings
+
+### Required
+
+- [Lutz 2017, Part 7: Exceptions and Tools](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/part07.html)
+- Testing and Verification (see next Module item)

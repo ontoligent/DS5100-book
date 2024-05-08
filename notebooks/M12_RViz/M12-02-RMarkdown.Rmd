@@ -1,0 +1,132 @@
+---
+title: "R Notebook"
+output: html_notebook
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+# R Markdown {#sec-rmarkdown-formats}
+
+# Introduction
+
+R provides a notebook style coding environment similar to Jupyter.
+
+-   It follows the **literate programming** paradigm of **inter-leaving text and code**.
+-   It uses a version of [Markdown](https://www.markdownguide.org/) to create the text components.
+-   It allows executable **code blocks**.
+-   They can be used interactively or as **exported** documents into standard formats.
+
+How, the R approach differs in some important ways:
+
+-   RMarkdown is **not visually rendered** while your are editing.
+    -   The document has to be 'knitted' to see this.
+    -   Newer versions of RStudio have a visual mode that does render Markdown, and also allows you to edit in this mode.
+    -   This differs from Jupyter's cell-by-cell approach.
+-   RMarkdown **allows several programming languages** to be run in the same notebook. - RMarkdown files are meant to be *published documents*, not workspaces for coding.
+-   RMarkdown is written in markdown and uses [YAML](https://yaml.org/)to store configuration information.
+    -   Jupyter notebooks are written in **JavaScript**, which contains both configuration data and content data in the same structure.
+
+    -   This difference is what accounts for the different editing experiences.
+        JavaScript is the native programming language of web browsers; the notebook format is executable code that can be integrated into a web application.
+
+# Varieties of R Markdown outputs
+
+R Markdown is designed to be output to several formats:
+
+-   **R Notebooks**
+    -   Designed to previewed
+    -   Or output to `(html|pdf|doc)_notebook`
+    -   Have Preview in RStudio toolbar (but also Knit in menu)
+-   **Documents**
+    -   Output to `(html|pdf|doc)_document`
+    -   Has Knit in RStudio toolbar
+-   **Presentations**
+    -   Produce slideshows from your source file, in ioslides, beamer, or powerpoint.
+-   **Shiny**
+    -   Create interactive apps that can be published on the web.
+
+# Knitting
+
+Knitting is the process of compiling all the code and visual assets of an RMarkdown into a single file.
+
+# Publishing
+
+RMarkdown has publication in mind as an outcome.
+RStudio allows you to publish in these destinations:
+
+-   [RPubs](https://rpubs.com/)
+
+-   [R Studio Connect](https://www.rstudio.com/products/connect/)
+
+# Outputting
+
+There are two ways to set the output of a document:
+
+1.  Permanently, by modifying the YAML header:
+
+    ``` yaml
+    title: "Viridis Demo"
+    output: html_document
+    ```
+
+2.  Transiently, by calling `rmarkdown::render()` by hand:
+
+    ```{r eval = FALSE}
+    rmarkdown::render("diamond-sizes.Rmd", output_format = "word_document")
+    ```
+
+    This is useful if you want to programmatically produce multiple types of output.
+
+RStudio's knit button renders a file to the first format listed in its `output` field.
+
+You can also do it by code:
+
+```{r}
+#| echo: false
+#| out-width: null
+
+knitr::include_graphics("screenshots/rmarkdown-knit.png")
+```
+
+Each output format is associated with an R function.
+
+You can either write `foo` or `pkg::foo`.
+
+If you omit `pkg`, the default is assumed to be rmarkdown.
+
+It's important to know the name of the function that makes the output because that's where you get help.
+
+For example, to figure out what parameters you can set with `html_document`, look at `?rmarkdown::html_document`.
+
+## Output options
+
+To override the default parameter values, you need to use an expanded `output` field.
+For example, if you wanted to render an `html_document` with a floating table of contents, you'd use:
+
+``` yaml
+output:
+  html_document:
+    toc: true
+    toc_float: true
+```
+
+You can even render to multiple outputs by supplying a list of formats:
+
+``` yaml
+output:
+  html_document:
+    toc: true
+    toc_float: true
+  pdf_document: default
+```
+
+Note the special syntax if you don't want to override any of the default options.
+
+# How It Works
+
+![](images/paste-7C07E815.png)
+
+# The RMarkdown Spec
+
+See [The RMarkown Reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf?_ga=2.194053733.950222666.1657155877-187437491.1653052010) and [RStudio's Guide](https://rmarkdown.rstudio.com/lesson-1.html).

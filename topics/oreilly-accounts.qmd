@@ -1,0 +1,23 @@
+# Setting Up O'Reilly
+
+O'Reilly for Higher Education contains books on all aspects of computers, programming and the Web from such publishers as O'Reilly, Sams, New Riders, Adobe. Students can access content for free.
+
+Follow these instructions to set up your account:
+
+Go to <a href="https://www.oreilly.com/library/view/temporary-access/" target="_new">https://www.oreilly.com/library/view/temporary-access/</a>. 
+
+You should see this dialog box:
+
+![](../media/oreilly-01.png)
+
+Click on **Institution not listed?** This will produce the following dialog box:
+
+![](../media/oreilly-02.png)
+
+If you are first time user, enter your UVA email address and clicl on the big red button.
+
+This should produce the following message:
+
+![](../media/oreilly-03.png)
+
+Now you can access all the books in the collection. When you return, click on **Already a user?** in the second dialog box.

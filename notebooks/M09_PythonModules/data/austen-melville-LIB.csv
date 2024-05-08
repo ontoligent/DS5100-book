@@ -1,0 +1,21 @@
+book_id,book_title,book_file
+158,"Emma, by Jane Austen",./data_in/epubs/AUSTEN_JANE_EMMA-pg158.txt
+946,"Lady Susan, by Jane Austen",./data_in/epubs/AUSTEN_JANE_LADY_SUSAN-pg946.txt
+1212,"Love And Freindship And Other Early Works, by Jane Austen",./data_in/epubs/AUSTEN_JANE_LOVE_AND_FREINDSHIP_SIC_-pg1212.txt
+141,"Mansfield Park, by Jane Austen",./data_in/epubs/AUSTEN_JANE_MANSFIELD_PARK-pg141.txt
+121,"Northanger Abbey, by Jane Austen",./data_in/epubs/AUSTEN_JANE_NORTHANGER_ABBEY-pg121.txt
+105,"Persuasion, by Jane Austen",./data_in/epubs/AUSTEN_JANE_PERSUASION-pg105.txt
+1342,"Pride and Prejudice, by Jane Austen",./data_in/epubs/AUSTEN_JANE_PRIDE_AND_PREJUDICE-pg1342.txt
+161,"Sense and Sensibility, by Jane Austen",./data_in/epubs/AUSTEN_JANE_SENSE_AND_SENSIBILITY-pg161.txt
+15422,"Israel Potter, by Herman Melville",./data_in/epubs/MELVILLE_HERMAN_ISRAEL_POTTER_HIS_FIFTY_YEARS_OF_EXILE-pg15422.txt
+13720,"Mardi: and A Voyage Thither, Vol. I (of 2)",./data_in/epubs/MELVILLE_HERMAN_MARDI_AND_A_VOYAGE_THITHER_VOL_I-pg13720.txt
+13721,"Mardi: and A Voyage Thither, Vol. II (of 2)",./data_in/epubs/MELVILLE_HERMAN_MARDI_AND_A_VOYAGE_THITHER_VOL_II-pg13721.txt
+2701,"Moby Dick; or The Whale, by Herman Melville",./data_in/epubs/MELVILLE_HERMAN_MOBY_DICK_OR_THE_WHALE-pg2701.txt
+4045,"Omoo: Adventures in the South Seas, by Herman Melville",./data_in/epubs/MELVILLE_HERMAN_OMOO_ADVENTURES_IN_THE_SOUTH_SEAS-pg4045.txt
+34970,"Pierre; or The Ambiguities, by Herman Melville",./data_in/epubs/MELVILLE_HERMAN_PIERRE_OR_THE_AMBIGUITIES-pg34970.txt
+8118,"Redburn. His First Voyage, by Herman Melville",./data_in/epubs/MELVILLE_HERMAN_REDBURN_HIS_FIRST_VOYAGE_BEING_THE_SAILOR_BOY_CONFESSIONS_AND_REMINISCENCES_OF_THE_SON_OF_A_GENTLEMAN_IN_THE_MERCHANT_NAVY-pg8118.txt
+53861,"The Apple - Tree Table and Other Sketches, by",./data_in/epubs/MELVILLE_HERMAN_THE_APPLE_TREE_TABLE_AND_OTHER_SKETCHES-pg53861.txt
+21816,"The Confidence - Man, by Herman Melville",./data_in/epubs/MELVILLE_HERMAN_THE_CONFIDENCE_MAN_HIS_MASQUERADE-pg21816.txt
+15859,"The Piazza Tales, by Herman Melville",./data_in/epubs/MELVILLE_HERMAN_THE_PIAZZA_TALES-pg15859.txt
+1900,"Typee, by Herman Melville",./data_in/epubs/MELVILLE_HERMAN_TYPEE_A_ROMANCE_OF_THE_SOUTH_SEAS-pg1900.txt
+10712,"White Jacket, by Herman Melville",./data_in/epubs/MELVILLE_HERMAN_WHITE_JACKET_OR_THE_WORLD_ON_A_MAN_OF_WAR-pg10712.txt

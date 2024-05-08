@@ -1,0 +1,147 @@
+# Testing and Verification
+
+
+## When Code Breaks
+
+In this module, we learn about how to deal with broken code.
+
+- By "broken code," we mean everything from code that does not run to code that does not meet the purpose for writing the code.
+
+This is a broad topic that covers many levels, facets, and many approaches.
+
+These are some basic questions that define the space of the topic:
+
+- What constitutes broken code?
+
+- How do you prevent your code from breaking?
+
+- How to tell if your code is broken?
+
+We'll try to cover this space, and introduce you to some Python tools designed to handle broken code.
+
+## Specifications
+
+One way to frame this topic is to think in terms of **standards of code** against which the concept of broken code makes sense.
+
+This perspective begins with the concept of a **specification**: A precise and detailed statement that a stakeholder defines about the properties the code must have.
+
+There are different kinds of specification, or "spec". For example:
+                                                           
+- A **design specification** specification provides exact instructions for _how_ to build something.
+                                                                      
+- A **requirements specification** provides exact statements about _what_ should be built.
+
+Code can meet specifications in different ways. 
+
+- We can think of code **quality** in terms of the degree to which code meets requirements. 
+
+- **Quality:** falls on a scale; it's not a black-and-white idea. Defining the scale can be difficult.
+
+Two kinds of requirements matching are the following:
+
+- **Verification:**  Shows that the code **meets the requirement specification**. You verify that I wrote the program you asked me to write.
+
+- **Validation:**  Shows that the code meets the requirements. You show that the program is a valid solution to the user's problem, but not necessarily the best.
+
+**Specifications are very important**. Not only are they used to guide the creation of the project, but also they're **vital for program testing and verification**. 
+
+- That is, if you don't have specifications for the product, you cannot verify that you're doing the right thing. 
+
+- Likewise, if behavior is not defined, then it becomes difficult to know what is *incorrect* behavior.
+
+
+::: {.callout-note}
+
+Specifications are rarely perfect. They can change over time for a variety of reasons. 
+
+In fact, some have joked that programming is the act of ["debugging the spec"](http://johnunsworth.name/KR/halsted.html). We'll learn more about this when we cover project management.
+
+:::
+
+## Testing and Verification
+
+To ensure that our code aligns with our requirements and is of the highest quality we can provide, we follow testing and verification processes.
+
+## Formal Verification
+
+Formal verification involves proof. There are three types:
+
+-   Hand-written, hand-checked
+
+-   Hand-written, machine-checked (proof-carrying code)
+
+-   Machine-written, machine-checked (static analysis)
+
+None of them are very widely used yet, but the latter two are increasing in popularity. 
+
+Formal verification is complex, difficult, and takes a great deal of effort.
+
+## Empirical Testing
+
+Instead of formal verification, correctness is demonstrated through empirical testing. Empirical testing shows it works on several inputs. In general, testing is:
+
+-   A lot easier than proof
+
+-   A lot harder (and more involved) than writing code 
+
+There are many kinds of testing, but we will focus on **unit testing** in this module. 
+
+- **Unit Testing** is where we write code that tests the **smallest possible units** of the spec (must attempt to test every flow path). The programmer does unit testing as part of the coding process.
+
+- This assumes that code is componential, i.e. that the smallest units are functionally independent and can be combined in principled ways.
+
+- This raises the issue of writing well-designed functions and classes.
+
+Two other kinds of testing are **integration** and **acceptance** (beta) testing, which are out of the scope of this lesson. See below for a short description.
+
+- **Integration Testing:** Test that units work together.
+
+- **Acceptance Testing (Beta Testing):** Give product to real users to try it out.
+
+## Flow Paths
+
+Unit testing is predicated on understand **the flow of data** in your program.
+
+A flow path is a unique execution sequence through a program unit. 
+
+A good set of test data makes sure **every possible path** is followed (tests every possible behavior). 
+
+Note, however, that there are virtually an infinite number of flow paths in a program!
+
+Exhaustive testing is usually impossible. 
+
+However, we can overcome these odds by being clever about the kinds of tests that we write. 
+
+<!-- We'll also learn about equivalence classes, which also help us overcome this hurdle. -->
+
+<!-- Example of code showing various flow paths. -->
+<!--
+
+For example, starting at Stmt~1~, then the condition of the while loop (C~1~) is true, so that takes us to the condition of the if statement (C~2~) but maybe this is false, so we end up in the else portion, Stmt~3~. 
+
+![](../../media/FlowPathCode.png)
+
+This is an example of a flow path starting at Stmt~1~ and ending up at Stmt~3~. In other words, there are many paths through a given program.
+-->
+
+## Debugging
+
+Another aspect of testing and verification which we will not cover here is debugging.
+
+Debugging -- derived from Grace Hopper's expression "bug" -- refers to the process of investigating precisely where and when code breaks. 
+
+Programming environments like Jupyter Lab and VS Code provide good tools for debugging.
+
+## A Note of Caution
+
+**[Edsger Dijkstra](https://en.wikipedia.org/wiki/Edsger_W._Dijkstra)** was a famous computer scientist and A. M. Turing award winner. He said:
+
+> "Program testing can effectively show the presence of bugs but is\
+> hopeless for showing their absence."
+> &nbsp;&nbsp;&nbsp;&nbsp;&mdash; Edsger Dijkstra
+
+Even if you write a test suite of carefully crafted test cases, and if they all run and pass, it doesn't mean that no further bugs exist.
+
+It is much easier to prove the existence of something than to disprove the existence of something. 
+
+**This realization should motivate us to learn how to create carefully crafted unit tests so that we can test as much as we can.**

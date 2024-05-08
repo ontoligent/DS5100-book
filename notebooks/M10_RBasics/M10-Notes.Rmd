@@ -1,0 +1,78 @@
+# M10 Notes
+
+## R vs Python
+
+-   Indexing: $0$ vs $1$ based.
+-   Meaning of negative numbers in slices, e.g. `foo[-1]`.
+-   Dots don't mean anything in R.
+-   Assignment operator in R is `<-` or `->`.
+    -   Can use `=` but be careful ... Can be confused with argument assignment in functions.
+
+## R Data Structures
+
+| **Structure** | **Dim** | **Data Type** | **Shape** | **Python**        |
+|---------------|---------|---------------|-----------|-------------------|
+| Vector        | 1       | uniform       | sequence  |                   |
+| Matrix        | 2       | uniform       | square    |                   |
+| Array         | 𝑁       | uniform       | cube+     | NumPy array       |
+| List          | 1       | non-uniform   | ragged    | List, Dict        |
+| Data Frame    | 2       | multiple      | uniform   | Pandas Data Frame |
+
+-   These reflect the evolution of R.
+-   We mainly use Vectors and Data Frames.
+
+## Factors
+
+-   A kind of data structure, since they organize data types.
+    -   They can store both strings and integers.
+-   The categorize data as *levels*.
+    -   Levels are unique, like sets in Python or LOVs in SQL.
+    -   Levels are stored alongside the vector.
+    -   Levels constrain what can be added to the factor vector.
+    -   Levels are always characters, even when the data are numeric or boolean
+-   Useful in data frame columns have list of values that make sense as a group.
+    -   Male, Female
+    -   True, False
+    -   1, 2, 3, 4, 5
+-   Created with `factor()` taking a vector as input.
+-   Analogous to Categories in Pandas.
+
+**Example**
+
+```{r}
+v1 = c(1,5,6,9,4,3,5,8,7,6,3,0,0,0,1,2,3,6,4,5,7,9)
+```
+
+```{r}
+levels(v1)
+```
+
+```{r}
+f1 = factor(v1)
+```
+
+```{r}
+levels(f1)
+```
+
+```{r}
+print(f1)
+```
+
+```{r}
+nlevels(f1)
+```
+
+# Levels act as a constraint on the factor vector.
+
+```{r}
+f1[5]
+```
+
+```{r}
+f1[5] <- 20
+```
+
+```{r}
+f1
+```

@@ -1,0 +1,296 @@
+# Syllabus
+
+## Welcome
+
+Welcome to DS 5100 Programming for Data Science! In this course, we will develop skills in Python and R Programming, as well as the command line and GitHub. The objective of the course is to introduce essential programming concepts, structures, and techniques from a data science perspective. You will gain confidence in not only reading code, but learning what it means to write good quality code. Additionally, essential and complementary topics are taught, such as testing and debugging, exception handling, and an introduction to visualization.
+
+### The Data Science Perspective 
+
+Learning to code from the data science perspective means that we will emphasize the role that code plays in working with the **data pipeline** that underlies nearly everything that a data scientist does, from acquiring data from a variety of sources to cleaning and reshaping it for exploration, analysis, and modeling, to visualizing and interpreting it for the world to understand. At each phase of this process, data are transformed through the medium of code, and so we will always be thinking of a programming language as a data processing language. The meaning of this will become clearer as the course progresses.
+
+### Code Fluency
+
+This course is designed to teach the programming knowledge and skills necessary to become an effective data scientist. The focus will be on **code fluency** -- the ability to both write and read code, as well as to understand the nature of high quality code. Code fluency encompasses a variety of skills, from the ability to write functions and classes to testing and debugging to packaging and visualizing the results of coding.
+
+Code fluency is important because code is the **primary medium** through which we represent and express our most basic and complex ideas in data science. These ideas include everything from the structure of web pages to the process of back propagation in a neural network. Code is the language with which we represent data and the models that process and interpret data, as well as the data products that make use of our data and the analytical results from it.
+
+### Python and R
+
+This course is specifically focused on your ability to read and write code in **Python and R**. It is not a course in computer science or in data wrangling or in software development. Each of those elements will obviously play into our work, but our focus is on the fundamental knowledge of programming -- the building blocks from which you can build complex (but not complicated) code to solve real world problems. 
+
+### Practice Makes Perfect
+
+The guiding philosophy of the course is that coding is a **practice** like many other practices -- such as the ability to speak a non-native human language, or to play a musical instrument, or to play a sport, or to perform such as in singing, acting, or dancing. These are all complex practices that involve higher forms of cognitive representation but are also **embodied** practices. This means that they have to be practiced, physically and repetitively, in order for you to be successful at them. Programming languages are like that.
+
+Put another way, **programming is like cooking**, carpentry, and other forms of material creation. Again, in each case high level cognition is involved, but so are the hands and eyes, and an appreciation of the subtle qualities of materials and ingredients is essential to successfully using them to create effective work -- a sturdy and beautiful building or a satisfying and exquisite meal.
+
+All of these practices, some of which I am sure each of you has had experience in, are based on the ideas of imitation and drilling which develop into generalization and integration and finally into excellence and mastery of design and execution. Therefore, this course will require the student to observe principles and imitate examples (though writing) on the path to generalization and fluency. 
+
+## Learning Goals
+
+Upon completion of this course, you are expected to be able to do the following. In all cases, unless specified, both Python and R are included. In truth, you'll probably learn more than this. :-)
+
+**Understand the importance of data and programming for data science**
+
+- Understand the relationship between between data and data science.
+- Understand how data is related to programming.
+- Know broadly what kinds of data exist.
+
+**Confidently work in an appropriate programming environment**
+
+- Basic operations with Git and GitHub to manage and share your code.
+- Confidently write code in Jupyter Lab, Visual Studio Code, and RStudio.
+- Understand which editor is appropriate to which task.
+- Find and use documents, data, and code online.
+
+**Identify and use data types and data structures**
+
+- Know the elementary data types for each language: booleans, integers, floats, strings, etc.
+- Know the elementary data structures for each language: 
+  - Python: set, list, dictionary, and tuple.
+  - R: vectors, list, matrix, factor.
+- Know some of the advanced data structures for each language:
+  - Python: Numpy arrays and Pandas series and dataframes.
+  - R: dataframes and Tidy tibbles.
+- Know and perform basic operations for each data type and structure.
+- Select and apply an appropriate data structure based on the problem requirements.
+
+**Read and Write to and from various data formats**
+
+- Read text and data files from disc.
+- Import data into a Pandas and R dataframes
+
+**Confidently call and write functions and methods**
+
+- Understand the structure and use of functions for programming.
+- Use built-in and import functions to perform fundamental tasks.
+- Correctly pass parameters and retrieve function output(s).
+- Use built-in object methods for data types and structures, e.g. string methods and dataframe methods.
+- Know what vectorized functions and methods are.
+
+**Confidently write a class and call its methods**
+
+- Understand role of classes in organizing code.
+- Understand how classes group together variables as attributes and functions as methods into encapsulated components.
+- Understand how classes can inherit the variables and methods of other classes.
+
+**Use packages to augment existing data structures**
+
+- In Python, NumPy and Pandas essentials (e.g. simple queries and small ML computation)
+- In Python and R, use a program API to utilize existing functions (e.g. assert statements).
+- In R, apply the Tidyverse verbs, such as: `select()`, `filter()`, `arrange()`, `mutate()`, and `summarize()`.
+- In R, apply the Tidyverse Pipe operator `%>%` to aggregate data.
+
+**Write your own modules of classes in Python**
+
+- Write classes and organize them into modules to make your more modular.
+- Make your modules sharable so that others can install them with Python's setup and install functions.
+- Write documentation for your modules so that others can make sense of them.
+- Write test scripts to go with your modules.
+
+**Write robust code by implementing the basic principles of program testing and ****debugging in Python**
+
+- Catch errors in your with exception handling and print statements.
+- Read error messages produced by the interpreter.
+- Fix and harden broken code. 
+
+## Assessments
+
+### Homework Assignments
+
+Homework assignments will given throughout the course, typically one for each module. 
+
+You are encouraged to first try to complete the homework by yourself. 
+
+If you work with others, be sure you understand all of the work, and that your final submission is your own work.
+
+Typically, homework assignments that involve Jupyter Notebooks will be submitted through GradeScope as PDFs. However, in some cases the assignment will be submitted through Canvas.  In either case, your assignment will be listed in the week's module.
+
+### Lateness Policy
+
+Please submit HW assignments on time.
+
+If the HW is submitted late and it is not an excused lateness, 10% of the assignment total points will be deducted per day it is late.
+
+### In-Class Activities
+
+During each class there will be activities in which you will write code to demonstrate and extend your knowledge. These may be guided activities or peer-programming exercises. Each of these are designed to exemplify the concepts conveyed in reading and lecture. 
+
+Although the results of this work are not graded, you will be graded on your effort to complete them. This will count toward your participation grade. 
+
+### Quizzes
+
+There will be several quizzes throughout the semester that will assess your knowledge of the various topics. 
+
+Quizzes are based on the topics and code covered in the readings and activities.
+
+All quizzes are mandatory for all students to take.
+
+Although they can be completed in less time, you have one hour to finish and submit your work. 
+
+~~The quizzes should be done closed book: please do not consult any resources including notes, books, the web, devices, or other external media.~~
+
+Quizzes are open book &mdash; you may consult the course videos and reading materials for answers.
+
+
+### Requests for Extensions
+
+In cases where circumstances prevent you from completing your homework assignments on time, please submit a formal request to [this form](request_form_url). Requests are not guaranteed to be granted; the default timeframe for completion is generous.
+
+Note that extensions are typically not granted for participation assignments. They are meant to provide evidence of your participation in class; submitting them late defeatst that purpose.
+
+Also, making up missed quizzes is not advised &mdash; their timing is part of their value. 
+
+
+### Course Project
+
+The final project will focus on creating and packaging a module in Python. This module will address a data science problem and be sharable on GitHub (in principle) and installable by others. It will have proper documentation and a testing file. 
+
+Project deliverables are due on the last day of course. See Collab for submission details.
+
+More information on the project will be available near the half-way point of the course.
+
+### Spirit of the Course
+
+Students must attend each class and participate in group work.
+
+For the programming assignments and quizzes, you must submit your own work.
+
+### Submission of Assignments
+
+All assignments must be submitted through Canvas or Gradescope by the specified due dates and times. It is crucial to complete all assigned work&mdash;failure to do so will likely result in failing the class.
+
+## Grading
+
+### Model
+
+Every assessment is equally important in this course.
+
+```
+Quizes         20%
+Homework       20%
+Project        20%
+Participation  20%
+Final Exam     20%
+
+```
+
+### Scale
+
+We follow the 3-4-3 model of grading. That is, within each letter range, the $+$ and $-$ each span 3 values ($[0,1,2]$ and $[7,8,9]$ respectively), whereas the neutral grade spans the middle 4 values ($[3,4,5,6]$).
+
+Note that it is by convention that we treat $0$ in the $1$s place as standing for the initial value of a grade span, which leads to the anomaly of the `A` range having $11$ values, since it includes both $90$ and $100$. Past experience shows that treating $90$ as a `B+` is considered an outrage by students, so we accept the weirdness :-) We also give `A` a four point range since, otherwise, `A+` would have it, which does not seem fair. 
+
+```
+Grade     Min  Max
+A+        98 - 100
+A         93 - 97 
+A-        90 - 92
+B+        87 - 89
+B         83 - 86
+B-        80 - 82 <--- minimum passing grade
+----------------- 
+C+        77 - 79
+C         73 - 76
+C-        70 - 72
+```
+## Texts
+
+### Core Texts
+
+Many of our readings will draw from these texts. We will try to stick with some core texts to provide continuity. These will often be supplemented by shorter sources of information drawn from the web.
+
+- Lutz, 2013, **[Learning Python](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/)**, 5th Edition, O'Reilly Media.
+- McKinney, 2017, **[Python for Data Analysis: Data Wrangling with Pandas, NumPy, and IPython](https://learning.oreilly.com/library/view/python-for-data/9781491957653/?ar=)**, 2nd Edition. O'Reilly Media.
+- Wickham and Grolemund, 2017, **[R for Data Science: Import, Tidy, Transform, Visualize, and Model Data](http://r4ds.had.co.nz)**, 1st Edition. O'Reilly Media.
+
+### Other Texts
+
+We occasionally draw from the following texts. They are listed here as supplementary resources that you may want to use later on.
+
+**For R**
+
+*Parts of some of these more be included in various modules.*
+
+- Cotton, 2013, **[Learning R](https://learning.oreilly.com/library/view/learning-r/9781449357160/)**, O'Reilly Media.
+- Rodríguez, 2021, **[Introducing R](https://data.princeton.edu/R)**, Princeton University faculty website.  This a concise website that may want to refer to in your Linear Models course.
+- Douglas, et al 2022, **[An Introduction to](https://intro2r.com/) R**, self published.
+- Peng, 2020, **[R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/)**, self published.
+
+**For Python**
+
+*Once you get the hang of Python, you will want to embark on becoming a more effect data science software developer. These books can help.*
+
+- Matthis 2023, **[Python Crash Course](https://learning.oreilly.com/library/view/python-crash-course/9781098156664/)**, 3rd Edition. O'Reilly Media.
+- Brett Slatkin, 2019, **[Effective Python: 90 Specific Ways to Write Better Python, 2nd Edition](https://learning.oreilly.com/library/view/effective-python-90/9780134854717/)**, Addison-Wesley.
+- Katz, Philipp and David Katz, 2019, **[Learn Python by Building Data Science Applications](https://learning.oreilly.com/library/view/learn-python-by/9781789535365/),**<em> </em>Packt Publishing<em>.</em>
+- Lee Vaughan, 2020, [**Real-World Python**](https://learning.oreilly.com/library/view/real-world-python/9781098125721/), No Starch Press.
+
+### Access to materials
+
+This course uses a number of books from the O'Reilly Media's online library. This is a commercial site, but as students of UVA, you have free access to it. To access the collection, first you must create an account on the site. See the document [Setting up a student account on O'Reilly's Site](../../topics/oreilly-accounts.qmd) for help.
+
+### Websites
+
+- [Python's official documentation](https://docs.python.org/3/)
+- [Python's official tutorial](https://docs.python.org/3/tutorial/index.html)
+- [R's official documentation](https://www.r-project.org/other-docs.html)
+- [W3Schools Python Tutorial](https://www.w3schools.com/python/default.asp)
+- [W3Schools R Tutorial](https://www.w3schools.com/r/default.asp)
+- [GeeksForGeeks on Python](https://www.geeksforgeeks.org/python-programming-language/?ref=shm)
+- [GeeksForGeeks on R](https://www.geeksforgeeks.org/r-programming-language-introduction)
+- [Tutorialspoint on Python](https://www.tutorialspoint.com/python/index.htm)
+- [Tutorialspoint on R](https://www.tutorialspoint.com/r/index.htm)
+
+### Cheatsheets
+
+- [Python Cheatsheets](https://www.pythoncheatsheet.org/)
+- [RStudio Cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
+
+### Books to Broaden Your Horizons
+
+- Graham, 2010, [Hackers & Painters: Big Ideas from the Computer Age](https://www.amazon.com/Hackers-Painters-Big-Ideas-Computer/dp/1449389554)
+- Brooks, 1995, [The Mythical Man Month](https://www.google.com/books/edition/The_Mythical_Man_Month/Yq35BY5Fk3gC?hl=en&amp;gbpv=0&amp;kptab=morebyauthor)
+- Shetterly, 2016, [Hidden Figures: The American Dream and the Untold Story of the Black Women Mathematicians Who Helped Win the Space Race ](https://www.amazon.com/Hidden-Figures-American-Untold-Mathematicians/dp/0062363603)
+
+## Academic Integrity
+
+The School of Data Science relies upon and cherishes its community of trust. We firmly endorse, uphold, and embrace the University's Honor principle that students will not lie, cheat, or steal, nor shall they tolerate those who do. We recognize that even one honor infraction can destroy an exemplary reputation that has taken years to build. Acting in a manner consistent with the principles of honor will benefit every member of the community both while enrolled in the School of Data Science and in the future.
+
+Students are expected to be familiar with [the university honor code](https://honor.virginia.edu), including the section on academic fraud.
+
+Each assignment will describe allowed collaborations, and deviations from these will be considered Honor violations. If you have questions on what is allowable, ask! Unless otherwise noted, exams and individual assignments will be considered pledged that you have neither given nor received help. (Among other things, this means that you are not allowed to describe problems on an exam to a student who has not taken it yet. You are not allowed to show exam papers to another student or view another student's exam papers while working on an exam.) Sending, receiving or otherwise copying electronic files that are part of course assignments are not allowed collaborations (except for those explicitly allowed in assignment instructions). 
+
+Assignments or exams where honor infractions or prohibited collaborations occur will receive a zero grade for that entire assignment or exam. Such infractions will also be submitted to the Honor Committee if that is appropriate. Students who have had prohibited collaborations may not be allowed to work with partners on remaining homework assignments. 
+
+If you have been identified as a Student Disability Access Center (SDAC) student, please let the Center know you are taking this class. If you suspect you should be an SDAC student, please schedule an appointment with them for an evaluation. I happily and discretely provide the recommended accommodations for those students identified by the SDAC. Please contact your instructor one week before an exam so we can make appropriate accommodations. Website: [https://www.studenthealth.virginia.edu/sdac](https://www.studenthealth.virginia.edu/sdac) 
+
+If you are affected by a situation that falls within issues addressed by the SDAC and the instructor and staff are not informed about this in advance, this prevents us from helping during the semester, and it is unfair to request special considerations at the end of the term or a?er work is completed. So we request you inform the instructor as early in the term as possible your circumstances. If you have other special circumstances (athletics, other university-related activities, etc.) please contact your instructor and/or TA as soon as you know these may affect you in class.
+
+## Regarding the use of Generative AI
+
+Regarding the acceptable use of generative AI tools, such as ChatGPT and similar technologies, the following policy applies in this course.
+
+As a general rule, since the primary learning goal of the course is to equip students with programming skills, the use of tools should never replace or diminish the learning experience. On the other hand, they may be used supplement and enhance this goal. This applies to any external resource, such as a website like Stack Overflow.
+
+This rule follows from the idea that understanding the reasoning behind solutions is more critical than the solution itself. Students should strive to understand the concepts that motivate solutions rather than seeking quick answers.
+
+Given this, students are encouraged to work independently and seek help from peers, instructors, and official course resources before turning to external tools.
+
+### Permitted Uses of Generative AI
+
+**Guidance**: Students may use generative AI to clarify concepts, understand error messages, or learn about programming best practices. For instance, asking ChatGPT to explain a particular error message or to provide a general overview of a concept is allowed.
+  
+### Prohibited Uses of Generative AI
+
+**Brainstorming**: Students should not use the tool to brainstorm ideas or solutions for a given problem in this course, given the focus of this course on learning basic skills. In other situations, this may be appropriate.
+  
+**Code Review**: Students should not ask generative AI tools for feedback on written code to understand potential inefficiencies or mistakes. Again, in other situations outside of this course, this may be appropriate.
+
+**Direct Assistance**: Directly asking the AI to produce solutions to assignments, quizzes, or exams is strictly prohibited.
+  
+**Plagiarism**: Any code, content, or idea generated by an AI tool must be cited appropriately. Using AI-generated content without attribution is a violation of the university's honor code.
+
+**Proxy Assistance**: Students may not ask someone else to use the AI tool on their behalf to get around these rules.
+
+In short, the use of generative AI tools, such as ChatGPT, is no different than turning to a person or a book that has the answers to an assignment that prohibits direct assistance or plagiarism. Therefore, the use of AI in a manner inconsistent with the above principles is no different than any other violation of the honor code at UVA and will be treated according to the same guidelines for reporting and consequences.

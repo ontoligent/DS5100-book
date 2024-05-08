@@ -1,0 +1,20 @@
+---
+title: Python Object Types
+---
+
+Python is organized into a hierarchy of object types. Sometimes, these are just call **types**.
+
+Objects are the basic unit out of which the language is constructed.
+
+We'll learn about objects later -- what they are and how to create your own -- but for now just understand that they have two main things associated with them:
+
+* First, they can contain **data**.
+* Second, they can have **behaviors**, frequently in relation to the data they contain.
+
+Data types and data structures are kinds of objects.
+
+![](../media/Python_3._The_standard_type_hierarchy.png)
+
+::: {.callout-note}
+See [video](https://canvas.its.virginia.edu/courses/75059/modules/items/821971) on Canvas.
+:::

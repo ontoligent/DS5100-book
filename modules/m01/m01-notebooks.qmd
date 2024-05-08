@@ -1,0 +1,3 @@
+# Notebooks
+
+[Class notebooks](https://github.com/ontoligent/DS5100-2023-07-R/tree/00cc9d21a4f9bcb9fab8b913ab0af16bd8369c1f/lessons/M01_GettingStarted)

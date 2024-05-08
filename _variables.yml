@@ -1,0 +1,12 @@
+version: 2
+course_num: "DS 5100"
+course_title: "Programming for Data Science"
+academic_term: "Spring 2024"
+cohort_type: "Online"
+course_code: "DS5100-2024-01-O"
+course_allocation: "msds_ds5100"
+canvas_url: "https://canvas.its.virginia.edu/courses/104595"
+github_url: "https://github.com/ontoligent/DS5100-2024-01-O"
+website_url: "https://ontoligent.github.io/DS5100-2024-01-O"
+# survey_form_url: "https://forms.office.com/r/YWaFPXPKz8"
+# request_form_url: "https://forms.office.com/r/7G65N5eppk" 

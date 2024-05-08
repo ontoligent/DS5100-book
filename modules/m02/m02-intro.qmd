@@ -1,0 +1,25 @@
+# M02 Introducing Python
+
+## Topics
+
+-   Running Python code
+-   Python's basic data types
+-   Python's primary operators associated with each data type
+-   Python's built-in data structures
+
+## Readings
+
+### Required
+
+-   [Katz and Katz 2019, Section 1, Preparing the Workspace](https://learning.oreilly.com/library/view/learn-python-by/9781789535365/8f352965-cebb-43c0-b2ca-0f6bf944899e.xhtml)
+-   [Lutz, Learning Python, Part I: Getting Started, Chapter 2](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch02.html)
+-   [Lutz, Learning Python, Part I: Getting Started, Chapter 3](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch03.html)
+-   [Lutz, Learning Python, Part II: Types and Operations, Chapters 4–9](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/part02.html)
+
+### Optional
+
+-   [Katz and Katz 2019, Section 1, First Steps in Coding - Variables and Data Types](https://learning.oreilly.com/library/view/learn-python-by/9781789535365/5fea535c-b144-4c8b-b20b-0a0ee1c1f157.xhtml)
+-   [Built-in Types (Official)](https://docs.python.org/3/library/stdtypes.html)
+-   [Python Data Types (GFG)](https://www.geeksforgeeks.org/python-data-types/)
+-   [Python Operators (W3S)](https://www.w3schools.com/python/python_operators.asp)
+-   [Immutable vs Mutable Data Types in Python (Medium)](https://towardsdatascience.com/immutable-vs-mutable-data-types-in-python-e8a9a6fcfbdc)

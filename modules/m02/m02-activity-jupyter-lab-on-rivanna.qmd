@@ -1,0 +1,23 @@
+# Activity: Jupyter Lab
+
+Now that we have run Python on Rivanna from the command line, let's try it using a Jupyter Notebook. 
+
+Go the OnDemand site to access Rivanna. As a reminder, the URL is [https://rivanna-portal.hpc.virginia.edu/](https://rivanna-portal.hpc.virginia.edu/).
+
+From the Interactive Apps menu, select JupyterLab and fill out the form to initiate a new session. Your form should have the following values:
+
+<div style="border: 1px solid gray;">
+![](../../media/jupyter-on-rivanna-form.png)
+</div>
+
+::: {.callout-tip}
+Note that you may increase the number of hours, cores, and megabytes of RAM, but asking for too much will increase the time it takes to start your session. So select just the resources needed and enter our course allocation `{{< var course_allocation >}}` if this value is different than in the image above).
+:::
+
+Once the session is ready, launch the notebook.
+
+Once you are in the notebook, use file system tab on the left to get to the directory of your personal assessments repo. Remember, you created two repos for this class &mdash; one for course content from the instructor, and one for your own course work. Use the latter for this exercise. 
+
+In a code cell in the notebook, enter the code to print `"Hello, World!"`, and run the cell.
+
+Save your notebook as `hello-world.ipynb`.

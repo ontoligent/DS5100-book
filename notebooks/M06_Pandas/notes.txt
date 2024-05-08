@@ -1,0 +1,29 @@
+penalize for images 
+
+
+
+pandas adopts many coding idioms from NumPy, the biggest difference is that pandas is designed for working with tabular or heterogeneous data. NumPy, by contrast, is best suited for working with homogeneous numerical array data.
+
+Another way to think about a Series is as a fixed-length, ordered dict, as it is a mapping of index values to data values. It can be used in many contexts where you might use a dict:
+
+If the nested dict is passed to the DataFrame, pandas will interpret the outer dict keys as the columns and the inner keys as the row indices:
+
+Index objects are immutable and thus can’t be modified by the user: 
+
+Some users will not often take advantage of the capabilities provided by indexes, but because some operations will yield results containing indexed data, it’s important to understand how they work.
+
+In addition to being array-like, an Index also behaves like a fixed-size set:
+
+Unlike Python sets, a pandas Index can contain duplicate labels:
+
+Each Index has a number of methods and properties for set logic, which answer other common questions about the data it contains. Some useful ones are summarized in Table 5-2.
+
+As we’ll explore in more detail, you can reindex more succinctly by label-indexing with loc, and many users prefer to use it exclusively:
+
+Slicing with labels behaves differently than normal Python slicing in that the endpoint is inclusive:
+
+For DataFrame label-indexing on the rows, I introduce the special indexing operators loc and iloc. They enable you to select a subset of the rows and columns from a DataFrame with NumPy-like notation using either axis labels (loc) or integers (iloc).
+
+Integer Indexes ... REVIEW 
+
+

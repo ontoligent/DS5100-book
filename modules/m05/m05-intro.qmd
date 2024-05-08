@@ -1,0 +1,20 @@
+# M05 NumPy
+
+## Topics
+
+-   Numpy and its role in the Python data science ecosystem
+-   Numpy Arrays
+-   Array indexing, slicing, and broadcasting
+-   Aggregation
+-   Timing the difference between NumPy and plain old Python
+
+## Readings
+
+### Required
+
+-   [McKinney 2023, Chapter 4: Numpy Basics](https://wesmckinney.com/book/numpy-basics)
+
+### Optional
+
+-   [McKinney 2023, Appendix A. Advanced NumPy: A.3 Broadcasting](https://wesmckinney.com/book/advanced-numpy#numpy_broadcasting)
+-   [NumPy for Beginners (Official)](https://numpy.org/doc/stable/user/absolute_beginners.html)

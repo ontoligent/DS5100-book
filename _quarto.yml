@@ -9,7 +9,7 @@ execute:
 book:
   title: "{{< var course_num >}}: {{< var course_title >}} | {{< var academic_term >}} | {{< var cohort_type >}}"
   author: "Rafael C. Alvarado"
-  date: "08/09/2023"
+  date: "05/08/2024"
   reader-mode: false
   page-navigation: true
   repo-actions: [edit]
@@ -118,7 +118,7 @@ book:
     # style: floating
     background: light
     collapse-level: 1
-    subtitle: Fall 2024
+    subtitle: Summer 2024
 
 # comments:
 #   hypothesis: true

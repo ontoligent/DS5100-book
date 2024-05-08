@@ -13,7 +13,7 @@ book:
   reader-mode: false
   page-navigation: true
   repo-actions: [edit]
-  repo-url: "https://github.com/ontoligent/DS5100-2023-08-O"
+  repo-url: "https://github.com/ontoligent/DS5100-2024-06-R"
   chapters:
     - index.qmd 
     - part: modules/m01/m01-intro.qmd # "01 Getting Started"

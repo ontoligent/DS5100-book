@@ -1,4 +1,4 @@
-# DS5100-2024-01-O
+# DS5100-2024-06-R
 
 **UVA \| SDS \| DS 5100 \| Programming for Data Science \| Summer 2024 \| Residential**
 

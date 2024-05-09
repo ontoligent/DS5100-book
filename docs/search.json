@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "DS 5100: Programming for Data Science",
     "section": "",
-    "text": "Welcome\nWelcome to website for DS 5100 Programming for Data Science, Summer 2024.\n\n\n\n\n\n\nNote\n\n\n\nThis site contains all the content needed to complete the course. All graded coursework is hosted on the Canvas website.\n\n\nIn this course, you will develop skills in Python and R Programming, as well as how to use the command line and GitHub.\nThe objective of this course is to introduce essential programming concepts, structures, and techniques.\nYou will gain confidence in not only reading code, but learning what it means to write good quality code.\nAdditionally, essential and complementary topics are taught, such as testing and debugging, exception handling, and an introduction to visualization.",
+    "text": "Welcome\nWelcome to website for DS 5100 Programming for Data Science.\nIn this course, you will develop skills in Python and R Programming, as well as how to use the command line and GitHub.\nThe objective of this course is to introduce essential programming concepts, structures, and techniques.\nYou will gain confidence in not only reading code, but learning what it means to write good quality code.\nAdditionally, essential and complementary topics are taught, such as testing and debugging, exception handling, and an introduction to visualization.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome</span>"
     ]

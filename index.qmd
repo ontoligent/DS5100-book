@@ -1,10 +1,6 @@
 # Welcome
 
-**Welcome to website for DS 5100 Programming for Data Science, {{< var academic_term >}}.**
-
-::: {.callout-note}
-This site contains all the content needed to complete the course. All graded coursework is hosted on the [Canvas website]({{< var canvas_url >}}). 
-::: 
+**Welcome to website for DS 5100 Programming for Data Science.**
 
 In this course, you will develop skills in Python and R Programming, as well as how to use the command line and GitHub. 
 

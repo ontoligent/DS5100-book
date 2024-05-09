@@ -4,7 +4,11 @@
 
 A useful infrastructural resource for this course is Rivanna, UVA's high-performance computing (HPC) cluster. Each student has an account on Rivanna and access to resources there based on participation in this course. We will use Rivanna in our class for both Python and R.  
 
-This page describes some of the tools available for your use in this course. For information about Rivanna, see this introduction. Resources for getting help, including a knowledge base and ticket system, are found at [the Support Option's Page](http://www.rc.virginia.edu/support/) on UVA's Research Computing website.
+This page describes some of the tools available for your use in this course. 
+
+For information about Rivanna, see [this introduction](https://learning.rc.virginia.edu/tutorials/rivanna-intro/). 
+
+Resources for getting help, including a knowledge base and ticket system, are found at [the Support Option's Page](http://www.rc.virginia.edu/support/) on UVA's Research Computing website.
 
 You may need to use VPN to access Rivanna from an off-grounds location. To install VPN on your computer, go to the ITS VPN page for instructions. Note that you should connect to "UVA Anywhere," not to any of the higher security options.
 Course Allocation

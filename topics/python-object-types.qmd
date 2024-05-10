@@ -14,7 +14,3 @@ We'll learn about objects later -- what they are and how to create your own -- b
 Data types and data structures are kinds of objects.
 
 ![](../media/Python_3._The_standard_type_hierarchy.png)
-
-::: {.callout-note}
-See [video](https://canvas.its.virginia.edu/courses/75059/modules/items/821971) on Canvas.
-:::

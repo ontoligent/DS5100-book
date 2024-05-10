@@ -350,7 +350,7 @@
     "href": "topics/python-object-types.html",
     "title": "Python Object Types",
     "section": "",
-    "text": "Python is organized into a hierarchy of object types. Sometimes, these are just call types.\nObjects are the basic unit out of which the language is constructed.\nWe’ll learn about objects later – what they are and how to create your own – but for now just understand that they have two main things associated with them:\n\nFirst, they can contain data.\nSecond, they can have behaviors, frequently in relation to the data they contain.\n\nData types and data structures are kinds of objects.\n\n\n\n\n\n\n\nNote\n\n\n\nSee video on Canvas.",
+    "text": "Python is organized into a hierarchy of object types. Sometimes, these are just call types.\nObjects are the basic unit out of which the language is constructed.\nWe’ll learn about objects later – what they are and how to create your own – but for now just understand that they have two main things associated with them:\n\nFirst, they can contain data.\nSecond, they can have behaviors, frequently in relation to the data they contain.\n\nData types and data structures are kinds of objects.",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Python Object Types</span>"
@@ -416,7 +416,7 @@
     "href": "modules/m02/m02-activity-hello-world.html#running-python-files",
     "title": "Activity: Hello, World!",
     "section": "Running Python Files",
-    "text": "Running Python Files\nNow create a file called hello.py using the command line editor nano. Enter the same commands you used above.\nThen run it from the command line by directly invoking the Python interpreter python.\n\n\n\n\n\n\nNote\n\n\n\nSee video in Canvas.",
+    "text": "Running Python Files\nNow create a file called hello.py using the command line editor nano. Enter the same commands you used above.\nThen run it from the command line by directly invoking the Python interpreter python.",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Activity: Hello, World!</span>"

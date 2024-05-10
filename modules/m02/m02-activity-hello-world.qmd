@@ -71,7 +71,3 @@ To exit the Python Shell, enter `quit()`  or `exit()` and hit return.
 Now create a file called `hello.py` using the command line editor `nano`. Enter the same commands you used above.
 
 Then run it from the command line by directly invoking the Python interpreter python.
-
-::: {.callout-note}
-See [video](https://343772-1.kaf.kaltura.com/media/M02%20Activity%3A%20Hello%2C%20World!/1_mk92k4i5) in Canvas.
-:::

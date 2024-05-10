@@ -22,8 +22,8 @@ book:
         - topics/unix.qmd
         - topics/setting-up-ssh.qmd
         - topics/git-and-github.qmd
-        - modules/m01/m01-using-rivanna.qmd
-        - modules/m01/m01-activity-github.qmd
+        #- modules/m01/m01-using-rivanna.qmd
+        #- modules/m01/m01-activity-github.qmd
       appendices:
         - topics/oreilly-accounts.qmd
         - topics/refreshing-the-course-repo.qmd
@@ -31,8 +31,8 @@ book:
       chapters:
         - topics/on-data.qmd
         - topics/python-object-types.qmd
-        - modules/m02/m02-activity-hello-world.qmd
-        - modules/m02/m02-activity-jupyter-lab-on-rivanna.qmd
+        #- modules/m02/m02-activity-hello-world.qmd
+        #- modules/m02/m02-activity-jupyter-lab-on-rivanna.qmd
         - notebooks/M02_BasicPython/M02-01-DataTypes.ipynb
         - notebooks/M02_BasicPython/M02-02-Numbers.ipynb
         - notebooks/M02_BasicPython/M02-03-Booleans.ipynb

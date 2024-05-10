@@ -49,7 +49,3 @@ The Git website has excellent learning materials. Use the following links to acc
 
 * [Videos](https://git-scm.com/videos)
 * [Book](https://git-scm.com/book/en/v2)
-
-::: {.callout-note}
-See [video](https://canvas.its.virginia.edu/courses/75059/modules/items/821802) on Canvas.
-:::

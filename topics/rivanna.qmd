@@ -6,8 +6,6 @@ A useful infrastructural resource for this course is Rivanna, UVA's high-perform
 
 This page describes some of the tools available for your use in this course. 
 
-For information about Rivanna, see [this introduction](https://learning.rc.virginia.edu/tutorials/rivanna-intro/). 
-
 Resources for getting help, including a knowledge base and ticket system, are found at [the Support Option's Page](http://www.rc.virginia.edu/support/) on UVA's Research Computing website.
 
 You may need to use VPN to access Rivanna from an off-grounds location. To install VPN on your computer, go to the ITS VPN page for instructions. Note that you should connect to "UVA Anywhere," not to any of the higher security options.
@@ -70,7 +68,3 @@ UVA's [Research Computing Learning Portal](https://learning.rc.virginia.edu/)  p
 
 * [Introduction to Rivanna](https://learning.rc.virginia.edu/notes/rivanna-intro/)
 * [Using Rivanna from the Command Line](https://learning.rc.virginia.edu/notes/rivanna-command-line/)
-
-::: {.callout-note}
-See [video](https://canvas.its.virginia.edu/courses/75059/modules/items/821826) on Canvas.
-:::

@@ -56,7 +56,7 @@ Note: This requires that you have SSH set up.
 Then click on the copy icon and paste the value into the following command:
 
 ```bash
-git clone https://github.com:<github_user_name>/{{< var course_code >}}.git
+git clone https://github.com:<github_user_name>/{{< var repo_name >}}.git
 ```
 
 ::: {.callout-important}
@@ -82,7 +82,7 @@ Make sure you are in this directory before proceeding.
 If you get lost – for example if you moved around the file system before this step – you can cd to the absolute path:
 
 ```bash
-cd ~/Documents/MSDS/DS5100/{{< var course_code >}}/notebooks/M01_GettingStarted/hello 
+cd ~/Documents/MSDS/DS5100/{{< var repo_name >}}/notebooks/M01_GettingStarted/hello 
 ```
 
 Note that the tilde sign `~` stands for the path to your home directory.
@@ -144,6 +144,6 @@ During the semester, you will not be making pull requests to submit your work. W
 
 Instead of making pull requests, you will be using a separate repository for your work So, you will be working with two repositories going forard:
 
-1. **The Course Repo**, which is where you will get course materials. This should be [updated each day](../../topics/refreshing-the-course-repo.qmd).
+1. **The Book Repo**, which is where you will get course materials. This should be [updated each day](../../topics/refreshing-the-course-repo.qmd).
 
 2. **Your Assessments Repo**, which is where you will be your finished work as assigned.

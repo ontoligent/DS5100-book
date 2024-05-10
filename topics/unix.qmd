@@ -61,7 +61,3 @@ Although we will not be using the command line to this degree, you should know t
 ![](../media/dsatcl-cover-small.png)
 
 One last thing – for fun you may want to read Neal Stephenson's ["In the Beginning Was The Command Line"](http://project.cyberpunk.ru/lib/in_the_beginning_was_the_command_line/), a kind of cyberpunk history of the topic. Stephenson, by the way, is the author who coined the term "metaverse" in the novel _Snowcrash_.
-
-::: {.callout-note}
-See [video](https://canvas.its.virginia.edu/courses/75059/modules/items/821823) on Canvas.
-:::

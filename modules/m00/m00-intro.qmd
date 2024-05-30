@@ -1,0 +1,13 @@
+# Introduction
+
+## Objective and Scope
+
+The main objective of the course is to introduce fundamental programming concepts and techniques so that students may successfully complete courses in machine learning and computational statistics, as well as to become successful data scientists in the workplace.
+
+Topics covered range from using the command line, git, and GitHub, to visualization and project management.
+
+## Philosophy
+
+More generally, the course is designed to instill a basic competency on which to build out one's knowledge and skills within the program.
+
+## How to use this book

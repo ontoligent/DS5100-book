@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.2.262">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DS 5100: Programming for Data Science - NB: Narrow vs Wide Tables</title>
+<title>DS 5100: Programming for Data Science - 29&nbsp; NB: Narrow vs Wide Tables</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,12 +17,11 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -47,17 +46,47 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -81,13 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -96,14 +119,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -111,18 +132,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <body class="nav-sidebar docked">
 
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m06/m06-intro.html">M06 Pandas</a></li><li class="breadcrumb-item"><a href="../../notebooks/M06_Pandas/M06-03-NarrowWide.html"><span class="chapter-title">NB: Narrow vs Wide Tables</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-title">NB: Narrow vs Wide Tables</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
       </button>
     </div>
   </nav>
@@ -130,36 +147,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">DS 5100: Programming for Data Science</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/ontoligent/DS5100-2024-06-R" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/ontoligent/DS5100-2024-06-R" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
+      <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-        </div>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Welcome</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m01/m01-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M01 Getting Started</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/m00/m00-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m01/m01-intro.html" class="sidebar-item-text sidebar-link">M01 Getting Started</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../topics/rivanna.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">About Rivanna</span></a>
@@ -184,13 +210,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m02/m02-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M02 Introducing Python</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m02/m02-intro.html" class="sidebar-item-text sidebar-link">M02 Introducing Python</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../topics/on-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data and Code</span></a>
@@ -230,13 +255,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m03/m03-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M03 Control Structures</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m03/m03-intro.html" class="sidebar-item-text sidebar-link">M03 Control Structures</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../topics/vals-vars-expressions-statements.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Values, Variables, Expressions, and Statements</span></a>
@@ -261,13 +285,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m04/m04-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M04 Functions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m04/m04-intro.html" class="sidebar-item-text sidebar-link">M04 Functions</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/M04_PythonFunctions/M04-02-Functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Introduction to Functions</span></a>
@@ -302,13 +325,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m05/m05-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M05 NumPy</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m05/m05-intro.html" class="sidebar-item-text sidebar-link">M05 NumPy</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/M05_NumPy/M05-02-NumpyBasics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: NumPy First Steps</span></a>
@@ -333,13 +355,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m06/m06-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M06 Pandas</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+            <a href="../../modules/m06/m06-intro.html" class="sidebar-item-text sidebar-link">M06 Pandas</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/M06_Pandas/M06-01-Pandas1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Introducting Pandas</span></a>
@@ -369,13 +390,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m07/m07-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M07 Classes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m07/m07-intro.html" class="sidebar-item-text sidebar-link">M07 Classes</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../topics/what-is-oop.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">What is OOP?</span></a>
@@ -410,13 +430,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m08/m08-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M08 Testing</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m08/m08-intro.html" class="sidebar-item-text sidebar-link">M08 Testing</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../modules/m08/m08-testing-and-verification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Testing and Verification</span></a>
@@ -436,13 +455,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m09/m09-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M09 Modules</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m09/m09-intro.html" class="sidebar-item-text sidebar-link">M09 Modules</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/M09_PythonModules/M09-01-PackagesIntro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Packages, Modules, and Imports</span></a>
@@ -472,13 +490,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m10/m10-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M10 Basic R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m10/m10-intro.html" class="sidebar-item-text sidebar-link">M10 Basic R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/M10_RBasics/M10-01-DataTypesAndStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Getting Started</span></a>
@@ -493,13 +510,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m11/m11-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M11 Dplyr</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m11/m11-intro.html" class="sidebar-item-text sidebar-link">M11 Dplyr</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/M11_RDplyr/M11-01-Tibbles.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Introducing Tibbles</span></a>
@@ -514,13 +530,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m12/m12-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M12 Visualization</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m12/m12-intro.html" class="sidebar-item-text sidebar-link">M12 Visualization</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/M12_RViz/M12-01-GGPlot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: GGPlot2</span></a>
@@ -545,13 +560,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m13/m13-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M13 Agile</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m13/m13-intro.html" class="sidebar-item-text sidebar-link">M13 Agile</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../topics/project-management.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Project Management</span></a>
@@ -571,13 +585,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">Appendices</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../topics/oreilly-accounts.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Setting Up O’Reilly</span></a>
@@ -593,7 +606,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -602,14 +614,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#hot-encoding" id="toc-hot-encoding" class="nav-link active" data-scroll-target="#hot-encoding">1 Hot Encoding</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-2024-06-R/blob/main/notebooks/M06_Pandas/M06-03-NarrowWide.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/ontoligent/DS5100-2024-06-R/blob/main/notebooks/M06_Pandas/M06-03-NarrowWide.ipynb" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m06/m06-intro.html">M06 Pandas</a></li><li class="breadcrumb-item"><a href="../../notebooks/M06_Pandas/M06-03-NarrowWide.html"><span class="chapter-title">NB: Narrow vs Wide Tables</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">NB: Narrow vs Wide Tables</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">NB: Narrow vs Wide Tables</span></h1>
 </div>
 
 
@@ -622,16 +634,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
-
 
 <p>There are in general at least two ways to represent a dataset – as a narrow table or as a set of wide tables.</p>
 <p>Let’s look at a very simple example.</p>
-<div id="cell-1" class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-2" class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pets <span class="op">=</span> pd.Series(<span class="st">"cat dog ferret snake turtle parraot"</span>.split()).sample(<span class="dv">1000</span>, replace<span class="op">=</span><span class="va">True</span>).to_list()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>people <span class="op">=</span> pd.Series(<span class="st">"A B C D E F G"</span>.split()).sample(<span class="dv">1000</span>, replace<span class="op">=</span><span class="va">True</span>).to_list()   </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>NARROW <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(pet<span class="op">=</span>pets, owner<span class="op">=</span>people)).groupby([<span class="st">'owner'</span>, <span class="st">'pet'</span>]).pet.count().to_frame(<span class="st">'n'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -639,311 +649,305 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This is a narrow table.</p>
 <p>It has few columns and many rows.</p>
 <p>Columns are types of things, and values in rows are either instances or subtypes.</p>
-<div id="cell-4" class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>NARROW</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">n</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">owner</th>
-<th data-quarto-table-cell-role="th">pet</th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">A</td>
-<td data-quarto-table-cell-role="th">cat</td>
-<td>32</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">dog</td>
-<td>28</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ferret</td>
-<td>28</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">parraot</td>
-<td>22</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">snake</td>
-<td>21</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">turtle</td>
-<td>19</td>
-</tr>
-<tr class="odd">
-<td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">B</td>
-<td data-quarto-table-cell-role="th">cat</td>
-<td>24</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">dog</td>
-<td>26</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ferret</td>
-<td>22</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">parraot</td>
-<td>24</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">snake</td>
-<td>21</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">turtle</td>
-<td>19</td>
-</tr>
-<tr class="odd">
-<td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">C</td>
-<td data-quarto-table-cell-role="th">cat</td>
-<td>29</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">dog</td>
-<td>15</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ferret</td>
-<td>17</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">parraot</td>
-<td>25</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">snake</td>
-<td>25</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">turtle</td>
-<td>23</td>
-</tr>
-<tr class="odd">
-<td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">D</td>
-<td data-quarto-table-cell-role="th">cat</td>
-<td>25</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">dog</td>
-<td>22</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ferret</td>
-<td>32</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">parraot</td>
-<td>17</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">snake</td>
-<td>21</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">turtle</td>
-<td>20</td>
-</tr>
-<tr class="odd">
-<td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">E</td>
-<td data-quarto-table-cell-role="th">cat</td>
-<td>23</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">dog</td>
-<td>25</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ferret</td>
-<td>30</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">parraot</td>
-<td>23</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">snake</td>
-<td>25</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">turtle</td>
-<td>27</td>
-</tr>
-<tr class="odd">
-<td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">F</td>
-<td data-quarto-table-cell-role="th">cat</td>
-<td>25</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">dog</td>
-<td>26</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ferret</td>
-<td>28</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">parraot</td>
-<td>27</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">snake</td>
-<td>29</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">turtle</td>
-<td>18</td>
-</tr>
-<tr class="odd">
-<td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">G</td>
-<td data-quarto-table-cell-role="th">cat</td>
-<td>23</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">dog</td>
-<td>27</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ferret</td>
-<td>17</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">parraot</td>
-<td>21</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">snake</td>
-<td>22</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">turtle</td>
-<td>27</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>n</th>
+    </tr>
+    <tr>
+      <th>owner</th>
+      <th>pet</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="6" valign="top">A</th>
+      <th>cat</th>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>dog</th>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>ferret</th>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>parraot</th>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>snake</th>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>turtle</th>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th rowspan="6" valign="top">B</th>
+      <th>cat</th>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>dog</th>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>ferret</th>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>parraot</th>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>snake</th>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>turtle</th>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th rowspan="6" valign="top">C</th>
+      <th>cat</th>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>dog</th>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>ferret</th>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>parraot</th>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>snake</th>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>turtle</th>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th rowspan="6" valign="top">D</th>
+      <th>cat</th>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>dog</th>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>ferret</th>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>parraot</th>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>snake</th>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>turtle</th>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th rowspan="6" valign="top">E</th>
+      <th>cat</th>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>dog</th>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>ferret</th>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>parraot</th>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>snake</th>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>turtle</th>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th rowspan="6" valign="top">F</th>
+      <th>cat</th>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>dog</th>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>ferret</th>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>parraot</th>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>snake</th>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>turtle</th>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th rowspan="6" valign="top">G</th>
+      <th>cat</th>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>dog</th>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>ferret</th>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>parraot</th>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>snake</th>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>turtle</th>
+      <td>27</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-5" class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>WIDE <span class="op">=</span> NARROW.n.unstack()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This is a wide table.</p>
 <p>One column’s values are projected onto the feature space (as columns).</p>
 <p>The other column becomes a unique list (as is the feature space).</p>
-<div id="cell-7" class="cell" data-execution_count="12">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>WIDE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">pet</th>
-<th data-quarto-table-cell-role="th">cat</th>
-<th data-quarto-table-cell-role="th">dog</th>
-<th data-quarto-table-cell-role="th">ferret</th>
-<th data-quarto-table-cell-role="th">parraot</th>
-<th data-quarto-table-cell-role="th">snake</th>
-<th data-quarto-table-cell-role="th">turtle</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">owner</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">A</td>
-<td>26</td>
-<td>25</td>
-<td>31</td>
-<td>20</td>
-<td>24</td>
-<td>29</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">B</td>
-<td>19</td>
-<td>26</td>
-<td>15</td>
-<td>18</td>
-<td>26</td>
-<td>19</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">C</td>
-<td>26</td>
-<td>24</td>
-<td>27</td>
-<td>20</td>
-<td>24</td>
-<td>25</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">D</td>
-<td>19</td>
-<td>30</td>
-<td>24</td>
-<td>26</td>
-<td>20</td>
-<td>33</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">E</td>
-<td>21</td>
-<td>29</td>
-<td>18</td>
-<td>21</td>
-<td>20</td>
-<td>32</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">F</td>
-<td>27</td>
-<td>21</td>
-<td>20</td>
-<td>19</td>
-<td>27</td>
-<td>21</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">G</td>
-<td>28</td>
-<td>25</td>
-<td>28</td>
-<td>26</td>
-<td>25</td>
-<td>16</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>pet</th>
+      <th>cat</th>
+      <th>dog</th>
+      <th>ferret</th>
+      <th>parraot</th>
+      <th>snake</th>
+      <th>turtle</th>
+    </tr>
+    <tr>
+      <th>owner</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>26</td>
+      <td>25</td>
+      <td>31</td>
+      <td>20</td>
+      <td>24</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>19</td>
+      <td>26</td>
+      <td>15</td>
+      <td>18</td>
+      <td>26</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>26</td>
+      <td>24</td>
+      <td>27</td>
+      <td>20</td>
+      <td>24</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>19</td>
+      <td>30</td>
+      <td>24</td>
+      <td>26</td>
+      <td>20</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>E</th>
+      <td>21</td>
+      <td>29</td>
+      <td>18</td>
+      <td>21</td>
+      <td>20</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>F</th>
+      <td>27</td>
+      <td>21</td>
+      <td>20</td>
+      <td>19</td>
+      <td>27</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>G</th>
+      <td>28</td>
+      <td>25</td>
+      <td>28</td>
+      <td>26</td>
+      <td>25</td>
+      <td>16</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
@@ -951,16 +955,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In fact, relational databases impose a limit on the number of columns you can have for a table, excluding high-dimensional spaces.</p>
 <p>Wide columns are more usable for analysis.</p>
 <p>You can do also these things with narrow tables using <code>.group_by()</code></p>
-<div id="cell-9" class="cell" data-execution_count="18">
+<div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> WIDE <span class="op">/</span> WIDE.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="19">
+<div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> WIDE.T <span class="op">/</span> WIDE.T.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="25">
+<div class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>A.style.background_gradient()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
-<div>
+
 <style type="text/css">
 #T_65876_row0_col0, #T_65876_row2_col0 {
   background-color: #056ba7;
@@ -1059,101 +1063,99 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   color: #f1f1f1;
 }
 </style>
-
-<table id="T_65876" data-quarto-postprocess="true" class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th class="index_name level0" data-quarto-table-cell-role="th">pet</th>
-<th id="T_65876_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">cat</th>
-<th id="T_65876_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">dog</th>
-<th id="T_65876_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">ferret</th>
-<th id="T_65876_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">parraot</th>
-<th id="T_65876_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">snake</th>
-<th id="T_65876_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">turtle</th>
-</tr>
-<tr class="odd">
-<th class="index_name level0" data-quarto-table-cell-role="th">owner</th>
-<th class="blank col0" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col1" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col2" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col3" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col4" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col5" data-quarto-table-cell-role="th">&nbsp;</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td id="T_65876_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">A</td>
-<td id="T_65876_row0_col0" class="data row0 col0">0.156627</td>
-<td id="T_65876_row0_col1" class="data row0 col1">0.138889</td>
-<td id="T_65876_row0_col2" class="data row0 col2">0.190184</td>
-<td id="T_65876_row0_col3" class="data row0 col3">0.133333</td>
-<td id="T_65876_row0_col4" class="data row0 col4">0.144578</td>
-<td id="T_65876_row0_col5" class="data row0 col5">0.165714</td>
-</tr>
-<tr class="even">
-<td id="T_65876_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">B</td>
-<td id="T_65876_row1_col0" class="data row1 col0">0.114458</td>
-<td id="T_65876_row1_col1" class="data row1 col1">0.144444</td>
-<td id="T_65876_row1_col2" class="data row1 col2">0.092025</td>
-<td id="T_65876_row1_col3" class="data row1 col3">0.120000</td>
-<td id="T_65876_row1_col4" class="data row1 col4">0.156627</td>
-<td id="T_65876_row1_col5" class="data row1 col5">0.108571</td>
-</tr>
-<tr class="odd">
-<td id="T_65876_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">C</td>
-<td id="T_65876_row2_col0" class="data row2 col0">0.156627</td>
-<td id="T_65876_row2_col1" class="data row2 col1">0.133333</td>
-<td id="T_65876_row2_col2" class="data row2 col2">0.165644</td>
-<td id="T_65876_row2_col3" class="data row2 col3">0.133333</td>
-<td id="T_65876_row2_col4" class="data row2 col4">0.144578</td>
-<td id="T_65876_row2_col5" class="data row2 col5">0.142857</td>
-</tr>
-<tr class="even">
-<td id="T_65876_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">D</td>
-<td id="T_65876_row3_col0" class="data row3 col0">0.114458</td>
-<td id="T_65876_row3_col1" class="data row3 col1">0.166667</td>
-<td id="T_65876_row3_col2" class="data row3 col2">0.147239</td>
-<td id="T_65876_row3_col3" class="data row3 col3">0.173333</td>
-<td id="T_65876_row3_col4" class="data row3 col4">0.120482</td>
-<td id="T_65876_row3_col5" class="data row3 col5">0.188571</td>
-</tr>
-<tr class="odd">
-<td id="T_65876_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">E</td>
-<td id="T_65876_row4_col0" class="data row4 col0">0.126506</td>
-<td id="T_65876_row4_col1" class="data row4 col1">0.161111</td>
-<td id="T_65876_row4_col2" class="data row4 col2">0.110429</td>
-<td id="T_65876_row4_col3" class="data row4 col3">0.140000</td>
-<td id="T_65876_row4_col4" class="data row4 col4">0.120482</td>
-<td id="T_65876_row4_col5" class="data row4 col5">0.182857</td>
-</tr>
-<tr class="even">
-<td id="T_65876_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">F</td>
-<td id="T_65876_row5_col0" class="data row5 col0">0.162651</td>
-<td id="T_65876_row5_col1" class="data row5 col1">0.116667</td>
-<td id="T_65876_row5_col2" class="data row5 col2">0.122699</td>
-<td id="T_65876_row5_col3" class="data row5 col3">0.126667</td>
-<td id="T_65876_row5_col4" class="data row5 col4">0.162651</td>
-<td id="T_65876_row5_col5" class="data row5 col5">0.120000</td>
-</tr>
-<tr class="odd">
-<td id="T_65876_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">G</td>
-<td id="T_65876_row6_col0" class="data row6 col0">0.168675</td>
-<td id="T_65876_row6_col1" class="data row6 col1">0.138889</td>
-<td id="T_65876_row6_col2" class="data row6 col2">0.171779</td>
-<td id="T_65876_row6_col3" class="data row6 col3">0.173333</td>
-<td id="T_65876_row6_col4" class="data row6 col4">0.150602</td>
-<td id="T_65876_row6_col5" class="data row6 col5">0.091429</td>
-</tr>
-</tbody>
+<table id="T_65876">
+  <thead>
+    <tr>
+      <th class="index_name level0">pet</th>
+      <th id="T_65876_level0_col0" class="col_heading level0 col0">cat</th>
+      <th id="T_65876_level0_col1" class="col_heading level0 col1">dog</th>
+      <th id="T_65876_level0_col2" class="col_heading level0 col2">ferret</th>
+      <th id="T_65876_level0_col3" class="col_heading level0 col3">parraot</th>
+      <th id="T_65876_level0_col4" class="col_heading level0 col4">snake</th>
+      <th id="T_65876_level0_col5" class="col_heading level0 col5">turtle</th>
+    </tr>
+    <tr>
+      <th class="index_name level0">owner</th>
+      <th class="blank col0">&nbsp;</th>
+      <th class="blank col1">&nbsp;</th>
+      <th class="blank col2">&nbsp;</th>
+      <th class="blank col3">&nbsp;</th>
+      <th class="blank col4">&nbsp;</th>
+      <th class="blank col5">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_65876_level0_row0" class="row_heading level0 row0">A</th>
+      <td id="T_65876_row0_col0" class="data row0 col0">0.156627</td>
+      <td id="T_65876_row0_col1" class="data row0 col1">0.138889</td>
+      <td id="T_65876_row0_col2" class="data row0 col2">0.190184</td>
+      <td id="T_65876_row0_col3" class="data row0 col3">0.133333</td>
+      <td id="T_65876_row0_col4" class="data row0 col4">0.144578</td>
+      <td id="T_65876_row0_col5" class="data row0 col5">0.165714</td>
+    </tr>
+    <tr>
+      <th id="T_65876_level0_row1" class="row_heading level0 row1">B</th>
+      <td id="T_65876_row1_col0" class="data row1 col0">0.114458</td>
+      <td id="T_65876_row1_col1" class="data row1 col1">0.144444</td>
+      <td id="T_65876_row1_col2" class="data row1 col2">0.092025</td>
+      <td id="T_65876_row1_col3" class="data row1 col3">0.120000</td>
+      <td id="T_65876_row1_col4" class="data row1 col4">0.156627</td>
+      <td id="T_65876_row1_col5" class="data row1 col5">0.108571</td>
+    </tr>
+    <tr>
+      <th id="T_65876_level0_row2" class="row_heading level0 row2">C</th>
+      <td id="T_65876_row2_col0" class="data row2 col0">0.156627</td>
+      <td id="T_65876_row2_col1" class="data row2 col1">0.133333</td>
+      <td id="T_65876_row2_col2" class="data row2 col2">0.165644</td>
+      <td id="T_65876_row2_col3" class="data row2 col3">0.133333</td>
+      <td id="T_65876_row2_col4" class="data row2 col4">0.144578</td>
+      <td id="T_65876_row2_col5" class="data row2 col5">0.142857</td>
+    </tr>
+    <tr>
+      <th id="T_65876_level0_row3" class="row_heading level0 row3">D</th>
+      <td id="T_65876_row3_col0" class="data row3 col0">0.114458</td>
+      <td id="T_65876_row3_col1" class="data row3 col1">0.166667</td>
+      <td id="T_65876_row3_col2" class="data row3 col2">0.147239</td>
+      <td id="T_65876_row3_col3" class="data row3 col3">0.173333</td>
+      <td id="T_65876_row3_col4" class="data row3 col4">0.120482</td>
+      <td id="T_65876_row3_col5" class="data row3 col5">0.188571</td>
+    </tr>
+    <tr>
+      <th id="T_65876_level0_row4" class="row_heading level0 row4">E</th>
+      <td id="T_65876_row4_col0" class="data row4 col0">0.126506</td>
+      <td id="T_65876_row4_col1" class="data row4 col1">0.161111</td>
+      <td id="T_65876_row4_col2" class="data row4 col2">0.110429</td>
+      <td id="T_65876_row4_col3" class="data row4 col3">0.140000</td>
+      <td id="T_65876_row4_col4" class="data row4 col4">0.120482</td>
+      <td id="T_65876_row4_col5" class="data row4 col5">0.182857</td>
+    </tr>
+    <tr>
+      <th id="T_65876_level0_row5" class="row_heading level0 row5">F</th>
+      <td id="T_65876_row5_col0" class="data row5 col0">0.162651</td>
+      <td id="T_65876_row5_col1" class="data row5 col1">0.116667</td>
+      <td id="T_65876_row5_col2" class="data row5 col2">0.122699</td>
+      <td id="T_65876_row5_col3" class="data row5 col3">0.126667</td>
+      <td id="T_65876_row5_col4" class="data row5 col4">0.162651</td>
+      <td id="T_65876_row5_col5" class="data row5 col5">0.120000</td>
+    </tr>
+    <tr>
+      <th id="T_65876_level0_row6" class="row_heading level0 row6">G</th>
+      <td id="T_65876_row6_col0" class="data row6 col0">0.168675</td>
+      <td id="T_65876_row6_col1" class="data row6 col1">0.138889</td>
+      <td id="T_65876_row6_col2" class="data row6 col2">0.171779</td>
+      <td id="T_65876_row6_col3" class="data row6 col3">0.173333</td>
+      <td id="T_65876_row6_col4" class="data row6 col4">0.150602</td>
+      <td id="T_65876_row6_col5" class="data row6 col5">0.091429</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 </div>
-</div>
-<div id="cell-12" class="cell" data-execution_count="24">
+<div class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>B.style.background_gradient()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
-<div>
+
 <style type="text/css">
 #T_b73df_row0_col0 {
   background-color: #5ea0ca;
@@ -1236,1166 +1238,1151 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   color: #f1f1f1;
 }
 </style>
-
-<table id="T_b73df" data-quarto-postprocess="true" class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th class="index_name level0" data-quarto-table-cell-role="th">owner</th>
-<th id="T_b73df_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">A</th>
-<th id="T_b73df_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">B</th>
-<th id="T_b73df_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">C</th>
-<th id="T_b73df_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">D</th>
-<th id="T_b73df_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">E</th>
-<th id="T_b73df_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">F</th>
-<th id="T_b73df_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">G</th>
-</tr>
-<tr class="odd">
-<th class="index_name level0" data-quarto-table-cell-role="th">pet</th>
-<th class="blank col0" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col1" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col2" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col3" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col4" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col5" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col6" data-quarto-table-cell-role="th">&nbsp;</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td id="T_b73df_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">cat</td>
-<td id="T_b73df_row0_col0" class="data row0 col0">0.167742</td>
-<td id="T_b73df_row0_col1" class="data row0 col1">0.154472</td>
-<td id="T_b73df_row0_col2" class="data row0 col2">0.178082</td>
-<td id="T_b73df_row0_col3" class="data row0 col3">0.125000</td>
-<td id="T_b73df_row0_col4" class="data row0 col4">0.148936</td>
-<td id="T_b73df_row0_col5" class="data row0 col5">0.200000</td>
-<td id="T_b73df_row0_col6" class="data row0 col6">0.189189</td>
-</tr>
-<tr class="even">
-<td id="T_b73df_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">dog</td>
-<td id="T_b73df_row1_col0" class="data row1 col0">0.161290</td>
-<td id="T_b73df_row1_col1" class="data row1 col1">0.211382</td>
-<td id="T_b73df_row1_col2" class="data row1 col2">0.164384</td>
-<td id="T_b73df_row1_col3" class="data row1 col3">0.197368</td>
-<td id="T_b73df_row1_col4" class="data row1 col4">0.205674</td>
-<td id="T_b73df_row1_col5" class="data row1 col5">0.155556</td>
-<td id="T_b73df_row1_col6" class="data row1 col6">0.168919</td>
-</tr>
-<tr class="odd">
-<td id="T_b73df_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">ferret</td>
-<td id="T_b73df_row2_col0" class="data row2 col0">0.200000</td>
-<td id="T_b73df_row2_col1" class="data row2 col1">0.121951</td>
-<td id="T_b73df_row2_col2" class="data row2 col2">0.184932</td>
-<td id="T_b73df_row2_col3" class="data row2 col3">0.157895</td>
-<td id="T_b73df_row2_col4" class="data row2 col4">0.127660</td>
-<td id="T_b73df_row2_col5" class="data row2 col5">0.148148</td>
-<td id="T_b73df_row2_col6" class="data row2 col6">0.189189</td>
-</tr>
-<tr class="even">
-<td id="T_b73df_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">parraot</td>
-<td id="T_b73df_row3_col0" class="data row3 col0">0.129032</td>
-<td id="T_b73df_row3_col1" class="data row3 col1">0.146341</td>
-<td id="T_b73df_row3_col2" class="data row3 col2">0.136986</td>
-<td id="T_b73df_row3_col3" class="data row3 col3">0.171053</td>
-<td id="T_b73df_row3_col4" class="data row3 col4">0.148936</td>
-<td id="T_b73df_row3_col5" class="data row3 col5">0.140741</td>
-<td id="T_b73df_row3_col6" class="data row3 col6">0.175676</td>
-</tr>
-<tr class="odd">
-<td id="T_b73df_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">snake</td>
-<td id="T_b73df_row4_col0" class="data row4 col0">0.154839</td>
-<td id="T_b73df_row4_col1" class="data row4 col1">0.211382</td>
-<td id="T_b73df_row4_col2" class="data row4 col2">0.164384</td>
-<td id="T_b73df_row4_col3" class="data row4 col3">0.131579</td>
-<td id="T_b73df_row4_col4" class="data row4 col4">0.141844</td>
-<td id="T_b73df_row4_col5" class="data row4 col5">0.200000</td>
-<td id="T_b73df_row4_col6" class="data row4 col6">0.168919</td>
-</tr>
-<tr class="even">
-<td id="T_b73df_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">turtle</td>
-<td id="T_b73df_row5_col0" class="data row5 col0">0.187097</td>
-<td id="T_b73df_row5_col1" class="data row5 col1">0.154472</td>
-<td id="T_b73df_row5_col2" class="data row5 col2">0.171233</td>
-<td id="T_b73df_row5_col3" class="data row5 col3">0.217105</td>
-<td id="T_b73df_row5_col4" class="data row5 col4">0.226950</td>
-<td id="T_b73df_row5_col5" class="data row5 col5">0.155556</td>
-<td id="T_b73df_row5_col6" class="data row5 col6">0.108108</td>
-</tr>
-</tbody>
+<table id="T_b73df">
+  <thead>
+    <tr>
+      <th class="index_name level0">owner</th>
+      <th id="T_b73df_level0_col0" class="col_heading level0 col0">A</th>
+      <th id="T_b73df_level0_col1" class="col_heading level0 col1">B</th>
+      <th id="T_b73df_level0_col2" class="col_heading level0 col2">C</th>
+      <th id="T_b73df_level0_col3" class="col_heading level0 col3">D</th>
+      <th id="T_b73df_level0_col4" class="col_heading level0 col4">E</th>
+      <th id="T_b73df_level0_col5" class="col_heading level0 col5">F</th>
+      <th id="T_b73df_level0_col6" class="col_heading level0 col6">G</th>
+    </tr>
+    <tr>
+      <th class="index_name level0">pet</th>
+      <th class="blank col0">&nbsp;</th>
+      <th class="blank col1">&nbsp;</th>
+      <th class="blank col2">&nbsp;</th>
+      <th class="blank col3">&nbsp;</th>
+      <th class="blank col4">&nbsp;</th>
+      <th class="blank col5">&nbsp;</th>
+      <th class="blank col6">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_b73df_level0_row0" class="row_heading level0 row0">cat</th>
+      <td id="T_b73df_row0_col0" class="data row0 col0">0.167742</td>
+      <td id="T_b73df_row0_col1" class="data row0 col1">0.154472</td>
+      <td id="T_b73df_row0_col2" class="data row0 col2">0.178082</td>
+      <td id="T_b73df_row0_col3" class="data row0 col3">0.125000</td>
+      <td id="T_b73df_row0_col4" class="data row0 col4">0.148936</td>
+      <td id="T_b73df_row0_col5" class="data row0 col5">0.200000</td>
+      <td id="T_b73df_row0_col6" class="data row0 col6">0.189189</td>
+    </tr>
+    <tr>
+      <th id="T_b73df_level0_row1" class="row_heading level0 row1">dog</th>
+      <td id="T_b73df_row1_col0" class="data row1 col0">0.161290</td>
+      <td id="T_b73df_row1_col1" class="data row1 col1">0.211382</td>
+      <td id="T_b73df_row1_col2" class="data row1 col2">0.164384</td>
+      <td id="T_b73df_row1_col3" class="data row1 col3">0.197368</td>
+      <td id="T_b73df_row1_col4" class="data row1 col4">0.205674</td>
+      <td id="T_b73df_row1_col5" class="data row1 col5">0.155556</td>
+      <td id="T_b73df_row1_col6" class="data row1 col6">0.168919</td>
+    </tr>
+    <tr>
+      <th id="T_b73df_level0_row2" class="row_heading level0 row2">ferret</th>
+      <td id="T_b73df_row2_col0" class="data row2 col0">0.200000</td>
+      <td id="T_b73df_row2_col1" class="data row2 col1">0.121951</td>
+      <td id="T_b73df_row2_col2" class="data row2 col2">0.184932</td>
+      <td id="T_b73df_row2_col3" class="data row2 col3">0.157895</td>
+      <td id="T_b73df_row2_col4" class="data row2 col4">0.127660</td>
+      <td id="T_b73df_row2_col5" class="data row2 col5">0.148148</td>
+      <td id="T_b73df_row2_col6" class="data row2 col6">0.189189</td>
+    </tr>
+    <tr>
+      <th id="T_b73df_level0_row3" class="row_heading level0 row3">parraot</th>
+      <td id="T_b73df_row3_col0" class="data row3 col0">0.129032</td>
+      <td id="T_b73df_row3_col1" class="data row3 col1">0.146341</td>
+      <td id="T_b73df_row3_col2" class="data row3 col2">0.136986</td>
+      <td id="T_b73df_row3_col3" class="data row3 col3">0.171053</td>
+      <td id="T_b73df_row3_col4" class="data row3 col4">0.148936</td>
+      <td id="T_b73df_row3_col5" class="data row3 col5">0.140741</td>
+      <td id="T_b73df_row3_col6" class="data row3 col6">0.175676</td>
+    </tr>
+    <tr>
+      <th id="T_b73df_level0_row4" class="row_heading level0 row4">snake</th>
+      <td id="T_b73df_row4_col0" class="data row4 col0">0.154839</td>
+      <td id="T_b73df_row4_col1" class="data row4 col1">0.211382</td>
+      <td id="T_b73df_row4_col2" class="data row4 col2">0.164384</td>
+      <td id="T_b73df_row4_col3" class="data row4 col3">0.131579</td>
+      <td id="T_b73df_row4_col4" class="data row4 col4">0.141844</td>
+      <td id="T_b73df_row4_col5" class="data row4 col5">0.200000</td>
+      <td id="T_b73df_row4_col6" class="data row4 col6">0.168919</td>
+    </tr>
+    <tr>
+      <th id="T_b73df_level0_row5" class="row_heading level0 row5">turtle</th>
+      <td id="T_b73df_row5_col0" class="data row5 col0">0.187097</td>
+      <td id="T_b73df_row5_col1" class="data row5 col1">0.154472</td>
+      <td id="T_b73df_row5_col2" class="data row5 col2">0.171233</td>
+      <td id="T_b73df_row5_col3" class="data row5 col3">0.217105</td>
+      <td id="T_b73df_row5_col4" class="data row5 col4">0.226950</td>
+      <td id="T_b73df_row5_col5" class="data row5 col5">0.155556</td>
+      <td id="T_b73df_row5_col6" class="data row5 col6">0.108108</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 </div>
-</div>
-<div id="cell-13" class="cell" data-execution_count="26">
+<div class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>NARROW.unstack()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th colspan="6" data-quarto-table-cell-role="th" data-halign="left">n</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">pet</th>
-<th data-quarto-table-cell-role="th">cat</th>
-<th data-quarto-table-cell-role="th">dog</th>
-<th data-quarto-table-cell-role="th">ferret</th>
-<th data-quarto-table-cell-role="th">parraot</th>
-<th data-quarto-table-cell-role="th">snake</th>
-<th data-quarto-table-cell-role="th">turtle</th>
-</tr>
-<tr class="header">
-<th data-quarto-table-cell-role="th">owner</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">A</td>
-<td>26</td>
-<td>25</td>
-<td>31</td>
-<td>20</td>
-<td>24</td>
-<td>29</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">B</td>
-<td>19</td>
-<td>26</td>
-<td>15</td>
-<td>18</td>
-<td>26</td>
-<td>19</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">C</td>
-<td>26</td>
-<td>24</td>
-<td>27</td>
-<td>20</td>
-<td>24</td>
-<td>25</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">D</td>
-<td>19</td>
-<td>30</td>
-<td>24</td>
-<td>26</td>
-<td>20</td>
-<td>33</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">E</td>
-<td>21</td>
-<td>29</td>
-<td>18</td>
-<td>21</td>
-<td>20</td>
-<td>32</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">F</td>
-<td>27</td>
-<td>21</td>
-<td>20</td>
-<td>19</td>
-<td>27</td>
-<td>21</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">G</td>
-<td>28</td>
-<td>25</td>
-<td>28</td>
-<td>26</td>
-<td>25</td>
-<td>16</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="6" halign="left">n</th>
+    </tr>
+    <tr>
+      <th>pet</th>
+      <th>cat</th>
+      <th>dog</th>
+      <th>ferret</th>
+      <th>parraot</th>
+      <th>snake</th>
+      <th>turtle</th>
+    </tr>
+    <tr>
+      <th>owner</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>26</td>
+      <td>25</td>
+      <td>31</td>
+      <td>20</td>
+      <td>24</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>19</td>
+      <td>26</td>
+      <td>15</td>
+      <td>18</td>
+      <td>26</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>26</td>
+      <td>24</td>
+      <td>27</td>
+      <td>20</td>
+      <td>24</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>19</td>
+      <td>30</td>
+      <td>24</td>
+      <td>26</td>
+      <td>20</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>E</th>
+      <td>21</td>
+      <td>29</td>
+      <td>18</td>
+      <td>21</td>
+      <td>20</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>F</th>
+      <td>27</td>
+      <td>21</td>
+      <td>20</td>
+      <td>19</td>
+      <td>27</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>G</th>
+      <td>28</td>
+      <td>25</td>
+      <td>28</td>
+      <td>26</td>
+      <td>25</td>
+      <td>16</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
 <section id="hot-encoding" class="level2">
 <h2 class="anchored" data-anchor-id="hot-encoding">1 Hot Encoding</h2>
 <p>Project values onto the column axis.</p>
-<div id="cell-15" class="cell" data-tags="[]" data-execution_count="44">
+<div class="cell" data-tags="[]" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pd.get_dummies?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-16" class="cell" data-tags="[]" data-execution_count="45">
+<div class="cell" data-tags="[]" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pd.get_dummies(WIDE.cat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">19</th>
-<th data-quarto-table-cell-role="th">21</th>
-<th data-quarto-table-cell-role="th">26</th>
-<th data-quarto-table-cell-role="th">27</th>
-<th data-quarto-table-cell-role="th">28</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">owner</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">A</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">B</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">C</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">D</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">E</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">F</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">G</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>19</th>
+      <th>21</th>
+      <th>26</th>
+      <th>27</th>
+      <th>28</th>
+    </tr>
+    <tr>
+      <th>owner</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>E</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>F</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>G</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-17" class="cell" data-execution_count="52">
+<div class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pd.get_dummies(NARROW.n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">15</th>
-<th data-quarto-table-cell-role="th">16</th>
-<th data-quarto-table-cell-role="th">18</th>
-<th data-quarto-table-cell-role="th">19</th>
-<th data-quarto-table-cell-role="th">20</th>
-<th data-quarto-table-cell-role="th">21</th>
-<th data-quarto-table-cell-role="th">24</th>
-<th data-quarto-table-cell-role="th">25</th>
-<th data-quarto-table-cell-role="th">26</th>
-<th data-quarto-table-cell-role="th">27</th>
-<th data-quarto-table-cell-role="th">28</th>
-<th data-quarto-table-cell-role="th">29</th>
-<th data-quarto-table-cell-role="th">30</th>
-<th data-quarto-table-cell-role="th">31</th>
-<th data-quarto-table-cell-role="th">32</th>
-<th data-quarto-table-cell-role="th">33</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">owner</th>
-<th data-quarto-table-cell-role="th">pet</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">A</td>
-<td data-quarto-table-cell-role="th">cat</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">dog</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ferret</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">parraot</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">snake</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">turtle</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">B</td>
-<td data-quarto-table-cell-role="th">cat</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">dog</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ferret</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">parraot</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">snake</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">turtle</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">C</td>
-<td data-quarto-table-cell-role="th">cat</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">dog</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ferret</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">parraot</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">snake</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">turtle</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">D</td>
-<td data-quarto-table-cell-role="th">cat</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">dog</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ferret</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">parraot</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">snake</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">turtle</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">E</td>
-<td data-quarto-table-cell-role="th">cat</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">dog</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ferret</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">parraot</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">snake</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">turtle</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">F</td>
-<td data-quarto-table-cell-role="th">cat</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">dog</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ferret</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">parraot</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">snake</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">turtle</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">G</td>
-<td data-quarto-table-cell-role="th">cat</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">dog</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ferret</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">parraot</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">snake</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">turtle</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>15</th>
+      <th>16</th>
+      <th>18</th>
+      <th>19</th>
+      <th>20</th>
+      <th>21</th>
+      <th>24</th>
+      <th>25</th>
+      <th>26</th>
+      <th>27</th>
+      <th>28</th>
+      <th>29</th>
+      <th>30</th>
+      <th>31</th>
+      <th>32</th>
+      <th>33</th>
+    </tr>
+    <tr>
+      <th>owner</th>
+      <th>pet</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="6" valign="top">A</th>
+      <th>cat</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>dog</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>ferret</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>parraot</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>snake</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>turtle</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th rowspan="6" valign="top">B</th>
+      <th>cat</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>dog</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>ferret</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>parraot</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>snake</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>turtle</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th rowspan="6" valign="top">C</th>
+      <th>cat</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>dog</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>ferret</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>parraot</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>snake</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>turtle</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th rowspan="6" valign="top">D</th>
+      <th>cat</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>dog</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>ferret</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>parraot</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>snake</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>turtle</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th rowspan="6" valign="top">E</th>
+      <th>cat</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>dog</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>ferret</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>parraot</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>snake</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>turtle</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th rowspan="6" valign="top">F</th>
+      <th>cat</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>dog</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>ferret</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>parraot</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>snake</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>turtle</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th rowspan="6" valign="top">G</th>
+      <th>cat</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>dog</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>ferret</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>parraot</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>snake</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>turtle</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-18" class="cell" data-execution_count="53">
+<div class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pd.get_dummies(NARROW.n).<span class="bu">sum</span>().plot.bar()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="M06-03-NarrowWide_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
+<p><img src="M06-03-NarrowWide_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 
@@ -2430,23 +2417,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -2482,34 +2455,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
-          }
-          // default icon
-          link.classList.add("external");
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2519,17 +2468,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2541,245 +2481,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -2817,16 +2521,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
 });
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../notebooks/M06_Pandas/M06-02-Pandas2.html" class="pagination-link" aria-label="NB: Introducing Pandas II">
+      <a href="../../notebooks/M06_Pandas/M06-02-Pandas2.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">NB: Introducing Pandas II</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../notebooks/M06_Pandas/M06-04-MethodChaining.html" class="pagination-link" aria-label="NB: Method Chaining">
+      <a href="../../notebooks/M06_Pandas/M06-04-MethodChaining.html" class="pagination-link">
         <span class="nav-page-text"><span class="chapter-title">NB: Method Chaining</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2835,5 +2555,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/ontoligent/DS5100-2024-06-R/blob/main/notebooks/M06_Pandas/M06-03-NarrowWide.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+</body></html>

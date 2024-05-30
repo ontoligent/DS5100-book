@@ -15,36 +15,34 @@ book:
   repo-actions: [edit]
   repo-url: "https://github.com/ontoligent/DS5100-2024-06-R"
   chapters:
-    - index.qmd 
-    - part: modules/m01/m01-intro.qmd # "01 Getting Started"
+    - part: index.qmd # 00 Welcome 
+      chapters: 
+        - modules/m00/m00-intro.qmd
+    - part: modules/m01/m01-intro.qmd # 01 Getting Started
       chapters:
         - topics/rivanna.qmd
         - topics/unix.qmd
         - topics/setting-up-ssh.qmd
         - topics/git-and-github.qmd
-        #- modules/m01/m01-using-rivanna.qmd
-        #- modules/m01/m01-activity-github.qmd
       appendices:
         - topics/oreilly-accounts.qmd
         - topics/refreshing-the-course-repo.qmd
-    - part: modules/m02/m02-intro.qmd # "02 Introducing Python"
+    - part: modules/m02/m02-intro.qmd # 02 Introducing Python
       chapters:
         - topics/on-data.qmd
         - topics/python-object-types.qmd
-        #- modules/m02/m02-activity-hello-world.qmd
-        #- modules/m02/m02-activity-jupyter-lab-on-rivanna.qmd
         - notebooks/M02_BasicPython/M02-01-DataTypes.ipynb
         - notebooks/M02_BasicPython/M02-02-Numbers.ipynb
         - notebooks/M02_BasicPython/M02-03-Booleans.ipynb
         - notebooks/M02_BasicPython/M02-04-Strings.ipynb
         - notebooks/M02_BasicPython/M02-05-Structures.ipynb
-    - part: modules/m03/m03-intro.qmd # "03 Control Structures"
+    - part: modules/m03/m03-intro.qmd # 03 Control Structures
       chapters:
         - topics/vals-vars-expressions-statements.qmd
         - notebooks/M03_ControlStructures/M03-01-ControlStructures.ipynb
         - notebooks/M03_ControlStructures/M03-02-IterablesAndIterators.ipynb
         - notebooks/M03_ControlStructures/M03-03-Comprehensions.ipynb
-    - part: modules/m04/m04-intro.qmd # "04 Functions"
+    - part: modules/m04/m04-intro.qmd # 04 Functions
       chapters: 
         - notebooks/M04_PythonFunctions/M04-02-Functions.ipynb
         - notebooks/M04_PythonFunctions/M04-01-Importing.ipynb

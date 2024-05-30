@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.2.262">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DS 5100: Programming for Data Science - NB: Introducing Pandas II</title>
+<title>DS 5100: Programming for Data Science - 28&nbsp; NB: Introducing Pandas II</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,12 +17,11 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -47,17 +46,47 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -81,13 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -96,14 +119,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -111,18 +132,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <body class="nav-sidebar docked">
 
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m06/m06-intro.html">M06 Pandas</a></li><li class="breadcrumb-item"><a href="../../notebooks/M06_Pandas/M06-02-Pandas2.html"><span class="chapter-title">NB: Introducing Pandas II</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-title">NB: Introducing Pandas II</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
       </button>
     </div>
   </nav>
@@ -130,36 +147,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">DS 5100: Programming for Data Science</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/ontoligent/DS5100-2024-06-R" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/ontoligent/DS5100-2024-06-R" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
+      <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-        </div>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Welcome</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m01/m01-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M01 Getting Started</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/m00/m00-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../modules/m01/m01-intro.html" class="sidebar-item-text sidebar-link">M01 Getting Started</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../topics/rivanna.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">About Rivanna</span></a>
@@ -184,13 +210,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m02/m02-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M02 Introducing Python</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m02/m02-intro.html" class="sidebar-item-text sidebar-link">M02 Introducing Python</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../topics/on-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data and Code</span></a>
@@ -230,13 +255,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m03/m03-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M03 Control Structures</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m03/m03-intro.html" class="sidebar-item-text sidebar-link">M03 Control Structures</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../topics/vals-vars-expressions-statements.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Values, Variables, Expressions, and Statements</span></a>
@@ -261,13 +285,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m04/m04-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M04 Functions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m04/m04-intro.html" class="sidebar-item-text sidebar-link">M04 Functions</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/M04_PythonFunctions/M04-02-Functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Introduction to Functions</span></a>
@@ -302,13 +325,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m05/m05-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M05 NumPy</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m05/m05-intro.html" class="sidebar-item-text sidebar-link">M05 NumPy</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/M05_NumPy/M05-02-NumpyBasics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: NumPy First Steps</span></a>
@@ -333,13 +355,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m06/m06-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M06 Pandas</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+            <a href="../../modules/m06/m06-intro.html" class="sidebar-item-text sidebar-link">M06 Pandas</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/M06_Pandas/M06-01-Pandas1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Introducting Pandas</span></a>
@@ -369,13 +390,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m07/m07-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M07 Classes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m07/m07-intro.html" class="sidebar-item-text sidebar-link">M07 Classes</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../topics/what-is-oop.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">What is OOP?</span></a>
@@ -410,13 +430,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m08/m08-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M08 Testing</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m08/m08-intro.html" class="sidebar-item-text sidebar-link">M08 Testing</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../modules/m08/m08-testing-and-verification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Testing and Verification</span></a>
@@ -436,13 +455,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m09/m09-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M09 Modules</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m09/m09-intro.html" class="sidebar-item-text sidebar-link">M09 Modules</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/M09_PythonModules/M09-01-PackagesIntro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Packages, Modules, and Imports</span></a>
@@ -472,13 +490,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m10/m10-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M10 Basic R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m10/m10-intro.html" class="sidebar-item-text sidebar-link">M10 Basic R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/M10_RBasics/M10-01-DataTypesAndStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Getting Started</span></a>
@@ -493,13 +510,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m11/m11-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M11 Dplyr</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m11/m11-intro.html" class="sidebar-item-text sidebar-link">M11 Dplyr</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/M11_RDplyr/M11-01-Tibbles.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Introducing Tibbles</span></a>
@@ -514,13 +530,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m12/m12-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M12 Visualization</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m12/m12-intro.html" class="sidebar-item-text sidebar-link">M12 Visualization</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/M12_RViz/M12-01-GGPlot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: GGPlot2</span></a>
@@ -545,13 +560,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m13/m13-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M13 Agile</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m13/m13-intro.html" class="sidebar-item-text sidebar-link">M13 Agile</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../topics/project-management.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Project Management</span></a>
@@ -571,13 +585,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">Appendices</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../topics/oreilly-accounts.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Setting Up O’Reilly</span></a>
@@ -593,7 +606,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -625,14 +637,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#get_dummies" id="toc-get_dummies" class="nav-link" data-scroll-target="#get_dummies"><code>get_dummies()</code></a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-2024-06-R/blob/main/notebooks/M06_Pandas/M06-02-Pandas2.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/ontoligent/DS5100-2024-06-R/blob/main/notebooks/M06_Pandas/M06-02-Pandas2.ipynb" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m06/m06-intro.html">M06 Pandas</a></li><li class="breadcrumb-item"><a href="../../notebooks/M06_Pandas/M06-02-Pandas2.html"><span class="chapter-title">NB: Introducing Pandas II</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">NB: Introducing Pandas II</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">NB: Introducing Pandas II</span></h1>
 </div>
 
 
@@ -645,61 +657,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
-
 
 <section id="set-up" class="level2">
 <h2 class="anchored" data-anchor-id="set-up">Set Up</h2>
-<div id="cell-1" class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> sns.load_dataset(<span class="st">'iris'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-2" class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>iris.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">sepal_length</th>
-<th data-quarto-table-cell-role="th">sepal_width</th>
-<th data-quarto-table-cell-role="th">petal_length</th>
-<th data-quarto-table-cell-role="th">petal_width</th>
-<th data-quarto-table-cell-role="th">species</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>5.1</td>
-<td>3.5</td>
-<td>1.4</td>
-<td>0.2</td>
-<td>setosa</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>4.9</td>
-<td>3.0</td>
-<td>1.4</td>
-<td>0.2</td>
-<td>setosa</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>species</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-3" class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sys.getsizeof(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -711,163 +718,157 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="apply-lambda-functions-with-.apply">Apply Lambda Functions with <code>.apply()</code></h2>
 <p>Apply a transformation to each record. Uses a <code>lambda</code> function.</p>
 <p>The <code>apply()</code> method should be used after you have established that you can’t use a vectorized function.</p>
-<div id="cell-5" class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>iris[<span class="st">'sepal_len_sq'</span>] <span class="op">=</span> iris.sepal_length.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>iris.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">sepal_length</th>
-<th data-quarto-table-cell-role="th">sepal_width</th>
-<th data-quarto-table-cell-role="th">petal_length</th>
-<th data-quarto-table-cell-role="th">petal_width</th>
-<th data-quarto-table-cell-role="th">species</th>
-<th data-quarto-table-cell-role="th">sepal_len_sq</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>5.1</td>
-<td>3.5</td>
-<td>1.4</td>
-<td>0.2</td>
-<td>setosa</td>
-<td>26.01</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>4.9</td>
-<td>3.0</td>
-<td>1.4</td>
-<td>0.2</td>
-<td>setosa</td>
-<td>24.01</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>4.7</td>
-<td>3.2</td>
-<td>1.3</td>
-<td>0.2</td>
-<td>setosa</td>
-<td>22.09</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>4.6</td>
-<td>3.1</td>
-<td>1.5</td>
-<td>0.2</td>
-<td>setosa</td>
-<td>21.16</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>5.0</td>
-<td>3.6</td>
-<td>1.4</td>
-<td>0.2</td>
-<td>setosa</td>
-<td>25.00</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>species</th>
+      <th>sepal_len_sq</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>26.01</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>24.01</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>22.09</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>21.16</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>25.00</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
 <p>Transformation involving multiple columns. Uses <code>axis=1</code> to access columns.<br>
 Compute average of <code>sepal_length</code>, <code>sepal_width</code>:</p>
-<div id="cell-7" class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>iris[<span class="st">'sepal_len_wid_avg'</span>] <span class="op">=</span> iris[[<span class="st">'sepal_length'</span>,<span class="st">'sepal_width'</span>]]<span class="op">\</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">apply</span>(<span class="kw">lambda</span> x: (x.sepal_length <span class="op">+</span> x.sepal_width) <span class="op">/</span> <span class="dv">2</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>iris.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">sepal_length</th>
-<th data-quarto-table-cell-role="th">sepal_width</th>
-<th data-quarto-table-cell-role="th">petal_length</th>
-<th data-quarto-table-cell-role="th">petal_width</th>
-<th data-quarto-table-cell-role="th">species</th>
-<th data-quarto-table-cell-role="th">sepal_len_sq</th>
-<th data-quarto-table-cell-role="th">sepal_len_wid_avg</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>5.1</td>
-<td>3.5</td>
-<td>1.4</td>
-<td>0.2</td>
-<td>setosa</td>
-<td>26.01</td>
-<td>4.30</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>4.9</td>
-<td>3.0</td>
-<td>1.4</td>
-<td>0.2</td>
-<td>setosa</td>
-<td>24.01</td>
-<td>3.95</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>4.7</td>
-<td>3.2</td>
-<td>1.3</td>
-<td>0.2</td>
-<td>setosa</td>
-<td>22.09</td>
-<td>3.95</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>4.6</td>
-<td>3.1</td>
-<td>1.5</td>
-<td>0.2</td>
-<td>setosa</td>
-<td>21.16</td>
-<td>3.85</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>5.0</td>
-<td>3.6</td>
-<td>1.4</td>
-<td>0.2</td>
-<td>setosa</td>
-<td>25.00</td>
-<td>4.30</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>species</th>
+      <th>sepal_len_sq</th>
+      <th>sepal_len_wid_avg</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>26.01</td>
+      <td>4.30</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>24.01</td>
+      <td>3.95</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>22.09</td>
+      <td>3.95</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>21.16</td>
+      <td>3.85</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>25.00</td>
+      <td>4.30</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
 <p><strong>Vectorized Version</strong></p>
-<div id="cell-9" class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time iris.sepal_length<span class="op">**</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>CPU times: user 306 µs, sys: 18 µs, total: 324 µs
@@ -889,7 +890,7 @@ Name: sepal_length, Length: 150, dtype: float64</code></pre>
 </div>
 </div>
 <p>Compare to <code>.apply()</code></p>
-<div id="cell-11" class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time iris.sepal_length.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>CPU times: user 830 µs, sys: 200 µs, total: 1.03 ms
@@ -922,66 +923,63 @@ Name: sepal_length, Length: 150, dtype: float64</code></pre>
 <section id="groupby" class="level3">
 <h3 class="anchored" data-anchor-id="groupby"><code>.groupby()</code></h3>
 <p>Compute mean of each column, grouped (separately) by species</p>
-<div id="cell-13" class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>iris.groupby(<span class="st">"species"</span>).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">sepal_length</th>
-<th data-quarto-table-cell-role="th">sepal_width</th>
-<th data-quarto-table-cell-role="th">petal_length</th>
-<th data-quarto-table-cell-role="th">petal_width</th>
-<th data-quarto-table-cell-role="th">sepal_len_sq</th>
-<th data-quarto-table-cell-role="th">sepal_len_wid_avg</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">species</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">setosa</td>
-<td>5.006</td>
-<td>3.428</td>
-<td>1.462</td>
-<td>0.246</td>
-<td>25.1818</td>
-<td>4.217</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">versicolor</td>
-<td>5.936</td>
-<td>2.770</td>
-<td>4.260</td>
-<td>1.326</td>
-<td>35.4972</td>
-<td>4.353</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">virginica</td>
-<td>6.588</td>
-<td>2.974</td>
-<td>5.552</td>
-<td>2.026</td>
-<td>43.7980</td>
-<td>4.781</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>sepal_len_sq</th>
+      <th>sepal_len_wid_avg</th>
+    </tr>
+    <tr>
+      <th>species</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>setosa</th>
+      <td>5.006</td>
+      <td>3.428</td>
+      <td>1.462</td>
+      <td>0.246</td>
+      <td>25.1818</td>
+      <td>4.217</td>
+    </tr>
+    <tr>
+      <th>versicolor</th>
+      <td>5.936</td>
+      <td>2.770</td>
+      <td>4.260</td>
+      <td>1.326</td>
+      <td>35.4972</td>
+      <td>4.353</td>
+    </tr>
+    <tr>
+      <th>virginica</th>
+      <td>6.588</td>
+      <td>2.974</td>
+      <td>5.552</td>
+      <td>2.026</td>
+      <td>43.7980</td>
+      <td>4.781</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
@@ -991,33 +989,30 @@ Name: sepal_length, Length: 150, dtype: float64</code></pre>
 <p>Apply a function <code>aggfunc</code> to selected values grouped by columns</p>
 <p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.pivot_table.html">Details</a></p>
 <p>Compute mean sepal length for each species:</p>
-<div id="cell-15" class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pd.pivot_table(iris, values<span class="op">=</span><span class="st">"sepal_length"</span>, columns<span class="op">=</span>[<span class="st">"species"</span>], aggfunc <span class="op">=</span> np.mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">species</th>
-<th data-quarto-table-cell-role="th">setosa</th>
-<th data-quarto-table-cell-role="th">versicolor</th>
-<th data-quarto-table-cell-role="th">virginica</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">sepal_length</td>
-<td>5.006</td>
-<td>5.936</td>
-<td>6.588</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>species</th>
+      <th>setosa</th>
+      <th>versicolor</th>
+      <th>virginica</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>sepal_length</th>
+      <td>5.006</td>
+      <td>5.936</td>
+      <td>6.588</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
@@ -1030,112 +1025,109 @@ Name: sepal_length, Length: 150, dtype: float64</code></pre>
 <h3 class="anchored" data-anchor-id="unstack"><code>.unstack()</code></h3>
 <p><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.unstack.html">Details</a></p>
 <p>Let’s look at what <code>unstack()</code> does with a dataset from Seaborn’s collection.</p>
-<div id="cell-19" class="cell" data-tags="[]" data-execution_count="124">
+<div class="cell" data-tags="[]" data-execution_count="124">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>attention <span class="op">=</span> sns.load_dataset(<span class="st">'attention'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-20" class="cell" data-tags="[]" data-execution_count="126">
+<div class="cell" data-tags="[]" data-execution_count="126">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>attention.sample(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="126">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Unnamed: 0</th>
-<th data-quarto-table-cell-role="th">subject</th>
-<th data-quarto-table-cell-role="th">attention</th>
-<th data-quarto-table-cell-role="th">solutions</th>
-<th data-quarto-table-cell-role="th">score</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">5</td>
-<td>5</td>
-<td>6</td>
-<td>divided</td>
-<td>1</td>
-<td>5.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">40</td>
-<td>40</td>
-<td>1</td>
-<td>divided</td>
-<td>3</td>
-<td>7.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">11</td>
-<td>11</td>
-<td>12</td>
-<td>focused</td>
-<td>1</td>
-<td>8.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">12</td>
-<td>12</td>
-<td>13</td>
-<td>focused</td>
-<td>1</td>
-<td>6.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">24</td>
-<td>24</td>
-<td>5</td>
-<td>divided</td>
-<td>2</td>
-<td>5.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>9</td>
-<td>10</td>
-<td>divided</td>
-<td>1</td>
-<td>6.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>0</td>
-<td>1</td>
-<td>divided</td>
-<td>1</td>
-<td>2.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">37</td>
-<td>37</td>
-<td>18</td>
-<td>focused</td>
-<td>2</td>
-<td>8.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">7</td>
-<td>7</td>
-<td>8</td>
-<td>divided</td>
-<td>1</td>
-<td>5.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">22</td>
-<td>22</td>
-<td>3</td>
-<td>divided</td>
-<td>2</td>
-<td>5.0</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>subject</th>
+      <th>attention</th>
+      <th>solutions</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>6</td>
+      <td>divided</td>
+      <td>1</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>40</td>
+      <td>1</td>
+      <td>divided</td>
+      <td>3</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>11</td>
+      <td>12</td>
+      <td>focused</td>
+      <td>1</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>12</td>
+      <td>13</td>
+      <td>focused</td>
+      <td>1</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>24</td>
+      <td>5</td>
+      <td>divided</td>
+      <td>2</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>9</td>
+      <td>10</td>
+      <td>divided</td>
+      <td>1</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+      <td>divided</td>
+      <td>1</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>37</td>
+      <td>18</td>
+      <td>focused</td>
+      <td>2</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>8</td>
+      <td>divided</td>
+      <td>1</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>22</td>
+      <td>3</td>
+      <td>divided</td>
+      <td>2</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
@@ -1144,341 +1136,335 @@ Name: sepal_length, Length: 150, dtype: float64</code></pre>
 <p>An analysis of the columns in this dataframe show that <code>score</code> is a measured outcome, <code>subject</code>s are probably individuals in a comparative study where two groups, those with <code>attention</code> <code>divided</code> and those with <code>attention</code> <code>focused</code>, are subject to three different <code>solutions</code> applied to the performance of some task. <code>Unnamed: 0</code> is just the row number as index.</p>
 <p>The purpose of the test performed in each trial seems to be see which solutions are best at overcoming divied attention in the performance of those tasks.</p>
 <p>Let’s restructure our data to reflect these assumptions.</p>
-<div id="cell-22" class="cell" data-tags="[]" data-execution_count="135">
+<div class="cell" data-tags="[]" data-execution_count="135">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>attention1 <span class="op">=</span> attention.set_index([<span class="st">'attention'</span>,<span class="st">'solutions'</span>,<span class="st">'subject'</span>]).sort_index().drop(<span class="st">'Unnamed: 0'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-23" class="cell" data-tags="[]" data-execution_count="136">
+<div class="cell" data-tags="[]" data-execution_count="136">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>attention1.head(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="136">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">score</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">attention</th>
-<th data-quarto-table-cell-role="th">solutions</th>
-<th data-quarto-table-cell-role="th">subject</th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td rowspan="20" data-quarto-table-cell-role="th" data-valign="top">divided</td>
-<td rowspan="10" data-quarto-table-cell-role="th" data-valign="top">1</td>
-<td data-quarto-table-cell-role="th">1</td>
-<td>2.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2</td>
-<td>3.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">3</td>
-<td>3.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">4</td>
-<td>5.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">5</td>
-<td>4.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">6</td>
-<td>5.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">7</td>
-<td>5.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">8</td>
-<td>5.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">9</td>
-<td>2.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">10</td>
-<td>6.0</td>
-</tr>
-<tr class="odd">
-<td rowspan="10" data-quarto-table-cell-role="th" data-valign="top">2</td>
-<td data-quarto-table-cell-role="th">1</td>
-<td>4.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2</td>
-<td>4.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">3</td>
-<td>5.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">4</td>
-<td>7.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">5</td>
-<td>5.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">6</td>
-<td>5.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">7</td>
-<td>4.5</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">8</td>
-<td>7.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">9</td>
-<td>3.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">10</td>
-<td>5.0</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>score</th>
+    </tr>
+    <tr>
+      <th>attention</th>
+      <th>solutions</th>
+      <th>subject</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="20" valign="top">divided</th>
+      <th rowspan="10" valign="top">1</th>
+      <th>1</th>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th rowspan="10" valign="top">2</th>
+      <th>1</th>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>5.0</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
 <p>We can use <code>.unstack()</code> to provide a nice, synoptic view of these data.</p>
-<div id="cell-25" class="cell" data-tags="[]" data-execution_count="174">
+<div class="cell" data-tags="[]" data-execution_count="174">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>attention2 <span class="op">=</span> attention1.unstack()</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>attention2.fillna(<span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="174">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th colspan="20" data-quarto-table-cell-role="th" data-halign="left">score</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">subject</th>
-<th data-quarto-table-cell-role="th">1</th>
-<th data-quarto-table-cell-role="th">2</th>
-<th data-quarto-table-cell-role="th">3</th>
-<th data-quarto-table-cell-role="th">4</th>
-<th data-quarto-table-cell-role="th">5</th>
-<th data-quarto-table-cell-role="th">6</th>
-<th data-quarto-table-cell-role="th">7</th>
-<th data-quarto-table-cell-role="th">8</th>
-<th data-quarto-table-cell-role="th">9</th>
-<th data-quarto-table-cell-role="th">10</th>
-<th data-quarto-table-cell-role="th">11</th>
-<th data-quarto-table-cell-role="th">12</th>
-<th data-quarto-table-cell-role="th">13</th>
-<th data-quarto-table-cell-role="th">14</th>
-<th data-quarto-table-cell-role="th">15</th>
-<th data-quarto-table-cell-role="th">16</th>
-<th data-quarto-table-cell-role="th">17</th>
-<th data-quarto-table-cell-role="th">18</th>
-<th data-quarto-table-cell-role="th">19</th>
-<th data-quarto-table-cell-role="th">20</th>
-</tr>
-<tr class="header">
-<th data-quarto-table-cell-role="th">attention</th>
-<th data-quarto-table-cell-role="th">solutions</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td rowspan="3" data-quarto-table-cell-role="th" data-valign="top">divided</td>
-<td data-quarto-table-cell-role="th">1</td>
-<td>2.0</td>
-<td>3.0</td>
-<td>3.0</td>
-<td>5.0</td>
-<td>4.0</td>
-<td>5.0</td>
-<td>5.0</td>
-<td>5.0</td>
-<td>2.0</td>
-<td>6.0</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2</td>
-<td>4.0</td>
-<td>4.0</td>
-<td>5.0</td>
-<td>7.0</td>
-<td>5.0</td>
-<td>5.0</td>
-<td>4.5</td>
-<td>7.0</td>
-<td>3.0</td>
-<td>5.0</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">3</td>
-<td>7.0</td>
-<td>5.0</td>
-<td>6.0</td>
-<td>5.0</td>
-<td>8.0</td>
-<td>6.0</td>
-<td>6.0</td>
-<td>8.0</td>
-<td>7.0</td>
-<td>6.0</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td rowspan="3" data-quarto-table-cell-role="th" data-valign="top">focused</td>
-<td data-quarto-table-cell-role="th">1</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>6.0</td>
-<td>8.0</td>
-<td>6.0</td>
-<td>8.0</td>
-<td>8.0</td>
-<td>6.0</td>
-<td>7.0</td>
-<td>7.0</td>
-<td>5.0</td>
-<td>6.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>5.0</td>
-<td>9.0</td>
-<td>5.0</td>
-<td>8.0</td>
-<td>8.0</td>
-<td>8.0</td>
-<td>7.0</td>
-<td>8.0</td>
-<td>6.0</td>
-<td>6.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>6.0</td>
-<td>8.0</td>
-<td>9.0</td>
-<td>7.0</td>
-<td>7.0</td>
-<td>7.0</td>
-<td>6.0</td>
-<td>6.0</td>
-<td>6.0</td>
-<td>5.0</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="20" halign="left">score</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>subject</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13</th>
+      <th>14</th>
+      <th>15</th>
+      <th>16</th>
+      <th>17</th>
+      <th>18</th>
+      <th>19</th>
+      <th>20</th>
+    </tr>
+    <tr>
+      <th>attention</th>
+      <th>solutions</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="3" valign="top">divided</th>
+      <th>1</th>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>2.0</td>
+      <td>6.0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>7.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>4.5</td>
+      <td>7.0</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7.0</td>
+      <td>5.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>8.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>8.0</td>
+      <td>7.0</td>
+      <td>6.0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">focused</th>
+      <th>1</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>6.0</td>
+      <td>8.0</td>
+      <td>6.0</td>
+      <td>8.0</td>
+      <td>8.0</td>
+      <td>6.0</td>
+      <td>7.0</td>
+      <td>7.0</td>
+      <td>5.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>5.0</td>
+      <td>9.0</td>
+      <td>5.0</td>
+      <td>8.0</td>
+      <td>8.0</td>
+      <td>8.0</td>
+      <td>7.0</td>
+      <td>8.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>6.0</td>
+      <td>8.0</td>
+      <td>9.0</td>
+      <td>7.0</td>
+      <td>7.0</td>
+      <td>7.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
 <p>We can see clearly the data from two groups by <code>attention</code>, each consisting of 10 <code>subject</code>s, each employing three solutions.</p>
 <p>By unstacking again, we can get a sense of which solution worked best.</p>
-<div id="cell-28" class="cell" data-tags="[]" data-execution_count="176">
+<div class="cell" data-tags="[]" data-execution_count="176">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>attention2.mean(<span class="dv">1</span>).unstack().T.style.background_gradient(axis<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="176">
-<div>
+
 <style type="text/css">
 #T_2ed6e_row0_col0 {
   background-color: #fff7fb;
@@ -1501,39 +1487,37 @@ Name: sepal_length, Length: 150, dtype: float64</code></pre>
   color: #f1f1f1;
 }
 </style>
-
-<table id="T_2ed6e" data-quarto-postprocess="true" class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th class="index_name level0" data-quarto-table-cell-role="th">attention</th>
-<th id="T_2ed6e_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">divided</th>
-<th id="T_2ed6e_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">focused</th>
-</tr>
-<tr class="odd">
-<th class="index_name level0" data-quarto-table-cell-role="th">solutions</th>
-<th class="blank col0" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col1" data-quarto-table-cell-role="th">&nbsp;</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td id="T_2ed6e_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">1</td>
-<td id="T_2ed6e_row0_col0" class="data row0 col0">4.000000</td>
-<td id="T_2ed6e_row0_col1" class="data row0 col1">6.700000</td>
-</tr>
-<tr class="even">
-<td id="T_2ed6e_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">2</td>
-<td id="T_2ed6e_row1_col0" class="data row1 col0">4.950000</td>
-<td id="T_2ed6e_row1_col1" class="data row1 col1">7.000000</td>
-</tr>
-<tr class="odd">
-<td id="T_2ed6e_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">3</td>
-<td id="T_2ed6e_row2_col0" class="data row2 col0">6.400000</td>
-<td id="T_2ed6e_row2_col1" class="data row2 col1">6.700000</td>
-</tr>
-</tbody>
+<table id="T_2ed6e">
+  <thead>
+    <tr>
+      <th class="index_name level0">attention</th>
+      <th id="T_2ed6e_level0_col0" class="col_heading level0 col0">divided</th>
+      <th id="T_2ed6e_level0_col1" class="col_heading level0 col1">focused</th>
+    </tr>
+    <tr>
+      <th class="index_name level0">solutions</th>
+      <th class="blank col0">&nbsp;</th>
+      <th class="blank col1">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_2ed6e_level0_row0" class="row_heading level0 row0">1</th>
+      <td id="T_2ed6e_row0_col0" class="data row0 col0">4.000000</td>
+      <td id="T_2ed6e_row0_col1" class="data row0 col1">6.700000</td>
+    </tr>
+    <tr>
+      <th id="T_2ed6e_level0_row1" class="row_heading level0 row1">2</th>
+      <td id="T_2ed6e_row1_col0" class="data row1 col0">4.950000</td>
+      <td id="T_2ed6e_row1_col1" class="data row1 col1">7.000000</td>
+    </tr>
+    <tr>
+      <th id="T_2ed6e_level0_row2" class="row_heading level0 row2">3</th>
+      <td id="T_2ed6e_row2_col0" class="data row2 col0">6.400000</td>
+      <td id="T_2ed6e_row2_col1" class="data row2 col1">6.700000</td>
+    </tr>
+  </tbody>
 </table>
-</div>
 </div>
 </div>
 <p>It appears the solution 3 performed well.</p>
@@ -1543,297 +1527,288 @@ Name: sepal_length, Length: 150, dtype: float64</code></pre>
 <p>Stack is the opposite of <code>.unstack()</code>, of course. It will project a column name series into the values of a single column.</p>
 <p><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.stack.html">Details</a></p>
 <p>Let look at this with the <code>taxis</code> database.</p>
-<div id="cell-32" class="cell" data-tags="[]" data-execution_count="245">
+<div class="cell" data-tags="[]" data-execution_count="245">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>taxis <span class="op">=</span> sns.load_dataset(<span class="st">'taxis'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-33" class="cell" data-tags="[]" data-execution_count="246">
+<div class="cell" data-tags="[]" data-execution_count="246">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>taxis.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="246">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">pickup</th>
-<th data-quarto-table-cell-role="th">dropoff</th>
-<th data-quarto-table-cell-role="th">passengers</th>
-<th data-quarto-table-cell-role="th">distance</th>
-<th data-quarto-table-cell-role="th">fare</th>
-<th data-quarto-table-cell-role="th">tip</th>
-<th data-quarto-table-cell-role="th">tolls</th>
-<th data-quarto-table-cell-role="th">total</th>
-<th data-quarto-table-cell-role="th">color</th>
-<th data-quarto-table-cell-role="th">payment</th>
-<th data-quarto-table-cell-role="th">pickup_zone</th>
-<th data-quarto-table-cell-role="th">dropoff_zone</th>
-<th data-quarto-table-cell-role="th">pickup_borough</th>
-<th data-quarto-table-cell-role="th">dropoff_borough</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>2019-03-23 20:21:09</td>
-<td>2019-03-23 20:27:24</td>
-<td>1</td>
-<td>1.60</td>
-<td>7.0</td>
-<td>2.15</td>
-<td>0.0</td>
-<td>12.95</td>
-<td>yellow</td>
-<td>credit card</td>
-<td>Lenox Hill West</td>
-<td>UN/Turtle Bay South</td>
-<td>Manhattan</td>
-<td>Manhattan</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>2019-03-04 16:11:55</td>
-<td>2019-03-04 16:19:00</td>
-<td>1</td>
-<td>0.79</td>
-<td>5.0</td>
-<td>0.00</td>
-<td>0.0</td>
-<td>9.30</td>
-<td>yellow</td>
-<td>cash</td>
-<td>Upper West Side South</td>
-<td>Upper West Side South</td>
-<td>Manhattan</td>
-<td>Manhattan</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>2019-03-27 17:53:01</td>
-<td>2019-03-27 18:00:25</td>
-<td>1</td>
-<td>1.37</td>
-<td>7.5</td>
-<td>2.36</td>
-<td>0.0</td>
-<td>14.16</td>
-<td>yellow</td>
-<td>credit card</td>
-<td>Alphabet City</td>
-<td>West Village</td>
-<td>Manhattan</td>
-<td>Manhattan</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>2019-03-10 01:23:59</td>
-<td>2019-03-10 01:49:51</td>
-<td>1</td>
-<td>7.70</td>
-<td>27.0</td>
-<td>6.15</td>
-<td>0.0</td>
-<td>36.95</td>
-<td>yellow</td>
-<td>credit card</td>
-<td>Hudson Sq</td>
-<td>Yorkville West</td>
-<td>Manhattan</td>
-<td>Manhattan</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>2019-03-30 13:27:42</td>
-<td>2019-03-30 13:37:14</td>
-<td>3</td>
-<td>2.16</td>
-<td>9.0</td>
-<td>1.10</td>
-<td>0.0</td>
-<td>13.40</td>
-<td>yellow</td>
-<td>credit card</td>
-<td>Midtown East</td>
-<td>Yorkville West</td>
-<td>Manhattan</td>
-<td>Manhattan</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>pickup</th>
+      <th>dropoff</th>
+      <th>passengers</th>
+      <th>distance</th>
+      <th>fare</th>
+      <th>tip</th>
+      <th>tolls</th>
+      <th>total</th>
+      <th>color</th>
+      <th>payment</th>
+      <th>pickup_zone</th>
+      <th>dropoff_zone</th>
+      <th>pickup_borough</th>
+      <th>dropoff_borough</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019-03-23 20:21:09</td>
+      <td>2019-03-23 20:27:24</td>
+      <td>1</td>
+      <td>1.60</td>
+      <td>7.0</td>
+      <td>2.15</td>
+      <td>0.0</td>
+      <td>12.95</td>
+      <td>yellow</td>
+      <td>credit card</td>
+      <td>Lenox Hill West</td>
+      <td>UN/Turtle Bay South</td>
+      <td>Manhattan</td>
+      <td>Manhattan</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2019-03-04 16:11:55</td>
+      <td>2019-03-04 16:19:00</td>
+      <td>1</td>
+      <td>0.79</td>
+      <td>5.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>9.30</td>
+      <td>yellow</td>
+      <td>cash</td>
+      <td>Upper West Side South</td>
+      <td>Upper West Side South</td>
+      <td>Manhattan</td>
+      <td>Manhattan</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019-03-27 17:53:01</td>
+      <td>2019-03-27 18:00:25</td>
+      <td>1</td>
+      <td>1.37</td>
+      <td>7.5</td>
+      <td>2.36</td>
+      <td>0.0</td>
+      <td>14.16</td>
+      <td>yellow</td>
+      <td>credit card</td>
+      <td>Alphabet City</td>
+      <td>West Village</td>
+      <td>Manhattan</td>
+      <td>Manhattan</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019-03-10 01:23:59</td>
+      <td>2019-03-10 01:49:51</td>
+      <td>1</td>
+      <td>7.70</td>
+      <td>27.0</td>
+      <td>6.15</td>
+      <td>0.0</td>
+      <td>36.95</td>
+      <td>yellow</td>
+      <td>credit card</td>
+      <td>Hudson Sq</td>
+      <td>Yorkville West</td>
+      <td>Manhattan</td>
+      <td>Manhattan</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019-03-30 13:27:42</td>
+      <td>2019-03-30 13:37:14</td>
+      <td>3</td>
+      <td>2.16</td>
+      <td>9.0</td>
+      <td>1.10</td>
+      <td>0.0</td>
+      <td>13.40</td>
+      <td>yellow</td>
+      <td>credit card</td>
+      <td>Midtown East</td>
+      <td>Yorkville West</td>
+      <td>Manhattan</td>
+      <td>Manhattan</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-34" class="cell" data-tags="[]" data-execution_count="247">
+<div class="cell" data-tags="[]" data-execution_count="247">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>taxis1 <span class="op">=</span> taxis.set_index([<span class="st">'pickup'</span>,<span class="st">'dropoff'</span>]).sort_index().stack().to_frame(<span class="st">'val'</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>taxis1.index.names <span class="op">=</span> [<span class="st">'pickup'</span>,<span class="st">'dropoff'</span>,<span class="st">'field'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-35" class="cell" data-tags="[]" data-execution_count="249">
+<div class="cell" data-tags="[]" data-execution_count="249">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>taxis1.sample(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="249">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">val</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">pickup</th>
-<th data-quarto-table-cell-role="th">dropoff</th>
-<th data-quarto-table-cell-role="th">field</th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2019-03-23 13:13:20</td>
-<td data-quarto-table-cell-role="th">2019-03-23 13:15:13</td>
-<td data-quarto-table-cell-role="th">dropoff_zone</td>
-<td>Hudson Sq</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2019-03-21 01:30:10</td>
-<td data-quarto-table-cell-role="th">2019-03-21 01:50:15</td>
-<td data-quarto-table-cell-role="th">tolls</td>
-<td>0.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2019-03-04 14:13:31</td>
-<td data-quarto-table-cell-role="th">2019-03-04 14:24:15</td>
-<td data-quarto-table-cell-role="th">tolls</td>
-<td>0.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2019-03-06 21:00:00</td>
-<td data-quarto-table-cell-role="th">2019-03-06 21:04:45</td>
-<td data-quarto-table-cell-role="th">passengers</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2019-03-08 21:43:33</td>
-<td data-quarto-table-cell-role="th">2019-03-08 21:45:48</td>
-<td data-quarto-table-cell-role="th">tolls</td>
-<td>0.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2019-03-07 14:27:58</td>
-<td data-quarto-table-cell-role="th">2019-03-07 14:45:49</td>
-<td data-quarto-table-cell-role="th">pickup_borough</td>
-<td>Queens</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2019-03-14 15:11:21</td>
-<td data-quarto-table-cell-role="th">2019-03-14 15:21:02</td>
-<td data-quarto-table-cell-role="th">dropoff_zone</td>
-<td>Upper West Side North</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2019-03-14 16:49:58</td>
-<td data-quarto-table-cell-role="th">2019-03-14 17:07:29</td>
-<td data-quarto-table-cell-role="th">fare</td>
-<td>14.5</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2019-03-13 16:16:05</td>
-<td data-quarto-table-cell-role="th">2019-03-13 16:28:11</td>
-<td data-quarto-table-cell-role="th">dropoff_borough</td>
-<td>Manhattan</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2019-03-10 16:13:48</td>
-<td data-quarto-table-cell-role="th">2019-03-10 16:17:53</td>
-<td data-quarto-table-cell-role="th">total</td>
-<td>7.8</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>val</th>
+    </tr>
+    <tr>
+      <th>pickup</th>
+      <th>dropoff</th>
+      <th>field</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2019-03-23 13:13:20</th>
+      <th>2019-03-23 13:15:13</th>
+      <th>dropoff_zone</th>
+      <td>Hudson Sq</td>
+    </tr>
+    <tr>
+      <th>2019-03-21 01:30:10</th>
+      <th>2019-03-21 01:50:15</th>
+      <th>tolls</th>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2019-03-04 14:13:31</th>
+      <th>2019-03-04 14:24:15</th>
+      <th>tolls</th>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2019-03-06 21:00:00</th>
+      <th>2019-03-06 21:04:45</th>
+      <th>passengers</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2019-03-08 21:43:33</th>
+      <th>2019-03-08 21:45:48</th>
+      <th>tolls</th>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2019-03-07 14:27:58</th>
+      <th>2019-03-07 14:45:49</th>
+      <th>pickup_borough</th>
+      <td>Queens</td>
+    </tr>
+    <tr>
+      <th>2019-03-14 15:11:21</th>
+      <th>2019-03-14 15:21:02</th>
+      <th>dropoff_zone</th>
+      <td>Upper West Side North</td>
+    </tr>
+    <tr>
+      <th>2019-03-14 16:49:58</th>
+      <th>2019-03-14 17:07:29</th>
+      <th>fare</th>
+      <td>14.5</td>
+    </tr>
+    <tr>
+      <th>2019-03-13 16:16:05</th>
+      <th>2019-03-13 16:28:11</th>
+      <th>dropoff_borough</th>
+      <td>Manhattan</td>
+    </tr>
+    <tr>
+      <th>2019-03-10 16:13:48</th>
+      <th>2019-03-10 16:17:53</th>
+      <th>total</th>
+      <td>7.8</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-36" class="cell" data-tags="[]" data-execution_count="197">
+<div class="cell" data-tags="[]" data-execution_count="197">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>taxis1.loc[<span class="st">'2019-02-28 23:29:03'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="197">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">val</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">dropoff</th>
-<th data-quarto-table-cell-role="th">field</th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td rowspan="12" data-quarto-table-cell-role="th" data-valign="top">2019-02-28 23:32:35</td>
-<td data-quarto-table-cell-role="th">passengers</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">distance</td>
-<td>0.9</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">fare</td>
-<td>5.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">tip</td>
-<td>0.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">tolls</td>
-<td>0.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">total</td>
-<td>6.3</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">color</td>
-<td>green</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">payment</td>
-<td>cash</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">pickup_zone</td>
-<td>Old Astoria</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">dropoff_zone</td>
-<td>Long Island City/Queens Plaza</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">pickup_borough</td>
-<td>Queens</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">dropoff_borough</td>
-<td>Queens</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>val</th>
+    </tr>
+    <tr>
+      <th>dropoff</th>
+      <th>field</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="12" valign="top">2019-02-28 23:32:35</th>
+      <th>passengers</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>distance</th>
+      <td>0.9</td>
+    </tr>
+    <tr>
+      <th>fare</th>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>tip</th>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>tolls</th>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>total</th>
+      <td>6.3</td>
+    </tr>
+    <tr>
+      <th>color</th>
+      <td>green</td>
+    </tr>
+    <tr>
+      <th>payment</th>
+      <td>cash</td>
+    </tr>
+    <tr>
+      <th>pickup_zone</th>
+      <td>Old Astoria</td>
+    </tr>
+    <tr>
+      <th>dropoff_zone</th>
+      <td>Long Island City/Queens Plaza</td>
+    </tr>
+    <tr>
+      <th>pickup_borough</th>
+      <td>Queens</td>
+    </tr>
+    <tr>
+      <th>dropoff_borough</th>
+      <td>Queens</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
@@ -1846,288 +1821,273 @@ Name: sepal_length, Length: 150, dtype: float64</code></pre>
 <p>Concatenate pandas objects along an axis.</p>
 <p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html">Details</a></p>
 <p>Create two dfs and vertically stack them</p>
-<div id="cell-38" class="cell" data-execution_count="16">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> pd.DataFrame(np.random.randn(<span class="dv">3</span>, <span class="dv">4</span>))</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame(np.random.randn(<span class="dv">3</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-39" class="cell" data-execution_count="17">
+<div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">0</th>
-<th data-quarto-table-cell-role="th">1</th>
-<th data-quarto-table-cell-role="th">2</th>
-<th data-quarto-table-cell-role="th">3</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>-0.334874</td>
-<td>-1.179623</td>
-<td>-0.369825</td>
-<td>0.748533</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>-0.376463</td>
-<td>-1.813195</td>
-<td>-0.342195</td>
-<td>-0.732275</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>0.184883</td>
-<td>-0.745494</td>
-<td>0.503854</td>
-<td>0.497544</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.334874</td>
+      <td>-1.179623</td>
+      <td>-0.369825</td>
+      <td>0.748533</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.376463</td>
+      <td>-1.813195</td>
+      <td>-0.342195</td>
+      <td>-0.732275</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.184883</td>
+      <td>-0.745494</td>
+      <td>0.503854</td>
+      <td>0.497544</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-40" class="cell" data-execution_count="18">
+<div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">0</th>
-<th data-quarto-table-cell-role="th">1</th>
-<th data-quarto-table-cell-role="th">2</th>
-<th data-quarto-table-cell-role="th">3</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>1.411402</td>
-<td>-0.543350</td>
-<td>-0.020294</td>
-<td>0.789886</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>0.786837</td>
-<td>0.960382</td>
-<td>-1.093336</td>
-<td>0.551457</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>0.582368</td>
-<td>1.606100</td>
-<td>1.715443</td>
-<td>-0.481616</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.411402</td>
+      <td>-0.543350</td>
+      <td>-0.020294</td>
+      <td>0.789886</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.786837</td>
+      <td>0.960382</td>
+      <td>-1.093336</td>
+      <td>0.551457</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.582368</td>
+      <td>1.606100</td>
+      <td>1.715443</td>
+      <td>-0.481616</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
 <p><strong>Concat rows</strong></p>
-<div id="cell-42" class="cell" data-execution_count="19">
+<div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="op">=</span> pd.concat([df1, df2], axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-43" class="cell" data-execution_count="20">
+<div class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">0</th>
-<th data-quarto-table-cell-role="th">1</th>
-<th data-quarto-table-cell-role="th">2</th>
-<th data-quarto-table-cell-role="th">3</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>-0.334874</td>
-<td>-1.179623</td>
-<td>-0.369825</td>
-<td>0.748533</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>-0.376463</td>
-<td>-1.813195</td>
-<td>-0.342195</td>
-<td>-0.732275</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>0.184883</td>
-<td>-0.745494</td>
-<td>0.503854</td>
-<td>0.497544</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">0</td>
-<td>1.411402</td>
-<td>-0.543350</td>
-<td>-0.020294</td>
-<td>0.789886</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">1</td>
-<td>0.786837</td>
-<td>0.960382</td>
-<td>-1.093336</td>
-<td>0.551457</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2</td>
-<td>0.582368</td>
-<td>1.606100</td>
-<td>1.715443</td>
-<td>-0.481616</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.334874</td>
+      <td>-1.179623</td>
+      <td>-0.369825</td>
+      <td>0.748533</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.376463</td>
+      <td>-1.813195</td>
+      <td>-0.342195</td>
+      <td>-0.732275</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.184883</td>
+      <td>-0.745494</td>
+      <td>0.503854</td>
+      <td>0.497544</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1.411402</td>
+      <td>-0.543350</td>
+      <td>-0.020294</td>
+      <td>0.789886</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.786837</td>
+      <td>0.960382</td>
+      <td>-1.093336</td>
+      <td>0.551457</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.582368</td>
+      <td>1.606100</td>
+      <td>1.715443</td>
+      <td>-0.481616</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
 <p><strong>Concat columns</strong></p>
 <p>This assumes that the indexes represent IDs of specific things or events.</p>
-<div id="cell-45" class="cell" data-execution_count="21">
+<div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df4 <span class="op">=</span> pd.concat([df1, df2], axis<span class="op">=</span><span class="dv">1</span>, keys<span class="op">=</span>[<span class="st">'foo'</span>, <span class="st">'bar'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-46" class="cell" data-execution_count="22">
+<div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th colspan="4" data-quarto-table-cell-role="th" data-halign="left">foo</th>
-<th colspan="4" data-quarto-table-cell-role="th" data-halign="left">bar</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">0</th>
-<th data-quarto-table-cell-role="th">1</th>
-<th data-quarto-table-cell-role="th">2</th>
-<th data-quarto-table-cell-role="th">3</th>
-<th data-quarto-table-cell-role="th">0</th>
-<th data-quarto-table-cell-role="th">1</th>
-<th data-quarto-table-cell-role="th">2</th>
-<th data-quarto-table-cell-role="th">3</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>-0.334874</td>
-<td>-1.179623</td>
-<td>-0.369825</td>
-<td>0.748533</td>
-<td>1.411402</td>
-<td>-0.543350</td>
-<td>-0.020294</td>
-<td>0.789886</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>-0.376463</td>
-<td>-1.813195</td>
-<td>-0.342195</td>
-<td>-0.732275</td>
-<td>0.786837</td>
-<td>0.960382</td>
-<td>-1.093336</td>
-<td>0.551457</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>0.184883</td>
-<td>-0.745494</td>
-<td>0.503854</td>
-<td>0.497544</td>
-<td>0.582368</td>
-<td>1.606100</td>
-<td>1.715443</td>
-<td>-0.481616</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="4" halign="left">foo</th>
+      <th colspan="4" halign="left">bar</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.334874</td>
+      <td>-1.179623</td>
+      <td>-0.369825</td>
+      <td>0.748533</td>
+      <td>1.411402</td>
+      <td>-0.543350</td>
+      <td>-0.020294</td>
+      <td>0.789886</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.376463</td>
+      <td>-1.813195</td>
+      <td>-0.342195</td>
+      <td>-0.732275</td>
+      <td>0.786837</td>
+      <td>0.960382</td>
+      <td>-1.093336</td>
+      <td>0.551457</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.184883</td>
+      <td>-0.745494</td>
+      <td>0.503854</td>
+      <td>0.497544</td>
+      <td>0.582368</td>
+      <td>1.606100</td>
+      <td>1.715443</td>
+      <td>-0.481616</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-47" class="cell" data-execution_count="23">
+<div class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df4.foo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">0</th>
-<th data-quarto-table-cell-role="th">1</th>
-<th data-quarto-table-cell-role="th">2</th>
-<th data-quarto-table-cell-role="th">3</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>-0.334874</td>
-<td>-1.179623</td>
-<td>-0.369825</td>
-<td>0.748533</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>-0.376463</td>
-<td>-1.813195</td>
-<td>-0.342195</td>
-<td>-0.732275</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>0.184883</td>
-<td>-0.745494</td>
-<td>0.503854</td>
-<td>0.497544</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.334874</td>
+      <td>-1.179623</td>
+      <td>-0.369825</td>
+      <td>0.748533</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.376463</td>
+      <td>-1.813195</td>
+      <td>-0.342195</td>
+      <td>-0.732275</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.184883</td>
+      <td>-0.745494</td>
+      <td>0.503854</td>
+      <td>0.497544</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
@@ -2144,242 +2104,224 @@ Name: sepal_length, Length: 150, dtype: float64</code></pre>
 <p>Create two tables, <code>left</code> and <code>right</code>. Then right join them on <code>key</code>.<br>
 Right join means include all records from table on right.<br>
 The <code>key</code> is used for matching up the records.</p>
-<div id="cell-49" class="cell" data-execution_count="254">
+<div class="cell" data-execution_count="254">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>left <span class="op">=</span> pd.DataFrame({<span class="st">"key"</span>: [<span class="st">"jamie"</span>, <span class="st">"bill"</span>], <span class="st">"lval"</span>: [<span class="dv">15</span>, <span class="dv">22</span>]})</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>right <span class="op">=</span> pd.DataFrame({<span class="st">"key"</span>: [<span class="st">"jamie"</span>, <span class="st">"bill"</span>, <span class="st">"asher"</span>], <span class="st">"rval"</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">8</span>]})</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.merge(left, right, on<span class="op">=</span><span class="st">"key"</span>, how<span class="op">=</span><span class="st">"right"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-50" class="cell" data-execution_count="255">
+<div class="cell" data-execution_count="255">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>left</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="255">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">key</th>
-<th data-quarto-table-cell-role="th">lval</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>jamie</td>
-<td>15</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>bill</td>
-<td>22</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>key</th>
+      <th>lval</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>jamie</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bill</td>
+      <td>22</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-51" class="cell" data-execution_count="256">
+<div class="cell" data-execution_count="256">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>right</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="256">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">key</th>
-<th data-quarto-table-cell-role="th">rval</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>jamie</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>bill</td>
-<td>5</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>asher</td>
-<td>8</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>key</th>
+      <th>rval</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>jamie</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bill</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>asher</td>
+      <td>8</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-52" class="cell" data-execution_count="257">
+<div class="cell" data-execution_count="257">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>merged</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="257">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">key</th>
-<th data-quarto-table-cell-role="th">lval</th>
-<th data-quarto-table-cell-role="th">rval</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>jamie</td>
-<td>15.0</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>bill</td>
-<td>22.0</td>
-<td>5</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>asher</td>
-<td>NaN</td>
-<td>8</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>key</th>
+      <th>lval</th>
+      <th>rval</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>jamie</td>
+      <td>15.0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bill</td>
+      <td>22.0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>asher</td>
+      <td>NaN</td>
+      <td>8</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
 <p>Notice the <code>NaN</code> inserted into the record with <code>key='asher'</code>, since the left table didn’t contain the key.</p>
 <p><strong>Matching column names</strong><br>
 In this next example, the value columns have the same name: <em>val</em>. Notice what happens to the column names.</p>
-<div id="cell-55" class="cell" data-execution_count="320">
+<div class="cell" data-execution_count="320">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>left <span class="op">=</span> pd.DataFrame({<span class="st">"key"</span>: [<span class="st">"jamie"</span>, <span class="st">"bill"</span>], <span class="st">"val"</span>: [<span class="dv">15</span>, <span class="dv">22</span>]})</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>right <span class="op">=</span> pd.DataFrame({<span class="st">"key"</span>: [<span class="st">"jamie"</span>, <span class="st">"bill"</span>, <span class="st">"asher"</span>], <span class="st">"val"</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">8</span>]})</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>merged <span class="op">=</span> pd.merge(left, right, on<span class="op">=</span><span class="st">"key"</span>, how<span class="op">=</span><span class="st">"right"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-56" class="cell" data-execution_count="321">
+<div class="cell" data-execution_count="321">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>left</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="321">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">key</th>
-<th data-quarto-table-cell-role="th">val</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>jamie</td>
-<td>15</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>bill</td>
-<td>22</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>key</th>
+      <th>val</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>jamie</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bill</td>
+      <td>22</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-57" class="cell" data-execution_count="322">
+<div class="cell" data-execution_count="322">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>right</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="322">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">key</th>
-<th data-quarto-table-cell-role="th">val</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>jamie</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>bill</td>
-<td>5</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>asher</td>
-<td>8</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>key</th>
+      <th>val</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>jamie</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bill</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>asher</td>
+      <td>8</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-58" class="cell" data-execution_count="323">
+<div class="cell" data-execution_count="323">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>merged</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="323">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">key</th>
-<th data-quarto-table-cell-role="th">val_x</th>
-<th data-quarto-table-cell-role="th">val_y</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>jamie</td>
-<td>15.0</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>bill</td>
-<td>22.0</td>
-<td>5</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>asher</td>
-<td>NaN</td>
-<td>8</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>key</th>
+      <th>val_x</th>
+      <th>val_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>jamie</td>
+      <td>15.0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bill</td>
+      <td>22.0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>asher</td>
+      <td>NaN</td>
+      <td>8</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
@@ -2389,160 +2331,148 @@ In this next example, the value columns have the same name: <em>val</em>. Notice
 <p>An SQL-like joiner, but this one takes advantage of indexes.</p>
 <p>Give our dataframes indexes and distinctive columns names.</p>
 <p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.join.html">Details</a></p>
-<div id="cell-60" class="cell" data-execution_count="330">
+<div class="cell" data-execution_count="330">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>left2 <span class="op">=</span> left.set_index(<span class="st">'key'</span>).copy()</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>right2 <span class="op">=</span> right.set_index(<span class="st">'key'</span>).copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-61" class="cell" data-execution_count="331">
+<div class="cell" data-execution_count="331">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>left2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="331">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">val</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">key</th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">jamie</td>
-<td>15</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">bill</td>
-<td>22</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>val</th>
+    </tr>
+    <tr>
+      <th>key</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>jamie</th>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>bill</th>
+      <td>22</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-62" class="cell" data-execution_count="332">
+<div class="cell" data-execution_count="332">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>right2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="332">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">val</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">key</th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">jamie</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">bill</td>
-<td>5</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">asher</td>
-<td>8</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>val</th>
+    </tr>
+    <tr>
+      <th>key</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>jamie</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>bill</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>asher</th>
+      <td>8</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-63" class="cell" data-execution_count="337">
+<div class="cell" data-execution_count="337">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>right2.join(left2, rsuffix<span class="op">=</span><span class="st">'_y'</span>) <span class="co"># Defaults to 'left'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="337">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">val</th>
-<th data-quarto-table-cell-role="th">val_y</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">key</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">jamie</td>
-<td>4</td>
-<td>15.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">bill</td>
-<td>5</td>
-<td>22.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">asher</td>
-<td>8</td>
-<td>NaN</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>val</th>
+      <th>val_y</th>
+    </tr>
+    <tr>
+      <th>key</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>jamie</th>
+      <td>4</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>bill</th>
+      <td>5</td>
+      <td>22.0</td>
+    </tr>
+    <tr>
+      <th>asher</th>
+      <td>8</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-64" class="cell" data-execution_count="338">
+<div class="cell" data-execution_count="338">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>right2.join(left2, rsuffix<span class="op">=</span><span class="st">'_y'</span>, how<span class="op">=</span><span class="st">'inner'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="338">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">val</th>
-<th data-quarto-table-cell-role="th">val_y</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">key</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">jamie</td>
-<td>4</td>
-<td>15</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">bill</td>
-<td>5</td>
-<td>22</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>val</th>
+      <th>val_y</th>
+    </tr>
+    <tr>
+      <th>key</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>jamie</th>
+      <td>4</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>bill</th>
+      <td>5</td>
+      <td>22</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
@@ -2562,36 +2492,36 @@ In this next example, the value columns have the same name: <em>val</em>. Notice
 <p>Changes the object’s shape</p>
 <p>We illustrate creating pandas Series, extracting array of length 6, and reshaping to 3x2 array.</p>
 <p>Create a series:</p>
-<div id="cell-68" class="cell" data-execution_count="280">
+<div class="cell" data-execution_count="280">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>ser <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">8</span>]) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Extract values:</p>
-<div id="cell-70" class="cell" data-execution_count="281">
+<div class="cell" data-execution_count="281">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>vals <span class="op">=</span> ser.values </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-71" class="cell" data-execution_count="283">
+<div class="cell" data-execution_count="283">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>vals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="283">
 <pre><code>array([1, 1, 2, 3, 5, 8])</code></pre>
 </div>
 </div>
-<div id="cell-72" class="cell" data-execution_count="284">
+<div class="cell" data-execution_count="284">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(vals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="284">
 <pre><code>numpy.ndarray</code></pre>
 </div>
 </div>
-<div id="cell-73" class="cell" data-execution_count="285">
+<div class="cell" data-execution_count="285">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>vals.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="285">
 <pre><code>(6,)</code></pre>
 </div>
 </div>
 <p>Reshaping a series:</p>
-<div id="cell-75" class="cell" data-execution_count="287">
+<div class="cell" data-execution_count="287">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>reshaped_vals <span class="op">=</span> vals.reshape((<span class="dv">3</span>, <span class="dv">2</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-76" class="cell" data-execution_count="288">
+<div class="cell" data-execution_count="288">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>reshaped_vals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="288">
 <pre><code>array([[1, 1],
@@ -2599,13 +2529,13 @@ In this next example, the value columns have the same name: <em>val</em>. Notice
        [5, 8]])</code></pre>
 </div>
 </div>
-<div id="cell-77" class="cell" data-execution_count="289">
+<div class="cell" data-execution_count="289">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(reshaped_vals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="289">
 <pre><code>numpy.ndarray</code></pre>
 </div>
 </div>
-<div id="cell-78" class="cell" data-execution_count="290">
+<div class="cell" data-execution_count="290">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>reshaped_vals.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="290">
 <pre><code>(3, 2)</code></pre>
@@ -2613,7 +2543,7 @@ In this next example, the value columns have the same name: <em>val</em>. Notice
 </div>
 <p>Including -1 as one of the dimensions tells numpy: <strong>infer</strong> this dimension from the data and the other dimensions.</p>
 <p>Example: enforce 3 columns:</p>
-<div id="cell-80" class="cell" data-execution_count="293">
+<div class="cell" data-execution_count="293">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>vals.reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="293">
 <pre><code>array([[1, 1, 2],
@@ -2621,7 +2551,7 @@ In this next example, the value columns have the same name: <em>val</em>. Notice
 </div>
 </div>
 <p>Enforce 3 rows:</p>
-<div id="cell-82" class="cell" data-execution_count="294">
+<div class="cell" data-execution_count="294">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>vals.reshape(<span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="294">
 <pre><code>array([[1, 1],
@@ -2646,483 +2576,467 @@ In this next example, the value columns have the same name: <em>val</em>. Notice
 <li><code>drop_first</code>: remove first level, as only <code>k-1</code> variables needed to represent <code>k</code> levels</li>
 </ul>
 <p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.html">Details</a></p>
-<div id="cell-86" class="cell" data-execution_count="306">
+<div class="cell" data-execution_count="306">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>cats <span class="op">=</span> pd.DataFrame({<span class="st">'breed'</span>:[<span class="st">'persian'</span>, <span class="st">'persian'</span>, <span class="st">'siamese'</span>, <span class="st">'himalayan'</span>, <span class="st">'burmese'</span>]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-87" class="cell" data-execution_count="297">
+<div class="cell" data-execution_count="297">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>cats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="297">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">breed</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>persian</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>persian</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>siamese</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>himalayan</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>burmese</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>breed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>persian</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>persian</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>siamese</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>himalayan</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>burmese</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-88" class="cell" data-tags="[]" data-execution_count="302">
+<div class="cell" data-tags="[]" data-execution_count="302">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>dummy_cats <span class="op">=</span> pd.get_dummies(cats.breed, prefix<span class="op">=</span><span class="st">'breed'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-89" class="cell" data-tags="[]" data-execution_count="303">
+<div class="cell" data-tags="[]" data-execution_count="303">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>dummy_cats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="303">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">breed_burmese</th>
-<th data-quarto-table-cell-role="th">breed_himalayan</th>
-<th data-quarto-table-cell-role="th">breed_persian</th>
-<th data-quarto-table-cell-role="th">breed_siamese</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>breed_burmese</th>
+      <th>breed_himalayan</th>
+      <th>breed_persian</th>
+      <th>breed_siamese</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-90" class="cell" data-execution_count="305">
+<div class="cell" data-execution_count="305">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>pd.get_dummies(cats.breed, drop_first<span class="op">=</span><span class="va">True</span>, prefix<span class="op">=</span><span class="st">'breed'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="305">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">breed_himalayan</th>
-<th data-quarto-table-cell-role="th">breed_persian</th>
-<th data-quarto-table-cell-role="th">breed_siamese</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>breed_himalayan</th>
+      <th>breed_persian</th>
+      <th>breed_siamese</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
 <p>Notice <code>burmese</code> was dropped (first level by alphabet) since it can be inferred.</p>
 <p>Let’s try it on the <code>iris</code> dataset.</p>
-<div id="cell-93" class="cell" data-tags="[]" data-execution_count="316">
+<div class="cell" data-tags="[]" data-execution_count="316">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>iris</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="316">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">sepal_length</th>
-<th data-quarto-table-cell-role="th">sepal_width</th>
-<th data-quarto-table-cell-role="th">petal_length</th>
-<th data-quarto-table-cell-role="th">petal_width</th>
-<th data-quarto-table-cell-role="th">species</th>
-<th data-quarto-table-cell-role="th">sepal_len_sq</th>
-<th data-quarto-table-cell-role="th">sepal_len_wid_avg</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>5.1</td>
-<td>3.5</td>
-<td>1.4</td>
-<td>0.2</td>
-<td>setosa</td>
-<td>26.01</td>
-<td>4.30</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>4.9</td>
-<td>3.0</td>
-<td>1.4</td>
-<td>0.2</td>
-<td>setosa</td>
-<td>24.01</td>
-<td>3.95</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>4.7</td>
-<td>3.2</td>
-<td>1.3</td>
-<td>0.2</td>
-<td>setosa</td>
-<td>22.09</td>
-<td>3.95</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>4.6</td>
-<td>3.1</td>
-<td>1.5</td>
-<td>0.2</td>
-<td>setosa</td>
-<td>21.16</td>
-<td>3.85</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>5.0</td>
-<td>3.6</td>
-<td>1.4</td>
-<td>0.2</td>
-<td>setosa</td>
-<td>25.00</td>
-<td>4.30</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">145</td>
-<td>6.7</td>
-<td>3.0</td>
-<td>5.2</td>
-<td>2.3</td>
-<td>virginica</td>
-<td>44.89</td>
-<td>4.85</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">146</td>
-<td>6.3</td>
-<td>2.5</td>
-<td>5.0</td>
-<td>1.9</td>
-<td>virginica</td>
-<td>39.69</td>
-<td>4.40</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">147</td>
-<td>6.5</td>
-<td>3.0</td>
-<td>5.2</td>
-<td>2.0</td>
-<td>virginica</td>
-<td>42.25</td>
-<td>4.75</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">148</td>
-<td>6.2</td>
-<td>3.4</td>
-<td>5.4</td>
-<td>2.3</td>
-<td>virginica</td>
-<td>38.44</td>
-<td>4.80</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">149</td>
-<td>5.9</td>
-<td>3.0</td>
-<td>5.1</td>
-<td>1.8</td>
-<td>virginica</td>
-<td>34.81</td>
-<td>4.45</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>species</th>
+      <th>sepal_len_sq</th>
+      <th>sepal_len_wid_avg</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>26.01</td>
+      <td>4.30</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>24.01</td>
+      <td>3.95</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>22.09</td>
+      <td>3.95</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>21.16</td>
+      <td>3.85</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+      <td>25.00</td>
+      <td>4.30</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>6.7</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.3</td>
+      <td>virginica</td>
+      <td>44.89</td>
+      <td>4.85</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>6.3</td>
+      <td>2.5</td>
+      <td>5.0</td>
+      <td>1.9</td>
+      <td>virginica</td>
+      <td>39.69</td>
+      <td>4.40</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>6.5</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.0</td>
+      <td>virginica</td>
+      <td>42.25</td>
+      <td>4.75</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>6.2</td>
+      <td>3.4</td>
+      <td>5.4</td>
+      <td>2.3</td>
+      <td>virginica</td>
+      <td>38.44</td>
+      <td>4.80</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>5.9</td>
+      <td>3.0</td>
+      <td>5.1</td>
+      <td>1.8</td>
+      <td>virginica</td>
+      <td>34.81</td>
+      <td>4.45</td>
+    </tr>
+  </tbody>
 </table>
-
 <p>150 rows × 7 columns</p>
-</div>
 </div>
 </div>
 </div>
 <p>Called <code>get_dummies()</code> by itself will handle all categoricals for you.</p>
 <p>Look at what happened to the <code>species</code> column.</p>
-<div id="cell-95" class="cell" data-tags="[]" data-execution_count="318">
+<div class="cell" data-tags="[]" data-execution_count="318">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>pd.get_dummies(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="318">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">sepal_length</th>
-<th data-quarto-table-cell-role="th">sepal_width</th>
-<th data-quarto-table-cell-role="th">petal_length</th>
-<th data-quarto-table-cell-role="th">petal_width</th>
-<th data-quarto-table-cell-role="th">sepal_len_sq</th>
-<th data-quarto-table-cell-role="th">sepal_len_wid_avg</th>
-<th data-quarto-table-cell-role="th">species_setosa</th>
-<th data-quarto-table-cell-role="th">species_versicolor</th>
-<th data-quarto-table-cell-role="th">species_virginica</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>5.1</td>
-<td>3.5</td>
-<td>1.4</td>
-<td>0.2</td>
-<td>26.01</td>
-<td>4.30</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>4.9</td>
-<td>3.0</td>
-<td>1.4</td>
-<td>0.2</td>
-<td>24.01</td>
-<td>3.95</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>4.7</td>
-<td>3.2</td>
-<td>1.3</td>
-<td>0.2</td>
-<td>22.09</td>
-<td>3.95</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>4.6</td>
-<td>3.1</td>
-<td>1.5</td>
-<td>0.2</td>
-<td>21.16</td>
-<td>3.85</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>5.0</td>
-<td>3.6</td>
-<td>1.4</td>
-<td>0.2</td>
-<td>25.00</td>
-<td>4.30</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">145</td>
-<td>6.7</td>
-<td>3.0</td>
-<td>5.2</td>
-<td>2.3</td>
-<td>44.89</td>
-<td>4.85</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">146</td>
-<td>6.3</td>
-<td>2.5</td>
-<td>5.0</td>
-<td>1.9</td>
-<td>39.69</td>
-<td>4.40</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">147</td>
-<td>6.5</td>
-<td>3.0</td>
-<td>5.2</td>
-<td>2.0</td>
-<td>42.25</td>
-<td>4.75</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">148</td>
-<td>6.2</td>
-<td>3.4</td>
-<td>5.4</td>
-<td>2.3</td>
-<td>38.44</td>
-<td>4.80</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">149</td>
-<td>5.9</td>
-<td>3.0</td>
-<td>5.1</td>
-<td>1.8</td>
-<td>34.81</td>
-<td>4.45</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>sepal_len_sq</th>
+      <th>sepal_len_wid_avg</th>
+      <th>species_setosa</th>
+      <th>species_versicolor</th>
+      <th>species_virginica</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>26.01</td>
+      <td>4.30</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>24.01</td>
+      <td>3.95</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>22.09</td>
+      <td>3.95</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>21.16</td>
+      <td>3.85</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>25.00</td>
+      <td>4.30</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>6.7</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.3</td>
+      <td>44.89</td>
+      <td>4.85</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>6.3</td>
+      <td>2.5</td>
+      <td>5.0</td>
+      <td>1.9</td>
+      <td>39.69</td>
+      <td>4.40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>6.5</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.0</td>
+      <td>42.25</td>
+      <td>4.75</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>6.2</td>
+      <td>3.4</td>
+      <td>5.4</td>
+      <td>2.3</td>
+      <td>38.44</td>
+      <td>4.80</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>5.9</td>
+      <td>3.0</td>
+      <td>5.1</td>
+      <td>1.8</td>
+      <td>34.81</td>
+      <td>4.45</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
 </table>
-
 <p>150 rows × 9 columns</p>
 </div>
 </div>
 </div>
-</div>
 <p>You can call it one numeric columns, too.</p>
-<div id="cell-97" class="cell" data-tags="[]" data-execution_count="341">
+<div class="cell" data-tags="[]" data-execution_count="341">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>pd.get_dummies(iris.sepal_length).<span class="bu">sum</span>().plot.bar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="M06-02-Pandas2_files/figure-html/cell-61-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell-output cell-output-display" data-execution_count="341">
+<pre><code>&lt;Axes: &gt;</code></pre>
 </div>
+<div class="cell-output cell-output-display">
+<p><img src="M06-02-Pandas2_files/figure-html/cell-61-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 
@@ -3158,23 +3072,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -3210,34 +3110,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
-          }
-          // default icon
-          link.classList.add("external");
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -3247,17 +3123,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -3269,245 +3136,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -3545,16 +3176,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
 });
 </script>
+
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../notebooks/M06_Pandas/M06-01-Pandas1.html" class="pagination-link" aria-label="NB: Introducting Pandas">
+      <a href="../../notebooks/M06_Pandas/M06-01-Pandas1.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">NB: Introducting Pandas</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../notebooks/M06_Pandas/M06-03-NarrowWide.html" class="pagination-link" aria-label="NB: Narrow vs Wide Tables">
+      <a href="../../notebooks/M06_Pandas/M06-03-NarrowWide.html" class="pagination-link">
         <span class="nav-page-text"><span class="chapter-title">NB: Narrow vs Wide Tables</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -3563,5 +3211,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/ontoligent/DS5100-2024-06-R/blob/main/notebooks/M06_Pandas/M06-02-Pandas2.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+</body></html>

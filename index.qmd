@@ -1,11 +1,5 @@
 # Welcome
 
-**Welcome to website for DS 5100 Programming for Data Science.**
+**Welcome to the companion text for DS 5100 Programming for Data Science.**
 
-In this course, you will develop skills in Python and R Programming, as well as how to use the command line and GitHub. 
-
-The objective of this course is to introduce essential programming concepts, structures, and techniques. 
-
-You will gain confidence in not only reading code, but learning what it means to write good quality code. 
-
-Additionally, essential and complementary topics are taught, such as testing and debugging, exception handling, and an introduction to visualization.
+This text is designed to provide all the content necessary to take DS 5100 at UVA's [School of Data Science](https://datascience.virginia.edu/). The course provides an introduction to programming from a data science perspective. It focuses on the development of basic skills in Python and R Programming, as well the command line and GitHub. It is currently one of two foundational courses taught, along with a course in linear models.

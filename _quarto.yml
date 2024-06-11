@@ -13,7 +13,7 @@ book:
   reader-mode: false
   page-navigation: true
   repo-actions: [edit]
-  repo-url: "https://github.com/ontoligent/DS5100-2024-06-R"
+  repo-url: "https://github.com/ontoligent/DS5100-book" # Variable does not work here
   chapters:
     - part: index.qmd # 00 Welcome 
       chapters: 

@@ -32,16 +32,17 @@
 - The value `ed25519` is the key type and must not be changed.
 - Be sure to use the email address associated with your GitHub account in the above command.
 
-4. At the prompt, type in a secure passphrase.
+4. When prompted to choose a file to save the key, press enter and a default file will be created.
+
+5. At the prompt, type in a secure passphrase.
 
 - You don't have to do this, but it is advised.
 - Create a memorable sentence.
 - A good passphrase should have at least 15, preferably 20 characters and be difficult to guess. It should contain upper case letters, lower case letters, digits, and preferably at least one punctuation character.
 
-5. Add the key to `ssh-agent`: 
+6. Enter: `eval "$(ssh-agent -s)"` to start the shell agent.
 
-- Enter: `eval "$(ssh-agent -s)"`
-- Enter: `ssh-add ~/.ssh/id_ed25519`
+7. Enter: `ssh-add ~/.ssh/id_ed25519` to add the key to your identity.
 
 ::: {.callout-tip}
 If you are on a Mac and the `ssh-add` command gives an error saying that the file is not found or that you do not have permission, try running the following command then re-running `ssh-add`:

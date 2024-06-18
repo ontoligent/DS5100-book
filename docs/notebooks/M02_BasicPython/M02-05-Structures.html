@@ -679,7 +679,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="constructing" class="level2">
 <h2 class="anchored" data-anchor-id="constructing">Constructing</h2>
 <p>They can be <strong>constructed</strong> in several ways:</p>
-<div id="3f062d71-f2b7-4cab-96da-f27f4edd9fad" class="cell" data-execution_count="3">
+<div id="3f062d71-f2b7-4cab-96da-f27f4edd9fad" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>list1 <span class="op">=</span> []</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>list2 <span class="op">=</span> <span class="bu">list</span>()</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>list3 <span class="op">=</span> <span class="st">"some string"</span>.split()</span>
@@ -695,25 +695,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>For any iterable object of length <em>N</em>:<br>
 <code>mylist[:n]</code> will return the first <em>n</em> elements from index <em>0</em> to <em>n-1</em><br>
 <code>mylist[-n:]</code> will return the last <em>n</em> elements from index <em>N-n</em> to <em>N-1</em></p>
-<div id="9634cd89-fcdd-4e13-b953-17ec6d7e8feb" class="cell" data-execution_count="4">
+<div id="9634cd89-fcdd-4e13-b953-17ec6d7e8feb" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>numbers[<span class="dv">0</span>] <span class="co"># Access first element (output: 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>1</code></pre>
 </div>
 </div>
-<div id="fa3daeae-4663-4adb-9a1e-7e04afceac94" class="cell" data-execution_count="7">
+<div id="fa3daeae-4663-4adb-9a1e-7e04afceac94" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>numbers[<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>4</code></pre>
 </div>
 </div>
-<div id="721d2f80-c371-4a75-85ca-410b986c0f75" class="cell" data-execution_count="5">
+<div id="721d2f80-c371-4a75-85ca-410b986c0f75" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>numbers[<span class="dv">0</span>] <span class="op">+</span> numbers[<span class="dv">3</span>] <span class="co"># doing arithmetic with the values (output: 5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>5</code></pre>
 </div>
 </div>
-<div id="113521f2-8e9d-4b5f-ae5c-a170b6c09ee7" class="cell" data-execution_count="6">
+<div id="113521f2-8e9d-4b5f-ae5c-a170b6c09ee7" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>numbers[<span class="bu">len</span>(numbers)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>IndexError: list index out of range</code></pre>
@@ -722,27 +722,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="slicing" class="level2">
 <h2 class="anchored" data-anchor-id="slicing">Slicing</h2>
-<div id="0eae24c3-6af0-45c7-a2df-7b0297c2e274" class="cell" data-execution_count="8">
+<div id="0eae24c3-6af0-45c7-a2df-7b0297c2e274" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>numbers[<span class="dv">0</span>:<span class="dv">2</span>] <span class="co"># Output: [1, 2]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>[1, 2]</code></pre>
 </div>
 </div>
-<div id="f7b45918-72a5-4100-99cb-1bb35746d4ca" class="cell" data-execution_count="9">
+<div id="f7b45918-72a5-4100-99cb-1bb35746d4ca" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>numbers[<span class="dv">1</span>:<span class="dv">3</span>] <span class="co"># Output: [2, 3]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>[2, 3]</code></pre>
 </div>
 </div>
-<div id="c5b9ac35-862d-4c8b-8466-17165ff26a03" class="cell" data-execution_count="10">
+<div id="c5b9ac35-862d-4c8b-8466-17165ff26a03" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(numbers) <span class="co"># use len() function to find the size. Output: 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>4</code></pre>
 </div>
 </div>
-<div id="0c3a816c-8c1e-44e6-a404-ab3258d45977" class="cell" data-execution_count="11">
+<div id="0c3a816c-8c1e-44e6-a404-ab3258d45977" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>numbers[<span class="dv">2</span>:]  <span class="co"># Output: [3, 4]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>[3, 4]</code></pre>
 </div>
 </div>
@@ -750,53 +750,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="multiply-lists-by-a-scalar" class="level2">
 <h2 class="anchored" data-anchor-id="multiply-lists-by-a-scalar">Multiply lists by a scalar</h2>
 <p>A scalar is a single value number.</p>
-<div id="11796cce-2ca8-4663-9485-f549f57839a9" class="cell">
+<div id="11796cce-2ca8-4663-9485-f549f57839a9" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>[1, 2, 3, 4, 1, 2, 3, 4]</code></pre>
+</div>
 </div>
 </section>
 <section id="concatenate-lists-with" class="level2">
 <h2 class="anchored" data-anchor-id="concatenate-lists-with">Concatenate lists with <code>+</code></h2>
-<div id="8b489944-e470-4290-99c2-e96f61c5e77a" class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>numbers2 <span class="op">=</span> [<span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8b489944-e470-4290-99c2-e96f61c5e77a" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>numbers2 <span class="op">=</span> [<span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="273e0866-6b23-4f3e-af0a-70a0ca0e4184" class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">+</span> numbers2 <span class="co"># concatenate two lists</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="273e0866-6b23-4f3e-af0a-70a0ca0e4184" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">+</span> numbers2 <span class="co"># concatenate two lists</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>[1, 2, 3, 4, 30, 40, 50]</code></pre>
+</div>
 </div>
 </section>
 <section id="lists-can-mix-types" class="level2">
 <h2 class="anchored" data-anchor-id="lists-can-mix-types">Lists can mix types</h2>
-<div id="17b45df0-66aa-489b-adea-968aa5b9bf0b" class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>myList <span class="op">=</span> [<span class="st">'coconuts'</span>, <span class="dv">777</span>, <span class="fl">7.25</span>, <span class="st">'Sir Robin'</span>, <span class="fl">80.0</span>, <span class="va">True</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="17b45df0-66aa-489b-adea-968aa5b9bf0b" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>myList <span class="op">=</span> [<span class="st">'coconuts'</span>, <span class="dv">777</span>, <span class="fl">7.25</span>, <span class="st">'Sir Robin'</span>, <span class="fl">80.0</span>, <span class="va">True</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="2a87c943-0787-46bb-a5b5-b154af5de805" class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>myList</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="2a87c943-0787-46bb-a5b5-b154af5de805" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>myList</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>['coconuts', 777, 7.25, 'Sir Robin', 80.0, True]</code></pre>
+</div>
 </div>
 <p><strong>What happens if we multiply a list with strings?</strong></p>
-<div id="ce38d67c-b371-4101-b1af-3bc47e0c3f7b" class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># myList * 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ce38d67c-b371-4101-b1af-3bc47e0c3f7b" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>myList <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>['coconuts',
+ 777,
+ 7.25,
+ 'Sir Robin',
+ 80.0,
+ True,
+ 'coconuts',
+ 777,
+ 7.25,
+ 'Sir Robin',
+ 80.0,
+ True]</code></pre>
+</div>
 </div>
 </section>
 <section id="lists-can-be-nested" class="level2">
 <h2 class="anchored" data-anchor-id="lists-can-be-nested">Lists can be nested</h2>
-<div id="6b455e9c-00ee-42a0-ae74-57e39a6d4b49" class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">'Darrell'</span>, <span class="st">'Clayton'</span>, [<span class="st">'Billie'</span>, <span class="st">'Arthur'</span>], <span class="st">'Samantha'</span>]</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>names[<span class="dv">2</span>] <span class="co"># returns a *list*</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>names[<span class="dv">0</span>] <span class="co"># returns a *string*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6b455e9c-00ee-42a0-ae74-57e39a6d4b49" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">'Darrell'</span>, <span class="st">'Clayton'</span>, [<span class="st">'Billie'</span>, <span class="st">'Arthur'</span>], <span class="st">'Samantha'</span>]</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>names[<span class="dv">2</span>] <span class="co"># returns a *list*</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>names[<span class="dv">0</span>] <span class="co"># returns a *string*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>'Darrell'</code></pre>
 </div>
-<p>cannot subset into a float, will break</p>
-<div id="5b747898-453c-4fba-8c0f-02b97ef0e963" class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>names[<span class="dv">2</span>][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="5b747898-453c-4fba-8c0f-02b97ef0e963" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>names[<span class="dv">2</span>][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>'Billie'</code></pre>
+</div>
 </div>
 </section>
 <section id="lists-can-concatenated-with" class="level2">
 <h2 class="anchored" data-anchor-id="lists-can-concatenated-with">Lists can concatenated with <code>+</code></h2>
-<div id="6913a76e-2806-4fb7-a23b-37207760e055" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>variables <span class="op">=</span> [<span class="st">'x1'</span>, <span class="st">'x2'</span>, <span class="st">'x3'</span>]</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> [<span class="st">'y'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6913a76e-2806-4fb7-a23b-37207760e055" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>variables <span class="op">=</span> [<span class="st">'x1'</span>, <span class="st">'x2'</span>, <span class="st">'x3'</span>]</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> [<span class="st">'y'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="ff7bf069-26cf-48fc-991d-5ad7ca10fb79" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>variables <span class="op">+</span> response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div id="ff7bf069-26cf-48fc-991d-5ad7ca10fb79" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>variables <span class="op">+</span> response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>['x1', 'x2', 'x3', 'y']</code></pre>
 </div>
 </div>
@@ -812,28 +840,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Keys don’t have to be strings – they can be numbers or tuples or expressions that evaluate to one of these.</p>
 <section id="constructing-1" class="level2">
 <h2 class="anchored" data-anchor-id="constructing-1">Constructing</h2>
-<div id="3c40a687-9635-42e9-9590-6e5b608fe16d" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>dict1 <span class="op">=</span> {</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'a'</span>: <span class="dv">1</span>,</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'b'</span>: <span class="dv">2</span>,</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'c'</span>: <span class="dv">3</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3c40a687-9635-42e9-9590-6e5b608fe16d" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>dict1 <span class="op">=</span> {</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'a'</span>: <span class="dv">1</span>,</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'b'</span>: <span class="dv">2</span>,</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'c'</span>: <span class="dv">3</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="5a41a0f9-3a07-4c48-8702-7e66110abd19" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>dict2 <span class="op">=</span> <span class="bu">dict</span>(x<span class="op">=</span><span class="dv">55</span>, y<span class="op">=</span><span class="dv">29</span>, z<span class="op">=</span><span class="dv">99</span>) <span class="co"># Note the absence of quotes around keys</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5a41a0f9-3a07-4c48-8702-7e66110abd19" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>dict2 <span class="op">=</span> <span class="bu">dict</span>(x<span class="op">=</span><span class="dv">55</span>, y<span class="op">=</span><span class="dv">29</span>, z<span class="op">=</span><span class="dv">99</span>) <span class="co"># Note the absence of quotes around keys</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="928109fa-925a-4dff-a090-476dc5f3cbec" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>dict2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div id="928109fa-925a-4dff-a090-476dc5f3cbec" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>dict2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>{'x': 55, 'y': 29, 'z': 99}</code></pre>
 </div>
 </div>
-<div id="d6bc0b2d-34ab-46c4-9057-40649ead16cb" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>dict3 <span class="op">=</span> {<span class="st">'A'</span>: <span class="st">'foo'</span>, <span class="dv">99</span>: <span class="st">'bar'</span>, (<span class="dv">1</span>,<span class="dv">2</span>): <span class="st">'baz'</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d6bc0b2d-34ab-46c4-9057-40649ead16cb" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>dict3 <span class="op">=</span> {<span class="st">'A'</span>: <span class="st">'foo'</span>, <span class="dv">99</span>: <span class="st">'bar'</span>, (<span class="dv">1</span>,<span class="dv">2</span>): <span class="st">'baz'</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="0489d1f9-be2e-4d39-b30f-f15f00b5e919" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>dict3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div id="0489d1f9-be2e-4d39-b30f-f15f00b5e919" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>dict3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>{'A': 'foo', 99: 'bar', (1, 2): 'baz'}</code></pre>
 </div>
 </div>
@@ -841,28 +869,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="retrieve-a-value" class="level2">
 <h2 class="anchored" data-anchor-id="retrieve-a-value">Retrieve a value</h2>
 <p>Just write a key as the <em>index</em>.</p>
-<div id="39bc8222-fe71-490f-8b53-fa1352221948" class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>phonelist <span class="op">=</span> {<span class="st">'Tom'</span>:<span class="dv">123</span>, <span class="st">'Bob'</span>:<span class="dv">456</span>, <span class="st">'Sam'</span>:<span class="dv">897</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="39bc8222-fe71-490f-8b53-fa1352221948" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>phonelist <span class="op">=</span> {<span class="st">'Tom'</span>:<span class="dv">123</span>, <span class="st">'Bob'</span>:<span class="dv">456</span>, <span class="st">'Sam'</span>:<span class="dv">897</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="12ca56b5-2bb4-4482-9002-3449b6e68f04" class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>phonelist[<span class="st">'Bob'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="12ca56b5-2bb4-4482-9002-3449b6e68f04" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>phonelist[<span class="st">'Bob'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>456</code></pre>
+</div>
 </div>
 </section>
 <section id="print-list-of-keys-values-or-both" class="level2">
 <h2 class="anchored" data-anchor-id="print-list-of-keys-values-or-both">Print list of keys, values, or both</h2>
 <p>Use the <code>.keys()</code>, <code>.values()', or</code>.items()` methods.</p>
 <p>Keys are not sorted. For example, they are not ordered in order in which they were added.</p>
-<div id="47ed6e92-2c4c-4f3c-8435-7e27a191ccab" class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>phonelist.keys() <span class="co"># Returns a list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="47ed6e92-2c4c-4f3c-8435-7e27a191ccab" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>phonelist.keys() <span class="co"># Returns a list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>dict_keys(['Tom', 'Bob', 'Sam'])</code></pre>
 </div>
-<div id="ae19e277-e929-46ad-ab27-2715a05243a7" class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>phonelist.values() <span class="co"># Returns a list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="292b5fee-68db-42b6-af5e-7c4ef14c384a" class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>phonelist.items() <span class="co"># Returns a list of tuples</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ae19e277-e929-46ad-ab27-2715a05243a7" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>phonelist.values() <span class="co"># Returns a list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>dict_values([123, 456, 897])</code></pre>
 </div>
-<div id="fa4bb854-314e-4226-af57-379ac722c0e8" class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>phonelist <span class="co"># note the data returned is not the same as the data entered</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="292b5fee-68db-42b6-af5e-7c4ef14c384a" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>phonelist.items() <span class="co"># Returns a list of tuples</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>dict_items([('Tom', 123), ('Bob', 456), ('Sam', 897)])</code></pre>
+</div>
+</div>
+<div id="fa4bb854-314e-4226-af57-379ac722c0e8" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>phonelist <span class="co"># note the data returned is not the same as the data entered</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>{'Tom': 123, 'Bob': 456, 'Sam': 897}</code></pre>
+</div>
 </div>
 </section>
 </section>
@@ -872,39 +915,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You can’t change a tuple once it’s created.</p>
 <p>A tuple can contain any number of elements of any datatype.</p>
 <p>Accessed with brackets <code>[]</code> but constructed with parentheses <code>()</code>.</p>
-<div id="d8683806-f03c-4663-86e6-e1345ee4f53c" class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>numbers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d8683806-f03c-4663-86e6-e1345ee4f53c" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>numbers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>[1, 2, 3, 4]</code></pre>
+</div>
 </div>
 <section id="constructing-2" class="level2">
 <h2 class="anchored" data-anchor-id="constructing-2">Constructing</h2>
 <p>Created with comma-separated values, with or without parenthesis.</p>
-<div id="378ed89f-0e0b-4408-ad48-b1e5d56c0c48" class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>letters <span class="op">=</span> <span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>, <span class="st">'d'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="378ed89f-0e0b-4408-ad48-b1e5d56c0c48" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>letters <span class="op">=</span> <span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>, <span class="st">'d'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="626c8760-4ced-490b-8a99-58b087ec9563" class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>letters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="626c8760-4ced-490b-8a99-58b087ec9563" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>letters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>('a', 'b', 'c', 'd')</code></pre>
 </div>
-<div id="2f2d72be-39d5-4495-8ac3-1f8aa18c28b6" class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) <span class="co"># numbers 1,2,3,4 stored in a tuple</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="2f2d72be-39d5-4495-8ac3-1f8aa18c28b6" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) <span class="co"># numbers 1,2,3,4 stored in a tuple</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A single valued tuple must include a comma <code>,</code>, e.g.</p>
-<div id="fd0488fa-7a8a-464c-ad0a-7bc6b328ca69" class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>tuple0 <span class="op">=</span> (<span class="dv">29</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fd0488fa-7a8a-464c-ad0a-7bc6b328ca69" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>tuple0 <span class="op">=</span> (<span class="dv">29</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="01420088-8f1b-480b-9961-109fb168100e" class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>tuple0, <span class="bu">type</span>(tuple0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="01420088-8f1b-480b-9961-109fb168100e" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>tuple0, <span class="bu">type</span>(tuple0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>(29, int)</code></pre>
 </div>
-<div id="d975e57a-4598-433e-ac5d-f0a3b67dd77c" class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>tuple1 <span class="op">=</span> (<span class="dv">29</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="f31b8940-ff95-4b99-a5cf-b7cb6d7fb0b9" class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>tuple1, <span class="bu">type</span>(tuple1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d975e57a-4598-433e-ac5d-f0a3b67dd77c" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>tuple1 <span class="op">=</span> (<span class="dv">29</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="3ccc6107-adf9-4310-87a8-5c101481c253" class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f31b8940-ff95-4b99-a5cf-b7cb6d7fb0b9" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>tuple1, <span class="bu">type</span>(tuple1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<pre><code>((29,), tuple)</code></pre>
 </div>
-<div id="6698b95f-979e-45f4-a22a-421fb9519083" class="cell" data-jp-markdownheadingcollapsed="true" data-tags="[]">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>numbers[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">5</span> <span class="co"># Trying to assign a new value 5 to the first position</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="3ccc6107-adf9-4310-87a8-5c101481c253" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>4</code></pre>
+</div>
+</div>
+<div id="6698b95f-979e-45f4-a22a-421fb9519083" class="cell" data-jp-markdownheadingcollapsed="true" data-tags="[]" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>numbers[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">5</span> <span class="co"># Trying to assign a new value 5 to the first position</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: 'tuple' object does not support item assignment</code></pre>
+</div>
 </div>
 </section>
 </section>
@@ -914,17 +975,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 in
 + 
 *</code></pre>
-<div id="ebc407b8-41f4-4fc4-9225-6cfa5bc6e953" class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>, <span class="dv">3</span>] <span class="op">*</span> <span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ebc407b8-41f4-4fc4-9225-6cfa5bc6e953" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>, <span class="dv">3</span>] <span class="op">*</span> <span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>[1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3]</code></pre>
 </div>
-<div id="ceed3a1b-7d04-4f9e-8679-d7f18287f3c6" class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span>, <span class="dv">3</span>) <span class="op">*</span> <span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="ceed3a1b-7d04-4f9e-8679-d7f18287f3c6" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span>, <span class="dv">3</span>) <span class="op">*</span> <span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>(1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3)</code></pre>
+</div>
 </div>
 <section id="membership-with-in" class="level2">
 <h2 class="anchored" data-anchor-id="membership-with-in">Membership with <code>in</code></h2>
 <p>Returns a boolean.</p>
-<div id="ffda4677-405a-4479-81fe-0b274f0cf640" class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">'Sam'</span> <span class="kw">in</span> phonelist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ffda4677-405a-4479-81fe-0b274f0cf640" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co">'Sam'</span> <span class="kw">in</span> phonelist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>True</code></pre>
+</div>
 </div>
 </section>
 </section>
@@ -932,41 +1002,63 @@ in
 <h1>Sets</h1>
 <p>A <code>set</code> is an unordered collection of unique objects.</p>
 <p>They are subject to set operations.</p>
-<div id="e67e33ff-7f03-4b99-a95e-fad0c80a04c3" class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>peanuts <span class="op">=</span> {<span class="st">'snoopy'</span>,<span class="st">'snoopy'</span>,<span class="st">'woodstock'</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e67e33ff-7f03-4b99-a95e-fad0c80a04c3" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>peanuts <span class="op">=</span> {<span class="st">'snoopy'</span>,<span class="st">'snoopy'</span>,<span class="st">'woodstock'</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="197eebed-71a9-4a89-8dbf-3dd2d73a29ac" class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>peanuts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="197eebed-71a9-4a89-8dbf-3dd2d73a29ac" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>peanuts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>{'snoopy', 'woodstock'}</code></pre>
+</div>
 </div>
 <p>Note the set is deduped</p>
 <p>Since sets are unordered, they don’t have an index. This will break:</p>
-<div id="65370579-21be-4623-9c45-f37bccee907a" class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>peanuts[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="65370579-21be-4623-9c45-f37bccee907a" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>peanuts[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: 'set' object is not subscriptable</code></pre>
 </div>
-<div id="685ebf06-7e74-42bc-b49b-f1c3f5272aa8" class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> peanut <span class="kw">in</span> peanuts:</span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(peanut)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="685ebf06-7e74-42bc-b49b-f1c3f5272aa8" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> peanut <span class="kw">in</span> peanuts:</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(peanut)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>woodstock
+snoopy</code></pre>
+</div>
 </div>
 <p><strong>Check if a value is in the set using <code>in</code></strong></p>
-<div id="72495cad-a5c9-44b4-a023-4ee45086053e" class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">'snoopy'</span> <span class="kw">in</span> peanuts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="72495cad-a5c9-44b4-a023-4ee45086053e" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co">'snoopy'</span> <span class="kw">in</span> peanuts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
+<pre><code>True</code></pre>
+</div>
 </div>
 <p>Combine two sets</p>
-<div id="0f99fdee-7f2c-4822-b236-01fd6bb00726" class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>set1 <span class="op">=</span> {<span class="st">'python'</span>,<span class="st">'R'</span>}</span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>set2 <span class="op">=</span> {<span class="st">'R'</span>,<span class="st">'SQL'</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0f99fdee-7f2c-4822-b236-01fd6bb00726" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>set1 <span class="op">=</span> {<span class="st">'python'</span>,<span class="st">'R'</span>}</span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>set2 <span class="op">=</span> {<span class="st">'R'</span>,<span class="st">'SQL'</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This fails:</p>
-<div id="7a962b44-b939-4b07-9266-458a1d6868c6" class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>set1 <span class="op">+</span> set2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7a962b44-b939-4b07-9266-458a1d6868c6" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>set1 <span class="op">+</span> set2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: unsupported operand type(s) for +: 'set' and 'set'</code></pre>
+</div>
 </div>
 <p>This succeeds:</p>
-<div id="3b941371-1958-42ff-9c87-48777ded63d8" class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>set1.union(set2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3b941371-1958-42ff-9c87-48777ded63d8" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>set1.union(set2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
+<pre><code>{'R', 'SQL', 'python'}</code></pre>
+</div>
 </div>
 <p>Get the set intersection</p>
-<div id="3b5f2b4e-06f8-48e5-a222-5344c5e489b1" class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>set1.intersection(set2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3b5f2b4e-06f8-48e5-a222-5344c5e489b1" class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>set1.intersection(set2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="58">
+<pre><code>{'R'}</code></pre>
+</div>
 </div>
 </section>
 <section id="ranges" class="level1">
@@ -975,81 +1067,241 @@ in
 - The <code>step</code> is one by default.<br>
 - The <code>stop</code> point is NOT included.</p>
 <p>Ranges can be assigned to a variable.</p>
-<div id="60e92444-c947-4e06-890f-69098dc3ac52" class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> <span class="bu">range</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="60e92444-c947-4e06-890f-69098dc3ac52" class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> <span class="bu">range</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>More often, ranges are used in iterations, which we will cover later.</p>
-<div id="1a2cc0db-3167-423e-b391-fa0a0a3eb1e7" class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> rn <span class="kw">in</span> rng:</span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(rn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1a2cc0db-3167-423e-b391-fa0a0a3eb1e7" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> rn <span class="kw">in</span> rng:</span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(rn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+1
+2
+3
+4</code></pre>
+</div>
 </div>
 <p>another range:</p>
-<div id="54b9d3ca-7e6f-4531-b514-10750087322c" class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>rangy <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">2</span>)</span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> rn <span class="kw">in</span> rangy:</span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(rn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="54b9d3ca-7e6f-4531-b514-10750087322c" class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>rangy <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">2</span>)</span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> rn <span class="kw">in</span> rangy:</span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(rn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1
+3
+5
+7
+9</code></pre>
+</div>
 </div>
 </section>
 <section id="collections-and-defaultdict" class="level1">
 <h1>Collections and <code>defaultdict</code></h1>
 <p>Very often you will want to build a dictionary from some data source, and add keys as they appear. The default <code>dict</code> type in Python, however, requires that the key exists before you can mutate it. The <code>defaultdict</code> type in the <code>collections</code> module solves this problem. Here’s an example.</p>
-<div id="3d7360d9-7302-4315-a1d2-8537e5ea7a9b" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>source_data <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="st">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </span></span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="st">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </span></span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="st">when an unknown printer took a galley of type and scrambled it to make a type </span></span>
-<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="st">specimen book. It has survived not only five centuries, but also the leap </span></span>
-<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="st">into electronic typesetting, remaining essentially unchanged. It was </span></span>
-<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="st">popularised in the 1960s with the release of Letraset sheets containing </span></span>
-<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a><span class="st">Lorem Ipsum passages, and more recently with desktop publishing software </span></span>
-<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a><span class="st">like Aldus PageMaker including versions of Lorem Ipsum.</span></span>
-<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span>[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>].split()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3d7360d9-7302-4315-a1d2-8537e5ea7a9b" class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>source_data <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="st">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </span></span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="st">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </span></span>
+<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="st">when an unknown printer took a galley of type and scrambled it to make a type </span></span>
+<span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a><span class="st">specimen book. It has survived not only five centuries, but also the leap </span></span>
+<span id="cb97-6"><a href="#cb97-6" aria-hidden="true" tabindex="-1"></a><span class="st">into electronic typesetting, remaining essentially unchanged. It was </span></span>
+<span id="cb97-7"><a href="#cb97-7" aria-hidden="true" tabindex="-1"></a><span class="st">popularised in the 1960s with the release of Letraset sheets containing </span></span>
+<span id="cb97-8"><a href="#cb97-8" aria-hidden="true" tabindex="-1"></a><span class="st">Lorem Ipsum passages, and more recently with desktop publishing software </span></span>
+<span id="cb97-9"><a href="#cb97-9" aria-hidden="true" tabindex="-1"></a><span class="st">like Aldus PageMaker including versions of Lorem Ipsum.</span></span>
+<span id="cb97-10"><a href="#cb97-10" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span>[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>].split()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="4d914c43-3d41-47c0-8d88-29caca20fe36" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># source_data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4d914c43-3d41-47c0-8d88-29caca20fe36" class="cell" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># source_data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="try-with-dict" class="level2">
 <h2 class="anchored" data-anchor-id="try-with-dict">Try with <code>dict</code></h2>
-<div id="34a64814-7429-4f1d-bd51-08ce36be8f1a" class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>words <span class="op">=</span> {}</span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> word <span class="kw">in</span> source_data:</span>
-<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>    words[word] <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="34a64814-7429-4f1d-bd51-08ce36be8f1a" class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>words <span class="op">=</span> {}</span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> word <span class="kw">in</span> source_data:</span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>    words[word] <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>KeyError: 'Lorem'</code></pre>
+</div>
 </div>
 </section>
 <section id="use-try-and-except" class="level2">
 <h2 class="anchored" data-anchor-id="use-try-and-except">Use <code>try</code> and <code>except</code></h2>
-<div id="e1e041db-c531-4c7b-8717-3eec1e0d06a3" class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> word <span class="kw">in</span> source_data:</span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>        words[word] <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">KeyError</span>:</span>
-<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>        words[word] <span class="op">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e1e041db-c531-4c7b-8717-3eec1e0d06a3" class="cell" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> word <span class="kw">in</span> source_data:</span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a>        words[word] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb101-4"><a href="#cb101-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">KeyError</span>:</span>
+<span id="cb101-5"><a href="#cb101-5" aria-hidden="true" tabindex="-1"></a>        words[word] <span class="op">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="4c840feb-b577-4b4c-a836-649cd5dd6b19" class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>words</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4c840feb-b577-4b4c-a836-649cd5dd6b19" class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>words</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="68">
+<pre><code>{'Lorem': 8,
+ 'Ipsum': 6,
+ 'is': 2,
+ 'simply': 2,
+ 'dummy': 4,
+ 'text': 4,
+ 'of': 8,
+ 'the': 12,
+ 'printing': 2,
+ 'and': 6,
+ 'typesetting': 2,
+ 'industry.': 2,
+ 'has': 4,
+ 'been': 2,
+ "industry's": 2,
+ 'standard': 2,
+ 'ever': 2,
+ 'since': 2,
+ '1500s,': 2,
+ 'when': 2,
+ 'an': 2,
+ 'unknown': 2,
+ 'printer': 2,
+ 'took': 2,
+ 'a': 4,
+ 'galley': 2,
+ 'type': 4,
+ 'scrambled': 2,
+ 'it': 2,
+ 'to': 2,
+ 'make': 2,
+ 'specimen': 2,
+ 'book.': 2,
+ 'It': 4,
+ 'survived': 2,
+ 'not': 2,
+ 'only': 2,
+ 'five': 2,
+ 'centuries,': 2,
+ 'but': 2,
+ 'also': 2,
+ 'leap': 2,
+ 'into': 2,
+ 'electronic': 2,
+ 'typesetting,': 2,
+ 'remaining': 2,
+ 'essentially': 2,
+ 'unchanged.': 2,
+ 'was': 2,
+ 'popularised': 2,
+ 'in': 2,
+ '1960s': 2,
+ 'with': 4,
+ 'release': 2,
+ 'Letraset': 2,
+ 'sheets': 2,
+ 'containing': 2,
+ 'passages,': 2,
+ 'more': 2,
+ 'recently': 2,
+ 'desktop': 2,
+ 'publishing': 2,
+ 'software': 2,
+ 'like': 2,
+ 'Aldus': 2,
+ 'PageMaker': 2,
+ 'including': 2,
+ 'versions': 2,
+ 'Ipsum.': 2}</code></pre>
+</div>
 </div>
 </section>
 <section id="or-use-.get" class="level2">
 <h2 class="anchored" data-anchor-id="or-use-.get">Or use <code>.get()</code></h2>
-<div id="4a4543b8-bee1-4e10-a991-d3eac4530a91" class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> word <span class="kw">in</span> source_data:</span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>    words[word] <span class="op">=</span> words.get(word, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4a4543b8-bee1-4e10-a991-d3eac4530a91" class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> word <span class="kw">in</span> source_data:</span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>    words[word] <span class="op">=</span> words.get(word, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="use-collections.defaultdict" class="level2">
 <h2 class="anchored" data-anchor-id="use-collections.defaultdict">Use <code>collections.defaultdict</code></h2>
-<div id="db4b75b2-6343-4813-8836-7fc1d3f8a3fb" class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="db4b75b2-6343-4813-8836-7fc1d3f8a3fb" class="cell" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="fbdfb35d-227c-4866-ae12-8558b3e6aefa" class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>words2 <span class="op">=</span> defaultdict(<span class="bu">int</span>) <span class="co"># Not the type must be set</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fbdfb35d-227c-4866-ae12-8558b3e6aefa" class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>words2 <span class="op">=</span> defaultdict(<span class="bu">int</span>) <span class="co"># Not the type must be set</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="eb76ba39-7ad8-4473-ab0f-804afb18550a" class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> word <span class="kw">in</span> source_data:</span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>    words2[word] <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="eb76ba39-7ad8-4473-ab0f-804afb18550a" class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> word <span class="kw">in</span> source_data:</span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>    words2[word] <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="6c886610-45b7-4554-9b50-30263735a203" class="cell">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>words2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6c886610-45b7-4554-9b50-30263735a203" class="cell" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>words2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="73">
+<pre><code>defaultdict(int,
+            {'Lorem': 4,
+             'Ipsum': 3,
+             'is': 1,
+             'simply': 1,
+             'dummy': 2,
+             'text': 2,
+             'of': 4,
+             'the': 6,
+             'printing': 1,
+             'and': 3,
+             'typesetting': 1,
+             'industry.': 1,
+             'has': 2,
+             'been': 1,
+             "industry's": 1,
+             'standard': 1,
+             'ever': 1,
+             'since': 1,
+             '1500s,': 1,
+             'when': 1,
+             'an': 1,
+             'unknown': 1,
+             'printer': 1,
+             'took': 1,
+             'a': 2,
+             'galley': 1,
+             'type': 2,
+             'scrambled': 1,
+             'it': 1,
+             'to': 1,
+             'make': 1,
+             'specimen': 1,
+             'book.': 1,
+             'It': 2,
+             'survived': 1,
+             'not': 1,
+             'only': 1,
+             'five': 1,
+             'centuries,': 1,
+             'but': 1,
+             'also': 1,
+             'leap': 1,
+             'into': 1,
+             'electronic': 1,
+             'typesetting,': 1,
+             'remaining': 1,
+             'essentially': 1,
+             'unchanged.': 1,
+             'was': 1,
+             'popularised': 1,
+             'in': 1,
+             '1960s': 1,
+             'with': 2,
+             'release': 1,
+             'Letraset': 1,
+             'sheets': 1,
+             'containing': 1,
+             'passages,': 1,
+             'more': 1,
+             'recently': 1,
+             'desktop': 1,
+             'publishing': 1,
+             'software': 1,
+             'like': 1,
+             'Aldus': 1,
+             'PageMaker': 1,
+             'including': 1,
+             'versions': 1,
+             'Ipsum.': 1})</code></pre>
+</div>
 </div>
 
 

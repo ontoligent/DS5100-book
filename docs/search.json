@@ -460,7 +460,7 @@
     "href": "notebooks/M02_BasicPython/M02-02-Numbers.html#pow-power",
     "title": "NB: Numbers",
     "section": "pow() Power",
-    "text": "pow() Power\n\npow(2,3) # 2 raised to 3 = 8",
+    "text": "pow() Power\n\npow(2,3) # 2 raised to 3 = 8\n\n8",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>NB&colon; Numbers</span>"
@@ -471,7 +471,7 @@
     "href": "notebooks/M02_BasicPython/M02-02-Numbers.html#abs-absolute-value",
     "title": "NB: Numbers",
     "section": "abs() Absolute value",
-    "text": "abs() Absolute value\n\nabs(-2) # returns 2, the absolute value of its argument",
+    "text": "abs() Absolute value\n\nabs(-2) # returns 2, the absolute value of its argument\n\n2",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>NB&colon; Numbers</span>"
@@ -482,7 +482,7 @@
     "href": "notebooks/M02_BasicPython/M02-02-Numbers.html#round-round",
     "title": "NB: Numbers",
     "section": "round() Round",
-    "text": "round() Round\nRounding up or down its argument (to closest whole number).\n\nround(2.8) # rounds up to 3.0\n\n3\n\n\n\nround(1.1) # rounds down to 1.0\n\n1",
+    "text": "round() Round\nRounding up or down its argument (to closest whole number).\n\nround(2.8) # rounds up to 3.0\n\n3\n\n\n\nround(1.1) # rounds down to 1.0\n\n1\n\n\nYou can specify how many decimal places to round to as well.\n\nround(5.36958211, 2)\n\n5.37",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>NB&colon; Numbers</span>"
@@ -493,7 +493,7 @@
     "href": "notebooks/M02_BasicPython/M02-02-Numbers.html#math.sqrt-square-root",
     "title": "NB: Numbers",
     "section": "math.sqrt() Square root",
-    "text": "math.sqrt() Square root\n\nmath.sqrt?\n\nSignature: math.sqrt(x, /)\nDocstring: Return the square root of x.\nType:      builtin_function_or_method\n\n\n\n# sqrt(intOne)\n\n\nmath.sqrt(12) # using the square-root function from the math library\n\n3.4641016151377544\n\n\n\nprint(math.floor(2.5)) # returns largest whole number less than the argument\nprint(math.floor(2.9))\nprint(math.floor(2.1))\n\n2\n2\n2",
+    "text": "math.sqrt() Square root\n\nmath.sqrt?\n\n\nSignature: math.sqrt(x, /)\nDocstring: Return the square root of x.\nType:      builtin_function_or_method\n\n\n\n\n\nmath.sqrt(12) # using the square-root function from the math library\n\n3.4641016151377544\n\n\n\nprint(math.floor(2.5)) # returns largest whole number less than the argument\nprint(math.floor(2.9))\nprint(math.floor(2.1))\n\n2\n2\n2",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>NB&colon; Numbers</span>"
@@ -504,7 +504,7 @@
     "href": "notebooks/M02_BasicPython/M02-02-Numbers.html#math.log",
     "title": "NB: Numbers",
     "section": "math.log()",
-    "text": "math.log()\n\nmath.log?\n\n\nmath.log(100, 10)\n\n\nmath.log(256, 2)",
+    "text": "math.log()\n\nmath.log?\n\n\nDocstring:\nlog(x, [base=math.e])\nReturn the logarithm of x to the given base.\nIf the base not specified, returns the natural logarithm (base e) of x.\nType:      builtin_function_or_method\n\n\n\n\n\nmath.log(100, 10)\n\n2.0\n\n\n\nmath.log(256, 2)\n\n8.0",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>NB&colon; Numbers</span>"
@@ -515,7 +515,7 @@
     "href": "notebooks/M02_BasicPython/M02-02-Numbers.html#random.random",
     "title": "NB: Numbers",
     "section": "random.random()",
-    "text": "random.random()\n\nrandom.random?\n\n\nprint(random.random()) # using random() function in random library\n    # will return a number between 0 and 1",
+    "text": "random.random()\n\nrandom.random?\n\n\nSignature: random.random()\nDocstring: random() -&gt; x in the interval [0, 1).\nType:      builtin_function_or_method\n\n\n\n\n\nprint(random.random()) # using random() function in random library\n    # will return a number between 0 and 1\n\n0.22354076317963734",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>NB&colon; Numbers</span>"
@@ -526,7 +526,7 @@
     "href": "notebooks/M02_BasicPython/M02-02-Numbers.html#random.randint",
     "title": "NB: Numbers",
     "section": "random.randint()",
-    "text": "random.randint()\n\nrandom.randint?\n\n\nprint(random.randint(1,100)) # specify a range in the parenthesis\n    # this will return a random integer in the range 1-100",
+    "text": "random.randint()\n\nrandom.randint?\n\n\nSignature: random.randint(a, b)\nDocstring:\nReturn random integer in range [a, b], including both end points.\n        \nFile:      ~/.conda/envs/eta/lib/python3.9/random.py\nType:      method\n\n\n\n\n\nprint(random.randint(1,100)) # specify a range in the parenthesis\n    # this will return a random integer in the range 1-100\n\n47",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>NB&colon; Numbers</span>"
@@ -548,7 +548,7 @@
     "href": "notebooks/M02_BasicPython/M02-04-Strings.html",
     "title": "NB: Strings",
     "section": "",
-    "text": "Kinds of quotes\nStrings are signified by quotes.\nSingle and double quotes are identical in function.\nThey must be “straight quotes” though – cutting and pasting from a Word document with smart quotes won’t work.\n'hello world!' == \"hello world!\"",
+    "text": "Kinds of quotes\nStrings are signified by quotes.\nSingle and double quotes are identical in function.\nThey must be “straight quotes” though – cutting and pasting from a Word document with smart quotes won’t work.\n'hello world!' == \"hello world!\"\n\nTrue",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>NB&colon; Strings</span>"
@@ -559,7 +559,7 @@
     "href": "notebooks/M02_BasicPython/M02-04-Strings.html#quote-prefixes",
     "title": "NB: Strings",
     "section": "Quote prefixes",
-    "text": "Quote prefixes\n\nr strings\nPrefixing a string causes escape characters to be uninterpreted.\n\nprint(\"Sentence one.\\nSentence two.\")\n\n\nprint(r\"Sentence one.\\nSentence two.\")\n\n\n\nf strings\nPrefixing a string with f allows variable interpolation – inplace evaluation of variables in strings.\n\nppl = 'knights'\ngreeting = 'Ni'\n\n\nprint(f'We are the {ppl} who say {greeting}!') # Output: We are the knights who say Ni!\n\nThe brackets and characters within them (called format fields) are replaced with the passed objects.\n\nprint(b\"This is a sentence.\")\n\n\nprint(\"This is a sentence.\")",
+    "text": "Quote prefixes\n\nr strings\nPrefixing a string causes escape characters to be uninterpreted.\n\nprint(\"Sentence one.\\nSentence two.\")\n\nSentence one.\nSentence two.\n\n\n\nprint(r\"Sentence one.\\nSentence two.\")\n\nSentence one.\\nSentence two.\n\n\n\n\nf strings\nPrefixing a string with f allows variable interpolation – inplace evaluation of variables in strings.\n\nppl = 'knights'\ngreeting = 'Ni'\n\n\nprint(f'We are the {ppl} who say {greeting}!') # Output: We are the knights who say Ni!\n\nWe are the knights who say Ni!\n\n\nThe brackets and characters within them (called format fields) are replaced with the passed objects.",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>NB&colon; Strings</span>"
@@ -592,7 +592,18 @@
     "href": "notebooks/M02_BasicPython/M02-04-Strings.html#strip-.rstrip-lstrip-strip-methods",
     "title": "NB: Strings",
     "section": ".strip(), .rstrip(), lstrip() Strip methods",
-    "text": ".strip(), .rstrip(), lstrip() Strip methods\nStrip out extra whitespace using strip(), rstrip() and lstrip() functions\n.strip() removes white space from anywhere\n.rstrip() only removes white space from the right-hand-side of the string\n.lstrip() only removes white space from the left-hand-side of the string\n\nstr1 = '  hello, world!'    # white space at the beginning\nstr2 = '  hello, world!  '  # white space at both ends\nstr3 = 'hello, world!  '    # white space at the end\n\n\nstr1, str2, str3\n\n\nstr1.lstrip(), str1.rstrip()\n\n\nstr2.strip(), str2.rstrip()\n\n\nstr2.lstrip(), str3.rstrip()\n\n\nstatus.startswith('a')\n\n\nstatus.endswith('s')",
+    "text": ".strip(), .rstrip(), lstrip() Strip methods\nStrip out extra whitespace using strip(), rstrip() and lstrip() functions\n.strip() removes white space from anywhere\n.rstrip() only removes white space from the right-hand-side of the string\n.lstrip() only removes white space from the left-hand-side of the string\n\nstr1 = '  hello, world!'    # white space at the beginning\nstr2 = '  hello, world!  '  # white space at both ends\nstr3 = 'hello, world!  '    # white space at the end\n\n\nstr1, str2, str3\n\n('  hello, world!', '  hello, world!  ', 'hello, world!  ')\n\n\n\nstr1.lstrip(), str1.rstrip()\n\n('hello, world!', '  hello, world!')\n\n\n\nstr2.strip(), str2.rstrip()\n\n('hello, world!', '  hello, world!')\n\n\n\nstr2.lstrip(), str3.rstrip()\n\n('hello, world!  ', 'hello, world!')",
+    "crumbs": [
+      "M02 Introducing Python",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>NB&colon; Strings</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M02_BasicPython/M02-04-Strings.html#startswith",
+    "href": "notebooks/M02_BasicPython/M02-04-Strings.html#startswith",
+    "title": "NB: Strings",
+    "section": ".startswith()",
+    "text": ".startswith()\n\nstatus = 'success'\n\n\nstatus.startswith('a')\n\nFalse\n\n\n\nstatus.endswith('s')\n\nTrue",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>NB&colon; Strings</span>"
@@ -603,7 +614,7 @@
     "href": "notebooks/M02_BasicPython/M02-04-Strings.html#replace",
     "title": "NB: Strings",
     "section": ".replace()",
-    "text": ".replace()\n\n\"latina\".replace(\"a\", \"x\")",
+    "text": ".replace()\n\n\"latina\".replace(\"a\", \"x\")\n\n'lxtinx'",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>NB&colon; Strings</span>"
@@ -614,7 +625,7 @@
     "href": "notebooks/M02_BasicPython/M02-04-Strings.html#format",
     "title": "NB: Strings",
     "section": ".format()",
-    "text": ".format()\nVariable values can be embedding in strings using the format() function.\nPlace {} in the string in order from left to right. followed by .format(var1, var2, ...)`\n\nepoch = 20\nloss = 1.55\n\nprint('Epoch: {}, loss: {}'.format(epoch, loss))\n\nThis breaks, as three variables are required based on number of {}\n\nprint('Epoch: {}, loop: {}, loss: {}'.format(epoch, loss))",
+    "text": ".format()\nVariable values can be embedding in strings using the format() function.\nPlace {} in the string in order from left to right. followed by .format(var1, var2, ...)`\n\nepoch = 20\nloss = 1.55\n\nprint('Epoch: {}, loss: {}'.format(epoch, loss))\n\nEpoch: 20, loss: 1.55\n\n\nThis breaks, as three variables are required based on number of {}\n\nprint('Epoch: {}, loop: {}, loss: {}'.format(epoch, loss))\n\nIndexError: Replacement index 2 out of range for positional args tuple",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>NB&colon; Strings</span>"
@@ -625,7 +636,7 @@
     "href": "notebooks/M02_BasicPython/M02-04-Strings.html#zfill",
     "title": "NB: Strings",
     "section": ".zfill()",
-    "text": ".zfill()\nBasic usage of the str.zfill() method (pads a numeric string on the left with zeros) It understands about plus and minus signs\n\nprint('12'.zfill(5))       # Output: 00012\nprint('-3.14'.zfill(7))    # Output: -003.14\nprint('3.141592'.zfill(5)) # Output: 3.141592",
+    "text": ".zfill()\nBasic usage of the str.zfill() method (pads a numeric string on the left with zeros) It understands about plus and minus signs\n\nprint('12'.zfill(5))       # Output: 00012\nprint('-3.14'.zfill(7))    # Output: -003.14\nprint('3.141592'.zfill(5)) # Output: 3.141592\n\n00012\n-003.14\n3.141592",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>NB&colon; Strings</span>"
@@ -636,7 +647,7 @@
     "href": "notebooks/M02_BasicPython/M02-04-Strings.html#len-length",
     "title": "NB: Strings",
     "section": "len() Length",
-    "text": "len() Length\nThis is built-in length funciton tells us how many characters in the string.\nIt also applys to any list-like object, including strings, lists, dicts, sets, and dataframes.\n\nlen?\n\n\nmy_new_tring = 'This is a string'\n\n\nlen(my_new_tring)\n\n\nIndexing\nSince strings are sequences in Python, each character of the string has a unique position that can be indexed.\nIndexes are indicated by suffixed brackets, e.g. foo[]\n\nmy_new_tring[0] # displays the first character of the string\n            # first position is position zero. Will display 'h'\n\n\nmy_new_tring[-1] # displays the last character. Negatives count backwords.\n\n\n\nSlicing\nWe can used the colon to ‘slice’ strings (and lists)\n\nmy_new_tring[0:4] # First four characters (index positions 0-3)\n\n\nmy_new_tring[:4]  # Beginning (0) to (n-1) position\n\n\nmy_new_tring[4:]  # Fifth character and onwards until the end of the string\n\nit is NOT possible to reassign elements of a string. Python strings are immutable.\n\nstatus = 'success'\nstatus[0] = 't'\n\nAdd strings and handle pathing",
+    "text": "len() Length\nThis is built-in length funciton tells us how many characters in the string.\nIt also applys to any list-like object, including strings, lists, dicts, sets, and dataframes.\n\nlen?\n\n\nSignature: len(obj, /)\nDocstring: Return the number of items in a container.\nType:      builtin_function_or_method\n\n\n\n\nmy_new_tring = 'This is a string'\n\n\nlen(my_new_tring)\n\n16\n\n\n\nIndexing\nSince strings are sequences in Python, each character of the string has a unique position that can be indexed.\nIndexes are indicated by suffixed brackets, e.g. foo[]\n\nmy_new_tring[0] # displays the first character of the string\n            # first position is position zero. Will display 'h'\n\n'T'\n\n\n\nmy_new_tring[-1] # displays the last character. Negatives count backwords.\n\n'g'\n\n\n\n\nSlicing\nWe can used the colon to ‘slice’ strings (and lists)\n\nmy_new_tring[0:4] # First four characters (index positions 0-3)\n\n'This'\n\n\n\nmy_new_tring[:4]  # Beginning (0) to (n-1) position\n\n'This'\n\n\n\nmy_new_tring[4:]  # Fifth character and onwards until the end of the string\n\n' is a string'\n\n\nit is NOT possible to reassign elements of a string. Python strings are immutable.\n\nstatus[0] = 't'\n\nTypeError: 'str' object does not support item assignment",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>NB&colon; Strings</span>"
@@ -691,7 +702,7 @@
     "href": "notebooks/M02_BasicPython/M02-05-Structures.html#multiply-lists-by-a-scalar",
     "title": "NB: Structures",
     "section": "Multiply lists by a scalar",
-    "text": "Multiply lists by a scalar\nA scalar is a single value number.\n\nnumbers * 2",
+    "text": "Multiply lists by a scalar\nA scalar is a single value number.\n\nnumbers * 2\n\n[1, 2, 3, 4, 1, 2, 3, 4]",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>NB&colon; Structures</span>"
@@ -702,7 +713,7 @@
     "href": "notebooks/M02_BasicPython/M02-05-Structures.html#concatenate-lists-with",
     "title": "NB: Structures",
     "section": "Concatenate lists with +",
-    "text": "Concatenate lists with +\n\nnumbers2 = [30, 40, 50]\n\n\nnumbers + numbers2 # concatenate two lists",
+    "text": "Concatenate lists with +\n\nnumbers2 = [30, 40, 50]\n\n\nnumbers + numbers2 # concatenate two lists\n\n[1, 2, 3, 4, 30, 40, 50]",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>NB&colon; Structures</span>"
@@ -713,7 +724,7 @@
     "href": "notebooks/M02_BasicPython/M02-05-Structures.html#lists-can-mix-types",
     "title": "NB: Structures",
     "section": "Lists can mix types",
-    "text": "Lists can mix types\n\nmyList = ['coconuts', 777, 7.25, 'Sir Robin', 80.0, True]\n\n\nmyList\n\nWhat happens if we multiply a list with strings?\n\n# myList * 2",
+    "text": "Lists can mix types\n\nmyList = ['coconuts', 777, 7.25, 'Sir Robin', 80.0, True]\n\n\nmyList\n\n['coconuts', 777, 7.25, 'Sir Robin', 80.0, True]\n\n\nWhat happens if we multiply a list with strings?\n\nmyList * 2\n\n['coconuts',\n 777,\n 7.25,\n 'Sir Robin',\n 80.0,\n True,\n 'coconuts',\n 777,\n 7.25,\n 'Sir Robin',\n 80.0,\n True]",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>NB&colon; Structures</span>"
@@ -724,7 +735,7 @@
     "href": "notebooks/M02_BasicPython/M02-05-Structures.html#lists-can-be-nested",
     "title": "NB: Structures",
     "section": "Lists can be nested",
-    "text": "Lists can be nested\n\nnames = ['Darrell', 'Clayton', ['Billie', 'Arthur'], 'Samantha']\nnames[2] # returns a *list*\nnames[0] # returns a *string*\n\ncannot subset into a float, will break\n\nnames[2][0]",
+    "text": "Lists can be nested\n\nnames = ['Darrell', 'Clayton', ['Billie', 'Arthur'], 'Samantha']\nnames[2] # returns a *list*\nnames[0] # returns a *string*\n\n'Darrell'\n\n\n\nnames[2][0]\n\n'Billie'",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>NB&colon; Structures</span>"
@@ -757,7 +768,7 @@
     "href": "notebooks/M02_BasicPython/M02-05-Structures.html#retrieve-a-value",
     "title": "NB: Structures",
     "section": "Retrieve a value",
-    "text": "Retrieve a value\nJust write a key as the index.\n\nphonelist = {'Tom':123, 'Bob':456, 'Sam':897}\n\n\nphonelist['Bob']",
+    "text": "Retrieve a value\nJust write a key as the index.\n\nphonelist = {'Tom':123, 'Bob':456, 'Sam':897}\n\n\nphonelist['Bob']\n\n456",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>NB&colon; Structures</span>"
@@ -768,7 +779,7 @@
     "href": "notebooks/M02_BasicPython/M02-05-Structures.html#print-list-of-keys-values-or-both",
     "title": "NB: Structures",
     "section": "Print list of keys, values, or both",
-    "text": "Print list of keys, values, or both\nUse the .keys(), .values()', or.items()` methods.\nKeys are not sorted. For example, they are not ordered in order in which they were added.\n\nphonelist.keys() # Returns a list\n\n\nphonelist.values() # Returns a list\n\n\nphonelist.items() # Returns a list of tuples\n\n\nphonelist # note the data returned is not the same as the data entered",
+    "text": "Print list of keys, values, or both\nUse the .keys(), .values()', or.items()` methods.\nKeys are not sorted. For example, they are not ordered in order in which they were added.\n\nphonelist.keys() # Returns a list\n\ndict_keys(['Tom', 'Bob', 'Sam'])\n\n\n\nphonelist.values() # Returns a list\n\ndict_values([123, 456, 897])\n\n\n\nphonelist.items() # Returns a list of tuples\n\ndict_items([('Tom', 123), ('Bob', 456), ('Sam', 897)])\n\n\n\nphonelist # note the data returned is not the same as the data entered\n\n{'Tom': 123, 'Bob': 456, 'Sam': 897}",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>NB&colon; Structures</span>"
@@ -779,7 +790,7 @@
     "href": "notebooks/M02_BasicPython/M02-05-Structures.html#constructing-2",
     "title": "NB: Structures",
     "section": "Constructing",
-    "text": "Constructing\nCreated with comma-separated values, with or without parenthesis.\n\nletters = 'a', 'b', 'c', 'd'\n\n\nletters\n\n\nnumbers = (1,2,3,4) # numbers 1,2,3,4 stored in a tuple\n\nA single valued tuple must include a comma ,, e.g.\n\ntuple0 = (29)\n\n\ntuple0, type(tuple0)\n\n\ntuple1 = (29,)\n\n\ntuple1, type(tuple1)\n\n\nlen(numbers)\n\n\nnumbers[0] = 5 # Trying to assign a new value 5 to the first position",
+    "text": "Constructing\nCreated with comma-separated values, with or without parenthesis.\n\nletters = 'a', 'b', 'c', 'd'\n\n\nletters\n\n('a', 'b', 'c', 'd')\n\n\n\nnumbers = (1,2,3,4) # numbers 1,2,3,4 stored in a tuple\n\nA single valued tuple must include a comma ,, e.g.\n\ntuple0 = (29)\n\n\ntuple0, type(tuple0)\n\n(29, int)\n\n\n\ntuple1 = (29,)\n\n\ntuple1, type(tuple1)\n\n((29,), tuple)\n\n\n\nlen(numbers)\n\n4\n\n\n\nnumbers[0] = 5 # Trying to assign a new value 5 to the first position\n\nTypeError: 'tuple' object does not support item assignment",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>NB&colon; Structures</span>"
@@ -790,7 +801,7 @@
     "href": "notebooks/M02_BasicPython/M02-05-Structures.html#membership-with-in",
     "title": "NB: Structures",
     "section": "Membership with in",
-    "text": "Membership with in\nReturns a boolean.\n\n'Sam' in phonelist",
+    "text": "Membership with in\nReturns a boolean.\n\n'Sam' in phonelist\n\nTrue",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>NB&colon; Structures</span>"
@@ -801,7 +812,7 @@
     "href": "notebooks/M02_BasicPython/M02-05-Structures.html#try-with-dict",
     "title": "NB: Structures",
     "section": "Try with dict",
-    "text": "Try with dict\n\nwords = {}\nfor word in source_data:\n    words[word] += 1",
+    "text": "Try with dict\n\nwords = {}\nfor word in source_data:\n    words[word] += 1\n\nKeyError: 'Lorem'",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>NB&colon; Structures</span>"
@@ -812,7 +823,7 @@
     "href": "notebooks/M02_BasicPython/M02-05-Structures.html#use-try-and-except",
     "title": "NB: Structures",
     "section": "Use try and except",
-    "text": "Use try and except\n\nfor word in source_data:\n    try:\n        words[word] += 1\n    except KeyError:\n        words[word] = 1\n\n\nwords",
+    "text": "Use try and except\n\nfor word in source_data:\n    try:\n        words[word] += 1\n    except KeyError:\n        words[word] = 1\n\n\nwords\n\n{'Lorem': 8,\n 'Ipsum': 6,\n 'is': 2,\n 'simply': 2,\n 'dummy': 4,\n 'text': 4,\n 'of': 8,\n 'the': 12,\n 'printing': 2,\n 'and': 6,\n 'typesetting': 2,\n 'industry.': 2,\n 'has': 4,\n 'been': 2,\n \"industry's\": 2,\n 'standard': 2,\n 'ever': 2,\n 'since': 2,\n '1500s,': 2,\n 'when': 2,\n 'an': 2,\n 'unknown': 2,\n 'printer': 2,\n 'took': 2,\n 'a': 4,\n 'galley': 2,\n 'type': 4,\n 'scrambled': 2,\n 'it': 2,\n 'to': 2,\n 'make': 2,\n 'specimen': 2,\n 'book.': 2,\n 'It': 4,\n 'survived': 2,\n 'not': 2,\n 'only': 2,\n 'five': 2,\n 'centuries,': 2,\n 'but': 2,\n 'also': 2,\n 'leap': 2,\n 'into': 2,\n 'electronic': 2,\n 'typesetting,': 2,\n 'remaining': 2,\n 'essentially': 2,\n 'unchanged.': 2,\n 'was': 2,\n 'popularised': 2,\n 'in': 2,\n '1960s': 2,\n 'with': 4,\n 'release': 2,\n 'Letraset': 2,\n 'sheets': 2,\n 'containing': 2,\n 'passages,': 2,\n 'more': 2,\n 'recently': 2,\n 'desktop': 2,\n 'publishing': 2,\n 'software': 2,\n 'like': 2,\n 'Aldus': 2,\n 'PageMaker': 2,\n 'including': 2,\n 'versions': 2,\n 'Ipsum.': 2}",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>NB&colon; Structures</span>"
@@ -834,7 +845,7 @@
     "href": "notebooks/M02_BasicPython/M02-05-Structures.html#use-collections.defaultdict",
     "title": "NB: Structures",
     "section": "Use collections.defaultdict",
-    "text": "Use collections.defaultdict\n\nfrom collections import defaultdict\n\n\nwords2 = defaultdict(int) # Not the type must be set\n\n\nfor word in source_data:\n    words2[word] += 1\n\n\nwords2",
+    "text": "Use collections.defaultdict\n\nfrom collections import defaultdict\n\n\nwords2 = defaultdict(int) # Not the type must be set\n\n\nfor word in source_data:\n    words2[word] += 1\n\n\nwords2\n\ndefaultdict(int,\n            {'Lorem': 4,\n             'Ipsum': 3,\n             'is': 1,\n             'simply': 1,\n             'dummy': 2,\n             'text': 2,\n             'of': 4,\n             'the': 6,\n             'printing': 1,\n             'and': 3,\n             'typesetting': 1,\n             'industry.': 1,\n             'has': 2,\n             'been': 1,\n             \"industry's\": 1,\n             'standard': 1,\n             'ever': 1,\n             'since': 1,\n             '1500s,': 1,\n             'when': 1,\n             'an': 1,\n             'unknown': 1,\n             'printer': 1,\n             'took': 1,\n             'a': 2,\n             'galley': 1,\n             'type': 2,\n             'scrambled': 1,\n             'it': 1,\n             'to': 1,\n             'make': 1,\n             'specimen': 1,\n             'book.': 1,\n             'It': 2,\n             'survived': 1,\n             'not': 1,\n             'only': 1,\n             'five': 1,\n             'centuries,': 1,\n             'but': 1,\n             'also': 1,\n             'leap': 1,\n             'into': 1,\n             'electronic': 1,\n             'typesetting,': 1,\n             'remaining': 1,\n             'essentially': 1,\n             'unchanged.': 1,\n             'was': 1,\n             'popularised': 1,\n             'in': 1,\n             '1960s': 1,\n             'with': 2,\n             'release': 1,\n             'Letraset': 1,\n             'sheets': 1,\n             'containing': 1,\n             'passages,': 1,\n             'more': 1,\n             'recently': 1,\n             'desktop': 1,\n             'publishing': 1,\n             'software': 1,\n             'like': 1,\n             'Aldus': 1,\n             'PageMaker': 1,\n             'including': 1,\n             'versions': 1,\n             'Ipsum.': 1})",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>NB&colon; Structures</span>"

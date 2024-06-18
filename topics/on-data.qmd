@@ -39,7 +39,3 @@ Which cites [Fred Brooks from 1975](https://archive.org/stream/mythicalmanmonth0
 Beyond craftsmanship lies invention, and it is here that lean, spare, fast programs are born. Almost always these are the result of strategic breakthrough rather than tactical cleverness. Sometimes the strategic breakthrough will be a new algorithm, such as the Cooley-Tukey Fast Fourier Transform or the substitution of an n log n sort for an n 2 set of comparisons.
 
 > **Much more often, strategic breakthrough will come from redoing the representation of the data or tables.** This is where the heart of your program lies. Show me your flowcharts and conceal your tables, and I shall be continued to be mystified. Show me your tables, and I won’t usually need your flowcharts; they’ll be obvious.
-
-::: {.callout-note}
-See [video](https://canvas.its.virginia.edu/courses/75059/modules/items/821906) on Canvas.
-:::

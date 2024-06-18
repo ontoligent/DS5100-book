@@ -2,7 +2,7 @@
 jupyter: python3
 ---
 
-```
+```         
 title: "M02 Python Basics"
 author: R.C. Alvarado
 date: 21 June 2022 (Modified 28 January 2023)
@@ -13,7 +13,7 @@ format: html
 
 We declare a number of variables with different value types.
 
-By 'type' we mean object type. 
+By 'type' we mean object type.
 
 Data types and data structures are both types of object.
 
@@ -93,7 +93,7 @@ The variable is always on the **left**, the value assigned to it on the **right*
 
 This is not the same as mathemtical equality.
 
-Variables are assigned types **dynamically**. 
+Variables are assigned types **dynamically**.
 
 This is in contrast to static typing, where you have define variables by asserting what kind of data values they can hold.
 
@@ -108,7 +108,7 @@ booleanEx = True
 noneEx = None
 ```
 
-**Note that `type()` returns the type of the value that a variable holds, not the type "variable".
+\*\*Note that `type()` returns the type of the value that a variable holds, not the type "variable".
 
 ```{python}
 print(type(integerEx))
@@ -140,7 +140,7 @@ del("foo")
 
 # Get Object Indenity with `id()`
 
-This function returns the identity of an object. 
+This function returns the identity of an object.
 
 The identity is a number that is guaranteed to be unique and constant for this object during its lifetime (during the program session).
 
@@ -156,7 +156,7 @@ It is possible to convert between types (when it makes sense to do so).
 
 Sometimes conversions are "lossy" -- you lose information in the process
 
-## `int()` 
+## `int()`
 
 ```{python}
 int?
@@ -252,10 +252,10 @@ Returns the remainder
 5 % 2
 ```
 
-odd integers % 2 = 1  
+odd integers % 2 = 1\
 even integers % 2 = 0
 
-Look at this ... 
+Look at this ...
 
 ```{python}
 5.5 / 2, 5.5 // 2, 5.5 % 2
@@ -322,7 +322,7 @@ print('epoch:', epoch)
 
 Comparisons are questions.
 
-They return a boolean value. 
+They return a boolean value.
 
 ### equality `==`
 
@@ -421,17 +421,20 @@ not True, not False, not 0, not 1, not 1000, not None
 # Unary Operators
 
 Python offers a short-cut for most operators. When updating a variable with an operation to that variable, such as:
-```python
+
+``` python
 my_var = my_var + 1  # Incrementing
 ```
 
 You can do this:
-```python
+
+``` python
 my_var += 1
 ```
 
 Python supports many operators this way. Here are some:
-```python
+
+``` python
 a -= a
 a \= a
 a \\= a
@@ -452,7 +455,7 @@ For example, the following combines three operators and four variables:
 
 Python employs **operator precedence** when evaluating expressions:
 
-```
+```         
 P – Parentheses
 E – Exponentiation
 M – Multiplication
@@ -487,11 +490,10 @@ y
 
 Expresssion can be very complex.
 
-Expressions evaluate to a value, just as single variables do. 
+Expressions evaluate to a value, just as single variables do.
 
 Therefore, they can be put anywhere a value is accepted.
 
 ```{python}
 int((y + 10) ** 8)
 ```
-

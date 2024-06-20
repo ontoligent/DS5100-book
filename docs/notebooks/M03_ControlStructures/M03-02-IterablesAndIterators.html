@@ -647,24 +647,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>Purpose</strong></p>
-<ul>
-<li>Define iterables and iterators</li>
-<li>Using two methods, show how iterators can be used to return data from sets, lists, strings, tuples, dicts:
-<ul>
-<li><code>for</code> loops<br>
-</li>
-<li><code>iter()</code> and <code>next()</code></li>
-</ul></li>
-</ul>
-<p><strong>Specific Topics</strong></p>
-<ul>
-<li>iterable objects or iterables</li>
-<li>iterators</li>
-<li>iteration</li>
-<li>sequence</li>
-<li>collection</li>
-</ul>
 <section id="defining-iterables-and-iterators" class="level1">
 <h1>Defining Iterables and Iterators</h1>
 <p><strong>Iterable objects</strong> or <strong>iterables</strong> can return elements one at a time.</p>
@@ -676,7 +658,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Lists</h1>
 <section id="iterating-using-for" class="level2">
 <h2 class="anchored" data-anchor-id="iterating-using-for">iterating using <code>for</code></h2>
-<div id="cell-5" class="cell" data-execution_count="1">
+<div id="cell-4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>tokens <span class="op">=</span> [<span class="st">'living room'</span>, <span class="st">'was'</span>, <span class="st">'quite'</span>, <span class="st">'large'</span>]</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tok <span class="kw">in</span> tokens:</span>
@@ -693,7 +675,7 @@ large</code></pre>
 <h2 class="anchored" data-anchor-id="iterating-using-iter-and-next">iterating using <code>iter()</code> and <code>next()</code></h2>
 <p><code>iter()</code> gets an iterator. Pops out a value each time it’s used.</p>
 <p><code>next()</code> gets the next item from the iterator</p>
-<div id="cell-8" class="cell" data-execution_count="1">
+<div id="cell-7" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tokens <span class="op">=</span> [<span class="st">'living room'</span>,<span class="st">'was'</span>,<span class="st">'quite'</span>,<span class="st">'large'</span>]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>myit <span class="op">=</span> <span class="bu">iter</span>(tokens)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(myit)) </span>
@@ -708,23 +690,23 @@ large</code></pre>
 </div>
 </div>
 <p>Calling <code>next()</code> when the iterator has reached the end of the list produces an exception:</p>
-<div id="cell-10" class="cell" data-execution_count="2">
+<div id="cell-9" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(myit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>StopIteration: </code></pre>
 </div>
 </div>
 <p>Next, look at the type of the iterator, and the documentation</p>
-<div id="cell-12" class="cell" data-execution_count="3">
+<div id="cell-11" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(myit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>list_iterator</code></pre>
 </div>
 </div>
-<div id="cell-13" class="cell" data-scrolled="true" data-execution_count="1">
+<div id="cell-12" class="cell" data-scrolled="true" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># help(myit)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-14" class="cell" data-execution_count="5">
+<div id="cell-13" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(<span class="bu">next</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Help on built-in function next in module builtins:
@@ -751,7 +733,7 @@ next(...)
 <section id="sets" class="level1">
 <h1>Sets</h1>
 <p><strong>iterating using <code>for</code></strong></p>
-<div id="cell-19" class="cell" data-execution_count="6">
+<div id="cell-18" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>princesses <span class="op">=</span> {<span class="st">'belle'</span>,<span class="st">'cinderella'</span>,<span class="st">'rapunzel'</span>}</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> princess <span class="kw">in</span> princesses:</span>
@@ -763,7 +745,7 @@ rapunzel</code></pre>
 </div>
 </div>
 <p><strong>iterating using <code>iter()</code> and <code>next()</code></strong></p>
-<div id="cell-21" class="cell" data-tags="[]" data-execution_count="1">
+<div id="cell-20" class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>princesses <span class="op">=</span> {<span class="st">'belle'</span>,<span class="st">'cinderella'</span>,<span class="st">'rapunzel'</span>}</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>myset <span class="op">=</span> <span class="bu">iter</span>(princesses)</span>
@@ -780,7 +762,7 @@ cinderella</code></pre>
 <section id="strings" class="level1">
 <h1>Strings</h1>
 <p><strong>iterating using <code>for</code></strong></p>
-<div id="cell-24" class="cell" data-tags="[]" data-execution_count="2">
+<div id="cell-23" class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>strn <span class="op">=</span> <span class="st">'data'</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> strn:</span>
@@ -793,7 +775,7 @@ a</code></pre>
 </div>
 </div>
 <p><strong>iterating using <code>iter()</code> and <code>next()</code></strong></p>
-<div id="cell-26" class="cell" data-tags="[]" data-execution_count="8">
+<div id="cell-25" class="cell" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>st <span class="op">=</span> <span class="bu">iter</span>(strn)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(st))</span>
@@ -811,7 +793,7 @@ a</code></pre>
 <section id="tuples" class="level1">
 <h1>Tuples</h1>
 <p><strong>iterating using <code>for</code></strong></p>
-<div id="cell-29" class="cell" data-execution_count="10">
+<div id="cell-28" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> (<span class="st">'auc'</span>,<span class="st">'recall'</span>,<span class="st">'precision'</span>,<span class="st">'support'</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> met <span class="kw">in</span> metrics:</span>
@@ -824,7 +806,7 @@ support</code></pre>
 </div>
 </div>
 <p><strong>iterating using <code>iter()</code> and <code>next()</code></strong></p>
-<div id="cell-31" class="cell" data-execution_count="11">
+<div id="cell-30" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> (<span class="st">'auc'</span>,<span class="st">'recall'</span>,<span class="st">'precision'</span>,<span class="st">'support'</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>tup_metrics <span class="op">=</span> <span class="bu">iter</span>(metrics)</span>
@@ -843,10 +825,10 @@ support</code></pre>
 <section id="dictionaries" class="level1">
 <h1>Dictionaries</h1>
 <p><strong>iterating using <code>for</code></strong></p>
-<div id="cell-34" class="cell" data-execution_count="12">
+<div id="cell-33" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>courses <span class="op">=</span> {<span class="st">'fall'</span>:[<span class="st">'regression'</span>,<span class="st">'python'</span>], <span class="st">'spring'</span>:[<span class="st">'capstone'</span>,<span class="st">'pyspark'</span>,<span class="st">'nlp'</span>]}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-35" class="cell" data-execution_count="13">
+<div id="cell-34" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate over keys</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> courses:</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -855,7 +837,7 @@ support</code></pre>
 spring</code></pre>
 </div>
 </div>
-<div id="cell-36" class="cell" data-execution_count="14">
+<div id="cell-35" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate over keys, using keys() method</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> courses.keys():</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -864,7 +846,7 @@ spring</code></pre>
 spring</code></pre>
 </div>
 </div>
-<div id="cell-37" class="cell" data-execution_count="15">
+<div id="cell-36" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate over values</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> courses.values():</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -873,7 +855,7 @@ spring</code></pre>
 ['capstone', 'pyspark', 'nlp']</code></pre>
 </div>
 </div>
-<div id="cell-38" class="cell" data-execution_count="16">
+<div id="cell-37" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate over keys and values using `items()`</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> courses.items():</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">:</span><span class="ch">\t</span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(v)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -883,7 +865,7 @@ spring: capstone, pyspark, nlp</code></pre>
 </div>
 </div>
 <p>Alternatively, keys and values can be extracted from the dict by: - looping over the keys - extract the value by indexing into the dict with the key</p>
-<div id="cell-40" class="cell" data-execution_count="17">
+<div id="cell-39" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate over keys and values using `key()`.</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> courses.keys():</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">:</span><span class="ch">\t</span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(courses[k])<span class="sc">}</span><span class="ss">"</span>) <span class="co"># index into the dict with the key</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -897,7 +879,7 @@ spring: capstone, pyspark, nlp</code></pre>
 <h1>Ranges</h1>
 <p><strong>iterating using <code>for</code></strong></p>
 <p>If you just want to iterate for a known number of times, use <code>range()</code>.</p>
-<div id="cell-43" class="cell" data-execution_count="18">
+<div id="cell-42" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>).zfill(<span class="dv">2</span>), (i<span class="op">+</span><span class="dv">1</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> <span class="st">'|'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -919,13 +901,13 @@ spring: capstone, pyspark, nlp</code></pre>
 <p>Very often you will want to know iteration number you are on in a loop.</p>
 <p>This can be used to name files or dict keys, for example.</p>
 <p><code>enumerate()</code> will return the index and key for each iteration.</p>
-<div id="cell-46" class="cell" data-execution_count="19">
+<div id="cell-45" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>courses</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>{'fall': ['regression', 'python'], 'spring': ['capstone', 'pyspark', 'nlp']}</code></pre>
 </div>
 </div>
-<div id="cell-47" class="cell" data-execution_count="20">
+<div id="cell-46" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, semester <span class="kw">in</span> <span class="bu">enumerate</span>(courses):</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    course_name <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span><span class="bu">str</span>(i)<span class="sc">.</span>zfill(<span class="dv">2</span>)<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>semester<span class="sc">}</span><span class="ss">:</span><span class="ch">\t</span><span class="sc">{</span><span class="st">'-'</span><span class="sc">.</span>join(courses[semester])<span class="sc">}</span><span class="ss">"</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(course_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -941,7 +923,7 @@ spring: capstone, pyspark, nlp</code></pre>
 <p>This works well with nested data structures, like dicts within dicts.</p>
 <p>This is basically how <code>JSON</code> files are handled, BTW.</p>
 <p>Be careful, though – these can get deep and complicated.</p>
-<div id="cell-49" class="cell" data-execution_count="21">
+<div id="cell-48" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, semester <span class="kw">in</span> <span class="bu">enumerate</span>(courses):</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>semester<span class="sc">.</span>upper()<span class="sc">}</span><span class="ss">:"</span>)</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j, course <span class="kw">in</span> <span class="bu">enumerate</span>(courses[semester]):</span>

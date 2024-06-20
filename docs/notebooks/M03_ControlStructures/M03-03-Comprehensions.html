@@ -644,26 +644,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>Purpose</strong></p>
-<ul>
-<li>Explain the benefit of list comprehensions</li>
-<li>Illustrate the use of list comprehensions</li>
-<li>Explain the benefit of dict comprehensions</li>
-<li>Illustrate the use of dict comprehensions</li>
-</ul>
-<p><strong>Concepts</strong></p>
-<ul>
-<li>list comprehension</li>
-<li>dict comprehension</li>
-<li>iterators</li>
-</ul>
 <section id="list-comprehensions" class="level1">
 <h1>List Comprehensions</h1>
 <p>Consider this task: check if each integer in a list is odd.</p>
 <p>Without list comprehensions, you might do this:</p>
 <section id="check-if-odd" class="level2">
 <h2 class="anchored" data-anchor-id="check-if-odd">Check if Odd</h2>
-<div id="cell-2" class="cell" data-execution_count="1">
+<div id="cell-2" class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>vals <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">12</span>,<span class="dv">15</span>]</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>is_odd <span class="op">=</span> []</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -682,7 +669,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The code works, but it’s lengthy compared to a list comprehension.</p>
 <p>The approach takes extra time to write and understand.</p>
 <p>Let’s solve with a list comprehension:</p>
-<div id="cell-4" class="cell" data-execution_count="2">
+<div id="cell-4" class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>is_odd <span class="op">=</span> [val <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> val <span class="kw">in</span> vals]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>is_odd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -717,7 +704,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="stop-word-remover">Stop Word Remover</h2>
 <p>Create list of words, and list of stop words.<br>
 Filter out the stop words (considered not important).</p>
-<div id="cell-8" class="cell" data-execution_count="3">
+<div id="cell-8" class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>stop_words <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'am'</span>,<span class="st">'an'</span>,<span class="st">'i'</span>,<span class="st">'the'</span>,<span class="st">'of'</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>words      <span class="op">=</span> [<span class="st">'i'</span>,<span class="st">'am'</span>,<span class="st">'not'</span>,<span class="st">'a'</span>,<span class="st">'fan'</span>,<span class="st">'of'</span>,<span class="st">'the'</span>,<span class="st">'film'</span>]</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -734,12 +721,12 @@ Filter out the stop words (considered not important).</p>
 <li>the condition does the work: if the word isn’t in list of stop words, keep it</li>
 </ul>
 <p><strong>Side note</strong>: This task can also be done with sets, if you are not concerned with mulitple instances of the same word:</p>
-<div id="cell-11" class="cell" data-execution_count="4">
+<div id="cell-11" class="cell" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="op">=</span> <span class="bu">set</span>(stop_words)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> <span class="bu">set</span>(words)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>s3 <span class="op">=</span> s2 <span class="op">-</span> s1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="5">
+<div id="cell-12" class="cell" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>s3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>{'fan', 'film', 'not'}</code></pre>
@@ -749,31 +736,31 @@ Filter out the stop words (considered not important).</p>
 <section id="select-tokens-containing-units" class="level2">
 <h2 class="anchored" data-anchor-id="select-tokens-containing-units">Select Tokens Containing Units</h2>
 <p>Given a list of measurements, retain elements containing mmHg (millimeters of mercury)</p>
-<div id="cell-14" class="cell" data-execution_count="6">
+<div id="cell-14" class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>units <span class="op">=</span> <span class="st">'mmHg'</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>measures <span class="op">=</span> [<span class="st">'20'</span>, <span class="st">'115mmHg'</span>, <span class="st">'5mg'</span>, <span class="st">'10 mg'</span>, <span class="st">'7.5dl'</span>, <span class="st">'120 mmHg'</span>]</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>meas_mmhg <span class="op">=</span> [meas <span class="cf">for</span> meas <span class="kw">in</span> measures <span class="cf">if</span> units <span class="kw">in</span> meas]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="7">
+<div id="cell-15" class="cell" data-tags="[]" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>meas_mmhg   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>['115mmHg', '120 mmHg']</code></pre>
 </div>
 </div>
 <p><em>Filtering on two conditions</em></p>
-<div id="cell-17" class="cell" data-execution_count="8">
+<div id="cell-17" class="cell" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>units1 <span class="op">=</span> <span class="st">'mmHg'</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>units2 <span class="op">=</span> <span class="st">'dl'</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>meas_mmhg_dl <span class="op">=</span> [meas <span class="cf">for</span> meas <span class="kw">in</span> measures <span class="cf">if</span> units1 <span class="kw">in</span> meas <span class="kw">or</span> units2 <span class="kw">in</span> meas]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="9">
+<div id="cell-18" class="cell" data-tags="[]" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>meas_mmhg_dl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>['115mmHg', '7.5dl', '120 mmHg']</code></pre>
 </div>
 </div>
 <p>This can be written differently for clarity:</p>
-<div id="cell-20" class="cell" data-execution_count="10">
+<div id="cell-20" class="cell" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>[meas </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a> <span class="cf">for</span> meas <span class="kw">in</span> measures </span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span> units1 <span class="kw">in</span> meas </span>
@@ -788,12 +775,12 @@ Filter out the stop words (considered not important).</p>
 <h1>Dictionary Comprehensions</h1>
 <p><strong>Dictionary comprehensions</strong> provide a concise method for iterating over a dictionary to create a new dictionary.</p>
 <p>This is common when data is structured as key-value pairs, and we’d like to filter the dict.</p>
-<div id="cell-22" class="cell" data-execution_count="11">
+<div id="cell-22" class="cell" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># various deep learning models and their depths</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>model_arch <span class="op">=</span> {<span class="st">'cnn_1'</span>:<span class="st">'15 layers'</span>, <span class="st">'cnn_2'</span>:<span class="st">'20 layers'</span>, <span class="st">'rnn'</span>: <span class="st">'10 layers'</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-23" class="cell" data-execution_count="12">
+<div id="cell-23" class="cell" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new dict containing only key-value pairs where the key contains 'cnn'</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>cnns <span class="op">=</span> {key:model_arch[key] <span class="cf">for</span> key <span class="kw">in</span> model_arch.keys() <span class="cf">if</span> <span class="st">'cnn'</span> <span class="kw">in</span> key}</span>

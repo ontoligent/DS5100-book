@@ -680,16 +680,6 @@ window.Quarto = {
 </header>
 
 
-<p><strong>Topics</strong>:</p>
-<ul>
-<li>conditional statements</li>
-<li>if, else, elif</li>
-<li>for-loop</li>
-<li>while-loop</li>
-<li>break</li>
-<li>continue</li>
-<li>iteration</li>
-</ul>
 <section id="introducing-control-structures" class="level2">
 <h2 class="anchored" data-anchor-id="introducing-control-structures">Introducing Control Structures</h2>
 <p>Python includes structures to control the flow of a program:</p>
@@ -717,7 +707,7 @@ like braces <code>{</code> and <code>}</code> or key words like <code>IF ... END
 <h2 class="anchored" data-anchor-id="conditions">Conditions</h2>
 <section id="if-and-else-can-be-used-for-conditional-processing." class="level3">
 <h3 class="anchored" data-anchor-id="if-and-else-can-be-used-for-conditional-processing."><code>if</code> and <code>else</code> can be used for conditional processing.</h3>
-<div id="cell-1" class="cell" data-execution_count="14">
+<div id="cell-4" class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>val <span class="op">=</span> <span class="op">-</span><span class="dv">2</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> val <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
@@ -735,7 +725,7 @@ like braces <code>{</code> and <code>}</code> or key words like <code>IF ... END
 <p>Note that these are disjoint — if one succeeds, those<br>
 that follow are not processed.</p>
 <p>This is unlike a series of <code>if</code> statements.</p>
-<div id="cell-3" class="cell" data-execution_count="15">
+<div id="cell-6" class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>val <span class="op">=</span> <span class="op">-</span><span class="dv">2</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">-</span><span class="dv">10</span> <span class="op">&lt;</span> val <span class="op">&lt;</span> <span class="op">-</span><span class="dv">5</span>:</span>
@@ -752,7 +742,7 @@ that follow are not processed.</p>
 <section id="else" class="level3">
 <h3 class="anchored" data-anchor-id="else"><code>else</code></h3>
 <p><code>else</code> can be used as a catchall</p>
-<div id="cell-5" class="cell" data-execution_count="16">
+<div id="cell-8" class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>val <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">-</span><span class="dv">10</span> <span class="op">&lt;</span> val <span class="op">&lt;</span> <span class="op">-</span><span class="dv">5</span>:</span>
@@ -770,7 +760,7 @@ that follow are not processed.</p>
 </section>
 <section id="if-and-else-as-one-liners" class="level3">
 <h3 class="anchored" data-anchor-id="if-and-else-as-one-liners"><code>if</code> and <code>else</code> as one-liners</h3>
-<div id="cell-7" class="cell" data-execution_count="17">
+<div id="cell-10" class="cell" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'odd'</span>) <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> <span class="bu">print</span>(<span class="st">'even'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -779,10 +769,10 @@ that follow are not processed.</p>
 </div>
 <p>Notice <code>==</code> for checking the condition <code>x % 2 == 1</code>.</p>
 <p>both <code>if</code> and <code>else</code> are required. This breaks:</p>
-<div id="cell-9" class="cell" data-execution_count="5">
+<div id="cell-12" class="cell" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'odd'</span>) <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>SyntaxError: invalid syntax (471325368.py, line 1)</code></pre>
+<pre><code>SyntaxError: expected 'else' after 'if' expression (471325368.py, line 1)</code></pre>
 </div>
 </div>
 </section>
@@ -791,7 +781,7 @@ that follow are not processed.</p>
 <p>If statements can be complex combinations of expressions.</p>
 <p>Use parentheses carefully, to keep order of operations correct.</p>
 <p><strong>Correct:</strong></p>
-<div id="cell-12" class="cell" data-execution_count="18">
+<div id="cell-15" class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>val <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="op">-</span><span class="dv">2</span> <span class="op">&lt;</span> val <span class="op">&lt;</span> <span class="dv">2</span>) <span class="kw">or</span> (val <span class="op">&gt;</span> <span class="dv">10</span>):</span>
@@ -803,7 +793,7 @@ that follow are not processed.</p>
 </div>
 </div>
 <p><strong>Incorrect:</strong></p>
-<div id="cell-14" class="cell" data-execution_count="19">
+<div id="cell-17" class="cell" data-tags="[]" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="op">-</span><span class="dv">2</span> <span class="op">&lt;</span> val) <span class="op">&lt;</span> <span class="dv">2</span> <span class="kw">or</span> val <span class="op">&gt;</span> <span class="dv">10</span>:</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 1'</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
@@ -822,7 +812,7 @@ where <code>True</code> is cast to integer value <span class="math inline">\(1\)
 <section id="while" class="level3">
 <h3 class="anchored" data-anchor-id="while"><code>while</code></h3>
 <p>What does this print?</p>
-<div id="cell-18" class="cell" data-execution_count="8">
+<div id="cell-21" class="cell" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ix <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> ix <span class="op">&lt;</span> <span class="dv">10</span>:</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    ix <span class="op">=</span> ix <span class="op">*</span> <span class="dv">2</span></span>
@@ -836,7 +826,7 @@ where <code>True</code> is cast to integer value <span class="math inline">\(1\)
 <h3 class="anchored" data-anchor-id="break-to-exit-the-loop-altogether"><code>break</code> to exit the loop altogether</h3>
 <p>sometimes you want to quit the loop early, if some condition is met.<br>
 uses <code>if-statement</code></p>
-<div id="cell-20" class="cell" data-execution_count="9">
+<div id="cell-23" class="cell" data-tags="[]" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ix <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> ix <span class="op">&lt;</span> <span class="dv">10</span>:</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    ix <span class="op">=</span> ix <span class="op">*</span> <span class="dv">2</span></span>
@@ -853,7 +843,7 @@ uses <code>if-statement</code></p>
 <h3 class="anchored" data-anchor-id="continue-to-stop-the-current-iteration"><code>continue</code> to stop the current iteration</h3>
 <p>sometimes you want to introduce skipping behavior in the loop.<br>
 uses <code>if-statement</code></p>
-<div id="cell-22" class="cell" data-execution_count="10">
+<div id="cell-25" class="cell" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ix <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> ix <span class="op">&lt;</span> <span class="dv">10</span>:</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    ix <span class="op">=</span> ix <span class="op">*</span> <span class="dv">2</span></span>
@@ -873,7 +863,7 @@ skipping 4...
 <section id="for" class="level3">
 <h3 class="anchored" data-anchor-id="for"><code>for</code></h3>
 <p>iterate over an iterable</p>
-<div id="cell-24" class="cell" data-execution_count="20">
+<div id="cell-27" class="cell" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> [<span class="st">'Charlottesville'</span>,<span class="st">'New York'</span>,<span class="st">'SF'</span>,<span class="st">'BOS'</span>,<span class="st">'LA'</span>]</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> city <span class="kw">in</span> cities:</span>
@@ -888,7 +878,7 @@ la</code></pre>
 </div>
 </div>
 <p>quit early if <code>SF</code> reached, using <strong>break</strong></p>
-<div id="cell-26" class="cell" data-execution_count="21">
+<div id="cell-29" class="cell" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> [<span class="st">'Charlottesville'</span>,<span class="st">'New York'</span>,<span class="st">'SF'</span>,<span class="st">'BOS'</span>,<span class="st">'LA'</span>]</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> city <span class="kw">in</span> cities:</span>
@@ -902,7 +892,7 @@ new york</code></pre>
 </div>
 </div>
 <p>skip over <code>SF</code> if reached, using <strong>continue</strong></p>
-<div id="cell-28" class="cell" data-execution_count="22">
+<div id="cell-31" class="cell" data-tags="[]" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> [<span class="st">'Charlottesville'</span>,<span class="st">'New York'</span>,<span class="st">'SF'</span>,<span class="st">'BOS'</span>,<span class="st">'LA'</span>]</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> city <span class="kw">in</span> cities:</span>

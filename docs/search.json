@@ -897,7 +897,7 @@
     "href": "topics/vals-vars-expressions-statements.html#definitions",
     "title": "Values, Variables, Expressions, and Statements",
     "section": "",
-    "text": "Values: Raw data elements represented in a program, e.g. numbers and strings.\nVariables: Names to which values are assigned.\nExpressions: Combinations of values, variables, operators, functions, and other expressions that evaluate to a value.\nStatements: Groupings of expressions that produce some result. Statements do things.",
+    "text": "Values: Raw data elements represented in a program, e.g. numbers and strings.\nVariables: Names to which values are assigned.\nExpressions: Combinations of values, variables, operators, functions, and other expressions that evaluate to a value.\nStatements: Groupings of expressions that produce some result. Statements do things.\nBlocks: Groupings of statements into functional chunks of code, such as a control block or a function.",
     "crumbs": [
       "M03 Control Structures",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Values, Variables, Expressions, and Statements</span>"

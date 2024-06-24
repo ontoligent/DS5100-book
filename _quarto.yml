@@ -44,8 +44,8 @@ book:
         - notebooks/M03_ControlStructures/M03-03-Comprehensions.ipynb
     - part: modules/m04/m04-intro.qmd # 04 Functions
       chapters: 
-        - notebooks/M04_PythonFunctions/M04-02-Functions.ipynb
-        - notebooks/M04_PythonFunctions/M04-01-Importing.ipynb
+        - notebooks/M04_PythonFunctions/M04-01-Functions.ipynb
+        - notebooks/M04_PythonFunctions/M04-02-Importing.ipynb
         - notebooks/M04_PythonFunctions/M04-03-LambdaFunctions.ipynb
         - notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.ipynb
         - notebooks/M04_PythonFunctions/M04-05-Scope.ipynb

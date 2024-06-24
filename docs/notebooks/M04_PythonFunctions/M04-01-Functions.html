@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../notebooks/M04_PythonFunctions/M04-01-Importing.html" rel="next">
+<link href="../../notebooks/M04_PythonFunctions/M04-02-Importing.html" rel="next">
 <link href="../../modules/m04/m04-intro.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -144,7 +144,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m04/m04-intro.html">M04 Functions</a></li><li class="breadcrumb-item"><a href="../../notebooks/M04_PythonFunctions/M04-02-Functions.html"><span class="chapter-title">NB: Introduction to Functions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m04/m04-intro.html">M04 Functions</a></li><li class="breadcrumb-item"><a href="../../notebooks/M04_PythonFunctions/M04-01-Functions.html"><span class="chapter-title">NB: Introduction to Functions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -307,12 +307,12 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M04_PythonFunctions/M04-02-Functions.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: Introduction to Functions</span></a>
+  <a href="../../notebooks/M04_PythonFunctions/M04-01-Functions.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: Introduction to Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M04_PythonFunctions/M04-01-Importing.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Importing Functions</span></a>
+  <a href="../../notebooks/M04_PythonFunctions/M04-02-Importing.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Importing Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -641,15 +641,18 @@ window.Quarto = {
   <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits">Benefits</a></li>
   <li><a href="#built-in-functions" id="toc-built-in-functions" class="nav-link" data-scroll-target="#built-in-functions">Built-in Functions</a></li>
   <li><a href="#imported-functions" id="toc-imported-functions" class="nav-link" data-scroll-target="#imported-functions">Imported Functions</a></li>
-  <li><a href="#user-defined-functions" id="toc-user-defined-functions" class="nav-link" data-scroll-target="#user-defined-functions">User-Defined Functions</a>
+  <li><a href="#user-defined-functions" id="toc-user-defined-functions" class="nav-link" data-scroll-target="#user-defined-functions">User-Defined Functions</a></li>
+  <li><a href="#about-the-docstring" id="toc-about-the-docstring" class="nav-link" data-scroll-target="#about-the-docstring">About the docstring</a>
   <ul class="collapse">
-  <li><a href="#about-the-docstring" id="toc-about-the-docstring" class="nav-link" data-scroll-target="#about-the-docstring">About the docstring</a></li>
-  <li><a href="#lets-test-our-function" id="toc-lets-test-our-function" class="nav-link" data-scroll-target="#lets-test-our-function">Let’s test our function</a></li>
   <li><a href="#users-can-print-the-docstring" id="toc-users-can-print-the-docstring" class="nav-link" data-scroll-target="#users-can-print-the-docstring">Users can print the docstring</a></li>
   </ul></li>
+  <li><a href="#lets-try-out-our-function" id="toc-lets-try-out-our-function" class="nav-link" data-scroll-target="#lets-try-out-our-function">Let’s try out our function</a></li>
   <li><a href="#passing-parameters" id="toc-passing-parameters" class="nav-link" data-scroll-target="#passing-parameters">Passing Parameters</a>
   <ul class="collapse">
   <li><a href="#parameter-order" id="toc-parameter-order" class="nav-link" data-scroll-target="#parameter-order">Parameter Order</a></li>
+  </ul></li>
+  <li><a href="#named-parameters" id="toc-named-parameters" class="nav-link" data-scroll-target="#named-parameters">Named Parameters</a>
+  <ul class="collapse">
   <li><a href="#weirdness-alert" id="toc-weirdness-alert" class="nav-link" data-scroll-target="#weirdness-alert">Weirdness Alert</a></li>
   </ul></li>
   <li><a href="#unpacking-list-likes-with-args" id="toc-unpacking-list-likes-with-args" class="nav-link" data-scroll-target="#unpacking-list-likes-with-args">Unpacking List-likes with <code>*args</code></a></li>
@@ -657,12 +660,12 @@ window.Quarto = {
   <li><a href="#returning-values" id="toc-returning-values" class="nav-link" data-scroll-target="#returning-values">Returning Values</a></li>
   <li><a href="#function-design" id="toc-function-design" class="nav-link" data-scroll-target="#function-design">Function Design</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M04_PythonFunctions/M04-02-Functions.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M04_PythonFunctions/M04-01-Functions.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m04/m04-intro.html">M04 Functions</a></li><li class="breadcrumb-item"><a href="../../notebooks/M04_PythonFunctions/M04-02-Functions.html"><span class="chapter-title">NB: Introduction to Functions</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m04/m04-intro.html">M04 Functions</a></li><li class="breadcrumb-item"><a href="../../notebooks/M04_PythonFunctions/M04-01-Functions.html"><span class="chapter-title">NB: Introduction to Functions</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-title">NB: Introduction to Functions</span></h1>
 </div>
@@ -681,19 +684,39 @@ window.Quarto = {
 </header>
 
 
-<p><strong>Objectives</strong> - Explain the benefits of functions - Illustrate how to use built-in functions - Illustrate how to create and use your own (user-defined) functions - Demonstrate the scope and lifetime of a variable - Illustrate global and local nature of variables through functions - Demonstrate function parameter use - Provide recommendations on how to create and document functions - Show how to print and write docstrings</p>
-<p><strong>Concepts</strong> - functions - built-in functions - user-defined functions - variable scope - global versus local variables - default arguments - *args - function call - docstring</p>
+<!--
+**Objectives**
+- Explain the benefits of functions
+- Illustrate how to use built-in functions
+- Illustrate how to create and use your own (user-defined) functions
+- Demonstrate the scope and lifetime of a variable
+- Illustrate global and local nature of variables through functions
+- Demonstrate function parameter use
+- Provide recommendations on how to create and document functions
+- Show how to print and write docstrings
+
+**Concepts**
+- functions
+- built-in functions
+- user-defined functions
+- variable scope
+- global versus local variables
+- default arguments
+- *args
+- function call
+- docstring
+-->
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>A function is piece of source code, separate fom the larger program, that performs a specific task.</p>
-<p>This section of code is given a name and can be called from the main program. It is called by using its given name.</p>
+<p>A function is piece of code, separate fom the larger program, that <strong>performs a specific task</strong>.</p>
+<p>This piece of code is given a <strong>name</strong> and can be <strong>called</strong> from the main program.</p>
 <p>Functions are the <strong>verbs</strong> of a programming language. They signify action, and take subjects and objects (as it were).</p>
 <p>Functions take <strong>input</strong> and produce <strong>output</strong>.</p>
 <ul>
 <li>Function inputs are called both <strong>parameters</strong> and <strong>arguments</strong>.</li>
 <li>Outputs are called <strong>return</strong> values</li>
 </ul>
-<p>Functions are always written with parentheses at the end of their names, e.g.</p>
+<p>Functions are always written with <strong>parentheses</strong> at the end of their names, e.g.</p>
 <p><code>len(some_list)</code></p>
 <p>Internally, they contain a block of code to do their work.</p>
 <p>Often the producte a <strong>transformation</strong> … from simple to complex.</p>
@@ -701,13 +724,13 @@ window.Quarto = {
 </section>
 <section id="benefits" class="level2">
 <h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
-<p>Reduce complex tasks into simpler tasks.</p>
-<p>Eliminate duplicate code – no need to re-write, reuse function as needed.</p>
-<p>Code reuse. Once function is written, you can reuse it in any other program.</p>
-<p>Distribute tasks to multiple programmers. For example, each function can be written by someone.</p>
-<p>Hide implementation details, i.e.&nbsp;abstraction.</p>
-<p>Increase code readability.</p>
-<p>Improve debugging by improving traceability. Things are easier to follow; you can jump from function to function.</p>
+<p>Reduce <strong>complex</strong> tasks into <strong>simpler</strong> tasks.</p>
+<p>Eliminate <strong>duplicate code</strong> – no need to re-write, reuse function as needed.</p>
+<p>Make code <strong>reusable</strong>. Once function is written, you can reuse it in any other program.</p>
+<p><strong>Distribute</strong> tasks to multiple programmers. For example, each function can be written by someone.</p>
+<p>Hide implementation details, i.e.&nbsp;<strong>abstraction</strong>.</p>
+<p>Increase code <strong>readability</strong>.</p>
+<p>Improve <strong>debugging</strong> by improving traceability. Things are easier to follow; you can jump from function to function.</p>
 </section>
 <section id="built-in-functions" class="level2">
 <h2 class="anchored" data-anchor-id="built-in-functions">Built-in Functions</h2>
@@ -716,24 +739,22 @@ window.Quarto = {
 <p>These are functions that are available to use any time your are running Python.</p>
 <p>To take one simple example, this is a built-in function: <code>bool()</code>.</p>
 <p>Takes an argument <span class="math inline">\(x\)</span> and returns a boolean value, i.e.&nbsp;<code>True</code> or <code>False</code>.</p>
-<div id="cell-1" class="cell">
+<div id="cell-4" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="dv">0</span>), <span class="bu">bool</span>(<span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="imported-functions" class="level2">
 <h2 class="anchored" data-anchor-id="imported-functions">Imported Functions</h2>
-<p>Python is meant to be a highly modular language.<br>
-It is not designed to have a lot of special purpose functions built into it.<br>
-These keeps it light and highly customizable.</p>
-<p>Many functions (and other stuff) can be imported into a program to add to the functions that you can call in a script.</p>
-<p>There are also many <strong>packages</strong> to bring in additional functions.</p>
-<p>Packages and Libraries</p>
+<p>Python is meant to be a highly <strong>modular</strong> language.</p>
+<p>It is not designed to have a lot of special purpose functions built into it.</p>
+<p>These keeps it light and highly customizable.</p>
+<p>Many functions (and other stuff) can be <strong>imported</strong> into a program to add to the functions that you can call in a script.</p>
 </section>
 <section id="user-defined-functions" class="level2">
 <h2 class="anchored" data-anchor-id="user-defined-functions">User-Defined Functions</h2>
 <p>Python makes it easy for you to write your own functions. These are called <strong>user-defined</strong> functions.</p>
 <p>Let’s write a function to compare the list against a threshold.</p>
-<div id="cell-3" class="cell" data-execution_count="2">
+<div id="cell-7" class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vals_greater_than_or_equal_to_threshold(vals, thresh):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    This is the "docstring" of a function. It is optional but expected. It describes it's </span></span>
@@ -762,157 +783,179 @@ These keeps it light and highly customizable.</p>
 <p>The <strong>function call</strong> allows for the function to be used.<br>
 It consists of function name and required arguments:</p>
 <p><code>vals_greater_than_or_equal_to_threshold(arg1, arg2)</code> where <code>arg1</code>, <code>arg2</code> are arbitrary names.</p>
-<section id="about-the-docstring" class="level3">
-<h3 class="anchored" data-anchor-id="about-the-docstring">About the docstring</h3>
+</section>
+<section id="about-the-docstring" class="level2">
+<h2 class="anchored" data-anchor-id="about-the-docstring">About the docstring</h2>
 <p>A <strong>docstring</strong> m occurs as first statement in module, function, class, or method definition</p>
 <p>Internally, it is saved in <code>__doc__</code> attribute of the function object.</p>
 <p>It needs to be indented.</p>
 <p>It can be a single line or a multi-line string.</p>
+<section id="users-can-print-the-docstring" class="level3">
+<h3 class="anchored" data-anchor-id="users-can-print-the-docstring">Users can print the docstring</h3>
+<div id="cell-11" class="cell" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vals_greater_than_or_equal_to_threshold.__doc__)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    This is the "docstring" of a function. It is optional but expected. It describes it's 
+    purpose and the nature of the input and return values, as well as a sense of what it does.
+    More elaborate information should appear in external documentation packages with the function.
+    
+    PURPOSE: Given a list of values, compare each value against a threshold
+    
+    INPUTS
+    vals    list of ints or floats
+    thresh  int or float
+    
+    OUTPUT
+    bools  list of booleans
+    </code></pre>
+</div>
+</div>
+<p>Print the docstring using <code>help()</code>:</p>
+<div id="cell-13" class="cell" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(vals_greater_than_or_equal_to_threshold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Help on function vals_greater_than_or_equal_to_threshold in module __main__:
+
+vals_greater_than_or_equal_to_threshold(vals, thresh)
+    This is the "docstring" of a function. It is optional but expected. It describes it's 
+    purpose and the nature of the input and return values, as well as a sense of what it does.
+    More elaborate information should appear in external documentation packages with the function.
+    
+    PURPOSE: Given a list of values, compare each value against a threshold
+    
+    INPUTS
+    vals    list of ints or floats
+    thresh  int or float
+    
+    OUTPUT
+    bools  list of booleans
+</code></pre>
+</div>
+</div>
+<p>Or, use the <code>?</code> prefix:</p>
+<div id="cell-15" class="cell" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>?vals_greater_than_or_equal_to_threshold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span> vals_greater_than_or_equal_to_threshold<span class="ansi-blue-fg">(</span>vals<span class="ansi-blue-fg">,</span> thresh<span class="ansi-blue-fg">)</span>
+<span class="ansi-red-fg">Docstring:</span>
+This is the "docstring" of a function. It is optional but expected. It describes it's 
+purpose and the nature of the input and return values, as well as a sense of what it does.
+More elaborate information should appear in external documentation packages with the function.
+PURPOSE: Given a list of values, compare each value against a threshold
+INPUTS
+vals    list of ints or floats
+thresh  int or float
+OUTPUT
+bools  list of booleans
+<span class="ansi-red-fg">File:</span>      /tmp/ipykernel_976863/2026213090.py
+<span class="ansi-red-fg">Type:</span>      function</pre>
+</div>
+</div>
+</div>
 </section>
-<section id="lets-test-our-function" class="level3">
-<h3 class="anchored" data-anchor-id="lets-test-our-function">Let’s test our function</h3>
-<p>The function body used a <code>list comprehension</code> for the compare:</p>
+</section>
+<section id="lets-try-out-our-function" class="level2">
+<h2 class="anchored" data-anchor-id="lets-try-out-our-function">Let’s try out our function</h2>
+<p>The function body used a <code>list comprehension</code> for the comparison:</p>
 <p><code>[val &gt;= thresh for val in vals]</code></p>
-<div id="cell-5" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">## validate that it works for ints</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">4</span>]</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>thr <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>vals_greater_than_or_equal_to_threshold(x, thr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<p>Validate that it works for integers:</p>
+<div id="cell-18" class="cell" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>thr <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>vals_greater_than_or_equal_to_threshold(x, thr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>[False, True]</code></pre>
 </div>
 </div>
-<div id="cell-6" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">## validate that it works for floats</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">3.0</span>, <span class="fl">4.2</span>]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>thr <span class="op">=</span> <span class="fl">4.2</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>vals_greater_than_or_equal_to_threshold(x, thr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Validate that it works for floats:</p>
+<div id="cell-20" class="cell" data-tags="[]" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">3.0</span>, <span class="fl">4.2</span>]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>thr <span class="op">=</span> <span class="fl">4.2</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>vals_greater_than_or_equal_to_threshold(x, thr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>[False, True]</code></pre>
 </div>
-<div id="cell-7" class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">## vals_greater_than_or_equal_to_threshold("foo", "bar")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This gives correct results and does exactly what we want.</p>
-</section>
-<section id="users-can-print-the-docstring" class="level3">
-<h3 class="anchored" data-anchor-id="users-can-print-the-docstring">Users can print the docstring</h3>
-<div id="cell-9" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vals_greater_than_or_equal_to_threshold.__doc__)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>print the help</p>
-<div id="cell-11" class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(vals_greater_than_or_equal_to_threshold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-12" class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>?vals_greater_than_or_equal_to_threshold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Let’s test our function</strong></p>
-<p>The function body used a <code>list comprehension</code> for the comparison:</p>
-<p><code>[val &gt;= thresh for val in vals]</code></p>
-<div id="cell-14" class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">## validate that it works for ints</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">4</span>]</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>thr <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>vals_greater_than_or_equal_to_threshold(x, thr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-15" class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">## validate that it works for floats</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">3.0</span>, <span class="fl">4.2</span>]</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>thr <span class="op">=</span> <span class="fl">4.2</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>vals_greater_than_or_equal_to_threshold(x, thr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This gives correct results and does exactly what we want.</p>
-<p>Print the docstring</p>
-<div id="cell-17" class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vals_greater_than_or_equal_to_threshold.__doc__)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Print the help</p>
-<div id="cell-19" class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(vals_greater_than_or_equal_to_threshold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Use the <code>?</code> prefix …</p>
-<div id="cell-21" class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>?vals_greater_than_or_equal_to_threshold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
 </section>
 <section id="passing-parameters" class="level2">
 <h2 class="anchored" data-anchor-id="passing-parameters">Passing Parameters</h2>
+<p>All functions may take <span class="math inline">\(0\)</span> or more <strong>arguments</strong>, also called <strong>parameters</strong>.</p>
 <p>Functions need to be called with correct number of parameters.</p>
 <p>This function requires two params, but the function call includes only one param.</p>
-<div id="cell-23" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fcn_bad_args(x, y):</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-23" class="cell" data-tags="[]" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> func_with_args(x, y):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-24" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>fcn_bad_args(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-24" class="cell" data-tags="[]" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>func_with_args(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>TypeError: fcn_bad_args() missing 1 required positional argument: 'y'</code></pre>
+<pre><code>TypeError: func_with_args() missing 1 required positional argument: 'y'</code></pre>
 </div>
 </div>
 <section id="parameter-order" class="level3">
 <h3 class="anchored" data-anchor-id="parameter-order">Parameter Order</h3>
 <p>When calling a function, <strong>parameter order matters</strong>.</p>
-<div id="cell-26" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fcn_swapped_args(x, y):</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> <span class="dv">5</span> <span class="op">*</span> x <span class="op">+</span> y</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-26" class="cell" data-tags="[]" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fcn_swapped_args(x, y):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> <span class="dv">5</span> <span class="op">*</span> x <span class="op">+</span> y</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-27" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-27" class="cell" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-28" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>fcn_swapped_args(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div id="cell-28" class="cell" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fcn_swapped_args(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>7</code></pre>
 </div>
 </div>
-<div id="cell-29" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fcn_swapped_args(y, x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div id="cell-29" class="cell" data-tags="[]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fcn_swapped_args(y, x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>11</code></pre>
 </div>
 </div>
-<p>Generally it’s best to keep parameters in order.</p>
-<p>You can swap the order by putting the parameter names in the function call.</p>
-<div id="cell-31" class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fcn_swapped_args(y<span class="op">=</span>y, x<span class="op">=</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
+</section>
+<section id="named-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="named-parameters">Named Parameters</h2>
+<p>Generally it’s best to keep parameters in order.</p>
+<p><strong>However,</strong> You can swap the order by putting the <strong>parameter names</strong> in the function call.</p>
+<div id="cell-32" class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>fcn_swapped_args(y<span class="op">=</span>y, x<span class="op">=</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <section id="weirdness-alert" class="level3">
 <h3 class="anchored" data-anchor-id="weirdness-alert">Weirdness Alert</h3>
 <p>Note that the same name can be used for the parameter names and the variables passed to them.</p>
 <p>The names themselves have nothng to do with each other!</p>
 <p>In other words, just because a function names an argument <code>foo</code>,<br>
 the variables passed to it don’t have to name <code>foo</code> or anything like it.<br>
-They can even be named the same thing – it does not matter.</p>
+They can even be named the same thing—it does not matter.</p>
 </section>
 </section>
 <section id="unpacking-list-likes-with-args" class="level2">
 <h2 class="anchored" data-anchor-id="unpacking-list-likes-with-args">Unpacking List-likes with <code>*args</code></h2>
 <p>The <code>*</code> prefix operator can be passed to avoid specifying the arguments individually.</p>
-<div id="cell-33" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_arg_expansion(<span class="op">*</span>models):</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"models          :"</span>, models)</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"input arg type  :"</span>,  <span class="bu">type</span>(models))</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"input arg length:"</span>, <span class="bu">len</span>(models))</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"-----------------------------"</span>)</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> mod <span class="kw">in</span> models:</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(mod)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-35" class="cell" data-tags="[]" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_arg_expansion(<span class="op">*</span>models):</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"models          :"</span>, models)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"input arg type  :"</span>,  <span class="bu">type</span>(models))</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"input arg length:"</span>, <span class="bu">len</span>(models))</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"-----------------------------"</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> mod <span class="kw">in</span> models:</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(mod)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can pass a tuple of values to the function …</p>
-<div id="cell-35" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>show_arg_expansion(<span class="st">"logreg"</span>, <span class="st">"naive_bayes"</span>, <span class="st">"gbm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-37" class="cell" data-tags="[]" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>show_arg_expansion(<span class="st">"logreg"</span>, <span class="st">"naive_bayes"</span>, <span class="st">"gbm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>models          : ('logreg', 'naive_bayes', 'gbm')
 input arg type  : &lt;class 'tuple'&gt;
@@ -925,9 +968,9 @@ gbm</code></pre>
 </div>
 <p>You can also pass a list to the function.</p>
 <p>If you want the elements unpacked, put <code>*</code> before the list.</p>
-<div id="cell-37" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>models <span class="op">=</span> [<span class="st">"logreg"</span>, <span class="st">"naive_bayes"</span>, <span class="st">"gbm"</span>]</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>show_arg_expansion(<span class="op">*</span>models)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-39" class="cell" data-tags="[]" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>models <span class="op">=</span> [<span class="st">"logreg"</span>, <span class="st">"naive_bayes"</span>, <span class="st">"gbm"</span>]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>show_arg_expansion(<span class="op">*</span>models)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>models          : ('logreg', 'naive_bayes', 'gbm')
 input arg type  : &lt;class 'tuple'&gt;
@@ -939,55 +982,65 @@ gbm</code></pre>
 </div>
 </div>
 <p>This approach allows your function to accept an arbitrary number of arguments.</p>
-<div id="cell-39" class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>show_arg_expansion(<span class="st">'a b c d e f g'</span>.split())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-41" class="cell" data-tags="[]" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>show_arg_expansion(<span class="st">'a b c d e f g'</span>.split())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>models          : (['a', 'b', 'c', 'd', 'e', 'f', 'g'],)
+input arg type  : &lt;class 'tuple'&gt;
+input arg length: 1
+-----------------------------
+['a', 'b', 'c', 'd', 'e', 'f', 'g']</code></pre>
+</div>
 </div>
 <p><strong>The reverse is true, too.</strong></p>
 <p>You can use the <code>*</code> prefix to pass list-like objects to a function that specifies its arguments.</p>
-<div id="cell-41" class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> arg_expansion_example(x, y):</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">**</span>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-43" class="cell" data-tags="[]" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> arg_expansion_example(x, y):</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">**</span>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-42" class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>my_args <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">8</span>]</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>arg_expansion_example(<span class="op">*</span>my_args)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-44" class="cell" data-tags="[]" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>my_args <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">8</span>]</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>arg_expansion_example(<span class="op">*</span>my_args)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<pre><code>256</code></pre>
+</div>
 </div>
 <p>But, the passed object must be the right length.</p>
-<div id="cell-44" class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>my_args2 <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">5</span>]</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>arg_expansion_example(<span class="op">*</span>my_args2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-46" class="cell" data-tags="[]" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>my_args2 <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">5</span>]</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>arg_expansion_example(<span class="op">*</span>my_args2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: arg_expansion_example() takes 2 positional arguments but 3 were given</code></pre>
 </div>
-<div id="cell-45" class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">## **my_dict</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="default-arguments" class="level2">
 <h2 class="anchored" data-anchor-id="default-arguments">Default Arguments</h2>
 <p>Use default arguments to set the value of arguments when left unspecified.</p>
-<div id="cell-47" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_results(precision, printing<span class="op">=</span><span class="va">True</span>):</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    precision <span class="op">=</span> <span class="bu">round</span>(precision, <span class="dv">2</span>)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> printing:</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="st">'precision ='</span>, precision)</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> precision</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-48" class="cell" data-tags="[]" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_results(precision, printing<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    precision <span class="op">=</span> <span class="bu">round</span>(precision, <span class="dv">2</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> printing:</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="st">'precision ='</span>, precision)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> precision</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-48" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>pr <span class="op">=</span> <span class="fl">0.912</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> show_results(pr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-49" class="cell" data-tags="[]" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>pr <span class="op">=</span> <span class="fl">0.912</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> show_results(pr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>precision = 0.91</code></pre>
 </div>
 </div>
 <p>The function call didn’t specify <code>printing</code>, so it defaulted to True.</p>
 <p><strong>NOTE:</strong> Default arguments must follow non-default arguments. This causes trouble:</p>
-<div id="cell-50" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_results(precision, printing<span class="op">=</span><span class="va">True</span>, uhoh):</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    precision <span class="op">=</span> <span class="bu">round</span>(precision, <span class="dv">2</span>)</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> printing:</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="st">'precision ='</span>, precision)</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> precision</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-51" class="cell" data-tags="[]" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_results(precision, printing<span class="op">=</span><span class="va">True</span>, uhoh):</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    precision <span class="op">=</span> <span class="bu">round</span>(precision, <span class="dv">2</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> printing:</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="st">'precision ='</span>, precision)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> precision</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>SyntaxError: non-default argument follows default argument (&lt;ipython-input-19-29f5905a75a5&gt;, line 1)</code></pre>
+<pre><code>SyntaxError: non-default argument follows default argument (830346004.py, line 1)</code></pre>
 </div>
 </div>
 </section>
@@ -998,75 +1051,85 @@ gbm</code></pre>
 <p>Functions can return no value (<code>None</code>), one value, or many.</p>
 <p>Many values are returned as a tuple.</p>
 <p>Any Python object can be returned.</p>
-<div id="cell-52" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">## returns None, and prints.</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fcn_nothing_to_return(x, y):</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> <span class="st">'nothing to see here!'</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-53" class="cell" data-tags="[]" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">## returns None, and prints.</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fcn_nothing_to_return(x, y):</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> <span class="st">'nothing to see here!'</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-53" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>fcn_nothing_to_return(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-54" class="cell" data-tags="[]" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>fcn_nothing_to_return(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>nothing to see here!</code></pre>
 </div>
 </div>
-<div id="cell-54" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> fcn_nothing_to_return(<span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-55" class="cell" data-tags="[]" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> fcn_nothing_to_return(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>nothing to see here!
 None</code></pre>
 </div>
 </div>
-<div id="cell-55" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">## returns three values</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> negate_coords(x, y, z):</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>x, <span class="op">-</span>y, <span class="op">-</span>z </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-56" class="cell" data-tags="[]" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">## returns three values</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> negate_coords(x, y, z):</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>x, <span class="op">-</span>y, <span class="op">-</span>z </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-56" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>a, b, c <span class="op">=</span> negate_coords(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'a ='</span>, a)</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'b ='</span>, b)</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'c ='</span>, c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-57" class="cell" data-tags="[]" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>a, b, c <span class="op">=</span> negate_coords(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'a ='</span>, a)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'b ='</span>, b)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'c ='</span>, c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>a = -10
 b = -20
 c = -30</code></pre>
 </div>
 </div>
-<div id="cell-57" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>foo <span class="op">=</span> negate_coords(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-58" class="cell" data-tags="[]" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>foo <span class="op">=</span> negate_coords(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-58" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>foo, <span class="bu">len</span>(foo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
+<div id="cell-59" class="cell" data-tags="[]" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>foo, <span class="bu">len</span>(foo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>((-10, -20, -30), 3)</code></pre>
 </div>
 </div>
 <p><strong>If you don’t need an output, use the dummy variable <code>_</code></strong></p>
-<div id="cell-60" class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>d, e, _ <span class="op">=</span> negate_coords(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>)</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'d ='</span>, d)</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'e ='</span>, e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-61" class="cell" data-tags="[]" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>d, e, _ <span class="op">=</span> negate_coords(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'d ='</span>, d)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'e ='</span>, e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>d = -10
+e = -20</code></pre>
+</div>
 </div>
 <p><strong>Note:</strong> It’s generally a good idea to include return statements, even if not returning a value.</p>
 <p>This shows that you did not forget to consider the return value.</p>
 <p>You can use <code>return</code> or <code>return None</code>.</p>
 <p><strong>Functions can contain multiple return statements</strong>.</p>
 <p>These may be used under different logical conditions.</p>
-<div id="cell-62" class="cell">
+<div id="cell-63" class="cell" data-tags="[]" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> absolute_value(num):</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> num <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> num</span>
 <span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>num</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-63" class="cell">
+<div id="cell-64" class="cell" data-tags="[]" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>absolute_value(<span class="op">-</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
+<pre><code>4</code></pre>
 </div>
-<div id="cell-64" class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>absolute_value(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-65" class="cell" data-tags="[]" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>absolute_value(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="58">
+<pre><code>4</code></pre>
+</div>
 </div>
 <p>For non-negative values, the first <code>return</code> is reached.<br>
 For negative values, the second <code>return</code> is reached.</p>
@@ -1523,7 +1586,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../notebooks/M04_PythonFunctions/M04-01-Importing.html" class="pagination-link" aria-label="NB: Importing Functions">
+      <a href="../../notebooks/M04_PythonFunctions/M04-02-Importing.html" class="pagination-link" aria-label="NB: Importing Functions">
         <span class="nav-page-text"><span class="chapter-title">NB: Importing Functions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1533,4 +1596,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M04_PythonFunctions/M04-02-Functions.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M04_PythonFunctions/M04-01-Functions.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

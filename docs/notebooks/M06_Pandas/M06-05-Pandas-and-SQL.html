@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.2.262">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DS 5100: Programming for Data Science - NB: Pandas and SQL</title>
+<title>DS 5100: Programming for Data Science - 31&nbsp; NB: Pandas and SQL</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,12 +17,11 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -47,17 +46,47 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -81,13 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -96,14 +119,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -111,18 +132,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <body class="nav-sidebar docked">
 
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m06/m06-intro.html">M06 Pandas</a></li><li class="breadcrumb-item"><a href="../../notebooks/M06_Pandas/M06-05-Pandas-and-SQL.html"><span class="chapter-title">NB: Pandas and SQL</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-title">NB: Pandas and SQL</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
       </button>
     </div>
   </nav>
@@ -130,27 +147,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">DS 5100: Programming for Data Science</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/ontoligent/DS5100-book" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/ontoligent/DS5100-book" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
+      <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-        </div>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -164,9 +180,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m01/m01-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M01 Getting Started</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m01/m01-intro.html" class="sidebar-item-text sidebar-link">M01 Getting Started</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -195,9 +210,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m02/m02-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M02 Introducing Python</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m02/m02-intro.html" class="sidebar-item-text sidebar-link">M02 Introducing Python</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -241,9 +255,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m03/m03-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M03 Control Structures</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m03/m03-intro.html" class="sidebar-item-text sidebar-link">M03 Control Structures</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -272,9 +285,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m04/m04-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M04 Functions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m04/m04-intro.html" class="sidebar-item-text sidebar-link">M04 Functions</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -313,9 +325,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m05/m05-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M05 NumPy</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m05/m05-intro.html" class="sidebar-item-text sidebar-link">M05 NumPy</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -344,9 +355,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m06/m06-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M06 Pandas</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+            <a href="../../modules/m06/m06-intro.html" class="sidebar-item-text sidebar-link">M06 Pandas</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -380,9 +390,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m07/m07-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M07 Classes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m07/m07-intro.html" class="sidebar-item-text sidebar-link">M07 Classes</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -421,9 +430,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m08/m08-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M08 Testing</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m08/m08-intro.html" class="sidebar-item-text sidebar-link">M08 Testing</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -447,9 +455,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m09/m09-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M09 Modules</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m09/m09-intro.html" class="sidebar-item-text sidebar-link">M09 Modules</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -483,9 +490,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m10/m10-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M10 Basic R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m10/m10-intro.html" class="sidebar-item-text sidebar-link">M10 Basic R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -504,9 +510,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m11/m11-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M11 Dplyr</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m11/m11-intro.html" class="sidebar-item-text sidebar-link">M11 Dplyr</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -525,9 +530,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m12/m12-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M12 Visualization</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m12/m12-intro.html" class="sidebar-item-text sidebar-link">M12 Visualization</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -556,9 +560,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../modules/m13/m13-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">M13 Agile</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../modules/m13/m13-intro.html" class="sidebar-item-text sidebar-link">M13 Agile</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -582,9 +585,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">Appendices</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -604,7 +606,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -628,14 +629,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   <li><a href="#use-.join" id="toc-use-.join" class="nav-link" data-scroll-target="#use-.join">Use <code>.join()</code></a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M06_Pandas/M06-05-Pandas-and-SQL.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M06_Pandas/M06-05-Pandas-and-SQL.ipynb" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m06/m06-intro.html">M06 Pandas</a></li><li class="breadcrumb-item"><a href="../../notebooks/M06_Pandas/M06-05-Pandas-and-SQL.html"><span class="chapter-title">NB: Pandas and SQL</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">NB: Pandas and SQL</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">NB: Pandas and SQL</span></h1>
 </div>
 
 
@@ -648,9 +649,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
-
 
 <section id="overview" class="level1">
 <h1>Overview</h1>
@@ -661,168 +660,165 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="connect-to-the-database" class="level1">
 <h1>Connect to the database</h1>
-<div id="cell-3" class="cell" data-tags="[]" data-execution_count="1">
+<div class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We create an empty database to store our work.</p>
-<div id="cell-5" class="cell" data-tags="[]" data-execution_count="2">
+<div class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">'./data/pitchfork.db'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="get-the-raw-review-table" class="level1">
 <h1>Get the raw review table</h1>
 <p>Get the review data.</p>
-<div id="cell-7" class="cell" data-tags="[]" data-execution_count="3">
+<div class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> pd.read_csv(<span class="st">"./data/pitchfork.csv"</span>).set_index(<span class="st">'id'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-8" class="cell" data-tags="[]" data-execution_count="4">
+<div class="cell" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">album</th>
-<th data-quarto-table-cell-role="th">artist</th>
-<th data-quarto-table-cell-role="th">best</th>
-<th data-quarto-table-cell-role="th">date</th>
-<th data-quarto-table-cell-role="th">genre</th>
-<th data-quarto-table-cell-role="th">review</th>
-<th data-quarto-table-cell-role="th">score</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">id</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">1</td>
-<td>A.M./Being There</td>
-<td>Wilco</td>
-<td>1</td>
-<td>December 6 2017</td>
-<td>Rock</td>
-<td>Best new reissue 1 / 2 Albums Newly reissued a...</td>
-<td>7.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2</td>
-<td>No Shame</td>
-<td>Hopsin</td>
-<td>0</td>
-<td>December 6 2017</td>
-<td>Rap</td>
-<td>On his corrosive fifth album, the rapper takes...</td>
-<td>3.5</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">3</td>
-<td>Material Control</td>
-<td>Glassjaw</td>
-<td>0</td>
-<td>December 6 2017</td>
-<td>Rock</td>
-<td>On their first album in 15 years, the Long Isl...</td>
-<td>6.6</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">4</td>
-<td>Weighing of the Heart</td>
-<td>Nabihah Iqbal</td>
-<td>0</td>
-<td>December 6 2017</td>
-<td>Pop/R&amp;B</td>
-<td>On her debut LP, British producer Nabihah Iqba...</td>
-<td>7.7</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">5</td>
-<td>The Visitor</td>
-<td>Neil Young / Promise of the Real</td>
-<td>0</td>
-<td>December 5 2017</td>
-<td>Rock</td>
-<td>While still pointedly political, Neil Youngís ...</td>
-<td>6.7</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">19551</td>
-<td>1999</td>
-<td>Cassius</td>
-<td>0</td>
-<td>January 26 1999</td>
-<td>Electronic</td>
-<td>Well, it's been two weeks now, and I guess it'...</td>
-<td>4.8</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">19552</td>
-<td>Let Us Replay!</td>
-<td>Coldcut</td>
-<td>0</td>
-<td>January 26 1999</td>
-<td>Electronic</td>
-<td>The marketing guys of yer average modern megac...</td>
-<td>8.9</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">19553</td>
-<td>Singles Breaking Up, Vol. 1</td>
-<td>Don Caballero</td>
-<td>0</td>
-<td>January 12 1999</td>
-<td>Experimental</td>
-<td>Well, kids, I just went back and re-read my re...</td>
-<td>7.2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">19554</td>
-<td>Out of Tune</td>
-<td>Mojave 3</td>
-<td>0</td>
-<td>January 12 1999</td>
-<td>Rock</td>
-<td>Out of Tune is a Steve Martin album. Yes, I'll...</td>
-<td>6.3</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">19555</td>
-<td>Left for Dead in Malaysia</td>
-<td>Neil Hamburger</td>
-<td>0</td>
-<td>January 5 1999</td>
-<td>None</td>
-<td>Neil Hamburger's third comedy release is a des...</td>
-<td>6.5</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>album</th>
+      <th>artist</th>
+      <th>best</th>
+      <th>date</th>
+      <th>genre</th>
+      <th>review</th>
+      <th>score</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A.M./Being There</td>
+      <td>Wilco</td>
+      <td>1</td>
+      <td>December 6 2017</td>
+      <td>Rock</td>
+      <td>Best new reissue 1 / 2 Albums Newly reissued a...</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>No Shame</td>
+      <td>Hopsin</td>
+      <td>0</td>
+      <td>December 6 2017</td>
+      <td>Rap</td>
+      <td>On his corrosive fifth album, the rapper takes...</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Material Control</td>
+      <td>Glassjaw</td>
+      <td>0</td>
+      <td>December 6 2017</td>
+      <td>Rock</td>
+      <td>On their first album in 15 years, the Long Isl...</td>
+      <td>6.6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Weighing of the Heart</td>
+      <td>Nabihah Iqbal</td>
+      <td>0</td>
+      <td>December 6 2017</td>
+      <td>Pop/R&amp;B</td>
+      <td>On her debut LP, British producer Nabihah Iqba...</td>
+      <td>7.7</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>The Visitor</td>
+      <td>Neil Young / Promise of the Real</td>
+      <td>0</td>
+      <td>December 5 2017</td>
+      <td>Rock</td>
+      <td>While still pointedly political, Neil Youngís ...</td>
+      <td>6.7</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>19551</th>
+      <td>1999</td>
+      <td>Cassius</td>
+      <td>0</td>
+      <td>January 26 1999</td>
+      <td>Electronic</td>
+      <td>Well, it's been two weeks now, and I guess it'...</td>
+      <td>4.8</td>
+    </tr>
+    <tr>
+      <th>19552</th>
+      <td>Let Us Replay!</td>
+      <td>Coldcut</td>
+      <td>0</td>
+      <td>January 26 1999</td>
+      <td>Electronic</td>
+      <td>The marketing guys of yer average modern megac...</td>
+      <td>8.9</td>
+    </tr>
+    <tr>
+      <th>19553</th>
+      <td>Singles Breaking Up, Vol. 1</td>
+      <td>Don Caballero</td>
+      <td>0</td>
+      <td>January 12 1999</td>
+      <td>Experimental</td>
+      <td>Well, kids, I just went back and re-read my re...</td>
+      <td>7.2</td>
+    </tr>
+    <tr>
+      <th>19554</th>
+      <td>Out of Tune</td>
+      <td>Mojave 3</td>
+      <td>0</td>
+      <td>January 12 1999</td>
+      <td>Rock</td>
+      <td>Out of Tune is a Steve Martin album. Yes, I'll...</td>
+      <td>6.3</td>
+    </tr>
+    <tr>
+      <th>19555</th>
+      <td>Left for Dead in Malaysia</td>
+      <td>Neil Hamburger</td>
+      <td>0</td>
+      <td>January 5 1999</td>
+      <td>None</td>
+      <td>Neil Hamburger's third comedy release is a des...</td>
+      <td>6.5</td>
+    </tr>
+  </tbody>
 </table>
-
 <p>19555 rows × 7 columns</p>
-</div>
 </div>
 </div>
 </div>
@@ -830,7 +826,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="remove-rows-with-missing-data" class="level1">
 <h1>Remove rows with missing data</h1>
 <p>Here’s a quick to inventory which columns have missing data.</p>
-<div id="cell-11" class="cell" data-tags="[]" data-execution_count="5">
+<div class="cell" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>raw.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>album     5
@@ -843,304 +839,295 @@ score     0
 dtype: int64</code></pre>
 </div>
 </div>
-<div id="cell-12" class="cell" data-tags="[]" data-execution_count="6">
+<div class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>raw[raw.album.isna()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">album</th>
-<th data-quarto-table-cell-role="th">artist</th>
-<th data-quarto-table-cell-role="th">best</th>
-<th data-quarto-table-cell-role="th">date</th>
-<th data-quarto-table-cell-role="th">genre</th>
-<th data-quarto-table-cell-role="th">review</th>
-<th data-quarto-table-cell-role="th">score</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">id</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">58</td>
-<td>NaN</td>
-<td>Gord Downie</td>
-<td>0</td>
-<td>November 17 2017</td>
-<td>Rock</td>
-<td>Recorded in his final months and released 10 d...</td>
-<td>7.4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">261</td>
-<td>NaN</td>
-<td>Yves Tumor</td>
-<td>0</td>
-<td>September 23 2017</td>
-<td>Experimental</td>
-<td>This self-released compilation from Yves Tumor...</td>
-<td>7.8</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">273</td>
-<td>NaN</td>
-<td>Lee Ranaldo</td>
-<td>0</td>
-<td>September 20 2017</td>
-<td>Experimental</td>
-<td>Lee Ranaldoís latest album is his finest post-...</td>
-<td>6.5</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">351</td>
-<td>NaN</td>
-<td>Queens of the Stone Age</td>
-<td>0</td>
-<td>August 28 2017</td>
-<td>Rock</td>
-<td>With production flourishes from Mark Ronson, J...</td>
-<td>6.9</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6795</td>
-<td>NaN</td>
-<td>Inverloch</td>
-<td>0</td>
-<td>April 9 2012</td>
-<td>None</td>
-<td>The Melbourne metal band forges a strong bridg...</td>
-<td>6.7</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>album</th>
+      <th>artist</th>
+      <th>best</th>
+      <th>date</th>
+      <th>genre</th>
+      <th>review</th>
+      <th>score</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>58</th>
+      <td>NaN</td>
+      <td>Gord Downie</td>
+      <td>0</td>
+      <td>November 17 2017</td>
+      <td>Rock</td>
+      <td>Recorded in his final months and released 10 d...</td>
+      <td>7.4</td>
+    </tr>
+    <tr>
+      <th>261</th>
+      <td>NaN</td>
+      <td>Yves Tumor</td>
+      <td>0</td>
+      <td>September 23 2017</td>
+      <td>Experimental</td>
+      <td>This self-released compilation from Yves Tumor...</td>
+      <td>7.8</td>
+    </tr>
+    <tr>
+      <th>273</th>
+      <td>NaN</td>
+      <td>Lee Ranaldo</td>
+      <td>0</td>
+      <td>September 20 2017</td>
+      <td>Experimental</td>
+      <td>Lee Ranaldoís latest album is his finest post-...</td>
+      <td>6.5</td>
+    </tr>
+    <tr>
+      <th>351</th>
+      <td>NaN</td>
+      <td>Queens of the Stone Age</td>
+      <td>0</td>
+      <td>August 28 2017</td>
+      <td>Rock</td>
+      <td>With production flourishes from Mark Ronson, J...</td>
+      <td>6.9</td>
+    </tr>
+    <tr>
+      <th>6795</th>
+      <td>NaN</td>
+      <td>Inverloch</td>
+      <td>0</td>
+      <td>April 9 2012</td>
+      <td>None</td>
+      <td>The Melbourne metal band forges a strong bridg...</td>
+      <td>6.7</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-13" class="cell" data-tags="[]" data-execution_count="7">
+<div class="cell" data-tags="[]" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>raw[raw.review.isna()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">album</th>
-<th data-quarto-table-cell-role="th">artist</th>
-<th data-quarto-table-cell-role="th">best</th>
-<th data-quarto-table-cell-role="th">date</th>
-<th data-quarto-table-cell-role="th">genre</th>
-<th data-quarto-table-cell-role="th">review</th>
-<th data-quarto-table-cell-role="th">score</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">id</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">13301</td>
-<td>Shine On</td>
-<td>Jet</td>
-<td>0</td>
-<td>October 2 2006</td>
-<td>Rock</td>
-<td>NaN</td>
-<td>0.0</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>album</th>
+      <th>artist</th>
+      <th>best</th>
+      <th>date</th>
+      <th>genre</th>
+      <th>review</th>
+      <th>score</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>13301</th>
+      <td>Shine On</td>
+      <td>Jet</td>
+      <td>0</td>
+      <td>October 2 2006</td>
+      <td>Rock</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-14" class="cell" data-tags="[]" data-execution_count="8">
+<div class="cell" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> raw.dropna()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Drop dupicate rows, too.</p>
-<div id="cell-16" class="cell" data-tags="[]" data-execution_count="9">
+<div class="cell" data-tags="[]" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> raw.drop_duplicates()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-17" class="cell" data-tags="[]" data-execution_count="10">
+<div class="cell" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> raw.reset_index().set_index(<span class="st">'id'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-18" class="cell" data-tags="[]" data-execution_count="11">
+<div class="cell" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>raw.to_sql(<span class="st">'raw'</span>, db, if_exists<span class="op">=</span><span class="st">'replace'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>19544</code></pre>
 </div>
 </div>
-<div id="cell-19" class="cell" data-tags="[]" data-execution_count="31">
+<div class="cell" data-tags="[]" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">album</th>
-<th data-quarto-table-cell-role="th">artist</th>
-<th data-quarto-table-cell-role="th">best</th>
-<th data-quarto-table-cell-role="th">date</th>
-<th data-quarto-table-cell-role="th">genre</th>
-<th data-quarto-table-cell-role="th">review</th>
-<th data-quarto-table-cell-role="th">score</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">id</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">1</td>
-<td>A.M./Being There</td>
-<td>Wilco</td>
-<td>1</td>
-<td>December 6 2017</td>
-<td>Rock</td>
-<td>Best new reissue 1 / 2 Albums Newly reissued a...</td>
-<td>7.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2</td>
-<td>No Shame</td>
-<td>Hopsin</td>
-<td>0</td>
-<td>December 6 2017</td>
-<td>Rap</td>
-<td>On his corrosive fifth album, the rapper takes...</td>
-<td>3.5</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">3</td>
-<td>Material Control</td>
-<td>Glassjaw</td>
-<td>0</td>
-<td>December 6 2017</td>
-<td>Rock</td>
-<td>On their first album in 15 years, the Long Isl...</td>
-<td>6.6</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">4</td>
-<td>Weighing of the Heart</td>
-<td>Nabihah Iqbal</td>
-<td>0</td>
-<td>December 6 2017</td>
-<td>Pop/R&amp;B</td>
-<td>On her debut LP, British producer Nabihah Iqba...</td>
-<td>7.7</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">5</td>
-<td>The Visitor</td>
-<td>Neil Young / Promise of the Real</td>
-<td>0</td>
-<td>December 5 2017</td>
-<td>Rock</td>
-<td>While still pointedly political, Neil Youngís ...</td>
-<td>6.7</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">19551</td>
-<td>1999</td>
-<td>Cassius</td>
-<td>0</td>
-<td>January 26 1999</td>
-<td>Electronic</td>
-<td>Well, it's been two weeks now, and I guess it'...</td>
-<td>4.8</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">19552</td>
-<td>Let Us Replay!</td>
-<td>Coldcut</td>
-<td>0</td>
-<td>January 26 1999</td>
-<td>Electronic</td>
-<td>The marketing guys of yer average modern megac...</td>
-<td>8.9</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">19553</td>
-<td>Singles Breaking Up, Vol. 1</td>
-<td>Don Caballero</td>
-<td>0</td>
-<td>January 12 1999</td>
-<td>Experimental</td>
-<td>Well, kids, I just went back and re-read my re...</td>
-<td>7.2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">19554</td>
-<td>Out of Tune</td>
-<td>Mojave 3</td>
-<td>0</td>
-<td>January 12 1999</td>
-<td>Rock</td>
-<td>Out of Tune is a Steve Martin album. Yes, I'll...</td>
-<td>6.3</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">19555</td>
-<td>Left for Dead in Malaysia</td>
-<td>Neil Hamburger</td>
-<td>0</td>
-<td>January 5 1999</td>
-<td>None</td>
-<td>Neil Hamburger's third comedy release is a des...</td>
-<td>6.5</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>album</th>
+      <th>artist</th>
+      <th>best</th>
+      <th>date</th>
+      <th>genre</th>
+      <th>review</th>
+      <th>score</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A.M./Being There</td>
+      <td>Wilco</td>
+      <td>1</td>
+      <td>December 6 2017</td>
+      <td>Rock</td>
+      <td>Best new reissue 1 / 2 Albums Newly reissued a...</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>No Shame</td>
+      <td>Hopsin</td>
+      <td>0</td>
+      <td>December 6 2017</td>
+      <td>Rap</td>
+      <td>On his corrosive fifth album, the rapper takes...</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Material Control</td>
+      <td>Glassjaw</td>
+      <td>0</td>
+      <td>December 6 2017</td>
+      <td>Rock</td>
+      <td>On their first album in 15 years, the Long Isl...</td>
+      <td>6.6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Weighing of the Heart</td>
+      <td>Nabihah Iqbal</td>
+      <td>0</td>
+      <td>December 6 2017</td>
+      <td>Pop/R&amp;B</td>
+      <td>On her debut LP, British producer Nabihah Iqba...</td>
+      <td>7.7</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>The Visitor</td>
+      <td>Neil Young / Promise of the Real</td>
+      <td>0</td>
+      <td>December 5 2017</td>
+      <td>Rock</td>
+      <td>While still pointedly political, Neil Youngís ...</td>
+      <td>6.7</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>19551</th>
+      <td>1999</td>
+      <td>Cassius</td>
+      <td>0</td>
+      <td>January 26 1999</td>
+      <td>Electronic</td>
+      <td>Well, it's been two weeks now, and I guess it'...</td>
+      <td>4.8</td>
+    </tr>
+    <tr>
+      <th>19552</th>
+      <td>Let Us Replay!</td>
+      <td>Coldcut</td>
+      <td>0</td>
+      <td>January 26 1999</td>
+      <td>Electronic</td>
+      <td>The marketing guys of yer average modern megac...</td>
+      <td>8.9</td>
+    </tr>
+    <tr>
+      <th>19553</th>
+      <td>Singles Breaking Up, Vol. 1</td>
+      <td>Don Caballero</td>
+      <td>0</td>
+      <td>January 12 1999</td>
+      <td>Experimental</td>
+      <td>Well, kids, I just went back and re-read my re...</td>
+      <td>7.2</td>
+    </tr>
+    <tr>
+      <th>19554</th>
+      <td>Out of Tune</td>
+      <td>Mojave 3</td>
+      <td>0</td>
+      <td>January 12 1999</td>
+      <td>Rock</td>
+      <td>Out of Tune is a Steve Martin album. Yes, I'll...</td>
+      <td>6.3</td>
+    </tr>
+    <tr>
+      <th>19555</th>
+      <td>Left for Dead in Malaysia</td>
+      <td>Neil Hamburger</td>
+      <td>0</td>
+      <td>January 5 1999</td>
+      <td>None</td>
+      <td>Neil Hamburger's third comedy release is a des...</td>
+      <td>6.5</td>
+    </tr>
+  </tbody>
 </table>
-
 <p>19544 rows × 7 columns</p>
-</div>
 </div>
 </div>
 </div>
@@ -1150,7 +1137,7 @@ dtype: int64</code></pre>
 <section id="the-artist-table" class="level2">
 <h2 class="anchored" data-anchor-id="the-artist-table">The <code>artist</code> table</h2>
 <p>We get the unique artist names and save them to a new dataframe, and change the column name and the index name in the process so that we have well-named columns in our table.</p>
-<div id="cell-22" class="cell" data-tags="[]" data-execution_count="12">
+<div class="cell" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>artists <span class="op">=</span> raw.artist.value_counts().to_frame(<span class="st">'n_reviews'</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>artists.index.name <span class="op">=</span> <span class="st">'artist_id'</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>artists.to_sql(<span class="st">'artist'</span>, db, index<span class="op">=</span><span class="va">True</span>, if_exists<span class="op">=</span><span class="st">'replace'</span>, index_label<span class="op">=</span><span class="st">'artist_id'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1158,74 +1145,71 @@ dtype: int64</code></pre>
 <pre><code>9249</code></pre>
 </div>
 </div>
-<div id="cell-23" class="cell" data-tags="[]" data-execution_count="13">
+<div class="cell" data-tags="[]" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>artists.sample(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">n_reviews</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">artist_id</th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Flying Canyon</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Florence and the Machine</td>
-<td>4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Larkin Grimm</td>
-<td>3</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Dylan LeBlanc</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Devo</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Tory Lanez</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Sacred Paws</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Little Wings</td>
-<td>4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Boris / Ian Astbury</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">The Sight Below</td>
-<td>2</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>n_reviews</th>
+    </tr>
+    <tr>
+      <th>artist_id</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Flying Canyon</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Florence and the Machine</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Larkin Grimm</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Dylan LeBlanc</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Devo</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Tory Lanez</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Sacred Paws</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Little Wings</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Boris / Ian Astbury</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>The Sight Below</th>
+      <td>2</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
 <p>How many albums does Wilco have?</p>
-<div id="cell-25" class="cell" data-tags="[]" data-execution_count="15">
+<div class="cell" data-tags="[]" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>artists.loc[<span class="st">'Wilco'</span>].n_reviews</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>14</code></pre>
@@ -1242,7 +1226,7 @@ dtype: int64</code></pre>
 </section>
 <section id="the-genre-table" class="level2">
 <h2 class="anchored" data-anchor-id="the-genre-table">The <code>genre</code> table</h2>
-<div id="cell-28" class="cell" data-tags="[]" data-execution_count="16">
+<div class="cell" data-tags="[]" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>genres <span class="op">=</span> raw.genre.value_counts().to_frame(<span class="st">'n_reviews'</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>genres.index.name <span class="op">=</span> <span class="st">'genre_id'</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>genres.to_sql(<span class="st">'genre'</span>, db, index<span class="op">=</span><span class="va">True</span>, if_exists<span class="op">=</span><span class="st">'replace'</span>, index_label<span class="op">=</span><span class="st">'genre_id'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1250,86 +1234,79 @@ dtype: int64</code></pre>
 <pre><code>10</code></pre>
 </div>
 </div>
-<div id="cell-29" class="cell" data-tags="[]" data-execution_count="17">
+<div class="cell" data-tags="[]" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>genres</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">n_reviews</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">genre_id</th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Rock</td>
-<td>6954</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Electronic</td>
-<td>4020</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">None</td>
-<td>2320</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Experimental</td>
-<td>1696</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Rap</td>
-<td>1481</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Pop/R&amp;B</td>
-<td>1157</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Metal</td>
-<td>781</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Folk/Country</td>
-<td>700</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Jazz</td>
-<td>257</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Global</td>
-<td>178</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>n_reviews</th>
+    </tr>
+    <tr>
+      <th>genre_id</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Rock</th>
+      <td>6954</td>
+    </tr>
+    <tr>
+      <th>Electronic</th>
+      <td>4020</td>
+    </tr>
+    <tr>
+      <th>None</th>
+      <td>2320</td>
+    </tr>
+    <tr>
+      <th>Experimental</th>
+      <td>1696</td>
+    </tr>
+    <tr>
+      <th>Rap</th>
+      <td>1481</td>
+    </tr>
+    <tr>
+      <th>Pop/R&amp;B</th>
+      <td>1157</td>
+    </tr>
+    <tr>
+      <th>Metal</th>
+      <td>781</td>
+    </tr>
+    <tr>
+      <th>Folk/Country</th>
+      <td>700</td>
+    </tr>
+    <tr>
+      <th>Jazz</th>
+      <td>257</td>
+    </tr>
+    <tr>
+      <th>Global</th>
+      <td>178</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-30" class="cell" data-tags="[]" data-execution_count="18">
+<div class="cell" data-tags="[]" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>genres.plot.barh()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="M06-05-Pandas-and-SQL_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
+<p><img src="M06-05-Pandas-and-SQL_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
 <section id="the-album-table" class="level2">
 <h2 class="anchored" data-anchor-id="the-album-table">The <code>album</code> table</h2>
-<div id="cell-32" class="cell" data-tags="[]" data-execution_count="19">
+<div class="cell" data-tags="[]" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>albums <span class="op">=</span> raw[[<span class="st">'album'</span>,<span class="st">'artist'</span>,<span class="st">'genre'</span>]].value_counts().to_frame(<span class="st">'n_reviews'</span>).reset_index().set_index([<span class="st">'artist'</span>,<span class="st">'album'</span>])</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>albums.index.names <span class="op">=</span> [<span class="st">'artist_id'</span>,<span class="st">'album_id'</span>]</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>albums <span class="op">=</span> albums.rename(columns<span class="op">=</span>{<span class="st">'genre'</span>:<span class="st">'genre_id'</span>})</span>
@@ -1338,106 +1315,103 @@ dtype: int64</code></pre>
 <pre><code>19506</code></pre>
 </div>
 </div>
-<div id="cell-33" class="cell" data-tags="[]" data-execution_count="20">
+<div class="cell" data-tags="[]" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>albums</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">genre_id</th>
-<th data-quarto-table-cell-role="th">n_reviews</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">artist_id</th>
-<th data-quarto-table-cell-role="th">album_id</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">NÙze</td>
-<td data-quarto-table-cell-role="th">Songs on the Rocks</td>
-<td>None</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">The Postal Service</td>
-<td data-quarto-table-cell-role="th">Give Up</td>
-<td>Electronic</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Enon</td>
-<td data-quarto-table-cell-role="th">Believo!</td>
-<td>Rock</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Tim Hecker</td>
-<td data-quarto-table-cell-role="th">Radio Amor</td>
-<td>Experimental</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Of Montreal</td>
-<td data-quarto-table-cell-role="th">If He Is Protecting Our Nation, Then Who Will Protect Big Oil, Our Children?</td>
-<td>Rock</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Russian Circles</td>
-<td data-quarto-table-cell-role="th">Guidance</td>
-<td>Metal</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Various Artists</td>
-<td data-quarto-table-cell-role="th">Guess Who This Is: A Tribute to Dom Leone</td>
-<td>None</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td rowspan="2" data-quarto-table-cell-role="th" data-valign="top">Beck</td>
-<td data-quarto-table-cell-role="th">Guerolito</td>
-<td>Rock</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Guero</td>
-<td>Rock</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Pretty Girls Make Graves</td>
-<td data-quarto-table-cell-role="th">…lan Vital</td>
-<td>None</td>
-<td>1</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>genre_id</th>
+      <th>n_reviews</th>
+    </tr>
+    <tr>
+      <th>artist_id</th>
+      <th>album_id</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>NÙze</th>
+      <th>Songs on the Rocks</th>
+      <td>None</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>The Postal Service</th>
+      <th>Give Up</th>
+      <td>Electronic</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Enon</th>
+      <th>Believo!</th>
+      <td>Rock</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Tim Hecker</th>
+      <th>Radio Amor</th>
+      <td>Experimental</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Of Montreal</th>
+      <th>If He Is Protecting Our Nation, Then Who Will Protect Big Oil, Our Children?</th>
+      <td>Rock</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Russian Circles</th>
+      <th>Guidance</th>
+      <td>Metal</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Various Artists</th>
+      <th>Guess Who This Is: A Tribute to Dom Leone</th>
+      <td>None</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Beck</th>
+      <th>Guerolito</th>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Guero</th>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Pretty Girls Make Graves</th>
+      <th>…lan Vital</th>
+      <td>None</td>
+      <td>1</td>
+    </tr>
+  </tbody>
 </table>
-
 <p>19506 rows × 2 columns</p>
-</div>
 </div>
 </div>
 </div>
 </section>
 <section id="the-review-table" class="level2">
 <h2 class="anchored" data-anchor-id="the-review-table">The <code>review</code> table</h2>
-<div id="cell-35" class="cell" data-tags="[]" data-execution_count="21">
+<div class="cell" data-tags="[]" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>reviews <span class="op">=</span> raw[[<span class="st">'album'</span>, <span class="st">'artist'</span>, <span class="st">'best'</span>, <span class="st">'date'</span>, <span class="st">'review'</span>, <span class="st">'score'</span>]].copy()</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>reviews.columns <span class="op">=</span> [<span class="st">'album_id'</span>, <span class="st">'artist_id'</span>, <span class="st">'is_best'</span>, <span class="st">'review_date'</span>, <span class="st">'review_content'</span>, <span class="st">'album_score'</span>]</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>reviews <span class="op">=</span> reviews.set_index([<span class="st">'artist_id'</span>,<span class="st">'album_id'</span>,<span class="st">'review_date'</span>])</span>
@@ -1446,211 +1420,205 @@ dtype: int64</code></pre>
 <pre><code>19544</code></pre>
 </div>
 </div>
-<div id="cell-36" class="cell" data-tags="[]" data-execution_count="22">
+<div class="cell" data-tags="[]" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>reviews.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">is_best</th>
-<th data-quarto-table-cell-role="th">review_content</th>
-<th data-quarto-table-cell-role="th">album_score</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">artist_id</th>
-<th data-quarto-table-cell-role="th">album_id</th>
-<th data-quarto-table-cell-role="th">review_date</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Wilco</td>
-<td data-quarto-table-cell-role="th">A.M./Being There</td>
-<td data-quarto-table-cell-role="th">December 6 2017</td>
-<td>1</td>
-<td>Best new reissue 1 / 2 Albums Newly reissued a...</td>
-<td>7.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Hopsin</td>
-<td data-quarto-table-cell-role="th">No Shame</td>
-<td data-quarto-table-cell-role="th">December 6 2017</td>
-<td>0</td>
-<td>On his corrosive fifth album, the rapper takes...</td>
-<td>3.5</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Glassjaw</td>
-<td data-quarto-table-cell-role="th">Material Control</td>
-<td data-quarto-table-cell-role="th">December 6 2017</td>
-<td>0</td>
-<td>On their first album in 15 years, the Long Isl...</td>
-<td>6.6</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Nabihah Iqbal</td>
-<td data-quarto-table-cell-role="th">Weighing of the Heart</td>
-<td data-quarto-table-cell-role="th">December 6 2017</td>
-<td>0</td>
-<td>On her debut LP, British producer Nabihah Iqba...</td>
-<td>7.7</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Neil Young / Promise of the Real</td>
-<td data-quarto-table-cell-role="th">The Visitor</td>
-<td data-quarto-table-cell-role="th">December 5 2017</td>
-<td>0</td>
-<td>While still pointedly political, Neil Youngís ...</td>
-<td>6.7</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>is_best</th>
+      <th>review_content</th>
+      <th>album_score</th>
+    </tr>
+    <tr>
+      <th>artist_id</th>
+      <th>album_id</th>
+      <th>review_date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Wilco</th>
+      <th>A.M./Being There</th>
+      <th>December 6 2017</th>
+      <td>1</td>
+      <td>Best new reissue 1 / 2 Albums Newly reissued a...</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>Hopsin</th>
+      <th>No Shame</th>
+      <th>December 6 2017</th>
+      <td>0</td>
+      <td>On his corrosive fifth album, the rapper takes...</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>Glassjaw</th>
+      <th>Material Control</th>
+      <th>December 6 2017</th>
+      <td>0</td>
+      <td>On their first album in 15 years, the Long Isl...</td>
+      <td>6.6</td>
+    </tr>
+    <tr>
+      <th>Nabihah Iqbal</th>
+      <th>Weighing of the Heart</th>
+      <th>December 6 2017</th>
+      <td>0</td>
+      <td>On her debut LP, British producer Nabihah Iqba...</td>
+      <td>7.7</td>
+    </tr>
+    <tr>
+      <th>Neil Young / Promise of the Real</th>
+      <th>The Visitor</th>
+      <th>December 5 2017</th>
+      <td>0</td>
+      <td>While still pointedly political, Neil Youngís ...</td>
+      <td>6.7</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-37" class="cell" data-tags="[]" data-execution_count="23">
+<div class="cell" data-tags="[]" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>reviews.loc[<span class="st">'Wilco'</span>].sort_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">is_best</th>
-<th data-quarto-table-cell-role="th">review_content</th>
-<th data-quarto-table-cell-role="th">album_score</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">album_id</th>
-<th data-quarto-table-cell-role="th">review_date</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">A Ghost Is Born</td>
-<td data-quarto-table-cell-role="th">June 21 2004</td>
-<td>0</td>
-<td>At the time of Yankee Hotel Foxtrot's non-trad...</td>
-<td>6.6</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">A.M./Being There</td>
-<td data-quarto-table-cell-role="th">December 6 2017</td>
-<td>1</td>
-<td>Best new reissue 1 / 2 Albums Newly reissued a...</td>
-<td>7.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Alpha Mike Foxtrot: Rare Tracks 1994ñ2014/What's Your 20? Essential Tracks 1994ñ2014</td>
-<td data-quarto-table-cell-role="th">November 19 2014</td>
-<td>0</td>
-<td>1 / 2 Albums Both the†Alpha Mike Foxtrot†rarit...</td>
-<td>7.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Kicking Television: Live in Chicago</td>
-<td data-quarto-table-cell-role="th">November 13 2005</td>
-<td>0</td>
-<td>This 2xCD live album finds the now six-piece b...</td>
-<td>8.3</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">More Like the Moon EP</td>
-<td data-quarto-table-cell-role="th">April 27 2003</td>
-<td>0</td>
-<td>Okay, show of hands: how many of you people ha...</td>
-<td>7.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Schmilco</td>
-<td data-quarto-table-cell-role="th">September 9 2016</td>
-<td>0</td>
-<td>Wilco's 10th album is a largely acoustic affai...</td>
-<td>7.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Sky Blue Sky</td>
-<td data-quarto-table-cell-role="th">May 14 2007</td>
-<td>0</td>
-<td>Despite the experimental pedigree of their new...</td>
-<td>5.2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Star Wars</td>
-<td data-quarto-table-cell-role="th">July 23 2015</td>
-<td>0</td>
-<td>With its $0 asking price, lawsuit-baiting titl...</td>
-<td>7.7</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Summerteeth</td>
-<td data-quarto-table-cell-role="th">February 28 1999</td>
-<td>0</td>
-<td>After parting ways with Uncle Tupelo partner J...</td>
-<td>9.4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">The Whole Love</td>
-<td data-quarto-table-cell-role="th">September 26 2011</td>
-<td>0</td>
-<td>Wilco's adventurous, self-produced eighth LP f...</td>
-<td>6.9</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">The Wilco Book</td>
-<td data-quarto-table-cell-role="th">October 31 2004</td>
-<td>0</td>
-<td>We don't usually review books, but seeing that...</td>
-<td>7.5</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Wilco (The Album)</td>
-<td data-quarto-table-cell-role="th">June 29 2009</td>
-<td>0</td>
-<td>Jeff Tweedy and co.'s latest does what its tit...</td>
-<td>7.3</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Yankee Hotel Foxtrot</td>
-<td data-quarto-table-cell-role="th">April 21 2002</td>
-<td>0</td>
-<td>Myth, it has been said, is the buried part of ...</td>
-<td>10.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">iTunes Session</td>
-<td data-quarto-table-cell-role="th">February 2 2012</td>
-<td>0</td>
-<td>This eight-song EP, comprised primarily of tra...</td>
-<td>6.7</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>is_best</th>
+      <th>review_content</th>
+      <th>album_score</th>
+    </tr>
+    <tr>
+      <th>album_id</th>
+      <th>review_date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A Ghost Is Born</th>
+      <th>June 21 2004</th>
+      <td>0</td>
+      <td>At the time of Yankee Hotel Foxtrot's non-trad...</td>
+      <td>6.6</td>
+    </tr>
+    <tr>
+      <th>A.M./Being There</th>
+      <th>December 6 2017</th>
+      <td>1</td>
+      <td>Best new reissue 1 / 2 Albums Newly reissued a...</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>Alpha Mike Foxtrot: Rare Tracks 1994ñ2014/What's Your 20? Essential Tracks 1994ñ2014</th>
+      <th>November 19 2014</th>
+      <td>0</td>
+      <td>1 / 2 Albums Both the†Alpha Mike Foxtrot†rarit...</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>Kicking Television: Live in Chicago</th>
+      <th>November 13 2005</th>
+      <td>0</td>
+      <td>This 2xCD live album finds the now six-piece b...</td>
+      <td>8.3</td>
+    </tr>
+    <tr>
+      <th>More Like the Moon EP</th>
+      <th>April 27 2003</th>
+      <td>0</td>
+      <td>Okay, show of hands: how many of you people ha...</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>Schmilco</th>
+      <th>September 9 2016</th>
+      <td>0</td>
+      <td>Wilco's 10th album is a largely acoustic affai...</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>Sky Blue Sky</th>
+      <th>May 14 2007</th>
+      <td>0</td>
+      <td>Despite the experimental pedigree of their new...</td>
+      <td>5.2</td>
+    </tr>
+    <tr>
+      <th>Star Wars</th>
+      <th>July 23 2015</th>
+      <td>0</td>
+      <td>With its $0 asking price, lawsuit-baiting titl...</td>
+      <td>7.7</td>
+    </tr>
+    <tr>
+      <th>Summerteeth</th>
+      <th>February 28 1999</th>
+      <td>0</td>
+      <td>After parting ways with Uncle Tupelo partner J...</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>The Whole Love</th>
+      <th>September 26 2011</th>
+      <td>0</td>
+      <td>Wilco's adventurous, self-produced eighth LP f...</td>
+      <td>6.9</td>
+    </tr>
+    <tr>
+      <th>The Wilco Book</th>
+      <th>October 31 2004</th>
+      <td>0</td>
+      <td>We don't usually review books, but seeing that...</td>
+      <td>7.5</td>
+    </tr>
+    <tr>
+      <th>Wilco (The Album)</th>
+      <th>June 29 2009</th>
+      <td>0</td>
+      <td>Jeff Tweedy and co.'s latest does what its tit...</td>
+      <td>7.3</td>
+    </tr>
+    <tr>
+      <th>Yankee Hotel Foxtrot</th>
+      <th>April 21 2002</th>
+      <td>0</td>
+      <td>Myth, it has been said, is the buried part of ...</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>iTunes Session</th>
+      <th>February 2 2012</th>
+      <td>0</td>
+      <td>This eight-song EP, comprised primarily of tra...</td>
+      <td>6.7</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-38" class="cell" data-tags="[]" data-execution_count="24">
+<div class="cell" data-tags="[]" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>reviews.loc[<span class="st">'Wilco'</span>].album_score.mean().<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>7.4</code></pre>
@@ -1662,229 +1630,217 @@ dtype: int64</code></pre>
 <section id="results" class="level1">
 <h1>Results</h1>
 <p>So, we have create four primary tables from our raw data.</p>
-<div id="cell-41" class="cell" data-tags="[]" data-execution_count="25">
+<div class="cell" data-tags="[]" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>artists.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">n_reviews</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">artist_id</th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Various Artists</td>
-<td>717</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Guided by Voices</td>
-<td>25</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">David Bowie</td>
-<td>22</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Mogwai</td>
-<td>21</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">The Beatles</td>
-<td>21</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>n_reviews</th>
+    </tr>
+    <tr>
+      <th>artist_id</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Various Artists</th>
+      <td>717</td>
+    </tr>
+    <tr>
+      <th>Guided by Voices</th>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>David Bowie</th>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>Mogwai</th>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>The Beatles</th>
+      <td>21</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-42" class="cell" data-tags="[]" data-execution_count="26">
+<div class="cell" data-tags="[]" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>albums.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">genre_id</th>
-<th data-quarto-table-cell-role="th">n_reviews</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">artist_id</th>
-<th data-quarto-table-cell-role="th">album_id</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">NÙze</td>
-<td data-quarto-table-cell-role="th">Songs on the Rocks</td>
-<td>None</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">The Postal Service</td>
-<td data-quarto-table-cell-role="th">Give Up</td>
-<td>Electronic</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Enon</td>
-<td data-quarto-table-cell-role="th">Believo!</td>
-<td>Rock</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Tim Hecker</td>
-<td data-quarto-table-cell-role="th">Radio Amor</td>
-<td>Experimental</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Of Montreal</td>
-<td data-quarto-table-cell-role="th">If He Is Protecting Our Nation, Then Who Will Protect Big Oil, Our Children?</td>
-<td>Rock</td>
-<td>2</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>genre_id</th>
+      <th>n_reviews</th>
+    </tr>
+    <tr>
+      <th>artist_id</th>
+      <th>album_id</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>NÙze</th>
+      <th>Songs on the Rocks</th>
+      <td>None</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>The Postal Service</th>
+      <th>Give Up</th>
+      <td>Electronic</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Enon</th>
+      <th>Believo!</th>
+      <td>Rock</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Tim Hecker</th>
+      <th>Radio Amor</th>
+      <td>Experimental</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Of Montreal</th>
+      <th>If He Is Protecting Our Nation, Then Who Will Protect Big Oil, Our Children?</th>
+      <td>Rock</td>
+      <td>2</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-43" class="cell" data-tags="[]" data-execution_count="27">
+<div class="cell" data-tags="[]" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>genres.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">n_reviews</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">genre_id</th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Rock</td>
-<td>6954</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Electronic</td>
-<td>4020</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">None</td>
-<td>2320</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Experimental</td>
-<td>1696</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Rap</td>
-<td>1481</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>n_reviews</th>
+    </tr>
+    <tr>
+      <th>genre_id</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Rock</th>
+      <td>6954</td>
+    </tr>
+    <tr>
+      <th>Electronic</th>
+      <td>4020</td>
+    </tr>
+    <tr>
+      <th>None</th>
+      <td>2320</td>
+    </tr>
+    <tr>
+      <th>Experimental</th>
+      <td>1696</td>
+    </tr>
+    <tr>
+      <th>Rap</th>
+      <td>1481</td>
+    </tr>
+  </tbody>
 </table>
-
 </div>
 </div>
 </div>
-</div>
-<div id="cell-44" class="cell" data-tags="[]" data-execution_count="28">
+<div class="cell" data-tags="[]" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>reviews.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">is_best</th>
-<th data-quarto-table-cell-role="th">review_content</th>
-<th data-quarto-table-cell-role="th">album_score</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">artist_id</th>
-<th data-quarto-table-cell-role="th">album_id</th>
-<th data-quarto-table-cell-role="th">review_date</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Wilco</td>
-<td data-quarto-table-cell-role="th">A.M./Being There</td>
-<td data-quarto-table-cell-role="th">December 6 2017</td>
-<td>1</td>
-<td>Best new reissue 1 / 2 Albums Newly reissued a...</td>
-<td>7.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Hopsin</td>
-<td data-quarto-table-cell-role="th">No Shame</td>
-<td data-quarto-table-cell-role="th">December 6 2017</td>
-<td>0</td>
-<td>On his corrosive fifth album, the rapper takes...</td>
-<td>3.5</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Glassjaw</td>
-<td data-quarto-table-cell-role="th">Material Control</td>
-<td data-quarto-table-cell-role="th">December 6 2017</td>
-<td>0</td>
-<td>On their first album in 15 years, the Long Isl...</td>
-<td>6.6</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Nabihah Iqbal</td>
-<td data-quarto-table-cell-role="th">Weighing of the Heart</td>
-<td data-quarto-table-cell-role="th">December 6 2017</td>
-<td>0</td>
-<td>On her debut LP, British producer Nabihah Iqba...</td>
-<td>7.7</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Neil Young / Promise of the Real</td>
-<td data-quarto-table-cell-role="th">The Visitor</td>
-<td data-quarto-table-cell-role="th">December 5 2017</td>
-<td>0</td>
-<td>While still pointedly political, Neil Youngís ...</td>
-<td>6.7</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>is_best</th>
+      <th>review_content</th>
+      <th>album_score</th>
+    </tr>
+    <tr>
+      <th>artist_id</th>
+      <th>album_id</th>
+      <th>review_date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Wilco</th>
+      <th>A.M./Being There</th>
+      <th>December 6 2017</th>
+      <td>1</td>
+      <td>Best new reissue 1 / 2 Albums Newly reissued a...</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>Hopsin</th>
+      <th>No Shame</th>
+      <th>December 6 2017</th>
+      <td>0</td>
+      <td>On his corrosive fifth album, the rapper takes...</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>Glassjaw</th>
+      <th>Material Control</th>
+      <th>December 6 2017</th>
+      <td>0</td>
+      <td>On their first album in 15 years, the Long Isl...</td>
+      <td>6.6</td>
+    </tr>
+    <tr>
+      <th>Nabihah Iqbal</th>
+      <th>Weighing of the Heart</th>
+      <th>December 6 2017</th>
+      <td>0</td>
+      <td>On her debut LP, British producer Nabihah Iqba...</td>
+      <td>7.7</td>
+    </tr>
+    <tr>
+      <th>Neil Young / Promise of the Real</th>
+      <th>The Visitor</th>
+      <th>December 5 2017</th>
+      <td>0</td>
+      <td>While still pointedly political, Neil Youngís ...</td>
+      <td>6.7</td>
+    </tr>
+  </tbody>
 </table>
-
-</div>
 </div>
 </div>
 </div>
@@ -1892,255 +1848,249 @@ dtype: int64</code></pre>
 <section id="use-.join" class="level1">
 <h1>Use <code>.join()</code></h1>
 <p>If we want to see genre in the review, we can create a join.</p>
-<div id="cell-46" class="cell" data-tags="[]" data-execution_count="29">
+<div class="cell" data-tags="[]" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>reviews.join(albums)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">is_best</th>
-<th data-quarto-table-cell-role="th">review_content</th>
-<th data-quarto-table-cell-role="th">album_score</th>
-<th data-quarto-table-cell-role="th">genre_id</th>
-<th data-quarto-table-cell-role="th">n_reviews</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">artist_id</th>
-<th data-quarto-table-cell-role="th">album_id</th>
-<th data-quarto-table-cell-role="th">review_date</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td rowspan="5" data-quarto-table-cell-role="th" data-valign="top">!!!</td>
-<td data-quarto-table-cell-role="th">As If</td>
-<td data-quarto-table-cell-role="th">October 21 2015</td>
-<td>0</td>
-<td>Despite popular perception, !!! never quite fi...</td>
-<td>6.9</td>
-<td>Rock</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Jamie, My Intentions Are Bass EP</td>
-<td data-quarto-table-cell-role="th">November 1 2010</td>
-<td>0</td>
-<td>The dance-rock fixtures enlist Bibio, Tim Gold...</td>
-<td>6.8</td>
-<td>Rock</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Louden Up Now</td>
-<td data-quarto-table-cell-role="th">June 7 2004</td>
-<td>0</td>
-<td>For club-friendly artists to become or remain ...</td>
-<td>7.0</td>
-<td>Rock</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Myth Takes</td>
-<td data-quarto-table-cell-role="th">March 2 2007</td>
-<td>0</td>
-<td>Nic Offer, now focused solely on this band aft...</td>
-<td>8.0</td>
-<td>Rock</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Shake the Shudder</td>
-<td data-quarto-table-cell-role="th">May 24 2017</td>
-<td>0</td>
-<td>The new !!! album finds them working with a sl...</td>
-<td>7.3</td>
-<td>Rock</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td data-quarto-table-cell-role="th">...</td>
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td rowspan="3" data-quarto-table-cell-role="th" data-valign="top">”lafur Arnalds</td>
-<td data-quarto-table-cell-role="th">Found Songs</td>
-<td data-quarto-table-cell-role="th">February 16 2010</td>
-<td>0</td>
-<td>The young Icelandic composer who has opened fo...</td>
-<td>6.3</td>
-<td>Rock</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Living Room Songs / Another Happy Day OST</td>
-<td data-quarto-table-cell-role="th">February 16 2012</td>
-<td>0</td>
-<td>1 / 2 Albums The Icelandic composer, known for...</td>
-<td>4.5</td>
-<td>Rock</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Now I Am Winter</td>
-<td data-quarto-table-cell-role="th">April 9 2013</td>
-<td>0</td>
-<td>The Icelandic composer who has toured with†Sig...</td>
-<td>5.5</td>
-<td>Rock</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">”lˆf Arnalds</td>
-<td data-quarto-table-cell-role="th">Innundir Skinni</td>
-<td data-quarto-table-cell-role="th">October 26 2010</td>
-<td>0</td>
-<td>Icelandic singer/songwriter continues to slowl...</td>
-<td>8.0</td>
-<td>Pop/R&amp;B</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">∆vangelist</td>
-<td data-quarto-table-cell-role="th">Omen Ex Simulacra</td>
-<td data-quarto-table-cell-role="th">December 11 2013</td>
-<td>0</td>
-<td>On their second album Omen Ex Simulacra, the O...</td>
-<td>7.0</td>
-<td>None</td>
-<td>1</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>is_best</th>
+      <th>review_content</th>
+      <th>album_score</th>
+      <th>genre_id</th>
+      <th>n_reviews</th>
+    </tr>
+    <tr>
+      <th>artist_id</th>
+      <th>album_id</th>
+      <th>review_date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">!!!</th>
+      <th>As If</th>
+      <th>October 21 2015</th>
+      <td>0</td>
+      <td>Despite popular perception, !!! never quite fi...</td>
+      <td>6.9</td>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Jamie, My Intentions Are Bass EP</th>
+      <th>November 1 2010</th>
+      <td>0</td>
+      <td>The dance-rock fixtures enlist Bibio, Tim Gold...</td>
+      <td>6.8</td>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Louden Up Now</th>
+      <th>June 7 2004</th>
+      <td>0</td>
+      <td>For club-friendly artists to become or remain ...</td>
+      <td>7.0</td>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Myth Takes</th>
+      <th>March 2 2007</th>
+      <td>0</td>
+      <td>Nic Offer, now focused solely on this band aft...</td>
+      <td>8.0</td>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Shake the Shudder</th>
+      <th>May 24 2017</th>
+      <td>0</td>
+      <td>The new !!! album finds them working with a sl...</td>
+      <td>7.3</td>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">”lafur Arnalds</th>
+      <th>Found Songs</th>
+      <th>February 16 2010</th>
+      <td>0</td>
+      <td>The young Icelandic composer who has opened fo...</td>
+      <td>6.3</td>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Living Room Songs / Another Happy Day OST</th>
+      <th>February 16 2012</th>
+      <td>0</td>
+      <td>1 / 2 Albums The Icelandic composer, known for...</td>
+      <td>4.5</td>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Now I Am Winter</th>
+      <th>April 9 2013</th>
+      <td>0</td>
+      <td>The Icelandic composer who has toured with†Sig...</td>
+      <td>5.5</td>
+      <td>Rock</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>”lˆf Arnalds</th>
+      <th>Innundir Skinni</th>
+      <th>October 26 2010</th>
+      <td>0</td>
+      <td>Icelandic singer/songwriter continues to slowl...</td>
+      <td>8.0</td>
+      <td>Pop/R&amp;B</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>∆vangelist</th>
+      <th>Omen Ex Simulacra</th>
+      <th>December 11 2013</th>
+      <td>0</td>
+      <td>On their second album Omen Ex Simulacra, the O...</td>
+      <td>7.0</td>
+      <td>None</td>
+      <td>1</td>
+    </tr>
+  </tbody>
 </table>
-
 <p>19544 rows × 5 columns</p>
 </div>
 </div>
 </div>
-</div>
-<div id="cell-47" class="cell" data-tags="[]" data-execution_count="30">
+<div class="cell" data-tags="[]" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>albums.join(artists, rsuffix<span class="op">=</span><span class="st">'_artist'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
-<div>
+
 <div>
 
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">genre_id</th>
-<th data-quarto-table-cell-role="th">n_reviews</th>
-<th data-quarto-table-cell-role="th">n_reviews_artist</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">artist_id</th>
-<th data-quarto-table-cell-role="th">album_id</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">NÙze</td>
-<td data-quarto-table-cell-role="th">Songs on the Rocks</td>
-<td>None</td>
-<td>2</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">The Postal Service</td>
-<td data-quarto-table-cell-role="th">Give Up</td>
-<td>Electronic</td>
-<td>2</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Enon</td>
-<td data-quarto-table-cell-role="th">Believo!</td>
-<td>Rock</td>
-<td>2</td>
-<td>6</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Tim Hecker</td>
-<td data-quarto-table-cell-role="th">Radio Amor</td>
-<td>Experimental</td>
-<td>2</td>
-<td>12</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Of Montreal</td>
-<td data-quarto-table-cell-role="th">If He Is Protecting Our Nation, Then Who Will Protect Big Oil, Our Children?</td>
-<td>Rock</td>
-<td>2</td>
-<td>20</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Russian Circles</td>
-<td data-quarto-table-cell-role="th">Guidance</td>
-<td>Metal</td>
-<td>1</td>
-<td>6</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Various Artists</td>
-<td data-quarto-table-cell-role="th">Guess Who This Is: A Tribute to Dom Leone</td>
-<td>None</td>
-<td>1</td>
-<td>717</td>
-</tr>
-<tr class="odd">
-<td rowspan="2" data-quarto-table-cell-role="th" data-valign="top">Beck</td>
-<td data-quarto-table-cell-role="th">Guerolito</td>
-<td>Rock</td>
-<td>1</td>
-<td>11</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Guero</td>
-<td>Rock</td>
-<td>1</td>
-<td>11</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Pretty Girls Make Graves</td>
-<td data-quarto-table-cell-role="th">…lan Vital</td>
-<td>None</td>
-<td>1</td>
-<td>3</td>
-</tr>
-</tbody>
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>genre_id</th>
+      <th>n_reviews</th>
+      <th>n_reviews_artist</th>
+    </tr>
+    <tr>
+      <th>artist_id</th>
+      <th>album_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>NÙze</th>
+      <th>Songs on the Rocks</th>
+      <td>None</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>The Postal Service</th>
+      <th>Give Up</th>
+      <td>Electronic</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Enon</th>
+      <th>Believo!</th>
+      <td>Rock</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>Tim Hecker</th>
+      <th>Radio Amor</th>
+      <td>Experimental</td>
+      <td>2</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>Of Montreal</th>
+      <th>If He Is Protecting Our Nation, Then Who Will Protect Big Oil, Our Children?</th>
+      <td>Rock</td>
+      <td>2</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Russian Circles</th>
+      <th>Guidance</th>
+      <td>Metal</td>
+      <td>1</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>Various Artists</th>
+      <th>Guess Who This Is: A Tribute to Dom Leone</th>
+      <td>None</td>
+      <td>1</td>
+      <td>717</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Beck</th>
+      <th>Guerolito</th>
+      <td>Rock</td>
+      <td>1</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>Guero</th>
+      <td>Rock</td>
+      <td>1</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>Pretty Girls Make Graves</th>
+      <th>…lan Vital</th>
+      <td>None</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+  </tbody>
 </table>
-
 <p>19506 rows × 3 columns</p>
-</div>
 </div>
 </div>
 </div>
@@ -2176,23 +2126,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -2228,34 +2164,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
-          }
-          // default icon
-          link.classList.add("external");
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2265,17 +2177,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2287,245 +2190,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -2563,16 +2230,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
 });
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../notebooks/M06_Pandas/M06-04-MethodChaining.html" class="pagination-link" aria-label="NB: Method Chaining">
+      <a href="../../notebooks/M06_Pandas/M06-04-MethodChaining.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">NB: Method Chaining</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../modules/m07/m07-intro.html" class="pagination-link" aria-label="M07 Classes">
+      <a href="../../modules/m07/m07-intro.html" class="pagination-link">
         <span class="nav-page-text">M07 Classes</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2581,5 +2264,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M06_Pandas/M06-05-Pandas-and-SQL.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+</body></html>

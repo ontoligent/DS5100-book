@@ -650,10 +650,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The simplest function is <code>time()</code>, which just returns the number of seconds elapsed since the Epoch.</p>
 <p>The Epoch is <code>00:00:00 UTC</code> on 1 January 1970, excluding leapseconds.</p>
 <p>It corresponds roughly to when Unix was invented.</p>
-<div id="cell-5" class="cell" data-execution_count="1">
+<div id="cell-5" class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> time <span class="im">import</span> time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-6" class="cell" data-tags="[]" data-execution_count="2">
+<div id="cell-6" class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> time()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
@@ -666,14 +666,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>0 1 2 3 4 5 6 7 8 9 </code></pre>
 </div>
 </div>
-<div id="cell-7" class="cell" data-tags="[]" data-execution_count="3">
+<div id="cell-7" class="cell" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'t0 ='</span>, t0)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'t1 ='</span>, t1)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'runtime:'</span>, delta_t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>t0 = 1663428793.540521
-t1 = 1663428793.541329
-runtime: 0.0008080005645751953</code></pre>
+<pre><code>t0 = 1719320816.3833196
+t1 = 1719320816.3834147
+runtime: 9.512901306152344e-05</code></pre>
 </div>
 </div>
 </section>
@@ -682,13 +682,13 @@ runtime: 0.0008080005645751953</code></pre>
 <p>To get a better measure of runtime, we can use <code>timeit</code>, which measures timing across many runs.</p>
 <p>Note that <code>timeit()</code> will return the runtime across ALL runs. To get the mean runtime, you need to divide by the number of runs.</p>
 <p><code>timeit()</code> works by evaluating code blocks written as strings.</p>
-<div id="cell-10" class="cell" data-execution_count="4">
+<div id="cell-10" class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timeit <span class="im">import</span> timeit</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>NUM_RUNS <span class="op">=</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Define code blocks to compare.</p>
-<div id="cell-12" class="cell" data-execution_count="5">
+<div id="cell-12" class="cell" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>loop_code <span class="op">=</span> <span class="st">''' </span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="st">vals = []</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">for i in range(1, 100001):</span></span>
@@ -702,22 +702,22 @@ runtime: 0.0008080005645751953</code></pre>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="st">'''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Pass code block strings to timeit functions.</p>
-<div id="cell-14" class="cell" data-execution_count="6">
+<div id="cell-14" class="cell" data-tags="[]" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>loop_mean_time <span class="op">=</span> timeit(stmt <span class="op">=</span> loop_code, number <span class="op">=</span> NUM_RUNS) <span class="op">/</span> NUM_RUNS</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>listcomp_mean_time <span class="op">=</span> timeit(stmt <span class="op">=</span> listcomp_code, number <span class="op">=</span> NUM_RUNS) <span class="op">/</span> NUM_RUNS</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Print the results</p>
-<div id="cell-16" class="cell" data-execution_count="7">
+<div id="cell-16" class="cell" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>t_diff <span class="op">=</span> loop_mean_time <span class="op">/</span> listcomp_mean_time</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'loop ='</span>, loop_mean_time)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'comp ='</span>, listcomp_mean_time)</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'loop/list ='</span>, t_diff)</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'list/loop ='</span>, <span class="dv">1</span><span class="op">/</span>t_diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>loop = 0.011182495189999885
-comp = 0.00927148506000009
-loop/list = 1.2061169400190757
-list/loop = 0.8291070018336566</code></pre>
+<pre><code>loop = 0.005608998109819368
+comp = 0.004113898660289123
+loop/list = 1.3634264168833876
+list/loop = 0.733446255417192</code></pre>
 </div>
 </div>
 </section>
@@ -735,11 +735,11 @@ list/loop = 0.8291070018336566</code></pre>
 <li><strong>Wall clock time</strong> measures how much time has passed, as if you were looking at the clock on your wall.</li>
 <li><strong>CPU time</strong> refers to how many seconds the CPU was actually busy.</li>
 </ul>
-<div id="cell-18" class="cell" data-execution_count="8">
+<div id="cell-18" class="cell" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>imax <span class="op">=</span> <span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Using <strong>time</strong> to compare loop and comprehension</p>
-<div id="cell-20" class="cell" data-execution_count="9">
+<div id="cell-20" class="cell" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>vals <span class="op">=</span> []</span>
@@ -748,19 +748,19 @@ list/loop = 0.8291070018336566</code></pre>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        i <span class="op">*=</span> <span class="op">-</span><span class="dv">1</span></span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    vals.append(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 1.69 ms, sys: 35 µs, total: 1.72 ms
-Wall time: 1.73 ms</code></pre>
+<pre><code>CPU times: user 1.08 ms, sys: 13 µs, total: 1.09 ms
+Wall time: 1.1 ms</code></pre>
 </div>
 </div>
-<div id="cell-21" class="cell" data-execution_count="10">
+<div id="cell-21" class="cell" data-tags="[]" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time vals <span class="op">=</span> [i<span class="op">*-</span><span class="dv">1</span> <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,imax<span class="op">+</span><span class="dv">1</span>)] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 940 µs, sys: 32 µs, total: 972 µs
-Wall time: 975 µs</code></pre>
+<pre><code>CPU times: user 535 µs, sys: 0 ns, total: 535 µs
+Wall time: 538 µs</code></pre>
 </div>
 </div>
 <p>Using <strong>timeit</strong> to compare loop and comprehension</p>
-<div id="cell-23" class="cell" data-execution_count="21">
+<div id="cell-23" class="cell" data-tags="[]" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>vals <span class="op">=</span> []</span>
@@ -770,19 +770,19 @@ Wall time: 975 µs</code></pre>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        i <span class="op">*=</span> <span class="op">-</span><span class="dv">1</span></span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    vals.append(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1.08 ms ± 88 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
+<pre><code>495 µs ± 2.5 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
 </div>
 </div>
-<div id="cell-24" class="cell" data-execution_count="22">
+<div id="cell-24" class="cell" data-tags="[]" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>vals[:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>[-1, 2, -3, 4, -5, 6, -7, 8, -9, 10]</code></pre>
 </div>
 </div>
-<div id="cell-25" class="cell" data-execution_count="12">
+<div id="cell-25" class="cell" data-tags="[]" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit vals <span class="op">=</span> [i<span class="op">*-</span><span class="dv">1</span> <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,imax<span class="op">+</span><span class="dv">1</span>)] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>749 µs ± 3.32 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
+<pre><code>451 µs ± 4.22 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
 </div>
 </div>
 

@@ -641,14 +641,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>Objectives</strong></p>
-<ul>
-<li>Demonstrate use of Python’s <code>open()</code> function</li>
-<li>Show pattern using loops, comprehensions, and string operations to import a CSV</li>
-<li>Show how to parse an imported CSV into a 2D list</li>
-<li>Show how to convert a 2D list into a 2D Numpy array</li>
-<li>Describe the difficulties associated with this importing CSV files using basic Python</li>
-</ul>
 <section id="open-files-with-open" class="level2">
 <h2 class="anchored" data-anchor-id="open-files-with-open">Open Files with <code>open()</code></h2>
 <p>Let’s open a sample CSV file, <code>biostats.csv</code>.</p>
@@ -658,7 +650,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>There is an initial header line.</li>
 <li>This file was downloaded from https://people.sc.fsu.edu/~jburkardt/data/csv/csv.html and modified slightly.</li>
 </ul>
-<div id="cell-2" class="cell" data-tags="[]" data-execution_count="1">
+<div id="cell-2" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>src_file_name <span class="op">=</span> <span class="st">"./sample_data_files/biostats.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We call the <code>open()</code> function and pass it two parameters: * The name of the file we want to open. * The mode in which the file is opened. It defaults to <code>r</code> which means open for reading in text mode. Other common values are: * <code>w</code> for writing (truncating the file if it already exists) * <code>x</code> for creating and writing to a new file * <code>a</code> for appending</p>
@@ -669,87 +661,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="cell-4" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## open?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell" data-tags="[]" data-execution_count="2">
+<div id="cell-5" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>file_handle <span class="op">=</span> <span class="bu">open</span>(src_file_name, <span class="st">'r'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>.read()</code> reads in the file as one long string.</p>
-<div id="cell-7" class="cell" data-tags="[]" data-execution_count="3">
+<div id="cell-7" class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>file_as_big_string <span class="op">=</span> file_handle.read()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-8" class="cell" data-tags="[]" data-execution_count="4">
+<div id="cell-8" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>file_as_big_string[:<span class="dv">1000</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>'"Name",     "Sex", "Age", "Height (in)", "Weight (lbs)"\n"Alex",       "M",   41,       74,      170\n"Bert",       "M",   42,       68,      166\n"Carl",       "M",   32,       70,      155\n"Dave",       "M",   39,       72,      167\n"Elly",       "F",   30,       66,      124\n"Fran",       "F",   33,       66,      115\n"Gwen",       "F",   26,       64,      121\n"Hank",       "M",   30,       71,      158\n"Ivan",       "M",   53,       72,      175\n"Jake",       "M",   32,       69,      143\n"Kate",       "F",   47,       69,      139\n"Luke",       "M",   34,       72,      163\n"Myra",       "F",   23,       62,       98\n"Neil",       "M",   36,       75,      160\n"Omar",       "M",   38,       70,      145\n"Page",       "F",   31,       67,      135\n"Quin",       "M",   29,       71,      176\n"Ruth",       "F",   28,       65,      131'</code></pre>
-</div>
 </div>
 <p>Since the file object is an iterator, we can’t get the string again from the object.</p>
-<div id="cell-10" class="cell" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>file_as_big_string <span class="op">=</span> file_handle.read() <span class="co"># Try reading from the handle again</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>file_as_big_string[:<span class="dv">1000</span>] <span class="co"># Nothing there since the iterator is exhausted</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>''</code></pre>
-</div>
+<div id="cell-10" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>file_as_big_string <span class="op">=</span> file_handle.read() <span class="co"># Try reading from the handle again</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>file_as_big_string[:<span class="dv">1000</span>] <span class="co"># Nothing there since the iterator is exhausted</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So, let’s create a new handle, read in the contents again, and then parse our string by newlines using <code>.split("\n")</code>.</p>
-<div id="cell-12" class="cell" data-tags="[]" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>file_handle <span class="op">=</span> <span class="bu">open</span>(<span class="st">"./sample_data_files/biostats.csv"</span>, <span class="st">'r'</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>file_as_big_string <span class="op">=</span> file_handle.read()</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>file_as_big_string.split(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>['"Name",     "Sex", "Age", "Height (in)", "Weight (lbs)"',
- '"Alex",       "M",   41,       74,      170',
- '"Bert",       "M",   42,       68,      166',
- '"Carl",       "M",   32,       70,      155',
- '"Dave",       "M",   39,       72,      167',
- '"Elly",       "F",   30,       66,      124',
- '"Fran",       "F",   33,       66,      115',
- '"Gwen",       "F",   26,       64,      121',
- '"Hank",       "M",   30,       71,      158',
- '"Ivan",       "M",   53,       72,      175',
- '"Jake",       "M",   32,       69,      143',
- '"Kate",       "F",   47,       69,      139',
- '"Luke",       "M",   34,       72,      163',
- '"Myra",       "F",   23,       62,       98',
- '"Neil",       "M",   36,       75,      160',
- '"Omar",       "M",   38,       70,      145',
- '"Page",       "F",   31,       67,      135',
- '"Quin",       "M",   29,       71,      176',
- '"Ruth",       "F",   28,       65,      131']</code></pre>
-</div>
+<div id="cell-12" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>file_handle <span class="op">=</span> <span class="bu">open</span>(<span class="st">"./sample_data_files/biostats.csv"</span>, <span class="st">'r'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>file_as_big_string <span class="op">=</span> file_handle.read()</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>file_as_big_string.split(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A short-cut to this process is to call the <code>.readlines()</code> method, which returns a pre-made list of lines.</p>
 <p>Note that the newlines are preserved in this case.</p>
-<div id="cell-14" class="cell" data-tags="[]" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>file_handle <span class="op">=</span> <span class="bu">open</span>(src_file_name, <span class="st">'r'</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>file_as_list_of_strings <span class="op">=</span> file_handle.readlines()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-14" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>file_handle <span class="op">=</span> <span class="bu">open</span>(src_file_name, <span class="st">'r'</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>file_as_list_of_strings <span class="op">=</span> file_handle.readlines()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-15" class="cell" data-tags="[]" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>file_as_list_of_strings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>['"Name",     "Sex", "Age", "Height (in)", "Weight (lbs)"\n',
- '"Alex",       "M",   41,       74,      170\n',
- '"Bert",       "M",   42,       68,      166\n',
- '"Carl",       "M",   32,       70,      155\n',
- '"Dave",       "M",   39,       72,      167\n',
- '"Elly",       "F",   30,       66,      124\n',
- '"Fran",       "F",   33,       66,      115\n',
- '"Gwen",       "F",   26,       64,      121\n',
- '"Hank",       "M",   30,       71,      158\n',
- '"Ivan",       "M",   53,       72,      175\n',
- '"Jake",       "M",   32,       69,      143\n',
- '"Kate",       "F",   47,       69,      139\n',
- '"Luke",       "M",   34,       72,      163\n',
- '"Myra",       "F",   23,       62,       98\n',
- '"Neil",       "M",   36,       75,      160\n',
- '"Omar",       "M",   38,       70,      145\n',
- '"Page",       "F",   31,       67,      135\n',
- '"Quin",       "M",   29,       71,      176\n',
- '"Ruth",       "F",   28,       65,      131']</code></pre>
-</div>
+<div id="cell-15" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>file_as_list_of_strings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>File objects should be closed when you are done with them.</p>
 <div id="cell-17" class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>file_handle.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>file_handle.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="use-a-with-block" class="level2">
@@ -758,72 +702,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>There is a better way to handle objects that need to be closed.</p>
 <p>Other examples of such objects are database handles.</p>
 <p><code>with</code> will automatically open and close the file handle.</p>
-<div id="cell-19" class="cell" data-tags="[]" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(src_file_name, <span class="st">'r'</span>) <span class="im">as</span> infile:</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    file_as_list <span class="op">=</span> infile.readlines()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-19" class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(src_file_name, <span class="st">'r'</span>) <span class="im">as</span> infile:</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    file_as_list <span class="op">=</span> infile.readlines()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-20" class="cell" data-tags="[]" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>file_as_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>['"Name",     "Sex", "Age", "Height (in)", "Weight (lbs)"\n',
- '"Alex",       "M",   41,       74,      170\n',
- '"Bert",       "M",   42,       68,      166\n',
- '"Carl",       "M",   32,       70,      155\n',
- '"Dave",       "M",   39,       72,      167\n',
- '"Elly",       "F",   30,       66,      124\n',
- '"Fran",       "F",   33,       66,      115\n',
- '"Gwen",       "F",   26,       64,      121\n',
- '"Hank",       "M",   30,       71,      158\n',
- '"Ivan",       "M",   53,       72,      175\n',
- '"Jake",       "M",   32,       69,      143\n',
- '"Kate",       "F",   47,       69,      139\n',
- '"Luke",       "M",   34,       72,      163\n',
- '"Myra",       "F",   23,       62,       98\n',
- '"Neil",       "M",   36,       75,      160\n',
- '"Omar",       "M",   38,       70,      145\n',
- '"Page",       "F",   31,       67,      135\n',
- '"Quin",       "M",   29,       71,      176\n',
- '"Ruth",       "F",   28,       65,      131']</code></pre>
-</div>
-</div>
-<div id="cell-21" class="cell" data-tags="[]" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># del(infile)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-20" class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>file_as_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="convert-into-a-2d-list" class="level2">
 <h2 class="anchored" data-anchor-id="convert-into-a-2d-list">Convert into a 2D list</h2>
 <p>Let’s covert our list of strings to a list of lists, the former being the rows of data table and the latter the cells.</p>
-<div id="cell-23" class="cell" data-tags="[]" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">## %%time</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>list_2d <span class="op">=</span> []</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(src_file_name, <span class="st">'r'</span>) <span class="im">as</span> infile:</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> infile.readlines():</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>        row <span class="op">=</span> line.rstrip().split(<span class="st">","</span>) <span class="co"># Note the use of rstrip()</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>        list_2d.append(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-22" class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">## %%time</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>list_2d <span class="op">=</span> []</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(src_file_name, <span class="st">'r'</span>) <span class="im">as</span> infile:</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> infile.readlines():</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        row <span class="op">=</span> line.rstrip().split(<span class="st">","</span>) <span class="co"># Note the use of rstrip()</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        list_2d.append(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-24" class="cell" data-tags="[]" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>list_2d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
-<pre><code>[['"Name"', '     "Sex"', ' "Age"', ' "Height (in)"', ' "Weight (lbs)"'],
- ['"Alex"', '       "M"', '   41', '       74', '      170'],
- ['"Bert"', '       "M"', '   42', '       68', '      166'],
- ['"Carl"', '       "M"', '   32', '       70', '      155'],
- ['"Dave"', '       "M"', '   39', '       72', '      167'],
- ['"Elly"', '       "F"', '   30', '       66', '      124'],
- ['"Fran"', '       "F"', '   33', '       66', '      115'],
- ['"Gwen"', '       "F"', '   26', '       64', '      121'],
- ['"Hank"', '       "M"', '   30', '       71', '      158'],
- ['"Ivan"', '       "M"', '   53', '       72', '      175'],
- ['"Jake"', '       "M"', '   32', '       69', '      143'],
- ['"Kate"', '       "F"', '   47', '       69', '      139'],
- ['"Luke"', '       "M"', '   34', '       72', '      163'],
- ['"Myra"', '       "F"', '   23', '       62', '       98'],
- ['"Neil"', '       "M"', '   36', '       75', '      160'],
- ['"Omar"', '       "M"', '   38', '       70', '      145'],
- ['"Page"', '       "F"', '   31', '       67', '      135'],
- ['"Quin"', '       "M"', '   29', '       71', '      176'],
- ['"Ruth"', '       "F"', '   28', '       65', '      131']]</code></pre>
-</div>
+<div id="cell-23" class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>list_2d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that we now have do something with the column names and handle formating and casting each cell.</p>
 </section>
@@ -831,97 +730,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="using-a-list-comprehension">Using a list comprehension</h2>
 <p>We can replace the entire code block above nested list comprehensions.</p>
 <p>Remember, you can put any expression into the first part of a comprehension, even another comprehension.</p>
-<div id="cell-26" class="cell" data-tags="[]" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>list_2d <span class="op">=</span> [[cell.strip() <span class="cf">for</span> cell <span class="kw">in</span> line.rstrip().replace(<span class="st">'"'</span>, <span class="st">''</span>).split(<span class="st">","</span>)] </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> line <span class="kw">in</span> <span class="bu">open</span>(src_file_name, <span class="st">'r'</span>).readlines()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-25" class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>list_2d <span class="op">=</span> [[cell.strip() <span class="cf">for</span> cell <span class="kw">in</span> line.rstrip().replace(<span class="st">'"'</span>, <span class="st">''</span>).split(<span class="st">","</span>)] </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> line <span class="kw">in</span> <span class="bu">open</span>(src_file_name, <span class="st">'r'</span>).readlines()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-27" class="cell" data-tags="[]" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>list_2d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>[['Name', 'Sex', 'Age', 'Height (in)', 'Weight (lbs)'],
- ['Alex', 'M', '41', '74', '170'],
- ['Bert', 'M', '42', '68', '166'],
- ['Carl', 'M', '32', '70', '155'],
- ['Dave', 'M', '39', '72', '167'],
- ['Elly', 'F', '30', '66', '124'],
- ['Fran', 'F', '33', '66', '115'],
- ['Gwen', 'F', '26', '64', '121'],
- ['Hank', 'M', '30', '71', '158'],
- ['Ivan', 'M', '53', '72', '175'],
- ['Jake', 'M', '32', '69', '143'],
- ['Kate', 'F', '47', '69', '139'],
- ['Luke', 'M', '34', '72', '163'],
- ['Myra', 'F', '23', '62', '98'],
- ['Neil', 'M', '36', '75', '160'],
- ['Omar', 'M', '38', '70', '145'],
- ['Page', 'F', '31', '67', '135'],
- ['Quin', 'M', '29', '71', '176'],
- ['Ruth', 'F', '28', '65', '131']]</code></pre>
-</div>
+<div id="cell-26" class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>list_2d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="converting-to-numpy" class="level2">
 <h2 class="anchored" data-anchor-id="converting-to-numpy">Converting to Numpy</h2>
-<div id="cell-29" class="cell" data-tags="[]" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-28" class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Numpy arrays must be of the same data types, and it also has no concept of column names, so we remove this row from our data.</p>
-<div id="cell-31" class="cell" data-tags="[]" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>col_names <span class="op">=</span> list_2d[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-30" class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>col_names <span class="op">=</span> list_2d[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-32" class="cell" data-tags="[]" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>col_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
-<pre><code>['Name', 'Sex', 'Age', 'Height (in)', 'Weight (lbs)']</code></pre>
+<div id="cell-31" class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>col_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="cell-32" class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>np_matrix <span class="op">=</span> np.array(list_2d[<span class="dv">1</span>:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-33" class="cell" data-tags="[]" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>np_matrix <span class="op">=</span> np.array(list_2d[<span class="dv">1</span>:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-34" class="cell" data-tags="[]" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>np_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
-<pre><code>array([['Alex', 'M', '41', '74', '170'],
-       ['Bert', 'M', '42', '68', '166'],
-       ['Carl', 'M', '32', '70', '155'],
-       ['Dave', 'M', '39', '72', '167'],
-       ['Elly', 'F', '30', '66', '124'],
-       ['Fran', 'F', '33', '66', '115'],
-       ['Gwen', 'F', '26', '64', '121'],
-       ['Hank', 'M', '30', '71', '158'],
-       ['Ivan', 'M', '53', '72', '175'],
-       ['Jake', 'M', '32', '69', '143'],
-       ['Kate', 'F', '47', '69', '139'],
-       ['Luke', 'M', '34', '72', '163'],
-       ['Myra', 'F', '23', '62', '98'],
-       ['Neil', 'M', '36', '75', '160'],
-       ['Omar', 'M', '38', '70', '145'],
-       ['Page', 'F', '31', '67', '135'],
-       ['Quin', 'M', '29', '71', '176'],
-       ['Ruth', 'F', '28', '65', '131']], dtype='&lt;U4')</code></pre>
-</div>
+<div id="cell-33" class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>np_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here we demonstrate slicing along both dimensions.</p>
 </section>
 <section id="array-slices" class="level2">
 <h2 class="anchored" data-anchor-id="array-slices">Array Slices</h2>
-<div id="cell-36" class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>np_matrix[:<span class="dv">2</span>, :<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-35" class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>np_matrix[:<span class="dv">2</span>, :<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="converting-data-types" class="level2">
 <h2 class="anchored" data-anchor-id="converting-data-types">Converting Data Types</h2>
 <p>Let’s try to convert the data types of the numeric columns from strings to integers. One thing we might do is the following:</p>
-<div id="cell-38" class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>np_matrix[:, <span class="dv">2</span>:<span class="dv">5</span>].astype(<span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-37" class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>np_matrix[:, <span class="dv">2</span>:<span class="dv">5</span>].astype(<span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We see that the strings are converted to integers.</p>
 <p>So, let’s try to save the conversion results to the original array:</p>
-<div id="cell-40" class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>np_matrix[:, <span class="dv">2</span>:<span class="dv">5</span>] <span class="op">=</span> np_matrix[:, <span class="dv">2</span>:<span class="dv">5</span>].astype(<span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-39" class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>np_matrix[:, <span class="dv">2</span>:<span class="dv">5</span>] <span class="op">=</span> np_matrix[:, <span class="dv">2</span>:<span class="dv">5</span>].astype(<span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-41" class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>np_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-40" class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>np_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>What happened?</p>
 </section>

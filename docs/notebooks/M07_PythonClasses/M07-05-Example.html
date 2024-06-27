@@ -632,31 +632,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Then we call it from within our notebook.</p>
 <p>This is normal practice – <strong>class files cannot reside in notebooks if they are to be used by other code!</strong></p>
 <p>Open the file <code>diegame.py</code> in the course repo to inspect the code.</p>
-<div id="9cfc0c00-fadd-44e9-844a-9b150798c721" class="cell" data-execution_count="1">
+<div id="9cfc0c00-fadd-44e9-844a-9b150798c721" class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> diegame <span class="im">import</span> DieGame</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="41450056-251e-4876-93a2-80e7d489717b" class="cell" data-execution_count="2">
+<div id="41450056-251e-4876-93a2-80e7d489717b" class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dg1 <span class="op">=</span> DieGame()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dg2 <span class="op">=</span> DieGame()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="c5afa016-0c58-42e5-9071-b75d2fd5277a" class="cell" data-execution_count="3">
+<div id="c5afa016-0c58-42e5-9071-b75d2fd5277a" class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check_values():</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'n_rolls:'</span>, dg1.n_rolls, dg2.n_rolls, DieGame.n_rolls, sep<span class="op">=</span><span class="st">'</span><span class="ch">\n\t</span><span class="st">'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'weights:'</span>, dg1.weights, dg2.weights, DieGame.weights, sep<span class="op">=</span><span class="st">'</span><span class="ch">\n\t</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="368936b0-155e-491b-9ea9-8eff39314a7b" class="cell" data-execution_count="4">
+<div id="368936b0-155e-491b-9ea9-8eff39314a7b" class="cell" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dg1.n_rolls <span class="op">=</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="7965b259-570d-41dc-b990-c06df29ea73f" class="cell" data-execution_count="5">
+<div id="7965b259-570d-41dc-b990-c06df29ea73f" class="cell" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dg1.weights <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="30a64acb-7ccc-4033-97a7-306bc1894ddc" class="cell" data-execution_count="6">
+<div id="30a64acb-7ccc-4033-97a7-306bc1894ddc" class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dg2.weights.append(<span class="dv">1</span>) <span class="co"># Also alters the static because this is not an assignment</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="b4138d63-05ac-4092-8e5a-df9e4f5c56a2" class="cell" data-execution_count="7">
+<div id="b4138d63-05ac-4092-8e5a-df9e4f5c56a2" class="cell" data-tags="[]" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>DieGame.n_rolls <span class="op">=</span> <span class="dv">50</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="6da593da-1fd5-4480-8280-41a7069b4bd2" class="cell" data-execution_count="8">
+<div id="6da593da-1fd5-4480-8280-41a7069b4bd2" class="cell" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>check_values()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>n_rolls:

@@ -620,8 +620,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#method-2-with-globals" id="toc-method-2-with-globals" class="nav-link" data-scroll-target="#method-2-with-globals">Method 2: With Globals</a>
   <ul class="collapse">
-  <li><a href="#define-a-shared-data-structure" id="toc-define-a-shared-data-structure" class="nav-link" data-scroll-target="#define-a-shared-data-structure">Define a Shared Data Structure</a></li>
-  <li><a href="#define-methods" id="toc-define-methods" class="nav-link" data-scroll-target="#define-methods">Define Methods</a></li>
+  <li><a href="#define-a-global-data-structure" id="toc-define-a-global-data-structure" class="nav-link" data-scroll-target="#define-a-global-data-structure">Define a Global Data Structure</a></li>
+  <li><a href="#define-functions-1" id="toc-define-functions-1" class="nav-link" data-scroll-target="#define-functions-1">Define Functions</a></li>
   <li><a href="#populate-config" id="toc-populate-config" class="nav-link" data-scroll-target="#populate-config">Populate Config</a></li>
   <li><a href="#call-main-function" id="toc-call-main-function" class="nav-link" data-scroll-target="#call-main-function">Call Main Function</a></li>
   </ul></li>
@@ -655,7 +655,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Here’s an example of a class motivated by our earlier observation that functions come in groups.</p>
 <section id="set-up" class="level2">
 <h2 class="anchored" data-anchor-id="set-up">Set Up</h2>
-<div id="cell-2" class="cell" data-tags="[]" data-execution_count="3">
+<div id="cell-2" class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -665,7 +665,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We define a set of functions that work in a sequence, where the return value of one is the argument of the other.</p>
 <section id="define-functions" class="level3">
 <h3 class="anchored" data-anchor-id="define-functions">Define Functions</h3>
-<div id="cell-4" class="cell" data-tags="[]" data-execution_count="4">
+<div id="cell-4" class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_die(weights):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    n_sides <span class="op">=</span> <span class="bu">len</span>(weights)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    my_probs <span class="op">=</span> [i<span class="op">/</span><span class="bu">sum</span>(weights) <span class="cf">for</span> i <span class="kw">in</span> weights]</span>
@@ -688,15 +688,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="create-instances" class="level3">
 <h3 class="anchored" data-anchor-id="create-instances">Create Instances</h3>
-<div id="cell-6" class="cell" data-execution_count="5">
+<div id="cell-6" class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n_rolls <span class="op">=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="6">
+<div id="cell-7" class="cell" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fair_die <span class="op">=</span> create_die([<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-8" class="cell" data-tags="[]" data-execution_count="7">
+<div id="cell-8" class="cell" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fair_die</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 <div>
 
@@ -752,26 +752,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="8">
+<div id="cell-9" class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fair_results <span class="op">=</span> roll_dice(fair_die, n_rolls)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="9">
+<div id="cell-10" class="cell" data-tags="[]" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fair_results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>0    4
-1    1
-2    2
-3    6
+1    2
+2    6
+3    4
 4    4
-5    6
-6    2
-7    2
-8    5
-9    2
+5    4
+6    7
+7    6
+8    4
+9    5
 dtype: int64</code></pre>
 </div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="10">
+<div id="cell-11" class="cell" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_results(fair_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -781,7 +781,7 @@ dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="11">
+<div id="cell-12" class="cell" data-tags="[]" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>unfair_die <span class="op">=</span> create_die([<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">5</span>])</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>unfair_results <span class="op">=</span> roll_dice(unfair_die, n_rolls)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plot_results(unfair_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -796,11 +796,11 @@ dtype: int64</code></pre>
 </section>
 <section id="doing-it-all-at-once" class="level3">
 <h3 class="anchored" data-anchor-id="doing-it-all-at-once">Doing it all at once</h3>
-<div id="cell-14" class="cell" data-execution_count="12">
+<div id="cell-14" class="cell" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> do_it_all(weights):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    plot_results(roll_dice(create_die(weights), n_rolls))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="13">
+<div id="cell-15" class="cell" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>do_it_all(roll_dice(create_die([<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">10</span>]), n_rolls))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -814,18 +814,18 @@ dtype: int64</code></pre>
 </section>
 <section id="method-2-with-globals" class="level2">
 <h2 class="anchored" data-anchor-id="method-2-with-globals">Method 2: With Globals</h2>
-<section id="define-a-shared-data-structure" class="level3">
-<h3 class="anchored" data-anchor-id="define-a-shared-data-structure">Define a Shared Data Structure</h3>
+<section id="define-a-global-data-structure" class="level3">
+<h3 class="anchored" data-anchor-id="define-a-global-data-structure">Define a Global Data Structure</h3>
 <p>We create a dictionary called <code>config</code> to store our instance data.</p>
 <p>We’ll treat this as a <strong>global</strong>.</p>
-<div id="cell-17" class="cell" data-execution_count="14">
+<div id="cell-17" class="cell" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> {}</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>n_rolls2 <span class="op">=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="define-methods" class="level3">
-<h3 class="anchored" data-anchor-id="define-methods">Define Methods</h3>
-<div id="cell-19" class="cell" data-execution_count="15">
+<section id="define-functions-1" class="level3">
+<h3 class="anchored" data-anchor-id="define-functions-1">Define Functions</h3>
+<div id="cell-19" class="cell" data-tags="[]" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_die2(die_id):</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> config</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    config[die_id][<span class="st">'die'</span>] <span class="op">=</span> <span class="va">None</span></span>
@@ -867,7 +867,7 @@ dtype: int64</code></pre>
 <section id="populate-config" class="level3">
 <h3 class="anchored" data-anchor-id="populate-config">Populate Config</h3>
 <p>We populate our configuration config with some instances.</p>
-<div id="cell-21" class="cell" data-execution_count="16">
+<div id="cell-21" class="cell" data-tags="[]" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> {</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'fair'</span>: {</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">'weights'</span>: [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>]</span>
@@ -880,7 +880,7 @@ dtype: int64</code></pre>
 </section>
 <section id="call-main-function" class="level3">
 <h3 class="anchored" data-anchor-id="call-main-function">Call Main Function</h3>
-<div id="cell-23" class="cell" data-execution_count="17">
+<div id="cell-23" class="cell" data-tags="[]" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>do_it_all2(<span class="st">'fair'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Die ID: fair
@@ -895,7 +895,7 @@ Rolls: 10</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-24" class="cell" data-execution_count="18">
+<div id="cell-24" class="cell" data-tags="[]" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>do_it_all2(<span class="st">'unfair'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Die ID: unfair
@@ -910,7 +910,7 @@ Rolls: 10</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-25" class="cell" data-execution_count="19">
+<div id="cell-25" class="cell" data-tags="[]" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>n_rolls2 <span class="op">=</span> <span class="dv">1000</span> <span class="co"># We change this, but it will affect all uses of the functions until we change it.</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>do_it_all2(<span class="st">'unfair'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -926,54 +926,70 @@ Rolls: 1000</code></pre>
 </div>
 </div>
 </div>
+<div id="cell-26" class="cell" data-tags="[]" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>do_it_all2(<span class="st">'fair'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Die ID: fair
+Weights: [1, 1, 1, 1, 1, 1]
+Rolls: 1000</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="M07-02-ClassesExample_files/figure-html/cell-19-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="method-3-as-class" class="level2">
 <h2 class="anchored" data-anchor-id="method-3-as-class">Method 3: As Class</h2>
 <p>Define a class that contains the config data structure and all the functions as attributes and methods.</p>
-<div id="cell-27" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DieGame():</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_rolls <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.weights <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>]</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> create_die(<span class="va">self</span>):</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_sides <span class="op">=</span> <span class="bu">len</span>(<span class="va">self</span>.weights)</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.my_probs <span class="op">=</span> [i<span class="op">/</span><span class="bu">sum</span>(<span class="va">self</span>.weights) <span class="cf">for</span> i <span class="kw">in</span> <span class="va">self</span>.weights]</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.die <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">'side'</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="va">self</span>.n_sides <span class="op">+</span> <span class="dv">1</span>),</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">'weights'</span>: <span class="va">self</span>.my_probs</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>        })</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> roll_die(<span class="va">self</span>):</span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>        results <span class="op">=</span> []</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.n_rolls):</span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> <span class="va">self</span>.die.side.sample(weights<span class="op">=</span><span class="va">self</span>.die.weights).values[<span class="dv">0</span>]</span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>            results.append(result)</span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.results <span class="op">=</span> pd.Series(results)        </span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> plot_results(<span class="va">self</span>):</span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>        prob_model <span class="op">=</span> pd.Series({i<span class="op">+</span><span class="dv">1</span>:<span class="bu">round</span>(p, <span class="dv">2</span>) <span class="cf">for</span> i, p <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.my_probs)})</span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Sides:"</span>, <span class="va">self</span>.n_sides)</span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Model:"</span>)</span>
-<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(prob_model)</span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Rolls:"</span>, <span class="va">self</span>.n_rolls)</span>
-<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.results.value_counts().sort_index().plot.bar(rot<span class="op">=</span><span class="dv">0</span>)<span class="op">;</span></span>
-<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We add another method because it's so easy :-)</span></span>
-<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> plot_probs(<span class="va">self</span>):</span>
-<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>        pd.Series(<span class="va">self</span>.my_probs).plot.pie(title<span class="op">=</span><span class="st">"Die Model"</span>)</span>
-<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> do_it_all(<span class="va">self</span>):</span>
-<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.create_die()</span>
-<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.roll_die()</span>
-<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.plot_results()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-28" class="cell" data-tags="[]" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DieGame():</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_rolls <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.weights <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>]</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> create_die(<span class="va">self</span>):</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_sides <span class="op">=</span> <span class="bu">len</span>(<span class="va">self</span>.weights)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.my_probs <span class="op">=</span> [i<span class="op">/</span><span class="bu">sum</span>(<span class="va">self</span>.weights) <span class="cf">for</span> i <span class="kw">in</span> <span class="va">self</span>.weights]</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.die <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">'side'</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="va">self</span>.n_sides <span class="op">+</span> <span class="dv">1</span>),</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">'weights'</span>: <span class="va">self</span>.my_probs</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> roll_die(<span class="va">self</span>):</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>        results <span class="op">=</span> []</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.n_rolls):</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> <span class="va">self</span>.die.side.sample(weights<span class="op">=</span><span class="va">self</span>.die.weights).values[<span class="dv">0</span>]</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>            results.append(result)</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.results <span class="op">=</span> pd.Series(results)        </span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> plot_results(<span class="va">self</span>):</span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>        prob_model <span class="op">=</span> pd.Series({i<span class="op">+</span><span class="dv">1</span>:<span class="bu">round</span>(p, <span class="dv">2</span>) <span class="cf">for</span> i, p <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.my_probs)})</span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Sides:"</span>, <span class="va">self</span>.n_sides)</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Model:"</span>)</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(prob_model)</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Rolls:"</span>, <span class="va">self</span>.n_rolls)</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.results.value_counts().sort_index().plot.bar(rot<span class="op">=</span><span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We add another method because it's so easy :-)</span></span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> plot_probs(<span class="va">self</span>):</span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>        pd.Series(<span class="va">self</span>.my_probs).plot.pie(title<span class="op">=</span><span class="st">"Die Model"</span>)</span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> do_it_all(<span class="va">self</span>):</span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.create_die()</span>
+<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.roll_die()</span>
+<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.plot_results()</span>
+<span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a>        </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-28" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>game_1 <span class="op">=</span> DieGame()</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>game_1.n_rolls <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>game_1.do_it_all()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-29" class="cell" data-tags="[]" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>game_1 <span class="op">=</span> DieGame()</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>game_1.n_rolls <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>game_1.do_it_all()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sides: 6
 Model:
@@ -989,26 +1005,26 @@ Rolls: 100</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="M07-02-ClassesExample_files/figure-html/cell-20-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="M07-02-ClassesExample_files/figure-html/cell-21-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-29" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>game_1.plot_probs()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-30" class="cell" data-tags="[]" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>game_1.plot_probs()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="M07-02-ClassesExample_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="M07-02-ClassesExample_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-30" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>game_2 <span class="op">=</span> DieGame()</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>game_2.n_rolls <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>game_2.weights <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">10</span>]</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>game_2.do_it_all()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-31" class="cell" data-tags="[]" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>game_2 <span class="op">=</span> DieGame()</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>game_2.n_rolls <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>game_2.weights <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">10</span>]</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>game_2.do_it_all()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sides: 6
 Model:
@@ -1024,17 +1040,17 @@ Rolls: 100</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="M07-02-ClassesExample_files/figure-html/cell-22-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="M07-02-ClassesExample_files/figure-html/cell-23-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-31" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>game_2.plot_probs()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-32" class="cell" data-tags="[]" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>game_2.plot_probs()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="M07-02-ClassesExample_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="M07-02-ClassesExample_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>

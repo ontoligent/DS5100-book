@@ -576,11 +576,12 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#when-code-breaks" id="toc-when-code-breaks" class="nav-link active" data-scroll-target="#when-code-breaks">When Code Breaks</a></li>
   <li><a href="#specifications" id="toc-specifications" class="nav-link" data-scroll-target="#specifications">Specifications</a></li>
-  <li><a href="#testing-and-verification" id="toc-testing-and-verification" class="nav-link" data-scroll-target="#testing-and-verification">Testing and Verification</a></li>
+  <li><a href="#testing-and-verification" id="toc-testing-and-verification" class="nav-link" data-scroll-target="#testing-and-verification">Testing and Verification</a>
+  <ul class="collapse">
   <li><a href="#formal-verification" id="toc-formal-verification" class="nav-link" data-scroll-target="#formal-verification">Formal Verification</a></li>
   <li><a href="#empirical-testing" id="toc-empirical-testing" class="nav-link" data-scroll-target="#empirical-testing">Empirical Testing</a></li>
-  <li><a href="#flow-paths" id="toc-flow-paths" class="nav-link" data-scroll-target="#flow-paths">Flow Paths</a></li>
   <li><a href="#debugging" id="toc-debugging" class="nav-link" data-scroll-target="#debugging">Debugging</a></li>
+  </ul></li>
   <li><a href="#a-note-of-caution" id="toc-a-note-of-caution" class="nav-link" data-scroll-target="#a-note-of-caution">A Note of Caution</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ontoligent/DS5100-book/edit/main/modules/m08/m08-testing-and-verification.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -609,16 +610,14 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="when-code-breaks" class="level2">
 <h2 class="anchored" data-anchor-id="when-code-breaks">When Code Breaks</h2>
-<p>In this module, we learn about how to deal with broken code.</p>
-<ul>
-<li>By “broken code,” we mean everything from code that does not run to code that does not meet the purpose for writing the code.</li>
-</ul>
+<p>In this module, we learn about how to deal with <strong>broken code</strong>.</p>
+<p>By “broken code,” we mean everything from code that does not run to code that does not meet the purpose for writing the code.</p>
 <p>This is a broad topic that covers many levels, facets, and many approaches.</p>
 <p>These are some basic questions that define the space of the topic:</p>
 <ul>
-<li><p>What constitutes broken code?</p></li>
-<li><p>How do you prevent your code from breaking?</p></li>
-<li><p>How to tell if your code is broken?</p></li>
+<li><p>What <strong>constitutes</strong> broken code?</p></li>
+<li><p>How do you <strong>prevent</strong> your code from breaking?</p></li>
+<li><p>How to <strong>tell</strong> if your code is broken?</p></li>
 </ul>
 <p>We’ll try to cover this space, and introduce you to some Python tools designed to handle broken code.</p>
 </section>
@@ -626,22 +625,21 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="specifications">Specifications</h2>
 <p>One way to frame this topic is to think in terms of <strong>standards of code</strong> against which the concept of broken code makes sense.</p>
 <p>This perspective begins with the concept of a <strong>specification</strong>: A precise and detailed statement that a stakeholder defines about the properties the code must have.</p>
-<p>There are different kinds of specification, or “spec”. For example:</p>
-<ul>
-<li><p>A <strong>design specification</strong> specification provides exact instructions for <em>how</em> to build something.</p></li>
-<li><p>A <strong>requirements specification</strong> provides exact statements about <em>what</em> should be built.</p></li>
-</ul>
+<p>There are different kinds of specification, or “spec”. For example:<br>
+- A <strong>design specification</strong> specification provides exact instructions for <em>how</em> to build something.<br>
+- A <strong>requirements specification</strong> provides exact statements about <em>what</em> should be built. These specify what the code shoudl do, not how or why.</p>
 <p>Code can meet specifications in different ways.</p>
 <ul>
-<li><p>We can think of code <strong>quality</strong> in terms of the degree to which code meets requirements.</p></li>
-<li><p><strong>Quality:</strong> falls on a scale; it’s not a black-and-white idea. Defining the scale can be difficult.</p></li>
+<li><p>We can think of code <strong>quality</strong> in terms of the degree to which code meets these requirements.</p></li>
+<li><p>Quality falls on a <strong>scale</strong>. It is not a black-and-white idea. Defining the scale can be difficult.</p></li>
 </ul>
-<p>Two kinds of requirements matching are the following:</p>
-<ul>
-<li><p><strong>Verification:</strong> Shows that the code <strong>meets the requirement specification</strong>. You verify that I wrote the program you asked me to write.</p></li>
-<li><p><strong>Validation:</strong> Shows that the code meets the requirements. You show that the program is a valid solution to the user’s problem, but not necessarily the best.</p></li>
-</ul>
-<p><strong>Specifications are very important</strong>. Not only are they used to guide the creation of the project, but also they’re&nbsp;<strong>vital for program testing and verification</strong>.</p>
+<p>Two kinds of requirements matching are <strong>verification</strong> and <strong>validation</strong>.</p>
+<p>Verification ensures the software is built right, according to the requirements, while validation ensures the software is doing the right thing, relative to the problem the client is trying to solve. This is captured by the requirements, but also by the value proposition that motivates the code in the first place.</p>
+<p>The distinction is similar to that referenced by Peter Drucker in this quote:</p>
+<blockquote class="blockquote">
+<p>It’s more important to do the right thing than to do things right.</p>
+</blockquote>
+<p>So, <strong>specifications are very important</strong>. Not only are they used to guide the creation of the project, but also they’re&nbsp;<strong>vital for program testing and verification</strong>.</p>
 <ul>
 <li><p>That is, if you don’t have specifications for the product, you cannot verify that you’re doing the right thing.</p></li>
 <li><p>Likewise, if behavior is not defined, then it becomes difficult to know what is&nbsp;<em>incorrect</em>&nbsp;behavior.</p></li>
@@ -664,9 +662,8 @@ Note
 <section id="testing-and-verification" class="level2">
 <h2 class="anchored" data-anchor-id="testing-and-verification">Testing and Verification</h2>
 <p>To ensure that our code aligns with our requirements and is of the highest quality we can provide, we follow testing and verification processes.</p>
-</section>
-<section id="formal-verification" class="level2">
-<h2 class="anchored" data-anchor-id="formal-verification">Formal Verification</h2>
+<section id="formal-verification" class="level3">
+<h3 class="anchored" data-anchor-id="formal-verification">Formal Verification</h3>
 <p>Formal verification involves proof. There are three types:</p>
 <ul>
 <li><p>Hand-written, hand-checked</p></li>
@@ -676,8 +673,8 @@ Note
 <p>None of them are very widely used yet, but the latter two are increasing in popularity.</p>
 <p>Formal verification is complex, difficult, and takes a great deal of effort.</p>
 </section>
-<section id="empirical-testing" class="level2">
-<h2 class="anchored" data-anchor-id="empirical-testing">Empirical Testing</h2>
+<section id="empirical-testing" class="level3">
+<h3 class="anchored" data-anchor-id="empirical-testing">Empirical Testing</h3>
 <p>Instead of formal verification, correctness is demonstrated through empirical testing. Empirical testing shows it works on several inputs. In general, testing is:</p>
 <ul>
 <li><p>A lot easier than proof</p></li>
@@ -694,15 +691,23 @@ Note
 <li><p><strong>Integration Testing:</strong> Test that units work together.</p></li>
 <li><p><strong>Acceptance Testing (Beta Testing):</strong> Give product to real users to try it out.</p></li>
 </ul>
-</section>
-<section id="flow-paths" class="level2">
-<h2 class="anchored" data-anchor-id="flow-paths">Flow Paths</h2>
-<p>Unit testing is predicated on understand <strong>the flow of data</strong> in your program.</p>
-<p>A flow path is a unique execution sequence through a program unit.</p>
-<p>A good set of test data makes sure <strong>every possible path</strong> is followed (tests every possible behavior).</p>
-<p>Note, however, that there are virtually an infinite number of flow paths in a program!</p>
-<p>Exhaustive testing is usually impossible.</p>
-<p>However, we can overcome these odds by being clever about the kinds of tests that we write.</p>
+<!-- 
+
+## Flow Paths
+
+Unit testing is predicated on understand **the flow of data** in your program.
+
+A flow path is a unique execution sequence through a program unit. 
+
+A good set of test data makes sure **every possible path** is followed (tests every possible behavior). 
+
+Note, however, that there are virtually an infinite number of flow paths in a program!
+
+Exhaustive testing is usually impossible. 
+
+However, we can overcome these odds by being clever about the kinds of tests that we write. 
+
+-->
 <!-- We'll also learn about equivalence classes, which also help us overcome this hurdle. -->
 <!-- Example of code showing various flow paths. -->
 <!--
@@ -714,11 +719,12 @@ For example, starting at Stmt~1~, then the condition of the while loop (C~1~) is
 This is an example of a flow path starting at Stmt~1~ and ending up at Stmt~3~. In other words, there are many paths through a given program.
 -->
 </section>
-<section id="debugging" class="level2">
-<h2 class="anchored" data-anchor-id="debugging">Debugging</h2>
+<section id="debugging" class="level3">
+<h3 class="anchored" data-anchor-id="debugging">Debugging</h3>
 <p>Another aspect of testing and verification which we will not cover here is debugging.</p>
 <p>Debugging – derived from Grace Hopper’s expression “bug” – refers to the process of investigating precisely where and when code breaks.</p>
 <p>Programming environments like Jupyter Lab and VS Code provide good tools for debugging.</p>
+</section>
 </section>
 <section id="a-note-of-caution" class="level2">
 <h2 class="anchored" data-anchor-id="a-note-of-caution">A Note of Caution</h2>

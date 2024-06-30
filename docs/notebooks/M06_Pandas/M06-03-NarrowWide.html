@@ -639,10 +639,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>There are in general at least two ways to represent a dataset – as a narrow table or as a set of wide tables.</p>
 <p>Let’s look at a very simple example.</p>
-<div id="cell-1" class="cell" data-execution_count="9">
+<div id="cell-1" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-2" class="cell" data-execution_count="10">
+<div id="cell-2" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pets <span class="op">=</span> pd.Series(<span class="st">"cat dog ferret snake turtle parraot"</span>.split()).sample(<span class="dv">1000</span>, replace<span class="op">=</span><span class="va">True</span>).to_list()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>people <span class="op">=</span> pd.Series(<span class="st">"A B C D E F G"</span>.split()).sample(<span class="dv">1000</span>, replace<span class="op">=</span><span class="va">True</span>).to_list()   </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>NARROW <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(pet<span class="op">=</span>pets, owner<span class="op">=</span>people)).groupby([<span class="st">'owner'</span>, <span class="st">'pet'</span>]).pet.count().to_frame(<span class="st">'n'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -650,9 +650,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This is a narrow table.</p>
 <p>It has few columns and many rows.</p>
 <p>Columns are types of things, and values in rows are either instances or subtypes.</p>
-<div id="cell-4" class="cell" data-execution_count="8">
+<div id="cell-4" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>NARROW</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 <div>
 
@@ -674,40 +674,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">A</td>
 <td data-quarto-table-cell-role="th">cat</td>
-<td>32</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">dog</td>
-<td>28</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ferret</td>
-<td>28</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">parraot</td>
-<td>22</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">snake</td>
 <td>21</td>
 </tr>
 <tr class="even">
+<td data-quarto-table-cell-role="th">dog</td>
+<td>30</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ferret</td>
+<td>23</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">parraot</td>
+<td>28</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">snake</td>
+<td>17</td>
+</tr>
+<tr class="even">
 <td data-quarto-table-cell-role="th">turtle</td>
-<td>19</td>
+<td>23</td>
 </tr>
 <tr class="odd">
 <td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">B</td>
 <td data-quarto-table-cell-role="th">cat</td>
-<td>24</td>
+<td>25</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">dog</td>
-<td>26</td>
+<td>28</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ferret</td>
-<td>22</td>
+<td>27</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">parraot</td>
@@ -715,32 +715,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">snake</td>
-<td>21</td>
+<td>27</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">turtle</td>
-<td>19</td>
+<td>22</td>
 </tr>
 <tr class="odd">
 <td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">C</td>
 <td data-quarto-table-cell-role="th">cat</td>
-<td>29</td>
+<td>23</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">dog</td>
-<td>15</td>
+<td>18</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ferret</td>
-<td>17</td>
+<td>33</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">parraot</td>
-<td>25</td>
+<td>23</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">snake</td>
-<td>25</td>
+<td>20</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">turtle</td>
@@ -749,98 +749,98 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">D</td>
 <td data-quarto-table-cell-role="th">cat</td>
-<td>25</td>
+<td>28</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">dog</td>
-<td>22</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ferret</td>
-<td>32</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">parraot</td>
 <td>17</td>
 </tr>
 <tr class="odd">
+<td data-quarto-table-cell-role="th">ferret</td>
+<td>25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">parraot</td>
+<td>26</td>
+</tr>
+<tr class="odd">
 <td data-quarto-table-cell-role="th">snake</td>
-<td>21</td>
+<td>24</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">turtle</td>
-<td>20</td>
+<td>21</td>
 </tr>
 <tr class="odd">
 <td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">E</td>
 <td data-quarto-table-cell-role="th">cat</td>
-<td>23</td>
+<td>29</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">dog</td>
-<td>25</td>
+<td>19</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ferret</td>
-<td>30</td>
+<td>24</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">parraot</td>
-<td>23</td>
+<td>26</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">snake</td>
-<td>25</td>
+<td>24</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">turtle</td>
-<td>27</td>
+<td>23</td>
 </tr>
 <tr class="odd">
 <td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">F</td>
 <td data-quarto-table-cell-role="th">cat</td>
-<td>25</td>
+<td>19</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">dog</td>
-<td>26</td>
+<td>25</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ferret</td>
-<td>28</td>
+<td>15</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">parraot</td>
-<td>27</td>
+<td>25</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">snake</td>
-<td>29</td>
+<td>26</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">turtle</td>
-<td>18</td>
+<td>23</td>
 </tr>
 <tr class="odd">
 <td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">G</td>
 <td data-quarto-table-cell-role="th">cat</td>
-<td>23</td>
+<td>29</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">dog</td>
-<td>27</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ferret</td>
-<td>17</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">parraot</td>
 <td>21</td>
 </tr>
 <tr class="odd">
+<td data-quarto-table-cell-role="th">ferret</td>
+<td>18</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">parraot</td>
+<td>23</td>
+</tr>
+<tr class="odd">
 <td data-quarto-table-cell-role="th">snake</td>
-<td>22</td>
+<td>28</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">turtle</td>
@@ -853,15 +853,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="11">
+<div id="cell-5" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>WIDE <span class="op">=</span> NARROW.n.unstack()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This is a wide table.</p>
 <p>One column’s values are projected onto the feature space (as columns).</p>
 <p>The other column becomes a unique list (as is the feature space).</p>
-<div id="cell-7" class="cell" data-execution_count="12">
+<div id="cell-7" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>WIDE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 <div>
 
@@ -890,66 +890,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">A</td>
-<td>26</td>
-<td>25</td>
-<td>31</td>
-<td>20</td>
-<td>24</td>
-<td>29</td>
+<td>21</td>
+<td>30</td>
+<td>23</td>
+<td>28</td>
+<td>17</td>
+<td>23</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">B</td>
-<td>19</td>
-<td>26</td>
-<td>15</td>
-<td>18</td>
-<td>26</td>
-<td>19</td>
+<td>25</td>
+<td>28</td>
+<td>27</td>
+<td>24</td>
+<td>27</td>
+<td>22</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">C</td>
-<td>26</td>
-<td>24</td>
-<td>27</td>
+<td>23</td>
+<td>18</td>
+<td>33</td>
+<td>23</td>
 <td>20</td>
-<td>24</td>
-<td>25</td>
+<td>23</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">D</td>
-<td>19</td>
-<td>30</td>
-<td>24</td>
+<td>28</td>
+<td>17</td>
+<td>25</td>
 <td>26</td>
-<td>20</td>
-<td>33</td>
+<td>24</td>
+<td>21</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">E</td>
-<td>21</td>
 <td>29</td>
-<td>18</td>
-<td>21</td>
-<td>20</td>
-<td>32</td>
+<td>19</td>
+<td>24</td>
+<td>26</td>
+<td>24</td>
+<td>23</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">F</td>
-<td>27</td>
-<td>21</td>
-<td>20</td>
 <td>19</td>
-<td>27</td>
-<td>21</td>
+<td>25</td>
+<td>15</td>
+<td>25</td>
+<td>26</td>
+<td>23</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">G</td>
+<td>29</td>
+<td>21</td>
+<td>18</td>
+<td>23</td>
 <td>28</td>
-<td>25</td>
-<td>28</td>
-<td>26</td>
-<td>25</td>
-<td>16</td>
+<td>27</td>
 </tr>
 </tbody>
 </table>
@@ -962,125 +962,113 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In fact, relational databases impose a limit on the number of columns you can have for a table, excluding high-dimensional spaces.</p>
 <p>Wide columns are more usable for analysis.</p>
 <p>You can do also these things with narrow tables using <code>.group_by()</code></p>
-<div id="cell-9" class="cell" data-execution_count="18">
+<div id="cell-9" class="cell" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> WIDE <span class="op">/</span> WIDE.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="19">
+<div id="cell-10" class="cell" data-tags="[]" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> WIDE.T <span class="op">/</span> WIDE.T.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="25">
+<div id="cell-11" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>A.style.background_gradient()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 <style type="text/css">
-#T_65876_row0_col0, #T_65876_row2_col0 {
-  background-color: #056ba7;
-  color: #f1f1f1;
-}
-#T_65876_row0_col1, #T_65876_row6_col1 {
-  background-color: #8bb2d4;
+#T_a18a9_row0_col0, #T_a18a9_row1_col3 {
+  background-color: #dbdaeb;
   color: #000000;
 }
-#T_65876_row0_col2, #T_65876_row3_col1, #T_65876_row3_col3, #T_65876_row3_col5, #T_65876_row5_col4, #T_65876_row6_col0, #T_65876_row6_col3 {
+#T_a18a9_row0_col1, #T_a18a9_row0_col3, #T_a18a9_row2_col2, #T_a18a9_row4_col0, #T_a18a9_row6_col0, #T_a18a9_row6_col4, #T_a18a9_row6_col5 {
   background-color: #023858;
   color: #f1f1f1;
 }
-#T_65876_row0_col3, #T_65876_row2_col3 {
-  background-color: #d0d1e6;
+#T_a18a9_row0_col2 {
+  background-color: #8bb2d4;
   color: #000000;
 }
-#T_65876_row0_col4, #T_65876_row2_col4 {
-  background-color: #509ac6;
-  color: #f1f1f1;
-}
-#T_65876_row0_col5 {
-  background-color: #056dac;
-  color: #f1f1f1;
-}
-#T_65876_row1_col0, #T_65876_row1_col2, #T_65876_row1_col3, #T_65876_row3_col0, #T_65876_row3_col4, #T_65876_row4_col4, #T_65876_row5_col1, #T_65876_row6_col5 {
+#T_a18a9_row0_col4, #T_a18a9_row2_col3, #T_a18a9_row3_col1, #T_a18a9_row3_col5, #T_a18a9_row5_col0, #T_a18a9_row5_col2, #T_a18a9_row6_col3 {
   background-color: #fff7fb;
   color: #000000;
 }
-#T_65876_row1_col1 {
-  background-color: #589ec8;
-  color: #f1f1f1;
-}
-#T_65876_row1_col4 {
-  background-color: #045d92;
-  color: #f1f1f1;
-}
-#T_65876_row1_col5 {
-  background-color: #e0deed;
-  color: #000000;
-}
-#T_65876_row2_col1 {
+#T_a18a9_row0_col5, #T_a18a9_row2_col5, #T_a18a9_row4_col5, #T_a18a9_row5_col5 {
   background-color: #b4c4df;
   color: #000000;
 }
-#T_65876_row2_col2 {
-  background-color: #0570b0;
+#T_a18a9_row1_col0, #T_a18a9_row3_col3, #T_a18a9_row4_col3 {
+  background-color: #4295c3;
   color: #f1f1f1;
 }
-#T_65876_row2_col5 {
-  background-color: #65a3cb;
+#T_a18a9_row1_col1 {
+  background-color: #045f95;
   color: #f1f1f1;
 }
-#T_65876_row3_col2 {
-  background-color: #549cc7;
+#T_a18a9_row1_col2 {
+  background-color: #2685bb;
   color: #f1f1f1;
 }
-#T_65876_row4_col0 {
-  background-color: #d7d6e9;
+#T_a18a9_row1_col4 {
+  background-color: #03517e;
+  color: #f1f1f1;
+}
+#T_a18a9_row1_col5, #T_a18a9_row6_col2 {
+  background-color: #e3e0ee;
   color: #000000;
 }
-#T_65876_row4_col1, #T_65876_row5_col0 {
-  background-color: #045687;
+#T_a18a9_row2_col0, #T_a18a9_row5_col3 {
+  background-color: #9cb9d9;
+  color: #000000;
+}
+#T_a18a9_row2_col1 {
+  background-color: #f4edf6;
+  color: #000000;
+}
+#T_a18a9_row2_col4 {
+  background-color: #c9cee4;
+  color: #000000;
+}
+#T_a18a9_row3_col0 {
+  background-color: #045382;
   color: #f1f1f1;
 }
-#T_65876_row4_col2 {
-  background-color: #dedcec;
-  color: #000000;
-}
-#T_65876_row4_col3 {
-  background-color: #a5bddb;
-  color: #000000;
-}
-#T_65876_row4_col5 {
-  background-color: #034871;
+#T_a18a9_row3_col2 {
+  background-color: #589ec8;
   color: #f1f1f1;
 }
-#T_65876_row5_col2 {
-  background-color: #bbc7e0;
-  color: #000000;
-}
-#T_65876_row5_col3 {
-  background-color: #ece7f2;
-  color: #000000;
-}
-#T_65876_row5_col5 {
-  background-color: #c1cae2;
-  color: #000000;
-}
-#T_65876_row6_col2 {
-  background-color: #04649e;
+#T_a18a9_row3_col4, #T_a18a9_row4_col4 {
+  background-color: #328dbf;
   color: #f1f1f1;
 }
-#T_65876_row6_col4 {
-  background-color: #1379b5;
+#T_a18a9_row4_col1 {
+  background-color: #e6e2ef;
+  color: #000000;
+}
+#T_a18a9_row4_col2 {
+  background-color: #75a9cf;
   color: #f1f1f1;
+}
+#T_a18a9_row5_col1 {
+  background-color: #3b92c1;
+  color: #f1f1f1;
+}
+#T_a18a9_row5_col4 {
+  background-color: #04649d;
+  color: #f1f1f1;
+}
+#T_a18a9_row6_col1 {
+  background-color: #bdc8e1;
+  color: #000000;
 }
 </style>
 
-<table id="T_65876" data-quarto-postprocess="true" class="table table-sm table-striped small">
+<table id="T_a18a9" data-quarto-postprocess="true" class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th class="index_name level0" data-quarto-table-cell-role="th">pet</th>
-<th id="T_65876_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">cat</th>
-<th id="T_65876_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">dog</th>
-<th id="T_65876_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">ferret</th>
-<th id="T_65876_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">parraot</th>
-<th id="T_65876_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">snake</th>
-<th id="T_65876_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">turtle</th>
+<th id="T_a18a9_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">cat</th>
+<th id="T_a18a9_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">dog</th>
+<th id="T_a18a9_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">ferret</th>
+<th id="T_a18a9_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">parraot</th>
+<th id="T_a18a9_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">snake</th>
+<th id="T_a18a9_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">turtle</th>
 </tr>
 <tr class="odd">
 <th class="index_name level0" data-quarto-table-cell-role="th">owner</th>
@@ -1094,171 +1082,167 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td id="T_65876_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">A</td>
-<td id="T_65876_row0_col0" class="data row0 col0">0.156627</td>
-<td id="T_65876_row0_col1" class="data row0 col1">0.138889</td>
-<td id="T_65876_row0_col2" class="data row0 col2">0.190184</td>
-<td id="T_65876_row0_col3" class="data row0 col3">0.133333</td>
-<td id="T_65876_row0_col4" class="data row0 col4">0.144578</td>
-<td id="T_65876_row0_col5" class="data row0 col5">0.165714</td>
+<td id="T_a18a9_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">A</td>
+<td id="T_a18a9_row0_col0" class="data row0 col0">0.120690</td>
+<td id="T_a18a9_row0_col1" class="data row0 col1">0.189873</td>
+<td id="T_a18a9_row0_col2" class="data row0 col2">0.139394</td>
+<td id="T_a18a9_row0_col3" class="data row0 col3">0.160000</td>
+<td id="T_a18a9_row0_col4" class="data row0 col4">0.102410</td>
+<td id="T_a18a9_row0_col5" class="data row0 col5">0.141975</td>
 </tr>
 <tr class="even">
-<td id="T_65876_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">B</td>
-<td id="T_65876_row1_col0" class="data row1 col0">0.114458</td>
-<td id="T_65876_row1_col1" class="data row1 col1">0.144444</td>
-<td id="T_65876_row1_col2" class="data row1 col2">0.092025</td>
-<td id="T_65876_row1_col3" class="data row1 col3">0.120000</td>
-<td id="T_65876_row1_col4" class="data row1 col4">0.156627</td>
-<td id="T_65876_row1_col5" class="data row1 col5">0.108571</td>
+<td id="T_a18a9_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">B</td>
+<td id="T_a18a9_row1_col0" class="data row1 col0">0.143678</td>
+<td id="T_a18a9_row1_col1" class="data row1 col1">0.177215</td>
+<td id="T_a18a9_row1_col2" class="data row1 col2">0.163636</td>
+<td id="T_a18a9_row1_col3" class="data row1 col3">0.137143</td>
+<td id="T_a18a9_row1_col4" class="data row1 col4">0.162651</td>
+<td id="T_a18a9_row1_col5" class="data row1 col5">0.135802</td>
 </tr>
 <tr class="odd">
-<td id="T_65876_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">C</td>
-<td id="T_65876_row2_col0" class="data row2 col0">0.156627</td>
-<td id="T_65876_row2_col1" class="data row2 col1">0.133333</td>
-<td id="T_65876_row2_col2" class="data row2 col2">0.165644</td>
-<td id="T_65876_row2_col3" class="data row2 col3">0.133333</td>
-<td id="T_65876_row2_col4" class="data row2 col4">0.144578</td>
-<td id="T_65876_row2_col5" class="data row2 col5">0.142857</td>
+<td id="T_a18a9_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">C</td>
+<td id="T_a18a9_row2_col0" class="data row2 col0">0.132184</td>
+<td id="T_a18a9_row2_col1" class="data row2 col1">0.113924</td>
+<td id="T_a18a9_row2_col2" class="data row2 col2">0.200000</td>
+<td id="T_a18a9_row2_col3" class="data row2 col3">0.131429</td>
+<td id="T_a18a9_row2_col4" class="data row2 col4">0.120482</td>
+<td id="T_a18a9_row2_col5" class="data row2 col5">0.141975</td>
 </tr>
 <tr class="even">
-<td id="T_65876_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">D</td>
-<td id="T_65876_row3_col0" class="data row3 col0">0.114458</td>
-<td id="T_65876_row3_col1" class="data row3 col1">0.166667</td>
-<td id="T_65876_row3_col2" class="data row3 col2">0.147239</td>
-<td id="T_65876_row3_col3" class="data row3 col3">0.173333</td>
-<td id="T_65876_row3_col4" class="data row3 col4">0.120482</td>
-<td id="T_65876_row3_col5" class="data row3 col5">0.188571</td>
+<td id="T_a18a9_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">D</td>
+<td id="T_a18a9_row3_col0" class="data row3 col0">0.160920</td>
+<td id="T_a18a9_row3_col1" class="data row3 col1">0.107595</td>
+<td id="T_a18a9_row3_col2" class="data row3 col2">0.151515</td>
+<td id="T_a18a9_row3_col3" class="data row3 col3">0.148571</td>
+<td id="T_a18a9_row3_col4" class="data row3 col4">0.144578</td>
+<td id="T_a18a9_row3_col5" class="data row3 col5">0.129630</td>
 </tr>
 <tr class="odd">
-<td id="T_65876_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">E</td>
-<td id="T_65876_row4_col0" class="data row4 col0">0.126506</td>
-<td id="T_65876_row4_col1" class="data row4 col1">0.161111</td>
-<td id="T_65876_row4_col2" class="data row4 col2">0.110429</td>
-<td id="T_65876_row4_col3" class="data row4 col3">0.140000</td>
-<td id="T_65876_row4_col4" class="data row4 col4">0.120482</td>
-<td id="T_65876_row4_col5" class="data row4 col5">0.182857</td>
+<td id="T_a18a9_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">E</td>
+<td id="T_a18a9_row4_col0" class="data row4 col0">0.166667</td>
+<td id="T_a18a9_row4_col1" class="data row4 col1">0.120253</td>
+<td id="T_a18a9_row4_col2" class="data row4 col2">0.145455</td>
+<td id="T_a18a9_row4_col3" class="data row4 col3">0.148571</td>
+<td id="T_a18a9_row4_col4" class="data row4 col4">0.144578</td>
+<td id="T_a18a9_row4_col5" class="data row4 col5">0.141975</td>
 </tr>
 <tr class="even">
-<td id="T_65876_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">F</td>
-<td id="T_65876_row5_col0" class="data row5 col0">0.162651</td>
-<td id="T_65876_row5_col1" class="data row5 col1">0.116667</td>
-<td id="T_65876_row5_col2" class="data row5 col2">0.122699</td>
-<td id="T_65876_row5_col3" class="data row5 col3">0.126667</td>
-<td id="T_65876_row5_col4" class="data row5 col4">0.162651</td>
-<td id="T_65876_row5_col5" class="data row5 col5">0.120000</td>
+<td id="T_a18a9_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">F</td>
+<td id="T_a18a9_row5_col0" class="data row5 col0">0.109195</td>
+<td id="T_a18a9_row5_col1" class="data row5 col1">0.158228</td>
+<td id="T_a18a9_row5_col2" class="data row5 col2">0.090909</td>
+<td id="T_a18a9_row5_col3" class="data row5 col3">0.142857</td>
+<td id="T_a18a9_row5_col4" class="data row5 col4">0.156627</td>
+<td id="T_a18a9_row5_col5" class="data row5 col5">0.141975</td>
 </tr>
 <tr class="odd">
-<td id="T_65876_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">G</td>
-<td id="T_65876_row6_col0" class="data row6 col0">0.168675</td>
-<td id="T_65876_row6_col1" class="data row6 col1">0.138889</td>
-<td id="T_65876_row6_col2" class="data row6 col2">0.171779</td>
-<td id="T_65876_row6_col3" class="data row6 col3">0.173333</td>
-<td id="T_65876_row6_col4" class="data row6 col4">0.150602</td>
-<td id="T_65876_row6_col5" class="data row6 col5">0.091429</td>
+<td id="T_a18a9_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">G</td>
+<td id="T_a18a9_row6_col0" class="data row6 col0">0.166667</td>
+<td id="T_a18a9_row6_col1" class="data row6 col1">0.132911</td>
+<td id="T_a18a9_row6_col2" class="data row6 col2">0.109091</td>
+<td id="T_a18a9_row6_col3" class="data row6 col3">0.131429</td>
+<td id="T_a18a9_row6_col4" class="data row6 col4">0.168675</td>
+<td id="T_a18a9_row6_col5" class="data row6 col5">0.166667</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="24">
+<div id="cell-12" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>B.style.background_gradient()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 <style type="text/css">
-#T_b73df_row0_col0 {
-  background-color: #5ea0ca;
-  color: #f1f1f1;
-}
-#T_b73df_row0_col1, #T_b73df_row4_col0, #T_b73df_row5_col1 {
-  background-color: #a9bfdc;
+#T_6f2ee_row0_col0 {
+  background-color: #bdc8e1;
   color: #000000;
 }
-#T_b73df_row0_col2 {
-  background-color: #045d92;
-  color: #f1f1f1;
-}
-#T_b73df_row0_col3, #T_b73df_row2_col1, #T_b73df_row2_col4, #T_b73df_row3_col0, #T_b73df_row3_col2, #T_b73df_row3_col5, #T_b73df_row5_col6 {
-  background-color: #fff7fb;
-  color: #000000;
-}
-#T_b73df_row0_col4, #T_b73df_row3_col4 {
-  background-color: #d9d8ea;
-  color: #000000;
-}
-#T_b73df_row0_col5, #T_b73df_row0_col6, #T_b73df_row1_col1, #T_b73df_row2_col0, #T_b73df_row2_col2, #T_b73df_row2_col6, #T_b73df_row4_col1, #T_b73df_row4_col5, #T_b73df_row5_col3, #T_b73df_row5_col4 {
-  background-color: #023858;
-  color: #f1f1f1;
-}
-#T_b73df_row1_col0 {
-  background-color: #86b0d3;
-  color: #000000;
-}
-#T_b73df_row1_col2, #T_b73df_row4_col2 {
-  background-color: #509ac6;
-  color: #f1f1f1;
-}
-#T_b73df_row1_col3, #T_b73df_row1_col4 {
-  background-color: #0569a5;
-  color: #f1f1f1;
-}
-#T_b73df_row1_col5, #T_b73df_row5_col5 {
-  background-color: #d1d2e6;
-  color: #000000;
-}
-#T_b73df_row1_col6, #T_b73df_row4_col6 {
-  background-color: #0570b0;
-  color: #f1f1f1;
-}
-#T_b73df_row2_col3 {
-  background-color: #acc0dd;
-  color: #000000;
-}
-#T_b73df_row2_col5 {
-  background-color: #ede7f2;
-  color: #000000;
-}
-#T_b73df_row3_col1 {
-  background-color: #c9cee4;
-  color: #000000;
-}
-#T_b73df_row3_col3 {
+#T_6f2ee_row0_col1 {
   background-color: #73a9cf;
   color: #f1f1f1;
 }
-#T_b73df_row3_col6 {
+#T_6f2ee_row0_col2, #T_6f2ee_row3_col1, #T_6f2ee_row3_col2, #T_6f2ee_row5_col2 {
+  background-color: #b4c4df;
+  color: #000000;
+}
+#T_6f2ee_row0_col3, #T_6f2ee_row0_col4, #T_6f2ee_row0_col6, #T_6f2ee_row1_col0, #T_6f2ee_row1_col1, #T_6f2ee_row2_col2, #T_6f2ee_row4_col5 {
+  background-color: #023858;
+  color: #f1f1f1;
+}
+#T_6f2ee_row0_col5, #T_6f2ee_row5_col3 {
+  background-color: #a9bfdc;
+  color: #000000;
+}
+#T_6f2ee_row1_col2, #T_6f2ee_row1_col3, #T_6f2ee_row1_col4, #T_6f2ee_row2_col5, #T_6f2ee_row2_col6, #T_6f2ee_row4_col0, #T_6f2ee_row5_col1 {
+  background-color: #fff7fb;
+  color: #000000;
+}
+#T_6f2ee_row1_col5, #T_6f2ee_row3_col5, #T_6f2ee_row4_col6 {
+  background-color: #03517e;
+  color: #f1f1f1;
+}
+#T_6f2ee_row1_col6 {
+  background-color: #c9cee4;
+  color: #000000;
+}
+#T_6f2ee_row2_col0, #T_6f2ee_row5_col0 {
+  background-color: #83afd3;
+  color: #f1f1f1;
+}
+#T_6f2ee_row2_col1, #T_6f2ee_row4_col1 {
   background-color: #046198;
   color: #f1f1f1;
 }
-#T_b73df_row4_col3 {
-  background-color: #f4eef6;
-  color: #000000;
+#T_6f2ee_row2_col3, #T_6f2ee_row5_col5 {
+  background-color: #0d75b3;
+  color: #f1f1f1;
 }
-#T_b73df_row4_col4 {
-  background-color: #e8e4f0;
-  color: #000000;
+#T_6f2ee_row2_col4, #T_6f2ee_row4_col4 {
+  background-color: #75a9cf;
+  color: #f1f1f1;
 }
-#T_b73df_row5_col0 {
+#T_6f2ee_row3_col0 {
+  background-color: #045f95;
+  color: #f1f1f1;
+}
+#T_6f2ee_row3_col3, #T_6f2ee_row5_col6 {
   background-color: #04649d;
   color: #f1f1f1;
 }
-#T_b73df_row5_col2 {
-  background-color: #1379b5;
+#T_6f2ee_row3_col4 {
+  background-color: #187cb6;
   color: #f1f1f1;
+}
+#T_6f2ee_row3_col6 {
+  background-color: #86b0d3;
+  color: #000000;
+}
+#T_6f2ee_row4_col2 {
+  background-color: #eae6f1;
+  color: #000000;
+}
+#T_6f2ee_row4_col3 {
+  background-color: #328dbf;
+  color: #f1f1f1;
+}
+#T_6f2ee_row5_col4 {
+  background-color: #9cb9d9;
+  color: #000000;
 }
 </style>
 
-<table id="T_b73df" data-quarto-postprocess="true" class="table table-sm table-striped small">
+<table id="T_6f2ee" data-quarto-postprocess="true" class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th class="index_name level0" data-quarto-table-cell-role="th">owner</th>
-<th id="T_b73df_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">A</th>
-<th id="T_b73df_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">B</th>
-<th id="T_b73df_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">C</th>
-<th id="T_b73df_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">D</th>
-<th id="T_b73df_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">E</th>
-<th id="T_b73df_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">F</th>
-<th id="T_b73df_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">G</th>
+<th id="T_6f2ee_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">A</th>
+<th id="T_6f2ee_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">B</th>
+<th id="T_6f2ee_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">C</th>
+<th id="T_6f2ee_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">D</th>
+<th id="T_6f2ee_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">E</th>
+<th id="T_6f2ee_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">F</th>
+<th id="T_6f2ee_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">G</th>
 </tr>
 <tr class="odd">
 <th class="index_name level0" data-quarto-table-cell-role="th">pet</th>
@@ -1273,73 +1257,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td id="T_b73df_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">cat</td>
-<td id="T_b73df_row0_col0" class="data row0 col0">0.167742</td>
-<td id="T_b73df_row0_col1" class="data row0 col1">0.154472</td>
-<td id="T_b73df_row0_col2" class="data row0 col2">0.178082</td>
-<td id="T_b73df_row0_col3" class="data row0 col3">0.125000</td>
-<td id="T_b73df_row0_col4" class="data row0 col4">0.148936</td>
-<td id="T_b73df_row0_col5" class="data row0 col5">0.200000</td>
-<td id="T_b73df_row0_col6" class="data row0 col6">0.189189</td>
+<td id="T_6f2ee_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">cat</td>
+<td id="T_6f2ee_row0_col0" class="data row0 col0">0.147887</td>
+<td id="T_6f2ee_row0_col1" class="data row0 col1">0.163399</td>
+<td id="T_6f2ee_row0_col2" class="data row0 col2">0.164286</td>
+<td id="T_6f2ee_row0_col3" class="data row0 col3">0.198582</td>
+<td id="T_6f2ee_row0_col4" class="data row0 col4">0.200000</td>
+<td id="T_6f2ee_row0_col5" class="data row0 col5">0.142857</td>
+<td id="T_6f2ee_row0_col6" class="data row0 col6">0.198630</td>
 </tr>
 <tr class="even">
-<td id="T_b73df_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">dog</td>
-<td id="T_b73df_row1_col0" class="data row1 col0">0.161290</td>
-<td id="T_b73df_row1_col1" class="data row1 col1">0.211382</td>
-<td id="T_b73df_row1_col2" class="data row1 col2">0.164384</td>
-<td id="T_b73df_row1_col3" class="data row1 col3">0.197368</td>
-<td id="T_b73df_row1_col4" class="data row1 col4">0.205674</td>
-<td id="T_b73df_row1_col5" class="data row1 col5">0.155556</td>
-<td id="T_b73df_row1_col6" class="data row1 col6">0.168919</td>
+<td id="T_6f2ee_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">dog</td>
+<td id="T_6f2ee_row1_col0" class="data row1 col0">0.211268</td>
+<td id="T_6f2ee_row1_col1" class="data row1 col1">0.183007</td>
+<td id="T_6f2ee_row1_col2" class="data row1 col2">0.128571</td>
+<td id="T_6f2ee_row1_col3" class="data row1 col3">0.120567</td>
+<td id="T_6f2ee_row1_col4" class="data row1 col4">0.131034</td>
+<td id="T_6f2ee_row1_col5" class="data row1 col5">0.187970</td>
+<td id="T_6f2ee_row1_col6" class="data row1 col6">0.143836</td>
 </tr>
 <tr class="odd">
-<td id="T_b73df_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">ferret</td>
-<td id="T_b73df_row2_col0" class="data row2 col0">0.200000</td>
-<td id="T_b73df_row2_col1" class="data row2 col1">0.121951</td>
-<td id="T_b73df_row2_col2" class="data row2 col2">0.184932</td>
-<td id="T_b73df_row2_col3" class="data row2 col3">0.157895</td>
-<td id="T_b73df_row2_col4" class="data row2 col4">0.127660</td>
-<td id="T_b73df_row2_col5" class="data row2 col5">0.148148</td>
-<td id="T_b73df_row2_col6" class="data row2 col6">0.189189</td>
+<td id="T_6f2ee_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">ferret</td>
+<td id="T_6f2ee_row2_col0" class="data row2 col0">0.161972</td>
+<td id="T_6f2ee_row2_col1" class="data row2 col1">0.176471</td>
+<td id="T_6f2ee_row2_col2" class="data row2 col2">0.235714</td>
+<td id="T_6f2ee_row2_col3" class="data row2 col3">0.177305</td>
+<td id="T_6f2ee_row2_col4" class="data row2 col4">0.165517</td>
+<td id="T_6f2ee_row2_col5" class="data row2 col5">0.112782</td>
+<td id="T_6f2ee_row2_col6" class="data row2 col6">0.123288</td>
 </tr>
 <tr class="even">
-<td id="T_b73df_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">parraot</td>
-<td id="T_b73df_row3_col0" class="data row3 col0">0.129032</td>
-<td id="T_b73df_row3_col1" class="data row3 col1">0.146341</td>
-<td id="T_b73df_row3_col2" class="data row3 col2">0.136986</td>
-<td id="T_b73df_row3_col3" class="data row3 col3">0.171053</td>
-<td id="T_b73df_row3_col4" class="data row3 col4">0.148936</td>
-<td id="T_b73df_row3_col5" class="data row3 col5">0.140741</td>
-<td id="T_b73df_row3_col6" class="data row3 col6">0.175676</td>
+<td id="T_6f2ee_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">parraot</td>
+<td id="T_6f2ee_row3_col0" class="data row3 col0">0.197183</td>
+<td id="T_6f2ee_row3_col1" class="data row3 col1">0.156863</td>
+<td id="T_6f2ee_row3_col2" class="data row3 col2">0.164286</td>
+<td id="T_6f2ee_row3_col3" class="data row3 col3">0.184397</td>
+<td id="T_6f2ee_row3_col4" class="data row3 col4">0.179310</td>
+<td id="T_6f2ee_row3_col5" class="data row3 col5">0.187970</td>
+<td id="T_6f2ee_row3_col6" class="data row3 col6">0.157534</td>
 </tr>
 <tr class="odd">
-<td id="T_b73df_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">snake</td>
-<td id="T_b73df_row4_col0" class="data row4 col0">0.154839</td>
-<td id="T_b73df_row4_col1" class="data row4 col1">0.211382</td>
-<td id="T_b73df_row4_col2" class="data row4 col2">0.164384</td>
-<td id="T_b73df_row4_col3" class="data row4 col3">0.131579</td>
-<td id="T_b73df_row4_col4" class="data row4 col4">0.141844</td>
-<td id="T_b73df_row4_col5" class="data row4 col5">0.200000</td>
-<td id="T_b73df_row4_col6" class="data row4 col6">0.168919</td>
+<td id="T_6f2ee_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">snake</td>
+<td id="T_6f2ee_row4_col0" class="data row4 col0">0.119718</td>
+<td id="T_6f2ee_row4_col1" class="data row4 col1">0.176471</td>
+<td id="T_6f2ee_row4_col2" class="data row4 col2">0.142857</td>
+<td id="T_6f2ee_row4_col3" class="data row4 col3">0.170213</td>
+<td id="T_6f2ee_row4_col4" class="data row4 col4">0.165517</td>
+<td id="T_6f2ee_row4_col5" class="data row4 col5">0.195489</td>
+<td id="T_6f2ee_row4_col6" class="data row4 col6">0.191781</td>
 </tr>
 <tr class="even">
-<td id="T_b73df_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">turtle</td>
-<td id="T_b73df_row5_col0" class="data row5 col0">0.187097</td>
-<td id="T_b73df_row5_col1" class="data row5 col1">0.154472</td>
-<td id="T_b73df_row5_col2" class="data row5 col2">0.171233</td>
-<td id="T_b73df_row5_col3" class="data row5 col3">0.217105</td>
-<td id="T_b73df_row5_col4" class="data row5 col4">0.226950</td>
-<td id="T_b73df_row5_col5" class="data row5 col5">0.155556</td>
-<td id="T_b73df_row5_col6" class="data row5 col6">0.108108</td>
+<td id="T_6f2ee_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">turtle</td>
+<td id="T_6f2ee_row5_col0" class="data row5 col0">0.161972</td>
+<td id="T_6f2ee_row5_col1" class="data row5 col1">0.143791</td>
+<td id="T_6f2ee_row5_col2" class="data row5 col2">0.164286</td>
+<td id="T_6f2ee_row5_col3" class="data row5 col3">0.148936</td>
+<td id="T_6f2ee_row5_col4" class="data row5 col4">0.158621</td>
+<td id="T_6f2ee_row5_col5" class="data row5 col5">0.172932</td>
+<td id="T_6f2ee_row5_col6" class="data row5 col6">0.184932</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="26">
+<div id="cell-13" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>NARROW.unstack()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 <div>
 
@@ -1372,66 +1356,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">A</td>
-<td>26</td>
-<td>25</td>
-<td>31</td>
-<td>20</td>
-<td>24</td>
-<td>29</td>
+<td>21</td>
+<td>30</td>
+<td>23</td>
+<td>28</td>
+<td>17</td>
+<td>23</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">B</td>
-<td>19</td>
-<td>26</td>
-<td>15</td>
-<td>18</td>
-<td>26</td>
-<td>19</td>
+<td>25</td>
+<td>28</td>
+<td>27</td>
+<td>24</td>
+<td>27</td>
+<td>22</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">C</td>
-<td>26</td>
-<td>24</td>
-<td>27</td>
+<td>23</td>
+<td>18</td>
+<td>33</td>
+<td>23</td>
 <td>20</td>
-<td>24</td>
-<td>25</td>
+<td>23</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">D</td>
-<td>19</td>
-<td>30</td>
-<td>24</td>
+<td>28</td>
+<td>17</td>
+<td>25</td>
 <td>26</td>
-<td>20</td>
-<td>33</td>
+<td>24</td>
+<td>21</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">E</td>
-<td>21</td>
 <td>29</td>
-<td>18</td>
-<td>21</td>
-<td>20</td>
-<td>32</td>
+<td>19</td>
+<td>24</td>
+<td>26</td>
+<td>24</td>
+<td>23</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">F</td>
-<td>27</td>
-<td>21</td>
-<td>20</td>
 <td>19</td>
-<td>27</td>
-<td>21</td>
+<td>25</td>
+<td>15</td>
+<td>25</td>
+<td>26</td>
+<td>23</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">G</td>
+<td>29</td>
+<td>21</td>
+<td>18</td>
+<td>23</td>
 <td>28</td>
-<td>25</td>
-<td>28</td>
-<td>26</td>
-<td>25</td>
-<td>16</td>
+<td>27</td>
 </tr>
 </tbody>
 </table>
@@ -1443,12 +1427,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="hot-encoding" class="level2">
 <h2 class="anchored" data-anchor-id="hot-encoding">1 Hot Encoding</h2>
 <p>Project values onto the column axis.</p>
-<div id="cell-15" class="cell" data-tags="[]" data-execution_count="44">
+<div id="cell-15" class="cell" data-tags="[]" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pd.get_dummies?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-16" class="cell" data-tags="[]" data-execution_count="45">
+<div id="cell-16" class="cell" data-tags="[]" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pd.get_dummies(WIDE.cat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="45">
+<div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 <div>
 
@@ -1459,12 +1443,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">19</th>
 <th data-quarto-table-cell-role="th">21</th>
-<th data-quarto-table-cell-role="th">26</th>
-<th data-quarto-table-cell-role="th">27</th>
+<th data-quarto-table-cell-role="th">23</th>
+<th data-quarto-table-cell-role="th">25</th>
 <th data-quarto-table-cell-role="th">28</th>
+<th data-quarto-table-cell-role="th">29</th>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">owner</th>
+<th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
@@ -1475,59 +1461,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">A</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">B</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">C</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">D</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">E</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">F</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">G</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 </tbody>
 </table>
@@ -1536,9 +1529,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-17" class="cell" data-execution_count="52">
+<div id="cell-17" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pd.get_dummies(NARROW.n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="52">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <div>
 <div>
 
@@ -1549,11 +1542,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">15</th>
-<th data-quarto-table-cell-role="th">16</th>
+<th data-quarto-table-cell-role="th">17</th>
 <th data-quarto-table-cell-role="th">18</th>
 <th data-quarto-table-cell-role="th">19</th>
 <th data-quarto-table-cell-role="th">20</th>
 <th data-quarto-table-cell-role="th">21</th>
+<th data-quarto-table-cell-role="th">22</th>
+<th data-quarto-table-cell-role="th">23</th>
 <th data-quarto-table-cell-role="th">24</th>
 <th data-quarto-table-cell-role="th">25</th>
 <th data-quarto-table-cell-role="th">26</th>
@@ -1561,8 +1556,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th">28</th>
 <th data-quarto-table-cell-role="th">29</th>
 <th data-quarto-table-cell-role="th">30</th>
-<th data-quarto-table-cell-role="th">31</th>
-<th data-quarto-table-cell-role="th">32</th>
 <th data-quarto-table-cell-role="th">33</th>
 </tr>
 <tr class="odd">
@@ -1590,807 +1583,807 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">A</td>
 <td data-quarto-table-cell-role="th">cat</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">dog</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ferret</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">parraot</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">snake</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">turtle</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">B</td>
 <td data-quarto-table-cell-role="th">cat</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">dog</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ferret</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">parraot</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">snake</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">turtle</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">C</td>
 <td data-quarto-table-cell-role="th">cat</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">dog</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ferret</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">parraot</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">snake</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">turtle</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">D</td>
 <td data-quarto-table-cell-role="th">cat</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">dog</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ferret</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">parraot</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">snake</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">turtle</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">E</td>
 <td data-quarto-table-cell-role="th">cat</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">dog</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ferret</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">parraot</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">snake</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">turtle</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">F</td>
 <td data-quarto-table-cell-role="th">cat</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">dog</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ferret</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">parraot</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">snake</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">turtle</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td rowspan="6" data-quarto-table-cell-role="th" data-valign="top">G</td>
 <td data-quarto-table-cell-role="th">cat</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">dog</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ferret</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">parraot</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">snake</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">turtle</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
 </tr>
 </tbody>
 </table>
@@ -2399,7 +2392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="53">
+<div id="cell-18" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pd.get_dummies(NARROW.n).<span class="bu">sum</span>().plot.bar()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>

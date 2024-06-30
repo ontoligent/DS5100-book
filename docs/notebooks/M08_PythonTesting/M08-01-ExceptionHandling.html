@@ -612,6 +612,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exception-handling" id="toc-exception-handling" class="nav-link" data-scroll-target="#exception-handling">Exception Handling</a></li>
   <li><a href="#pythons-tools" id="toc-pythons-tools" class="nav-link" data-scroll-target="#pythons-tools">Python’s Tools</a></li>
   <li><a href="#errors-and-exceptions" id="toc-errors-and-exceptions" class="nav-link" data-scroll-target="#errors-and-exceptions">Errors and Exceptions</a></li>
+  <li><a href="#further-clarification" id="toc-further-clarification" class="nav-link" data-scroll-target="#further-clarification">Further Clarification</a></li>
   <li><a href="#some-common-built-in-exceptions" id="toc-some-common-built-in-exceptions" class="nav-link" data-scroll-target="#some-common-built-in-exceptions">Some Common Built-in Exceptions</a>
   <ul class="collapse">
   <li><a href="#zerodivisionerror" id="toc-zerodivisionerror" class="nav-link" data-scroll-target="#zerodivisionerror"><code>ZeroDivisionError</code></a></li>
@@ -654,8 +655,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>All happy families are alike, but every unhappy family is unhappy in its own way.<br>
 – Leo Tolstoy, <em>Anna Karenina</em>, 1878.</p>
 </blockquote>
-<p>There are two ways that programs can succeed of fail:</p>
-<p>They can meet or not meet the motiving <strong>requirements</strong> for the code.</p>
+<p>There are two ways that programs can break:</p>
+<p>They can meet or not meet the general and specific <strong>requirements</strong> for the code.</p>
 <ul>
 <li><p>Does it do what is is supposed to do?</p></li>
 <li><p>Does it add value to a process?</p></li>
@@ -666,7 +667,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Does the run at all?</p></li>
 <li><p>Is the code brittle or buggy?</p></li>
 <li><p>Is it sensitive to contextual factors like bad user input or a bad database connection?</p></li>
-<li><p>Does the code work but produce incorrect outcomes?</p></li>
+<li><p>Does the code “work” but produce incorrect outcomes?</p></li>
 </ul>
 <p>These lead to <strong>two practices</strong>:</p>
 <ul>
@@ -676,7 +677,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Today, we will focus on some concepts and tools for the latter.</p>
 <ul>
 <li><p>We want to know whether our code is <strong>working or not</strong>.</p></li>
-<li><p>We want to know if our code is of a <strong>high quality</strong>.</p></li>
+<li><p>We also want to know if our code is of a <strong>high quality</strong>.</p></li>
 </ul>
 <p><strong>Approaches to quality</strong></p>
 <ul>
@@ -685,33 +686,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><strong>Some design principles</strong></p>
 <ul>
-<li>Favor the <strong>simple over the complex</strong></li>
+<li>Favor the <strong>simple over the complex</strong>.</li>
 </ul>
 <blockquote class="blockquote">
 <p>Don’t confuse the easy with the simple!</p>
 </blockquote>
 <ul>
-<li><p>Invest in <strong>data design</strong> to simplify algorithm design</p></li>
-<li><p>Write <strong>literate code</strong></p></li>
-<li><p>Given a choice, use tools that are <strong>documented</strong> and have a <strong>user community</strong></p></li>
+<li><p>Invest in <strong>data design</strong> to simplify algorithm design.</p></li>
+<li><p>Write <strong>literate code</strong> so that it is intellible to you and others.</p></li>
+<li><p>Given a choice, use tools that are <strong>documented</strong> and have a <strong>user community</strong>.</p></li>
 <li><p>Many other things :-)</p></li>
 </ul>
 <p><strong>Some testing activities</strong></p>
 <ul>
-<li><p>Syntax checking</p></li>
-<li><p>Debugging</p></li>
-<li><p>Ad hoc testing</p></li>
-<li><p><strong>Unit-testing</strong></p></li>
-<li><p>User testing</p></li>
+<li><p>Syntax checking.</p></li>
+<li><p>Debugging.</p></li>
+<li><p>Ad hoc testing.</p></li>
+<li><p><strong>Unit-testing</strong>.</p></li>
+<li><p>User testing.</p></li>
 </ul>
 <p><strong>Some concepts</strong></p>
 <ul>
-<li><p>Beware of <strong>silent failures</strong></p></li>
-<li><p>Testing for <strong>the absence of bugs</strong> is impossible</p>
+<li><p>Beware of <strong>silent failures</strong>.</p></li>
+<li><p>Testing for <strong>the absence of bugs</strong> is impossible.</p></li>
+</ul>
 <blockquote class="blockquote">
 <p>Like Popper’s concept of falsifiability: We can never prove a scientific hypothesis to be true, we can only falsify.</p>
-</blockquote></li>
-</ul>
+</blockquote>
 </section>
 <section id="exception-handling" class="level2">
 <h2 class="anchored" data-anchor-id="exception-handling">Exception Handling</h2>
@@ -733,18 +734,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="pythons-tools">Python’s Tools</h2>
 <p><strong>Exceptions</strong></p>
 <ul>
-<li><p>A Python <strong>object</strong> that represents an error</p></li>
-<li><p>Objects that classify kinds of errors</p></li>
-<li><p>Coders can define these</p></li>
+<li><p>A type of Python <strong>object</strong> that represents an error, such as a <code>ValueError</code>.</p></li>
+<li><p>These classify kinds of errors.</p></li>
+<li><p>Coders can define these.</p></li>
 </ul>
 <p><strong>Exception Handlers</strong></p>
 <ul>
-<li><p>Control structures and functions to deal with exceptions</p></li>
+<li><p>Control structures and functions to deal with exceptions, such as:</p></li>
 <li><p><code>try</code>/<code>except</code></p></li>
 <li><p><code>raise</code></p></li>
 <li><p><code>assert</code></p></li>
 </ul>
 <p><strong>Unit Testing Frameworks</strong></p>
+<p>There are many of these available to Python users, including:</p>
 <ul>
 <li><p>Robot</p></li>
 <li><p>PyTest</p></li>
@@ -757,10 +759,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="errors-and-exceptions" class="level2">
 <h2 class="anchored" data-anchor-id="errors-and-exceptions">Errors and Exceptions</h2>
 <p>A common technical interview question: Explain the difference between an <strong>error</strong> and an <strong>exception</strong>.</p>
-<p>An <strong>error</strong> is a serious problem that a reasonable application should not try to catch.<br>
-An error will stop execution. It means the code if broken and needs to be rewritten.</p>
-<p>An <strong>exception</strong> is an issue that is expected or known to occur (e.g., division by zero).<br>
-Software must handle exceptions. For example, one bad row of data shouldn’t bring down the application.</p>
+<p>An <strong>error</strong> is a serious problem that a reasonable application should not try to catch.</p>
+<p>An error will stop execution. It means the code if broken and needs to be rewritten.</p>
+<p>An <strong>exception</strong> is an issue that is expected or known to occur (e.g., division by zero).</p>
+<p>Software must handle exceptions. For example, one bad row of data shouldn’t bring down the application.</p>
+<p>Actually, exceptions are also called errors, so it may be better make a distinction between <strong>flaws</strong> and <strong>exceptions</strong>.</p>
+</section>
+<section id="further-clarification" class="level2">
+<h2 class="anchored" data-anchor-id="further-clarification">Further Clarification</h2>
+<p>It may help to distinquish between internal and external problems.</p>
+<p><strong>Internal problems</strong> are problems with the code itself which the coder needs to address ad design-time.</p>
+<p><strong>External problems</strong> are problems with how the code may interact with the external world—the user, external data sources, the network, APIs, etc. These are problems whihc users of the code will need to address at run-time.</p>
 </section>
 <section id="some-common-built-in-exceptions" class="level2">
 <h2 class="anchored" data-anchor-id="some-common-built-in-exceptions">Some Common Built-in Exceptions</h2>
@@ -823,11 +832,21 @@ Software must handle exceptions. For example, one bad row of data shouldn’t br
 <section id="exception-handling-with-tryexcept" class="level2">
 <h2 class="anchored" data-anchor-id="exception-handling-with-tryexcept">Exception Handling with <code>try/except</code></h2>
 <p>We use <code>try/except</code> blocks to handle exceptions in our code.</p>
-<p>These blocks work as follows: * The <code>try</code> block will contain a statement. * If the statement fails, the the flow goes to the <code>except</code> block. * The exception block will have code to handle the error, rather than halting the program.</p>
+<p>These blocks work as follows:</p>
+<ul>
+<li>The <code>try</code> block will contain a statement.</li>
+<li>If the statement fails, the the flow goes to the <code>except</code> block.</li>
+<li>The exception block will have code to handle the error, rather than halting the program.</li>
+</ul>
 <p>The process is very similar to <code>if/then</code>: * <strong>If</strong> there is an <strong>error</strong>, <strong>then</strong> raise an <strong>excpetion</strong>.</p>
 <p>Multiple <code>except</code> statements may be given, to handle specific exceptions.</p>
 <p>Below, we give a catch-all <code>except</code> for any kind of exception.</p>
-<p>An <strong>excpetion</strong> is a mistake that will halt the execution of code. * For example, trying to access a dictionary key that does not exit. * Or, a database connection fails. * Very often, execeptions are caused by an external dependency failing, such as another system or the user.</p>
+<p>An <strong>excpetion</strong> is a mistake that will halt the execution of code.</p>
+<ul>
+<li>For example, trying to access a dictionary key that does not exit.</li>
+<li>Or, a database connection fails.</li>
+<li>Very often, execeptions are caused by an external dependency failing, such as another system or the user.</li>
+</ul>
 <p>Let’s try referencing a variable that doesn’t exist with no exception handling.</p>
 <div id="cell-11" class="cell" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

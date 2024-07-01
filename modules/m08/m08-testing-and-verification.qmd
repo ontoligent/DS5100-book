@@ -1,5 +1,7 @@
 # Testing and Verification
 
+> All happy families are alike, but every unhappy family is unhappy in its own way.\
+-- Leo Tolstoy, _Anna Karenina_, 1878.
 
 ## When Code Breaks
 
@@ -31,11 +33,13 @@ There are different kinds of specification, or "spec". For example:
 
 - A **requirements specification** provides exact statements about _what_ should be built. These specify what the code shoudl do, not how or why.
 
+<!--
 Code can meet specifications in different ways. 
 
 - We can think of code **quality** in terms of the degree to which code meets these requirements. 
 
 - Quality falls on a **scale**. It is not a black-and-white idea. Defining the scale can be difficult.
+-->
 
 Two kinds of requirements matching are **verification** and **validation**.
 
@@ -45,7 +49,14 @@ The distinction is similar to that referenced by Peter Drucker in this quote:
 
 > It’s more important to do the right thing than to do things right.
 
-So, **specifications are very important**. Not only are they used to guide the creation of the project, but also they're **vital for program testing and verification**. 
+
+## Testing
+
+To ensure that our code aligns with our requirements and is of the highest quality we can provide, we follow **testing and verification** procedures.
+
+**Testing** is an essential part of verification -- doing things right. 
+
+We use specifications to **guide** program testing.  
 
 - That is, if you don't have specifications for the product, you cannot verify that you're doing the right thing. 
 
@@ -59,15 +70,12 @@ In fact, some have joked that programming is the act of ["debugging the spec"](h
 
 :::
 
-
-## Testing and Verification
-
-To ensure that our code aligns with our requirements and is of the highest quality we can provide, we follow testing and verification processes.
+Broadly speaking, there are two kinds of testing and verificaiton:
 
 
 ### Formal Verification
 
-Formal verification involves proof. There are three types:
+Formal verification involves **proof**. There are three types:
 
 -   Hand-written, hand-checked
 
@@ -80,15 +88,20 @@ None of them are very widely used yet, but the latter two are increasing in popu
 Formal verification is complex, difficult, and takes a great deal of effort.
 
 
-### Empirical Testing
+### Empirical Verification
 
-Instead of formal verification, correctness is demonstrated through empirical testing. Empirical testing shows it works on several inputs. In general, testing is:
+With empirical procedures, correctness is demonstrated through empirical testing. 
+
+Empirical testing shows it works on several inputs. In general, testing is:
 
 -   A lot easier than proof
 
 -   A lot harder (and more involved) than writing code 
 
-There are many kinds of testing, but we will focus on **unit testing** in this module. 
+
+### Types of Empirical Testing
+
+There are many kinds of empirical testing, but we will focus on **unit testing** in this module. 
 
 - **Unit Testing** is where we write code that tests the **smallest possible units** of the spec (must attempt to test every flow path). The programmer does unit testing as part of the coding process.
 

@@ -859,15 +859,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="assert-statements" class="level2">
 <h2 class="anchored" data-anchor-id="assert-statements">Assert Statements</h2>
-<p>Another to catch errors before they happen is to test if computations turned out as expected.</p>
-<p>We use <code>assert</code> to verify an expression is True.<br>
-- if expression is True, nothing happens. - if expression is False, Python raises an <code>AssertionError</code> exception.</p>
+<p>Another way to catch errors before they happen is to test if computations turned out as expected.</p>
+<p>We use <code>assert</code> to verify an expression is True.</p>
+<ul>
+<li><p>if expression is True, nothing happens.</p></li>
+<li><p>if expression is False, Python raises an <code>AssertionError</code> exception.</p></li>
+</ul>
 <p>Assert statements have the followinf syntax:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> Expression[, Arguments]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>where <code>[, Arguments]</code> denotes optional arguments.</p>
 <p>For example, let’s say a program is expecting three arguments to be passed from the command line.</p>
 <p>The variable <code>num_args</code> counts the arguments.</p>
-<div id="cell-17" class="cell" data-tags="[]" data-execution_count="7">
+<div id="cell-17" class="cell" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>num_args <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> num_args <span class="op">==</span> <span class="dv">3</span>, <span class="st">"number of arguments must be 3!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -875,7 +878,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The <code>assert</code> evaluates to True, and things proceed normally without exception.</p>
 <p>If we change <code>num_args = 4</code> this will throw an <code>AssertionError</code> with the provided message.</p>
 <p>The program then stops.</p>
-<div id="cell-19" class="cell" data-tags="[]" data-execution_count="8">
+<div id="cell-19" class="cell" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>num_args <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> num_args <span class="op">==</span> <span class="dv">3</span>, <span class="st">"number of arguments must be 3!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -884,7 +887,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>If the <code>assert</code> is not given a message, it throws <code>AssertionError:</code></p>
-<div id="cell-21" class="cell" data-tags="[]" data-execution_count="9">
+<div id="cell-21" class="cell" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>num_args <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> num_args <span class="op">==</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -892,7 +895,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>AssertionError: </code></pre>
 </div>
 </div>
-<div id="cell-22" class="cell" data-tags="[]" data-execution_count="10">
+<p>You can mix <code>assert</code> statements with<code>try</code>/<code>except</code> blocks.</p>
+<div id="cell-23" class="cell" data-tags="[]" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> num_args <span class="op">==</span> <span class="dv">3</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span>:</span>
@@ -901,13 +905,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Got an error</code></pre>
 </div>
 </div>
-<div id="cell-23" class="cell" data-tags="[]" data-execution_count="11">
+<p>Note that the <code>except</code> message will replace the <code>assert</code> message.</p>
+<div id="cell-25" class="cell" data-tags="[]" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> num_args <span class="op">==</span> <span class="dv">3</span>, <span class="st">"Number of arguments must be 3!"</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> num_args <span class="op">==</span> <span class="dv">3</span>, <span class="st">"Assert: Number of arguments must be 3!"</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">AssertionError</span> <span class="im">as</span> e:</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Except:'</span>, e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Number of arguments must be 3!</code></pre>
+<pre><code>Except: Assert: Number of arguments must be 3!</code></pre>
 </div>
 </div>
 </section>
@@ -915,7 +920,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="raise"><code>raise()</code></h2>
 <p>Exceptions can be <strong>raised</strong>, too.</p>
 <p>Use this if you want to halt the program and let other code that is using this code handle it.|</p>
-<div id="cell-25" class="cell" data-tags="[]" data-execution_count="12">
+<div id="cell-27" class="cell" data-tags="[]" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">10</span><span class="op">/</span><span class="dv">0</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span>:</span>
@@ -924,7 +929,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>ZeroDivisionError: Hey, you can't divide by zero!</code></pre>
 </div>
 </div>
-<div id="cell-26" class="cell" data-tags="[]" data-execution_count="13">
+<div id="cell-28" class="cell" data-tags="[]" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">raise</span> <span class="pp">IndexError</span>(<span class="st">"Bad Index"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>IndexError: Bad Index</code></pre>

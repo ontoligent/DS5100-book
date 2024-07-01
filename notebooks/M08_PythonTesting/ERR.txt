@@ -1,0 +1,6 @@
+test_01_is_numCoursincremented_correctly (__main__.EnrollInTestCase.test_01_is_numCoursincremented_correctly) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK

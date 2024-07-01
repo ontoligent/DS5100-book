@@ -993,15 +993,22 @@ OK</code></pre>
 <span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
 <span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>    unittest.main(verbosity<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-16" class="cell" data-execution_count="11">
+<div id="cell-16" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python student_test.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>python: can't open file '/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M08_PythonTesting/student_test.py': [Errno 2] No such file or directory</code></pre>
+<pre><code>test_01_is_numCoursincremented_correctly (__main__.EnrollInTestCase.test_01_is_numCoursincremented_correctly) ... ['DS 5100', 'CS 5050', 'CS 5777']
+3
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK</code></pre>
 </div>
 </div>
 <p>The messages that <code>unittest</code> prints are error messages on Unix, so if we want to direct them to a file, we need to use <code>2&gt;</code>.</p>
 <p>Notice how this command only shows the print messages contained in the program.</p>
-<div id="cell-18" class="cell" data-execution_count="9">
+<div id="cell-18" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python student_test.py <span class="dv">2</span><span class="op">&gt;</span> student_results.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['DS 5100', 'CS 5050', 'CS 5777']
@@ -1009,11 +1016,10 @@ OK</code></pre>
 </div>
 </div>
 <p>This one, on the other hand, captures the print methods and only shows the errors.</p>
-<div id="cell-20" class="cell" data-execution_count="10">
+<div id="cell-20" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python student_test.py <span class="op">&gt;</span> student_results1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>test_incremented_correctly (__main__.EnrollInCourseTest.test_incremented_correctly)
-Test if enroll_in_course() method successfully increments the ... ok
+<pre><code>test_01_is_numCoursincremented_correctly (__main__.EnrollInTestCase.test_01_is_numCoursincremented_correctly) ... ok
 
 ----------------------------------------------------------------------
 Ran 1 test in 0.000s

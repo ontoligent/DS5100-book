@@ -1899,77 +1899,77 @@
   {
     "objectID": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#why-build-a-package",
     "href": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#why-build-a-package",
-    "title": "NB: Packages",
+    "title": "NB: User Created Packages",
     "section": "Why Build a Package?",
     "text": "Why Build a Package?\nYou package code in order to add it to your python system for general use, and to share it with others.\nIt’s also good to have well organized code.\nThis applies to how to organize your programs internally, and externally as files and directories.\nIt’s easy to do. There are a bunch of nifty tools that help you build, install and distribute packages."
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#packages-and-projects",
     "href": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#packages-and-projects",
-    "title": "NB: Packages",
+    "title": "NB: User Created Packages",
     "section": "Packages and Projects",
     "text": "Packages and Projects\n\nWhat is a Project?\nWe define a project as an encompassing directory within which to put a package and all the code necessary to actually use it.\nSo, a project directory contains A collection of packages and modules (python files) along with:\n\ndocumentation, e.g. READMDE files.\ntests, e.g. unit tests and results.\nany top-level scripts, e.g. the Scenario notebooks for your final project.\nany data files required.\ninstructions and scripts to build and install the code.\n\nThe project directory is often a git repo."
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#what-does-it-mean-to-build-your-package",
     "href": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#what-does-it-mean-to-build-your-package",
-    "title": "NB: Packages",
+    "title": "NB: User Created Packages",
     "section": "What does it mean to build your package?",
     "text": "What does it mean to build your package?\nTo build your own package, you of course need some Python files you want to deploy.\nThen you create the following:\n\nCreate the basic package structure, such as EXAMPLE 3 below.\nWrite a setup.py using a package tool (see below).\n\n## EXAMPLE 3\n\na_package_dir\n    __init__.py\n    module_a.py\ntests\n    ...\nsetup.py # Or pyproject.toml \nThis will be contained by a project directory."
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#about-setup.py",
     "href": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#about-setup.py",
-    "title": "NB: Packages",
+    "title": "NB: User Created Packages",
     "section": "About setup.py",
     "text": "About setup.py\nYour setup.py file describes your package, and tells the packaging tool how to package, build, and install it.\nIt is Python code, so you can add anything custom you need to it.\nIn the simple case, it is basically a configuration files with keys and values.\nWhat does setup.py contain?\n\nVersion & package metadata\nList of packages to include\nList of other files to include\nList of dependencies\nList of extensions to be compiled\n\nAbout pyproject.toml\nFor a lot reasons that beyond the scope of this document, setup.py\nis being superceded by the use of pyproject.toml files to store\nsetup configuration information.\nHowever, for now we’re going to stick to the old school approach."
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#example-setup-files",
     "href": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#example-setup-files",
-    "title": "NB: Packages",
+    "title": "NB: User Created Packages",
     "section": "Example Setup Files",
     "text": "Example Setup Files\n\nExample 1\nfrom distutils.core import setup\n\nsetup(name='mypkg',\n      version='1.0',\n      \n      # list folders, not files\n      packages=['mypkg', 'mypkg.subpkg'], # Include packages in the project\n      install_requires=['click'],         # Required libraries\n)\n\n\nExample 2\nfrom setuptools import setup, find_packages\n\nsetup(\n    name='MyPackageName',\n    version='1.0.0',\n    url='https://github.com/mypackage.git',\n    author='Author Name',\n    author_email='author@gmail.com',\n    description='Description of my package',\n    packages=find_packages(),    \n    install_requires=['numpy >= 1.11.1', 'matplotlib >= 1.5.1'],\n)\n\n\nExample 3\nfrom setuptools import setup\n\nsetup(\n    name = 'PackageName',\n    version = '0.1.0',\n    author = 'An Awesome Coder',\n    author_email = 'aac@example.com',\n    packages = ['package_name', 'package_name.test'],\n    scripts = ['bin/script1','bin/script2'],\n    url = 'http://pypi.python.org/pypi/PackageName/',\n    license = 'LICENSE.txt',\n    description = 'An awesome package that does something',\n    long_description = open('README.txt').read(),\n    install_requires = [\n        \"Django >= 1.1.1\",\n        \"pytest\",\n    ],\n)"
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#a-summary-of-keys",
     "href": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#a-summary-of-keys",
-    "title": "NB: Packages",
+    "title": "NB: User Created Packages",
     "section": "A Summary of Keys",
     "text": "A Summary of Keys\nAs mentioned about, the main content of basic setup files is configuraton information. The keys that you should include in your projects are the following:\n\nname: A string of the package name as title, not a filename.\nversion: A string of the version number expression, typically using the MAJOR.MINOR.PATCH pattern. See Semantic Versioning for more information.\nauthor: A string with the creator’s name.\nauthor_email: A string with the creator’s email address.\npackages: A list of strings of package directories in the project.\nurl: A string of the URL to the code repo.\nlicense: A string of the license file name.\ndescription: A string with a short blurb of the project.\nlong_description: A link to a longer description. Can do something like open('README.txt').read().\ninstall_requires: A list of strings of external libraries that the project requires.\n\n\nPython packaging tools\nIn writing setup.py, you need to use a packaging tool.\nNotice that we’ve imported the setuptools library.\n\nThe package tool distutils is included with Python, but it is not recommended.\nInstead, use setuptools, a third party tool that extends distutils and is used in most modern Python installations.\n\n\n\nSummary of fields"
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#quick-demo",
     "href": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#quick-demo",
-    "title": "NB: Packages",
+    "title": "NB: User Created Packages",
     "section": "Quick Demo",
     "text": "Quick Demo\nSo, let’s look at a simple package.\nSource: Minimal Structure (python-packaging)\n\nDirectory\nHere is our directory structure:\n\n!ls -lR demo_package3/\n\ntotal 8\ndrwxr-xr-x@ 5 rca2t1  staff  160 Jul  2 07:21 funniest\n-rw-r--r--@ 1 rca2t1  staff  301 May 10 12:10 setup.py\n-rw-r--r--@ 1 rca2t1  staff    0 May 10 12:10 test.py\n\ndemo_package3//funniest:\ntotal 16\n-rw-r--r--@ 1 rca2t1  staff   64 May 10 12:10 __init__.py\n-rw-r--r--@ 1 rca2t1  staff  197 May 10 12:10 funniest.py\n\n\n\n\nSetup file\nHere is what out setup.py file has inside:\n\nprint(open('demo_package3/setup.py', 'r').read())\n\nfrom setuptools import setup\n\nsetup(name='funniest',\n      version='0.1',\n      description='The funniest joke in the world',\n      url='http://github.com/storborg/funniest',\n      author='Flying Circus',\n      author_email='flyingcircus@example.com',\n      license='MIT',\n      packages=['funniest'])\n\n\n\n\n__init__.py\n\nprint(open('demo_package3/funniest/__init__.py', 'r').read())\n\nfrom . funniest import joke\n\nprint(\"Have I got a joke for you!\")\n\n\n\n\nfunniest.py\n\nprint(open('demo_package3/funniest/funniest.py', 'r').read())\n\ndef joke():\n    \"This function just tells a joke. Or tries to.\"\n    return (u'Wenn ist das Nunst\\u00fcck git und Slotermeyer? Ja! ... '\n            u'Beiherhund das Oder die Flipperwaldt gersput.')\n\n\n\n\nInstall\n\n!cd demo_package3/; pip install .\n\nProcessing /Users/rca2t1/Dropbox/Courses/DS/DS5100/repo-book/notebooks/M09_PythonModules/demo_package3\n  Preparing metadata (setup.py) ... done\nBuilding wheels for collected packages: funniest\n  Building wheel for funniest (setup.py) ... done\n  Created wheel for funniest: filename=funniest-0.1-py3-none-any.whl size=1570 sha256=bbc480002cbb9bd1acc11fcd3bb5ab72f8f89f2f5c2a9bb8ab70a79752101268\n  Stored in directory: /private/var/folders/14/rnyfspnx2q131jp_752t9fc80000gn/T/pip-ephem-wheel-cache-r8ainzuu/wheels/15/54/43/c8d15db54d73a0a36b734a534338ab131e3049da20a1bfd0fa\nSuccessfully built funniest\nInstalling collected packages: funniest\nSuccessfully installed funniest-0.1\n\n\n\n\nTry it out\n\nfrom funniest import joke\n\nHave I got a joke for you!\n\n\n\njoke()\n\n'Wenn ist das Nunstück git und Slotermeyer? Ja! ... Beiherhund das Oder die Flipperwaldt gersput.'"
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#many-ways-to-install",
     "href": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#many-ways-to-install",
-    "title": "NB: Packages",
+    "title": "NB: User Created Packages",
     "section": "Many Ways to Install",
     "text": "Many Ways to Install\nRunning setup.py directly with python\npython setup.py sdist   # Builds a source distribution as tar archie\npython setup.py build   # Builds from source\npython setup.py install # Installs to Python\npython setup.py develop # Installs in develop mode (changes are immediately reflected)\nUsing pip\npip install .    # Installs to Python\npip install -e . # To create symlink, so you can keep working on the code (develop mode)"
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#testing-code",
     "href": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#testing-code",
-    "title": "NB: Packages",
+    "title": "NB: User Created Packages",
     "section": "Testing Code",
     "text": "Testing Code\nAs you work, you will want to write tests and put them somewhere. A good idea is to put your tests in the root of the project directory. There are other options and approaches though, some of which are covered in the resource below.\nSee Where to Put Tests?."
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#a-more-complex-package-structure",
     "href": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#a-more-complex-package-structure",
-    "title": "NB: Packages",
+    "title": "NB: User Created Packages",
     "section": "A More Complex Package Structure",
     "text": "A More Complex Package Structure\nproject_name/\n    bin/\n    CHANGES.txt\n    docs/\n    LICENSE.txt\n    MANIFEST.in\n    README.txt\n    setup.py\n    test_module_1.py\n    test_module2.py      \n    package_name/\n        __init__.py\n        module1.py\n        module2.py\nCHANGES.txt: log of changes with each release\nLICENSE.txt: text of the license you choose (do choose one!)\nMANIFEST.in: description of what non-code files to include\nREADME.txt: description of the package should be written in ReST or Markdown (for PyPi):\nsetup.py: the script for building/installing package.\nbin/: This is where you put top-level scripts\n( some folks use scripts )\ndocs/: the documentation\npackage_name/: The main package this is where the code goes.\ntest/: your unit tests. Options here:"
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#more-info",
     "href": "notebooks/M09_PythonModules/M09-02-MakingYourOwn.html#more-info",
-    "title": "NB: Packages",
+    "title": "NB: User Created Packages",
     "section": "More Info",
     "text": "More Info\nhttps://packaging.python.org/en/latest/overview/"
   },

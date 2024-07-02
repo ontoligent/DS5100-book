@@ -1,13 +1,15 @@
 # Fibonacci numbers module
 
-def fib(n):    # write Fibonacci series up to n
+def fib(n):
+    "Prints Fibonacci series up to n."
     a, b = 0, 1
     while a < n:
         print(a, end=' ')
         a, b = b, a+b
     print()
 
-def fib2(n):   # return Fibonacci series up to n
+def fib2(n):
+    "Returns a Fibonacci series up to n."
     a, b = 0, 1
     result = []
     while a < n:

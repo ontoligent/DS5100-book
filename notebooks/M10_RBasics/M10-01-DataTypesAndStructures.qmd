@@ -707,7 +707,7 @@ x[[2]]
 And `s` is unaffected.
 
 ```{r}
-s 
+x 
 ```
 
 ### Data Frames
@@ -777,7 +777,7 @@ And the number of columns of a data frame is given by the `ncol()`
 function.
 
 ```{r}
-ncol(mtcars)a
+ncol(mtcars)
 ```
 
 We get the shape of the data frame with`dim()`, which stands for
@@ -827,7 +827,7 @@ bracket operator.
 This is like using a dot in Pandas.
 
 ```{r}
-mtcars$am 
+mtcars$am
 ```
 
 Yet another way to retrieve the same column vector is to use the single
@@ -854,7 +854,8 @@ The following is a slice containing the first column of the built-in
 data set mtcars
 
 ```{r}
-mtcars[1] 
+mtcars[[1]]
+mtcars[1]
 ```
 
 ##### Name Indexing

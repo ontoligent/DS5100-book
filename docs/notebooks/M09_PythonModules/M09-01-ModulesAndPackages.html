@@ -471,7 +471,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M09_PythonModules/M09-02-MakingYourOwn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Packages</span></a>
+  <a href="../../notebooks/M09_PythonModules/M09-02-MakingYourOwn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: User Created Packages</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1015,6 +1015,26 @@ and the values are the objects themselves.</p>
 <p>Remember that every module has a <code>__file__</code> name that points to the path it lives in.</p>
 <p>This lets you add paths relative to where you are, etc.</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="ss">f"</span><span class="sc">{</span><span class="va">__file__</span><span class="sc">}</span><span class="ss">/local_module_directory"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>'/Users/rca2t1/Dropbox/Courses/DS/DS5100/repo-book/notebooks/M09_PythonModules'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>sys.path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>['/Users/rca2t1/anaconda3/lib/python311.zip',
+ '/Users/rca2t1/anaconda3/lib/python3.11',
+ '/Users/rca2t1/anaconda3/lib/python3.11/lib-dynload',
+ '',
+ '/Users/rca2t1/anaconda3/lib/python3.11/site-packages',
+ '/Users/rca2t1/anaconda3/lib/python3.11/site-packages/aeosa']</code></pre>
+</div>
+</div>
 <p>To install a package, you need a setup file. This allows you to build a package.</p>
 </section>
 <section id="more-info" class="level2">

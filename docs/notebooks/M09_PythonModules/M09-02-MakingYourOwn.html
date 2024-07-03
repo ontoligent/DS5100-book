@@ -605,7 +605,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#why-build-a-package" id="toc-why-build-a-package" class="nav-link active" data-scroll-target="#why-build-a-package">Why Build a Package?</a></li>
-  <li><a href="#packages-and-projects" id="toc-packages-and-projects" class="nav-link" data-scroll-target="#packages-and-projects">Packages and Projects</a>
+  <li><a href="#projects" id="toc-projects" class="nav-link" data-scroll-target="#projects">Projects</a>
   <ul class="collapse">
   <li><a href="#what-is-a-project" id="toc-what-is-a-project" class="nav-link" data-scroll-target="#what-is-a-project">What is a Project?</a></li>
   </ul></li>
@@ -633,7 +633,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#many-ways-to-install" id="toc-many-ways-to-install" class="nav-link" data-scroll-target="#many-ways-to-install">Many Ways to Install</a></li>
   <li><a href="#testing-code" id="toc-testing-code" class="nav-link" data-scroll-target="#testing-code">Testing Code</a></li>
-  <li><a href="#a-more-complex-package-structure" id="toc-a-more-complex-package-structure" class="nav-link" data-scroll-target="#a-more-complex-package-structure">A More Complex Package Structure</a></li>
+  <li><a href="#a-more-complex-project-structure" id="toc-a-more-complex-project-structure" class="nav-link" data-scroll-target="#a-more-complex-project-structure">A More Complex Project Structure</a></li>
   <li><a href="#more-info" id="toc-more-info" class="nav-link" data-scroll-target="#more-info">More Info</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M09_PythonModules/M09-02-MakingYourOwn.ipynb" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -675,8 +675,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 This applies to how to organize your programs internally, and externally as files and directories.</p>
 <p>It’s <strong>easy</strong> to do. There are a bunch of nifty tools that help you build, install and distribute packages.</p>
 </section>
-<section id="packages-and-projects" class="level2">
-<h2 class="anchored" data-anchor-id="packages-and-projects">Packages and Projects</h2>
+<section id="projects" class="level2">
+<h2 class="anchored" data-anchor-id="projects">Projects</h2>
 <section id="what-is-a-project" class="level3">
 <h3 class="anchored" data-anchor-id="what-is-a-project">What is a Project?</h3>
 <p>We define a project as an encompassing directory within which to put a package and all the code necessary to actually use it.</p>
@@ -814,25 +814,51 @@ setup configuration information.</p>
 <section id="directory" class="level3">
 <h3 class="anchored" data-anchor-id="directory">Directory</h3>
 <p>Here is our directory structure:</p>
-<div class="cell" data-tags="[]" data-execution_count="1">
+<div class="cell" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">-</span>lR demo_package3<span class="op">/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>total 8
+drwxr-xr-x@ 4 rca2t1  staff  128 Jul  2 07:39 build
 drwxr-xr-x@ 5 rca2t1  staff  160 Jul  2 07:21 funniest
+drwxr-xr-x@ 6 rca2t1  staff  192 Jul  2 07:39 funniest.egg-info
 -rw-r--r--@ 1 rca2t1  staff  301 May 10 12:10 setup.py
 -rw-r--r--@ 1 rca2t1  staff    0 May 10 12:10 test.py
+
+demo_package3//build:
+total 0
+drwxr-xr-x@ 2 rca2t1  staff  64 Jul  2 07:39 bdist.macosx-10.9-x86_64
+drwxr-xr-x@ 3 rca2t1  staff  96 Jul  2 07:39 lib
+
+demo_package3//build/bdist.macosx-10.9-x86_64:
+total 0
+
+demo_package3//build/lib:
+total 0
+drwxr-xr-x@ 4 rca2t1  staff  128 Jul  2 07:39 funniest
+
+demo_package3//build/lib/funniest:
+total 16
+-rw-r--r--@ 1 rca2t1  staff   64 May 10 12:10 __init__.py
+-rw-r--r--@ 1 rca2t1  staff  197 May 10 12:10 funniest.py
 
 demo_package3//funniest:
 total 16
 -rw-r--r--@ 1 rca2t1  staff   64 May 10 12:10 __init__.py
--rw-r--r--@ 1 rca2t1  staff  197 May 10 12:10 funniest.py</code></pre>
+-rw-r--r--@ 1 rca2t1  staff  197 May 10 12:10 funniest.py
+
+demo_package3//funniest.egg-info:
+total 32
+-rw-r--r--@ 1 rca2t1  staff  211 Jul  2 07:39 PKG-INFO
+-rw-r--r--@ 1 rca2t1  staff  178 Jul  2 07:39 SOURCES.txt
+-rw-r--r--@ 1 rca2t1  staff    1 Jul  2 07:39 dependency_links.txt
+-rw-r--r--@ 1 rca2t1  staff    9 Jul  2 07:39 top_level.txt</code></pre>
 </div>
 </div>
 </section>
 <section id="setup-file" class="level3">
 <h3 class="anchored" data-anchor-id="setup-file">Setup file</h3>
 <p>Here is what out <code>setup.py</code> file has inside:</p>
-<div class="cell" data-tags="[]" data-execution_count="2">
+<div class="cell" data-tags="[]" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">open</span>(<span class="st">'demo_package3/setup.py'</span>, <span class="st">'r'</span>).read())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>from setuptools import setup
@@ -850,7 +876,7 @@ setup(name='funniest',
 </section>
 <section id="init__.py" class="level3">
 <h3 class="anchored" data-anchor-id="init__.py"><code>__init__.py</code></h3>
-<div class="cell" data-tags="[]" data-execution_count="3">
+<div class="cell" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">open</span>(<span class="st">'demo_package3/funniest/__init__.py'</span>, <span class="st">'r'</span>).read())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>from . funniest import joke
@@ -861,7 +887,7 @@ print("Have I got a joke for you!")</code></pre>
 </section>
 <section id="funniest.py" class="level3">
 <h3 class="anchored" data-anchor-id="funniest.py"><code>funniest.py</code></h3>
-<div class="cell" data-tags="[]" data-execution_count="4">
+<div class="cell" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">open</span>(<span class="st">'demo_package3/funniest/funniest.py'</span>, <span class="st">'r'</span>).read())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>def joke():
@@ -873,17 +899,21 @@ print("Have I got a joke for you!")</code></pre>
 </section>
 <section id="install" class="level3">
 <h3 class="anchored" data-anchor-id="install">Install</h3>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cd demo_package3<span class="op">/;</span> pip install .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Processing /Users/rca2t1/Dropbox/Courses/DS/DS5100/repo-book/notebooks/M09_PythonModules/demo_package3
   Preparing metadata (setup.py) ... done
 Building wheels for collected packages: funniest
   Building wheel for funniest (setup.py) ... done
-  Created wheel for funniest: filename=funniest-0.1-py3-none-any.whl size=1570 sha256=bbc480002cbb9bd1acc11fcd3bb5ab72f8f89f2f5c2a9bb8ab70a79752101268
-  Stored in directory: /private/var/folders/14/rnyfspnx2q131jp_752t9fc80000gn/T/pip-ephem-wheel-cache-r8ainzuu/wheels/15/54/43/c8d15db54d73a0a36b734a534338ab131e3049da20a1bfd0fa
+  Created wheel for funniest: filename=funniest-0.1-py3-none-any.whl size=1570 sha256=873472113bd2f3ab9009c9392e99c241a10cf010146d3ae8f1bd643f4aff5a35
+  Stored in directory: /private/var/folders/14/rnyfspnx2q131jp_752t9fc80000gn/T/pip-ephem-wheel-cache-p60arvuk/wheels/15/54/43/c8d15db54d73a0a36b734a534338ab131e3049da20a1bfd0fa
 Successfully built funniest
 Installing collected packages: funniest
+  Attempting uninstall: funniest
+    Found existing installation: funniest 0.1
+    Uninstalling funniest-0.1:
+      Successfully uninstalled funniest-0.1
 Successfully installed funniest-0.1</code></pre>
 </div>
 </div>
@@ -920,8 +950,8 @@ Successfully installed funniest-0.1</code></pre>
 <p>As you work, you will want to write tests and put them somewhere. A good idea is to put your tests in the root of the project directory. There are other options and approaches though, some of which are covered in the resource below.</p>
 <p>See <a href="http://pythonchb.github.io/PythonTopics/where_to_put_tests.html">Where to Put Tests?</a>.</p>
 </section>
-<section id="a-more-complex-package-structure" class="level2">
-<h2 class="anchored" data-anchor-id="a-more-complex-package-structure">A More Complex Package Structure</h2>
+<section id="a-more-complex-project-structure" class="level2">
+<h2 class="anchored" data-anchor-id="a-more-complex-project-structure">A More Complex Project Structure</h2>
 <div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">project_name/</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">bin/</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">CHANGES.txt</span></span>

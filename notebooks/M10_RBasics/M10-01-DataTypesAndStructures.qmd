@@ -6,51 +6,93 @@ editor:
 
 # NB: Getting Started
 
-## Preliminaries
+## Overview
 
-### Installing and Loading Packages
+### Why R?
 
-Packages need to be installed once.
+*Why cover R in a course focused on Python?*
 
-```{r}
-## install.packages("tm")  
-```
+There are many reasons for this:
 
-You can also install thing using the Package window.
+-   We have been studying Python as a data processing language from the
+    perspective of data science. But **R is in many ways the original
+    data science language**.
 
-Once they are installed, you import them with the `library()` function:
+    -   It was built from the beginning by and for data analysts,
+        statisticians, and scientists.
 
-```{r}
-library(tm)
-```
+    -   Note, however, the R was *not* built by and for data miners, who
+        compose a large segment of the data science community.
 
-Note that the library name is quoted in when installing, but not when
-using `library`.
+-   **Python borrows** many concepts from R, including the data frame.
+
+-   The R community provides **insights** into data processing through
+    excellent documentation and well-designed code.
+
+-   Although not as popular as it once was, it is still widely
+    used---**you may find yourself on a team that prefers it**.
+
+-   Many of the courses in the **UVA SDS programs use R**.
+
+-   It's **not that hard**, especially once you know basic programming
+    concepts.
 
 ### R's Design
 
--   Designed to support statistical computing
--   Very strong community
--   Many domain-specific functions are built in
--   Vector first thinking
--   Everything is an object
+-   A scripting language, like Python.
+
+-   Designed to support statistical computing above all.
+
+-   Very strong academic community.
+
+-   Many domain-specific functions are built-in.
+
+-   Vector-first thinking.
+
+-   Everything is an object.
 
 ### R Syntax
 
 -   Syntax loosely follows traditional `C`-style
+
     -   **Braces** `{` and `}` are used to form blocks.
+
     -   **Semi-colons** are used optionally to end statements, required
         if on same line.
--   **Assignments** are made with `<-` or `->`
--   **Dots** `.` have no special meaning -- they are not operators.
+
+-   **Assignments** are made with `<-` or `->`.
+
+-   **Dots** `.` have no special meaning---they are not operators.
+
+    -   They are used like underscores `_` in Python.
+
 -   Single and double **quotes** have the same meaning, but double
     quotes tend to be preferred.
+
     -   Use single quotes if you expect your string to contain double
         quotes.
 
     -   Backslash escape applies to R strings, although since there are
-        no raw strings -- Python's `r" "` -- we often have to supply
-        double backslashes in regular expressions.\
+        no raw strings---Python's `r" "`---we often have to supply
+        double backslashes in regular expressions.
+
+### Using R
+
+-   Although there are many ways to run R programs, by far the most
+    common is to use **R Studio**.
+
+-   R Studio provides **a fully-functional programming environment**
+    that includes an editor, a command-line, access to the file system,
+    a help system, an installation system, etc.
+
+    -   Other programs run R too, though, such as VSCode and Jupyter.
+
+-   R programs can be plain text files with an `.r` suffix, R Markdown
+    files (`.Rmd`), or many other kinds of file.
+
+    -   We will discuss these in a later module.
+
+OK, so let's get into the basics---beginning with data types.
 
 ## R Data Types
 
@@ -64,14 +106,14 @@ There are several basic R data types.
 
 ### Numeric
 
-Decimal values are called "numerics" in R.
+Floating point numbers are called "numerics" in R.
 
 It is the **default** data type.
 
 If we assign a decimal value to a variable x, x will be of numeric type:
 
 ```{r}
-x <- 10.5       # assign a decimal value 
+x <- 10.5      # assign a decimal value 
 x              # print the value of x 
 ```
 
@@ -94,7 +136,7 @@ class(k)       # print the class name of k
 That k is not an integer can be confirmed with `is.integer()`:
 
 ```{r}
-is.integer(k)  # is k an integer? 
+is.integer(k)  # is k an integer?
 ```
 
 ### Integers
@@ -131,7 +173,7 @@ And we can parse a string for decimal values in much the same way.
 as.integer("5.27")  # coerce a decimal string 
 ```
 
-On the other hand, it is erroneous trying to parse a non-decimal string.
+On the other hand, you can't parse a non-decimal string.
 
 ```{r}
 as.integer("Joe")   # coerce an non-decimal string 
@@ -146,6 +188,9 @@ as.integer(FALSE)   # the numeric value of FALSE
 
 #### Math Operators
 
+Numerics and integers are subject to the standard array of arithmetic
+operations.
+
 | **Operator**   | **Description**             |
 |----------------|-----------------------------|
 | **+**          | addition                    |
@@ -158,13 +203,14 @@ as.integer(FALSE)   # the numeric value of FALSE
 
 ### Logical (Boolean)
 
-A logical value is often created via comparison between variables.
+A logical value is often produced from the **comparison** between
+values.
 
 ```{r}
 x <- 1
-y <- 2   # sample values 
-z <- x > y      # is x larger than y? 
-z              # print the logical value 
+y <- 2      # sample values 
+z <- x > y  # is x larger than y? 
+z           # print the logical value 
 ```
 
 ```{r}
@@ -173,7 +219,8 @@ class(z)       # print the class name of z
 
 #### Logical Operators
 
-Standard logical operations are `&` (and), `|` (or), and `!` (negation).
+The standard logical operations are `&` (and), `|` (or), and `!`
+(negation).
 
 ```{r}
 u <- TRUE
@@ -201,8 +248,11 @@ a & b
 
 A character object is used to represent string values in R.
 
-We convert objects into character values with the `as.character()`
-function:
+This may confusing if you are coming from a language where 'character'
+means an individual character, such as `A`.
+
+We may convert non-character objects into characters with the
+`as.character()` function:
 
 ```{r}
 x <- as.character(3.14) 
@@ -216,6 +266,8 @@ class(x)       # print the class name of x
 #### `paste()`
 
 Two character values can be concatenated with the `paste()` function.
+
+R does *not* overload the `+` operator.
 
 ```{r}
 fname <- "Joe"
@@ -231,8 +283,8 @@ paste("A", "B", "C", sep="--")
 
 #### `sprintf()`
 
-However, it is often more convenient to create a readable string with
-the `sprintf()` function, which has a C language syntax.
+It is often convenient to create a readable string with the `sprintf()`
+function, which has a C language syntax.
 
 ```{r}
 sprintf("%s has %d dollars", "Sam", 100) 
@@ -254,6 +306,8 @@ substr("Mary has a little lamb.", start=3, stop=12)
 And to replace the first occurrence of the word "little" by another word
 "big" in the string, we apply the `sub()` function.
 
+This function can use regular expressions.
+
 ```{r}
 sub("little", "big", "Mary has a little lamb.") 
 ```
@@ -271,37 +325,43 @@ Basic R comes with several data structures:
 A **vector** is what is called an array in many other programming
 languages
 
-> A collection of cells with **a fixed size** where all cells hold the
-> **same data type** (integers or characters or reals or whatever).
+-   A collection of cells with **a fixed size** where all cells hold the
+    **same data type** (integers or characters or reals or whatever).
 
 A **matrix** is a two-dimensional vector (fixed size, all cell types the
 same).
 
 An **array** is a vector with one or more dimensions.
 
-> So, an array with one dimension is (almost) the same as a vector.\
-> An array with two dimensions is (almost) the same as a matrix.\
-> An array with three or more dimensions is an n-dimensional array.
+-   So, an array with one dimension is (almost) the same as a vector.
+
+-   An array with two dimensions is (almost) the same as a matrix.
+
+-   An array with three or more dimensions is an n-dimensional array.
 
 A **list** can hold items of different types and the list size can be
 increased on the fly.
 
-> List contents can be accessed either by **index** (like `mylist[[1]]`)
-> or by **name** (like `mylist$age`).
+-   List contents can be accessed either by **index** (like
+    `mylist[[1]]`) or by **name** (like `mylist$age`).
+
+-   Lists are like lists in Python.
 
 A **data frame** is called a *table* in many languages.
 
-> Each column holds the same type, and the columns can have header
-> names.\
-> A data frame is essential a kind of a list --- **a list of vectors**
-> each with the same length, but of varying data types.
+-   This is the workhorse of R.
+
+-   Each column holds the same type, and the columns can have header
+    names.\
+    A data frame is essential a kind of a list --- **a list of vectors**
+    each with the same length, but of varying data types.
 
 **The two most frequently used are Vector and Data frame.**
 
 So, we will look at vectors and data frames.
 
-> We will also look at lists since they are used internally to construct
-> data frames.
+We will also look at lists since they are used internally to construct
+data frames.
 
 ### Vectors and `c()`
 
@@ -311,6 +371,8 @@ Members in a vector are officially called ***components***, but many
 call them ***members***.
 
 Vectors may be created with the `c()` function ("c" stands for combine).
+
+-   This is like `[]` in Python.
 
 Here is a vector of three numeric values 2, 3 and 5.
 
@@ -343,9 +405,11 @@ s1
 The `seq()` function is like Python's `range()`.
 
 ```{r}
-s2 <- seq(from=1, to=5, by=2)  # You can drop the argument names write seq(1,5,2)
+s2 <- seq(from=1, to=5, by=2)
 s2
 ```
+
+You can drop the argument names and write `seq(1,5,2)`.
 
 The `rep()` function will create a series of repeated values:
 
@@ -385,6 +449,8 @@ members in the same vector.
 Arithmetic operations of vectors are performed member-by-member, i.e.,
 **member-wise**.
 
+We called this 'element-wise' in the context of NumPy.
+
 For example, suppose we have two vectors a and b.
 
 ```{r}
@@ -392,8 +458,8 @@ a <- c(1, 3, 5, 7)
 b <- c(1, 2, 4, 8)
 ```
 
-Then, if we multiply a by 5, we would get a vector with each of its
-members multiplied by 5.
+If we multiply `a` by 5, we would get a vector with each of its members
+multiplied by 5.
 
 ```{r}
 5 * a 
@@ -426,8 +492,10 @@ a / b
 If two vectors are of unequal length, the **shorter one will be
 recycled** in order to match the longer vector.
 
-For example, the following vectors u and v have different lengths, and
-their sum is computed by recycling values of the shorter vector u.
+This is similar to broadcasting in NumPy and Pandas.
+
+For example, the following vectors `u` and `v` have different lengths,
+and their sum is computed by recycling values of the shorter vector `u`.
 
 ```{r}
 u <- c(10, 20, 30) 
@@ -463,7 +531,7 @@ s[-3]
 
 #### Out-of-Range Indexes
 
-Values for out-of-range indexes are reported as NA.
+Values for out-of-range indexes are reported as `NA`.
 
 ```{r}
 s[10] 
@@ -520,10 +588,10 @@ vector.
 
 The logical vector must the same length as the original vector.
 
-Its members are TRUE if the corresponding members in the original vector
-are to be included in the slice, and FALSE if otherwise.
+Its members are `TRUE` if the corresponding members in the original
+vector are to be included in the slice, and `FALSE` if otherwise.
 
-> This is what we called **boolean filtering** and masking in Python.
+-   This is what we called **boolean indexing** and masking in Python.
 
 For example, consider the following vector s of length 5.
 
@@ -533,7 +601,7 @@ s <- c("aa", "bb", "cc", "dd", "ee")
 
 To retrieve the the second and fourth members of s, we define a logical
 vector L of the same length, and have its second and fourth members set
-as TRUE.
+as `TRUE`.
 
 ```{r}
 L = c(FALSE, TRUE, FALSE, TRUE, FALSE)
@@ -548,7 +616,7 @@ s[c(FALSE, TRUE, FALSE, TRUE, FALSE)]
 
 #### Naming Vector Members with `names()`
 
-We can assign names to vector members.
+We can assign names to vector members, too.
 
 ```{r}
 v <- c("Mary", "Sue") 
@@ -556,7 +624,8 @@ names(v) <- c("First", "Last")
 v 
 ```
 
-Now we can retrieve the first member by name.
+Now we can retrieve the first member by name, much like a Python
+dictionary.
 
 ```{r}
 v["First"] 
@@ -572,8 +641,10 @@ v[c("Last", "First")]
 
 A list is a generic vector containing other objects.
 
+This is close to a Python list.
+
 The following variable `x` is a list containing copies of three vectors
-`n`, `s`, `b`, and `a` numeric value 3.
+`n`, `s`, `b`, and `a` numeric value $3$.
 
 ```{r}
 n <- c(2, 3, 5) 
@@ -584,9 +655,10 @@ x <- list(n, s, b, 3)   # x contains copies of n, s, b
 x
 ```
 
-Note that odd bracket notation.
+Note that odd **bracket notation**.
 
-Each list member **contains** a vector.
+It indicates that each list member **contains** a vector, even if the
+length of the vector is $1.$
 
 #### List Slicing
 
@@ -599,9 +671,9 @@ copy of `s`.
 x[2] 
 ```
 
-With an index vector, we can retrieve a slice with multiple members.
+With a vector, we can retrieve a slice with multiple members.
 
-Here a slice containing the second and fourth members of x.
+Here a slice containing the second and fourth members of `x`.
 
 ```{r}
 x[c(2, 4)] 
@@ -614,8 +686,8 @@ To reference a list member directly, we use the double square bracket
 
 The following object `x[[2]]` is the second member of `x`.
 
-In other words, **`x[[2]]` is a copy of `s`, but is not a slice
-containing `s` or its copy**.
+In other words, **`x[[2]]` is a true copy of `s`, not a slice containing
+`s` or its copy**.
 
 ```{r}
 x[2]
@@ -635,37 +707,35 @@ x[[2]]
 And `s` is unaffected.
 
 ```{r}
-s 
+x 
 ```
 
 ### Data Frames
 
 A data frame is used for storing data tables.
 
-It is essentially **a list of vectors of equal length**. For example,
-the following variable df is a data frame containing three vectors `n`,
-`s`, `b`.
+It is essentially **a list of vectors of equal length**.
 
-You can think of a data frame is a special kind of list.
+For example, the following variable `df` is a data frame containing
+three vectors `n`, `s`, `b`.
 
 ```{r}
 n <- c(2, 3, 5) 
 s <- c("aa", "bb", "cc") 
 b <- c(TRUE, FALSE, TRUE) 
-df <- data.frame(n, s, b) # df is a data frame
+df <- data.frame(n, s, b)
 df
 ```
 
-Notice that data frames are built **column-wise** -- this is true of
-Pandas data frames as well.
+Notice that data frames are built **column-wise**.
 
-The top line of the data frame is the **header**; it contains the column
-names.
+When displayed, the top line of the data frame is the **header**; it
+contains the column names.
 
-The data type is list below the column name.
+The data type is listed below the column name.
 
-Each horizontal line afterward denotes a data row, which begins with the
-name of the row, and then followed by the actual data.
+Each horizontal line afterward denotes a data row, which may begin with
+the name of the row, and then followed by the actual data.
 
 Each data member of a row is called a cell.
 
@@ -673,11 +743,13 @@ Each data member of a row is called a cell.
 
 Here is a built-in data frame in R, called `mtcars`.
 
+Note that it comes with R without having to import anything.
+
 ```{r}
 mtcars 
 ```
 
-To retrieve data in a cell, we would enter its **row** and **column**
+To retrieve data in a cell, we enter its **row** and **column**
 coordinates in the single square bracket `[ ]` operator.
 
 The two coordinates are separated by a comma, e.g. `[row, col]`.
@@ -698,15 +770,18 @@ Lastly, the number of data rows in the data frame is given by the
 `nrow()` function.
 
 ```{r}
-nrow(mtcars)    # number of data rows 
+nrow(mtcars)
 ```
 
 And the number of columns of a data frame is given by the `ncol()`
 function.
 
 ```{r}
-ncol(mtcars)    # number of columns 
+ncol(mtcars)
 ```
+
+We get the shape of the data frame with`dim()`, which stands for
+'dimension'.
 
 ```{r}
 dim(mtcars)
@@ -734,10 +809,10 @@ We reference a data frame column with the double square bracket `[[]]`
 operator, just as we do for lists.
 
 For example, to retrieve the ninth column vector of the built-in data
-set mtcars, we write mtcars\[\[9\]\]
+set `mtcars`, we write
 
 ```{r}
-mtcars[[9]] 
+mtcars[[9]]
 ```
 
 We can retrieve the same column vector by its name
@@ -746,16 +821,20 @@ We can retrieve the same column vector by its name
 mtcars[["am"]] 
 ```
 
-We can also retrieve with the "\$" operator in lieu of the double square
-bracket operator
+We can also retrieve with the `$` operator in lieu of the double square
+bracket operator.
+
+This is like using a dot in Pandas.
 
 ```{r}
-mtcars$am 
+mtcars$am
 ```
 
 Yet another way to retrieve the same column vector is to use the single
-square bracket "\[\]" operator. We prepend the column name with a comma
-character, which signals a wildcard match for the row position
+square bracket `[]` operator.
+
+We prepend the column name with a comma character, which signals a
+wildcard match for the row position
 
 ```{r}
 mtcars[, "am"] 
@@ -775,7 +854,8 @@ The following is a slice containing the first column of the built-in
 data set mtcars
 
 ```{r}
-mtcars[1] 
+mtcars[[1]]
+mtcars[1]
 ```
 
 ##### Name Indexing
@@ -792,12 +872,9 @@ Compare to accessing the column vector data directly:
 mtcars[["mpg"]]
 ```
 
-This is similar to the `.values()` method in Pandas, which returns the
-raw NumPy array
-
-To retrieve a data frame slice with the two columns mpg and hp, we pack
-the column names in an index vector inside the single square bracket
-operator
+To retrieve a data frame slice with the two columns `mpg` and `hp`, we
+put the column names into a vector inside the single square bracket
+operator:
 
 ```{r}
 mtcars[c("mpg", "hp")] 
@@ -816,8 +893,8 @@ second coordinate for column positions.
 For example, the following retrieves a row record of the built-in data
 set mtcars. Please notice the extra comma in the square bracket
 operator, and it is not a typo. It states that the 1974 Camaro Z28 has a
-gas mileage of 13.3 miles per gallon, and an eight cylinder 245 horse
-power engine, ..., etc
+gas mileage of $13.3$ miles per gallon, and an eight cylinder $245$
+horse power engine, ..., etc
 
 ```{r}
 mtcars[24,] 
@@ -847,11 +924,11 @@ mtcars[c("Datsun 710", "Camaro Z28"),]
 ##### Logical Indexing
 
 Lastly, we can retrieve rows with a logical index vector. In the
-following vector L, the member value is TRUE if the car has automatic
-transmission, and FALSE if otherwise.
+following vector `L`, the member value is `TRUE` if the car has
+automatic transmission, and `FALSE` if otherwise.
 
 ```{r}
-L <- mtcars$am == 0 
+L <- mtcars$am == 1 
 L 
 ```
 
@@ -905,7 +982,7 @@ readWorksheet. The XLConnect package requires Java to be pre-installed
 
 **Table Files**
 
-A data table can resides in a text file.
+A data table can reside in a text file.
 
 The cells inside the table are separated by blank characters.
 
@@ -1038,3 +1115,22 @@ temps.df
 ```{r}
 plot(temps.df, xlab="Temp", type="b")
 ```
+
+### Installing and Loading Packages
+
+Packages need to be installed once.
+
+```{r}
+## install.packages("tm")  
+```
+
+You can also install thing using the Package window.
+
+Once they are installed, you import them with the `library()` function:
+
+```{r}
+library(tm)
+```
+
+Note that the library name is quoted in when installing, but not when
+using `library`.

@@ -78,10 +78,10 @@ book:
         - notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.ipynb
     - part: modules/m09/m09-intro.qmd # "09 Modules"
       chapters: 
-        - notebooks/M09_PythonModules/M09-01-PackagesIntro.ipynb
+        - notebooks/M09_PythonModules/M09-01-ModulesAndPackages.ipynb
         - notebooks/M09_PythonModules/M09-01a-Globals.ipynb
         - notebooks/M09_PythonModules/M09-02-MakingYourOwn.ipynb
-        - notebooks/M09_PythonModules/M09-02a-InitPyDemo.ipynb
+        # - notebooks/M09_PythonModules/M09-02a-InitPyDemo.ipynb
         - modules/m09/m09-review.qmd
     - part: modules/m10/m10-intro.qmd # "10 Basic R"
       chapters: 

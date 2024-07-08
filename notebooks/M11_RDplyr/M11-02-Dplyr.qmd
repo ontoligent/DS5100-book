@@ -202,7 +202,7 @@ There are many of these introduced by dplyer.
 Here is a set of helper functions that can be especially useful with `select()` and related functions to specify variable names based on certain patterns or characteristics:
 
 | Helper Function | Description                                                    | Example                                        |
-|---------------|------------------------------------|-------------------|
+|-----------------|----------------------------------------------------------------|------------------------------------------------|
 | `starts_with()` | Matches variable names that start with a given prefix          | `select(data, starts_with("X"))`               |
 | `ends_with()`   | Matches variable names that end with a given suffix            | `select(data, ends_with("_2019"))`             |
 | `contains()`    | Matches variable names that contain a given string             | `select(data, contains("income"))`             |
@@ -250,7 +250,7 @@ chicago %>%
 Here's a table of helper functions specifically associated with `filter()`:
 
 | **Helper Function**  | **Description**                                                                                | **Example**                                          |
-|------------------|----------------------------|--------------------------|
+|----------------------|------------------------------------------------------------------------------------------------|------------------------------------------------------|
 | `between()`          | Check if a value lies between two other values.                                                | `filter(data, between(age, 18, 30))`                 |
 | `near()`             | Check for near equality (useful for floating-point numbers).                                   | `filter(data, near(price, 19.99, tolerance = 0.01))` |
 | `isin()` (or `%in%`) | Check if a value is in a set of values.                                                        | `filter(data, region %in% c("East", "West"))`        |
@@ -304,7 +304,7 @@ chicago %>%
 Here's a table of helper functions specifically associated with `arrange()`:
 
 | **Helper Function** | **Description**                                                                     | **Example**                               |
-|------------------|----------------------------|--------------------------|
+|---------------------|-------------------------------------------------------------------------------------|-------------------------------------------|
 | `desc()`            | Order by descending instead of default ascending.                                   | `arrange(data, desc(salary))`             |
 | `across()`          | Apply to multiple columns, especially with `c_across()` in `dplyr` 1.0.0 and later. | `arrange(data, across(starts_with("X")))` |
 | `row_number()`      | Create an index based on the order of rows.                                         | `mutate(data, idx = row_number())`        |
@@ -347,7 +347,7 @@ I leave it as an exercise for the reader to figure how you do this in base R wit
 Here's a table of helper functions that can be used with `rename()`:
 
 | **Helper Function** | **Description**                                      | **Example**                                                                                                                     |
-|------------------|-------------------------|-----------------------------|
+|---------------------|------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | `starts_with()`     | Match columns that start with a given prefix.        | `rename(data, start_X = starts_with("X"))` (Note: This example would rename the first column that starts with "X" to "start_X") |
 | `ends_with()`       | Match columns that end with a given suffix.          | `rename(data, end_year = ends_with("_2021"))`                                                                                   |
 | `contains()`        | Match columns that contain a given string.           | `rename(data, has_rate = contains("rate"))`                                                                                     |
@@ -391,7 +391,7 @@ Note that there are only two columns in the transmuted data frame.
 Here's a table of helper functions specifically associated with `mutate()`:
 
 | **Helper Function**                             | **Description**                                                | **Example**                                                                          |
-|------------------|------------------------|------------------------------|
+|-------------------------------------------------|----------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | `if_else()`                                     | A vectorized conditional operation (if-else).                  | `mutate(data, status = if_else(age < 18, "minor", "adult"))`                         |
 | `case_when()`                                   | Generalized multiple conditions for transformations.           | `mutate(data, category = case_when(score > 90 ~ "A", score > 80 ~ "B", TRUE ~ "C"))` |
 | `lead()`                                        | Access the subsequent value in the column.                     | `mutate(data, next_value = lead(column_name))`                                       |
@@ -486,7 +486,7 @@ chicago %>%
 Here's a table of helper functions specifically associated with `group_by()`:
 
 | **Helper Function**                             | **Description**                                                                                                 | **Example**                                                              |
-|------------------|-------------------------|-----------------------------|
+|-------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
 | `add_tally()`                                   | Adds a column with the count of each group (equivalent to adding a count with `mutate()` after a `group_by()`). | `group_by(data, group_var) %>% add_tally()`                              |
 | `group_size()`                                  | Returns the size of each group.                                                                                 | `group_by(data, group_var) %>% summarise(size = group_size())`           |
 | `ntile()`                                       | Creates rank percentiles within groups.                                                                         | `group_by(data, group_var) %>% mutate(perc = ntile(score, 4))`           |

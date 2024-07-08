@@ -1,19 +1,8 @@
----
-editor: 
-  markdown: 
-    wrap: sentence
-editor_options: 
-  chunk_output_type: inline
----
-
 # NB: The `dplyr` package
 
-The `dplyr` package was developed by Hadley Wickham of RStudio.
-It is an optimized and distilled version of his previous `plyr` package, which was an attempt to organize much of the functionality of the `*apply` family of functions in base R.
-Although in many ways superseded the `plyr` and `dplyr`, [these older functions remain useful](https://stackoverflow.com/questions/3505701/grouping-functions-tapply-by-aggregate-and-the-apply-family).
+The `dplyr` package was developed by Hadley Wickham of RStudio. It is an optimized and distilled version of his previous `plyr` package, which was an attempt to organize much of the functionality of the `*apply` family of functions in base R. Although in many ways superseded the `plyr` and `dplyr`, [these older functions remain useful](https://stackoverflow.com/questions/3505701/grouping-functions-tapply-by-aggregate-and-the-apply-family).
 
-The `dplyr` package does not provide any new functionality to R per se; everything `dplyr` does could already be done with base R.
-But it *greatly* simplifies existing functionality in R.
+The `dplyr` package does not provide any new functionality to R per se; everything `dplyr` does could already be done with base R. But it *greatly* simplifies existing functionality in R.
 
 One important contribution of the `dplyr` package is that it provides a **grammar** for data manipulation and for operating on data frames.
 
@@ -43,8 +32,7 @@ Some of the key "verbs" provided by the `dplyr` package are:
 
 ## Common `dplyr` Function Properties
 
-All of the functions that we will discuss in this Chapter will have a few common characteristics.
-In particular,
+All of the functions that we will discuss in this Chapter will have a few common characteristics. In particular,
 
 1.  The **first argument** is a **data frame**.
 
@@ -70,14 +58,14 @@ The GitHub repository will usually contain the latest updates to the package and
 
 To install from CRAN, just run
 
-```{r}
+``` r
 install.packages("dplyr")
 ```
 
 To install from GitHub you can run
 
-```{r}
-install_github("hadley/dplyr")Y
+``` r
+install_github("hadley/dplyr")
 ```
 
 After installing the package it is important that you load it into your R session with the `library()` function.
@@ -86,8 +74,7 @@ After installing the package it is important that you load it into your R sessio
 library(dplyr)
 ```
 
-You may get some warnings when the package is loaded because there are functions in the `dplyr` package that have the same name as functions in other packages.
-For now you can ignore the warnings.
+You may get some warnings when the package is loaded because there are functions in the `dplyr` package that have the same name as functions in other packages. For now you can ignore the warnings.
 
 ## Getting a dataset
 
@@ -197,8 +184,7 @@ Note the use the function `ends_with()` inside of the argument space for the fun
 
 `ends_with()` is an example of a "helper function" --- a function that helps make dplyr functions more effective.
 
-There are many of these introduced by dplyer.
-Here is a set of helper functions that can be especially useful with `select()` and related functions to specify variable names based on certain patterns or characteristics:
+There are many of these introduced by dplyer. Here is a set of helper functions that can be especially useful with `select()` and related functions to specify variable names based on certain patterns or characteristics:
 
 | Helper Function | Description                                                    | Example                                        |
 |------------------|-------------------------------|-----------------------|
@@ -249,7 +235,7 @@ chicago %>%
 Here's a table of helper functions specifically associated with `filter()`:
 
 | **Helper Function**  | **Description**                                                                                | **Example**                                          |
-|------------------|-----------------------------------|-------------------|
+|-------------------|---------------------------------|--------------------|
 | `between()`          | Check if a value lies between two other values.                                                | `filter(data, between(age, 18, 30))`                 |
 | `near()`             | Check for near equality (useful for floating-point numbers).                                   | `filter(data, near(price, 19.99, tolerance = 0.01))` |
 | `isin()` (or `%in%`) | Check if a value is in a set of values.                                                        | `filter(data, region %in% c("East", "West"))`        |
@@ -259,8 +245,7 @@ Here's a table of helper functions specifically associated with `filter()`:
 
 ## `arrange()`
 
-Use `arrange()` to **reorder rows** of a data frame according to one or more of the **columns**.
-This normally called **sorting**.
+Use `arrange()` to **reorder rows** of a data frame according to one or more of the **columns**. This normally called **sorting**.
 
 Reordering rows of a data frame (while preserving corresponding order of other columns) is normally a pain to do in R.
 
@@ -302,15 +287,14 @@ chicago %>%
 Here's a table of helper functions specifically associated with `arrange()`:
 
 | **Helper Function** | **Description**                                                                     | **Example**                               |
-|------------------|------------------------------------|------------------|
+|-------------------|----------------------------------|-------------------|
 | `desc()`            | Order by descending instead of default ascending.                                   | `arrange(data, desc(salary))`             |
 | `across()`          | Apply to multiple columns, especially with `c_across()` in `dplyr` 1.0.0 and later. | `arrange(data, across(starts_with("X")))` |
 | `row_number()`      | Create an index based on the order of rows.                                         | `mutate(data, idx = row_number())`        |
 
 Note that while `row_number()` can be used in conjunction with `arrange()`, it's often seen in `mutate()` for creating an index column based on ordering.
 
-The `across()` function, introduced in `dplyr` version 1.0.0, provides a more concise syntax for working with multiple columns.
-It can be especially useful in `arrange()` when you're trying to order rows based on a selection of columns that match a certain criterion.
+The `across()` function, introduced in `dplyr` version 1.0.0, provides a more concise syntax for working with multiple columns. It can be especially useful in `arrange()` when you're trying to order rows based on a selection of columns that match a certain criterion.
 
 Note that most of the magic with `arrange()` happens through the way you structure its arguments and not necessarily through a large set of helper functions.
 
@@ -345,15 +329,14 @@ I leave it as an exercise for the reader to figure how you do this in base R wit
 Here's a table of helper functions that can be used with `rename()`:
 
 | **Helper Function** | **Description**                                      | **Example**                                                                                                                     |
-|-----------------|-----------------|---------------------------------------|
+|-------------------|-------------------|----------------------------------|
 | `starts_with()`     | Match columns that start with a given prefix.        | `rename(data, start_X = starts_with("X"))` (Note: This example would rename the first column that starts with "X" to "start_X") |
 | `ends_with()`       | Match columns that end with a given suffix.          | `rename(data, end_year = ends_with("_2021"))`                                                                                   |
 | `contains()`        | Match columns that contain a given string.           | `rename(data, has_rate = contains("rate"))`                                                                                     |
 | `matches()`         | Match columns that match a given regular expression. | `rename(data, match_num = matches("^X[1-3]$"))`                                                                                 |
 | `everything()`      | Match all columns.                                   | Rarely used with `rename()`, but possible.                                                                                      |
 
-It's worth noting that these helper functions will typically target the first column that meets the specified criterion.
-If there are multiple columns that match the criterion (e.g., multiple columns that start with "X"), you'll need to use these helpers with more precision or utilize other techniques.
+It's worth noting that these helper functions will typically target the first column that meets the specified criterion. If there are multiple columns that match the criterion (e.g., multiple columns that start with "X"), you'll need to use these helpers with more precision or utilize other techniques.
 
 Also, remember to always refer to the official `dplyr` documentation as the package continues to evolve and new functionalities might be added over time.
 
@@ -376,12 +359,14 @@ chicago %>%
 
 There is also the related `transmute()` function, which does the same thing as `mutate()` but then ***drops all non-transformed variables***.
 
-Here we detrend the PM10 and ozone (O3) variables.
+Here we de-trend the PM10 and ozone (O3) variables.
 
 ```{r}
-chicago %>%
+chicago_detrended <- chicago %>%
   transmute(pm10detrend = pm10tmean2 - mean(pm10tmean2, na.rm = TRUE), 
             o3detrend = o3tmean2 - mean(o3tmean2, na.rm = TRUE))
+
+head(chicago_detrended)
 ```
 
 Note that there are only two columns in the transmuted data frame.
@@ -415,15 +400,21 @@ So **the stratum is the year**, which we can derive from the `date` variable.
 
 The general operation here is a combination of **splitting** a table into separate pieces defined by a variable or group of variables (`group_by()`), and then **applying** a summary function across those subsets (`summarize()`), then **combining** back into another table.
 
-> This pattern is called **split, apply, and combine**.
-> It is a fundamental pattern in data processing.
+> This pattern is called **split, apply, and combine**. It is a fundamental pattern in data processing.
 
 First, we can create a `year` variable using `as.POSIXlt()`.
 
+Then we group on our new column and compute summary statistics for each year with the `summarize()` function.
+
 ```{r}
-chicago <- chicago %>%
-  mutate(year = as.POSIXlt(date)$year + 1900)
-head(chicago)
+years <- chicago %>%
+  mutate(year = as.POSIXlt(date)$year + 1900) %>%
+  group_by(year) %>%
+  summarize(pm25 = mean(pm25, na.rm = TRUE), 
+          o3 = max(o3tmean2, na.rm = TRUE), 
+          no2 = median(no2tmean2, na.rm = TRUE), .groups = "drop")
+
+head(years)
 ```
 
 To see why we add $1900$ in the preceding mutation, note that the date function returns just the last two digits of the year.
@@ -431,17 +422,6 @@ To see why we add $1900$ in the preceding mutation, note that the date function 
 ```{r}
 as.POSIXlt(chicago$date)$year %>% 
     head()
-```
-
-Now we can compute summary statistics for each year in the data frame with the `summarize()` function.
-
-```{r}
-years <- chicago %>%
-  group_by(year) %>%
-  summarize(pm25 = mean(pm25, na.rm = TRUE), 
-          o3 = max(o3tmean2, na.rm = TRUE), 
-          no2 = median(no2tmean2, na.rm = TRUE), .groups = "drop")
-head(years)
 ```
 
 Note in the process, we implicitly created a separate data frame that splits the original data frame by year, which is then passed to `summarize()`.
@@ -459,8 +439,7 @@ qq <- quantile(chicago$pm25, seq(0, 1, 0.2), na.rm = TRUE)
 qq
 ```
 
-Then can group the data frame by the `pm25.quint` variable.
-and compute the mean of `o3` and `no2` within quantiles of `pm25`.
+Then can group the data frame by the `pm25.quint` variable. and compute the mean of `o3` and `no2` within quantiles of `pm25`.
 
 ```{r}
 chicago %>%
@@ -499,9 +478,7 @@ Here's a table of helper functions specifically associated with `group_by()`:
 | `cur_group_rows()`                              | Provides row indices for the current group.                                                                     | Used internally, but can be useful for advanced operations.              |
 | `group_map()`, `group_modify()`, `group_walk()` | Functions to iterate over groups, modify them or walk them with side effects.                                   | `group_map(data, ~ head(.x, 2))` shows the first two rows of each group. |
 
-It's worth noting that `group_by()` often works in tandem with other verbs, so the real power comes from the combined operations.
-For instance, after grouping data, one often uses `summarise()` to calculate summary statistics for each group.
-The combination of these functions and their associated helpers allow for a wide range of group-wise data manipulation tasks.
+It's worth noting that `group_by()` often works in tandem with other verbs, so the real power comes from the combined operations. For instance, after grouping data, one often uses `summarise()` to calculate summary statistics for each group. The combination of these functions and their associated helpers allow for a wide range of group-wise data manipulation tasks.
 
 # Summary
 
@@ -511,11 +488,9 @@ It allows us to perform a number of complex operations in just a few lines of co
 
 In particular, we can often conduct the beginnings of an exploratory analysis with the powerful combination of `group_by()` and `summarize()`.
 
-Once you learn the `dplyr` grammar there are a few additional benefits --- `dplyr` can work with other data frame "back ends" such as SQL databases.
-There is an SQL interface for relational databases via the DBI package --- `dplyr` can be integrated with the `data.table` package for large fast tables
+Once you learn the `dplyr` grammar there are a few additional benefits --- `dplyr` can work with other data frame "back ends" such as SQL databases. There is an SQL interface for relational databases via the DBI package --- `dplyr` can be integrated with the `data.table` package for large fast tables
 
-The `dplyr` package is handy way to both simplify and speed up your data frame management code.
-It's rare that you get such a combination at the same time!
+The `dplyr` package is handy way to both simplify and speed up your data frame management code. It's rare that you get such a combination at the same time!
 
 ------------------------------------------------------------------------
 

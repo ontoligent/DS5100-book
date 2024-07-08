@@ -124,7 +124,6 @@ tibble(
 Every column in a data frame or tibble must be the same length. If they are not, you will get an error:
 
 ```{r eval=FALSE, include=FALSE}
-#| error: true
 tibble(
   x = c(1, 5),
   y = c("a", "b", "c")
@@ -247,7 +246,7 @@ A final option is to use RStudio's built-in data viewer to get a scrollable view
 
 You can open a window with a view to your data by calling `View()`, like so:
 
-```{r}
+``` r
 flights %>%
   View()
 ```

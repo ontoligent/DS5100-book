@@ -18,7 +18,7 @@ Here's a graphic of the packages associated with the Tidyverse:
 
 ## Dplyr
 
-Dplyr introduces **new set of functions** that make working with data more intuitive.
+Dplyr introduces a **new set of functions** that make working with data more intuitive.
 
 -   It does this by introducing a set of functions that work together well to produce pipelines of actions.
 
@@ -36,7 +36,7 @@ library(tidyverse)
 
 Just a quick note about this **odd looking** operator that you will start to see.
 
-One of the key elements of the Tidyverse is the use of **piping**, or the ability of to pass the return values of one function to another, with without have to nest functions.
+One of the key elements of the Tidyverse is the use of **piping**, or the ability of to pass the return values of one function to another, without having to nest functions.
 
 For example, instead of something like this:
 
@@ -68,7 +68,7 @@ Although the last pattern is longer than the preceding, it is much easier to rea
 This is similar to **method chaining** in Python, but is more pervasive.
 
 -   In Python you can do it with individual objects that return themselves (as it were).
--   In Tidyverse, you can apply it to **any two methods** so long as it makes sense to pass the output of as the input of another.
+-   In Tidyverse, you can apply it to **any two functions** so long as it makes sense to pass the output of one as the input of another.
 -   Basically, the output of one function becomes the first argument of the following the `%>%`.
 
 It is similar to the pipe operator `|` in Unix shells.
@@ -95,11 +95,15 @@ To learn more about tibbles, check out the vignette:
 vignette("tibble")
 ```
 
+This will open a window in RStudio with the following content:
+
+![](images/tibbles-vignette.png){style="border: 1px solid gray;" width="506"}
+
 ## Creating tibbles
 
 If you need to make a tibble "by hand", you can use `tibble()` or `tribble()` (see below).
 
-`tibble()` works by assembling individual vectors, **column-wise** operation:
+`tibble()` works by assembling individual vectors, a **column-wise** operation:
 
 ```{r}
 x <- c(1, 2, 5)
@@ -117,7 +121,7 @@ tibble(
 )
 ```
 
-Every column in a data frame or tibble must be same length, so you'll get an error if the lengths are different:
+Every column in a data frame or tibble must be the same length. If they are not, you will get an error:
 
 ```{r eval=FALSE, include=FALSE}
 #| error: true
@@ -241,11 +245,16 @@ You can see a complete list of options by looking at the package help with `pack
 
 A final option is to use RStudio's built-in data viewer to get a scrollable view of the complete dataset. This is also often useful at the end of a long chain of manipulations.
 
+You can open a window with a view to your data by calling `View()`, like so:
+
 ```{r}
-#| eval: false
 flights %>%
   View()
 ```
+
+Here's what the opened window would looks like:
+
+![](images/view-tibble.png){style="border: 1px solid gray;"}
 
 ## Extracting variables
 
@@ -300,6 +309,8 @@ Compared to a `data frame`, **tibbles are more strict**: they never do partial m
 tb$x
 tb$z
 ```
+
+Partial matching is when you specify a part of a column name in a selection operation and R returns the column that matches the substring (if there is one). For example, if you have a data frame `df` with a column called `x1` and you do this --- `df$x` --- R will return that column, assuming there are no other columns that begin with `x`. Tibbles don't do that.
 
 ```{r}
 # Data frame use partial matching and don't complain if a column doesn't exist

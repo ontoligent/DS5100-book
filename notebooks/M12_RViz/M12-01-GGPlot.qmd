@@ -1,93 +1,59 @@
----
-editor: 
-  markdown: 
-    wrap: 72
----
-
 # NB: GGPlot2
 
 ## Introduction
 
-Today we'll look at GGPlot2, the graphics package associated with the
-**Tidyverse**.
+Today we'll look at GGPlot2, the graphics package associated with the **Tidyverse**.
 
 ## Learning Goal
 
-You will be introduced into how and why to use **visualizations** in DS
-6001.
+You will be introduced into how and why to use **visualizations** in DS 6001.
 
 -   Visualizations in EDA.
 
--   Visualization in creating data products that **communicate**
-    results, such as scientific publications, infographics, and
-    interactive visualizations.
+-   Visualization in creating data products that **communicate** results, such as scientific publications, infographics, and interactive visualizations.
 
 These things come at the end of the data science **pipeline**.
 
-Today, I just want to introduce you to the thinking and **design logic**
-behind the package, so you can be confident in learning more as you need
-to.
+Today, I just want to introduce you to the thinking and **design logic** behind the package, so you can be confident in learning more as you need to.
 
 ## The Grammar of Graphics
 
-As with Dplyr, GGPlot2 is a an entirely new system that **supplants**
-the older graph functions that are built into R.
+As with Dplyr, GGPlot2 is a an entirely new system that **supplants** the older graph functions that are built into R.
 
-And just as with Dplyr, it is founded on a principled analysis of its
-domain and approaches code design through developing a basic **grammar**
-which can then be expressed in R.
+And just as with Dplyr, it is founded on a principled analysis of its domain and approaches code design through developing a basic **grammar** which can then be expressed in R.
 
-In effect, Dplyr is built on a **grammar of data** by defining a set of
-**verbs** that can be used to build phrases that are put together into
-larger constructs.
+In effect, Dplyr is built on a **grammar of data** by defining a set of **verbs** that can be used to build phrases that are put together into larger constructs.
 
 These verbs correspond to a **process** of data transformation.
 
-GGPlot2 is built on a **grammar of graphics** that defines a set of
-**nouns** that correspond to **the architecture of a graphic** (aka
-plot).
+GGPlot2 is built on a **grammar of graphics** that defines a set of **nouns** that correspond to **the architecture of a graphic** (aka plot).
 
-The phrase "grammar of graphics" actually comes from the book by that
-name written by statistician and computer scientist **Leland Wilkinson**
-in 1999 and later revised:
+The phrase "grammar of graphics" actually comes from the book by that name written by statistician and computer scientist **Leland Wilkinson** in 1999 and later revised:
 
-[![The Second
-Edition](images/paste-39DF579F.png)](https://www.google.com/books/edition/The_Grammar_of_Graphics/YGgUswEACAAJ?hl=en)
+[![The Second Edition](images/paste-39DF579F.png)](https://www.google.com/books/edition/The_Grammar_of_Graphics/YGgUswEACAAJ?hl=en)
 
-It's worth reading if you want to get a solid grounding in
-visualization, which belongs to the **design area of data science**.
+It's worth reading if you want to get a solid grounding in visualization, which belongs to the **design area of data science**.
 
 ## A Layered Model
 
-Wilkinson takes an **object-oriented approach** to visualization and
-formalizes two main **principles**:
+Wilkinson takes an **object-oriented approach** to visualization and formalizes two main **principles**:
 
-I.  **Graphics** are built out of distinct ***layers*** of grammatical
-    **elements.**
-II. In each layer, meaningful **plots** are constructed through
-    **mappings of data onto aesthetics.**
+I.  **Graphics** are built out of distinct ***layers*** of grammatical **elements.**
+II. In each layer, meaningful **plots** are constructed through **mappings of data onto aesthetics.**
 
 The essential grammatical elements to create any visualization are:
 
 ![](images/paste-E167991C.png)
 
-According to Wickham, who adopted these principles and applied them to
-R,
+According to Wickham, who adopted these principles and applied them to R,
 
-> A grammar of graphics is a tool that enables us to **concisely
-> describe the components of a graphic**. Such a grammar allows us to
-> **move beyond named graphics** (e.g., the "scatterplot") and gain
-> insight into **the deep structure** that underlies statistical
-> graphics ([Wickham
-> 2012](https://www.tandfonline.com/doi/abs/10.1198/jcgs.2009.07098)).
+> A grammar of graphics is a tool that enables us to **concisely describe the components of a graphic**. Such a grammar allows us to **move beyond named graphics** (e.g., the "scatterplot") and gain insight into **the deep structure** that underlies statistical graphics ([Wickham 2012](https://www.tandfonline.com/doi/abs/10.1198/jcgs.2009.07098)).
 
 Wickham takes this idea and develops it into this:
 
 ![](images/paste-D2214B2A.png)
 
-[Source](https://blog.gramener.com/grammar-of-graphics-data-stories/)
-(see also
-[ScienceCraft](https://www.science-craft.com/2014/07/08/introducing-the-grammar-of-graphics-plotting-concept/)).
+[Source](https://blog.gramener.com/grammar-of-graphics-data-stories/) (see also [ScienceCraft](https://www.science-craft.com/2014/07/08/introducing-the-grammar-of-graphics-plotting-concept/)).
 
 You can see that everything starts with **data.**
 
@@ -95,23 +61,19 @@ Then data are mapped on **aesthetics** within **geometries.**
 
 -   **Geometries** are geometric things like points, lines, and bars.
 
--   **Aesthetics** are visual things like position, size, color and
-    shape.
+-   **Aesthetics** are visual things like position, size, color and shape.
 
 You can see how the latter are properties of the former.
 
 Also note that aesthetics make use of visual channels to signify
 
--   Size can mean greater than, which is good for numeric scale but not
-    categories
+-   Size can mean greater than, which is good for numeric scale but not categories
 
--   Color can signify things like value, e.g. via
-    `red : dangerous : : green : safe`.
+-   Color can signify things like value, e.g. via `red : dangerous : : green : safe`.
 
 These are the primary layers.
 
-The other layers apply **downstream modifications** that add more
-**information** and **style** to the graph.
+The other layers apply **downstream modifications** that add more **information** and **style** to the graph.
 
 ## The Bare Minimum
 
@@ -121,9 +83,7 @@ Everything starts with `ggplot()` which is part of the Tidyverse.
 library(tidyverse)
 ```
 
-Here is a basic graph -- a scatterplot comparing two features in the
-iris dataset. I've broken out the functions and arguments so you can see
-how the grammar is implemented:
+Here is a basic graph -- a scatterplot comparing two features in the iris dataset. I've broken out the functions and arguments so you can see how the grammar is implemented:
 
 ```{r}
 iris %>%
@@ -136,26 +96,21 @@ ggplot(
 )
 ```
 
-`ggplot()` starts by creating a **coordinate system** that you can add
-**layers** to.
+`ggplot()` starts by creating a **coordinate system** that you can add **layers** to.
 
--   The **coordinate system** can be changed after the graph is
-    initiated.
+-   The **coordinate system** can be changed after the graph is initiated.
 
 These **layers** are created by **geometry functions.**
 
 -   For example, `geom_point` creates a point-based visualization.
--   There are many `geom_` functions, and they can be layered on top of
-    each other:
+-   There are many `geom_` functions, and they can be layered on top of each other:
     -   `geom_point()`
     -   `geom_bar()`
     -   `geom_histogram()`
     -   `geom_boxplot()`
     -   etc.
 
-Here we have a plot with two layers. The second layer is created by a
-**stat** function, which is similar to geom, but applies a statistical
-transformation to the data.
+Here we have a plot with two layers. The second layer is created by a **stat** function, which is similar to geom, but applies a statistical transformation to the data.
 
 ```{r}
 iris %>%
@@ -166,11 +121,9 @@ ggplot(aes(
   stat_smooth(method = lm)
 ```
 
-The core the process is that each layer **maps** **data** onto what are
-called **aesthetics (`aes`).**
+The core the process is that each layer **maps** **data** onto what are called **aesthetics (`aes`).**
 
-Aesthetics are **visual objects and properties** that can used to
-represent numeric and categorical values
+Aesthetics are **visual objects and properties** that can used to represent numeric and categorical values
 
 -   x and y positions (in a two-dimensional system)
 -   Color
@@ -178,10 +131,7 @@ represent numeric and categorical values
 -   Shape
 -   Text
 
-In addition to these elements, ggplot also provides **faceting**, which
-is the visual equivalent of grouping by. Just as with group by, a data
-feature is used to divide the visualization into groups, each taking the
-same form but showing a different subset of data.
+In addition to these elements, ggplot also provides **faceting**, which is the visual equivalent of grouping by. Just as with group by, a data feature is used to divide the visualization into groups, each taking the same form but showing a different subset of data.
 
 ```{r}
 iris %>%
@@ -193,8 +143,7 @@ ggplot(aes(
   facet_wrap(facets = vars(Species))
 ```
 
-> By the way, this is an example of Simpson's Paradox. The overall trend
-> is downward, but each group trend upward.
+> By the way, this is an example of Simpson's Paradox. The overall trend is downward, but each group trend upward.
 
 ```{r}
 iris %>%
@@ -206,8 +155,7 @@ iris %>%
     stat_smooth(method = lm, se=FALSE, aes(color=Species))
 ```
 
-Anyway, the **general structure** of a ggplot statement is the
-following:
+Anyway, the **general structure** of a ggplot statement is the following:
 
 ``` r
 ggplot(data = <DATA>) + 
@@ -222,16 +170,11 @@ ggplot(data = <DATA>) +
 
 ## The `+` operator
 
-You will notice the use of the `+` operator to connect ggplot functions
-together to produce a final product. Theses are not quite the same as
-pipes `%>%`.
+You will notice the use of the `+` operator to connect ggplot functions together to produce a final product. Theses are not quite the same as pipes `%>%`.
 
-The difference is that pipes feed data from one function to another,
-whereas the `+` operation combines elements to produce an increasingly
-developed visualization.
+The difference is that pipes feed data from one function to another, whereas the `+` operation combines elements to produce an increasingly developed visualization.
 
-Another thing to keep in mind: the `+` always goes at the **end of a
-line**, not at the beginning.
+Another thing to keep in mind: the `+` always goes at the **end of a line**, not at the beginning.
 
 # Examples
 
@@ -247,8 +190,7 @@ diamonds %>%
     geom_point()
 ```
 
-Here's another way to construct a graphic. By assigning it a variable,
-we can keep adding to it and showing out work.
+Here's another way to construct a graphic. By assigning it a variable, we can keep adding to it and showing out work.
 
 ```{r}
 gg <- ggplot(diamonds, aes(x=carat, y=price)) 
@@ -265,8 +207,7 @@ gg + geom_point(
   stroke=2)  
 ```
 
-Let's map the variables carat, cut and color to various aesthetics in
-our geometry function:
+Let's map the variables carat, cut and color to various aesthetics in our geometry function:
 
 ```{r}
 gg + geom_point(aes(
@@ -362,8 +303,7 @@ gg3 + scale_x_continuous(limits=c(0,3)) +
   geom_smooth()  # deletes the points outside limits
 ```
 
-Notice the change in smoothing line because of deleted points. This
-could sometimes be misleading in your analysis.
+Notice the change in smoothing line because of deleted points. This could sometimes be misleading in your analysis.
 
 ## Change X and Y axis labels
 
@@ -457,8 +397,7 @@ gridExtra::grid.arrange(p1, p2, ncol=2)
 #df$newLegendColumn <- factor(df$legendcolumn, levels=c(new_order_of_legend_items), ordered = TRUE) 
 ```
 
-Create a new factor variable used in the legend, ordered as you need.
-Then use this variable instead in the plot.
+Create a new factor variable used in the legend, ordered as you need. Then use this variable instead in the plot.
 
 ## Legend title, text, box, symbol
 
@@ -499,9 +438,7 @@ gg3 + annotation_custom(my_grob)
 p1 <- gg1 + facet_grid(color ~ cut) # arrange in a grid. More space for plots. Free X and Y axis scales
 ```
 
-By setting scales='free', the scales of both X and Y axis is freed. Use
-scales='free_x' to free only X-axis and scales='free_y' to free only
-Y-axis.
+By setting scales='free', the scales of both X and Y axis is freed. Use scales='free_x' to free only X-axis and scales='free_y' to free only Y-axis.
 
 ```{r}
 p2 <- gg1 + facet_wrap(color ~ cut, scales="free") # free the x and yaxis scales. 
@@ -616,8 +553,7 @@ autoplot(AirPassengers, size=2) + labs(title="AirPassengers")
 
 # Ribbons
 
-Filled time series can be plotted using geom_ribbon(). It takes two
-compulsory arguments ymin and ymax.
+Filled time series can be plotted using geom_ribbon(). It takes two compulsory arguments ymin and ymax.
 
 ```{r}
 # Prepare the dataframe
@@ -645,9 +581,7 @@ gg + geom_ribbon(aes(ymin=AirPassengers-20, ymax=AirPassengers+20)) + geom_ribbo
 
 ## Area
 
-geom_area is similar to geom_ribbon, except that the ymin is set to 0.
-If you want to make overlapping area plot, use the alpha aesthetic to
-make the top layer translucent.
+geom_area is similar to geom_ribbon, except that the ymin is set to 0. If you want to make overlapping area plot, use the alpha aesthetic to make the top layer translucent.
 
 ```{r}
 # Method1: Non-Overlapping Area
@@ -673,8 +607,7 @@ The oulier points are controlled by the following aesthetics:
 -   outlier.size
 -   outlier.colour
 
-If the notch is turned on (by setting it TRUE), the below boxplot is
-produced. Else, you would get the standard rectangular boxplots.
+If the notch is turned on (by setting it TRUE), the below boxplot is produced. Else, you would get the standard rectangular boxplots.
 
 ```{r}
 p1 <- ggplot(mtcars, aes(factor(cyl), mpg)) + geom_boxplot(aes(fill = factor(cyl)), width=0.5, outlier.colour = "dodgerblue", outlier.size = 4, outlier.shape = 16, outlier.stroke = 2, notch=T) + labs(title="Box plot")  # boxplot

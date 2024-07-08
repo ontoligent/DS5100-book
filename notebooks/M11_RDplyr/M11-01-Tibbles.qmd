@@ -279,7 +279,7 @@ tb %>%
   pull(1)  # by position
 ```
 
-`pull()` also takes an optional `name` argument that specifies the column to be used as names for a named vector, which you'll learn about in [Chapter -@sec-vectors].
+`pull()` also takes an optional `name` argument that specifies the column to be used as names for a named vector.
 
 ```{r}
 tb %>%  

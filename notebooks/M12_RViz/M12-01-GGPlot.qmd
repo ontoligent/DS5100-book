@@ -420,7 +420,7 @@ gg3 + theme(legend.title = element_text(size=20, color = "firebrick"), legend.te
 gg + geom_text(aes(label=color, color=color), size=4)
 ```
 
-##Annotation
+## Annotation
 
 ```{r}
 library(grid) 

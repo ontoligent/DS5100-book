@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "DS 5100: Programming for Data Science",
     "section": "",
-    "text": "Welcome\nWelcome to the companion text for DS 5100 Programming for Data Science.\nThis text is designed to provide all the content necessary to take DS 5100 at UVA’s School of Data Science. The course provides an introduction to programming from a data science perspective. It focuses on the development of basic skills in Python and R Programming, as well the command line and GitHub. It is currently one of two foundational courses taught, along with a course in linear models.\n\n\n\nBinder",
+    "text": "Welcome\nWelcome to the companion text for DS 5100 Programming for Data Science.\nThis text is designed to provide all the content necessary to take DS 5100 at UVA’s School of Data Science. The course provides an introduction to programming from a data science perspective. It focuses on the development of basic skills in Python and R Programming, as well the command line and GitHub. It is currently one of two foundational courses taught, along with a course in linear models.",
     "crumbs": [
       "Welcome"
     ]

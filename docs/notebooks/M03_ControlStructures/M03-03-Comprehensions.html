@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../modules/m04/m04-intro.html" rel="next">
+<link href="../../notebooks/M03_ControlStructures/M03-04-NestedComprehensions.html" rel="next">
 <link href="../../notebooks/M03_ControlStructures/M03-02-IterablesAndIterators.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -263,6 +292,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notebooks/M03_ControlStructures/M03-03-Comprehensions.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: Comprehensions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M03_ControlStructures/M03-04-NestedComprehensions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Nested Comprehensions</span></a>
   </div>
 </li>
       </ul>
@@ -603,15 +637,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#list-comprehensions" id="toc-list-comprehensions" class="nav-link active" data-scroll-target="#list-comprehensions">List Comprehensions</a>
-  <ul class="collapse">
-  <li><a href="#check-if-odd" id="toc-check-if-odd" class="nav-link" data-scroll-target="#check-if-odd">Check if Odd</a></li>
-  </ul></li>
+  <li><a href="#list-comprehensions" id="toc-list-comprehensions" class="nav-link active" data-scroll-target="#list-comprehensions">List Comprehensions</a></li>
   <li><a href="#comprehensions-in-general" id="toc-comprehensions-in-general" class="nav-link" data-scroll-target="#comprehensions-in-general">Comprehensions in General</a></li>
-  <li><a href="#more-examples" id="toc-more-examples" class="nav-link" data-scroll-target="#more-examples">More examples</a>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a>
   <ul class="collapse">
-  <li><a href="#stop-word-remover" id="toc-stop-word-remover" class="nav-link" data-scroll-target="#stop-word-remover">Stop Word Remover</a></li>
-  <li><a href="#select-tokens-containing-units" id="toc-select-tokens-containing-units" class="nav-link" data-scroll-target="#select-tokens-containing-units">Select Tokens Containing Units</a></li>
+  <li><a href="#removing-stopwords" id="toc-removing-stopwords" class="nav-link" data-scroll-target="#removing-stopwords">Removing Stopwords</a></li>
+  <li><a href="#selecting-tokens-containing-units" id="toc-selecting-tokens-containing-units" class="nav-link" data-scroll-target="#selecting-tokens-containing-units">Selecting Tokens Containing Units</a></li>
   </ul></li>
   <li><a href="#dictionary-comprehensions" id="toc-dictionary-comprehensions" class="nav-link" data-scroll-target="#dictionary-comprehensions">Dictionary Comprehensions</a></li>
   </ul>
@@ -639,128 +670,153 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>Programming for Data Science</p>
 <section id="list-comprehensions" class="level1">
 <h1>List Comprehensions</h1>
-<p>Consider this task: check if each integer in a list is odd.</p>
-<p>Without list comprehensions, you might do this:</p>
-<section id="check-if-odd" class="level2">
-<h2 class="anchored" data-anchor-id="check-if-odd">Check if Odd</h2>
-<div id="cell-2" class="cell" data-tags="[]" data-execution_count="1">
+<p>Consider the following task.</p>
+<p>Check if each integer in a list is odd and save the results (true or false) in a list.</p>
+<p>With a standard for loop, you could do this:</p>
+<div id="cell-2" class="cell" data-tags="[]" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>vals <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">12</span>,<span class="dv">15</span>]</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>is_odd <span class="op">=</span> []</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> val <span class="kw">in</span> vals:   </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> val <span class="op">%</span> <span class="dv">2</span>: <span class="co"># if remainder is one, val is odd</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        is_odd.append(<span class="va">True</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:       <span class="co"># else it's not odd</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        is_odd.append(<span class="va">False</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>is_odd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> val <span class="kw">in</span> vals:   </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> val <span class="op">%</span> <span class="dv">2</span>:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        is_odd.append(<span class="va">True</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:       </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        is_odd.append(<span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-3" class="cell" data-tags="[]" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>is_odd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>[True, True, False, False, False, True]</code></pre>
 </div>
 </div>
-<p>The code loops over each value in the list, checks the condition, and appends to a new list.</p>
-<p>The code works, but it’s lengthy compared to a list comprehension.</p>
-<p>The approach takes extra time to write and understand.</p>
-<p>Let’s solve with a list comprehension:</p>
-<div id="cell-4" class="cell" data-tags="[]" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>is_odd <span class="op">=</span> [val <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> val <span class="kw">in</span> vals]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>is_odd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<p>Now let’s do the same thing with a list comprehension:</p>
+<div id="cell-5" class="cell" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>is_odd_comp <span class="op">=</span> [val <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> val <span class="kw">in</span> vals]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-6" class="cell" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>is_odd_comp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>[True, True, False, False, False, True]</code></pre>
 </div>
 </div>
 <p>Much shorter, and if you understand the syntax, quicker to interpet.</p>
-<p>Note the in-place use of an expression.</p>
-<p>Now let’s discuss the syntax.</p>
-</section>
+<p>Here’s how you might save all the even numbers in a list:</p>
+<div id="cell-9" class="cell" data-tags="[]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>odd_vals <span class="op">=</span> [val <span class="cf">for</span> val <span class="kw">in</span> vals <span class="cf">if</span> val <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>odd_vals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>[1, 5, 15]</code></pre>
+</div>
+</div>
+<p>This introduces how comprehensions may include a boolean condition to filter what gets included in the result.</p>
 </section>
 <section id="comprehensions-in-general" class="level1">
 <h1>Comprehensions in General</h1>
-<p>Comprehensions provide a concise method for iterating over any list-like object to a new list like object.</p>
-<p>There are comprehensions for each list-like object: * List comprehensions * Dictionary comprehensions * Tuple comprehensions * Set comprehensions</p>
-<p>Comprehensions are essentially very concise <code>for</code> loops. They are compact visually, but they also are more efficient than loops.</p>
+<p>Comprehensions provide a concise method for iterating over any iterable object to a new iterable object.</p>
+<p>There are comprehensions for each type of iterable:</p>
+<ul>
+<li>List comprehensions</li>
+<li>Dictionary comprehensions</li>
+<li>Set comprehensions</li>
+</ul>
+<p>Note there is no tuple comprehension.</p>
+<p>Comprehensions are essentially concise <code>for</code> loops that address the use case of transforming one interable into another.</p>
+<p>They are also are more efficient than loops.</p>
 <p>All comprehensions have the form:</p>
-<p>listlike_result = <code>[ expression + context]</code></p>
+<p>listlike_result = <code>[ expression + context + condition]</code></p>
+<p>For example, in the comprehension above we can see these parts by breaking up the code into three lines:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>odd_vals <span class="op">=</span> [</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    val </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> val <span class="kw">in</span> vals </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> val <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note this is syntactically legit.</p>
 <p>The type of comprehension is indicated by the use of enclosing pairs, just like anonymous constructors:</p>
 <ul>
-<li>List comprehensions <code>[expression + context]</code></li>
-<li>Dictionary comprehensions <code>{expression + context}</code></li>
-<li>Tuple comprehensions <code>(expression + context)</code></li>
-<li>Set comprehensions <code>{expression + context}</code></li>
+<li>List comprehensions <code>[expression + context + condition]</code></li>
+<li>Dictionary comprehensions <code>{expression + context + condition}</code></li>
+<li>Set comprehensions <code>{expression + context + condition}</code></li>
 </ul>
-<p><strong>Expression</strong> defines what to do with each element in the list. This has the structure of the kind of comprehension. So, dictionary comprehension expressions take the form <code>k:v</code> while sets use <code>v</code>.</p>
-<p><strong>Context</strong> defines which list elements to select. The context always consists of an arbitrary number of <code>for</code> and <code>if</code> statements.</p>
-</section>
-<section id="more-examples" class="level1">
-<h1>More examples</h1>
-<section id="stop-word-remover" class="level2">
-<h2 class="anchored" data-anchor-id="stop-word-remover">Stop Word Remover</h2>
-<p>Create list of words, and list of stop words.<br>
-Filter out the stop words (considered not important).</p>
-<div id="cell-8" class="cell" data-tags="[]" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>stop_words <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'am'</span>,<span class="st">'an'</span>,<span class="st">'i'</span>,<span class="st">'the'</span>,<span class="st">'of'</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>words      <span class="op">=</span> [<span class="st">'i'</span>,<span class="st">'am'</span>,<span class="st">'not'</span>,<span class="st">'a'</span>,<span class="st">'fan'</span>,<span class="st">'of'</span>,<span class="st">'the'</span>,<span class="st">'film'</span>]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>clean_words <span class="op">=</span> [wd <span class="cf">for</span> wd <span class="kw">in</span> words <span class="cf">if</span> wd <span class="kw">not</span> <span class="kw">in</span> stop_words]</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>clean_words</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>['not', 'fan', 'film']</code></pre>
-</div>
-</div>
-<p>placing the color-coding on the list comprehension:</p>
-<p>[<span style="color:blue"> wd </span> <span style="color:red"> for wd in words </span> if wd not in stop_words]</p>
+<p>Parts:</p>
 <ul>
-<li>the expression is very simple: <strong>wd</strong>. keep the word if meets condition</li>
-<li>the condition does the work: if the word isn’t in list of stop words, keep it</li>
+<li><p><strong>Expression</strong> defines what to do with each element in the list.</p>
+<ul>
+<li><p>This can be a complex expression, or it may not include the iterated value at all.</p></li>
+<li><p>For dictionaries, the expression is actually conplex; it must be a key/value pair.</p></li>
+</ul></li>
+<li><p><strong>Context</strong> defines which iterable elements to select.</p></li>
+<li><p><strong>Conidtion</strong> defines a boolean condition on the iterated value that determines if it gets included in the expression.</p></li>
 </ul>
-<p><strong>Side note</strong>: This task can also be done with sets, if you are not concerned with mulitple instances of the same word:</p>
-<div id="cell-11" class="cell" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="op">=</span> <span class="bu">set</span>(stop_words)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> <span class="bu">set</span>(words)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>s3 <span class="op">=</span> s2 <span class="op">-</span> s1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note the that you can include comprehensions within comprehensions.</p>
+<p>And you can include multiple context + condition statements.</p>
+</section>
+<section id="examples" class="level1">
+<h1>Examples</h1>
+<section id="removing-stopwords" class="level2">
+<h2 class="anchored" data-anchor-id="removing-stopwords">Removing Stopwords</h2>
+<p>Define a sentence and a list of stop words.</p>
+<p>Filter out the stop words (considered not important).</p>
+<div id="cell-15" class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sentence <span class="op">=</span> <span class="st">"I am not a fan of this film"</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>stop_words <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'am'</span>,<span class="st">'an'</span>,<span class="st">'i'</span>,<span class="st">'the'</span>,<span class="st">'of'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-12" class="cell" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>s3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-16" class="cell" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>clean_words <span class="op">=</span> [word <span class="cf">for</span> word <span class="kw">in</span> sentence.split() <span class="cf">if</span> word.lower() <span class="kw">not</span> <span class="kw">in</span> stop_words]</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>clean_words</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>{'fan', 'film', 'not'}</code></pre>
+<pre><code>['not', 'fan', 'this', 'film']</code></pre>
+</div>
+</div>
+<p>Here is a color-coded version of the list comprehension to show its parts:</p>
+<p>[<span style="color:green">word </span> <span style="color:blue"> for word in sentence.split() </span> <span style="color:red">if word not in stop_words</span>]</p>
+<p><strong>Side note</strong>: This task can also be done with sets, if you are not concerned with mulitple instances of the same word:</p>
+<div id="cell-19" class="cell" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="op">=</span> <span class="bu">set</span>(stop_words)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> <span class="bu">set</span>(sentence.lower().split())</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>s3 <span class="op">=</span> s2 <span class="op">-</span> s1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-20" class="cell" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>s3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>{'fan', 'film', 'not', 'this'}</code></pre>
 </div>
 </div>
 </section>
-<section id="select-tokens-containing-units" class="level2">
-<h2 class="anchored" data-anchor-id="select-tokens-containing-units">Select Tokens Containing Units</h2>
-<p>Given a list of measurements, retain elements containing mmHg (millimeters of mercury)</p>
-<div id="cell-14" class="cell" data-tags="[]" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>units <span class="op">=</span> <span class="st">'mmHg'</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>measures <span class="op">=</span> [<span class="st">'20'</span>, <span class="st">'115mmHg'</span>, <span class="st">'5mg'</span>, <span class="st">'10 mg'</span>, <span class="st">'7.5dl'</span>, <span class="st">'120 mmHg'</span>]</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>meas_mmhg <span class="op">=</span> [meas <span class="cf">for</span> meas <span class="kw">in</span> measures <span class="cf">if</span> units <span class="kw">in</span> meas]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="selecting-tokens-containing-units" class="level2">
+<h2 class="anchored" data-anchor-id="selecting-tokens-containing-units">Selecting Tokens Containing Units</h2>
+<p>Given a list of measurements, retain elements containing <span class="math inline">\(mmHg\)</span> (millimeters of mercury)</p>
+<div id="cell-22" class="cell" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>units <span class="op">=</span> <span class="st">'mmHg'</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>measures <span class="op">=</span> [<span class="st">'20'</span>, <span class="st">'115mmHg'</span>, <span class="st">'5mg'</span>, <span class="st">'10 mg'</span>, <span class="st">'7.5dl'</span>, <span class="st">'120 mmHg'</span>]</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>measures_mmhg <span class="op">=</span> [measure <span class="cf">for</span> measure <span class="kw">in</span> measures <span class="cf">if</span> units <span class="kw">in</span> measure]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-15" class="cell" data-tags="[]" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>meas_mmhg   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="cell-23" class="cell" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>measures_mmhg   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>['115mmHg', '120 mmHg']</code></pre>
 </div>
 </div>
 <p><em>Filtering on two conditions</em></p>
-<div id="cell-17" class="cell" data-tags="[]" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>units1 <span class="op">=</span> <span class="st">'mmHg'</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>units2 <span class="op">=</span> <span class="st">'dl'</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>meas_mmhg_dl <span class="op">=</span> [meas <span class="cf">for</span> meas <span class="kw">in</span> measures <span class="cf">if</span> units1 <span class="kw">in</span> meas <span class="kw">or</span> units2 <span class="kw">in</span> meas]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-25" class="cell" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>units1 <span class="op">=</span> <span class="st">'mmHg'</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>units2 <span class="op">=</span> <span class="st">'dl'</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>meas_mmhg_dl <span class="op">=</span> [meas <span class="cf">for</span> meas <span class="kw">in</span> measures <span class="cf">if</span> units1 <span class="kw">in</span> meas <span class="kw">or</span> units2 <span class="kw">in</span> meas]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-18" class="cell" data-tags="[]" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>meas_mmhg_dl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div id="cell-26" class="cell" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>meas_mmhg_dl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>['115mmHg', '7.5dl', '120 mmHg']</code></pre>
 </div>
 </div>
 <p>This can be written differently for clarity:</p>
-<div id="cell-20" class="cell" data-tags="[]" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>[meas </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a> <span class="cf">for</span> meas <span class="kw">in</span> measures </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span> units1 <span class="kw">in</span> meas </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a> <span class="kw">or</span> units2 <span class="kw">in</span> meas]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div id="cell-28" class="cell" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>[meas </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a> <span class="cf">for</span> meas <span class="kw">in</span> measures </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span> units1 <span class="kw">in</span> meas </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a> <span class="kw">or</span> units2 <span class="kw">in</span> meas]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>['115mmHg', '7.5dl', '120 mmHg']</code></pre>
 </div>
 </div>
@@ -770,29 +826,21 @@ Filter out the stop words (considered not important).</p>
 <h1>Dictionary Comprehensions</h1>
 <p><strong>Dictionary comprehensions</strong> provide a concise method for iterating over a dictionary to create a new dictionary.</p>
 <p>This is common when data is structured as key-value pairs, and we’d like to filter the dict.</p>
-<div id="cell-22" class="cell" data-tags="[]" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># various deep learning models and their depths</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>model_arch <span class="op">=</span> {<span class="st">'cnn_1'</span>:<span class="st">'15 layers'</span>, <span class="st">'cnn_2'</span>:<span class="st">'20 layers'</span>, <span class="st">'rnn'</span>: <span class="st">'10 layers'</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here we define various deep learning models and their depths (in layers).</p>
+<div id="cell-31" class="cell" data-tags="[]" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>model_arch <span class="op">=</span> {<span class="st">'cnn_1'</span>: <span class="dv">15</span>, <span class="st">'cnn_2'</span>: <span class="dv">20</span>, <span class="st">'rnn'</span>: <span class="dv">10</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-23" class="cell" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new dict containing only key-value pairs where the key contains 'cnn'</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>cnns <span class="op">=</span> {key:model_arch[key] <span class="cf">for</span> key <span class="kw">in</span> model_arch.keys() <span class="cf">if</span> <span class="st">'cnn'</span> <span class="kw">in</span> key}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We use a comprehension to create a new dict containing only key-value pairs where the key contains the string <code>cnn</code>.</p>
+<div id="cell-33" class="cell" data-tags="[]" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>cnns <span class="op">=</span> {key:model_arch[key] <span class="cf">for</span> key <span class="kw">in</span> model_arch.keys() <span class="cf">if</span> <span class="st">'cnn'</span> <span class="kw">in</span> key}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-24" class="cell" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cnns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>{'cnn_1': '15 layers', 'cnn_2': '20 layers'}</code></pre>
+<div id="cell-34" class="cell" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>cnns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>{'cnn_1': 15, 'cnn_2': 20}</code></pre>
 </div>
 </div>
-<div id="cell-25" class="cell" data-tags="[]" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">'string'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>'string'</code></pre>
-</div>
-</div>
-<p>We build the key-value pairs using <code>key:model_arch[key]</code>, where the key indexes into the dict <code>model_arch</code></p>
+<p>We build the key-value pairs using <code>key:model_arch[key]</code>, where the key indexes into the dict <code>model_arch</code>.</p>
 
 
 </section>
@@ -1221,8 +1269,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../modules/m04/m04-intro.html" class="pagination-link" aria-label="M04 Functions">
-        <span class="nav-page-text">M04 Functions</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../notebooks/M03_ControlStructures/M03-04-NestedComprehensions.html" class="pagination-link" aria-label="Nested Comprehensions">
+        <span class="nav-page-text"><span class="chapter-title">Nested Comprehensions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

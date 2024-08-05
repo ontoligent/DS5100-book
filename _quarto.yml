@@ -42,6 +42,7 @@ book:
         - notebooks/M03_ControlStructures/M03-01-ControlStructures.ipynb
         - notebooks/M03_ControlStructures/M03-02-IterablesAndIterators.ipynb
         - notebooks/M03_ControlStructures/M03-03-Comprehensions.ipynb
+        - notebooks/M03_ControlStructures/M03-04-NestedComprehensions.ipynb
     - part: modules/m04/m04-intro.qmd # 04 Functions
       chapters: 
         - notebooks/M04_PythonFunctions/M04-01-Functions.ipynb

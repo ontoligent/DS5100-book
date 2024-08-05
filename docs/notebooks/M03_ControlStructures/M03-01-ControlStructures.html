@@ -294,6 +294,11 @@ window.Quarto = {
   <a href="../../notebooks/M03_ControlStructures/M03-03-Comprehensions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Comprehensions</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M03_ControlStructures/M03-04-NestedComprehensions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Nested Comprehensions</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -633,10 +638,9 @@ window.Quarto = {
    
   <ul>
   <li><a href="#introducing-control-structures" id="toc-introducing-control-structures" class="nav-link active" data-scroll-target="#introducing-control-structures">Introducing Control Structures</a></li>
-  <li><a href="#indentation" id="toc-indentation" class="nav-link" data-scroll-target="#indentation">Indentation</a></li>
   <li><a href="#conditions" id="toc-conditions" class="nav-link" data-scroll-target="#conditions">Conditions</a>
   <ul class="collapse">
-  <li><a href="#if-and-else-can-be-used-for-conditional-processing." id="toc-if-and-else-can-be-used-for-conditional-processing." class="nav-link" data-scroll-target="#if-and-else-can-be-used-for-conditional-processing."><code>if</code> and <code>else</code> can be used for conditional processing.</a></li>
+  <li><a href="#a-note-about-indentation" id="toc-a-note-about-indentation" class="nav-link" data-scroll-target="#a-note-about-indentation">A Note about Indentation</a></li>
   <li><a href="#elif" id="toc-elif" class="nav-link" data-scroll-target="#elif"><code>elif</code></a></li>
   <li><a href="#else" id="toc-else" class="nav-link" data-scroll-target="#else"><code>else</code></a></li>
   <li><a href="#if-and-else-as-one-liners" id="toc-if-and-else-as-one-liners" class="nav-link" data-scroll-target="#if-and-else-as-one-liners"><code>if</code> and <code>else</code> as one-liners</a></li>
@@ -644,9 +648,9 @@ window.Quarto = {
   </ul></li>
   <li><a href="#loops" id="toc-loops" class="nav-link" data-scroll-target="#loops">Loops</a>
   <ul class="collapse">
-  <li><a href="#while" id="toc-while" class="nav-link" data-scroll-target="#while"><code>while</code></a></li>
-  <li><a href="#break-to-exit-the-loop-altogether" id="toc-break-to-exit-the-loop-altogether" class="nav-link" data-scroll-target="#break-to-exit-the-loop-altogether"><code>break</code> to exit the loop altogether</a></li>
-  <li><a href="#continue-to-stop-the-current-iteration" id="toc-continue-to-stop-the-current-iteration" class="nav-link" data-scroll-target="#continue-to-stop-the-current-iteration"><code>continue</code> to stop the current iteration</a></li>
+  <li><a href="#while-loops" id="toc-while-loops" class="nav-link" data-scroll-target="#while-loops"><code>while</code> loops</a></li>
+  <li><a href="#break" id="toc-break" class="nav-link" data-scroll-target="#break"><code>break</code></a></li>
+  <li><a href="#continue" id="toc-continue" class="nav-link" data-scroll-target="#continue"><code>continue</code></a></li>
   <li><a href="#for" id="toc-for" class="nav-link" data-scroll-target="#for"><code>for</code></a></li>
   </ul></li>
   <li><a href="#while-vs-for" id="toc-while-vs-for" class="nav-link" data-scroll-target="#while-vs-for"><code>while</code> vs <code>for</code></a></li>
@@ -675,34 +679,20 @@ window.Quarto = {
 </header>
 
 
+<p>Programming for Data Science</p>
 <section id="introducing-control-structures" class="level2">
 <h2 class="anchored" data-anchor-id="introducing-control-structures">Introducing Control Structures</h2>
-<p>Python includes structures to control the flow of a program:</p>
-<ul>
-<li><code>conditions</code> (if, else)</li>
-<li><code>loops</code>
-<ul>
-<li><code>while-loop</code><br>
-Execute statements while a condition is true</li>
-<li><code>for-loop</code><br>
-Iterates over a iterable object (list, tuple, dict, set, string)</li>
-</ul></li>
-</ul>
-</section>
-<section id="indentation" class="level2">
-<h2 class="anchored" data-anchor-id="indentation">Indentation</h2>
-<p>This is where Python differs from most languages. To define control structures,<br>
-and functional blocks of code in general, most languages use either characters<br>
-like braces <code>{</code> and <code>}</code> or key words like <code>IF ... END IF</code>.</p>
-<p>Python uses tabs — spaces, actually — to signify logical blocks off code.</p>
-<p>It is therefore imperative to understand and get a feel for indentation.</p>
-<p>For more information, see <a href="https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch10s03.html">Lutz 2019, “A Tale of Two Ifs.”</a></p>
+<p>Python includes <strong>structures</strong> to control the <strong>flow</strong> of data in a program.</p>
+<p>These structures are made of code blocks that provide <strong>looping and branching</strong> capabilities to your code, based on <strong>boolean conditions</strong>.</p>
+<p>Control structures are <strong>fundamental</strong> to creating algorithms that can process and respond to data as it flows through and is transformed by a program.</p>
 </section>
 <section id="conditions" class="level2">
 <h2 class="anchored" data-anchor-id="conditions">Conditions</h2>
-<section id="if-and-else-can-be-used-for-conditional-processing." class="level3">
-<h3 class="anchored" data-anchor-id="if-and-else-can-be-used-for-conditional-processing."><code>if</code> and <code>else</code> can be used for conditional processing.</h3>
-<div id="cell-4" class="cell" data-tags="[]" data-execution_count="1">
+<p>Conditions are <strong>boolean</strong> checkpoints in a program, switching a process based on wheter some condition is true or not.</p>
+<p>The <code>if</code> and <code>else</code> keywords can be used to create branches in your code based on conditions.</p>
+<p>This is called conditional processing.</p>
+<p>Here is a very simple example.</p>
+<div id="cell-4" class="cell" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>val <span class="op">=</span> <span class="op">-</span><span class="dv">2</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> val <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
@@ -713,22 +703,47 @@ like braces <code>{</code> and <code>}</code> or key words like <code>IF ... END
 <pre><code>2</code></pre>
 </div>
 </div>
+<section id="a-note-about-indentation" class="level3">
+<h3 class="anchored" data-anchor-id="a-note-about-indentation">A Note about Indentation</h3>
+<p>Note the indenation pattern in the code:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> val <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(val)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="op">-</span>val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is where <strong>Python differs</strong> from most languages.</p>
+<p>To define control structures, and functional blocks of code in general, most languages use either characters like braces <code>{</code> and <code>}</code> or key words like <code>IF ... END IF</code>.</p>
+<p>For example, here is how this control structure might look in other languages:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>val <span class="op">&lt;=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span><span class="op">(</span>val<span class="op">);</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span><span class="op">(-</span>val<span class="op">);</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or:</p>
+<pre class="basic"><code>IF val &lt;= 0
+    PRINT val
+ELSE
+    PRINT -val
+END IF</code></pre>
+<p>Python uses tabs — spaces, actually — to signify logical blocks off code.</p>
+<p>It is therefore imperative to understand and get a feel for indentation.</p>
+<!-- For more information, see [Lutz 2019, "A Tale of Two Ifs."](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch10s03.html) -->
 </section>
 <section id="elif" class="level3">
 <h3 class="anchored" data-anchor-id="elif"><code>elif</code></h3>
 <p><code>elif</code> is reached when the previous statements are not.</p>
-<p>Note that these are disjoint — if one succeeds, those<br>
-that follow are not processed.</p>
+<p>Note that if one succeeds, those that follow are not processed.</p>
 <p>This is unlike a series of <code>if</code> statements.</p>
-<div id="cell-6" class="cell" data-tags="[]" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>val <span class="op">=</span> <span class="op">-</span><span class="dv">2</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">-</span><span class="dv">10</span> <span class="op">&lt;</span> val <span class="op">&lt;</span> <span class="op">-</span><span class="dv">5</span>:</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 1'</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> <span class="op">-</span><span class="dv">5</span> <span class="op">&lt;=</span> val <span class="op">&lt;</span> <span class="op">-</span><span class="dv">2</span>:</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 2'</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> val <span class="op">==</span> <span class="op">-</span><span class="dv">2</span>:</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 3'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-8" class="cell" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>val <span class="op">=</span> <span class="op">-</span><span class="dv">2</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">-</span><span class="dv">10</span> <span class="op">&lt;</span> val <span class="op">&lt;</span> <span class="op">-</span><span class="dv">5</span>:</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 1'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> <span class="op">-</span><span class="dv">5</span> <span class="op">&lt;=</span> val <span class="op">&lt;</span> <span class="op">-</span><span class="dv">2</span>:</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 2'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> val <span class="op">==</span> <span class="op">-</span><span class="dv">2</span>:</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 3'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>bucket 3</code></pre>
 </div>
@@ -736,116 +751,129 @@ that follow are not processed.</p>
 </section>
 <section id="else" class="level3">
 <h3 class="anchored" data-anchor-id="else"><code>else</code></h3>
-<p><code>else</code> can be used as a catchall</p>
-<div id="cell-8" class="cell" data-tags="[]" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>val <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">-</span><span class="dv">10</span> <span class="op">&lt;</span> val <span class="op">&lt;</span> <span class="op">-</span><span class="dv">5</span>:</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 1'</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> <span class="op">-</span><span class="dv">5</span> <span class="op">&lt;=</span> val <span class="op">&lt;</span> <span class="op">-</span><span class="dv">2</span>:</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 2'</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> val <span class="op">==</span> <span class="op">-</span><span class="dv">2</span>:</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 3'</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 4'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>else</code> can be used as a catch-all for situation when no condition is met.</p>
+<div id="cell-10" class="cell" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>val <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">-</span><span class="dv">10</span> <span class="op">&lt;</span> val <span class="op">&lt;</span> <span class="op">-</span><span class="dv">5</span>:</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 1'</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> <span class="op">-</span><span class="dv">5</span> <span class="op">&lt;=</span> val <span class="op">&lt;</span> <span class="op">-</span><span class="dv">2</span>:</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 2'</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> val <span class="op">==</span> <span class="op">-</span><span class="dv">2</span>:</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 3'</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 4'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>bucket 4</code></pre>
 </div>
 </div>
+<p>It’s a good practice to include an <code>else</code> statement.</p>
 </section>
 <section id="if-and-else-as-one-liners" class="level3">
 <h3 class="anchored" data-anchor-id="if-and-else-as-one-liners"><code>if</code> and <code>else</code> as one-liners</h3>
-<div id="cell-10" class="cell" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'odd'</span>) <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> <span class="bu">print</span>(<span class="st">'even'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Python provides a short-hand way of defining <code>if</code> statements.</p>
+<div id="cell-13" class="cell" data-tags="[]" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'odd'</span>) <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> <span class="bu">print</span>(<span class="st">'even'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>odd</code></pre>
 </div>
 </div>
-<p>Notice <code>==</code> for checking the condition <code>x % 2 == 1</code>.</p>
-<p>both <code>if</code> and <code>else</code> are required. This breaks:</p>
-<div id="cell-12" class="cell" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'odd'</span>) <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The general form:</p>
+<pre><code>ACTION1 if CONDITION else ACTION2</code></pre>
+<p>Both <code>if</code> and <code>else</code> are required. This breaks:</p>
+<div id="cell-16" class="cell" data-tags="[]" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'odd'</span>) <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>SyntaxError: expected 'else' after 'if' expression (471325368.py, line 1)</code></pre>
 </div>
 </div>
+<p>Essentially, then, this is an either/or construct.</p>
 </section>
 <section id="using-multiple-conditions" class="level3">
 <h3 class="anchored" data-anchor-id="using-multiple-conditions">Using multiple conditions</h3>
-<p>If statements can be complex combinations of expressions.</p>
-<p>Use parentheses carefully, to keep order of operations correct.</p>
-<p><strong>Correct:</strong></p>
-<div id="cell-15" class="cell" data-tags="[]" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>val <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="op">-</span><span class="dv">2</span> <span class="op">&lt;</span> val <span class="op">&lt;</span> <span class="dv">2</span>) <span class="kw">or</span> (val <span class="op">&gt;</span> <span class="dv">10</span>):</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 1'</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If statements can be complex combinations of expressions. Use parentheses to keep order of operations correct.</p>
+<p>Correct:</p>
+<div id="cell-20" class="cell" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">1</span>) <span class="cf">if</span> (<span class="op">-</span><span class="dv">2</span> <span class="op">&lt;</span> val <span class="op">&lt;</span> <span class="dv">2</span>) <span class="kw">or</span> (val <span class="op">&gt;</span> <span class="dv">10</span>) <span class="cf">else</span> <span class="bu">print</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>bucket 2</code></pre>
+<pre><code>2</code></pre>
 </div>
 </div>
-<p><strong>Incorrect:</strong></p>
-<div id="cell-17" class="cell" data-tags="[]" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="op">-</span><span class="dv">2</span> <span class="op">&lt;</span> val) <span class="op">&lt;</span> <span class="dv">2</span> <span class="kw">or</span> val <span class="op">&gt;</span> <span class="dv">10</span>:</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 1'</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'bucket 2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Incorrect:</p>
+<div id="cell-22" class="cell" data-tags="[]" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">1</span>) <span class="cf">if</span> (<span class="op">-</span><span class="dv">2</span> <span class="op">&lt;</span> val) <span class="op">&lt;</span> <span class="dv">2</span> <span class="kw">or</span> val <span class="op">&gt;</span> <span class="dv">10</span> <span class="cf">else</span> <span class="bu">print</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>bucket 1</code></pre>
+<pre><code>1</code></pre>
 </div>
 </div>
-<p>The problem is the misplaced parenthesis.</p>
-<p>This is because the condition line is interpreted as<code>True &lt; 2</code>,<br>
-where <code>True</code> is cast to integer value <span class="math inline">\(1\)</span>.</p>
+<p>The problem is that the condition line is interpreted as <code>True &lt; 2</code>, where <code>True</code> is cast to integer value <span class="math inline">\(1\)</span>.</p>
 </section>
 </section>
 <section id="loops" class="level2">
 <h2 class="anchored" data-anchor-id="loops">Loops</h2>
-<section id="while" class="level3">
-<h3 class="anchored" data-anchor-id="while"><code>while</code></h3>
-<p>What does this print?</p>
-<div id="cell-21" class="cell" data-tags="[]" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ix <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> ix <span class="op">&lt;</span> <span class="dv">10</span>:</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    ix <span class="op">=</span> ix <span class="op">*</span> <span class="dv">2</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Loops are <strong>fundamental</strong> constructs in programming.</p>
+<p>They allow for the repeated application of a set of operations on a series of values to compute a result.</p>
+<p>The repetition of a process as the data changes is called <strong>iteration</strong>.</p>
+<p>A loop is an <strong>algorithmic pattern</strong> designed to process data stored in a <strong>seqeuence</strong> of some kind, such as provided by a list or range.</p>
+<p>Loops exemplify a <strong>premise</strong> of this course that data structures imply algorithms. Using the term ‘list’ broadly, we may say that <strong>Lists imply loops</strong>.</p>
+<p>There are two main kinds of loops in Python: <code>while</code> and <code>for</code>.</p>
+<section id="while-loops" class="level3">
+<h3 class="anchored" data-anchor-id="while-loops"><code>while</code> loops</h3>
+<p>While loops iterate while some condition is true. It stops when the condition is false.</p>
+<p>Here is a simple example:</p>
+<div id="cell-26" class="cell" data-tags="[]" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ix <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>ix_list <span class="op">=</span> []</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> ix <span class="op">&lt;</span> <span class="dv">10</span>:</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    ix <span class="op">*=</span> <span class="dv">2</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    ix_list.append(ix)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ix)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ix_list)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ix_list[<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>16</code></pre>
+<pre><code>16
+[2, 4, 8, 16]
+16</code></pre>
 </div>
 </div>
+<p>Note that it is possible for <code>while</code> loops to be unending.</p>
+<p>For example:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="dv">1</span>:</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"This is so annoying"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is why it is important to make sure that your looping condition can be met.</p>
+<p>You may also break out of a loop by other means.</p>
 </section>
-<section id="break-to-exit-the-loop-altogether" class="level3">
-<h3 class="anchored" data-anchor-id="break-to-exit-the-loop-altogether"><code>break</code> to exit the loop altogether</h3>
-<p>sometimes you want to quit the loop early, if some condition is met.<br>
-uses <code>if-statement</code></p>
-<div id="cell-23" class="cell" data-tags="[]" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ix <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> ix <span class="op">&lt;</span> <span class="dv">10</span>:</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    ix <span class="op">=</span> ix <span class="op">*</span> <span class="dv">2</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ix <span class="op">==</span> <span class="dv">4</span>:</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="break" class="level3">
+<h3 class="anchored" data-anchor-id="break"><code>break</code></h3>
+<p>Sometimes you want to quit the loop early, if some condition is met.</p>
+<p>To do this, put <code>break</code> in an <code>if</code> statement.</p>
+<div id="cell-29" class="cell" data-tags="[]" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ix <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> ix <span class="op">&lt;</span> <span class="dv">10</span>:</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    ix <span class="op">=</span> ix <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ix <span class="op">==</span> <span class="dv">4</span>:</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>4</code></pre>
 </div>
 </div>
 <p>The <code>break</code> causes the loop to end early</p>
 </section>
-<section id="continue-to-stop-the-current-iteration" class="level3">
-<h3 class="anchored" data-anchor-id="continue-to-stop-the-current-iteration"><code>continue</code> to stop the current iteration</h3>
-<p>sometimes you want to introduce skipping behavior in the loop.<br>
-uses <code>if-statement</code></p>
-<div id="cell-25" class="cell" data-tags="[]" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ix <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> ix <span class="op">&lt;</span> <span class="dv">10</span>:</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    ix <span class="op">=</span> ix <span class="op">*</span> <span class="dv">2</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ix <span class="op">==</span> <span class="dv">4</span>:</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'skipping 4...'</span>)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(ix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="continue" class="level3">
+<h3 class="anchored" data-anchor-id="continue"><code>continue</code></h3>
+<p>Sometimes you want to introduce skipping behavior in the loop.</p>
+<p>To do this, put <code>continue</code> in an <code>if</code> statement.</p>
+<div id="cell-32" class="cell" data-tags="[]" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ix <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> ix <span class="op">&lt;</span> <span class="dv">10</span>:</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    ix <span class="op">=</span> ix <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ix <span class="op">==</span> <span class="dv">4</span>:</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'skipping 4...'</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(ix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>2
 skipping 4...
@@ -853,64 +881,56 @@ skipping 4...
 16</code></pre>
 </div>
 </div>
-<p>The <code>continue</code> causes the loop to skip printing 4</p>
+<p>See how <code>continue</code> causes the loop to skip printing <span class="math inline">\(4\)</span>.</p>
 </section>
 <section id="for" class="level3">
 <h3 class="anchored" data-anchor-id="for"><code>for</code></h3>
-<p>iterate over an iterable</p>
-<div id="cell-27" class="cell" data-tags="[]" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> [<span class="st">'Charlottesville'</span>,<span class="st">'New York'</span>,<span class="st">'SF'</span>,<span class="st">'BOS'</span>,<span class="st">'LA'</span>]</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> city <span class="kw">in</span> cities:</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    city <span class="op">=</span> city.lower()</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(city)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In contrast to <code>while</code> loops, <code>for</code> loops iterate over an iterable data structure, such as a list.</p>
+<p>They stop when the list is finished.</p>
+<div id="cell-35" class="cell" data-tags="[]" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> [<span class="st">'Charlottesville'</span>,<span class="st">'New York'</span>,<span class="st">'SF'</span>,<span class="st">'BOS'</span>,<span class="st">'LA'</span>]</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> city <span class="kw">in</span> cities:</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'"</span><span class="sc">{</span>city<span class="sc">.</span>lower()<span class="sc">}</span><span class="ss">"'</span>, end<span class="op">=</span><span class="st">' '</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>charlottesville
-new york
-sf
-bos
-la</code></pre>
+<pre><code>"charlottesville" "new york" "sf" "bos" "la" </code></pre>
 </div>
 </div>
-<p>quit early if <code>SF</code> reached, using <strong>break</strong></p>
-<div id="cell-29" class="cell" data-tags="[]" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> [<span class="st">'Charlottesville'</span>,<span class="st">'New York'</span>,<span class="st">'SF'</span>,<span class="st">'BOS'</span>,<span class="st">'LA'</span>]</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> city <span class="kw">in</span> cities:</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> city <span class="op">==</span> <span class="st">'SF'</span>:</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    city <span class="op">=</span> city.lower()</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(city)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Conditions can be used inside of <code>if</code> statements to skip within or stop the loop.</p>
+<p>Quit early if <code>SF</code> reached, using <strong>break</strong>:</p>
+<div id="cell-37" class="cell" data-tags="[]" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> [<span class="st">'Charlottesville'</span>,<span class="st">'New York'</span>,<span class="st">'SF'</span>,<span class="st">'BOS'</span>,<span class="st">'LA'</span>]</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> city <span class="kw">in</span> cities:  </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> city <span class="op">==</span> <span class="st">'SF'</span>:</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'"</span><span class="sc">{</span>city<span class="sc">.</span>lower()<span class="sc">}</span><span class="ss">"'</span>, end<span class="op">=</span><span class="st">' '</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>charlottesville
-new york</code></pre>
+<pre><code>"charlottesville" "new york" </code></pre>
 </div>
 </div>
-<p>skip over <code>SF</code> if reached, using <strong>continue</strong></p>
-<div id="cell-31" class="cell" data-tags="[]" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> [<span class="st">'Charlottesville'</span>,<span class="st">'New York'</span>,<span class="st">'SF'</span>,<span class="st">'BOS'</span>,<span class="st">'LA'</span>]</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> city <span class="kw">in</span> cities:</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> city <span class="op">==</span> <span class="st">'SF'</span>:</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    city <span class="op">=</span> city.lower()</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(city)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Skip over <code>SF</code> if reached, using <strong>continue</strong>:</p>
+<div id="cell-39" class="cell" data-tags="[]" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>cities <span class="op">=</span> [<span class="st">'Charlottesville'</span>,<span class="st">'New York'</span>,<span class="st">'SF'</span>,<span class="st">'BOS'</span>,<span class="st">'LA'</span>]</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> city <span class="kw">in</span> cities:</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> city <span class="op">==</span> <span class="st">'SF'</span>:</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'"</span><span class="sc">{</span>city<span class="sc">.</span>lower()<span class="sc">}</span><span class="ss">"'</span>, end<span class="op">=</span><span class="st">' '</span>)        </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>charlottesville
-new york
-bos
-la</code></pre>
+<pre><code>"charlottesville" "new york" "bos" "la" </code></pre>
 </div>
 </div>
 </section>
 </section>
 <section id="while-vs-for" class="level2">
 <h2 class="anchored" data-anchor-id="while-vs-for"><code>while</code> vs <code>for</code></h2>
-<p>For loops are used to loop through a list of values or an operation in which the number of iterations is <strong>known</strong> in advance.</p>
-<p>While loops are when <strong>you don’t know</strong> how many interations it will take — you are depending on some condition to be met.</p>
-<p>It is possible for while loops to be unending, for example:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="dv">1</span>:</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"This is so annoying"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When choosing between <code>for</code> and <code>while</code> loops, consider this:</p>
+<ul>
+<li><p><code>for</code> loops are used to loop through a list of values or an operation in which the number of iterations is <strong>known</strong> in advance.</p></li>
+<li><p><code>while</code> loops are when <strong>you don’t know</strong> how many interations it will take — you are depending on some condition to be met.</p></li>
+</ul>
+<p>The former is often used when <strong>processing</strong> data, the latter when performing algorithmic <strong>modeling</strong> tasks, such as optimization and convergence.</p>
 
 
 </section>

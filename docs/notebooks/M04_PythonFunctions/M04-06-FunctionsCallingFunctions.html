@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DS 5100: Programming for Data Science - NB: Functions Calling Functions</title>
+<title>DS 5100: Programming for Data Science - NB: Function Groups</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m04/m04-intro.html">M04 Functions</a></li><li class="breadcrumb-item"><a href="../../notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html"><span class="chapter-title">NB: Functions Calling Functions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m04/m04-intro.html">M04 Functions</a></li><li class="breadcrumb-item"><a href="../../notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html"><span class="chapter-title">NB: Function Groups</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -303,12 +303,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M04_PythonFunctions/M04-05-Scope.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Variable Scope</span></a>
+  <a href="../../notebooks/M04_PythonFunctions/M04-05-Scope.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Scope</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: Functions Calling Functions</span></a>
+  <a href="../../notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: Function Groups</span></a>
   </div>
 </li>
       </ul>
@@ -608,15 +608,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#basic-insight" id="toc-basic-insight" class="nav-link active" data-scroll-target="#basic-insight">Basic Insight</a></li>
-  <li><a href="#example-1-converting-temperatures" id="toc-example-1-converting-temperatures" class="nav-link" data-scroll-target="#example-1-converting-temperatures">Example 1: Converting Temperatures</a>
+  <li><a href="#example-1-converting-temperatures" id="toc-example-1-converting-temperatures" class="nav-link active" data-scroll-target="#example-1-converting-temperatures">Example 1: Converting Temperatures</a>
   <ul class="collapse">
   <li><a href="#a-more-pythonic-solution" id="toc-a-more-pythonic-solution" class="nav-link" data-scroll-target="#a-more-pythonic-solution">A More Pythonic Solution</a></li>
   </ul></li>
-  <li><a href="#example-2-counting-vowels" id="toc-example-2-counting-vowels" class="nav-link" data-scroll-target="#example-2-counting-vowels">Example 2: Counting Vowels</a>
-  <ul class="collapse">
-  <li><a href="#a-more-pythonic-solution-1" id="toc-a-more-pythonic-solution-1" class="nav-link" data-scroll-target="#a-more-pythonic-solution-1">A More Pythonic Solution</a></li>
-  </ul></li>
+  <li><a href="#example-2-counting-vowels" id="toc-example-2-counting-vowels" class="nav-link" data-scroll-target="#example-2-counting-vowels">Example 2: Counting Vowels</a></li>
   <li><a href="#example-3-calculating-tax" id="toc-example-3-calculating-tax" class="nav-link" data-scroll-target="#example-3-calculating-tax">Example 3: Calculating Tax</a></li>
   <li><a href="#concluding-observations" id="toc-concluding-observations" class="nav-link" data-scroll-target="#concluding-observations">Concluding Observations</a></li>
   </ul>
@@ -625,9 +621,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m04/m04-intro.html">M04 Functions</a></li><li class="breadcrumb-item"><a href="../../notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html"><span class="chapter-title">NB: Functions Calling Functions</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m04/m04-intro.html">M04 Functions</a></li><li class="breadcrumb-item"><a href="../../notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html"><span class="chapter-title">NB: Function Groups</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">NB: Functions Calling Functions</span></h1>
+<h1 class="title"><span class="chapter-title">NB: Function Groups</span></h1>
 </div>
 
 
@@ -644,19 +640,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>Purpose</strong>: * Illustrate concept of function design * Demonstrate how functions can break down a process into simple components * Demonstrate how component functions build on each other * Introduce idea of functional groups * Motivate use of classes (to be introduced later)</p>
-<section id="basic-insight" class="level2">
-<h2 class="anchored" data-anchor-id="basic-insight">Basic Insight</h2>
-<p>Functions contain any code, so they can contain functions. * Functions can call other functions * Functions can define new functions</p>
-<p>We create functions that call functions in order to break a complex process into components. * Some functions focus on simple component processes * Other functions combine these into higher order processes * Some functions may be focused on computation, while others may be focused on interacting with users or data sources * We can think of this a division of labor, or “separation of concerns,” among functions</p>
-<p>When you create groups of functions, they often form natural groups that associated with a common process or task. * These function groups often share variables in addition to calling each ohter</p>
+<p>Programming for Data Science</p>
+<p>In this notebook, we illustrate an import concept of function design.</p>
+<p>We show how to design <strong>groups of functions</strong> that can break down a complex process into simple components.</p>
+<p>Building on the idea that functions should do one thing, or something simple, think of each function as performing a kind <strong>task</strong> that is part of <strong>a larger problem</strong>.</p>
+<p>A task may getting data from a user, applying a formula to some data, connecting to a database, or presenting results to a user.</p>
+<p>Other functions may perform <strong>integrative</strong> work — for example, they may call simpler functions and integrate them into a sequence.</p>
+<p>We can think of this a division of labor, or <strong>separation of concerns</strong>, among functions.</p>
+<p>Groups of functions associated with a common process may <strong>interact</strong> in various ways:</p>
+<p>By having <strong>functions call functions</strong>.</p>
+<p>By defining <strong>functions within functions</strong>.</p>
+<p>By <strong>chaining</strong> — where the return value of one function becomes the argument of another.</p>
+<p>By <strong>sharing global varables</strong>.</p>
 <p>Let’s look at some examples to illustrate these points.</p>
-</section>
 <section id="example-1-converting-temperatures" class="level2">
 <h2 class="anchored" data-anchor-id="example-1-converting-temperatures">Example 1: Converting Temperatures</h2>
 <p>Here are three functions that work together to make a temperature converter.</p>
 <p>Notice how the last function integrates the first two.</p>
-<div id="cell-1" class="cell" data-execution_count="8">
+<div id="cell-4" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f_to_c(temp):  </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Converts F to C and returns a rounded result.</span></span>
@@ -682,7 +683,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> c_to_f(temp)  <span class="co"># function call to c_to_f</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, here is function that combines the above functions into a <strong>user-facing interface</strong> to the other functions.</p>
-<div id="cell-3" class="cell" data-execution_count="9">
+<div id="cell-6" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convert_app():</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Provides a user-interface to the the conversion functions.</span></span>
@@ -704,7 +705,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Print results for user</span></span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>temp<span class="sc">}{</span>current_scale<span class="sc">.</span>upper()<span class="sc">}</span><span class="ss"> is equal to </span><span class="sc">{</span>converted<span class="sc">}{</span>scale<span class="sc">.</span>upper()<span class="sc">}</span><span class="ss">."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="10">
+<div id="cell-7" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>convert_app()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdin">
 <pre><code>Enter a temperature:  45
@@ -716,30 +717,32 @@ Enter the scale to convert to: (c or f)  f</code></pre>
 </div>
 <section id="a-more-pythonic-solution" class="level3">
 <h3 class="anchored" data-anchor-id="a-more-pythonic-solution">A More Pythonic Solution</h3>
-<p>We replace if/then statements with dictionary logic.</p>
-<div id="cell-6" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Put your logic in the data structure</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>converters <span class="op">=</span> {</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'c'</span>: <span class="kw">lambda</span> t: (t <span class="op">-</span> <span class="dv">32</span>) <span class="op">*</span> (<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>),</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'f'</span>: <span class="kw">lambda</span> t: t <span class="op">*</span> (<span class="dv">9</span><span class="op">/</span><span class="dv">5</span>) <span class="op">+</span> <span class="dv">32</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We replace if/then statements with dictionary keys.</p>
+<p>The keys represent the target temperature scale to which we are converting.</p>
+<p>Essentially, we put your logic in the data structure.</p>
+<div id="cell-9" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>converters <span class="op">=</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'c'</span>: <span class="kw">lambda</span> t: (t <span class="op">-</span> <span class="dv">32</span>) <span class="op">*</span> (<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'f'</span>: <span class="kw">lambda</span> t: t <span class="op">*</span> (<span class="dv">9</span><span class="op">/</span><span class="dv">5</span>) <span class="op">+</span> <span class="dv">32</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="16">
+<div id="cell-10" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convert_app2():</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Input from user</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    source_temp  <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Enter a temperature: "</span>))                </span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    target_scale <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Enter the scale to convert to: (c or f) "</span>)</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Internal computations</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert from one scale to the other</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    target_temp  <span class="op">=</span> converters[target_scale](source_temp)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># source_scale = list(set(converters.keys()) - set(target_scale))[0]</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    source_scale <span class="op">=</span> (<span class="bu">set</span>(converters.keys()) <span class="op">-</span> <span class="bu">set</span>(target_scale)).pop()</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Output to user</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(source_temp, source_scale, <span class="st">"converted becomes:"</span> , <span class="bu">round</span>(target_temp), target_scale)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the source scale for display purposes</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    source_scale <span class="op">=</span> <span class="bu">list</span>(<span class="bu">set</span>(converters.keys()) <span class="op">-</span> <span class="bu">set</span>(target_scale))[<span class="dv">0</span>]</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Output to user</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(source_temp, source_scale, <span class="st">"converted becomes:"</span> , <span class="bu">round</span>(target_temp), target_scale)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="17">
+<div id="cell-11" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>convert_app2()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdin">
 <pre><code>Enter a temperature:  45
@@ -753,180 +756,150 @@ Enter the scale to convert to: (c or f)  f</code></pre>
 </section>
 <section id="example-2-counting-vowels" class="level2">
 <h2 class="anchored" data-anchor-id="example-2-counting-vowels">Example 2: Counting Vowels</h2>
-<div id="cell-10" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Predicate functions - often used as helper functions that return True or False</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_vowel(l):</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> l <span class="op">==</span> <span class="st">"a"</span> <span class="kw">or</span> l <span class="op">==</span> <span class="st">"e"</span> <span class="kw">or</span> l <span class="op">==</span> <span class="st">"i"</span> <span class="kw">or</span> l <span class="op">==</span> <span class="st">"o"</span> <span class="kw">or</span> l <span class="op">==</span> <span class="st">"u"</span>:</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span>  <span class="co"># if the letter is a vowel, return True</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span> <span class="co"># else, return False</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> num_vowels(my_string):</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    my_string <span class="op">=</span> my_string.lower()</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(my_string)): <span class="co"># for each character</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> is_vowel(my_string[i]):  <span class="co"># call function above</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>            count <span class="op">+=</span> <span class="dv">1</span>              <span class="co"># increment count if true</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> count</span>
+<p>Here is another example of functions calling each other in increasing levels of complexity.</p>
+<div id="cell-13" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_vowel(letter):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Tests if a letter is a vowel."</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> letter <span class="kw">in</span> <span class="st">"aeiou"</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> num_vowels(my_string):</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Counts the number of vowels in a string."</span>    </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    my_string <span class="op">=</span> my_string.lower()</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(my_string)): <span class="co"># for each character</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> is_vowel(my_string[i]):  <span class="co"># call function above</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>            count <span class="op">+=</span> <span class="dv">1</span>              <span class="co"># increment count if true</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> count</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># A more concise way:</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return sum([is_vowel(letter) for letter in my_string.lower()])</span></span>
 <span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vcounter():</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    my_str <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Enter a string: "</span>)</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    vcount <span class="op">=</span> num_vowels(my_str)</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"There are </span><span class="sc">{</span>vcount<span class="sc">}</span><span class="ss"> vowels in the string."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vowel_counter():</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">"User interface to return the number of vowels in a given string."</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    my_str <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Enter a string: "</span>)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    vcount <span class="op">=</span> num_vowels(my_str)</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"There are </span><span class="sc">{</span>vcount<span class="sc">}</span><span class="ss"> vowels in the string."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>vcounter()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-14" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>vowel_counter()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdin">
-<pre><code>Enter a string:  This is a test.</code></pre>
+<pre><code>Enter a string:  This is a string.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>There are 4 vowels in the string.</code></pre>
 </div>
 </div>
-<section id="a-more-pythonic-solution-1" class="level3">
-<h3 class="anchored" data-anchor-id="a-more-pythonic-solution-1">A More Pythonic Solution</h3>
-<p>We can use a lambda function with a comprehension to replace the fisrt two functions above.</p>
-<div id="cell-13" class="cell" data-tags="[]" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>vowel_count <span class="op">=</span> <span class="kw">lambda</span> x: <span class="bu">len</span>([char <span class="cf">for</span> char <span class="kw">in</span> x.lower() <span class="cf">if</span> char <span class="kw">in</span> <span class="st">"aeiou"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-14" class="cell" data-tags="[]" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>test_str <span class="op">=</span> <span class="st">"Whatever it is, it is what it is."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-15" class="cell" data-tags="[]" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>vowel_count(test_str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
-<pre><code>10</code></pre>
-</div>
-</div>
-</section>
 </section>
 <section id="example-3-calculating-tax" class="level2">
 <h2 class="anchored" data-anchor-id="example-3-calculating-tax">Example 3: Calculating Tax</h2>
-<p>We write two related functions: * One to compute the <strong>tax</strong> based on a <strong>gross pay</strong> and a <strong>tax rate</strong>. * One to compute the <strong>net pay</strong> using the previous function.</p>
-<p>In addition, we want to write some functions that use these functions to interact with a user. * One to get the input value of the gross pay and print the tax. * One to print the net pay based on the previous function.</p>
-<p>Note the division of labor, or “separation of concerns”, in these functions: * Some do calculative work * Some do interactive work</p>
+<p>In this example, we define a group of functions to perform a more complicated task. We want to compute the taxes owed for an income and a tax rate. We want our user to enter an income and to get their tax bill back.</p>
 <p>To compute tax, we have these data:</p>
 <pre><code>gross_pay    tax_rate
 ---------------------
 0   - 240    0%
 241 - 480    15%
 481 - more   28% </code></pre>
-<table class="table">
-<colgroup>
-<col style="width: 6%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>This time, we want to create a group of functions that expect some global variables to exist and use these instead of return statements.</td>
-</tr>
-<tr class="even">
-<td>In the code below, we globalize any variables that are assigned in our functions.</td>
-</tr>
-<tr class="odd">
-<td>This allows them to be shared by all the other functions.</td>
-</tr>
-<tr class="even">
-<td>Note that this is effective when our global environment – the containing script – contains only these functions.</td>
-</tr>
-<tr class="odd">
-<td>Later in this course, we will look at mechanisms to segment our code in this way.</td>
-</tr>
-</tbody>
-</table>
-<div id="cell-17" class="cell" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_tax():</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Computes tax rate and applies to gross pay to get tax.</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Expects gross_apy to be defined globally.</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Adds tax_rate and tax to globals for use by other functins.</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> tax_rate, tax</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get rate by lower bound</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> gross_pay <span class="op">&gt;</span> <span class="dv">480</span>:</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>        tax_rate <span class="op">=</span> <span class="fl">.28</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> gross_pay <span class="op">&gt;</span> <span class="dv">240</span>:</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>        tax_rate <span class="op">=</span> <span class="fl">.15</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>        tax_rate <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    tax <span class="op">=</span> gross_pay <span class="op">*</span> tax_rate</span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_net_pay():</span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="co">    Computes net pay based on globals produced by compute_tax().</span></span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="co">    Expects gross_pay and tax to be defined globally.</span></span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="co">    Adds net_pay to to globals.</span></span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> net_pay</span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>    net_pay <span class="op">=</span> gross_pay <span class="op">-</span> tax</span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_tax():   </span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a><span class="co">    Computes and prints tax based on user input.</span></span>
-<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a><span class="co">    Essentially a wrapper around compute_tax().</span></span>
-<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a><span class="co">    Adds gross_pay to globals.</span></span>
-<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> gross_pay</span>
-<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>    gross_pay <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Enter your gross pay in dollars: "</span>))                            </span>
-<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>    compute_tax()</span>
-<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Based on a tax rate of </span><span class="sc">{</span><span class="bu">round</span>(tax_rate <span class="op">*</span> <span class="dv">100</span>)<span class="sc">}</span><span class="ss">%, the tax you owe on $</span><span class="sc">{</span>gross_pay<span class="sc">}</span><span class="ss"> is $</span><span class="sc">{</span><span class="bu">round</span>(tax)<span class="sc">}</span><span class="ss">."</span>)</span>
-<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_net_pay():</span>
-<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a><span class="co">    Computes and prints net pay based on globals.</span></span>
-<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a>    compute_net_pay()</span>
-<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Your take home (net) pay is $</span><span class="sc">{</span><span class="bu">round</span>(net_pay)<span class="sc">}</span><span class="ss">."</span>)</span>
-<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> do_all():</span>
-<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Runs both user-facing functions."</span></span>
-<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a>    get_tax()</span>
-<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a>    get_net_pay()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We write two related functions:</p>
+<ul>
+<li>One to compute the <strong>tax</strong> based on a <strong>gross pay</strong> and a <strong>tax rate</strong>.</li>
+<li>One to compute the <strong>net pay</strong> using the previous function.</li>
+</ul>
+<p>In addition, we write functions that use these functions to interact with a user.</p>
+<ul>
+<li>One to get the input value of the gross pay and print the tax.</li>
+<li>One to print the net pay based on the previous function.</li>
+</ul>
+<p>Note the division of labor, or “separation of concerns”, in these functions:</p>
+<ul>
+<li>Some do <strong>calculative</strong> work.</li>
+<li>Some do <strong>interactive</strong> work.</li>
+</ul>
+<p>To meet these requirements, we create a group of functions that expect some <strong>global</strong> variables to exist and use these instead of return statements.</p>
+<div id="cell-19" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_tax():</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Computes tax rate and applies to gross pay to get tax.</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Expects gross_pay to be defined globally.</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Adds tax_rate and tax to globals for use by other functins.</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> tax_rate, tax</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get rate by lower bound</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> gross_pay <span class="op">&gt;</span> <span class="dv">480</span>:</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        tax_rate <span class="op">=</span> <span class="fl">.28</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> gross_pay <span class="op">&gt;</span> <span class="dv">240</span>:</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        tax_rate <span class="op">=</span> <span class="fl">.15</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        tax_rate <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    tax <span class="op">=</span> gross_pay <span class="op">*</span> tax_rate</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_net_pay():</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co">    Computes net pay based on globals produced by compute_tax().</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co">    Expects gross_pay and tax to be defined globally.</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="co">    Adds net_pay to to globals.</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> net_pay</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    net_pay <span class="op">=</span> gross_pay <span class="op">-</span> tax</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_tax():   </span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="co">    Computes and prints tax based on user input.</span></span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a><span class="co">    Essentially a wrapper around compute_tax().</span></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a><span class="co">    Adds gross_pay to globals.</span></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> gross_pay</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    gross_pay <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Enter your gross pay in dollars: "</span>))                            </span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>    compute_tax()</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Based on a tax rate of </span><span class="sc">{</span><span class="bu">round</span>(tax_rate <span class="op">*</span> <span class="dv">100</span>)<span class="sc">}</span><span class="ss">%, the tax you owe on $</span><span class="sc">{</span>gross_pay<span class="sc">}</span><span class="ss"> is $</span><span class="sc">{</span><span class="bu">round</span>(tax)<span class="sc">}</span><span class="ss">."</span>)</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_net_pay():</span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a><span class="co">    Computes and prints net pay based on globals.</span></span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>    compute_net_pay()</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Your take home (net) pay is $</span><span class="sc">{</span><span class="bu">round</span>(net_pay)<span class="sc">}</span><span class="ss">."</span>)</span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> do_all():</span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Runs both user-facing functions."</span></span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>    get_tax()</span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>    get_net_pay()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-18" class="cell" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>get_tax()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-20" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>get_tax()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdin">
-<pre><code>Enter your gross pay in dollars:  50000</code></pre>
+<pre><code>Enter your gross pay in dollars:  1000000</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Based on a tax rate of 28%, the tax you owe on $50000 is $14000.</code></pre>
+<pre><code>Based on a tax rate of 28%, the tax you owe on $1000000 is $280000.</code></pre>
 </div>
 </div>
-<div id="cell-19" class="cell" data-tags="[]" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>get_net_pay()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-21" class="cell" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>get_net_pay()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Your take home (net) pay is $36000.</code></pre>
+<pre><code>Your take home (net) pay is $720000.</code></pre>
 </div>
 </div>
-<div id="cell-20" class="cell" data-tags="[]" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>do_all()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-22" class="cell" data-tags="[]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>do_all()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdin">
-<pre><code>Enter your gross pay in dollars:  100000</code></pre>
+<pre><code>Enter your gross pay in dollars:  1000000</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Based on a tax rate of 28%, the tax you owe on $100000 is $28000.
-Your take home (net) pay is $72000.</code></pre>
+<pre><code>Based on a tax rate of 28%, the tax you owe on $1000000 is $280000.
+Your take home (net) pay is $720000.</code></pre>
 </div>
 </div>
+<p>Notice how <strong>none of the functions return a value</strong>.</p>
+<p>Nor do they take <strong>arguments</strong>.</p>
+<p>Instead, they give and take from <strong>the global namespace</strong>.</p>
+<p>This is effective when our global environment — the containing script — contains only these functions.</p>
+<p>Later in this course, we will look at mechanisms to segment our code in this way.</p>
 </section>
 <section id="concluding-observations" class="level2">
 <h2 class="anchored" data-anchor-id="concluding-observations">Concluding Observations</h2>
-<ul>
-<li>Notice how each example has functions that build on each other.</li>
-<li>These functions share both data and a general goal.</li>
-<li>The fact that data and functions go together is the motivation for creating classes.</li>
-</ul>
+<p>Notice how each example has functions that build on each other.</p>
+<p>These functions share both data and a general goal.</p>
+<p>The fact that data and functions go together is the motivation for creating classes.</p>
 
 
 </section>
@@ -1350,8 +1323,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../notebooks/M04_PythonFunctions/M04-05-Scope.html" class="pagination-link" aria-label="NB: Variable Scope">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">NB: Variable Scope</span></span>
+      <a href="../../notebooks/M04_PythonFunctions/M04-05-Scope.html" class="pagination-link" aria-label="NB: Scope">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">NB: Scope</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

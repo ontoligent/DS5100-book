@@ -332,12 +332,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M04_PythonFunctions/M04-05-Scope.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Variable Scope</span></a>
+  <a href="../../notebooks/M04_PythonFunctions/M04-05-Scope.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Scope</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Functions Calling Functions</span></a>
+  <a href="../../notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Function Groups</span></a>
   </div>
 </li>
       </ul>
@@ -637,19 +637,11 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#what-is-recursion" id="toc-what-is-recursion" class="nav-link active" data-scroll-target="#what-is-recursion">What is Recursion?</a></li>
   <li><a href="#a-formal-definition" id="toc-a-formal-definition" class="nav-link" data-scroll-target="#a-formal-definition">A Formal Definition</a></li>
-  <li><a href="#as-seen-in-nature" id="toc-as-seen-in-nature" class="nav-link" data-scroll-target="#as-seen-in-nature">As Seen in Nature</a></li>
-  <li><a href="#infinite-loops-and-stack-overflows" id="toc-infinite-loops-and-stack-overflows" class="nav-link" data-scroll-target="#infinite-loops-and-stack-overflows">Infinite Loops and Stack Overflows</a></li>
   <li><a href="#a-note-of-caution" id="toc-a-note-of-caution" class="nav-link" data-scroll-target="#a-note-of-caution">A Note of Caution</a></li>
-  <li><a href="#example-computing-factorials" id="toc-example-computing-factorials" class="nav-link" data-scroll-target="#example-computing-factorials">Example: Computing Factorials</a>
-  <ul class="collapse">
-  <li><a href="#compare-functions-as-n-increases" id="toc-compare-functions-as-n-increases" class="nav-link" data-scroll-target="#compare-functions-as-n-increases">Compare functions as <span class="math inline">\(n\)</span> increases</a></li>
-  </ul></li>
-  <li><a href="#example-the-fibonacci-sequence" id="toc-example-the-fibonacci-sequence" class="nav-link" data-scroll-target="#example-the-fibonacci-sequence">Example: The Fibonacci sequence</a>
-  <ul class="collapse">
-  <li><a href="#as-a-for-loop" id="toc-as-a-for-loop" class="nav-link" data-scroll-target="#as-a-for-loop">As a for loop</a></li>
-  </ul></li>
+  <li><a href="#example-computing-factorials" id="toc-example-computing-factorials" class="nav-link" data-scroll-target="#example-computing-factorials">Example: Computing Factorials</a></li>
+  <li><a href="#example-the-fibonacci-sequence" id="toc-example-the-fibonacci-sequence" class="nav-link" data-scroll-target="#example-the-fibonacci-sequence">Example: The Fibonacci sequence</a></li>
   <li><a href="#aside-a-general-sequence-function" id="toc-aside-a-general-sequence-function" class="nav-link" data-scroll-target="#aside-a-general-sequence-function">Aside: A General Sequence Function</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -676,369 +668,218 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>A recursive function is <strong>a function that calls itself</strong>.</p>
-<p>This is weird, since it does not seem possible. How can a definition refer to itself?</p>
-<p>In philosophy, this is expressed in the Barber’s Paradox:</p>
-<blockquote class="blockquote">
-<p>The barber is the one who shaves all those, and those only, who do not shave themselves. Does the barber shave himself?</p>
-</blockquote>
-<p>Formally, it is a type of <a href="https://en.wikipedia.org/wiki/Self-reference">self-reference</a>, like <code>This sentence is false.</code></p>
-<p><strong>A Cute Definition</strong></p>
-<p><strong>recursion</strong> - the art of defining something (at least partly) in terms of itself, which is a naughty no-no in dictionaries but often works out okay in computer programs if you’re careful not to recurse forever (which is like an infinite loop with more spectacular failure modes).</p>
-<p>Source: <em>PerlDoc</em></p>
+<p>Programming for Data Science</p>
+<section id="what-is-recursion" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-recursion">What is Recursion?</h2>
+<p>Recursion in the context of programming occurs when a function <strong>calls to itsef</strong>.</p>
+<p>This seems strange, since you’d think that to be called, a function must first be defined … And yet the definition contains a the function!</p>
+<p>This is a bit like having a dictionary definition use the word it’s trying to define.</p>
+<p>However, <strong>a function definition is not like a dictionary definition</strong>.</p>
+<p>It does not define a <strong>thing</strong>. It defines a set of <strong>instructions</strong>.</p>
+<p>So, in effect, when a function calls itself, the instruction is:</p>
+<ul>
+<li>“Go back to the beginning of the code block with a new set of argument values.”</li>
+</ul>
+<p>Each time the function goes back to the beginning, Python keeps track of the nested function calls in a <strong>call stack</strong>.</p>
+<p>This will become clearer with examples.</p>
 </section>
 <section id="a-formal-definition" class="level2">
 <h2 class="anchored" data-anchor-id="a-formal-definition">A Formal Definition</h2>
 <p>In mathematics and computer science, a class of objects or methods exhibits <em>recursive behavior</em> when it can be defined by two properties:</p>
-<p>A <strong>simple base</strong> case (or cases): a terminating scenario that does not use recursion to produce an answer.</p>
-<p>A <strong>recursive step</strong>: a set of rules that reduces all successive cases toward the base case.</p>
-</section>
-<section id="as-seen-in-nature" class="level2">
-<h2 class="anchored" data-anchor-id="as-seen-in-nature">As Seen in Nature</h2>
-<p>Recursion occurs naturally when a process applies a rule to itself successively.</p>
-<p>We see this in fractals.</p>
-</section>
-<section id="infinite-loops-and-stack-overflows" class="level2">
-<h2 class="anchored" data-anchor-id="infinite-loops-and-stack-overflows">Infinite Loops and Stack Overflows</h2>
-<p>Every recursive function must have a base condition that stops the recursion or else the function calls itself infinitely.</p>
-<p>The Python interpreter limits the depths of recursion to help avoid infinite recursions, resulting in stack overflows.</p>
-<p>The <strong>call stack</strong> is where information is stored relating to the active subroutines in a program.</p>
-<p>The call stack has a limited amount of available memory. When excessive memory consumption occurs on the call stack, it results in a <strong>stack overflow error</strong>.</p>
+<ul>
+<li><p>A <strong>simple base</strong> case or condition: a terminating scenario that does not use recursion to produce an answer.</p></li>
+<li><p>A <strong>recursive step</strong>: a set of rules that reduces all successive cases toward the base case.</p></li>
+</ul>
+<p>Every recursive function must have a base condition that stops the recursion or else the function calls itself <strong>infinitely</strong>.</p>
 </section>
 <section id="a-note-of-caution" class="level2">
 <h2 class="anchored" data-anchor-id="a-note-of-caution">A Note of Caution</h2>
-<p>So, Recursion is cool, but is expensive and complicated.</p>
+<p>In practice, the Python interpreter <strong>limits the depths of recursion</strong> to help <strong>avoid infinite recursions</strong>, resulting in stack overflows.</p>
+<p>When excessive memory consumption occurs on the call stack, it results in a <strong>stack overflow error</strong>.</p>
+<p>Recursion is cool, but is expensive and complicated.</p>
 <p>Recursive functions can usually be implemented by traditional loops.</p>
 </section>
 <section id="example-computing-factorials" class="level2">
 <h2 class="anchored" data-anchor-id="example-computing-factorials">Example: Computing Factorials</h2>
-<p><a href="https://www.programiz.com/python-programming/recursion">Source</a></p>
 <p>The factorial of a number <span class="math inline">\(n\)</span> is the product of all the integers from <span class="math inline">\(1\)</span> to <span class="math inline">\(n\)</span>.</p>
 <p>For example, the factorial of <span class="math inline">\(5\)</span> (denoted as <span class="math inline">\(5!\)</span>) is <span class="math inline">\(1\times2\times3\times4\times5 = 120\)</span>.</p>
 <p>Let’s implement this in code using a recursive function.</p>
-<div id="cell-7" class="cell" data-execution_count="1">
+<div id="cell-6" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> factorial(x):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Finds the factorial of an integer using recursion"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">==</span> <span class="dv">1</span>: <span class="co"># Base condition</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x <span class="op">*</span> factorial(x<span class="op">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Base condition</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">==</span> <span class="dv">1</span>: </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Recursive step</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x <span class="op">*</span> factorial(x <span class="op">-</span> <span class="dv">1</span>) <span class="co"># Self-reference</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-9" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time factorial(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 4 µs, sys: 0 ns, total: 4 µs
-Wall time: 5.96 µs</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<p>Note how <code>x</code> gets smaller in the recursive step until it meets the base condition.</p>
+<div id="cell-8" class="cell" data-execution_count="360">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>factorial(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="360">
 <pre><code>120</code></pre>
 </div>
 </div>
-<p>As a while loop</p>
-<div id="cell-11" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> factorial_while(x):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Finds the factorial of an integer using a while loop"</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> x</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> x <span class="op">&gt;</span> <span class="dv">1</span>:</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        x <span class="op">-=</span> <span class="dv">1</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        f <span class="op">*=</span> x</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The same thing can be done as a while loop:</p>
+<div id="cell-10" class="cell" data-execution_count="222">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> factorial_while(x):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Finds the factorial of an integer using a while loop"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> x</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> x <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        x <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        result <span class="op">*=</span> x</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time factorial_while(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 4 µs, sys: 0 ns, total: 4 µs
-Wall time: 7.15 µs</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="cell-11" class="cell" data-execution_count="223">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>factorial_while(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="223">
 <pre><code>120</code></pre>
 </div>
 </div>
-<p>As a for loop</p>
-<div id="cell-14" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> factorial_for(x):</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Finds the factorial of an integer using a for loop"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> x</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, x):</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        x <span class="op">-=</span> <span class="dv">1</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        f <span class="op">*=</span> x</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And as a for loop:</p>
+<div id="cell-13" class="cell" data-execution_count="364">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> factorial_for(x):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Finds the factorial of an integer using a for loop"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, x<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        result <span class="op">*=</span> i</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time factorial_for(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 3 µs, sys: 0 ns, total: 3 µs
-Wall time: 5.25 µs</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div id="cell-14" class="cell" data-execution_count="365">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>factorial_for(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="365">
 <pre><code>120</code></pre>
 </div>
 </div>
-<section id="compare-functions-as-n-increases" class="level3">
-<h3 class="anchored" data-anchor-id="compare-functions-as-n-increases">Compare functions as <span class="math inline">\(n\)</span> increases</h3>
-<p>Increase <span class="math inline">\(n\)</span> to <span class="math inline">\(50\)</span></p>
-<div id="cell-17" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">50</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time factorial(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 5 µs, sys: 2 µs, total: 7 µs
-Wall time: 11 µs</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>30414093201713378043612608166064768844377641568960512000000000000</code></pre>
-</div>
-</div>
-<div id="cell-18" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time factorial_while(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 5 µs, sys: 1 µs, total: 6 µs
-Wall time: 8.11 µs</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>30414093201713378043612608166064768844377641568960512000000000000</code></pre>
-</div>
-</div>
-<div id="cell-19" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time factorial_for(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 7 µs, sys: 0 ns, total: 7 µs
-Wall time: 8.58 µs</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="12">
-<pre><code>30414093201713378043612608166064768844377641568960512000000000000</code></pre>
-</div>
-</div>
-<p>Increase <span class="math inline">\(n\)</span> to <span class="math inline">\(500\)</span></p>
-<div id="cell-21" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">500</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-22" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time factorial(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 117 µs, sys: 0 ns, total: 117 µs
-Wall time: 124 µs</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>1220136825991110068701238785423046926253574342803192842192413588385845373153881997605496447502203281863013616477148203584163378722078177200480785205159329285477907571939330603772960859086270429174547882424912726344305670173270769461062802310452644218878789465754777149863494367781037644274033827365397471386477878495438489595537537990423241061271326984327745715546309977202781014561081188373709531016356324432987029563896628911658974769572087926928871281780070265174507768410719624390394322536422605234945850129918571501248706961568141625359056693423813008856249246891564126775654481886506593847951775360894005745238940335798476363944905313062323749066445048824665075946735862074637925184200459369692981022263971952597190945217823331756934581508552332820762820023402626907898342451712006207714640979456116127629145951237229913340169552363850942885592018727433795173014586357570828355780158735432768888680120399882384702151467605445407663535984174430480128938313896881639487469658817504506926365338175055478128640000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</code></pre>
-</div>
-</div>
-<div id="cell-23" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time factorial_while(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 62 µs, sys: 21 µs, total: 83 µs
-Wall time: 84.6 µs</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>1220136825991110068701238785423046926253574342803192842192413588385845373153881997605496447502203281863013616477148203584163378722078177200480785205159329285477907571939330603772960859086270429174547882424912726344305670173270769461062802310452644218878789465754777149863494367781037644274033827365397471386477878495438489595537537990423241061271326984327745715546309977202781014561081188373709531016356324432987029563896628911658974769572087926928871281780070265174507768410719624390394322536422605234945850129918571501248706961568141625359056693423813008856249246891564126775654481886506593847951775360894005745238940335798476363944905313062323749066445048824665075946735862074637925184200459369692981022263971952597190945217823331756934581508552332820762820023402626907898342451712006207714640979456116127629145951237229913340169552363850942885592018727433795173014586357570828355780158735432768888680120399882384702151467605445407663535984174430480128938313896881639487469658817504506926365338175055478128640000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</code></pre>
-</div>
-</div>
-<div id="cell-24" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time factorial_for(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 69 µs, sys: 0 ns, total: 69 µs
-Wall time: 71 µs</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="16">
-<pre><code>1220136825991110068701238785423046926253574342803192842192413588385845373153881997605496447502203281863013616477148203584163378722078177200480785205159329285477907571939330603772960859086270429174547882424912726344305670173270769461062802310452644218878789465754777149863494367781037644274033827365397471386477878495438489595537537990423241061271326984327745715546309977202781014561081188373709531016356324432987029563896628911658974769572087926928871281780070265174507768410719624390394322536422605234945850129918571501248706961568141625359056693423813008856249246891564126775654481886506593847951775360894005745238940335798476363944905313062323749066445048824665075946735862074637925184200459369692981022263971952597190945217823331756934581508552332820762820023402626907898342451712006207714640979456116127629145951237229913340169552363850942885592018727433795173014586357570828355780158735432768888680120399882384702151467605445407663535984174430480128938313896881639487469658817504506926365338175055478128640000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</code></pre>
-</div>
-</div>
-<p>Increase <span class="math inline">\(n\)</span> to <span class="math inline">\(1000\)</span></p>
-<div id="cell-26" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-27" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time factorial(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 228 µs, sys: 77 µs, total: 305 µs
-Wall time: 307 µs</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>402387260077093773543702433923003985719374864210714632543799910429938512398629020592044208486969404800479988610197196058631666872994808558901323829669944590997424504087073759918823627727188732519779505950995276120874975462497043601418278094646496291056393887437886487337119181045825783647849977012476632889835955735432513185323958463075557409114262417474349347553428646576611667797396668820291207379143853719588249808126867838374559731746136085379534524221586593201928090878297308431392844403281231558611036976801357304216168747609675871348312025478589320767169132448426236131412508780208000261683151027341827977704784635868170164365024153691398281264810213092761244896359928705114964975419909342221566832572080821333186116811553615836546984046708975602900950537616475847728421889679646244945160765353408198901385442487984959953319101723355556602139450399736280750137837615307127761926849034352625200015888535147331611702103968175921510907788019393178114194545257223865541461062892187960223838971476088506276862967146674697562911234082439208160153780889893964518263243671616762179168909779911903754031274622289988005195444414282012187361745992642956581746628302955570299024324153181617210465832036786906117260158783520751516284225540265170483304226143974286933061690897968482590125458327168226458066526769958652682272807075781391858178889652208164348344825993266043367660176999612831860788386150279465955131156552036093988180612138558600301435694527224206344631797460594682573103790084024432438465657245014402821885252470935190620929023136493273497565513958720559654228749774011413346962715422845862377387538230483865688976461927383814900140767310446640259899490222221765904339901886018566526485061799702356193897017860040811889729918311021171229845901641921068884387121855646124960798722908519296819372388642614839657382291123125024186649353143970137428531926649875337218940694281434118520158014123344828015051399694290153483077644569099073152433278288269864602789864321139083506217095002597389863554277196742822248757586765752344220207573630569498825087968928162753848863396909959826280956121450994871701244516461260379029309120889086942028510640182154399457156805941872748998094254742173582401063677404595741785160829230135358081840096996372524230560855903700624271243416909004153690105933983835777939410970027753472000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</code></pre>
-</div>
-</div>
-<div id="cell-28" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time factorial_while(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 237 µs, sys: 0 ns, total: 237 µs
-Wall time: 238 µs</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="19">
-<pre><code>402387260077093773543702433923003985719374864210714632543799910429938512398629020592044208486969404800479988610197196058631666872994808558901323829669944590997424504087073759918823627727188732519779505950995276120874975462497043601418278094646496291056393887437886487337119181045825783647849977012476632889835955735432513185323958463075557409114262417474349347553428646576611667797396668820291207379143853719588249808126867838374559731746136085379534524221586593201928090878297308431392844403281231558611036976801357304216168747609675871348312025478589320767169132448426236131412508780208000261683151027341827977704784635868170164365024153691398281264810213092761244896359928705114964975419909342221566832572080821333186116811553615836546984046708975602900950537616475847728421889679646244945160765353408198901385442487984959953319101723355556602139450399736280750137837615307127761926849034352625200015888535147331611702103968175921510907788019393178114194545257223865541461062892187960223838971476088506276862967146674697562911234082439208160153780889893964518263243671616762179168909779911903754031274622289988005195444414282012187361745992642956581746628302955570299024324153181617210465832036786906117260158783520751516284225540265170483304226143974286933061690897968482590125458327168226458066526769958652682272807075781391858178889652208164348344825993266043367660176999612831860788386150279465955131156552036093988180612138558600301435694527224206344631797460594682573103790084024432438465657245014402821885252470935190620929023136493273497565513958720559654228749774011413346962715422845862377387538230483865688976461927383814900140767310446640259899490222221765904339901886018566526485061799702356193897017860040811889729918311021171229845901641921068884387121855646124960798722908519296819372388642614839657382291123125024186649353143970137428531926649875337218940694281434118520158014123344828015051399694290153483077644569099073152433278288269864602789864321139083506217095002597389863554277196742822248757586765752344220207573630569498825087968928162753848863396909959826280956121450994871701244516461260379029309120889086942028510640182154399457156805941872748998094254742173582401063677404595741785160829230135358081840096996372524230560855903700624271243416909004153690105933983835777939410970027753472000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</code></pre>
-</div>
-</div>
-<div id="cell-29" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time factorial_for(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 164 µs, sys: 54 µs, total: 218 µs
-Wall time: 220 µs</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="20">
-<pre><code>402387260077093773543702433923003985719374864210714632543799910429938512398629020592044208486969404800479988610197196058631666872994808558901323829669944590997424504087073759918823627727188732519779505950995276120874975462497043601418278094646496291056393887437886487337119181045825783647849977012476632889835955735432513185323958463075557409114262417474349347553428646576611667797396668820291207379143853719588249808126867838374559731746136085379534524221586593201928090878297308431392844403281231558611036976801357304216168747609675871348312025478589320767169132448426236131412508780208000261683151027341827977704784635868170164365024153691398281264810213092761244896359928705114964975419909342221566832572080821333186116811553615836546984046708975602900950537616475847728421889679646244945160765353408198901385442487984959953319101723355556602139450399736280750137837615307127761926849034352625200015888535147331611702103968175921510907788019393178114194545257223865541461062892187960223838971476088506276862967146674697562911234082439208160153780889893964518263243671616762179168909779911903754031274622289988005195444414282012187361745992642956581746628302955570299024324153181617210465832036786906117260158783520751516284225540265170483304226143974286933061690897968482590125458327168226458066526769958652682272807075781391858178889652208164348344825993266043367660176999612831860788386150279465955131156552036093988180612138558600301435694527224206344631797460594682573103790084024432438465657245014402821885252470935190620929023136493273497565513958720559654228749774011413346962715422845862377387538230483865688976461927383814900140767310446640259899490222221765904339901886018566526485061799702356193897017860040811889729918311021171229845901641921068884387121855646124960798722908519296819372388642614839657382291123125024186649353143970137428531926649875337218940694281434118520158014123344828015051399694290153483077644569099073152433278288269864602789864321139083506217095002597389863554277196742822248757586765752344220207573630569498825087968928162753848863396909959826280956121450994871701244516461260379029309120889086942028510640182154399457156805941872748998094254742173582401063677404595741785160829230135358081840096996372524230560855903700624271243416909004153690105933983835777939410970027753472000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</code></pre>
-</div>
-</div>
-</section>
 </section>
 <section id="example-the-fibonacci-sequence" class="level2">
 <h2 class="anchored" data-anchor-id="example-the-fibonacci-sequence">Example: The Fibonacci sequence</h2>
-<p><span class="math inline">\(Fib(0) = 0\)</span> (base case 1)</p>
-<p><span class="math inline">\(Fib(1) = 1\)</span> (base case 2)</p>
-<p>For all integers <span class="math inline">\(n &gt; 1\)</span>, <span class="math inline">\(Fib(n) = Fib(n − 1) + Fib(n − 2)\)</span></p>
-<p>where <span class="math inline">\(n\)</span> is the index of the number in the series.</p>
-<p>Basically, each number in the is the addition of the previous two numbers.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th><span class="math inline">\(n\)</span></th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(f(n)\)</span></td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>5</td>
-<td>8</td>
-<td>13</td>
-</tr>
-</tbody>
-</table>
-<div id="cell-31" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Fibonacci(n):</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Compute a Fibonacci Sequence using recursion"</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If n is negative</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Incorrect input. Value must be 0 or greater."</span>)</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If n is 0</span></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If n is 1</span></span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> Fibonacci(n <span class="op">-</span> <span class="dv">1</span>) <span class="op">+</span> Fibonacci(n <span class="op">-</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The Fibonacci sequence is defined by a series of numbers that equal the sum of the two previous numbers.</p>
+<p>Mathematically, we define it as follows:</p>
+<p><span class="math inline">\(Fib(1) = 0\)</span> (base case 1)<br>
+<span class="math inline">\(Fib(2) = 1\)</span> (base case 2)</p>
+<p>For all integers <span class="math inline">\(n &gt; 2\)</span>, <span class="math inline">\(Fib(n) = Fib(n − 1) + Fib(n − 2)\)</span></p>
+<!-- or $F_n = F_{n-1} + F_{n-2}$ where $F_1 = 0$ and $F_2$ = 1.
+
+where $n$ is the index of the number in the series. -->
+<p>For <span class="math inline">\(n = 8\)</span> the sequence is <span class="math inline">\(0, 1, 1, 2, 3, 5, 8, 13\)</span>.</p>
+<!--
+| $n$ |1|2|3|4|5|6|7|8|
+|-|-|-|-|-|-|-|-|-|
+| $F_n$ |0|1|1|2|3|5|8|13|
+-->
+<div id="cell-16" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="313">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fibonacci(n):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Compute a Fibonacci value using recursion"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Incorrect input. Value must be 1 or greater."</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> n <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> fibonacci(n <span class="op">-</span> <span class="dv">1</span>) <span class="op">+</span> fibonacci(n <span class="op">-</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-32" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-33" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>Fibonacci(<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
-<pre><code>34</code></pre>
+<p>Here get the F number for a given positive integer:</p>
+<div id="cell-18" class="cell" data-tags="[]" data-execution_count="327">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>fibonacci(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="327">
+<pre><code>13</code></pre>
 </div>
 </div>
-<div id="cell-34" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">20</span>):</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(Fibonacci(n), end<span class="op">=</span><span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here we compute the sequence itself:</p>
+<div id="cell-20" class="cell" data-tags="[]" data-execution_count="328">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="op">*</span>[fibonacci(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 </code></pre>
+<pre><code>0 1 1 2 3 5 8 13</code></pre>
 </div>
 </div>
-<section id="as-a-for-loop" class="level3">
-<h3 class="anchored" data-anchor-id="as-a-for-loop">As a for loop</h3>
-<div id="cell-36" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fibber(r:<span class="bu">int</span> <span class="op">=</span> <span class="dv">10</span>):</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Computes a Fibonacci Sequence using a for loop. </span></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns a string as a comma-limited series.</span></span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>    seq <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>] </span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, r):</span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>        seq.append(seq[n<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> seq[n<span class="op">-</span><span class="dv">2</span>])</span>
-<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="op">*</span>seq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>As a for loop:</p>
+<div id="cell-22" class="cell" data-execution_count="311">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fibber(n):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Computes a Fibonacci Sequence using a for loop. </span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns a string of the series.</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    F <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>] </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, n):</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        F.append(F[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> F[i<span class="op">-</span><span class="dv">2</span>])</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="op">*</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-37" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>fibber(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-23" class="cell" data-execution_count="312">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>fibber(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181</code></pre>
+<pre><code>0 1 1 2 3 5 8 13</code></pre>
 </div>
 </div>
-</section>
+<p>Note that here, we are letting the data structure do the work.</p>
 </section>
 <section id="aside-a-general-sequence-function" class="level2">
 <h2 class="anchored" data-anchor-id="aside-a-general-sequence-function">Aside: A General Sequence Function</h2>
 <p>Recursive functions are often used to produce mathematical sequences, but since they have limits on depth, they are of limited use for this purpose.</p>
-<p>Here is a function that can combine many sequences using two sequence parameters: * The initial state of the sequence, represented as the list <code>seq</code>. * For example, in the Fibonacci sequence, seq is <code>[1, 1, 2]</code> * The function to apply to the sequence at each iteration, represneted as a <code>lambda</code> function with the arguments <code>x</code> and <code>i</code> for the the sequence list <code>seq</code> and the iteration number respectively. * For example, in the Fibonacci sequence the kernel function is <code>lambda x, i: x[i-1] + x[i-2]</code></p>
-<div id="cell-39" class="cell" data-execution_count="81">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sequencer(n:<span class="bu">int</span> <span class="op">=</span> <span class="dv">10</span>, seq<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>], kernel<span class="op">=</span><span class="kw">lambda</span> x, i: x[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> x[i<span class="op">-</span><span class="dv">2</span>]):</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Computes a Sequence using a for loop. </span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameter n in integer which must be &gt; 3. Defaults to 10.</span></span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameter seq is as list in the initial state of the sequence. Must have at least one value. Defaults to Fibonacci [1,1,2]</span></span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameter kernel is the kernel function applied to the series at each iteration. x stands for the seq list, i to the iteration number. Defaults to lambda x, i: x[i-1] + x[i-2]</span></span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns a string as a comma-limited series.</span></span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(seq), n): seq.append(kernel(seq, i))</span>
-<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">', '</span>.join([<span class="bu">str</span>(x) <span class="cf">for</span> x <span class="kw">in</span> seq])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-40" class="cell" data-execution_count="82">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-41" class="cell" data-execution_count="83">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>time sequencer(n, [<span class="dv">0</span>], <span class="kw">lambda</span> x, i: i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 10 µs, sys: 0 ns, total: 10 µs
-Wall time: 12.2 µs</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="83">
-<pre><code>'0, 1, 2, 3, 4, 5, 6, 7'</code></pre>
-</div>
+<p>Here is a function that can combine many sequences using two sequence parameters: * The initial state of the sequence, represented as the list <code>seq</code>. * For example, in the Fibonacci sequence, seq is <code>[0, 1]</code> * The function to apply to the sequence at each iteration, represneted as a <code>lambda</code> function with the arguments <code>x</code> and <code>i</code> for the the sequence list <code>seq</code> and the iteration number respectively. * For example, in the Fibonacci sequence the kernel function is <code>lambda x, i: x[i-1] + x[i-2]</code></p>
+<div id="cell-26" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-tags="[]" data-execution_count="333">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sequencer(n <span class="op">=</span> <span class="dv">10</span>, seq<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>], kernel<span class="op">=</span><span class="kw">lambda</span> x, i: x[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> x[i<span class="op">-</span><span class="dv">2</span>]):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Computes a Sequence using a for loop. </span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">    n: an integer which must be &gt; 3. Defaults to 10.</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">    seq: is a list in the initial state of the sequence. </span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co">        Must have at least one value. Defaults to Fibonacci [1,1,2]</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">    kernel: the function applied to the series at each iteration. </span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">        x stands for the seq list, </span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">        i to the iteration number. </span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">        Defaults to lambda x, i: x[i-1] + x[i-2]</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co">    Prints the series as an undelimited string.</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(seq), n): </span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>        seq.append(kernel(seq, i))</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="op">*</span>seq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>The series of positive integers</strong></p>
-<div id="cell-43" class="cell" data-execution_count="84">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>sequencer(n, [<span class="dv">1</span>], <span class="kw">lambda</span> x, i: x[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="84">
-<pre><code>'1, 2, 3, 4, 5, 6, 7, 8'</code></pre>
+<div id="cell-28" class="cell" data-execution_count="344">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-29" class="cell" data-execution_count="345">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sequencer(n, [<span class="dv">1</span>], <span class="kw">lambda</span> x, i: x[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1 2 3 4 5 6 7 8</code></pre>
 </div>
 </div>
 <p><strong>The series of even numbers</strong></p>
-<div id="cell-45" class="cell" data-execution_count="85">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>sequencer(n, [<span class="dv">2</span>], <span class="kw">lambda</span> x, i: x[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="85">
-<pre><code>'2, 4, 6, 8, 10, 12, 14, 16'</code></pre>
+<div id="cell-31" class="cell" data-execution_count="346">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sequencer(n, [<span class="dv">2</span>], <span class="kw">lambda</span> x, i: x[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2 4 6 8 10 12 14 16</code></pre>
 </div>
 </div>
 <p><strong>The series of odd numbers</strong></p>
-<div id="cell-47" class="cell" data-execution_count="78">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>sequencer(n, [<span class="dv">1</span>], <span class="kw">lambda</span> x, i: x[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="78">
-<pre><code>'1, 3, 5, 7, 9, 11, 13, 15'</code></pre>
+<div id="cell-33" class="cell" data-execution_count="347">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sequencer(n, [<span class="dv">1</span>], <span class="kw">lambda</span> x, i: x[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1 3 5 7 9 11 13 15</code></pre>
 </div>
 </div>
 <p><strong>The series of Fibonacci numbers</strong></p>
-<div id="cell-49" class="cell" data-execution_count="79">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>sequencer(n, [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>], <span class="kw">lambda</span> x, i: x[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> x[i<span class="op">-</span><span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="79">
-<pre><code>'1, 1, 2, 3, 5, 8, 13, 21'</code></pre>
+<div id="cell-35" class="cell" data-execution_count="348">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sequencer(n, [<span class="dv">0</span>,<span class="dv">1</span>], <span class="kw">lambda</span> x, i: x[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> x[i<span class="op">-</span><span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0 1 1 2 3 5 8 13</code></pre>
 </div>
 </div>
 <p><strong>The series of Squares</strong></p>
-<div id="cell-51" class="cell" data-tags="[]" data-execution_count="80">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>sequencer(n, [<span class="dv">2</span>], <span class="kw">lambda</span> x, i: x[i<span class="op">-</span><span class="dv">1</span>]<span class="op">**</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="80">
-<pre><code>'2, 4, 16, 256, 65536, 4294967296, 18446744073709551616, 340282366920938463463374607431768211456'</code></pre>
+<div id="cell-37" class="cell" data-tags="[]" data-execution_count="349">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>sequencer(n, [<span class="dv">2</span>], <span class="kw">lambda</span> x, i: x[i<span class="op">-</span><span class="dv">1</span>]<span class="op">**</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2 4 16 256 65536 4294967296 18446744073709551616 340282366920938463463374607431768211456</code></pre>
 </div>
 </div>
 
@@ -1469,8 +1310,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../notebooks/M04_PythonFunctions/M04-05-Scope.html" class="pagination-link" aria-label="NB: Variable Scope">
-        <span class="nav-page-text"><span class="chapter-title">NB: Variable Scope</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../notebooks/M04_PythonFunctions/M04-05-Scope.html" class="pagination-link" aria-label="NB: Scope">
+        <span class="nav-page-text"><span class="chapter-title">NB: Scope</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

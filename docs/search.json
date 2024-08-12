@@ -1400,29 +1400,29 @@
     "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html",
     "title": "NB: Introduction to Functions",
     "section": "",
-    "text": "Introduction\nA function is piece of code, separate fom the larger program, that performs a specific task.\nThis piece of code is given a name and can be called from the main program.\nFunctions are the verbs of a programming language. They signify action, and take subjects and objects (as it were).\nFunctions take input and produce output.\nFunctions are always written with parentheses at the end of their names, e.g.\nlen(some_list)\nInternally, they contain a block of code to do their work.\nOften the producte a transformation … from simple to complex.\nWhen you use a function, we say you call a function. Programmers speak of “function calls” and “callbacks”.",
+    "text": "What is a Function?\nA function is piece of code, separate fom the larger program, that performs a specific task.\nThis piece of code is given a name and can be called from the main program.\nFunctions are the verbs of a programming language. They signify action, and take subjects and objects (as it were).",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>NB: Introduction to Functions</span>"
     ]
   },
   {
-    "objectID": "notebooks/M04_PythonFunctions/M04-01-Functions.html#introduction",
-    "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#introduction",
+    "objectID": "notebooks/M04_PythonFunctions/M04-01-Functions.html#how-do-they-work",
+    "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#how-do-they-work",
     "title": "NB: Introduction to Functions",
-    "section": "",
-    "text": "Function inputs are called both parameters and arguments.\nOutputs are called return values",
+    "section": "How do they Work?",
+    "text": "How do they Work?\nFunctions take input data and produce output data.\n\nFunction inputs are called both parameters and arguments.\nOutputs are called return values\n\nFunctions are always written with parentheses at the end of their names, e.g.\nlen(some_list)\ntime()\nInternally, they contain a block of code to do their work.\nOften the produce a transformation … e.g. from simple to complex.\nWhen you use a function, we say you call a function. Programmers speak of “function calls” and “callbacks.”",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>NB: Introduction to Functions</span>"
     ]
   },
   {
-    "objectID": "notebooks/M04_PythonFunctions/M04-01-Functions.html#benefits",
-    "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#benefits",
+    "objectID": "notebooks/M04_PythonFunctions/M04-01-Functions.html#why-use-them",
+    "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#why-use-them",
     "title": "NB: Introduction to Functions",
-    "section": "Benefits",
-    "text": "Benefits\nReduce complex tasks into simpler tasks.\nEliminate duplicate code – no need to re-write, reuse function as needed.\nMake code reusable. Once function is written, you can reuse it in any other program.\nDistribute tasks to multiple programmers. For example, each function can be written by someone.\nHide implementation details, i.e. abstraction.\nIncrease code readability.\nImprove debugging by improving traceability. Things are easier to follow; you can jump from function to function.",
+    "section": "Why Use Them?",
+    "text": "Why Use Them?\nReduce complex tasks into simpler tasks.\nEliminate duplicate code — no need to re-write, reuse function as needed.\nMake code reusable. Once function is written, you can reuse it in any other program.\nDistribute tasks to multiple programmers. For example, each function can be written by someone.\nHide implementation details, i.e. abstraction.\nIncrease code readability.\nImprove debugging by improving traceability. Things are easier to follow; you can jump from function to function.",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>NB: Introduction to Functions</span>"
@@ -1433,7 +1433,7 @@
     "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#built-in-functions",
     "title": "NB: Introduction to Functions",
     "section": "Built-in Functions",
-    "text": "Built-in Functions\nPython provides many built-in functions. See Python built-in functions.\nWe’ve looked at many of these already.\nThese are functions that are available to use any time your are running Python.\nTo take one simple example, this is a built-in function: bool().\nTakes an argument \\(x\\) and returns a boolean value, i.e. True or False.\n\nbool(0), bool(500)",
+    "text": "Built-in Functions\nPython provides many built-in functions. See Python built-in functions.\nWe’ve looked at many of these already.\nThese are functions that are available to use any time your are running Python.\nTo take one simple example, this is a built-in function: bool().\nTakes an argument \\(x\\) and returns a boolean value, i.e. True or False.\n\nbool(0), bool(500)\n\n(False, True)",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>NB: Introduction to Functions</span>"
@@ -1444,7 +1444,7 @@
     "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#imported-functions",
     "title": "NB: Introduction to Functions",
     "section": "Imported Functions",
-    "text": "Imported Functions\nPython is meant to be a highly modular language.\nIt is not designed to have a lot of special purpose functions built into it.\nThese keeps it light and highly customizable.\nMany functions (and other stuff) can be imported into a program to add to the functions that you can call in a script.",
+    "text": "Imported Functions\nPython is meant to be a highly modular language.\nIt is not designed to have a lot of special purpose functions built into it.\nThese keeps it light and highly customizable.\nMany functions can be imported into a program to add to the functions that you can call in a script.\n\nimport math\n\nmath.log(256, 2)\n\n8.0",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>NB: Introduction to Functions</span>"
@@ -1455,7 +1455,7 @@
     "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#user-defined-functions",
     "title": "NB: Introduction to Functions",
     "section": "User-Defined Functions",
-    "text": "User-Defined Functions\nPython makes it easy for you to write your own functions. These are called user-defined functions.\nLet’s write a function to compare the list against a threshold.\n\ndef vals_greater_than_or_equal_to_threshold(vals, thresh):\n    '''\n    This is the \"docstring\" of a function. It is optional but expected. It describes it's \n    purpose and the nature of the input and return values, as well as a sense of what it does.\n    More elaborate information should appear in external documentation packages with the function.\n    \n    PURPOSE: Given a list of values, compare each value against a threshold\n    \n    INPUTS\n    vals    list of ints or floats\n    thresh  int or float\n    \n    OUTPUT\n    bools  list of booleans\n    '''\n    \n    bools = [val &gt;= thresh for val in vals]\n    \n    return bools\n\nLet’s break down the components\nThe function definition starts with def, followed by name, one or more arguments in parenthesis, and then a colon.\nNext comes a docstring to provide information to users about how and why to use the function.\nThe function body follows.\n:astly is a return statement\nThe function call allows for the function to be used.\nIt consists of function name and required arguments:\nvals_greater_than_or_equal_to_threshold(arg1, arg2) where arg1, arg2 are arbitrary names.",
+    "text": "User-Defined Functions\nPython makes it easy for you to write your own functions. These are called user-defined functions.\nLet’s write a function to compare the list against a threshold.\n\ndef vals_greater_than_or_equal_to_threshold(vals, thresh):\n    '''\n    This is the \"docstring\" of a function. It is optional but expected. It describes it's \n    purpose and the nature of the input and return values, as well as a sense of what it does.\n    More elaborate information should appear in external documentation packages with the function.\n    \n    PURPOSE: Given a list of values, compare each value against a threshold\n    \n    INPUTS\n    vals    list of ints or floats\n    thresh  int or float\n    \n    OUTPUT\n    bools  list of booleans\n    '''\n    \n    filtered_vals = [val &gt;= thresh for val in vals]\n    \n    return filtered_vals\n\nLet’s break down the components\nThe function definition starts with def, followed by name, one or more arguments in parenthesis, and then a colon.\nNext comes a docstring to provide information to users about how and why to use the function.\nThe function body follows.\nLastly is a return statement\nThe function call allows for the function to be used.\nIt consists of function name and required arguments:\nvals_greater_than_or_equal_to_threshold(arg1, arg2) where arg1, arg2 are arbitrary names.",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>NB: Introduction to Functions</span>"
@@ -1466,18 +1466,29 @@
     "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#about-the-docstring",
     "title": "NB: Introduction to Functions",
     "section": "About the docstring",
-    "text": "About the docstring\nA docstring m occurs as first statement in module, function, class, or method definition\nInternally, it is saved in __doc__ attribute of the function object.\nIt needs to be indented.\nIt can be a single line or a multi-line string.\n\nUsers can print the docstring\n\nprint(vals_greater_than_or_equal_to_threshold.__doc__)\n\n\n    This is the \"docstring\" of a function. It is optional but expected. It describes it's \n    purpose and the nature of the input and return values, as well as a sense of what it does.\n    More elaborate information should appear in external documentation packages with the function.\n    \n    PURPOSE: Given a list of values, compare each value against a threshold\n    \n    INPUTS\n    vals    list of ints or floats\n    thresh  int or float\n    \n    OUTPUT\n    bools  list of booleans\n    \n\n\nPrint the docstring using help():\n\nhelp(vals_greater_than_or_equal_to_threshold)\n\nHelp on function vals_greater_than_or_equal_to_threshold in module __main__:\n\nvals_greater_than_or_equal_to_threshold(vals, thresh)\n    This is the \"docstring\" of a function. It is optional but expected. It describes it's \n    purpose and the nature of the input and return values, as well as a sense of what it does.\n    More elaborate information should appear in external documentation packages with the function.\n    \n    PURPOSE: Given a list of values, compare each value against a threshold\n    \n    INPUTS\n    vals    list of ints or floats\n    thresh  int or float\n    \n    OUTPUT\n    bools  list of booleans\n\n\n\nOr, use the ? prefix:\n\n?vals_greater_than_or_equal_to_threshold\n\n\nSignature: vals_greater_than_or_equal_to_threshold(vals, thresh)\nDocstring:\nThis is the \"docstring\" of a function. It is optional but expected. It describes it's \npurpose and the nature of the input and return values, as well as a sense of what it does.\nMore elaborate information should appear in external documentation packages with the function.\nPURPOSE: Given a list of values, compare each value against a threshold\nINPUTS\nvals    list of ints or floats\nthresh  int or float\nOUTPUT\nbools  list of booleans\nFile:      /tmp/ipykernel_835366/2026213090.py\nType:      function",
+    "text": "About the docstring\nA docstring occurs as first statement in module, function, class, or method definition.\nInternally, it is saved in __doc__ attribute of the function object.\nIt needs to be indented, i.e. part of the code block associated with the function.\nIt can be a single line or a multi-line string.",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>NB: Introduction to Functions</span>"
     ]
   },
   {
-    "objectID": "notebooks/M04_PythonFunctions/M04-01-Functions.html#lets-try-out-our-function",
-    "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#lets-try-out-our-function",
+    "objectID": "notebooks/M04_PythonFunctions/M04-01-Functions.html#users-can-print-the-docstring",
+    "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#users-can-print-the-docstring",
     "title": "NB: Introduction to Functions",
-    "section": "Let’s try out our function",
-    "text": "Let’s try out our function\nThe function body used a list comprehension for the comparison:\n[val &gt;= thresh for val in vals]\nValidate that it works for integers:\n\nx = [3, 4]\nthr = 4\n\nvals_greater_than_or_equal_to_threshold(x, thr)\n\n[False, True]\n\n\nValidate that it works for floats:\n\nx = [3.0, 4.2]\nthr = 4.2\n\nvals_greater_than_or_equal_to_threshold(x, thr)\n\n[False, True]\n\n\nThis gives correct results and does exactly what we want.",
+    "section": "Users can print the docstring",
+    "text": "Users can print the docstring\n\nprint(vals_greater_than_or_equal_to_threshold.__doc__)\n\n\n    This is the \"docstring\" of a function. It is optional but expected. It describes it's \n    purpose and the nature of the input and return values, as well as a sense of what it does.\n    More elaborate information should appear in external documentation packages with the function.\n    \n    PURPOSE: Given a list of values, compare each value against a threshold\n    \n    INPUTS\n    vals    list of ints or floats\n    thresh  int or float\n    \n    OUTPUT\n    bools  list of booleans\n    \n\n\nPrint the docstring using help():\n\nhelp(vals_greater_than_or_equal_to_threshold)\n\nHelp on function vals_greater_than_or_equal_to_threshold in module __main__:\n\nvals_greater_than_or_equal_to_threshold(vals, thresh)\n    This is the \"docstring\" of a function. It is optional but expected. It describes it's \n    purpose and the nature of the input and return values, as well as a sense of what it does.\n    More elaborate information should appear in external documentation packages with the function.\n    \n    PURPOSE: Given a list of values, compare each value against a threshold\n    \n    INPUTS\n    vals    list of ints or floats\n    thresh  int or float\n    \n    OUTPUT\n    bools  list of booleans\n\n\n\nOr, use the ? prefix in a Jupyter notebook:\n\n?vals_greater_than_or_equal_to_threshold\n\n\nSignature: vals_greater_than_or_equal_to_threshold(vals, thresh)\nDocstring:\nThis is the \"docstring\" of a function. It is optional but expected. It describes it's \npurpose and the nature of the input and return values, as well as a sense of what it does.\nMore elaborate information should appear in external documentation packages with the function.\nPURPOSE: Given a list of values, compare each value against a threshold\nINPUTS\nvals    list of ints or floats\nthresh  int or float\nOUTPUT\nbools  list of booleans\nFile:      /tmp/ipykernel_133200/392258855.py\nType:      function\n\n\n\nOr suffix …\n\nvals_greater_than_or_equal_to_threshold?\n\n\nSignature: vals_greater_than_or_equal_to_threshold(vals, thresh)\nDocstring:\nThis is the \"docstring\" of a function. It is optional but expected. It describes it's \npurpose and the nature of the input and return values, as well as a sense of what it does.\nMore elaborate information should appear in external documentation packages with the function.\nPURPOSE: Given a list of values, compare each value against a threshold\nINPUTS\nvals    list of ints or floats\nthresh  int or float\nOUTPUT\nbools  list of booleans\nFile:      /tmp/ipykernel_133200/392258855.py\nType:      function",
+    "crumbs": [
+      "M04 Functions",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>NB: Introduction to Functions</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M04_PythonFunctions/M04-01-Functions.html#calling-our-function",
+    "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#calling-our-function",
+    "title": "NB: Introduction to Functions",
+    "section": "Calling Our Function",
+    "text": "Calling Our Function\nLet’s use, or “call,” our function.\nThe function body uses a list comprehensionto perform a filtering operation:\n[val &gt;= thresh for val in vals]\nValidate that it works for integers:\n\nx = [3, 4]\nthr = 4\n\nvals_greater_than_or_equal_to_threshold(x, thr)\n\n[False, True]\n\n\nValidate that it works for floats:\n\nx = [3.0, 4.2]\nthr = 4.2\n\nvals_greater_than_or_equal_to_threshold(x, thr)\n\n[False, True]\n\n\nThis gives correct results and does exactly what we want.",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>NB: Introduction to Functions</span>"
@@ -1488,7 +1499,18 @@
     "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#passing-parameters",
     "title": "NB: Introduction to Functions",
     "section": "Passing Parameters",
-    "text": "Passing Parameters\nAll functions may take \\(0\\) or more arguments, also called parameters.\nFunctions need to be called with correct number of parameters.\nThis function requires two params, but the function call includes only one param.\n\ndef func_with_args(x, y):\n    return x + y\n\n\nfunc_with_args(10)\n\nTypeError: func_with_args() missing 1 required positional argument: 'y'\n\n\n\nParameter Order\nWhen calling a function, parameter order matters.\n\ndef fcn_swapped_args(x, y):\n    out = 5 * x + y\n    return out\n\n\nx = 1\ny = 2\n\n\nfcn_swapped_args(x, y)\n\n7\n\n\n\nfcn_swapped_args(y, x)\n\n11",
+    "text": "Passing Parameters\nAll functions may take \\(0\\) or more arguments, also called parameters.\nFunctions need to be called with correct number of parameters.\nThis function requires two parameters, but the function call includes only one parameter.\n\ndef func_with_args(x, y):\n    return x + y\n\n\nfunc_with_args(10)\n\nTypeError: func_with_args() missing 1 required positional argument: 'y'",
+    "crumbs": [
+      "M04 Functions",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>NB: Introduction to Functions</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M04_PythonFunctions/M04-01-Functions.html#parameter-order",
+    "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#parameter-order",
+    "title": "NB: Introduction to Functions",
+    "section": "Parameter Order",
+    "text": "Parameter Order\nWhen calling a function, parameter order matters.\n\ndef fcn_swapped_args(x, y):\n    out = 5 * x + y\n    return out\n\n\nx = 1\ny = 2\n\n\nfcn_swapped_args(x, y)\n\n7\n\n\n\nfcn_swapped_args(y, x)\n\n11",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>NB: Introduction to Functions</span>"
@@ -1499,18 +1521,18 @@
     "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#named-parameters",
     "title": "NB: Introduction to Functions",
     "section": "Named Parameters",
-    "text": "Named Parameters\nGenerally it’s best to keep parameters in order.\nHowever, You can swap the order by putting the parameter names in the function call.\n\nfcn_swapped_args(y=y, x=x)\n\n\nWeirdness Alert\nNote that the same name can be used for the parameter names and the variables passed to them.\nThe names themselves have nothng to do with each other!\nIn other words, just because a function names an argument foo,\nthe variables passed to it don’t have to name foo or anything like it.\nThey can even be named the same thing—it does not matter.",
+    "text": "Named Parameters\nGenerally it’s best to keep parameters in order.\nHowever, You can swap the order by putting the parameter names in the function call.\n\nfcn_swapped_args(y=y, x=x)",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>NB: Introduction to Functions</span>"
     ]
   },
   {
-    "objectID": "notebooks/M04_PythonFunctions/M04-01-Functions.html#unpacking-list-likes-with-args",
-    "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#unpacking-list-likes-with-args",
+    "objectID": "notebooks/M04_PythonFunctions/M04-01-Functions.html#weirdness-alert",
+    "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#weirdness-alert",
     "title": "NB: Introduction to Functions",
-    "section": "Unpacking List-likes with *args",
-    "text": "Unpacking List-likes with *args\nThe * prefix operator can be passed to avoid specifying the arguments individually.\n\ndef show_arg_expansion(*models):\n    \n    print(\"models          :\", models)\n    print(\"input arg type  :\",  type(models))\n    print(\"input arg length:\", len(models))\n    print(\"-----------------------------\")\n    \n    for mod in models:\n        print(mod)    \n\nWe can pass a tuple of values to the function …\n\nshow_arg_expansion(\"logreg\", \"naive_bayes\", \"gbm\")\n\nmodels          : ('logreg', 'naive_bayes', 'gbm')\ninput arg type  : &lt;class 'tuple'&gt;\ninput arg length: 3\n-----------------------------\nlogreg\nnaive_bayes\ngbm\n\n\nYou can also pass a list to the function.\nIf you want the elements unpacked, put * before the list.\n\nmodels = [\"logreg\", \"naive_bayes\", \"gbm\"]\nshow_arg_expansion(*models)\n\nmodels          : ('logreg', 'naive_bayes', 'gbm')\ninput arg type  : &lt;class 'tuple'&gt;\ninput arg length: 3\n-----------------------------\nlogreg\nnaive_bayes\ngbm\n\n\nThis approach allows your function to accept an arbitrary number of arguments.\n\nshow_arg_expansion('a b c d e f g'.split())\n\nmodels          : (['a', 'b', 'c', 'd', 'e', 'f', 'g'],)\ninput arg type  : &lt;class 'tuple'&gt;\ninput arg length: 1\n-----------------------------\n['a', 'b', 'c', 'd', 'e', 'f', 'g']\n\n\nThe reverse is true, too.\nYou can use the * prefix to pass list-like objects to a function that specifies its arguments.\n\ndef arg_expansion_example(x, y):\n    return x**y\n\n\nmy_args = [2, 8]\narg_expansion_example(*my_args)\n\n256\n\n\nBut, the passed object must be the right length.\n\nmy_args2 = [2, 8, 5]\narg_expansion_example(*my_args2)\n\nTypeError: arg_expansion_example() takes 2 positional arguments but 3 were given",
+    "section": "Weirdness Alert",
+    "text": "Weirdness Alert\nNote that the same name can be used for the parameter names and the variables passed to them.\nThe names themselves have nothng to do with each other!\nIn other words, just because a function names an argument foo,\nthe variables passed to it don’t have to name foo or anything like it.\nThey can even be named the same thing—it does not matter.",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>NB: Introduction to Functions</span>"
@@ -1521,7 +1543,7 @@
     "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#default-arguments",
     "title": "NB: Introduction to Functions",
     "section": "Default Arguments",
-    "text": "Default Arguments\nUse default arguments to set the value of arguments when left unspecified.\n\ndef show_results(precision, printing=True):\n    precision = round(precision, 2)\n    if printing:\n      print('precision =', precision)\n    return precision\n\n\npr = 0.912\nres = show_results(pr)\n\nprecision = 0.91\n\n\n\nfoo = show_results(pr, False)\n\nThe function call didn’t specify printing, so it defaulted to True.\nNOTE: Default arguments must follow non-default arguments. This causes trouble:\n\ndef show_results(precision, printing=True, uhoh):\n    precision = round(precision, 2)\n    if printing:\n      print('precision =', precision)\n    return precision\n\nSyntaxError: non-default argument follows default argument (830346004.py, line 1)",
+    "text": "Default Arguments\nUse default arguments to set the value of arguments.\nThis allows users to call functions with fewer (or no) arguments.\nDefaults are often set for the most common cases.\n\ndef show_results(precision, printing=True):\n    precision = round(precision, 2)\n    if printing:\n      print('precision =', precision)\n    return precision\n\n\npr = 0.912\nres = show_results(pr)\n\nprecision = 0.91\n\n\nThe function call didn’t specify printing, so it defaulted to True.\n\nfoo = show_results(pr, False)\n\nNOTE: Default arguments must follow non-default arguments in function definition.\nThis causes trouble:\n\ndef show_results(precision, printing=True, uhoh):\n    precision = round(precision, 2)\n    if printing:\n      print('precision =', precision)\n    return precision\n\nSyntaxError: non-default argument follows default argument (830346004.py, line 1)",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>NB: Introduction to Functions</span>"
@@ -1532,7 +1554,18 @@
     "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#returning-values",
     "title": "NB: Introduction to Functions",
     "section": "Returning Values",
-    "text": "Returning Values\nFunctions are not required to have return statement.\nIf there is no return statement, a function returns None.\nFunctions can return no value (None), one value, or many.\nMany values are returned as a tuple.\nAny Python object can be returned.\n\n## returns None, and prints.\n\ndef fcn_nothing_to_return(x, y):\n    out = 'nothing to see here!'\n    print(out)\n\n\nfcn_nothing_to_return(x, y)\n\nnothing to see here!\n\n\n\nr = fcn_nothing_to_return(1, 1)\nprint(r)\n\nnothing to see here!\nNone\n\n\n\n## returns three values\n\ndef negate_coords(x, y, z):\n    return -x, -y, -z \n\n\na, b, c = negate_coords(10, 20, 30)\nprint('a =', a)\nprint('b =', b)\nprint('c =', c)\n\na = -10\nb = -20\nc = -30\n\n\n\nfoo = negate_coords(10, 20, 30)\n\n\nfoo, len(foo)\n\n((-10, -20, -30), 3)\n\n\nIf you don’t need an output, use the dummy variable _\n\nd, e, _ = negate_coords(10,20,30)\nprint('d =', d)\nprint('e =', e)\n\nd = -10\ne = -20\n\n\nNote: It’s generally a good idea to include return statements, even if not returning a value.\nThis shows that you did not forget to consider the return value.\nYou can use return or return None.\nFunctions can contain multiple return statements.\nThese may be used under different logical conditions.\n\ndef absolute_value(num):\n    if num &gt;= 0:\n        return num\n    return -num\n\n\nabsolute_value(-4)\n\n4\n\n\n\nabsolute_value(4)\n\n4\n\n\nFor non-negative values, the first return is reached.\nFor negative values, the second return is reached.",
+    "text": "Returning Values\nFunctions are not required to have return statement but it is a good idea to have one.\nIf there is no return statement, a function returns None.\nFunctions can return no value (None), one value, or many.\nMany values are returned as a tuple.\nAny Python object can be returned.\nThis returns None.\n\ndef fcn_nothing_to_return(x, y):\n    out = 'nothing to see here!'\n    print(out)\n\n\nfcn_nothing_to_return(x, y)\n\nnothing to see here!\n\n\n\nr = fcn_nothing_to_return(1, 1)\n\nnothing to see here!\n\n\n\nr\n\n\nprint(r)\n\nNone\n\n\nThis returns three values.\n\ndef negate_coords(x, y, z):\n    return -x, -y, -z \n\n\na, b, c = negate_coords(10, 20, 30)\n\n\na, b, c\n\n(-10, -20, -30)\n\n\n\nfoo = negate_coords(10, 20, 30)\n\n\nfoo\n\n(-10, -20, -30)\n\n\nIf you don’t need an output, use the dummy variable _.\n\nd, e, _ = negate_coords(10,20,30)\n\n\nd, e\n\n(-10, -20)\n\n\nNote: It’s generally a good idea to include return statements, even if not returning a value.\nThis shows that you did not forget to consider the return value.\nYou can use return or return None.\nFunctions can contain multiple return statements.\nThese may be used under different logical conditions.\n\ndef absolute_value(num):\n    if num &gt;= 0:\n        return num\n    return -num\n\n\nabsolute_value(-4), absolute_value(4)\n\n(4, 4)",
+    "crumbs": [
+      "M04 Functions",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>NB: Introduction to Functions</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M04_PythonFunctions/M04-01-Functions.html#unpacking-list-likes-with-args",
+    "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#unpacking-list-likes-with-args",
+    "title": "NB: Introduction to Functions",
+    "section": "Unpacking List-likes with *args",
+    "text": "Unpacking List-likes with *args\nThe * prefix operator can be passed to avoid specifying the arguments individually.\n\ndef show_arg_expansion1(models):\n    print(models)\n\nWe can pass a tuple of values to the function …\n\nshow_arg_expansion1(\"logreg\", \"naive_bayes\", \"gbm\")\n\nTypeError: show_arg_expansion1() takes 1 positional argument but 3 were given\n\n\n\ndef show_arg_expansion2(*models):\n    print(models)\n\n\nshow_arg_expansion2(\"logreg\", \"naive_bayes\", \"gbm\")\n\n('logreg', 'naive_bayes', 'gbm')\n\n\nThis also allows for an unspecified number of arguments, such as how print() works.\nYou can also pass a list to the function.\nIf you want the elements unpacked, put * before the list.\n\nmodels = [\"logreg\", \"naive_bayes\", \"gbm\"]\nshow_arg_expansion2(*models)\n\n('logreg', 'naive_bayes', 'gbm')\n\n\nThis approach allows your function to accept an arbitrary number of arguments.\nNote you can prefix a string with an asterisk *:\n\nshow_arg_expansion2(*'abcdefg')\n\n('a', 'b', 'c', 'd', 'e', 'f', 'g')\n\n\nOr a string operation that returns a list:\n\nshow_arg_expansion2(*'a b c d e f g'.split())\n\n('a', 'b', 'c', 'd', 'e', 'f', 'g')\n\n\nYou can use the * prefix to pass list-like objects to a function with a defined number of arguments.\n\ndef arg_expansion_example(x, y):\n    return x**y\n\n\nmy_args = [2, 8]\narg_expansion_example(*my_args)\n\n256\n\n\nBut, the passed object must be the right length.\n\nmy_args2 = [2, 8, 5]\narg_expansion_example(*my_args2)\n\nTypeError: arg_expansion_example() takes 2 positional arguments but 3 were given",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>NB: Introduction to Functions</span>"
@@ -1543,7 +1576,7 @@
     "href": "notebooks/M04_PythonFunctions/M04-01-Functions.html#function-design",
     "title": "NB: Introduction to Functions",
     "section": "Function Design",
-    "text": "Function Design\nA function is not just a bag of code!\nSome good practices for creating and using functions:\n\ndesign a function to do one thing\n\nMake them as simple as possible, which makes them:\n\nmore comprehensible\neasier to maintain\nreusable\n\nThis helps avoid situations where a team has 20 variations of similar functions.\nGive your function a good name.\n\nIt should reflect the action it performs.\nBe consistent in your naming conventions.\nA name like compute_variances_sort_save_print suggests the function is overworked!\n\nIf the function compute_variances also produces plots and updates variables, it will cause confusion.\nAlways give your function a docstring - Particularly important since indicating data types is not required.\n- As a side note, you can include this information by using type annotation.\nFinally, at some point you may be interested to learn some of the formatting languages that have been developed to write docstrings. See Lutz 2019 and this web page about Documenting Python Code for more info.",
+    "text": "Function Design\nA function is not just a bag of code!\nDesign a function to do one thing.\nMake them as simple as possible. This makes them:\n\nmore comprehensible\neasier to maintain\nreusable\n\nThis helps avoid situations where a team has 20 variations of similar functions.\nGive your function a good name.\n\nIt should reflect the action it performs.\nBe consistent in your naming conventions.\nA name like compute_variances_sort_save_print suggests the function is overworked!\n\nIf the function compute_variances also produces plots and updates variables, it will cause confusion.\nAlways give your function a docstring\n\nParticularly important since indicating data types is not required.\n\nAs a side note, you can include this information by using type annotation.\n\nYou may be interested to learn some of the formatting languages that have been developed to write docstrings. See Lutz 2019 and this web page about Documenting Python Code for more info.",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>NB: Introduction to Functions</span>"
@@ -1554,7 +1587,7 @@
     "href": "notebooks/M04_PythonFunctions/M04-02-Importing.html",
     "title": "NB: Importing Functions",
     "section": "",
-    "text": "Importing\nCalling a function from the math library is straightforward:\nFor example:\nPut all of your import statements at the very top of your code, before anything else, other than any header comments (which you should have).\nHere are some example math functions:\nimport math # Typically best to put this line of code at the TOP of the file\nmath.sqrt(12)\n\n3.4641016151377544\nmath.floor(2.5) # returns largest whole number less than the argument\n\n2\nHere’s an example using the random library (a class).\nimport random # Typically best to put this line of code at the TOP of the file\nrandom.random()# will return a number between 0 and 1 \n\n0.3599068479674543\nrandom.randint(1, 100) # this will return a random integer in the range 1-100\n\n18",
+    "text": "Importing\nPreviously we saw that we can extend the functions available to use in a Python program by importing them.\nFor example, we imported the Math module to make its log function available.\nIn this notebook, we cover some basic properties of import statements.\nWe’ll go into greater detail when we cover Modules.",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>NB: Importing Functions</span>"
@@ -1565,7 +1598,40 @@
     "href": "notebooks/M04_PythonFunctions/M04-02-Importing.html#importing",
     "title": "NB: Importing Functions",
     "section": "",
-    "text": "Import Python’s Math library with the command import math\nCall methods from the imported math object using “dot” notation, that is, .(any parameters).\n\n\nmath.sqrt(12)",
+    "text": "import math",
+    "crumbs": [
+      "M04 Functions",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>NB: Importing Functions</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M04_PythonFunctions/M04-02-Importing.html#quick-example",
+    "href": "notebooks/M04_PythonFunctions/M04-02-Importing.html#quick-example",
+    "title": "NB: Importing Functions",
+    "section": "Quick Example",
+    "text": "Quick Example\nRecall that calling a function from the import math object is straightforward:\nFor example, to get the square root of \\(12\\) we can now do this:\n\nimport math\n\nmath.sqrt(12)\n\n3.4641016151377544\n\n\n\nmath.floor(2.5)\n\n2\n\n\nHere’s an example using the Random module.\n\nimport random\n\n\nrandom.random()\n\n0.602481588733838\n\n\n\nrandom.randint(1, 100)\n\n8",
+    "crumbs": [
+      "M04 Functions",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>NB: Importing Functions</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M04_PythonFunctions/M04-02-Importing.html#dot-notation",
+    "href": "notebooks/M04_PythonFunctions/M04-02-Importing.html#dot-notation",
+    "title": "NB: Importing Functions",
+    "section": "Dot Notation",
+    "text": "Dot Notation\nWe call functions from imported modules by object using “dot” notation.",
+    "crumbs": [
+      "M04 Functions",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>NB: Importing Functions</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M04_PythonFunctions/M04-02-Importing.html#importing-more-than-one-module",
+    "href": "notebooks/M04_PythonFunctions/M04-02-Importing.html#importing-more-than-one-module",
+    "title": "NB: Importing Functions",
+    "section": "Importing More than One Module",
+    "text": "Importing More than One Module\nYou can import as many modules into your code as you’d like.\nWe can do this as follows:\nimport math, random\nOr one import per line:\nimport math\nimport random\nIt is generally preferred to separate import statements by line.\nThis makes you code more readable and modular.\nRegarding modularity, with one import per line, you can do things like this:\nimport math\n# import random\nHere’s we quickly comment out an import statement without having to rewrite our code.\nIt is also a standard practice to put all of your import statements at the very top of your code, before any other code.",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>NB: Importing Functions</span>"
@@ -1576,18 +1642,18 @@
     "href": "notebooks/M04_PythonFunctions/M04-02-Importing.html#importing-specific-functions",
     "title": "NB: Importing Functions",
     "section": "Importing Specific Functions",
-    "text": "Importing Specific Functions\nIf you know what specifics function you are going to use from a library, you can import them directly, like so:\nfrom math import sqrt\nThis has two effects: 1. It reduces the memory used by the library in your program. 2. It allows you to call the function directly, with the object dot notation.\n\nfrom math import sqrt\n\n\nsqrt(99)\n\n9.9498743710662",
+    "text": "Importing Specific Functions\nIf you know what to use a specific function from an imported module, you can import them directly, like so:\n\nfrom math import sqrt\n\n\nsqrt(99)\n\n9.9498743710662\n\n\nThis reduces the memory used by the library in your program, since it is not importing all of the module’s code.\nIt also allows you to call the function directly, with the object dot notation.",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>NB: Importing Functions</span>"
     ]
   },
   {
-    "objectID": "notebooks/M04_PythonFunctions/M04-02-Importing.html#aliasing",
-    "href": "notebooks/M04_PythonFunctions/M04-02-Importing.html#aliasing",
+    "objectID": "notebooks/M04_PythonFunctions/M04-02-Importing.html#aliasing-imported-functions",
+    "href": "notebooks/M04_PythonFunctions/M04-02-Importing.html#aliasing-imported-functions",
     "title": "NB: Importing Functions",
-    "section": "Aliasing",
-    "text": "Aliasing\nTo avoid having the function name conflict with an existing function in your program,\nyou can alias the imported function like so:\n\nfrom math import sqrt as SquareRoot\n\n\nSquareRoot(65000)\n\n254.95097567963924",
+    "section": "Aliasing Imported Functions",
+    "text": "Aliasing Imported Functions\nYou can alias the imported function.\nThis avoids having the function name conflict with an existing function in your program.\n\nfrom math import sqrt as SquareRoot\n\n\nSquareRoot(65000)\n\n254.95097567963924",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>NB: Importing Functions</span>"
@@ -1598,40 +1664,40 @@
     "href": "notebooks/M04_PythonFunctions/M04-03-LambdaFunctions.html",
     "title": "NB: Lambda Functions",
     "section": "",
-    "text": "Introduction\nPython lambda functions are small, informal functions. They don’t get a name.\nThe are “anonymous.”\nFrom Lutz 2019:\nThe general form of a lambda function is:\nlambda x: x\n\n&lt;function __main__.&lt;lambda&gt;(x)&gt;\nYou can call the function like this:\n(lambda x: x)(2)\n\n2\nincrement x\n(lambda x: x+1)(5)\n\n6\nsum two variables\nlambda x, y: x + y\n\n&lt;function __main__.&lt;lambda&gt;(x, y)&gt;",
+    "text": "What’s a Lambda Function?\nPython lambda functions are small functions that can be written on one line.\nLike the one line if/else statement and comprehensions, they represent Python’s lean code writing tradition.\nLambda functions don’t need to be assigned to a variable — you can put them directly in places that expect functions the return, or expressions that evaluate to, values.\nThey sometimes called “anonymous” functions because they don’t have to have a name.",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>NB: Lambda Functions</span>"
     ]
   },
   {
-    "objectID": "notebooks/M04_PythonFunctions/M04-03-LambdaFunctions.html#introduction",
-    "href": "notebooks/M04_PythonFunctions/M04-03-LambdaFunctions.html#introduction",
+    "objectID": "notebooks/M04_PythonFunctions/M04-03-LambdaFunctions.html#how-do-you-define-a-lambda-function",
+    "href": "notebooks/M04_PythonFunctions/M04-03-LambdaFunctions.html#how-do-you-define-a-lambda-function",
     "title": "NB: Lambda Functions",
-    "section": "",
-    "text": "Besides the def statement, Python also provides an expression form that generates function objects. Because of its similarity to a tool in the Lisp language, it’s called lambda. Like def, this expression creates a function to be called later, but it returns the function instead of assigning it to a name. This is why lambdas are sometimes known as anonymous (i.e., unnamed) functions. In practice, they are often used as a way to inline a function definition, or to defer execution of a piece of code.",
+    "section": "How Do You Define a Lambda Function?",
+    "text": "How Do You Define a Lambda Function?\nThe general form of a lambda function is as follows:\nlambda x: x + 1\nthe first x is the argument, and the x after the colon is the body of the function.\nHere we just add one to the argument.\nThere is no return statement; the function just returns what body of the function evaluates to.\nYou can call the function like this:\n\n(lambda x: x + 1)(2)\n\n3\n\n\nNote how we treat it as an expression by wrapping it in parentheses.\nSince it evaluates to a function, we can use function parentheses at the end.",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>NB: Lambda Functions</span>"
     ]
   },
   {
-    "objectID": "notebooks/M04_PythonFunctions/M04-03-LambdaFunctions.html#assigned-to-a-variable",
-    "href": "notebooks/M04_PythonFunctions/M04-03-LambdaFunctions.html#assigned-to-a-variable",
+    "objectID": "notebooks/M04_PythonFunctions/M04-03-LambdaFunctions.html#assigning-to-a-variable",
+    "href": "notebooks/M04_PythonFunctions/M04-03-LambdaFunctions.html#assigning-to-a-variable",
     "title": "NB: Lambda Functions",
-    "section": "Assigned to a Variable",
-    "text": "Assigned to a Variable\nEven though they don’t get a name, they can be assigned to variables.\nHere, a lambda function gets assigned to sum_two_vars.\n\nsum_two_vars = lambda x, y: x + y\n\n\nsum_two_vars(2,4)\n\n6\n\n\nCheck if a value is non-negative\n\nis_non_negative = lambda x: x &gt;= 0\n\n\nis_non_negative(-9)\n\nFalse\n\n\n\nis_non_negative(0)\n\nTrue\n\n\nPackage first element and all data into tuple\n\npack_first_all = lambda x: (x[0], x)\n\n\ncasado = ('rice','beans','salad','plaintain','chicken') # a typical Costa Rican dish\n\npack_first_all(casado)\n\n('rice', ('rice', 'beans', 'salad', 'plaintain', 'chicken'))\n\n\nCheck for keyword “dirty”\n\nis_dirty = lambda txt: 'dirty' in txt\n\n\nkitchen_inspection = 'dirty dishes'\nis_dirty(kitchen_inspection)\n\nTrue\n\n\n\nkitchen_inspection = 'pretty clean!'\nis_dirty(kitchen_inspection)\n\nFalse\n\n\n**pass *args for unspecified number of arguments**\n\n(lambda *args: sum(args))(1,2,3)\n\nSyntaxError: invalid syntax (1364996940.py, line 1)",
+    "section": "Assigning to a Variable",
+    "text": "Assigning to a Variable\nYou can assign a lambda function to a variable.\nFor example, here are three lambda functions assigned to variables.\n\nsum_two_vars = lambda x, y: x + y\nis_non_negative = lambda x: x &gt;= 0\nis_dirty = lambda txt: 'dirty' in txt\n\n\nsum_two_vars(2, 4)\n\n6\n\n\n\nis_non_negative(-9)\n\nFalse\n\n\n\nis_dirty('dirty dishes')\n\nTrue\n\n\nLambda functions let us do things like this:\n\nfoo = {\n    'addone': lambda x: x + 1,\n    'square': lambda x: x * x,\n    'invert': lambda x: 1 / x\n}\n\nbar = 5 \n\nfor f in foo:\n    print(bar, f, '-&gt;', foo[f](bar))\n\n5 addone -&gt; 6\n5 square -&gt; 25\n5 invert -&gt; 0.2\n\n\nNote, you can also assign function names to variables, but of course you need to define them first.\n\ndef addone(x):\n    return x + 1\ndef square(x):\n    return x * x\ndef invert(x):\n    return 1/x\n\nfoo2 = [add_one, square, invert]\n\nfor f in foo2:\n    print(f(1))\n\n2\n1\n1.0",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>NB: Lambda Functions</span>"
     ]
   },
   {
-    "objectID": "notebooks/M04_PythonFunctions/M04-03-LambdaFunctions.html#using-lambda",
-    "href": "notebooks/M04_PythonFunctions/M04-03-LambdaFunctions.html#using-lambda",
+    "objectID": "notebooks/M04_PythonFunctions/M04-03-LambdaFunctions.html#use-cases-for-lambda",
+    "href": "notebooks/M04_PythonFunctions/M04-03-LambdaFunctions.html#use-cases-for-lambda",
     "title": "NB: Lambda Functions",
-    "section": "Using Lambda",
-    "text": "Using Lambda\nLambda functions are often used in Pandas.\nWe will discuss there use in more detail when we get to that topic.",
+    "section": "Use Cases for Lambda",
+    "text": "Use Cases for Lambda\nLambda functions are often used when you need use a function only once.\nSome prefer them for their ability to be part of one-liners.\nLambda functions are often used in Pandas.\nWe will discuss their use in more detail when we get to that topic.",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>NB: Lambda Functions</span>"
@@ -1642,18 +1708,18 @@
     "href": "notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.html",
     "title": "NB: Recursion",
     "section": "",
-    "text": "Introduction\nA recursive function is a function that calls itself.\nThis is weird, since it does not seem possible. How can a definition refer to itself?\nIn philosophy, this is expressed in the Barber’s Paradox:\nFormally, it is a type of self-reference, like This sentence is false.\nA Cute Definition\nrecursion - the art of defining something (at least partly) in terms of itself, which is a naughty no-no in dictionaries but often works out okay in computer programs if you’re careful not to recurse forever (which is like an infinite loop with more spectacular failure modes).\nSource: PerlDoc",
+    "text": "What is Recursion?\nRecursion in the context of programming occurs when a function calls to itsef.\nThis seems strange, since you’d think that to be called, a function must first be defined … And yet the definition contains a the function!\nThis is a bit like having a dictionary definition use the word it’s trying to define.\nHowever, a function definition is not like a dictionary definition.\nIt does not define a thing. It defines a set of instructions.\nSo, in effect, when a function calls itself, the instruction is:\nEach time the function goes back to the beginning, Python keeps track of the nested function calls in a call stack.\nThis will become clearer with examples.",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>NB: Recursion</span>"
     ]
   },
   {
-    "objectID": "notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.html#introduction",
-    "href": "notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.html#introduction",
+    "objectID": "notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.html#what-is-recursion",
+    "href": "notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.html#what-is-recursion",
     "title": "NB: Recursion",
     "section": "",
-    "text": "The barber is the one who shaves all those, and those only, who do not shave themselves. Does the barber shave himself?",
+    "text": "“Go back to the beginning of the code block with a new set of argument values.”",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>NB: Recursion</span>"
@@ -1664,29 +1730,7 @@
     "href": "notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.html#a-formal-definition",
     "title": "NB: Recursion",
     "section": "A Formal Definition",
-    "text": "A Formal Definition\nIn mathematics and computer science, a class of objects or methods exhibits recursive behavior when it can be defined by two properties:\nA simple base case (or cases): a terminating scenario that does not use recursion to produce an answer.\nA recursive step: a set of rules that reduces all successive cases toward the base case.",
-    "crumbs": [
-      "M04 Functions",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>NB: Recursion</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.html#as-seen-in-nature",
-    "href": "notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.html#as-seen-in-nature",
-    "title": "NB: Recursion",
-    "section": "As Seen in Nature",
-    "text": "As Seen in Nature\nRecursion occurs naturally when a process applies a rule to itself successively.\nWe see this in fractals.",
-    "crumbs": [
-      "M04 Functions",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>NB: Recursion</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.html#infinite-loops-and-stack-overflows",
-    "href": "notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.html#infinite-loops-and-stack-overflows",
-    "title": "NB: Recursion",
-    "section": "Infinite Loops and Stack Overflows",
-    "text": "Infinite Loops and Stack Overflows\nEvery recursive function must have a base condition that stops the recursion or else the function calls itself infinitely.\nThe Python interpreter limits the depths of recursion to help avoid infinite recursions, resulting in stack overflows.\nThe call stack is where information is stored relating to the active subroutines in a program.\nThe call stack has a limited amount of available memory. When excessive memory consumption occurs on the call stack, it results in a stack overflow error.",
+    "text": "A Formal Definition\nIn mathematics and computer science, a class of objects or methods exhibits recursive behavior when it can be defined by two properties:\n\nA simple base case or condition: a terminating scenario that does not use recursion to produce an answer.\nA recursive step: a set of rules that reduces all successive cases toward the base case.\n\nEvery recursive function must have a base condition that stops the recursion or else the function calls itself infinitely.",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>NB: Recursion</span>"
@@ -1697,7 +1741,7 @@
     "href": "notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.html#a-note-of-caution",
     "title": "NB: Recursion",
     "section": "A Note of Caution",
-    "text": "A Note of Caution\nSo, Recursion is cool, but is expensive and complicated.\nRecursive functions can usually be implemented by traditional loops.",
+    "text": "A Note of Caution\nIn practice, the Python interpreter limits the depths of recursion to help avoid infinite recursions, resulting in stack overflows.\nWhen excessive memory consumption occurs on the call stack, it results in a stack overflow error.\nRecursion is cool, but is expensive and complicated.\nRecursive functions can usually be implemented by traditional loops.",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>NB: Recursion</span>"
@@ -1708,7 +1752,7 @@
     "href": "notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.html#example-computing-factorials",
     "title": "NB: Recursion",
     "section": "Example: Computing Factorials",
-    "text": "Example: Computing Factorials\nSource\nThe factorial of a number \\(n\\) is the product of all the integers from \\(1\\) to \\(n\\).\nFor example, the factorial of \\(5\\) (denoted as \\(5!\\)) is \\(1\\times2\\times3\\times4\\times5 = 120\\).\nLet’s implement this in code using a recursive function.\n\ndef factorial(x):\n    \"Finds the factorial of an integer using recursion\"\n    if x == 1: # Base condition\n        return 1\n    else:\n        return x * factorial(x-1)\n\n\nn = 5\n\n\n%time factorial(n)\n\nCPU times: user 4 µs, sys: 0 ns, total: 4 µs\nWall time: 5.96 µs\n\n\n120\n\n\nAs a while loop\n\ndef factorial_while(x):\n    \"Finds the factorial of an integer using a while loop\"\n    f = x\n    while x &gt; 1:\n        x -= 1\n        f *= x\n    return f\n\n\n%time factorial_while(n)\n\nCPU times: user 4 µs, sys: 0 ns, total: 4 µs\nWall time: 7.15 µs\n\n\n120\n\n\nAs a for loop\n\ndef factorial_for(x):\n    \"Finds the factorial of an integer using a for loop\"\n    f = x\n    for i in range(1, x):\n        x -= 1\n        f *= x\n    return f\n\n\n%time factorial_for(n)\n\nCPU times: user 3 µs, sys: 0 ns, total: 3 µs\nWall time: 5.25 µs\n\n\n120\n\n\n\nCompare functions as \\(n\\) increases\nIncrease \\(n\\) to \\(50\\)\n\nn = 50\n%time factorial(n)\n\nCPU times: user 5 µs, sys: 2 µs, total: 7 µs\nWall time: 11 µs\n\n\n30414093201713378043612608166064768844377641568960512000000000000\n\n\n\n%time factorial_while(n)\n\nCPU times: user 5 µs, sys: 1 µs, total: 6 µs\nWall time: 8.11 µs\n\n\n30414093201713378043612608166064768844377641568960512000000000000\n\n\n\n%time factorial_for(n)\n\nCPU times: user 7 µs, sys: 0 ns, total: 7 µs\nWall time: 8.58 µs\n\n\n30414093201713378043612608166064768844377641568960512000000000000\n\n\nIncrease \\(n\\) to \\(500\\)\n\nn = 500\n\n\n%time factorial(n)\n\nCPU times: user 117 µs, sys: 0 ns, total: 117 µs\nWall time: 124 µs\n\n\n1220136825991110068701238785423046926253574342803192842192413588385845373153881997605496447502203281863013616477148203584163378722078177200480785205159329285477907571939330603772960859086270429174547882424912726344305670173270769461062802310452644218878789465754777149863494367781037644274033827365397471386477878495438489595537537990423241061271326984327745715546309977202781014561081188373709531016356324432987029563896628911658974769572087926928871281780070265174507768410719624390394322536422605234945850129918571501248706961568141625359056693423813008856249246891564126775654481886506593847951775360894005745238940335798476363944905313062323749066445048824665075946735862074637925184200459369692981022263971952597190945217823331756934581508552332820762820023402626907898342451712006207714640979456116127629145951237229913340169552363850942885592018727433795173014586357570828355780158735432768888680120399882384702151467605445407663535984174430480128938313896881639487469658817504506926365338175055478128640000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n\n\n\n%time factorial_while(n)\n\nCPU times: user 62 µs, sys: 21 µs, total: 83 µs\nWall time: 84.6 µs\n\n\n1220136825991110068701238785423046926253574342803192842192413588385845373153881997605496447502203281863013616477148203584163378722078177200480785205159329285477907571939330603772960859086270429174547882424912726344305670173270769461062802310452644218878789465754777149863494367781037644274033827365397471386477878495438489595537537990423241061271326984327745715546309977202781014561081188373709531016356324432987029563896628911658974769572087926928871281780070265174507768410719624390394322536422605234945850129918571501248706961568141625359056693423813008856249246891564126775654481886506593847951775360894005745238940335798476363944905313062323749066445048824665075946735862074637925184200459369692981022263971952597190945217823331756934581508552332820762820023402626907898342451712006207714640979456116127629145951237229913340169552363850942885592018727433795173014586357570828355780158735432768888680120399882384702151467605445407663535984174430480128938313896881639487469658817504506926365338175055478128640000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n\n\n\n%time factorial_for(n)\n\nCPU times: user 69 µs, sys: 0 ns, total: 69 µs\nWall time: 71 µs\n\n\n1220136825991110068701238785423046926253574342803192842192413588385845373153881997605496447502203281863013616477148203584163378722078177200480785205159329285477907571939330603772960859086270429174547882424912726344305670173270769461062802310452644218878789465754777149863494367781037644274033827365397471386477878495438489595537537990423241061271326984327745715546309977202781014561081188373709531016356324432987029563896628911658974769572087926928871281780070265174507768410719624390394322536422605234945850129918571501248706961568141625359056693423813008856249246891564126775654481886506593847951775360894005745238940335798476363944905313062323749066445048824665075946735862074637925184200459369692981022263971952597190945217823331756934581508552332820762820023402626907898342451712006207714640979456116127629145951237229913340169552363850942885592018727433795173014586357570828355780158735432768888680120399882384702151467605445407663535984174430480128938313896881639487469658817504506926365338175055478128640000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n\n\nIncrease \\(n\\) to \\(1000\\)\n\nn = 1000\n\n\n%time factorial(n)\n\nCPU times: user 228 µs, sys: 77 µs, total: 305 µs\nWall time: 307 µs\n\n\n402387260077093773543702433923003985719374864210714632543799910429938512398629020592044208486969404800479988610197196058631666872994808558901323829669944590997424504087073759918823627727188732519779505950995276120874975462497043601418278094646496291056393887437886487337119181045825783647849977012476632889835955735432513185323958463075557409114262417474349347553428646576611667797396668820291207379143853719588249808126867838374559731746136085379534524221586593201928090878297308431392844403281231558611036976801357304216168747609675871348312025478589320767169132448426236131412508780208000261683151027341827977704784635868170164365024153691398281264810213092761244896359928705114964975419909342221566832572080821333186116811553615836546984046708975602900950537616475847728421889679646244945160765353408198901385442487984959953319101723355556602139450399736280750137837615307127761926849034352625200015888535147331611702103968175921510907788019393178114194545257223865541461062892187960223838971476088506276862967146674697562911234082439208160153780889893964518263243671616762179168909779911903754031274622289988005195444414282012187361745992642956581746628302955570299024324153181617210465832036786906117260158783520751516284225540265170483304226143974286933061690897968482590125458327168226458066526769958652682272807075781391858178889652208164348344825993266043367660176999612831860788386150279465955131156552036093988180612138558600301435694527224206344631797460594682573103790084024432438465657245014402821885252470935190620929023136493273497565513958720559654228749774011413346962715422845862377387538230483865688976461927383814900140767310446640259899490222221765904339901886018566526485061799702356193897017860040811889729918311021171229845901641921068884387121855646124960798722908519296819372388642614839657382291123125024186649353143970137428531926649875337218940694281434118520158014123344828015051399694290153483077644569099073152433278288269864602789864321139083506217095002597389863554277196742822248757586765752344220207573630569498825087968928162753848863396909959826280956121450994871701244516461260379029309120889086942028510640182154399457156805941872748998094254742173582401063677404595741785160829230135358081840096996372524230560855903700624271243416909004153690105933983835777939410970027753472000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n\n\n\n%time factorial_while(n)\n\nCPU times: user 237 µs, sys: 0 ns, total: 237 µs\nWall time: 238 µs\n\n\n402387260077093773543702433923003985719374864210714632543799910429938512398629020592044208486969404800479988610197196058631666872994808558901323829669944590997424504087073759918823627727188732519779505950995276120874975462497043601418278094646496291056393887437886487337119181045825783647849977012476632889835955735432513185323958463075557409114262417474349347553428646576611667797396668820291207379143853719588249808126867838374559731746136085379534524221586593201928090878297308431392844403281231558611036976801357304216168747609675871348312025478589320767169132448426236131412508780208000261683151027341827977704784635868170164365024153691398281264810213092761244896359928705114964975419909342221566832572080821333186116811553615836546984046708975602900950537616475847728421889679646244945160765353408198901385442487984959953319101723355556602139450399736280750137837615307127761926849034352625200015888535147331611702103968175921510907788019393178114194545257223865541461062892187960223838971476088506276862967146674697562911234082439208160153780889893964518263243671616762179168909779911903754031274622289988005195444414282012187361745992642956581746628302955570299024324153181617210465832036786906117260158783520751516284225540265170483304226143974286933061690897968482590125458327168226458066526769958652682272807075781391858178889652208164348344825993266043367660176999612831860788386150279465955131156552036093988180612138558600301435694527224206344631797460594682573103790084024432438465657245014402821885252470935190620929023136493273497565513958720559654228749774011413346962715422845862377387538230483865688976461927383814900140767310446640259899490222221765904339901886018566526485061799702356193897017860040811889729918311021171229845901641921068884387121855646124960798722908519296819372388642614839657382291123125024186649353143970137428531926649875337218940694281434118520158014123344828015051399694290153483077644569099073152433278288269864602789864321139083506217095002597389863554277196742822248757586765752344220207573630569498825087968928162753848863396909959826280956121450994871701244516461260379029309120889086942028510640182154399457156805941872748998094254742173582401063677404595741785160829230135358081840096996372524230560855903700624271243416909004153690105933983835777939410970027753472000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n\n\n\n%time factorial_for(n)\n\nCPU times: user 164 µs, sys: 54 µs, total: 218 µs\nWall time: 220 µs\n\n\n402387260077093773543702433923003985719374864210714632543799910429938512398629020592044208486969404800479988610197196058631666872994808558901323829669944590997424504087073759918823627727188732519779505950995276120874975462497043601418278094646496291056393887437886487337119181045825783647849977012476632889835955735432513185323958463075557409114262417474349347553428646576611667797396668820291207379143853719588249808126867838374559731746136085379534524221586593201928090878297308431392844403281231558611036976801357304216168747609675871348312025478589320767169132448426236131412508780208000261683151027341827977704784635868170164365024153691398281264810213092761244896359928705114964975419909342221566832572080821333186116811553615836546984046708975602900950537616475847728421889679646244945160765353408198901385442487984959953319101723355556602139450399736280750137837615307127761926849034352625200015888535147331611702103968175921510907788019393178114194545257223865541461062892187960223838971476088506276862967146674697562911234082439208160153780889893964518263243671616762179168909779911903754031274622289988005195444414282012187361745992642956581746628302955570299024324153181617210465832036786906117260158783520751516284225540265170483304226143974286933061690897968482590125458327168226458066526769958652682272807075781391858178889652208164348344825993266043367660176999612831860788386150279465955131156552036093988180612138558600301435694527224206344631797460594682573103790084024432438465657245014402821885252470935190620929023136493273497565513958720559654228749774011413346962715422845862377387538230483865688976461927383814900140767310446640259899490222221765904339901886018566526485061799702356193897017860040811889729918311021171229845901641921068884387121855646124960798722908519296819372388642614839657382291123125024186649353143970137428531926649875337218940694281434118520158014123344828015051399694290153483077644569099073152433278288269864602789864321139083506217095002597389863554277196742822248757586765752344220207573630569498825087968928162753848863396909959826280956121450994871701244516461260379029309120889086942028510640182154399457156805941872748998094254742173582401063677404595741785160829230135358081840096996372524230560855903700624271243416909004153690105933983835777939410970027753472000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "text": "Example: Computing Factorials\nThe factorial of a number \\(n\\) is the product of all the integers from \\(1\\) to \\(n\\).\nFor example, the factorial of \\(5\\) (denoted as \\(5!\\)) is \\(1\\times2\\times3\\times4\\times5 = 120\\).\nLet’s implement this in code using a recursive function.\n\ndef factorial(x):\n    \"Finds the factorial of an integer using recursion\"\n    \n    # Base condition\n    if x == 1: \n        return 1\n\n    # Recursive step\n    else:\n        return x * factorial(x - 1) # Self-reference\n\nNote how x gets smaller in the recursive step until it meets the base condition.\n\nn = 5\nfactorial(n)\n\n120\n\n\nThe same thing can be done as a while loop:\n\ndef factorial_while(x):\n    \"Finds the factorial of an integer using a while loop\"\n    result = x\n    while x &gt; 1:\n        x -= 1\n        result *= x\n    return result\n\n\nfactorial_while(n)\n\n120\n\n\nAnd as a for loop:\n\ndef factorial_for(x):\n    \"Finds the factorial of an integer using a for loop\"\n    result = 1\n    for i in range(1, x+1):\n        result *= i\n    return result\n\n\nfactorial_for(n)\n\n120",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>NB: Recursion</span>"
@@ -1719,7 +1763,7 @@
     "href": "notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.html#example-the-fibonacci-sequence",
     "title": "NB: Recursion",
     "section": "Example: The Fibonacci sequence",
-    "text": "Example: The Fibonacci sequence\n\\(Fib(0) = 0\\) (base case 1)\n\\(Fib(1) = 1\\) (base case 2)\nFor all integers \\(n &gt; 1\\), \\(Fib(n) = Fib(n − 1) + Fib(n − 2)\\)\nwhere \\(n\\) is the index of the number in the series.\nBasically, each number in the is the addition of the previous two numbers.\n\n\n\n\\(n\\)\n0\n1\n2\n3\n4\n5\n6\n7\n\n\n\n\n\\(f(n)\\)\n0\n1\n1\n2\n3\n5\n8\n13\n\n\n\n\ndef Fibonacci(n):\n    \"Compute a Fibonacci Sequence using recursion\"\n\n    # If n is negative\n    if n &lt; 0:\n        print(\"Incorrect input. Value must be 0 or greater.\")\n\n    # If n is 0\n    elif n == 0:\n        return 0\n\n    # If n is 1\n    elif n == 1:\n        return 1\n\n    else:\n        return Fibonacci(n - 1) + Fibonacci(n - 2)\n\n\nn = 9\n\n\nFibonacci(9)\n\n34\n\n\n\nfor n in range(20):\n    print(Fibonacci(n), end=\" \")\n\n0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 \n\n\n\nAs a for loop\n\ndef fibber(r:int = 10):\n    \"\"\"\n    Computes a Fibonacci Sequence using a for loop. \n    Returns a string as a comma-limited series.\n    \"\"\"\n    seq = [0,1] \n    for n in range(2, r):\n        seq.append(seq[n-1] + seq[n-2])\n    print(*seq)\n\n\nfibber(20)\n\n0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181",
+    "text": "Example: The Fibonacci sequence\nThe Fibonacci sequence is defined by a series of numbers that equal the sum of the two previous numbers.\nMathematically, we define it as follows:\n\\(Fib(1) = 0\\) (base case 1)\n\\(Fib(2) = 1\\) (base case 2)\nFor all integers \\(n &gt; 2\\), \\(Fib(n) = Fib(n − 1) + Fib(n − 2)\\)\n\nFor \\(n = 8\\) the sequence is \\(0, 1, 1, 2, 3, 5, 8, 13\\).\n\n\ndef fibonacci(n):\n    \"Compute a Fibonacci value using recursion\"\n    if n &lt;= 0:\n        print(\"Incorrect input. Value must be 1 or greater.\")\n    elif n == 1:\n        return 0\n    elif n == 2:\n        return 1\n    else:\n        return fibonacci(n - 1) + fibonacci(n - 2)\n\nHere get the F number for a given positive integer:\n\nn = 8\nfibonacci(n)\n\n13\n\n\nHere we compute the sequence itself:\n\nprint(*[fibonacci(i) for i in range(1, n + 1)])\n\n0 1 1 2 3 5 8 13\n\n\nAs a for loop:\n\ndef fibber(n):\n    \"\"\"\n    Computes a Fibonacci Sequence using a for loop. \n    Returns a string of the series.\n    \"\"\"\n    F = [0,1] \n    for i in range(2, n):\n        F.append(F[i-1] + F[i-2])\n    print(*F)\n\n\nfibber(n)\n\n0 1 1 2 3 5 8 13\n\n\nNote that here, we are letting the data structure do the work.",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>NB: Recursion</span>"
@@ -1730,7 +1774,7 @@
     "href": "notebooks/M04_PythonFunctions/M04-04-RecursiveFunctions.html#aside-a-general-sequence-function",
     "title": "NB: Recursion",
     "section": "Aside: A General Sequence Function",
-    "text": "Aside: A General Sequence Function\nRecursive functions are often used to produce mathematical sequences, but since they have limits on depth, they are of limited use for this purpose.\nHere is a function that can combine many sequences using two sequence parameters: * The initial state of the sequence, represented as the list seq. * For example, in the Fibonacci sequence, seq is [1, 1, 2] * The function to apply to the sequence at each iteration, represneted as a lambda function with the arguments x and i for the the sequence list seq and the iteration number respectively. * For example, in the Fibonacci sequence the kernel function is lambda x, i: x[i-1] + x[i-2]\n\ndef sequencer(n:int = 10, seq=[1, 1, 2], kernel=lambda x, i: x[i-1] + x[i-2]):\n    \"\"\"\n    Computes a Sequence using a for loop. \n    \n    Parameter n in integer which must be &gt; 3. Defaults to 10.\n    Parameter seq is as list in the initial state of the sequence. Must have at least one value. Defaults to Fibonacci [1,1,2]\n    Parameter kernel is the kernel function applied to the series at each iteration. x stands for the seq list, i to the iteration number. Defaults to lambda x, i: x[i-1] + x[i-2]\n    \n    Returns a string as a comma-limited series.\n    \"\"\"\n    \n    for i in range(len(seq), n): seq.append(kernel(seq, i))\n    return ', '.join([str(x) for x in seq])\n\n\nn = 8\n\n\n%time sequencer(n, [0], lambda x, i: i)\n\nCPU times: user 10 µs, sys: 0 ns, total: 10 µs\nWall time: 12.2 µs\n\n\n'0, 1, 2, 3, 4, 5, 6, 7'\n\n\nThe series of positive integers\n\nsequencer(n, [1], lambda x, i: x[i-1] + 1)\n\n'1, 2, 3, 4, 5, 6, 7, 8'\n\n\nThe series of even numbers\n\nsequencer(n, [2], lambda x, i: x[i-1] + 2)\n\n'2, 4, 6, 8, 10, 12, 14, 16'\n\n\nThe series of odd numbers\n\nsequencer(n, [1], lambda x, i: x[i-1] + 2)\n\n'1, 3, 5, 7, 9, 11, 13, 15'\n\n\nThe series of Fibonacci numbers\n\nsequencer(n, [1,1,2], lambda x, i: x[i-1] + x[i-2])\n\n'1, 1, 2, 3, 5, 8, 13, 21'\n\n\nThe series of Squares\n\nsequencer(n, [2], lambda x, i: x[i-1]**2)\n\n'2, 4, 16, 256, 65536, 4294967296, 18446744073709551616, 340282366920938463463374607431768211456'",
+    "text": "Aside: A General Sequence Function\nRecursive functions are often used to produce mathematical sequences, but since they have limits on depth, they are of limited use for this purpose.\nHere is a function that can combine many sequences using two sequence parameters: * The initial state of the sequence, represented as the list seq. * For example, in the Fibonacci sequence, seq is [0, 1] * The function to apply to the sequence at each iteration, represneted as a lambda function with the arguments x and i for the the sequence list seq and the iteration number respectively. * For example, in the Fibonacci sequence the kernel function is lambda x, i: x[i-1] + x[i-2]\n\ndef sequencer(n = 10, seq=[1, 1, 2], kernel=lambda x, i: x[i-1] + x[i-2]):\n    \"\"\"\n    Computes a Sequence using a for loop. \n    \n    n: an integer which must be &gt; 3. Defaults to 10.\n    seq: is a list in the initial state of the sequence. \n        Must have at least one value. Defaults to Fibonacci [1,1,2]\n    kernel: the function applied to the series at each iteration. \n        x stands for the seq list, \n        i to the iteration number. \n        Defaults to lambda x, i: x[i-1] + x[i-2]\n    \n    Prints the series as an undelimited string.\n    \"\"\"\n    \n    for i in range(len(seq), n): \n        seq.append(kernel(seq, i))\n        \n    print(*seq)\n\nThe series of positive integers\n\nn = 8\n\n\nsequencer(n, [1], lambda x, i: x[i-1] + 1)\n\n1 2 3 4 5 6 7 8\n\n\nThe series of even numbers\n\nsequencer(n, [2], lambda x, i: x[i-1] + 2)\n\n2 4 6 8 10 12 14 16\n\n\nThe series of odd numbers\n\nsequencer(n, [1], lambda x, i: x[i-1] + 2)\n\n1 3 5 7 9 11 13 15\n\n\nThe series of Fibonacci numbers\n\nsequencer(n, [0,1], lambda x, i: x[i-1] + x[i-2])\n\n0 1 1 2 3 5 8 13\n\n\nThe series of Squares\n\nsequencer(n, [2], lambda x, i: x[i-1]**2)\n\n2 4 16 256 65536 4294967296 18446744073709551616 340282366920938463463374607431768211456",
     "crumbs": [
       "M04 Functions",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>NB: Recursion</span>"
@@ -1739,188 +1783,199 @@
   {
     "objectID": "notebooks/M04_PythonFunctions/M04-05-Scope.html",
     "href": "notebooks/M04_PythonFunctions/M04-05-Scope.html",
-    "title": "NB: Variable Scope",
+    "title": "NB: Scope",
     "section": "",
-    "text": "Overview\nA variable’s scope is the part of a program where it is visible.\nWhen a variable is defined inside of a function, it is not visible outside of the function. * We say such variables are local to the function. * They are also removed from memory when the function completes.\nWhen a variable is defined outside of any function in a script, it is visible to any function inside of the script * We say such variables are global to the functions in the file or context in which the variables are defined. * A function can replace a global variable with local variable by defining that variable. In this case, a variable can have global and local versions in the same program.\nSometimes variable scope is called lexical scope.\nIt is helpful to have a good understanding of scope to avoid surprises and confusion.\nThe concept is easier than it may look in the abstract. Let’s look at some examples where we vary the use of local and global definitions of x.",
+    "text": "What is Scope?\nScope is a fundamental concept in computer programming.\nScope is a property of a variable or other object that refers to where it can be seen in a program.\nTo be seen, or visible, means to be available or usable.\nIf a variable is in scope to a function, it is visible to the function.\nIf it is out of scope to a function, it is not visible to the function.\nScope hinges on the fact that programs have regions within which variables can be assigned.\nThese regions consist of nested code blocks.\nWe saw this distinction when looking at how function arguments work.\nIn the code below, x, y, and z are inside the function, while a, b, and c are outside of it.\nThe code inside the function block is local to the function.\nThe code outside the function block is global to the program.\nTo put it visuallly, the area contained by the red rectangle is local and the area of the green rectangle is global.\nNot that indentation does the work of defining the regions by which scope is defined.",
     "crumbs": [
       "M04 Functions",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Variable Scope</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Scope</span>"
     ]
   },
   {
-    "objectID": "notebooks/M04_PythonFunctions/M04-05-Scope.html#overview",
-    "href": "notebooks/M04_PythonFunctions/M04-05-Scope.html#overview",
-    "title": "NB: Variable Scope",
+    "objectID": "notebooks/M04_PythonFunctions/M04-05-Scope.html#what-is-scope",
+    "href": "notebooks/M04_PythonFunctions/M04-05-Scope.html#what-is-scope",
+    "title": "NB: Scope",
     "section": "",
-    "text": "Scope refers to the coding region, such as a function block, from which a particular Python object is accessible.\nVisible means available or usable to the code block in question.\nIf a variable is in scope to a function, it is visible the function.\nIf it is out of scope to a function, it is not visible the function.",
+    "text": "def my_function(x, y):\n    z = x + y\n    return z\n\na = 10\nb = 20\nc = my_function(x=a, y=b)\n\n\n\n\n\n\nscope.png",
     "crumbs": [
       "M04 Functions",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Variable Scope</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Scope</span>"
     ]
   },
   {
     "objectID": "notebooks/M04_PythonFunctions/M04-05-Scope.html#lutz-on-scoping",
     "href": "notebooks/M04_PythonFunctions/M04-05-Scope.html#lutz-on-scoping",
-    "title": "NB: Variable Scope",
+    "title": "NB: Scope",
     "section": "Lutz on Scoping",
-    "text": "Lutz on Scoping\nHere’s an excerpt from Lutz, Chapter 17. Please read the whole thing.\nThe enclosing module is a global scope. Each module is a global scope—that is, a namespace in which variables created (assigned) at the top level of the module file live. Global variables become attributes of a module object to the outside world after imports but can also be used as simple variables within the module file itself.\nThe global scope spans a single file only. Don’t be fooled by the word “global” here—names at the top level of a file are global to code within that single file only. There is really no notion of a single, all-encompassing global file-based scope in Python. Instead, names are partitioned into modules, and you must always import a module explicitly if you want to be able to use the names its file defines. When you hear “global” in Python, think “module.”\nAssigned names are local unless declared global or nonlocal. By default, all the names assigned inside a function definition are put in the local scope (the namespace associated with the function call). If you need to assign a name that lives at the top level of the module enclosing the function, you can do so by declaring it in a global statement inside the function. If you need to assign a name that lives in an enclosing def, as of Python 3.X you can do so by declaring it in a nonlocal statement.\nAll other names are enclosing function locals, globals, or built-ins. Names not assigned a value in the function definition are assumed to be enclosing scope locals, defined in a physically surrounding def statement; globals that live in the enclosing module’s namespace; or built-ins in the predefined built-ins module Python provides.\nEach call to a function creates a new local scope. Every time you call a function, you create a new local scope—that is, a namespace in which the names created inside that function will usually live. You can think of each def statement (and lambda expression) as defining a new local scope, but the local scope actually corresponds to a function call. Because Python allows functions to call themselves to loop—an advanced technique known as recursion and noted briefly in Chapter 9 when we explored comparisons—each active call receives its own copy of the function’s local variables. Recursion is useful in functions we write as well, to process structures whose shapes can’t be predicted ahead of time; we’ll explore it more fully in Chapter 19.\nAnd here is a nice visualization of scopes:\n\n\n\nCar with tinted glass\n\n\nPlease read Lutz, Chapter 17 for a good overview of scoping.",
+    "text": "Lutz on Scoping\nHere’s an excerpt from Lutz, Chapter 17. Please read the whole thing.\nThe enclosing module is a global scope. Each module is a global scope—that is, a namespace in which variables created (assigned) at the top level of the module file live. Global variables become attributes of a module object to the outside world after imports but can also be used as simple variables within the module file itself.\nThe global scope spans a single file only. Don’t be fooled by the word “global” here—names at the top level of a file are global to code within that single file only. There is really no notion of a single, all-encompassing global file-based scope in Python. Instead, names are partitioned into modules, and you must always import a module explicitly if you want to be able to use the names its file defines. When you hear “global” in Python, think “module.”\nAssigned names are local unless declared global or nonlocal. By default, all the names assigned inside a function definition are put in the local scope (the namespace associated with the function call). If you need to assign a name that lives at the top level of the module enclosing the function, you can do so by declaring it in a global statement inside the function. If you need to assign a name that lives in an enclosing def, as of Python 3.X you can do so by declaring it in a nonlocal statement.\nAll other names are enclosing function locals, globals, or built-ins. Names not assigned a value in the function definition are assumed to be enclosing scope locals, defined in a physically surrounding def statement; globals that live in the enclosing module’s namespace; or built-ins in the predefined built-ins module Python provides.\nEach call to a function creates a new local scope. Every time you call a function, you create a new local scope—that is, a namespace in which the names created inside that function will usually live. You can think of each def statement (and lambda expression) as defining a new local scope, but the local scope actually corresponds to a function call. Because Python allows functions to call themselves to loop—an advanced technique known as recursion and noted briefly in Chapter 9 when we explored comparisons—each active call receives its own copy of the function’s local variables. Recursion is useful in functions we write as well, to process structures whose shapes can’t be predicted ahead of time; we’ll explore it more fully in Chapter 19.\nThere are actually other scope levels.\nHere is a nice visualization of them:\n\n\n\nScope Levels\n\n\nPlease read Lutz, Chapter 17 for a good overview of scoping.",
     "crumbs": [
       "M04 Functions",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Variable Scope</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Scope</span>"
     ]
   },
   {
     "objectID": "notebooks/M04_PythonFunctions/M04-05-Scope.html#the-tinted-glass-metaphor",
     "href": "notebooks/M04_PythonFunctions/M04-05-Scope.html#the-tinted-glass-metaphor",
-    "title": "NB: Variable Scope",
+    "title": "NB: Scope",
     "section": "The Tinted Glass Metaphor",
-    "text": "The Tinted Glass Metaphor\n\nSo, code regions within a program are like vehicles with tinted glass: * Passengers can see outside, but outsiders can’t see inside. * Passengers in a vehicle can let outsiders look in by lowering the window.\nOr something. Lile models, all metaphors are wrong, but some are useful. :-)",
+    "text": "The Tinted Glass Metaphor\n\nCode regions in a program are like vehicles with tinted glass:\n\nPassengers can see outside, but outsiders can’t see inside.\nPassengers in a vehicle can let outsiders look in by lowering the window.",
     "crumbs": [
       "M04 Functions",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Variable Scope</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Scope</span>"
     ]
   },
   {
     "objectID": "notebooks/M04_PythonFunctions/M04-05-Scope.html#example-1",
     "href": "notebooks/M04_PythonFunctions/M04-05-Scope.html#example-1",
-    "title": "NB: Variable Scope",
+    "title": "NB: Scope",
     "section": "Example 1",
-    "text": "Example 1\nx defined outside a function but used inside of it\nIn the code below: * x is global and seen from inside the function.\n* a is local to the function. trying to print outside function throws error.\nNote that arguments are essentially locally defined variables.\n\nx = 10\n\ndef scope_func1(a):\n    out = x + a\n    return out\n\nThe following works because x is global and functions can access globals so long as they don’t reassign the variable name.\n\ny = scope_func1(6)\nprint(y)\n\n16\n\n\nThe following fails because a local and not visible outside the function.\n\nprint(a)\n\nNameError: name 'a' is not defined",
+    "text": "Example 1\nA variable x i defined outside a function but used inside of it.\nIn the code below x is global and seen from inside the function.\nThe variable a is local to the function.\nTrying to print outside function throws error.\n\nx = 10\n\ndef scope_func1(a):\n    out = x + a\n    return out\n\nThe following works because x is global and functions can access globals so long as they don’t reassign the variable name.\n\ny = scope_func1(6)\nprint(y)\n\n16\n\n\nThe following fails because a local and not visible outside the function.\n\nprint(a)\n\nNameError: name 'a' is not defined",
     "crumbs": [
       "M04 Functions",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Variable Scope</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Scope</span>"
     ]
   },
   {
     "objectID": "notebooks/M04_PythonFunctions/M04-05-Scope.html#example-2",
     "href": "notebooks/M04_PythonFunctions/M04-05-Scope.html#example-2",
-    "title": "NB: Variable Scope",
+    "title": "NB: Scope",
     "section": "Example 2",
-    "text": "Example 2\nx defined both outside and inside function, and used inside the function\nThis function reassigns x, so it becomes local.\nNote that a variable becomes local once it is used in an assignment statement within a function, or if it the name of an argument.\n\nx = 10 # Global\n\ndef scope_func2(a):\n\n    x = 20 # Local\n    print('x from inside:', x)\n    \n    out = x + a\n    \n    return out\n\n\ny = scope_func2(6)\nprint(y)\nprint('x from outside:', x)\n\nx from inside: 20\n26\nx from outside: 10",
+    "text": "Example 2\nA variable x defined both outside and inside function, and used inside the function.\nThis function reassigns x, so it becomes local.\nA variable becomes local once it is used in an assignment statement within a function, or if it is the name of an argument.\n\nx = 10 # Global\n\ndef scope_func2(a):\n    x = 20 # Local\n    print('x from inside:', x)\n    out = x + a\n    return out\n\n\ny = scope_func2(6)\nprint(y)\nprint('x from outside:', x)\n\nx from inside: 20\n26\nx from outside: 10",
     "crumbs": [
       "M04 Functions",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Variable Scope</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Scope</span>"
     ]
   },
   {
     "objectID": "notebooks/M04_PythonFunctions/M04-05-Scope.html#example-2a",
     "href": "notebooks/M04_PythonFunctions/M04-05-Scope.html#example-2a",
-    "title": "NB: Variable Scope",
+    "title": "NB: Scope",
     "section": "Example 2a",
-    "text": "Example 2a\nHere we define x as an argument.\nThis has the same effect as defining it in the body of the function.\n\nx = 10 # Global\n\ndef scope_func2a(a, x=20): # Argment variables are local\n\n    print('x from inside:', x)\n    \n    out = x + a\n    \n    return out\n\n\nprint('x from outside before function:', x)\ny = scope_func2a(6)\nprint(y)\nprint('x from outside before function:', x)\n\nx from outside before function: 10\nx from inside: 20\n26\nx from outside before function: 10\n\n\nAs an argument, though, it can be assigned the value of the global.\nNevertheless, only the value is being passed between the global and local versions of x.\n\nx = 10 # Global\n\ndef scope_func2a(a, x=20):\n\n    print('x from inside before incremenet:', x)\n    x += 10\n    print('x from inside after incremenet:', x)\n    \n    out = x + a\n    \n    return out\n\n\nprint('x from outside before function:', x)\ny = scope_func2a(6, x)\nprint(y)\nprint('x from outside after function:', x)\n\nx from outside before function: 10\nx from inside before incremenet: 10\nx from inside after incremenet: 20\n26\nx from outside after function: 10",
+    "text": "Example 2a\nHere we define x as an argument.\nThis has the same effect as defining it in the body of the function.\n\nx = 10 # Global\n\ndef scope_func2a(a, x=20): # Argment variables are local\n    print('x from inside:', x)\n    out = x + a\n    return out\n\n\ny = scope_func2a(6)\nprint(y)\nprint('x from outside:', x)\n\nx from inside: 20\n26\nx from outside: 10\n\n\nAs an argument, though, it can be assigned the value of the global.\nNevertheless, only the value is being passed between the global and local versions of x.\n\nx = 10 # Global\n\ndef scope_func2a(a, x=20):\n\n    print('x from inside before incremenet:', x)\n    x += 10\n    print('x from inside after incremenet:', x)\n    \n    out = x + a\n    \n    return out\n\n\ny = scope_func2a(6, x=x)\nprint(y)\nprint('x from outside :', x)\n\nx from inside before incremenet: 10\nx from inside after incremenet: 20\n26\nx from outside : 10",
     "crumbs": [
       "M04 Functions",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Variable Scope</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Scope</span>"
     ]
   },
   {
     "objectID": "notebooks/M04_PythonFunctions/M04-05-Scope.html#example-3",
     "href": "notebooks/M04_PythonFunctions/M04-05-Scope.html#example-3",
-    "title": "NB: Variable Scope",
+    "title": "NB: Scope",
     "section": "Example 3",
-    "text": "Example 3\nx defined both outside and inside function, and used inside the function in both global and local modes\nThis one is interesting. It fails, but it’s not clear why at first.\n\nx = 10\n\ndef scope_func3(a):\n    print('x from fcn, before local definition:', x) # Global use of x\n    x = 20 # Local use of x\n    print('x from fcn, after local definition:', x)\n    out = x + a\n    return out\n\n\nprint('x from outside before local definition:', x)\nscope_func3(6)\nprint('x from outside after local definition:', x)\n\nx from outside before local definition: 10\n\n\nUnboundLocalError: local variable 'x' referenced before assignment\n\n\n\nx = 10\n\ndef scope_func3a(a):\n    print('x from fcn, before local definition:', x) # Global use of x\n    # x = 20 # Local use of x\n    # print('x from fcn, after local definition:', x)\n    out = x + a\n    return out\n\n\nprint('x from outside before local definition:', x)\nscope_func3a(6)\nprint('x from outside after local definition:', x)\n\nx from outside before local definition: 10\nx from fcn, before local definition: 10\nx from outside after local definition: 10\n\n\nThe error can be fixed by referencing x as global inside function.\n\nx = 10\n\ndef scope_func4(a):\n    global x\n    \n    print('x from inside, before local definition:', x)\n    x = 20\n    print('x from inside, after local definition:', x)\n    \n    out = x + a\n    return out\n\n\nprint('x from outside, before local definition:', x)\ny = scope_func4(6)\nprint(y)\nprint('x from outside, after local definition:', x)\n\nx from outside, before local definition: 10\nx from inside, before local definition: 10\nx from inside, after local definition: 20\n26\nx from outside, after local definition: 20\n\n\nNote that the two instances of the variable z coexist in the same script because of the rules of scoping.",
+    "text": "Example 3\nA variable x defined both outside and inside function, and used inside the function in both global and local modes.\nThis one is interesting. It fails, but it’s not clear why at first.\n\nx = 10\n\ndef scope_func3(a):\n    print('x from fcn, before local definition:', x) # Global use of x\n    x = 20 # Local use of x\n    print('x from fcn, after local definition:', x)\n    out = x + a\n    return out\n\n\nprint('x from outside before local definition:', x)\nscope_func3(6)\nprint('x from outside after local definition:', x)\n\nx from outside before local definition: 30\n\n\nUnboundLocalError: local variable 'x' referenced before assignment\n\n\nThe problem is that Python knows you are assigning x within the local scope of the function, so it won’t allow you to use it until it is defined.\nThe error can be fixed by referencing x as global inside function.\n\nx = 10\n\ndef scope_func4(a):\n    global x\n    \n    print('x from inside, before local definition:', x)\n    x = 20\n    print('x from inside, after local definition:', x)\n    \n    out = x + a\n    return out\n\n\ny = scope_func4(6)\nprint(y)\nprint('x from outside:', x)\n\nx from inside, before local definition: 10\nx from inside, after local definition: 20\n26\nx from outside: 20",
     "crumbs": [
       "M04 Functions",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Variable Scope</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Scope</span>"
     ]
   },
   {
     "objectID": "notebooks/M04_PythonFunctions/M04-05-Scope.html#local-global-conflicts",
     "href": "notebooks/M04_PythonFunctions/M04-05-Scope.html#local-global-conflicts",
-    "title": "NB: Variable Scope",
+    "title": "NB: Scope",
     "section": "Local / global conflicts",
-    "text": "Local / global conflicts\nWhat will calling guess() do?\nHint: “If you assign a name in any way within a def, it will become a local to that function by default.” (Lutz)\n\nx = 10\n\ndef guess():\n    x += 10 \n    print(x)\n\n\nguess()\n\nUnboundLocalError: local variable 'x' referenced before assignment\n\n\nConsider the following expression, which is the same as the unary operation inside of the function guess().\n\nx = x + 10\n\nThe x on the left is local, since it is being defined inside the function.\nHowever, the x on the right is assumed to already be defined, and so is global.\nIn effect, Python is presented with a contradiction and so throws an error.\nWe will see that R does not do this; it just goes with the global.",
+    "text": "Local / global conflicts\nWhat will calling guess() do?\n\nx = 10\n\ndef guess():\n    x += 10 \n    print(x)\n\n\nguess()\n\nUnboundLocalError: local variable 'x' referenced before assignment\n\n\nConsider the following expression, which is the same as the unary operation inside of the function guess().\n\nx = x + 10\n\nThe x on the left is local, since it is being defined inside the function.\nHowever, the x on the right is assumed to already be defined, and so is global.\nIn effect, Python is presented with a contradiction and so throws an error.\nWe will see that R does not do this; it just goes with the global.",
     "crumbs": [
       "M04 Functions",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Variable Scope</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Scope</span>"
     ]
   },
   {
     "objectID": "notebooks/M04_PythonFunctions/M04-05-Scope.html#nonlocal",
     "href": "notebooks/M04_PythonFunctions/M04-05-Scope.html#nonlocal",
-    "title": "NB: Variable Scope",
+    "title": "NB: Scope",
     "section": "Nonlocal",
     "text": "Nonlocal\nIf a variable is assigned in an enclosing def, it is nonlocal to nested functions.\nThe nonlocal keyword is similar to global, except that it refers to the scope of the enclosing function, not the script that contains the funtions.\n\nx = 10 # Global\ndef func1(): # Enclosing function\n    x = 20 # Local to function; \"Nonlocal\" to nested function\n    def func1a():\n        x = 30 # Local to nested function\n        print(x)\n    func1a()\n    print(x)\n\n\nprint(x)\nfunc1()\nprint(x)\n\n10\n30\n20\n10\n\n\n\nx = 10\ndef func2():\n    x = 20\n    def func2a():\n        nonlocal x\n        x = 30\n        print(x)\n    func2a()\n    print(x)\n\n\nprint(x) # 1\nfunc2()\nprint(x) # 4\n\n10\n30\n30\n10\n\n\n\nx = 10\ndef func3():\n    x = 20\n    def func3a():\n        global x\n        x = 30\n        print(x)\n    func3a()\n    print(x)\n\n\nprint(x)\nfunc3()\nprint(x)\n\n10\n30\n20\n30",
     "crumbs": [
       "M04 Functions",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Variable Scope</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Scope</span>"
     ]
   },
   {
     "objectID": "notebooks/M04_PythonFunctions/M04-05-Scope.html#namespaces",
     "href": "notebooks/M04_PythonFunctions/M04-05-Scope.html#namespaces",
-    "title": "NB: Variable Scope",
+    "title": "NB: Scope",
     "section": "Namespaces",
-    "text": "Namespaces\nDefinitions of scope make reference to namespaces. Scope and namespaces are closely intertwined concepts. Sometimes it is assumed that the reader knows what this means.\nIf you’ve never heard of namespaces, or are unsure of what they are, here’s a brief explanation.\nA namespace is a system that allows for a unique name to associated with each and every object in a Python program. * Remember that an object can be anything in Python, not just variable, e.g. a function or a class. * Python maintains namespaces internally as dictionaries.\nA good analogy to a namespace system is the file system on a computer. You can have files of the same name so long as they are in different folders. The complete name of the file is actually the filename and the names of its parent folders, i.e. the path to the file in the file system.\nAnother anology is in human names – personal names and family names, i.e. first and last names in European countries. These in turn might be contained by larger social groupings.\nFinally, another analogy is home addresses – house numbers and street names can be reused based on their “path” in the tree of geographic entities that include cities, states, nations, etc.\nSimilarly, Python understands what exact method or variable one is trying to point to in the code, depending upon the namespace.\nNote that in each of these cases, the data structure is a directed acyclic graph (DAG), which is universal structure for organizing unique names.",
+    "text": "Namespaces\nYou may wonder how Python keeps track to two variables with the same name in a program.\nFor example, when x is defined both globally and locally within the same program.\nPython solves this problem by giving each region a name.\nThe region becomes a namespace.\nWith namespaces, a unique name to associated with each and every object in a Python program.\nNamespacea work like the file system on a computer.\nJust as you can have many files of the same name as long as they are in different folders.\nThe complete name of the file is actually the filename and the names of its parent folders, i.e. the path to the file in the file system.",
     "crumbs": [
       "M04 Functions",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Variable Scope</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Scope</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M04_PythonFunctions/M04-05-Scope.html#globals-and-locals",
+    "href": "notebooks/M04_PythonFunctions/M04-05-Scope.html#globals-and-locals",
+    "title": "NB: Scope",
+    "section": "globals() and locals()",
+    "text": "globals() and locals()\nPython keeps track of objects and namespaces in a dictionary. You can access local and global variables with globals() and locals().\n\ndef foo():\n    x = 1\n    print(locals())\n\n\nfoo()\n\n{'x': 1}\n\n\n\nG = globals()\n\n\nG['foo']\n\n&lt;function __main__.foo()&gt;\n\n\n\n[key for key in globals().keys() if not key.startswith('_')]\n\n['In',\n 'Out',\n 'get_ipython',\n 'exit',\n 'quit',\n 'x',\n 'scope_func2',\n 'y',\n 'scope_func2a',\n 'scope_func1',\n 'scope_func3',\n 'scope_func4',\n 'guess',\n 'func1',\n 'func2',\n 'func3',\n 'foo',\n 'G']",
+    "crumbs": [
+      "M04 Functions",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Scope</span>"
     ]
   },
   {
     "objectID": "notebooks/M04_PythonFunctions/M04-05-Scope.html#some-visualizations",
     "href": "notebooks/M04_PythonFunctions/M04-05-Scope.html#some-visualizations",
-    "title": "NB: Variable Scope",
+    "title": "NB: Scope",
     "section": "Some Visualizations",
     "text": "Some Visualizations\n\nThe same object name can be present in multiple namespaces as isolation between the same name is maintained by their namespace.\n\nSource: “Namespaces and Scope in Python” (GFG).",
     "crumbs": [
       "M04 Functions",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Variable Scope</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>NB: Scope</span>"
     ]
   },
   {
     "objectID": "notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html",
     "href": "notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html",
-    "title": "NB: Functions Calling Functions",
+    "title": "NB: Function Groups",
     "section": "",
-    "text": "Basic Insight\nFunctions contain any code, so they can contain functions. * Functions can call other functions * Functions can define new functions\nWe create functions that call functions in order to break a complex process into components. * Some functions focus on simple component processes * Other functions combine these into higher order processes * Some functions may be focused on computation, while others may be focused on interacting with users or data sources * We can think of this a division of labor, or “separation of concerns,” among functions\nWhen you create groups of functions, they often form natural groups that associated with a common process or task. * These function groups often share variables in addition to calling each ohter\nLet’s look at some examples to illustrate these points.",
+    "text": "Example 1: Converting Temperatures\nHere are three functions that work together to make a temperature converter.\nNotice how the last function integrates the first two.\ndef f_to_c(temp):  \n    \"\"\"\n    Converts F to C and returns a rounded result.\n    Expects an integer and returns an integer.\n    \"\"\"\n    return round((temp - 32) * (5/9))\n    \ndef c_to_f(temp):  \n    \"\"\"\n    Converts C to F and returns a rounded result.\n    Expects an integer and returns an integer.\n    \"\"\"\n    return round(temp * (9/5) + 32)\n    \ndef convert(temp, scale): \n    \"\"\"\n    Combines conversion functions into a two-way converter.\n    Expects a souce temp (int) and a target scale ('f' or 'c').\n    \"\"\"\n    if scale.lower() == \"c\":\n        return f_to_c(temp)  # function call to f_to_c\n    else:\n        return c_to_f(temp)  # function call to c_to_f\nNow, here is function that combines the above functions into a user-facing interface to the other functions.\ndef convert_app():\n    \"\"\"\n    Provides a user-interface to the the conversion functions.\n    \"\"\"\n    \n    # Get user input\n    temp = int(input(\"Enter a temperature: \"))                \n    scale = input(\"Enter the scale to convert to: (c or f) \")[0].lower()\n    \n    # Infer source scale, to be used in the output message\n    if scale == 'c':\n        current_scale = 'f'\n    else:\n        current_scale = 'c'\n    \n    # Do the conversion\n    converted = convert(temp, scale)\n    \n    # Print results for user\n    print(f\"{temp}{current_scale.upper()} is equal to {converted}{scale.upper()}.\")\nconvert_app()\n\nEnter a temperature:  45\nEnter the scale to convert to: (c or f)  f\n\n\n45C is equal to 113F.",
     "crumbs": [
       "M04 Functions",
-      "<span class='chapter-number'>23</span>  <span class='chapter-title'>NB: Functions Calling Functions</span>"
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>NB: Function Groups</span>"
     ]
   },
   {
     "objectID": "notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html#example-1-converting-temperatures",
     "href": "notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html#example-1-converting-temperatures",
-    "title": "NB: Functions Calling Functions",
-    "section": "Example 1: Converting Temperatures",
-    "text": "Example 1: Converting Temperatures\nHere are three functions that work together to make a temperature converter.\nNotice how the last function integrates the first two.\n\ndef f_to_c(temp):  \n    \"\"\"\n    Converts F to C and returns a rounded result.\n    Expects an integer and returns an integer.\n    \"\"\"\n    return round((temp - 32) * (5/9))\n    \ndef c_to_f(temp):  \n    \"\"\"\n    Converts C to F and returns a rounded result.\n    Expects an integer and returns an integer.\n    \"\"\"\n    return round(temp * (9/5) + 32)\n    \ndef convert(temp, scale): \n    \"\"\"\n    Combines conversion functions into a two-way converter.\n    Expects a souce temp (int) and a target scale ('f' or 'c').\n    \"\"\"\n    if scale.lower() == \"c\":\n        return f_to_c(temp)  # function call to f_to_c\n    else:\n        return c_to_f(temp)  # function call to c_to_f\n\nNow, here is function that combines the above functions into a user-facing interface to the other functions.\n\ndef convert_app():\n    \"\"\"\n    Provides a user-interface to the the conversion functions.\n    \"\"\"\n    \n    # Get user input\n    temp = int(input(\"Enter a temperature: \"))                \n    scale = input(\"Enter the scale to convert to: (c or f) \")[0].lower()\n    \n    # Infer source scale, to be used in the output message\n    if scale == 'c':\n        current_scale = 'f'\n    else:\n        current_scale = 'c'\n    \n    # Do the conversion\n    converted = convert(temp, scale)\n    \n    # Print results for user\n    print(f\"{temp}{current_scale.upper()} is equal to {converted}{scale.upper()}.\")\n\n\nconvert_app()\n\nEnter a temperature:  45\nEnter the scale to convert to: (c or f)  f\n\n\n45C is equal to 113F.\n\n\n\nA More Pythonic Solution\nWe replace if/then statements with dictionary logic.\n\n## Put your logic in the data structure\nconverters = {\n    'c': lambda t: (t - 32) * (5/9),\n    'f': lambda t: t * (9/5) + 32\n}\n\n\ndef convert_app2():\n    \n    # Input from user\n    source_temp  = int(input(\"Enter a temperature: \"))                \n    target_scale = input(\"Enter the scale to convert to: (c or f) \")\n    \n    # Internal computations\n    target_temp  = converters[target_scale](source_temp)\n    # source_scale = list(set(converters.keys()) - set(target_scale))[0]\n    source_scale = (set(converters.keys()) - set(target_scale)).pop()\n    \n    # Output to user\n    print(source_temp, source_scale, \"converted becomes:\" , round(target_temp), target_scale)\n\n\nconvert_app2()\n\nEnter a temperature:  45\nEnter the scale to convert to: (c or f)  f\n\n\n45 c converted becomes: 113 f",
+    "title": "NB: Function Groups",
+    "section": "",
+    "text": "A More Pythonic Solution\nWe replace if/then statements with dictionary keys.\nThe keys represent the target temperature scale to which we are converting.\nEssentially, we put your logic in the data structure.\n\nconverters = {\n    'c': lambda t: (t - 32) * (5/9),\n    'f': lambda t: t * (9/5) + 32\n}\n\n\ndef convert_app2():\n    \n    # Input from user\n    source_temp  = int(input(\"Enter a temperature: \"))                \n    target_scale = input(\"Enter the scale to convert to: (c or f) \")\n    \n    # Convert from one scale to the other\n    target_temp  = converters[target_scale](source_temp)\n\n    # Get the source scale for display purposes\n    source_scale = list(set(converters.keys()) - set(target_scale))[0]\n    \n    # Output to user\n    print(source_temp, source_scale, \"converted becomes:\" , round(target_temp), target_scale)\n\n\nconvert_app2()\n\nEnter a temperature:  45\nEnter the scale to convert to: (c or f)  f\n\n\n45 c converted becomes: 113 f",
     "crumbs": [
       "M04 Functions",
-      "<span class='chapter-number'>23</span>  <span class='chapter-title'>NB: Functions Calling Functions</span>"
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>NB: Function Groups</span>"
     ]
   },
   {
     "objectID": "notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html#example-2-counting-vowels",
     "href": "notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html#example-2-counting-vowels",
-    "title": "NB: Functions Calling Functions",
+    "title": "NB: Function Groups",
     "section": "Example 2: Counting Vowels",
-    "text": "Example 2: Counting Vowels\n\n## Predicate functions - often used as helper functions that return True or False\n\ndef is_vowel(l):\n    if l == \"a\" or l == \"e\" or l == \"i\" or l == \"o\" or l == \"u\":\n        return True  # if the letter is a vowel, return True\n    else:\n        return False # else, return False\n        \ndef num_vowels(my_string):\n    my_string = my_string.lower()\n    count = 0\n    for i in range(len(my_string)): # for each character\n        if is_vowel(my_string[i]):  # call function above\n            count += 1              # increment count if true\n    return count\n    \ndef vcounter():\n    my_str = input(\"Enter a string: \")\n    vcount = num_vowels(my_str)\n    print(f\"There are {vcount} vowels in the string.\")\n\n\nvcounter()\n\nEnter a string:  This is a test.\n\n\nThere are 4 vowels in the string.\n\n\n\nA More Pythonic Solution\nWe can use a lambda function with a comprehension to replace the fisrt two functions above.\n\nvowel_count = lambda x: len([char for char in x.lower() if char in \"aeiou\"])\n\n\ntest_str = \"Whatever it is, it is what it is.\"\n\n\nvowel_count(test_str)\n\n10",
+    "text": "Example 2: Counting Vowels\nHere is another example of functions calling each other in increasing levels of complexity.\n\ndef is_vowel(letter):\n    \"Tests if a letter is a vowel.\"\n    return letter in \"aeiou\"\n        \ndef num_vowels(my_string):\n    \"Counts the number of vowels in a string.\"    \n    my_string = my_string.lower()\n    count = 0\n    for i in range(len(my_string)): # for each character\n        if is_vowel(my_string[i]):  # call function above\n            count += 1              # increment count if true\n    return count\n\n    # A more concise way:\n    # return sum([is_vowel(letter) for letter in my_string.lower()])\n    \ndef vowel_counter():\n    \"User interface to return the number of vowels in a given string.\"\n    my_str = input(\"Enter a string: \")\n    vcount = num_vowels(my_str)\n    print(f\"There are {vcount} vowels in the string.\")\n\n\nvowel_counter()\n\nEnter a string:  This is a string.\n\n\nThere are 4 vowels in the string.",
     "crumbs": [
       "M04 Functions",
-      "<span class='chapter-number'>23</span>  <span class='chapter-title'>NB: Functions Calling Functions</span>"
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>NB: Function Groups</span>"
     ]
   },
   {
     "objectID": "notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html#example-3-calculating-tax",
     "href": "notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html#example-3-calculating-tax",
-    "title": "NB: Functions Calling Functions",
+    "title": "NB: Function Groups",
     "section": "Example 3: Calculating Tax",
-    "text": "Example 3: Calculating Tax\nWe write two related functions: * One to compute the tax based on a gross pay and a tax rate. * One to compute the net pay using the previous function.\nIn addition, we want to write some functions that use these functions to interact with a user. * One to get the input value of the gross pay and print the tax. * One to print the net pay based on the previous function.\nNote the division of labor, or “separation of concerns”, in these functions: * Some do calculative work * Some do interactive work\nTo compute tax, we have these data:\ngross_pay    tax_rate\n---------------------\n0   - 240    0%\n241 - 480    15%\n481 - more   28% \n\n\n\n\n\n\nThis time, we want to create a group of functions that expect some global variables to exist and use these instead of return statements.\n\n\nIn the code below, we globalize any variables that are assigned in our functions.\n\n\nThis allows them to be shared by all the other functions.\n\n\nNote that this is effective when our global environment – the containing script – contains only these functions.\n\n\nLater in this course, we will look at mechanisms to segment our code in this way.\n\n\n\n\ndef compute_tax():\n    \"\"\"\n    Computes tax rate and applies to gross pay to get tax.\n    Expects gross_apy to be defined globally.\n    Adds tax_rate and tax to globals for use by other functins.\n    \"\"\"\n\n    global tax_rate, tax\n\n    # Get rate by lower bound\n    if gross_pay &gt; 480:\n        tax_rate = .28\n    elif gross_pay &gt; 240:\n        tax_rate = .15\n    else:\n        tax_rate = 0\n        \n    tax = gross_pay * tax_rate\n            \ndef compute_net_pay():\n    \"\"\"\n    Computes net pay based on globals produced by compute_tax().\n    Expects gross_pay and tax to be defined globally.\n    Adds net_pay to to globals.\n    \"\"\"\n    \n    global net_pay\n    \n    net_pay = gross_pay - tax\n\ndef get_tax():   \n    \"\"\"\n    Computes and prints tax based on user input.\n    Essentially a wrapper around compute_tax().\n    Adds gross_pay to globals.\n    \"\"\"\n    \n    global gross_pay\n    \n    gross_pay = int(input(\"Enter your gross pay in dollars: \"))                            \n    \n    compute_tax()\n    \n    print(f\"Based on a tax rate of {round(tax_rate * 100)}%, the tax you owe on ${gross_pay} is ${round(tax)}.\")\n    \ndef get_net_pay():\n    \"\"\"\n    Computes and prints net pay based on globals.\n    \"\"\"\n    \n    compute_net_pay()\n    \n    print(f\"Your take home (net) pay is ${round(net_pay)}.\")\n    \ndef do_all():\n    \"Runs both user-facing functions.\"\n    get_tax()\n    get_net_pay()\n\n\nget_tax()\n\nEnter your gross pay in dollars:  50000\n\n\nBased on a tax rate of 28%, the tax you owe on $50000 is $14000.\n\n\n\nget_net_pay()\n\nYour take home (net) pay is $36000.\n\n\n\ndo_all()\n\nEnter your gross pay in dollars:  100000\n\n\nBased on a tax rate of 28%, the tax you owe on $100000 is $28000.\nYour take home (net) pay is $72000.",
+    "text": "Example 3: Calculating Tax\nIn this example, we define a group of functions to perform a more complicated task. We want to compute the taxes owed for an income and a tax rate. We want our user to enter an income and to get their tax bill back.\nTo compute tax, we have these data:\ngross_pay    tax_rate\n---------------------\n0   - 240    0%\n241 - 480    15%\n481 - more   28% \nWe write two related functions:\n\nOne to compute the tax based on a gross pay and a tax rate.\nOne to compute the net pay using the previous function.\n\nIn addition, we write functions that use these functions to interact with a user.\n\nOne to get the input value of the gross pay and print the tax.\nOne to print the net pay based on the previous function.\n\nNote the division of labor, or “separation of concerns”, in these functions:\n\nSome do calculative work.\nSome do interactive work.\n\nTo meet these requirements, we create a group of functions that expect some global variables to exist and use these instead of return statements.\n\ndef compute_tax():\n    \"\"\"\n    Computes tax rate and applies to gross pay to get tax.\n    Expects gross_pay to be defined globally.\n    Adds tax_rate and tax to globals for use by other functins.\n    \"\"\"\n    global tax_rate, tax\n    # Get rate by lower bound\n    if gross_pay &gt; 480:\n        tax_rate = .28\n    elif gross_pay &gt; 240:\n        tax_rate = .15\n    else:\n        tax_rate = 0\n    tax = gross_pay * tax_rate\n            \ndef compute_net_pay():\n    \"\"\"\n    Computes net pay based on globals produced by compute_tax().\n    Expects gross_pay and tax to be defined globally.\n    Adds net_pay to to globals.\n    \"\"\"\n    global net_pay\n    net_pay = gross_pay - tax\n\ndef get_tax():   \n    \"\"\"\n    Computes and prints tax based on user input.\n    Essentially a wrapper around compute_tax().\n    Adds gross_pay to globals.\n    \"\"\"\n    global gross_pay\n    gross_pay = int(input(\"Enter your gross pay in dollars: \"))                            \n    compute_tax()\n    print(f\"Based on a tax rate of {round(tax_rate * 100)}%, the tax you owe on ${gross_pay} is ${round(tax)}.\")\n    \ndef get_net_pay():\n    \"\"\"\n    Computes and prints net pay based on globals.\n    \"\"\"\n    compute_net_pay()\n    print(f\"Your take home (net) pay is ${round(net_pay)}.\")\n    \ndef do_all():\n    \"Runs both user-facing functions.\"\n    get_tax()\n    get_net_pay()\n\n\nget_tax()\n\nEnter your gross pay in dollars:  1000000\n\n\nBased on a tax rate of 28%, the tax you owe on $1000000 is $280000.\n\n\n\nget_net_pay()\n\nYour take home (net) pay is $720000.\n\n\n\ndo_all()\n\nEnter your gross pay in dollars:  1000000\n\n\nBased on a tax rate of 28%, the tax you owe on $1000000 is $280000.\nYour take home (net) pay is $720000.\n\n\nNotice how none of the functions return a value.\nNor do they take arguments.\nInstead, they give and take from the global namespace.\nThis is effective when our global environment — the containing script — contains only these functions.\nLater in this course, we will look at mechanisms to segment our code in this way.",
     "crumbs": [
       "M04 Functions",
-      "<span class='chapter-number'>23</span>  <span class='chapter-title'>NB: Functions Calling Functions</span>"
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>NB: Function Groups</span>"
     ]
   },
   {
     "objectID": "notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html#concluding-observations",
     "href": "notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html#concluding-observations",
-    "title": "NB: Functions Calling Functions",
+    "title": "NB: Function Groups",
     "section": "Concluding Observations",
-    "text": "Concluding Observations\n\nNotice how each example has functions that build on each other.\nThese functions share both data and a general goal.\nThe fact that data and functions go together is the motivation for creating classes.",
+    "text": "Concluding Observations\nNotice how each example has functions that build on each other.\nThese functions share both data and a general goal.\nThe fact that data and functions go together is the motivation for creating classes.",
     "crumbs": [
       "M04 Functions",
-      "<span class='chapter-number'>23</span>  <span class='chapter-title'>NB: Functions Calling Functions</span>"
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>NB: Function Groups</span>"
     ]
   },
   {

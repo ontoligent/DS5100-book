@@ -303,12 +303,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M04_PythonFunctions/M04-05-Scope.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Variable Scope</span></a>
+  <a href="../../notebooks/M04_PythonFunctions/M04-05-Scope.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Scope</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Functions Calling Functions</span></a>
+  <a href="../../notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Function Groups</span></a>
   </div>
 </li>
       </ul>
@@ -608,9 +608,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#assigned-to-a-variable" id="toc-assigned-to-a-variable" class="nav-link" data-scroll-target="#assigned-to-a-variable">Assigned to a Variable</a></li>
-  <li><a href="#using-lambda" id="toc-using-lambda" class="nav-link" data-scroll-target="#using-lambda">Using Lambda</a></li>
+  <li><a href="#whats-a-lambda-function" id="toc-whats-a-lambda-function" class="nav-link active" data-scroll-target="#whats-a-lambda-function">What’s a Lambda Function?</a></li>
+  <li><a href="#how-do-you-define-a-lambda-function" id="toc-how-do-you-define-a-lambda-function" class="nav-link" data-scroll-target="#how-do-you-define-a-lambda-function">How Do You Define a Lambda Function?</a></li>
+  <li><a href="#assigning-to-a-variable" id="toc-assigning-to-a-variable" class="nav-link" data-scroll-target="#assigning-to-a-variable">Assigning to a Variable</a></li>
+  <li><a href="#use-cases-for-lambda" id="toc-use-cases-for-lambda" class="nav-link" data-scroll-target="#use-cases-for-lambda">Use Cases for Lambda</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M04_PythonFunctions/M04-03-LambdaFunctions.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -636,114 +637,102 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Python lambda functions are small, informal functions. They don’t get a name.</p>
-<p>The are “anonymous.”</p>
-<p>From Lutz 2019:</p>
-<blockquote class="blockquote">
-<p>Besides the <code>def</code> statement, Python also provides an expression form that generates function objects. Because of its similarity to a tool in the Lisp language, it’s called lambda. Like <code>def</code>, this expression creates a function to be called later, but it returns the function instead of assigning it to a name. This is why lambdas are sometimes known as anonymous (i.e., unnamed) functions. In practice, they are often used as a way to inline a function definition, or to defer execution of a piece of code.</p>
-</blockquote>
-<p>The general form of a lambda function is:</p>
-<div id="cell-2" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">lambda</span> x: x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
-<pre><code>&lt;function __main__.&lt;lambda&gt;(x)&gt;</code></pre>
-</div>
-</div>
+<p>Programming for Data Science</p>
+<section id="whats-a-lambda-function" class="level2">
+<h2 class="anchored" data-anchor-id="whats-a-lambda-function">What’s a Lambda Function?</h2>
+<p>Python lambda functions are small functions that can be written on <strong>one line</strong>.</p>
+<p>Like the one line if/else statement and comprehensions, they represent Python’s <strong>lean</strong> code writing tradition.</p>
+<p>Lambda functions <strong>don’t need to be assigned</strong> to a variable — you can put them directly in places that expect functions the return, or expressions that evaluate to, values.</p>
+<p>They sometimes called “anonymous” functions because they don’t have to have a name.</p>
+</section>
+<section id="how-do-you-define-a-lambda-function" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-you-define-a-lambda-function">How Do You Define a Lambda Function?</h2>
+<p>The general form of a lambda function is as follows:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">lambda</span> x: x <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>the first <code>x</code> is the argument, and the <code>x</code> after the colon is the body of the function.</p>
+<p>Here we just add one to the argument.</p>
+<p>There is no return statement; the function just returns what body of the function evaluates to.</p>
 <p>You can call the function like this:</p>
-<div id="cell-4" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">lambda</span> x: x)(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>2</code></pre>
+<div id="cell-4" class="cell" data-tags="[]" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">lambda</span> x: x <span class="op">+</span> <span class="dv">1</span>)(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="56">
+<pre><code>3</code></pre>
 </div>
 </div>
-<p><strong>increment x</strong></p>
-<div id="cell-6" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">lambda</span> x: x<span class="op">+</span><span class="dv">1</span>)(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<p>Note how we treat it as an expression by wrapping it in parentheses.</p>
+<p>Since it evaluates to a function, we can use function parentheses at the end.</p>
+</section>
+<section id="assigning-to-a-variable" class="level2">
+<h2 class="anchored" data-anchor-id="assigning-to-a-variable">Assigning to a Variable</h2>
+<p>You <em>can</em> assign a lambda function to a variable.</p>
+<p>For example, here are three lambda functions assigned to variables.</p>
+<div id="cell-7" class="cell" data-tags="[]" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sum_two_vars <span class="op">=</span> <span class="kw">lambda</span> x, y: x <span class="op">+</span> y</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>is_non_negative <span class="op">=</span> <span class="kw">lambda</span> x: x <span class="op">&gt;=</span> <span class="dv">0</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>is_dirty <span class="op">=</span> <span class="kw">lambda</span> txt: <span class="st">'dirty'</span> <span class="kw">in</span> txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-8" class="cell" data-tags="[]" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sum_two_vars(<span class="dv">2</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="64">
 <pre><code>6</code></pre>
 </div>
 </div>
-<p><strong>sum two variables</strong></p>
-<div id="cell-8" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">lambda</span> x, y: x <span class="op">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
-<pre><code>&lt;function __main__.&lt;lambda&gt;(x, y)&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="assigned-to-a-variable" class="level2">
-<h2 class="anchored" data-anchor-id="assigned-to-a-variable">Assigned to a Variable</h2>
-<p>Even though they don’t get a name, they can be assigned to variables.</p>
-<p>Here, a lambda function gets assigned to <code>sum_two_vars</code>.</p>
-<div id="cell-10" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sum_two_vars <span class="op">=</span> <span class="kw">lambda</span> x, y: x <span class="op">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-11" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sum_two_vars(<span class="dv">2</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
-<pre><code>6</code></pre>
-</div>
-</div>
-<p><strong>Check if a value is non-negative</strong></p>
-<div id="cell-13" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>is_non_negative <span class="op">=</span> <span class="kw">lambda</span> x: x <span class="op">&gt;=</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-14" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>is_non_negative(<span class="op">-</span><span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div id="cell-9" class="cell" data-tags="[]" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>is_non_negative(<span class="op">-</span><span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>False</code></pre>
 </div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>is_non_negative(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div id="cell-10" class="cell" data-tags="[]" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>is_dirty(<span class="st">'dirty dishes'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="66">
 <pre><code>True</code></pre>
 </div>
 </div>
-<p><strong>Package first element and all data into tuple</strong></p>
-<div id="cell-17" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>pack_first_all <span class="op">=</span> <span class="kw">lambda</span> x: (x[<span class="dv">0</span>], x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-18" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>casado <span class="op">=</span> (<span class="st">'rice'</span>,<span class="st">'beans'</span>,<span class="st">'salad'</span>,<span class="st">'plaintain'</span>,<span class="st">'chicken'</span>) <span class="co"># a typical Costa Rican dish</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>pack_first_all(casado)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
-<pre><code>('rice', ('rice', 'beans', 'salad', 'plaintain', 'chicken'))</code></pre>
-</div>
-</div>
-<p><strong>Check for keyword “dirty”</strong></p>
-<div id="cell-20" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>is_dirty <span class="op">=</span> <span class="kw">lambda</span> txt: <span class="st">'dirty'</span> <span class="kw">in</span> txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-21" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>kitchen_inspection <span class="op">=</span> <span class="st">'dirty dishes'</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>is_dirty(kitchen_inspection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
-<pre><code>True</code></pre>
+<p>Lambda functions let us do things like this:</p>
+<div id="cell-12" class="cell" data-tags="[]" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>foo <span class="op">=</span> {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'addone'</span>: <span class="kw">lambda</span> x: x <span class="op">+</span> <span class="dv">1</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'square'</span>: <span class="kw">lambda</span> x: x <span class="op">*</span> x,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'invert'</span>: <span class="kw">lambda</span> x: <span class="dv">1</span> <span class="op">/</span> x</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>bar <span class="op">=</span> <span class="dv">5</span> </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> foo:</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(bar, f, <span class="st">'-&gt;'</span>, foo[f](bar))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5 addone -&gt; 6
+5 square -&gt; 25
+5 invert -&gt; 0.2</code></pre>
 </div>
 </div>
-<div id="cell-22" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>kitchen_inspection <span class="op">=</span> <span class="st">'pretty clean!'</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>is_dirty(kitchen_inspection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
-<pre><code>False</code></pre>
-</div>
-</div>
-<p>**pass *args for unspecified number of arguments**</p>
-<div id="cell-24" class="cell" data-tags="[]" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">lambda</span> <span class="op">*</span>args: <span class="bu">sum</span>(args))(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>SyntaxError: invalid syntax (1364996940.py, line 1)</code></pre>
+<p>Note, you can also assign function names to variables, but of course you need to define them first.</p>
+<div id="cell-14" class="cell" data-tags="[]" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> addone(x):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> square(x):</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">*</span> x</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> invert(x):</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span><span class="op">/</span>x</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>foo2 <span class="op">=</span> [add_one, square, invert]</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> foo2:</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(f(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2
+1
+1.0</code></pre>
 </div>
 </div>
 </section>
-<section id="using-lambda" class="level2">
-<h2 class="anchored" data-anchor-id="using-lambda">Using Lambda</h2>
+<section id="use-cases-for-lambda" class="level2">
+<h2 class="anchored" data-anchor-id="use-cases-for-lambda">Use Cases for Lambda</h2>
+<p>Lambda functions are often used when you need use a function only once.</p>
+<p>Some prefer them for their ability to be part of one-liners.</p>
 <p>Lambda functions are often used in Pandas.</p>
-<p>We will discuss there use in more detail when we get to that topic.</p>
+<p>We will discuss their use in more detail when we get to that topic.</p>
 
 
 </section>

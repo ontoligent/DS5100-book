@@ -53,10 +53,12 @@ book:
         - notebooks/M04_PythonFunctions/M04-06-FunctionsCallingFunctions.ipynb
     - part: modules/m05/m05-intro.qmd # "05 NumPy"
       chapters:
-        - notebooks/M05_NumPy/M05-02-NumpyBasics.ipynb
-        - notebooks/M05_NumPy/M05-03-NumpyBasicsContinued.ipynb
         - notebooks/M05_NumPy/M05-00-Time.ipynb
         - notebooks/M05_NumPy/M05-01-BasicFileIO.ipynb
+        - notebooks/M05_NumPy/M05-02-NumpyDesign.ipynb
+        - notebooks/M05_NumPy/M05-03-NumPyIndexing.ipynb
+        - notebooks/M05_NumPy/M05-04-NumPyOperating.ipynb
+        - notebooks/M05_NumPy/M05-05-NumPyFunctions.ipynb
     - part: modules/m06/m06-intro.qmd # "06 Pandas"
       chapters:
         - notebooks/M06_Pandas/M06-01-Pandas1.ipynb

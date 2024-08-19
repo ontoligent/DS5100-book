@@ -647,14 +647,18 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-numpy" id="toc-what-is-numpy" class="nav-link active" data-scroll-target="#what-is-numpy">What is NumPy</a></li>
+  <li><a href="#what-is-numpy" id="toc-what-is-numpy" class="nav-link active" data-scroll-target="#what-is-numpy">What is NumPy?</a></li>
   <li><a href="#a-new-data-structure" id="toc-a-new-data-structure" class="nav-link" data-scroll-target="#a-new-data-structure">A New Data Structure</a></li>
   <li><a href="#importing-the-library" id="toc-importing-the-library" class="nav-link" data-scroll-target="#importing-the-library">Importing the Library</a></li>
   <li><a href="#the-ndarray" id="toc-the-ndarray" class="nav-link" data-scroll-target="#the-ndarray">The ndarray</a></li>
   <li><a href="#about-dimensions" id="toc-about-dimensions" class="nav-link" data-scroll-target="#about-dimensions">About Dimensions</a></li>
   <li><a href="#creating-arrays" id="toc-creating-arrays" class="nav-link" data-scroll-target="#creating-arrays">Creating Arrays</a></li>
   <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">Data Types</a></li>
+  <li><a href="#shape" id="toc-shape" class="nav-link" data-scroll-target="#shape">Shape</a></li>
+  <li><a href="#d-matrix-vs-vector" id="toc-d-matrix-vs-vector" class="nav-link" data-scroll-target="#d-matrix-vs-vector">1-D Matrix vs Vector</a></li>
+  <li><a href="#reshaping" id="toc-reshaping" class="nav-link" data-scroll-target="#reshaping">Reshaping</a></li>
   <li><a href="#transposing-arrays-and-swapping-axes" id="toc-transposing-arrays-and-swapping-axes" class="nav-link" data-scroll-target="#transposing-arrays-and-swapping-axes">Transposing Arrays and Swapping Axes</a></li>
+  <li><a href="#example-the-normal-equation" id="toc-example-the-normal-equation" class="nav-link" data-scroll-target="#example-the-normal-equation">Example: The Normal Equation</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M05_NumPy/M05-02-NumpyDesign.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -683,90 +687,39 @@ window.Quarto = {
 <p>Programming for Data Science</p>
 <p><img src="../../media/numpy-logo.png" style="float:right;"></p>
 <section id="what-is-numpy" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-numpy">What is NumPy</h2>
-<p>NumPy stands for “<strong>Numerical Python</strong>.”</p>
+<h2 class="anchored" data-anchor-id="what-is-numpy">What is NumPy?</h2>
+<p>NumPy stands for <strong>Numerical Python</strong>.</p>
 <p>It is designed for <strong>high-performance numerical computing</strong> in Python.</p>
-<blockquote class="blockquote">
-<p>Numerical methods are computational techniques used to find approximate solutions to mathematical problems that cannot be solved exactly, typically involving equations, integrals, derivatives, or optimization problems. They rely on algorithms to perform calculations and are essential in fields where analytical solutions are difficult or impossible to obtain.</p>
-</blockquote>
-<p>Because <a href="https://www.britannica.com/science/numerical-analysis">numerical methods</a> are so important to so many sciences, NumPy is the basis of what is called <strong>the scientific “stack”</strong> in Python, which consists of <em>SciPy</em>, <em>Matplotlib</em>, <em>SciKitLearn</em>, and <em>Pandas</em>.</p>
+<p>Numerical methods are computational and data-driven techniques used to find <strong>approximate solutions</strong> to continuous mathematical processes that cannot be solved analytically.</p>
+<p>For example, differential equations, integrals, derivatives, or optimization problems often require a numerical solution.</p>
+<p>Because numerical methods are so important to the sciences, NumPy is the basis of what is called <strong>the scientific “stack”</strong> in Python.</p>
+<p>Major packages in this stack include <em>SciPy</em>, <em>Matplotlib</em>, <em>SciKitLearn</em>, and <em>Pandas</em>.</p>
 <p>Understanding what NumPy does and how it works is <strong>essential</strong> for almost anything data science related in Python.</p>
 </section>
 <section id="a-new-data-structure" class="level2">
 <h2 class="anchored" data-anchor-id="a-new-data-structure">A New Data Structure</h2>
+<p>Let’s begin with looking at NumPy’s fundamental <strong>design</strong>.</p>
 <p>Essentially, NumPy introduces <strong>a new data structure</strong> to Python — the <strong>n-dimensional array</strong>.</p>
-<p>Along with it, it introduces a collection of <strong>functions and methods</strong> that take advantage of this data structure.</p>
-<p>The data structure is designed to support the use of <strong>numerical methods</strong>: algorithmic approximations to the problems of mathematical analysis that are fundamental to modern science.</p>
-<p>It also provides a new way of applying functions to data made possible by the data structure – <strong>vectorized functions</strong>.</p>
+<p>Along with with this data structure, it introduces a collection of <strong>operations, functions, and methods</strong> that take advantage of this data structure.</p>
+<p>NumPy also provides a new way of applying functions to data made possible by the data structure – <strong>vectorized functions</strong>.</p>
 <p>Vectorized functions <strong>replace the use of loops</strong> and comprehensions to apply a function to a set of data.</p>
-<p>In addition, it provides a library of <strong>linear algebra</strong> functions.</p>
 <p>NumPy also introduces a bunch of new <strong>data types</strong>.</p>
 <p>Let’s take a look at it.</p>
 </section>
 <section id="importing-the-library" class="level2">
 <h2 class="anchored" data-anchor-id="importing-the-library">Importing the Library</h2>
 <p>To import NumPy, we typically alias it as <code>np</code>.</p>
-<div id="cell-4" class="cell" data-tags="[]" data-execution_count="10">
+<div id="cell-4" class="cell" data-tags="[]" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>NumPy is by widespread convention aliased as <code>np</code>.</p>
 </section>
 <section id="the-ndarray" class="level2">
 <h2 class="anchored" data-anchor-id="the-ndarray">The ndarray</h2>
-<p>The ndarray is a multidimensional array object.</p>
+<p>The data structure that NumPy introduces is called the <code>ndarray</code>.</p>
+<p>Note we will sometimes call ndarrays just <strong>arrays</strong>.</p>
+<p>The ndarray is a <strong>multi-dimensional</strong> array object.</p>
 <p>Unlike Python lists, ndarrays <strong>enforce a data type</strong> among elements.</p>
-<p>Also, they are by definition n-dimensional — they are inherently multi-dimensional.</p>
-<p>Note we will sometimes call ndarrays just arrays.</p>
-<p>To explore ndarrays, let’s generate some play data using NumPy’s built-a random number generator.</p>
-<p>Note that <code>np.random.randn()</code> samples from the “standard normal” distribution.</p>
-<p>We construct an array by passing dimensional arguments to the the function.</p>
-<p>Here, we create an array of two dimensions: <span class="math inline">\(2\)</span> rows by <span class="math inline">\(3\)</span> columns:</p>
-<div id="cell-8" class="cell" data-tags="[]" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="op">=</span> np.random.randn(<span class="dv">2</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-9" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
-<pre><code>array([[-0.17822775,  1.4807077 ,  1.23837876],
-       [-1.97014657, -0.5958817 ,  0.55137607]])</code></pre>
-</div>
-</div>
-<p>The <code>shape</code> property tells us that two dimension — the number of elements in the tuple — with <span class="math inline">\(2\)</span> elements in the first dimension and <span class="math inline">\(3\)</span> in the second.</p>
-<div id="cell-11" class="cell" data-scrolled="true" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
-<pre><code>(2, 3)</code></pre>
-</div>
-</div>
-<p>And the data type <code>dtype</code> refers to <em>all</em> of the elements in the structure.</p>
-<div id="cell-13" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
-<pre><code>dtype('float64')</code></pre>
-</div>
-</div>
-<p>Here we create an array of <span class="math inline">\(3\)</span> dimensions:</p>
-<div id="cell-15" class="cell" data-tags="[]" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data3 <span class="op">=</span> np.random.randn(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-16" class="cell" data-scrolled="true" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
-<pre><code>array([[[ 0.87768583, -0.22121848],
-        [-0.51085571,  0.39506273],
-        [ 1.86574009, -1.83249675]],
-
-       [[ 0.1487833 ,  1.50264272],
-        [-0.13138186, -0.31934921],
-        [-2.0748371 , -0.05439636]]])</code></pre>
-</div>
-</div>
-<div id="cell-17" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data3.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="30">
-<pre><code>(2, 3, 2)</code></pre>
-</div>
-</div>
 </section>
 <section id="about-dimensions" class="level2">
 <h2 class="anchored" data-anchor-id="about-dimensions">About Dimensions</h2>
@@ -780,219 +733,305 @@ window.Quarto = {
 <section id="creating-arrays" class="level2">
 <h2 class="anchored" data-anchor-id="creating-arrays">Creating Arrays</h2>
 <p>There are many ways to create arrays in NumPy.</p>
-<p>From a list:</p>
-<div id="cell-21" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="op">=</span> [<span class="dv">6</span>, <span class="fl">7.5</span>, <span class="dv">8</span>, <span class="dv">0</span>, <span class="dv">1</span>]</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">=</span> np.array(data1)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>arr1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="31">
+<p>You can create them by passing plain old Pythin lists:</p>
+<div id="cell-10" class="cell" data-execution_count="76">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="op">=</span> [<span class="dv">6</span>, <span class="fl">7.5</span>, <span class="dv">8</span>, <span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">=</span> np.array(data1)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>arr1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="76">
 <pre><code>array([6. , 7.5, 8. , 0. , 1. ])</code></pre>
 </div>
 </div>
 <p>From a list of lists:</p>
-<div id="cell-23" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>]]</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>arr2 <span class="op">=</span> np.array(data2)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>arr2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div id="cell-12" class="cell" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>]]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>arr2 <span class="op">=</span> np.array(data2)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>arr2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="78">
 <pre><code>array([[1, 2, 3, 4],
        [5, 6, 7, 8]])</code></pre>
 </div>
 </div>
-<div id="cell-24" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>arr2.ndim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>2</code></pre>
-</div>
-</div>
-<div id="cell-25" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>arr2.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div id="cell-13" class="cell" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>arr2.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="79">
 <pre><code>(2, 4)</code></pre>
 </div>
 </div>
-<div id="cell-26" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>arr1.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>dtype('float64')</code></pre>
+<div id="cell-14" class="cell" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>arr2.ndim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="80">
+<pre><code>2</code></pre>
 </div>
 </div>
-<div id="cell-27" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>arr2.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>dtype('int64')</code></pre>
-</div>
-</div>
-<p>Initializing with <span class="math inline">\(0\)</span>s using a convenience function:</p>
-<div id="cell-29" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>np.zeros(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<p>NumPy also offers convenience functions to initial arrays with a specific value, such as <span class="math inline">\(0\)</span>:</p>
+<div id="cell-16" class="cell" data-execution_count="81">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>np.zeros(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="81">
 <pre><code>array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])</code></pre>
 </div>
 </div>
-<div id="cell-30" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>np.zeros((<span class="dv">3</span>, <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div id="cell-17" class="cell" data-execution_count="82">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>np.zeros((<span class="dv">3</span>, <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="82">
 <pre><code>array([[0., 0., 0., 0., 0., 0.],
        [0., 0., 0., 0., 0., 0.],
        [0., 0., 0., 0., 0., 0.]])</code></pre>
 </div>
 </div>
-<div id="cell-31" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>np.empty((<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>array([[[0., 0.],
-        [0., 0.],
-        [0., 0.]],
+<p><code>.empty()</code> will generate an array of uninitialized values.</p>
+<div id="cell-19" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;-&quot;}" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>np.empty((<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="83">
+<pre><code>array([[[0.44681451, 1.63001338],
+        [0.21062093, 0.01193108],
+        [0.39271709, 0.98894578]],
 
-       [[0., 0.],
-        [0., 0.],
-        [0., 0.]]])</code></pre>
+       [[0.62764938, 0.48666047],
+        [0.60804881, 0.21196292],
+        [0.83234622, 1.11412825]]])</code></pre>
 </div>
 </div>
-<p>Using <code>.arange()</code> (instead of <code>range()</code>)</p>
-<div id="cell-33" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<p><code>.arange()</code> works like <code>range()</code> and will generate a sequence of numbers.</p>
+<div id="cell-21" class="cell" data-tags="[]" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14])</code></pre>
+</div>
+</div>
+<p>We can also create new arrays with <strong>randomaly generated data</strong>.</p>
+<p><code>np.random.randn()</code> will create a new array by drawing samples from the “standard normal” distribution.</p>
+<p>Here, we create an array of two dimensions: <span class="math inline">\(2\)</span> rows by <span class="math inline">\(3\)</span> columns:</p>
+<div id="cell-23" class="cell" data-tags="[]" data-execution_count="97">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>np.random.randn(<span class="dv">2</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="97">
+<pre><code>array([[-0.50784086, -0.25623129, -1.47942678],
+       [ 1.35502514,  1.26259653,  0.19764551]])</code></pre>
+</div>
+</div>
+<p>And here we use <code>.randint</code> to generate 20 random integers between <span class="math inline">\(1\)</span> and <span class="math inline">\(6\)</span>:</p>
+<div id="cell-25" class="cell" data-tags="[]" data-execution_count="98">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>np.random.randint(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="98">
+<pre><code>array([5, 4, 4, 1, 1, 5, 4, 2, 2, 1, 6, 6, 3, 5, 3, 3, 5, 4, 5, 2])</code></pre>
 </div>
 </div>
 </section>
 <section id="data-types" class="level2">
 <h2 class="anchored" data-anchor-id="data-types">Data Types</h2>
-<p>Unlike any of the previous data structures we have seen in Python, <strong>ndarrays must have a single data type</strong> associated with them.</p>
-<p>Here we initialize a series of arrays as different data types (<code>dtypes</code>).</p>
-<div id="cell-35" class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], dtype<span class="op">=</span>np.float64)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>arr1.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="32">
+<p>Unlike any of the previous data structures we have seen in Python, <strong>ndarrays must have a single data type</strong> associated with the scalar data they contain.</p>
+<p>NumPy introduces 24 new fundamental types to describe different types of scalars.</p>
+<p>These derive from the C programming language with which NumPy is built.</p>
+<p><img src="../../media/dtype-hierarchy.png" class="img-fluid"></p>
+<p>See the <a href="https://numpy.org/doc/1.25/reference/arrays.scalars.html">NumPy docs</a>.</p>
+<p>Here we initialize a couple of arrays as different data types (<code>dtypes</code>).</p>
+<div id="cell-28" class="cell" data-execution_count="105">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], dtype<span class="op">=</span>np.float64)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>arr1.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="105">
 <pre><code>dtype('float64')</code></pre>
 </div>
 </div>
-<p>Note that dtypes are defined by some <strong>constants attached to the NumPy object</strong>.</p>
-<p>We can also refer to them as strings in some contexts.</p>
-<p>In other words, in the context of the dtype argument, <code>'float64'</code> can substitute for <code>np.float64</code>.</p>
-<div id="cell-37" class="cell" data-tags="[]" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], dtype<span class="op">=</span><span class="st">'float64'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
-<pre><code>array([1., 2., 3.])</code></pre>
-</div>
-</div>
-<div id="cell-38" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>arr2 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], dtype<span class="op">=</span>np.int32)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>arr2.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div id="cell-29" class="cell" data-execution_count="106">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>arr2 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], dtype<span class="op">=</span>np.int32)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>arr2.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="106">
 <pre><code>dtype('int32')</code></pre>
 </div>
 </div>
-<p>Integer arrays default to <code>int64</code>:</p>
-<div id="cell-40" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>arr.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<p>Note that dtypes are defined by a set of <strong>constants attached to the NumPy object</strong>, e.g.&nbsp;<code>np.float64</code>.</p>
+<p>We can also refer to them as strings in some contexts, such in the constructor below:</p>
+<div id="cell-31" class="cell" data-tags="[]" data-execution_count="107">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], dtype<span class="op">=</span><span class="st">'float64'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="107">
+<pre><code>array([1., 2., 3.])</code></pre>
+</div>
+</div>
+<p>Note that integer arrays default to <code>int64</code>:</p>
+<div id="cell-33" class="cell" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>arr.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="70">
 <pre><code>dtype('int64')</code></pre>
 </div>
 </div>
-<p>So you may want in use a more capacious type:</p>
-<div id="cell-42" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>float_arr <span class="op">=</span> arr.astype(np.float64)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>float_arr.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
-<pre><code>dtype('float64')</code></pre>
-</div>
-</div>
-<p>Arrays can be cast:</p>
-<div id="cell-44" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="fl">3.7</span>, <span class="op">-</span><span class="fl">1.2</span>, <span class="op">-</span><span class="fl">2.6</span>, <span class="fl">0.5</span>, <span class="fl">12.9</span>, <span class="fl">10.1</span>])</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<p>Arrays can be cast, too:</p>
+<div id="cell-35" class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="fl">3.7</span>, <span class="op">-</span><span class="fl">1.2</span>, <span class="op">-</span><span class="fl">2.6</span>, <span class="fl">0.5</span>, <span class="fl">12.9</span>, <span class="fl">10.1</span>])</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="71">
 <pre><code>array([ 3.7, -1.2, -2.6,  0.5, 12.9, 10.1])</code></pre>
 </div>
 </div>
-<p>From floats to ints:</p>
-<div id="cell-46" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>arr.astype(np.int32)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<p>Here we cast from floats to ints:</p>
+<div id="cell-37" class="cell" data-execution_count="108">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>arr.astype(np.int32)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="108">
 <pre><code>array([ 3, -1, -2,  0, 12, 10], dtype=int32)</code></pre>
 </div>
 </div>
-<p>From strings to floats:</p>
-<div id="cell-48" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>numeric_strings <span class="op">=</span> np.array([<span class="st">'1.25'</span>, <span class="st">'-9.6'</span>, <span class="st">'42'</span>], dtype<span class="op">=</span>np.string_)</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>numeric_strings.astype(<span class="bu">float</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
+<p>And from strings to floats:</p>
+<div id="cell-39" class="cell" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>numeric_strings <span class="op">=</span> np.array([<span class="st">'1.25'</span>, <span class="st">'-9.6'</span>, <span class="st">'42'</span>], dtype<span class="op">=</span>np.string_)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>numeric_strings.astype(<span class="bu">float</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="73">
 <pre><code>array([ 1.25, -9.6 , 42.  ])</code></pre>
 </div>
 </div>
 <p>Note that NumPy converts data types to make the array uniform:</p>
-<div id="cell-50" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>non_uniform <span class="op">=</span> np.array([<span class="fl">1.25</span>, <span class="op">-</span><span class="fl">9.6</span>, <span class="dv">42</span>])</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>non_uniform, non_uniform.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
+<div id="cell-41" class="cell" data-execution_count="109">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>non_uniform <span class="op">=</span> np.array([<span class="fl">1.25</span>, <span class="op">-</span><span class="fl">9.6</span>, <span class="dv">42</span>])</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>non_uniform, non_uniform.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="109">
 <pre><code>(array([ 1.25, -9.6 , 42.  ]), dtype('float64'))</code></pre>
 </div>
 </div>
 <p>Ranges default to integers:</p>
-<div id="cell-52" class="cell" data-tags="[]" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>int_array <span class="op">=</span> np.arange(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-43" class="cell" data-tags="[]" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>int_array <span class="op">=</span> np.arange(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-53" class="cell" data-tags="[]" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>int_array</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
+<div id="cell-44" class="cell" data-tags="[]" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>int_array</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
 </div>
 </div>
 <p>We can use the dtype on one array to cast another:</p>
-<div id="cell-55" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>calibers <span class="op">=</span> np.array([<span class="fl">.22</span>, <span class="fl">.270</span>, <span class="fl">.357</span>, <span class="fl">.380</span>, <span class="fl">.44</span>, <span class="fl">.50</span>], dtype<span class="op">=</span>np.float64)</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>int_array.astype(calibers.dtype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="30">
+<div id="cell-46" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>calibers <span class="op">=</span> np.array([<span class="fl">.22</span>, <span class="fl">.270</span>, <span class="fl">.357</span>, <span class="fl">.380</span>, <span class="fl">.44</span>, <span class="fl">.50</span>], dtype<span class="op">=</span>np.float64)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>int_array.astype(calibers.dtype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>array([0., 1., 2., 3., 4., 5., 6., 7., 8., 9.])</code></pre>
 </div>
 </div>
 <p>And here is an empty array of unsigned integers:</p>
-<div id="cell-57" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>empty_uint32 <span class="op">=</span> np.empty(<span class="dv">8</span>, dtype<span class="op">=</span><span class="st">'u4'</span>)</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>empty_uint32</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="31">
+<div id="cell-48" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>empty_uint32 <span class="op">=</span> np.empty(<span class="dv">8</span>, dtype<span class="op">=</span><span class="st">'u4'</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>empty_uint32</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>array([         0, 1075314688,          0, 1075707904,          0,
        1075838976,          0, 1072693248], dtype=uint32)</code></pre>
 </div>
 </div>
-<p><strong>NumPy Data Types</strong></p>
-<pre><code>i - integer
-b - boolean
-u - unsigned integer
-f - float
-c - complex float
-m - timedelta
-M - datetime
-O - object
-S - string
-U - unicode string
-V - fixed chunk of memory for other type ( void )</code></pre>
-<p><strong>Data Type Hierarchy</strong></p>
-<p>NumPy introduces 24 new fundamental Python types to describe different types of scalars.</p>
-<p>These derive from the C programming language with which NumPy is built.</p>
-<p><img src="../../media/dtype-hierarchy.png" class="img-fluid"></p>
-<p>See the <a href="https://numpy.org/doc/1.25/reference/arrays.scalars.html">NumPy docs</a>.</p>
+</section>
+<section id="shape" class="level2">
+<h2 class="anchored" data-anchor-id="shape">Shape</h2>
+<p>The number and size of the dimensions of an array is called the <strong>shape</strong> of the array.</p>
+<p>Shape is represented by a <strong>tuple</strong>, e.g.&nbsp;<code>(n, m)</code> for a 2D array.</p>
+<p>The <strong>length</strong> of the tuple is the number of <strong>dimensions</strong>.</p>
+<p>The <strong>values</strong> of the tuple are the number of <strong>elements</strong> in each dimension.</p>
+<p>The <code>shape</code> property of the array object tells us that the array has <span class="math inline">\(2\)</span> dimensions — the number of elements in the tuple — with <span class="math inline">\(2\)</span> elements in the first dimension and <span class="math inline">\(3\)</span> in the second.</p>
+<p>Here we create an array of <span class="math inline">\(3\)</span> dimensions:</p>
+<div id="cell-52" class="cell" data-tags="[]" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>data3 <span class="op">=</span> np.random.randn(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-53" class="cell" data-scrolled="true" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>data3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>array([[[ 0.44681451,  1.63001338],
+        [ 0.21062093,  0.01193108],
+        [ 0.39271709,  0.98894578]],
+
+       [[ 0.62764938,  0.48666047],
+        [-0.60804881, -0.21196292],
+        [ 0.83234622, -1.11412825]]])</code></pre>
+</div>
+</div>
+<div id="cell-54" class="cell" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>data3.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>(2, 3, 2)</code></pre>
+</div>
+</div>
+</section>
+<section id="d-matrix-vs-vector" class="level2">
+<h2 class="anchored" data-anchor-id="d-matrix-vs-vector">1-D Matrix vs Vector</h2>
+<p>Note that there is a difference between a <span class="math inline">\(1\)</span>-dimensional array, i.e.&nbsp;a vector, and a single column or row <span class="math inline">\(2\)</span>-dimensional array, i.e.&nbsp;a matrix.</p>
+<p>Consider the following example.</p>
+<div id="cell-57" class="cell" data-tags="[]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>one_row_matrix <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]])</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>one_d_vector <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-58" class="cell" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>one_row_matrix, one_row_matrix.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>(array([[1, 2, 3, 4]]), (1, 4))</code></pre>
+</div>
+</div>
+<div id="cell-59" class="cell" data-tags="[]" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>one_d_vector, one_d_vector.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>(array([1, 2, 3, 4]), (4,))</code></pre>
+</div>
+</div>
+<p>We will encounter this difference when we learn about selecting parts of arrays with indexing.</p>
+</section>
+<section id="reshaping" class="level2">
+<h2 class="anchored" data-anchor-id="reshaping">Reshaping</h2>
+<p>If we want to make it into a 1-column matrix, we need to reshape it using <code>np.reshape()</code>.</p>
+<p>Here we convert an array from <span class="math inline">\(3\)</span> to <span class="math inline">\(2\)</span> dimensions.</p>
+<div id="cell-62" class="cell" data-tags="[]" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>data3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>array([[[ 0.44681451,  1.63001338],
+        [ 0.21062093,  0.01193108],
+        [ 0.39271709,  0.98894578]],
+
+       [[ 0.62764938,  0.48666047],
+        [-0.60804881, -0.21196292],
+        [ 0.83234622, -1.11412825]]])</code></pre>
+</div>
+</div>
+<div id="cell-63" class="cell" data-tags="[]" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>data3.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>(2, 3, 2)</code></pre>
+</div>
+</div>
+<div id="cell-64" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>data4 <span class="op">=</span> np.reshape(data3, (<span class="dv">4</span>,<span class="dv">3</span>))</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>data4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>array([[ 0.44681451,  1.63001338,  0.21062093],
+       [ 0.01193108,  0.39271709,  0.98894578],
+       [ 0.62764938,  0.48666047, -0.60804881],
+       [-0.21196292,  0.83234622, -1.11412825]])</code></pre>
+</div>
+</div>
+<p>Because sometimes a function wants to work with a single column (or row) matrix, and not a vector, do this to accomplish the trick:</p>
+<div id="cell-66" class="cell" data-tags="[]" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>np.reshape(one_d_vector, (<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>array([[1],
+       [2],
+       [3],
+       [4]])</code></pre>
+</div>
+</div>
+<div id="cell-67" class="cell" data-tags="[]" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>np.reshape(one_d_vector, (<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>array([[1, 2, 3, 4]])</code></pre>
+</div>
+</div>
+<p>Note the use of <span class="math inline">\(-1\)</span> in the argument. This means use the length of the vector that is passed to it.</p>
 </section>
 <section id="transposing-arrays-and-swapping-axes" class="level2">
 <h2 class="anchored" data-anchor-id="transposing-arrays-and-swapping-axes">Transposing Arrays and Swapping Axes</h2>
-<p>Transposing is a special form of reshaping which similarly returns a view on the underlying data without copying anything.</p>
+<p>Transposing is a special form of reshaping.</p>
 <p>Arrays have the transpose method and also the special <code>T</code> attribute:</p>
-<div id="cell-61" class="cell" data-execution_count="105">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.arange(<span class="dv">15</span>).reshape((<span class="dv">3</span>, <span class="dv">5</span>))</span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="105">
+<div id="cell-70" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.arange(<span class="dv">15</span>).reshape((<span class="dv">3</span>, <span class="dv">5</span>))</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>array([[ 0,  1,  2,  3,  4],
        [ 5,  6,  7,  8,  9],
        [10, 11, 12, 13, 14]])</code></pre>
 </div>
 </div>
-<div id="cell-62" class="cell" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>arr.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="106">
+<div id="cell-71" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>arr.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>array([[ 0,  5, 10],
        [ 1,  6, 11],
        [ 2,  7, 12],
@@ -1000,34 +1039,40 @@ V - fixed chunk of memory for other type ( void )</code></pre>
        [ 4,  9, 14]])</code></pre>
 </div>
 </div>
+<div id="cell-72" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>arr.shape, arr.T.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>((3, 5), (5, 3))</code></pre>
+</div>
+</div>
 <p>Transposing is often used when computing the dot product between two arrays.</p>
 <p>Here’s an example.</p>
-<div id="cell-64" class="cell" data-execution_count="107">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.random.randn(<span class="dv">6</span>, <span class="dv">3</span>)</span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="107">
-<pre><code>array([[ 0.13663893,  1.00187709, -0.49963842],
-       [-0.36045802,  0.11501271,  0.39756581],
-       [ 0.14672184, -0.2152224 ,  2.09433159],
-       [-1.6139847 ,  0.74614412, -2.0898423 ],
-       [ 0.12286791,  0.57296788, -0.18656951],
-       [ 1.16320932,  0.97720159,  2.05399248]])</code></pre>
+<div id="cell-74" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.random.randn(<span class="dv">6</span>, <span class="dv">3</span>)</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>array([[ 0.11479688,  0.33156395,  0.59524203],
+       [ 1.15646137, -0.08704862,  0.86381333],
+       [-0.51155823, -1.01358134,  1.27705313],
+       [ 2.25510406,  0.74727944,  1.91715758],
+       [ 0.49557844,  0.07061821, -0.1338661 ],
+       [ 1.77220434, -0.88452654,  1.09233716]])</code></pre>
 </div>
 </div>
-<div id="cell-65" class="cell" data-execution_count="108">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>np.dot(arr.T, arr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="108">
-<pre><code>array([[ 4.14322653,  0.0666845 ,  5.83498162],
-       [ 0.0666845 ,  2.90325249, -0.5646554 ],
-       [ 5.83498162, -0.5646554 , 13.41505604]])</code></pre>
+<div id="cell-75" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>np.dot(arr.T, arr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>array([[10.08407358,  0.608528  ,  6.60690496],
+       [ 0.608528  ,  2.49065994, -0.71523233],
+       [ 6.60690496, -0.71523233,  7.61796502]])</code></pre>
 </div>
 </div>
 <p>For higher dimensional arrays, <code>transpose</code> will accept a tuple of axis numbers to permute the axes.</p>
-<p>Warning – this can get confusing to conceptualize and visualize!</p>
-<div id="cell-67" class="cell" data-execution_count="109">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.arange(<span class="dv">16</span>).reshape((<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>))</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="109">
+<p>Warning — this can get confusing to conceptualize and visualize!</p>
+<div id="cell-77" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.arange(<span class="dv">16</span>).reshape((<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>))</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>array([[[ 0,  1,  2,  3],
         [ 4,  5,  6,  7]],
 
@@ -1035,9 +1080,9 @@ V - fixed chunk of memory for other type ( void )</code></pre>
         [12, 13, 14, 15]]])</code></pre>
 </div>
 </div>
-<div id="cell-68" class="cell" data-execution_count="110">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>arr.transpose((<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="110">
+<div id="cell-78" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>arr.transpose((<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
 <pre><code>array([[[ 0,  1,  2,  3],
         [ 8,  9, 10, 11]],
 
@@ -1046,9 +1091,9 @@ V - fixed chunk of memory for other type ( void )</code></pre>
 </div>
 </div>
 <p>Simple transposing with <code>.T</code> is just a special case of swapping axes. ndarray has the method <code>swapaxes</code> which takes a pair of axis numbers:</p>
-<div id="cell-70" class="cell" data-execution_count="111">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="111">
+<div id="cell-80" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>array([[[ 0,  1,  2,  3],
         [ 4,  5,  6,  7]],
 
@@ -1056,9 +1101,9 @@ V - fixed chunk of memory for other type ( void )</code></pre>
         [12, 13, 14, 15]]])</code></pre>
 </div>
 </div>
-<div id="cell-71" class="cell" data-execution_count="112">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>arr.swapaxes(<span class="dv">1</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="112">
+<div id="cell-81" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>arr.swapaxes(<span class="dv">1</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>array([[[ 0,  4],
         [ 1,  5],
         [ 2,  6],
@@ -1068,6 +1113,104 @@ V - fixed chunk of memory for other type ( void )</code></pre>
         [ 9, 13],
         [10, 14],
         [11, 15]]])</code></pre>
+</div>
+</div>
+</section>
+<section id="example-the-normal-equation" class="level2">
+<h2 class="anchored" data-anchor-id="example-the-normal-equation">Example: The Normal Equation</h2>
+<p>Sometimes, you need to convert vectors into 1-column matrices to make certain linear algebraic functions work.</p>
+<p>Consider two random variables, <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, represented as 1-dimensional arrays (vectors).</p>
+<div id="cell-83" class="cell" data-tags="[]" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.randn(<span class="dv">100</span>)</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.random.randn(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-84" class="cell" data-tags="[]" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>array([-1.16413841,  1.16865536,  0.4525609 , -0.2722449 , -1.27289815,
+       -0.71810371,  1.883716  ,  0.03320101,  0.71014505,  1.04896451,
+       -0.50324909,  0.79188057,  0.13946271, -0.42061852,  0.51837663,
+       -1.93336155,  0.13682373, -0.49900861,  0.11101955, -0.043336  ,
+        1.08324475, -0.40746863, -0.47573543, -1.27514158, -0.49048658,
+       -0.31183165, -1.11826591, -1.45995636, -0.32890325, -0.45732548,
+       -0.50317275,  0.9888555 , -0.70226293, -0.74463256, -0.8641995 ,
+        2.38039087,  0.19828622,  0.80782525, -0.63194502, -1.09783542,
+       -0.14037333, -0.2037294 , -0.22198999,  0.76775486,  0.02113618,
+       -1.79746008,  0.00301634,  0.35150085, -1.53745733,  0.32611821,
+        0.03922539,  0.75065704, -2.52018155, -0.9952756 , -1.79767193,
+       -0.77861022,  0.40698474,  0.38372067, -0.47768404, -0.57599198,
+        0.73162153, -0.79905799,  0.24235914,  0.99268306, -2.27122081,
+       -1.17120308,  0.03414284, -1.22661171,  2.54755592,  0.71555315,
+       -0.94570815, -1.04452765,  2.0568699 , -2.50169467,  0.49334793,
+       -0.25377387,  1.30137339, -0.65796591,  1.76859461,  1.13154259,
+       -1.47131984, -0.63181831, -1.64419554, -0.51849102, -0.32154684,
+        0.36314129,  1.22479289,  0.65814452,  0.44473066, -0.36370147,
+        0.37352288,  0.46538978,  1.64700262, -0.3771522 , -0.37349846,
+       -0.93680174, -0.20787435,  0.68835535,  0.8968693 , -0.29039299])</code></pre>
+</div>
+</div>
+<div id="cell-85" class="cell" data-tags="[]" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.pyplot <span class="im">import</span> plot</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>plot(x, linestyle<span class="op">=</span><span class="st">'None'</span>, marker<span class="op">=</span><span class="st">'.'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="M05-02-NumpyDesign_files/figure-html/cell-47-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can fit a regression line using the <strong>normal equation</strong>, which appears in this week’s homework.</p>
+<p><span class="math inline">\(\begin{aligned} \hat\beta_i=(x^Tx)^{−1}x^Ty \end{aligned}\)</span></p>
+<p>Here is a standard way of expressing it in NumPy:</p>
+<div id="cell-87" class="cell" data-tags="[]" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>get_beta1 <span class="op">=</span> <span class="kw">lambda</span> x, y: (np.linalg.inv(x.T.dot(x))) <span class="op">*</span> (x.T.dot(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>However, it will fail if we pass it our two variables, <code>x</code> and <code>y</code>.</p>
+<p>The reason is that it expects <code>x</code> to be a matrix, since it is designed to handle n-dimension predictor variables, usually represented as <span class="math inline">\(\textbf{X}\)</span>.</p>
+<div id="cell-89" class="cell" data-tags="[]" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>x.shape, y.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>((100,), (100,))</code></pre>
+</div>
+</div>
+<div id="cell-90" class="cell" data-tags="[]" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>get_beta1(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>LinAlgError: 0-dimensional array given. Array must be at least two-dimensional</code></pre>
+</div>
+</div>
+<p>The revised function will work with a vector as <code>x</code>:</p>
+<p><span class="math inline">\(\hat\beta_i = \large\frac{1}{x^Tx} \small(x^Ty)\)</span></p>
+<div id="cell-92" class="cell" data-tags="[]" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>get_beta2 <span class="op">=</span> <span class="kw">lambda</span> x, y: (<span class="dv">1</span> <span class="op">/</span> x.T.dot(x)) <span class="op">*</span> (x.T.dot(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-93" class="cell" data-tags="[]" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>get_beta2(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="52">
+<pre><code>0.06399264800571315</code></pre>
+</div>
+</div>
+<p>We can fix the problem in the general case by converting our vector into a 1-column matrix using <code>np.reshape()</code>.</p>
+<div id="cell-95" class="cell" data-tags="[]" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>x_as_matrix <span class="op">=</span> np.reshape(x, (<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-96" class="cell" data-tags="[]" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>get_beta1(x_as_matrix, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
+<pre><code>array([[0.06399265]])</code></pre>
+</div>
+</div>
+<div id="cell-97" class="cell" data-tags="[]" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>get_beta1(x_as_matrix, y)[<span class="dv">0</span>][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="55">
+<pre><code>0.06399264800571315</code></pre>
+</div>
+</div>
+<div id="cell-98" class="cell" data-tags="[]" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>get_beta1(x_as_matrix, y)[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">==</span> get_beta2(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="56">
+<pre><code>True</code></pre>
 </div>
 </div>
 

@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -619,8 +648,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#element-wise-arithmetic" id="toc-element-wise-arithmetic" class="nav-link active" data-scroll-target="#element-wise-arithmetic">Element-wise Arithmetic</a></li>
-  <li><a href="#views-and-copies" id="toc-views-and-copies" class="nav-link" data-scroll-target="#views-and-copies">Views and Copies</a></li>
   <li><a href="#broadcasting" id="toc-broadcasting" class="nav-link" data-scroll-target="#broadcasting">Broadcasting</a></li>
+  <li><a href="#boolean-indexing" id="toc-boolean-indexing" class="nav-link" data-scroll-target="#boolean-indexing">Boolean Indexing</a></li>
+  <li><a href="#negation" id="toc-negation" class="nav-link" data-scroll-target="#negation">Negation</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M05_NumPy/M05-04-NumPyOperating.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -651,124 +681,76 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="element-wise-arithmetic">Element-wise Arithmetic</h2>
 <p>NumPy arrays can be transformed with with arithmetic operations.</p>
 <p>These are all <strong>element-wise operations</strong>.</p>
-<p>Let’s start with a 2D array.</p>
-<div id="f5acc4fa-5330-48fc-8c6f-27dc86bd8627" class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array([[<span class="fl">1.</span>, <span class="fl">2.</span>, <span class="fl">3.</span>], [<span class="fl">4.</span>, <span class="fl">5.</span>, <span class="fl">6.</span>]])</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="32">
-<pre><code>array([[1., 2., 3.],
-       [4., 5., 6.]])</code></pre>
+<p>Let’s start with a couple of <span class="math inline">\(2\)</span>-D arrays.</p>
+<div id="4b77c92e-07b2-40f4-83a2-1648b10a486c" class="cell" data-tags="[]" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="f5acc4fa-5330-48fc-8c6f-27dc86bd8627" class="cell" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">=</span> np.array([[<span class="fl">1.</span>, <span class="fl">2.</span>, <span class="fl">3.</span>], [<span class="fl">4.</span>, <span class="fl">5.</span>, <span class="fl">6.</span>]])</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>arr2 <span class="op">=</span> np.array([[<span class="fl">0.</span>, <span class="fl">4.</span>, <span class="fl">1.</span>], [<span class="fl">7.</span>, <span class="fl">2.</span>, <span class="fl">12.</span>]])</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>arr1, arr2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>(array([[1., 2., 3.],
+        [4., 5., 6.]]),
+ array([[ 0.,  4.,  1.],
+        [ 7.,  2., 12.]]))</code></pre>
 </div>
 </div>
-<div id="ce60fb37-2e26-4936-a310-f70ffed97329" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">*</span> arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="34">
-<pre><code>array([[ 1.,  4.,  9.],
-       [16., 25., 36.]])</code></pre>
+<p>If we multiply these two matrices, NumPy performs multiplication on each pair of cells with the same index or coordinate.</p>
+<div id="ce60fb37-2e26-4936-a310-f70ffed97329" class="cell" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">*</span> arr2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>array([[ 0.,  8.,  3.],
+       [28., 10., 72.]])</code></pre>
 </div>
 </div>
-<div id="c39cf673-0800-4b2e-aa8f-547a13c44dc5" class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">-</span> arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="35">
-<pre><code>array([[0., 0., 0.],
-       [0., 0., 0.]])</code></pre>
+<p>You can think of it this way:</p>
+<pre><code>coordinate   arr1   arr2  arr1 * arr2 
+0, 0         1.     0.    0.
+0, 1         2.     4.    8.
+0, 2         3.     1.    3.
+...</code></pre>
+<p>Of course, this works for the other operations, too.</p>
+<div id="c39cf673-0800-4b2e-aa8f-547a13c44dc5" class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">-</span> arr2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>array([[ 1., -2.,  2.],
+       [-3.,  3., -6.]])</code></pre>
 </div>
 </div>
-<div id="22c43e30-b619-4607-b880-d294f7c9ab32" class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">/</span> arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
+<div id="6ebeff11-5883-42d2-ac67-5a608fa0abf7" class="cell" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>arr2 <span class="op">/</span> arr1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>array([[0.        , 2.        , 0.33333333],
+       [1.75      , 0.4       , 2.        ]])</code></pre>
+</div>
+</div>
+<div id="22c43e30-b619-4607-b880-d294f7c9ab32" class="cell" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">/</span> arr1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>array([[1.        , 0.5       , 0.33333333],
        [0.25      , 0.2       , 0.16666667]])</code></pre>
 </div>
 </div>
-<div id="996b8de7-c40b-496b-a8de-8e2802a4ad7c" class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">**</span> <span class="fl">0.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
-<pre><code>array([[1.        , 1.41421356, 1.73205081],
-       [2.        , 2.23606798, 2.44948974]])</code></pre>
+<div id="b6930e93-273e-4341-81ea-c6e29eb6222f" class="cell" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>arr1 <span class="op">**</span> arr2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>array([[1.00000000e+00, 1.60000000e+01, 3.00000000e+00],
+       [1.63840000e+04, 2.50000000e+01, 2.17678234e+09]])</code></pre>
 </div>
 </div>
-<p>Now let’s compare two arrays.</p>
-<div id="d72944c9-a3a1-4e0f-88e7-e68f9017e433" class="cell" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>arr2 <span class="op">=</span> np.array([[<span class="fl">0.</span>, <span class="fl">4.</span>, <span class="fl">1.</span>], [<span class="fl">7.</span>, <span class="fl">2.</span>, <span class="fl">12.</span>]])</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>arr2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="38">
-<pre><code>array([[ 0.,  4.,  1.],
-       [ 7.,  2., 12.]])</code></pre>
+<div id="996b8de7-c40b-496b-a8de-8e2802a4ad7c" class="cell" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>arr2 <span class="op">**</span> <span class="fl">0.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>array([[0.        , 2.        , 1.        ],
+       [2.64575131, 1.41421356, 3.46410162]])</code></pre>
 </div>
 </div>
-<div id="c96d7c86-e17d-4d9a-a84a-b0ef69e0cc0d" class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>arr2 <span class="op">&gt;</span> arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="39">
+<div id="c96d7c86-e17d-4d9a-a84a-b0ef69e0cc0d" class="cell" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>arr2 <span class="op">&gt;</span> arr1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>array([[False,  True, False],
        [ True, False,  True]])</code></pre>
-</div>
-</div>
-<p>Boolean arrays will prove to be very useful …</p>
-</section>
-<section id="views-and-copies" class="level2">
-<h2 class="anchored" data-anchor-id="views-and-copies">Views and Copies</h2>
-<p>Notice that if we assign a scalar to a slice, all of the elements of the slice get that value.</p>
-<p>This is called <strong>broadcasting</strong>. We’ll look at this more later.</p>
-<p>Also, notice that changes to slices are changes to the arrays they are slices of.</p>
-<p>They are <strong>views</strong>, not copies. <strong>This is crucial.</strong></p>
-<p>See what happens when we change a view:</p>
-<div id="6c44c40f-65ff-4b29-98d5-eb90d2049989" class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>arr_slice <span class="op">=</span> arr[<span class="dv">5</span>:<span class="dv">8</span>]</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>arr_slice</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="53">
-<pre><code>array([12, 12, 12])</code></pre>
-</div>
-</div>
-<div id="f2ebdc56-17df-4f30-b680-77960de350db" class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>arr_slice[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">12345</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="54">
-<pre><code>array([    0,     1,     2,     3,     4,    12, 12345,    12,     8,
-           9])</code></pre>
-</div>
-</div>
-<div id="92853860-149d-4cba-ae63-1fcb1a06ab1f" class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>arr_slice[:] <span class="op">=</span> <span class="dv">64</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="a5d602f3-2607-476d-9fd2-3a48b8e3c678" class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>arr_slice</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="56">
-<pre><code>array([64, 64, 64])</code></pre>
-</div>
-</div>
-<div id="a5649cde-e441-4ca3-91b7-a925689f09c0" class="cell" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="57">
-<pre><code>array([ 0,  1,  2,  3,  4, 64, 64, 64,  8,  9])</code></pre>
-</div>
-</div>
-<p>NumPy defaults to views rather than copies because copies are <strong>expensive</strong> and NumPy is designed with large data use cases in mind.</p>
-<p>If you want a copy of a slice of an ndarray instead of a view, use <code>.copy()</code>.</p>
-<p>Here’s an example:</p>
-<div id="e3a5a444-5f3b-479f-abe2-926027ae4b7f" class="cell" data-tags="[]" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>arr_slice_copy <span class="op">=</span> arr[<span class="dv">5</span>:<span class="dv">8</span>].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="7be8e32f-6333-4544-ac39-2ae2f352cfab" class="cell" data-tags="[]" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>arr_slice_copy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="59">
-<pre><code>array([64, 64, 64])</code></pre>
-</div>
-</div>
-<div id="249b9c64-e263-4466-ac89-4cf62e4dcb95" class="cell" data-tags="[]" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>arr_slice_copy[:] <span class="op">=</span> <span class="dv">99</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="e6b0b496-6c16-4e88-a97d-ac7c14adb882" class="cell" data-tags="[]" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>arr_slice_copy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="61">
-<pre><code>array([99, 99, 99])</code></pre>
-</div>
-</div>
-<p>Note how the original array is unchanged:</p>
-<div id="6e5c5b3b-3c3d-4083-a73d-1a847425c6a6" class="cell" data-tags="[]" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="62">
-<pre><code>array([ 0,  1,  2,  3,  4, 64, 64, 64,  8,  9])</code></pre>
 </div>
 </div>
 </section>
@@ -777,10 +759,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>What happens when you try to perform an element-wise operation on two arrays of different shape?</p>
 <p>NumPy will convert a low-dimensional array into a high-dimensional array to allow the operation to take place.</p>
 <p>This is called <strong>broadcasting</strong>.</p>
-<p>Let’s look at at our array <code>foo</code>:</p>
-<div id="8b24ceaf-0ad7-45bb-8a5d-356d9e672b6d" class="cell" data-tags="[]" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>foo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
+<p>Let’s look at an example.</p>
+<div id="f55e271c-11fa-41a4-826f-64bee73c811e" class="cell" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>foo <span class="op">=</span> np.ones((<span class="dv">6</span>,<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="8b24ceaf-0ad7-45bb-8a5d-356d9e672b6d" class="cell" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>foo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>array([[1., 1., 1., 1.],
        [1., 1., 1., 1.],
        [1., 1., 1., 1.],
@@ -789,10 +774,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
        [1., 1., 1., 1.]])</code></pre>
 </div>
 </div>
-<p>If we multiply it by 5, the scalar is converted into an array of the same shape as <code>foo</code> with the value 5 broadcast to populate the entire array.</p>
-<div id="7ebaf75c-8e83-482d-8753-a70a66d89239" class="cell" data-tags="[]" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>foo <span class="op">*</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<p>If we multiply it by <span class="math inline">\(5\)</span>, the scalar is converted into an array of the same shape as <code>foo</code> with the value <span class="math inline">\(5\)</span> “broadcast” to populate the entire array.</p>
+<div id="7ebaf75c-8e83-482d-8753-a70a66d89239" class="cell" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>foo <span class="op">*</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>array([[5., 5., 5., 5.],
        [5., 5., 5., 5.],
        [5., 5., 5., 5.],
@@ -801,10 +786,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
        [5., 5., 5., 5.]])</code></pre>
 </div>
 </div>
+<p>We actually saw this already when we looked at slices.</p>
 <p>If we want to multiply an array by a vector, the vector is broadcast to become a 2D array.</p>
-<div id="50639ff2-025f-412b-b44e-c189598a84d8" class="cell" data-tags="[]" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>foo <span class="op">*</span> np.array([<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">8</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div id="50639ff2-025f-412b-b44e-c189598a84d8" class="cell" data-tags="[]" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>foo <span class="op">*</span> np.array([<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">8</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>array([[ 5., 10.,  6.,  8.],
        [ 5., 10.,  6.,  8.],
        [ 5., 10.,  6.,  8.],
@@ -814,10 +800,154 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Note that NumPy can’t always make the adjustment:</p>
-<div id="93c7175d-ec65-4889-b155-5b28467f0b21" class="cell" data-tags="[]" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>foo <span class="op">*</span> np.array([<span class="dv">5</span>, <span class="dv">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="93c7175d-ec65-4889-b155-5b28467f0b21" class="cell" data-tags="[]" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>foo <span class="op">*</span> np.array([<span class="dv">5</span>, <span class="dv">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>ValueError: operands could not be broadcast together with shapes (6,4) (2,) </code></pre>
+</div>
+</div>
+</section>
+<section id="boolean-indexing" class="level2">
+<h2 class="anchored" data-anchor-id="boolean-indexing">Boolean Indexing</h2>
+<p>Another crucial topic in NumPy is boolean indexing.</p>
+<p>In brief, you can pass a boolean array to the array indexer (i.e.&nbsp;the <code>[]</code> suffix) and it will return only those cells that are <code>True</code>.</p>
+<p>This is a technique we will use frequently in Pandas and R.</p>
+<p>Let’s assume that we have two related arrays:</p>
+<ul>
+<li><code>names</code> which holds the names associated with the data in each row, or <strong>observations</strong>, of a table.</li>
+<li><code>data</code> which holds the data associated with each <strong>feature</strong> of a table.</li>
+</ul>
+<p>There are <span class="math inline">\(7\)</span> observations and <span class="math inline">\(4\)</span> features.</p>
+<div id="98298b1b-3b1d-42b0-853c-0ddbbb74f167" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> np.array([<span class="st">'Bob'</span>, <span class="st">'Joe'</span>, <span class="st">'Will'</span>, <span class="st">'Bob'</span>, <span class="st">'Will'</span>, <span class="st">'Joe'</span>, <span class="st">'Joe'</span>])</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>array(['Bob', 'Joe', 'Will', 'Bob', 'Will', 'Joe', 'Joe'], dtype='&lt;U4')</code></pre>
+</div>
+</div>
+<div id="5ca47474-9e5e-48d4-a63f-c099ed26e83b" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.random.randn(<span class="dv">7</span>, <span class="dv">4</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>array([[-1.0441337 , -0.8075191 , -1.89069483, -0.9007478 ],
+       [ 1.57167643, -0.50688096,  0.78120542,  0.22558685],
+       [-1.45769989, -0.49824512, -1.2056539 , -0.43596557],
+       [-0.33496411, -0.25575133, -0.61952407,  0.88984652],
+       [-0.59001244, -2.23411426, -0.31123889, -0.86358338],
+       [ 1.23662366, -0.90041871,  0.63348956, -0.58677799],
+       [-3.09362317,  0.92042332,  0.53013723,  0.24224835]])</code></pre>
+</div>
+</div>
+<p>A comparison operation for an array returns an array of booleans.</p>
+<p>Let’s see which names are <code>'Bob'</code>:</p>
+<div id="bd203b5d-0aec-4817-9c0a-3a449d1ea5e3" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>names <span class="op">==</span> <span class="st">'Bob'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>array([ True, False, False,  True, False, False, False])</code></pre>
+</div>
+</div>
+<p>Now, this boolean expression can be passed to an array indexer to the data:</p>
+<div id="2991c4c4-3034-4f72-9c9f-37547150f9b5" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>data[names <span class="op">==</span> <span class="st">'Bob'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>array([[-1.0441337 , -0.8075191 , -1.89069483, -0.9007478 ],
+       [-0.33496411, -0.25575133, -0.61952407,  0.88984652]])</code></pre>
+</div>
+</div>
+<p>Along the second axis, we can use a slice or integer to select data.</p>
+<div id="0a4ddcaa-4c82-4aa5-bbd0-79ab9b53b618" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>data[names <span class="op">==</span> <span class="st">'Bob'</span>, <span class="dv">2</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>array([[-1.89069483, -0.9007478 ],
+       [-0.61952407,  0.88984652]])</code></pre>
+</div>
+</div>
+<div id="863b1be8-2ae2-4e76-be0d-d7c409e8ada9" class="cell" data-tags="[]" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>data[names <span class="op">==</span> <span class="st">'Bob'</span>, <span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<pre><code>array([-0.9007478 ,  0.88984652])</code></pre>
+</div>
+</div>
+<p>If you know SQL, this is like the query:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> col3, col4 <span class="kw">FROM</span> <span class="kw">data</span> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'Bob'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="negation" class="level2">
+<h2 class="anchored" data-anchor-id="negation">Negation</h2>
+<p>Here are some examples of negated boolean operations being applied.</p>
+<div id="15ead767-4c7f-49c8-adea-92685ec33bb1" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>bix <span class="op">=</span> names <span class="op">!=</span> <span class="st">'Bob'</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>bix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<pre><code>array([False,  True,  True, False,  True,  True,  True])</code></pre>
+</div>
+</div>
+<div id="c2f1a912-94a8-459d-a816-cdbf2302b5e0" class="cell" data-tags="[]" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>data[bix]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>array([[ 1.57167643, -0.50688096,  0.78120542,  0.22558685],
+       [-1.45769989, -0.49824512, -1.2056539 , -0.43596557],
+       [-0.59001244, -2.23411426, -0.31123889, -0.86358338],
+       [ 1.23662366, -0.90041871,  0.63348956, -0.58677799],
+       [-3.09362317,  0.92042332,  0.53013723,  0.24224835]])</code></pre>
+</div>
+</div>
+<div id="a651f4b9-4b90-4044-af7e-7faa2136a8d7" class="cell" data-tags="[]" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>data[<span class="op">~</span>bix] <span class="co"># Back to Bob</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<pre><code>array([[-1.0441337 , -0.8075191 , -1.89069483, -0.9007478 ],
+       [-0.33496411, -0.25575133, -0.61952407,  0.88984652]])</code></pre>
+</div>
+</div>
+<div id="4207995e-50fb-4169-b5db-e0fb6abcdcac" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>data[<span class="op">~</span>(names <span class="op">==</span> <span class="st">'Bob'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>array([[ 1.57167643, -0.50688096,  0.78120542,  0.22558685],
+       [-1.45769989, -0.49824512, -1.2056539 , -0.43596557],
+       [-0.59001244, -2.23411426, -0.31123889, -0.86358338],
+       [ 1.23662366, -0.90041871,  0.63348956, -0.58677799],
+       [-3.09362317,  0.92042332,  0.53013723,  0.24224835]])</code></pre>
+</div>
+</div>
+<p>Note that we don’t use <code>not</code> but instead the tilde <code>~</code> sign to negate (flip) a value.</p>
+<p>Nor do we use <code>and</code> and <code>or</code>; instead we use <code>&amp;</code> and <code>|</code>.</p>
+<p>Also, expressions join by these operators <strong>must be in parentheses</strong>.</p>
+<div id="585f527d-012a-4e64-844b-468c8693432f" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> (names <span class="op">==</span> <span class="st">'Bob'</span>) <span class="op">|</span> (names <span class="op">==</span> <span class="st">'Will'</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>mask</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>data[mask]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>array([[-1.0441337 , -0.8075191 , -1.89069483, -0.9007478 ],
+       [-1.45769989, -0.49824512, -1.2056539 , -0.43596557],
+       [-0.33496411, -0.25575133, -0.61952407,  0.88984652],
+       [-0.59001244, -2.23411426, -0.31123889, -0.86358338]])</code></pre>
+</div>
+</div>
+<p>We can also do things like this:</p>
+<div id="d60c99ad-33a8-478e-84b9-1ad8c4f1deeb" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>data[data <span class="op">&lt;</span> <span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>array([[0.        , 0.        , 0.        , 0.        ],
+       [1.57167643, 0.        , 0.78120542, 0.22558685],
+       [0.        , 0.        , 0.        , 0.        ],
+       [0.        , 0.        , 0.        , 0.88984652],
+       [0.        , 0.        , 0.        , 0.        ],
+       [1.23662366, 0.        , 0.63348956, 0.        ],
+       [0.        , 0.92042332, 0.53013723, 0.24224835]])</code></pre>
+</div>
+</div>
+<p>And we can alter data with boolean indexing, just as we did with slices.</p>
+<div id="aeaae861-62ee-40e1-af38-44c2bf2933c9" class="cell" data-tags="[]" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>data[names <span class="op">!=</span> <span class="st">'Joe'</span>] <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>array([[7.        , 7.        , 7.        , 7.        ],
+       [1.57167643, 0.        , 0.78120542, 0.22558685],
+       [7.        , 7.        , 7.        , 7.        ],
+       [7.        , 7.        , 7.        , 7.        ],
+       [7.        , 7.        , 7.        , 7.        ],
+       [1.23662366, 0.        , 0.63348956, 0.        ],
+       [0.        , 0.92042332, 0.53013723, 0.24224835]])</code></pre>
 </div>
 </div>
 

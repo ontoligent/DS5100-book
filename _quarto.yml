@@ -61,8 +61,9 @@ book:
         - notebooks/M05_NumPy/M05-05-NumPyFunctions.ipynb
     - part: modules/m06/m06-intro.qmd # "06 Pandas"
       chapters:
-        - notebooks/M06_Pandas/M06-01-Pandas1.ipynb
-        - notebooks/M06_Pandas/M06-02-Pandas2.ipynb
+        - notebooks/M06_Pandas/M06-00-IntroducingPandas.ipynb
+        - notebooks/M06_Pandas/M06-01-ExploringPandas.ipynb
+        - notebooks/M06_Pandas/M06-02-DeeperIntoPandas.ipynb
         - notebooks/M06_Pandas/M06-03-NarrowWide.ipynb
         - notebooks/M06_Pandas/M06-04-MethodChaining.ipynb
         - notebooks/M06_Pandas/M06-05-Pandas-and-SQL.ipynb

@@ -1,0 +1,20 @@
+table.dataframe {
+    border: 1px solid black;
+}
+
+table.dataframe td, th {
+     font-size: 200%;
+}
+
+td.data {
+    font-size: 200%;
+    font-family: monospace;
+}
+
+.reveal blockquote {
+    margin: 0 5rem;
+    padding: 1rem;
+    width:80%;
+    font-family: serif;
+    border: None;
+}

@@ -73,8 +73,8 @@ book:
         - notebooks/M07_PythonClasses/M07-01-Classes.ipynb
         - notebooks/M07_PythonClasses/M07-02-ClassesExample.ipynb
         - notebooks/M07_PythonClasses/M07-03-MoreOnClasses.ipynb
-        - notebooks/M07_PythonClasses/M07-05-Example.ipynb
         - notebooks/M07_PythonClasses/M07-04-ClassAttributeWeirdness.ipynb
+        - notebooks/M07_PythonClasses/M07-05-Example.ipynb
     - part: modules/m08/m08-intro.qmd # "08 Testing"
       chapters: 
         - modules/m08/m08-testing-and-verification.qmd

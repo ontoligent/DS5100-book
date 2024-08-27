@@ -1,13 +1,9 @@
 # Introduction
 
-## Objective and Scope
+The main objective of the course is to introduce fundamental programming concepts and techniques so that students may successfully complete courses in data science, including machine learning and data analysis, as well as to become successful data scientists in the workplace.
 
-The main objective of the course is to introduce fundamental programming concepts and techniques so that students may successfully complete courses in machine learning and computational statistics, as well as to become successful data scientists in the workplace.
+In addition to Python and R, topics covered range from using the command line, git, and GitHub, to visualization and project management.
 
-Topics covered range from using the command line, git, and GitHub, to visualization and project management.
+The course is designed to instill a basic competency on which to build out one's knowledge and skills within the program. It is not exhaustive, but instead strives to teach you just enough to get you going with confidence to learn as you go. 
 
-## Philosophy
-
-More generally, the course is designed to instill a basic competency on which to build out one's knowledge and skills within the program.
-
-## How to use this book
+This is not a course in programming from a computer science perspective. It is designed to give you enough familiarity with writing code that you will be able to acquire deeper knowledge of programming --- and the computational machinery that undergirds it --- in your development as a data scientist. Consequently, many. of the discussions of what is going on "under they hood," such as how data are stored in memory, are glossed over. 

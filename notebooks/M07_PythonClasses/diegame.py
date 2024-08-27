@@ -8,7 +8,7 @@ class DieGame():
     weights = [1,1,1,1,1,1]
     
     def __init__(self):
-        return None
+        pass
         
     def create_die(self):
         self.n_sides = len(self.weights)
@@ -33,7 +33,6 @@ class DieGame():
         print("Rolls:", self.n_rolls)
         self.results.value_counts().sort_index().plot.bar(rot=0);
         
-    # We add another method because it's so easy :-)
     def plot_probs(self):
         pd.Series(self.my_probs).plot.pie(title="Die Model")
         

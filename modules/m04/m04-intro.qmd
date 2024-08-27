@@ -2,21 +2,20 @@
 
 ## Topics
 
-- Built-in functions
-- User-defined functions
-- Variable scope
-- Lambda functions
-- Design of functions
-- Recursion
+-   Built-in functions
+-   User-defined functions
+-   Variable scope
+-   Lambda functions
+-   Design of functions
+-   Recursion
 
+## Readings
 
-## Readings 
-
-### Required
+### Suggested
 
 -   [Lutz 2019, Part IV, Chapter 16: Function Basics](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch16.html)
 -   [Lutz 2019, Part IV, Chapter 17: Scopes](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch17.html)
-    - Non-local is for advanced users.
+    -   Non-local is for advanced users.
 -   [Lutz 2019, Part IV, Chapter 18. Arguments](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch18.html)
 -   [Lutz 2019, Part IV, Chapter 19: Advanced Function Topics](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch19.html)
 

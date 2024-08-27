@@ -1,10 +1,8 @@
 # Activity: Using Rivanna
 
-::: {.callout}
-
+::: callout
 **Goal:** Create your course directory structure on Rivanna.
-
-::: 
+:::
 
 After reading the previous documents on [Rivanna](../../topics/rivanna.qmd) and [Unix](../../topics/unix.qmd), try this activity to get acquainted with the Rivanna high-performance computing cluster at UVA.
 

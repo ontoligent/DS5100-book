@@ -15,6 +15,9 @@
 - [Manifesto for Agile Software Development (agilemanifesto.org)](https://agilemanifesto.org/)
 - [Twelve Principles of Agile Software (agilemanifesto.org)](https://agilemanifesto.org/principles.html)
 - [User Stories: An Overview (Digit&eacute;)](https://www.digite.com/agile/user-stories/)
+
+### Optional
+
 - [Project Charters (Princeton)](https://cdh.princeton.edu/research/project-management/charters/)
 - [Dataset Curation Template (Princeton)](https://cdh.princeton.edu/documents/11/dataset_curation_charter_template_(2).pdf)
 

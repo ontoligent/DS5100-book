@@ -21,28 +21,6 @@
     ]
   },
   {
-    "objectID": "modules/m00/m00-intro.html#philosophy",
-    "href": "modules/m00/m00-intro.html#philosophy",
-    "title": "Introduction",
-    "section": "Philosophy",
-    "text": "Philosophy\nMore generally, the course is designed to instill a basic competency on which to build out one’s knowledge and skills within the program.",
-    "crumbs": [
-      "Welcome",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "modules/m00/m00-intro.html#how-to-use-this-book",
-    "href": "modules/m00/m00-intro.html#how-to-use-this-book",
-    "title": "Introduction",
-    "section": "How to use this book",
-    "text": "How to use this book",
-    "crumbs": [
-      "Welcome",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
     "objectID": "modules/m01/m01-intro.html",
     "href": "modules/m01/m01-intro.html",
     "title": "M01 Getting Started",
@@ -111,7 +89,7 @@
     "href": "topics/rivanna.html#for-more-information",
     "title": "About Rivanna",
     "section": "For More Information",
-    "text": "For More Information\nUVA’s Research Computing Learning Portal provides resources for learning how to use Rivanna. Here are two slide decks that you may find useful:\n\nIntroduction to Rivanna\nUsing Rivanna from the Command Line",
+    "text": "For More Information\nUVA’s Research Computing Learning Portal provides resources for learning how to use Rivanna and other HPC resources",
     "crumbs": [
       "M01 Getting Started",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>About Rivanna</span>"
@@ -296,7 +274,7 @@
     "href": "modules/m02/m02-intro.html#readings",
     "title": "M02 Introducing Python",
     "section": "Readings",
-    "text": "Readings\n\nRequired\n\nKatz and Katz 2019, Section 1, Preparing the Workspace\nLutz, Learning Python, Part I: Getting Started, Chapter 2\nLutz, Learning Python, Part I: Getting Started, Chapter 3\nLutz, Learning Python, Part II: Types and Operations, Chapters 4–9\n\n\n\nOptional\n\nKatz and Katz 2019, Section 1, First Steps in Coding - Variables and Data Types\nBuilt-in Types (Official)\nPython Data Types (GFG)\nPython Operators (W3S)\nImmutable vs Mutable Data Types in Python (Medium)",
+    "text": "Readings\n\nSuggested\n\nKatz and Katz 2019, Section 1, Preparing the Workspace\nLutz, Learning Python, Part I: Getting Started, Chapter 2\nLutz, Learning Python, Part I: Getting Started, Chapter 3\nLutz, Learning Python, Part II: Types and Operations, Chapters 4–9\n\n\n\nOptional\n\nKatz and Katz 2019, Section 1, First Steps in Coding - Variables and Data Types\nBuilt-in Types (Official)\nPython Data Types (GFG)\nPython Operators (W3S)\nImmutable vs Mutable Data Types in Python (Medium)",
     "crumbs": [
       "M02 Introducing Python"
     ]
@@ -1096,7 +1074,7 @@
     "href": "modules/m03/m03-intro.html#readings",
     "title": "M03 Control Structures",
     "section": "Readings",
-    "text": "Readings\n\nRequired\n\nLutz, 2019, Part III, Chapter 10. Introducing Python Statements\nLutz, 2019, Part III, Chapter 11. Assignments, Expressions, and Prints\n\nRead only up to and including “The Python 3.X print Function.”\n\nLutz, 2019, Part III, Chapter 12. if Tests and Syntax Rules\nLutz, 2019, Part III, Chapter 13. while and for Loops\nLutz, 2019, Part III, Chapter 14. Iterations and Comprehensions\nLutz, 2019, Part III, Chapter 15: The Documentations Interlude\n\n\n\nOptional\n\nVariables, Expressions, Statements, Types (Python Notes)\nMore Control Flow Tools (Python Docs)\nIf … Then (W3S)\nIterators (GFG)",
+    "text": "Readings\n\nSuggested\n\nLutz, 2019, Part III, Chapter 10. Introducing Python Statements\nLutz, 2019, Part III, Chapter 11. Assignments, Expressions, and Prints\n\nRead only up to and including “The Python 3.X print Function.”\n\nLutz, 2019, Part III, Chapter 12. if Tests and Syntax Rules\nLutz, 2019, Part III, Chapter 13. while and for Loops\nLutz, 2019, Part III, Chapter 14. Iterations and Comprehensions\nLutz, 2019, Part III, Chapter 15: The Documentations Interlude\n\n\n\nOptional\n\nVariables, Expressions, Statements, Types (Python Notes)\nMore Control Flow Tools (Python Docs)\nIf … Then (W3S)\nIterators (GFG)",
     "crumbs": [
       "M03 Control Structures"
     ]
@@ -1357,12 +1335,12 @@
   {
     "objectID": "notebooks/M03_ControlStructures/M03-04-NestedComprehensions.html",
     "href": "notebooks/M03_ControlStructures/M03-04-NestedComprehensions.html",
-    "title": "Nested Comprehensions",
+    "title": "NB: Nested Comprehensions",
     "section": "",
     "text": "Programming for Data Science\nRecall that nested loops are the algorithmic complement to nested data structures.\nJust as we can nest loops using for loops, we can do so with comprehensions.\nHere are some examples.\nThis notebook is adapted from GeeksForGeeks.\n\n\nExample 1: Creating a Matrix\nHere is how we can make a matrix — a two-dimensional data structure where each element is of the same data type — using plain old for loops.\n\nmatrix1 = [] # Matrix created\nfor i in range(5):\n    matrix1.append([]) # Row created\n    for j in range(5):\n        matrix1[i].append(j) # Cell populated\n\n\nmatrix1\n\n[[0, 1, 2, 3, 4],\n [0, 1, 2, 3, 4],\n [0, 1, 2, 3, 4],\n [0, 1, 2, 3, 4],\n [0, 1, 2, 3, 4]]\n\n\nHere’s how we can do this with a nested list comprehension:\n\nmatrix2 = [[j for j in range(5)] for i in range(5)]\n\n\nmatrix2\n\n[[0, 1, 2, 3, 4],\n [0, 1, 2, 3, 4],\n [0, 1, 2, 3, 4],\n [0, 1, 2, 3, 4],\n [0, 1, 2, 3, 4]]\n\n\nWe replace five lines of code with one.\n\n\nExample 2: Filtering a Nested List\nLet create a filter to extract some things we want from a matrix.\nIn this case, we want to pull out all of the odd numbers and save them as a list.\n\nmatrix3 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nodd_numbers1 = []\nfor row in matrix3:\n    for element in row:\n        if element % 2 != 0:\n            odd_numbers1.append(element)\n\n\nodd_numbers1\n\n[1, 3, 5, 7, 9]\n\n\n\nodd_numbers2 = [element for row in matrix3 for element in row if element % 2 != 0]\n\n\nodd_numbers2\n\n[1, 3, 5, 7, 9]\n\n\nHere’s a closer look at how nesting is represented in a comprehension compared to the traditional way.\nTraditional for loop:\nfor row in matrix3:\n    for element in row:\n        if element % 2 != 0:\n            odd_numbers1.append(element) # This is hoised to the top\n                                         # and implicitly appended\nComprehension (inside []):\nelement                        \n    for row in matrix3 \n        for element in row \n            if element % 2 != 0\nSee how they are the same, except that the kernel operation — appending filtered values to a result list — is hoisted to the top in the case of the comprehension.\n\n\nExample 3: Flattening Nested Sub-Lists\nHere we take a nested structure and flatten it out.\n\nnested_list = [[1, 2, 3], [4, 5], [6, 7, 8, 9]]\nflat_list1 = []\nfor sub_list in nested_list:\n    for val in sub_list:\n        flat_list1.append(val)\n\n\nflat_list1\n\n[1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\nflat_list2 = [val for sub_list in nested_list for val in sub_list]\n\n\nflat_list2\n\n[1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nExample 4: Manipulating Matrix Values\nFinally, we demonstrate how to manipulate each value in a matrix of words.\nIn this case, we simply capitalize each string.\n\nmatrix4 = [[\"apple\", \"banana\", \"cherry\"],\n        [\"date\", \"fig\", \"grape\"],\n        [\"kiwi\", \"lemon\", \"mango\"]]\nmodified_matrix1 = []\nfor row in matrix4:\n    modified_row = []\n    for fruit in row:\n        modified_row.append(fruit.capitalize())\n    modified_matrix1.append(modified_row)\n\n\nmodified_matrix1\n\n[['Apple', 'Banana', 'Cherry'],\n ['Date', 'Fig', 'Grape'],\n ['Kiwi', 'Lemon', 'Mango']]\n\n\n\nmodified_matrix2 = [[fruit.capitalize() for fruit in row] for row in matrix4]\n\n\nmodified_matrix2\n\n[['Apple', 'Banana', 'Cherry'],\n ['Date', 'Fig', 'Grape'],\n ['Kiwi', 'Lemon', 'Mango']]",
     "crumbs": [
       "M03 Control Structures",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Nested Comprehensions</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>NB: Nested Comprehensions</span>"
     ]
   },
   {
@@ -1390,7 +1368,7 @@
     "href": "modules/m04/m04-intro.html#readings",
     "title": "M04 Functions",
     "section": "Readings",
-    "text": "Readings\n\nRequired\n\nLutz 2019, Part IV, Chapter 16: Function Basics\nLutz 2019, Part IV, Chapter 17: Scopes\n\nNon-local is for advanced users.\n\nLutz 2019, Part IV, Chapter 18. Arguments\nLutz 2019, Part IV, Chapter 19: Advanced Function Topics\n\n\n\nOptional\n\nMcKinney, 2023, Python for Data Analysis, “3.2: Functions”\nFunctions (W3S)\nGlobal and Local Variables (GFG)\nLambda Functions (Real Python)",
+    "text": "Readings\n\nSuggested\n\nLutz 2019, Part IV, Chapter 16: Function Basics\nLutz 2019, Part IV, Chapter 17: Scopes\n\nNon-local is for advanced users.\n\nLutz 2019, Part IV, Chapter 18. Arguments\nLutz 2019, Part IV, Chapter 19: Advanced Function Topics\n\n\n\nOptional\n\nMcKinney, 2023, Python for Data Analysis, “3.2: Functions”\nFunctions (W3S)\nGlobal and Local Variables (GFG)\nLambda Functions (Real Python)",
     "crumbs": [
       "M04 Functions"
     ]
@@ -3196,7 +3174,7 @@
     "href": "modules/m07/m07-intro.html#readings",
     "title": "M07 Classes",
     "section": "Readings",
-    "text": "Readings\n\nClasses (Official Python)\nLutz 2019, Part VI, Classes and OOP, Chapters 26–29.",
+    "text": "Readings\n\nSuggested\n\nClasses (Official Python)\nLutz 2019, Part VI, Classes and OOP, Chapters 26–29.",
     "crumbs": [
       "M07 Classes"
     ]
@@ -3264,7 +3242,7 @@
     "text": "Introduction\nClasses are a way of organizing code into bundles of variables and functions called attributes and methods.\nEach class models some thing — a thing in the world, a process, a model, or just some convenient way of grouping code.\nFor example, a logistic regression model would have attributes like:\nThese attributes help describe the object; they give the object’s state.\nThe logistic regression model would have functionality such as:\nThe behavior, or functionality, is supported by methods, which are functions included in the class.\nHere are a couple of other ways to think of a class:",
     "crumbs": [
       "M07 Classes",
-      "<span class='chapter-number'>37</span>  <span class='chapter-title'>NB&colon; Introducing Classes</span>"
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>NB: Introducing Classes</span>"
     ]
   },
   {
@@ -3272,32 +3250,10 @@
     "href": "notebooks/M07_PythonClasses/M07-01-Classes.html#introduction",
     "title": "NB: Introducing Classes",
     "section": "",
-    "text": "weights\nan optional intercept term\nthe maximum number of iterations\n\n\n\n\nthe optimization routine used in training\na prediction function\n\n\n\n\nIt provides a template for creating an object and for working with the object.\nIt constitutes a kind of definition of something in the world.\n\n\nA First Example\nOk, let’s look at examples, starting with a very small, simple class.\nThe class contains:\n\na name Ferrari458\na docstring for a quick description\nan attribute, which is number of cylinders in the engine\na method\n\n\nclass Ferrari458:\n    \"\"\"This is a Ferrari 458 object\"\"\"\n    cylinders = 8\n\n    def print_origin(self):\n        return 'I was built in Italy!'\n\nYou can learn about the class by printing the docstring:\n\nFerrari458.__doc__\n\n'This is a Ferrari 458 object'\n\n\nYou can also get detailed help like this:\n\nhelp(Ferrari458)\n\nHelp on class Ferrari458 in module __main__:\n\nclass Ferrari458(builtins.object)\n |  This is a Ferrari 458 object\n |  \n |  Methods defined here:\n |  \n |  print_origin(self)\n |  \n |  ----------------------------------------------------------------------\n |  Data descriptors defined here:\n |  \n |  __dict__\n |      dictionary for instance variables (if defined)\n |  \n |  __weakref__\n |      list of weak references to the object (if defined)\n |  \n |  ----------------------------------------------------------------------\n |  Data and other attributes defined here:\n |  \n |  cylinders = 8\n\n\n\nNext, we create an object from the class (also called an instance of the class).\nIt is called like a function with no parameters.\nThe process is called instantiation.\n\nmyferrari = Ferrari458()\n\nWe show the number of cylinders by using the object.attribute format:\n\nmyferrari.cylinders\n\n8\n\n\nThen we call its method .print_origin() to learn where this sweet machine was built.\n\nmyferrari.print_origin()\n\n'I was built in Italy!'\n\n\nAs a convention, instance methods take self as their first argument.\nThese methods can then use self.attribute to extract the attributes associated with the instantiated object.\nHere is an example, with method get_cylinders.\n\nclass Ferrari458_v2:\n    \"\"\"This is a Ferrari 458 object\"\"\"\n    cylinders = 8\n\n    def print_origin(self):\n        return 'I was built in Italy!'\n\n    def get_cylinders(self):\n        return self.cylinders\n\n\nmyferrari = Ferrari458_v2()\n\n\nmyferrari.get_cylinders()\n\n8",
+    "text": "weights\nan optional intercept term\nthe maximum number of iterations\n\n\n\n\nthe optimization routine used in training\na prediction function\n\n\n\n\nIt provides a template for creating an object and for working with the object.\nIt constitutes a kind of definition of something in the world.\n\n\nA First Example\nOk, let’s look at examples, starting with a very small, simple class.\nThe class contains:\n\na name Ferrari458\na docstring for a quick description\nan attribute, which is number of cylinders in the engine\na method\n\n\nclass Ferrari458:\n    \"This is a Ferrari 458 object\"\n    cylinders = 8\n\n    def print_origin(self):\n        \"Returns a string\"\n        return 'I was built in Italy!'\n\nYou can learn about the class by printing the docstring:\n\nFerrari458.__doc__\n\n'This is a Ferrari 458 object'\n\n\nYou can also get detailed help like this:\n\nhelp(Ferrari458)\n\nHelp on class Ferrari458 in module __main__:\n\nclass Ferrari458(builtins.object)\n |  This is a Ferrari 458 object\n |  \n |  Methods defined here:\n |  \n |  print_origin(self)\n |      Returns a string\n |  \n |  ----------------------------------------------------------------------\n |  Data descriptors defined here:\n |  \n |  __dict__\n |      dictionary for instance variables (if defined)\n |  \n |  __weakref__\n |      list of weak references to the object (if defined)\n |  \n |  ----------------------------------------------------------------------\n |  Data and other attributes defined here:\n |  \n |  cylinders = 8\n\n\n\nNext, we create an object from the class (also called an instance of the class).\nIt is called like a function.\nThe process is called instantiation.\n\nmyferrari = Ferrari458()\n\nWe can show the number of myferrari cylinders by using the object.attribute format:\n\nmyferrari.cylinders\n\n8\n\n\nWe can call its method .print_origin() to learn where the car was built:\n\nmyferrari.print_origin()\n\n'I was built in Italy!'\n\n\nNote that the method takes self as its first argument.\nBy doing this, the method can use the self.attribute and self.method() pattern to access the attributes and methods contained in other parts of the class.\nHere is an example, with the method .get_cylinders():\n\nclass Ferrari458_v2:\n    \"\"\"This is a Ferrari 458 object\"\"\"\n    cylinders = 8\n\n    def print_origin(self):\n        return 'I was built in Italy!'\n\n    def get_cylinders(self):\n        return self.cylinders\n\n\nmyferrari = Ferrari458_v2()\nmyferrari.get_cylinders()\n\n8\n\n\nFor the method .get_cylinders() to see the attribute cylinders, it has to access the attribute as a property of self.\nThis is because the scope inside the class doesn’t behave like global scope in a module.\nEach method can only see what is inside of it, or what is global to the code that defined the class.\nInstead of having globals, it has the shared variable self that methods can use to share information.",
     "crumbs": [
       "M07 Classes",
-      "<span class='chapter-number'>37</span>  <span class='chapter-title'>NB&colon; Introducing Classes</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M07_PythonClasses/M07-01-Classes.html#the-.__init__-method",
-    "href": "notebooks/M07_PythonClasses/M07-01-Classes.html#the-.__init__-method",
-    "title": "NB: Introducing Classes",
-    "section": "The .__init__() method",
-    "text": "The .__init__() method\nThere is a special function called __init__ that will initialize the state of an object when you create it.\nUse it to supply more context-dependent information about your instance.\nLet’s look at another version of the class with __init__().\n\nclass Ferrari458_v3:\n    \"\"\"this is a Ferrari 458 object\"\"\"\n    cylinders = 8\n    \n    def __init__(self, color):\n        self.color = color\n\n    def print_origin(self):\n        return 'I was built in Italy!'\n\n    def get_color(self):\n        return self.color\n\nBy adding the __init__() function, we can create objects if we pass the number of cylinders.\nIf we don’t pass this parameter, there will be an error.\nThis is because we did not define a default value for the color argument in our initialization method.\n\nferr1 = Ferrari458_v3()\n\nTypeError: Ferrari458_v3.__init__() missing 1 required positional argument: 'color'\n\n\nThis works:\n\nferr1 = Ferrari458_v3(\"red\")\n\nWe can access the initialized attribute using the dot operator, just as if it were declared at the top of the class:\n\nferr1.color\n\n'red'\n\n\nOr we can call the accessor method that we created.\n\nferr1.get_color()\n\n'red'\n\n\nNote that even though we initialized the car object with “red”, we can always change it:\n\nferr1.color = \"Cobalt\"\n\n\nferr1.get_color()\n\n'Cobalt'",
-    "crumbs": [
-      "M07 Classes",
-      "<span class='chapter-number'>37</span>  <span class='chapter-title'>NB&colon; Introducing Classes</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M07_PythonClasses/M07-01-Classes.html#instance-vs-class-attributes",
-    "href": "notebooks/M07_PythonClasses/M07-01-Classes.html#instance-vs-class-attributes",
-    "title": "NB: Introducing Classes",
-    "section": "Instance vs Class Attributes",
-    "text": "Instance vs Class Attributes\nNotice the difference between the cylinders and the color attributes.\nThe first is a class attribute. Its value will apply to all instances of the class, unless the instance overrides it.\nThe second is an instance attribute. Its value is meant to be changed with each instance.\nLook what happens if we change the value of cylinders in the class:\n\nFerrari458_v3.cylinders = 12\n\n\nferr1.cylinders\n\n12\n\n\nThe value will be changed with all of the instances created from the class.",
-    "crumbs": [
-      "M07 Classes",
-      "<span class='chapter-number'>37</span>  <span class='chapter-title'>NB&colon; Introducing Classes</span>"
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>NB: Introducing Classes</span>"
     ]
   },
   {
@@ -3305,76 +3261,98 @@
     "href": "notebooks/M07_PythonClasses/M07-01-Classes.html#the-meaning-of-self",
     "title": "NB: Introducing Classes",
     "section": "The Meaning of self",
-    "text": "The Meaning of self\nNote the presence of an argument and variable called self in the method definitions. - This stands for the intantiated object itself.\nSo, when you create an object like so:\nfoo = Foo()\n\nfoo is represented in the class definition as self.\n\nIf you want your method to access the other attributes and methods in an object, you need to put self as its first argument. - Note that when you use the method with an instance, you don’t pass the object name as an argument - The object name is passed implicitly by Python, since it knows which object called the methid\nYou can use any valid name you want for the name of the object itself, but the convention is to use self.\nNote that self is only used within the methods of a class, not outside of it. - Like functions, they don’t know what’s outside of them, nor does the containing code know what’s inside of them. - The self variable is the mechanism that allows methods to share data without having to pass and return a bunch of variables.\nThink of self as a data structure that stores the program itself - In this sense, it’s similar to recursion: A class definition contains a reference to itself! - But remember, the class definition is not a thing – it’s a template. - self is just a pronoun that allows an instance to access it’s own state.",
+    "text": "The Meaning of self\nself stands for the intantiated object itself.\nIt is a proxy in the template for an actual instance of the class.\nSo, to repeat what was said earlier, if you want your method to access the other attributes and methods of an object, you need to put self as its first argument.\nNote that when you use the method with an instance, you don’t pass the object name as an argument:\nmyferrari.get_cylinders() \nThe object name myferrari is passed implicitly by Python.\nYou can use any valid name you want for the name of the object itself, but the convention is to use self.\nNote that self is only used within the methods of a class, not outside of it in the rest of the class definition.\nAttributes defined outside of methods but inside a class are implicitly attached to self.\nThe self variable is the mechanism that allows methods to share data without having to pass and return a bunch of variables.\nThink of self as a data structure that stores the program itself",
     "crumbs": [
       "M07 Classes",
-      "<span class='chapter-number'>37</span>  <span class='chapter-title'>NB&colon; Introducing Classes</span>"
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>NB: Introducing Classes</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M07_PythonClasses/M07-01-Classes.html#the-.__init__-method",
+    "href": "notebooks/M07_PythonClasses/M07-01-Classes.html#the-.__init__-method",
+    "title": "NB: Introducing Classes",
+    "section": "The .__init__() method",
+    "text": "The .__init__() method\nThere is a special method called .__init__() that will initialize the state of an object when you create it.\nUse it to supply more context-dependent information about your instance.\nLet’s look at another version of the class with __init__().\n\nclass Ferrari458_v3:\n    \"\"\"this is a Ferrari 458 object\"\"\"\n    cylinders = 8\n    \n    def __init__(self, color):\n        self.color = color\n\n    def print_origin(self):\n        return 'I was built in Italy!'\n\n    def get_color(self):\n        return self.color\n\nBy adding the .__init__() method, we can create objects if we pass the number of cylinders.\nIf we don’t pass this parameter, there will be an error.\nThis is because we did not define a default value for the color argument in our initialization method.\n\nferr1 = Ferrari458_v3()\n\nTypeError: __init__() missing 1 required positional argument: 'color'\n\n\nThis works:\n\nferr1 = Ferrari458_v3(\"red\")\n\nWe can access the initialized attribute using the dot operator, just as if it were declared at the top of the class:\n\nferr1.color\n\n'red'\n\n\nOr we can call the accessor method that we created.\n\nferr1.get_color()\n\n'red'\n\n\nNote that even though we initialized the car object with “red”, we can always change it:\n\nferr1.color = \"Cobalt\"\n\n\nferr1.get_color()\n\n'Cobalt'",
+    "crumbs": [
+      "M07 Classes",
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>NB: Introducing Classes</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M07_PythonClasses/M07-01-Classes.html#instance-vs-class-attributes",
+    "href": "notebooks/M07_PythonClasses/M07-01-Classes.html#instance-vs-class-attributes",
+    "title": "NB: Introducing Classes",
+    "section": "Instance vs Class Attributes",
+    "text": "Instance vs Class Attributes\nNotice the difference between the cylinders and the color attributes.\nclass Ferrari458_v3:\n    \"\"\"this is a Ferrari 458 object\"\"\"\n    cylinders = 8\n    \n    def __init__(self, color):\n        self.color = color\nThe first is a class attribute.\nIt is defined outside of any method.\nIts value will apply to all instances of the class, unless the instance overrides it.\nThe second is an instance attribute.\nIt is defined inside of a method.\nIts value is meant to be changed with each instance.\nLook what happens if we change the value of cylinders in the class:\n\nFerrari458_v3.cylinders = 12\n\n\nferr1.cylinders\n\n12\n\n\nThe value will be changed with all of the instances created from the class.\nNow, if we change the instance variable, the class is unaffected.\n\nferr1.cylinders = 4\n\n\nFerrari458_v3.cylinders\n\n12",
+    "crumbs": [
+      "M07 Classes",
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>NB: Introducing Classes</span>"
     ]
   },
   {
     "objectID": "notebooks/M07_PythonClasses/M07-01-Classes.html#summary-and-additional-info",
     "href": "notebooks/M07_PythonClasses/M07-01-Classes.html#summary-and-additional-info",
     "title": "NB: Introducing Classes",
-    "section": "Summary and additional info",
-    "text": "Summary and additional info\nAn cobject is a self-contained bundle of methods and attributes. * Methods are basically functions. * Attributes are basically variables.\nA class definition is a template for creating objects. * Objects are class instances. * Classes are onbject types.\nObjects have their own scope, like functions. * They are meant to exchange information with their environment only through accessing attributes and calling methods\nWhen objects are first created, they often expect to have data passed to them. * This is called initializing the object. * These data are handled internally by the .__init__() method. * Data that are passed this way can be overridden by accessing the attributes they assigned to.\nThe methods of a class begin with self as the first argument. * This stands for the instance itself. * All methods and attributes are avaible to all other methods in the object through the self object.\nIf a method does not have self as its first argument, it cannot access the internal state or methods of the object. * The internal state is just the attributes and their current values. * These are called static methods. * Static methods are useful in providing functions to the environment in which their containing object is instantiated.\nThere is a lot more to the subject, but this is good enough to get started!",
+    "section": "Summary and Additional Info",
+    "text": "Summary and Additional Info\nAn object is a self-contained bundle of methods and attributes.\n\nMethods are basically functions.\nAttributes are basically variables.\n\nA class definition is a template for creating objects.\n\nObjects are class instances.\nClasses are object types.\n\nObjects have their own scope, like functions.\nWhen objects are first created, they often expected to have data passed to them.\n\nThis is called initializing the object.\nThese data are handled internally by the .__init__() method.\nData that are passed this way may be overridden by accessing the attributes they assigned to.\n\nThe methods of a class begin with self as the first argument.\n\nThis stands for the instance itself.\nAll methods and attributes are available to all other methods in the object through the self object.\n\nIf a method does not have self as its first argument, it cannot access the internal state or methods of the object.\n\nThe internal state is just the attributes and their current values.\nThese are called static methods.\nStatic methods are useful in providing functions to the environment in which their containing object is instantiated.\n\nThere is a lot more to the subject, but this is good enough to get started!",
     "crumbs": [
       "M07 Classes",
-      "<span class='chapter-number'>37</span>  <span class='chapter-title'>NB&colon; Introducing Classes</span>"
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>NB: Introducing Classes</span>"
     ]
   },
   {
     "objectID": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html",
     "href": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html",
-    "title": "NB: Classes Example",
+    "title": "NB: From Functions to Classes",
     "section": "",
-    "text": "Set Up\nimport pandas as pd\nimport numpy as np",
+    "text": "Method 1: Functions Relaying Data\nLet’s first define a set of functions that work in a sequence, where the return value of one is the argument of the other.\nIn this example, we want to simulate the rolling of dice in a game of chance.\nTo do this, we could write three functions:\nimport pandas as pd\nimport numpy as np\n\ndef create_die(weights):\n    \"Create a simple die object of n sides with arbitrary weights. Return the die as a DataFrame.\"\n    n_sides = len(weights)\n    my_probs = [i/sum(weights) for i in weights]\n    my_die = pd.DataFrame({\n        'side': range(1, n_sides + 1),\n        'weights': my_probs\n    })\n    return my_die\n\ndef roll_dice(my_die, n_rolls=1):\n    \"Roll a die one or more times and return the results as a Series.\"\n    results = []\n    for i in range(n_rolls):\n        result = my_die.side.sample(weights=my_die.weights).values[0]\n        results.append(result)\n    return pd.Series(results)\n\ndef plot_results(my_results):\n    \"Show the results of rolling the dice n times with a simple bar graph.\"\n    my_results.value_counts().sort_index().plot.bar(rot=0);\nNow let’s use the functions together and simulate the rolling of \\(10\\) dice.\nFirst, we create a fair die.\nfair_die = create_die([1,1,1,1,1,1,1])\nfair_die\n\n\n\n\n\n\n\n\n\nside\nweights\n\n\n\n\n0\n1\n0.142857\n\n\n1\n2\n0.142857\n\n\n2\n3\n0.142857\n\n\n3\n4\n0.142857\n\n\n4\n5\n0.142857\n\n\n5\n6\n0.142857\n\n\n6\n7\n0.142857\nNext, we roll our die \\(n\\) times.\nn_rolls = 10\nfair_results = roll_dice(fair_die, n_rolls)\nfair_results\n\n0    2\n1    5\n2    3\n3    5\n4    3\n5    7\n6    4\n7    1\n8    4\n9    5\ndtype: int64\nFinally, we plot the results:\nplot_results(fair_results)\nLet’s play with an unfair die.\nunfair_die = create_die([1,1,1,1,1,5])\nunfair_results = roll_dice(unfair_die, n_rolls)\nplot_results(unfair_results)\nFinally, let’s write a function to peform all of these actions at once.\ndef do_it_all(weights, n_rolls):\n    plot_results(roll_dice(create_die(weights), n_rolls))\ndo_it_all([1,1,1,1,1,10], n_rolls)\nNote the nested structure of the functions.\nEach function uses the result of the previous.\nThe pattern is to relay or hand-off data from one function to the other, as a ball in a rugby match.",
     "crumbs": [
       "M07 Classes",
-      "<span class='chapter-number'>38</span>  <span class='chapter-title'>NB: Classes Example</span>"
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>NB: From Functions to Classes</span>"
     ]
   },
   {
-    "objectID": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html#method-1-nothing-special",
-    "href": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html#method-1-nothing-special",
-    "title": "NB: Classes Example",
-    "section": "Method 1: Nothing Special",
-    "text": "Method 1: Nothing Special\nWe define a set of functions that work in a sequence, where the return value of one is the argument of the other.\n\nDefine Functions\n\ndef create_die(weights):\n    n_sides = len(weights)\n    my_probs = [i/sum(weights) for i in weights]\n    my_die = pd.DataFrame({\n        'side': range(1, n_sides + 1),\n        'weights': my_probs\n    })\n    return my_die\n\ndef roll_dice(my_die, n_rolls=1):\n    results = []\n    for i in range(n_rolls):\n        result = my_die.side.sample(weights=my_die.weights).values[0]\n        results.append(result)\n    return pd.Series(results)\n\ndef plot_results(my_results):\n    my_results.value_counts().sort_index().plot.bar();\n\n\n\nCreate Instances\n\nn_rolls = 10\n\n\nfair_die = create_die([1,1,1,1,1,1,1])\n\n\nfair_die\n\n\n\n\n\n\n\n\n\nside\nweights\n\n\n\n\n0\n1\n0.142857\n\n\n1\n2\n0.142857\n\n\n2\n3\n0.142857\n\n\n3\n4\n0.142857\n\n\n4\n5\n0.142857\n\n\n5\n6\n0.142857\n\n\n6\n7\n0.142857\n\n\n\n\n\n\n\n\n\nfair_results = roll_dice(fair_die, n_rolls)\n\n\nfair_results\n\n0    4\n1    2\n2    6\n3    4\n4    4\n5    4\n6    7\n7    6\n8    4\n9    5\ndtype: int64\n\n\n\nplot_results(fair_results)\n\n\n\n\n\n\n\n\n\nunfair_die = create_die([1,1,1,1,1,5])\nunfair_results = roll_dice(unfair_die, n_rolls)\nplot_results(unfair_results)\n\n\n\n\n\n\n\n\n\n\nDoing it all at once\n\ndef do_it_all(weights):\n    plot_results(roll_dice(create_die(weights), n_rolls))\n\n\ndo_it_all(roll_dice(create_die([1,1,1,1,1,10]), n_rolls))",
+    "objectID": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html#method-1-functions-relaying-data",
+    "href": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html#method-1-functions-relaying-data",
+    "title": "NB: From Functions to Classes",
+    "section": "",
+    "text": "One to define a die.\nOne to perform the action of rolling a die.\nOne to show the results.",
     "crumbs": [
       "M07 Classes",
-      "<span class='chapter-number'>38</span>  <span class='chapter-title'>NB: Classes Example</span>"
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>NB: From Functions to Classes</span>"
     ]
   },
   {
-    "objectID": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html#method-2-with-globals",
-    "href": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html#method-2-with-globals",
-    "title": "NB: Classes Example",
-    "section": "Method 2: With Globals",
-    "text": "Method 2: With Globals\n\nDefine a Global Data Structure\nWe create a dictionary called config to store our instance data.\nWe’ll treat this as a global.\n\nconfig = {}\nn_rolls2 = 10\n\n\n\nDefine Functions\n\ndef create_die2(die_id):\n    global config\n    config[die_id]['die'] = None\n    weights = config[die_id]['weights']\n    n_sides = len(weights)\n    my_probs = [i/sum(weights) for i in weights]\n    config[die_id]['die'] = pd.DataFrame({\n        'side': range(1, n_sides + 1),\n        'weights': my_probs\n    })\n\ndef roll_dice2(die_id):\n    global config\n    global n_rolls2\n    config[die_id]['results'] = None\n    my_die = config[die_id]['die']\n    results = []\n    for i in range(n_rolls2):\n        result = my_die.side.sample(weights=my_die.weights).values[0]\n        results.append(result)\n    config[die_id]['results'] = pd.Series(results)\n\ndef plot_results2(die_id):\n    global config\n    my_results = config[die_id]['results']\n    my_results.value_counts().sort_index().plot.bar();\n\ndef do_it_all2(die_id):\n    global config\n    global n_rolls2\n    print(\"Die ID:\", die_id)\n    print(\"Weights:\", config[die_id]['weights'])\n    print(\"Rolls:\", n_rolls2)\n    create_die2(die_id)\n    roll_dice2(die_id)\n    plot_results2(die_id)\n\n\n\nPopulate Config\nWe populate our configuration config with some instances.\n\nconfig = {\n    'fair': {\n        'weights': [1,1,1,1,1,1]\n    },\n    'unfair': {\n        'weights': [1,1,1,1,10,100],\n    }\n}\n\n\n\nCall Main Function\n\ndo_it_all2('fair')\n\nDie ID: fair\nWeights: [1, 1, 1, 1, 1, 1]\nRolls: 10\n\n\n\n\n\n\n\n\n\n\ndo_it_all2('unfair')\n\nDie ID: unfair\nWeights: [1, 1, 1, 1, 10, 100]\nRolls: 10\n\n\n\n\n\n\n\n\n\n\nn_rolls2 = 1000 # We change this, but it will affect all uses of the functions until we change it.\ndo_it_all2('unfair')\n\nDie ID: unfair\nWeights: [1, 1, 1, 1, 10, 100]\nRolls: 1000\n\n\n\n\n\n\n\n\n\n\ndo_it_all2('fair')\n\nDie ID: fair\nWeights: [1, 1, 1, 1, 1, 1]\nRolls: 1000",
+    "objectID": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html#method-2-functions-sharing-globals",
+    "href": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html#method-2-functions-sharing-globals",
+    "title": "NB: From Functions to Classes",
+    "section": "Method 2: Functions Sharing Globals",
+    "text": "Method 2: Functions Sharing Globals\nLet’s try something different now.\nInstead of passing the data from function to function, let’s centralize our data in a dictionary called config.\nWe’ll treat this dictionary as a global variable.\nIniitally, config has this structure:\n\nconfig = {\n    \"die1\": {\n        \"weights\": [...]\n    },\n    \"die2\": {\n        \"weights\": [...]\n    },\n    ...\n}\n\ndef create_die2(die_id):\n    \"Create a die from data in config and add results to config.\"\n    global config\n    config[die_id]['die'] = None\n    weights = config[die_id]['weights']\n    n_sides = len(weights)\n    my_probs = [i/sum(weights) for i in weights]\n    config[die_id]['die'] = pd.DataFrame({\n        'side': range(1, n_sides + 1),\n        'weights': my_probs\n    })\n\ndef roll_dice2(die_id):\n    \"Roll the die from the config and save results in the config.\"\n    global config\n    global n_rolls2\n    config[die_id]['results'] = None\n    my_die = config[die_id]['die']\n    results = []\n    for i in range(n_rolls2):\n        result = my_die.side.sample(weights=my_die.weights).values[0]\n        results.append(result)\n    config[die_id]['results'] = pd.Series(results)\n\ndef plot_results2(die_id):\n    \"Plot the results in the config.\"\n    global config\n    my_results = config[die_id]['results']\n    my_results.value_counts().sort_index().plot.bar(rot=0);\n\ndef do_it_all2(die_id):\n    \"Do everything.\"\n    global config\n    global n_rolls2\n    print(\"Die ID:\", die_id)\n    print(\"Weights:\", config[die_id]['weights'])\n    print(\"Rolls:\", n_rolls2)\n    create_die2(die_id)\n    roll_dice2(die_id)\n    plot_results2(die_id)\n\nTo use these functions, we start by populating our configuration with kinds of dice.\nWe define an fair and an unfair version.\nAs we can see from the method definitions in our class, the dictionaries associated with each key will take on more keys.\n\nconfig = {\n    'fair': {\n        'weights': [1,1,1,1,1,1]\n    },\n    'unfair': {\n        'weights': [1,1,1,1,10,100],\n    }\n}\n\nNow we call the main function do_it_all() by giving the key of the die type with which we wish to play.\nWe also assign to the global variable the number of rolls.\n\nn_rolls2 = 10\ndo_it_all2('fair')\n\nDie ID: fair\nWeights: [1, 1, 1, 1, 1, 1]\nRolls: 10\n\n\n\n\n\n\n\n\n\nLet’s try it with the unfair die.\n\ndo_it_all2('unfair')\n\nDie ID: unfair\nWeights: [1, 1, 1, 1, 10, 100]\nRolls: 10\n\n\n\n\n\n\n\n\n\nNote how conig has been modified.\n\nconfig\n\n{'fair': {'weights': [1, 1, 1, 1, 1, 1],\n  'die':    side   weights\n  0     1  0.166667\n  1     2  0.166667\n  2     3  0.166667\n  3     4  0.166667\n  4     5  0.166667\n  5     6  0.166667,\n  'results': 0    2\n  1    6\n  2    5\n  3    1\n  4    5\n  5    6\n  6    1\n  7    4\n  8    3\n  9    4\n  dtype: int64},\n 'unfair': {'weights': [1, 1, 1, 1, 10, 100],\n  'die':    side   weights\n  0     1  0.008772\n  1     2  0.008772\n  2     3  0.008772\n  3     4  0.008772\n  4     5  0.087719\n  5     6  0.877193,\n  'results': 0    6\n  1    6\n  2    6\n  3    5\n  4    5\n  5    5\n  6    6\n  7    3\n  8    6\n  9    6\n  dtype: int64}}\n\n\nNow let’s up the number of rolls a bit and roll both dice.\n\nn_rolls2 = 1000 # By changing this we affect all uses of the functions until we change it.\ndo_it_all2('unfair')\n\nDie ID: unfair\nWeights: [1, 1, 1, 1, 10, 100]\nRolls: 1000\n\n\n\n\n\n\n\n\n\n\ndo_it_all2('fair')\n\nDie ID: fair\nWeights: [1, 1, 1, 1, 1, 1]\nRolls: 1000",
     "crumbs": [
       "M07 Classes",
-      "<span class='chapter-number'>38</span>  <span class='chapter-title'>NB: Classes Example</span>"
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>NB: From Functions to Classes</span>"
     ]
   },
   {
-    "objectID": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html#method-3-as-class",
-    "href": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html#method-3-as-class",
-    "title": "NB: Classes Example",
-    "section": "Method 3: As Class",
-    "text": "Method 3: As Class\nDefine a class that contains the config data structure and all the functions as attributes and methods.\n\nclass DieGame():\n        \n    def __init__(self):\n        self.n_rolls = 10\n        self.weights = [1,1,1,1,1,1]\n        \n    def create_die(self):\n        self.n_sides = len(self.weights)\n        self.my_probs = [i/sum(self.weights) for i in self.weights]\n        self.die = pd.DataFrame({\n            'side': range(1, self.n_sides + 1),\n            'weights': self.my_probs\n        })\n    \n    def roll_die(self):\n        results = []\n        for i in range(self.n_rolls):\n            result = self.die.side.sample(weights=self.die.weights).values[0]\n            results.append(result)\n        self.results = pd.Series(results)        \n        \n    def plot_results(self):\n        prob_model = pd.Series({i+1:round(p, 2) for i, p in enumerate(self.my_probs)})\n        print(\"Sides:\", self.n_sides)\n        print(\"Model:\")\n        print(prob_model)\n        print(\"Rolls:\", self.n_rolls)\n        self.results.value_counts().sort_index().plot.bar(rot=0);\n        \n    # We add another method because it's so easy :-)\n    def plot_probs(self):\n        pd.Series(self.my_probs).plot.pie(title=\"Die Model\")\n        \n    def do_it_all(self):\n        self.create_die()\n        self.roll_die()\n        self.plot_results()\n        \n\n\ngame_1 = DieGame()\ngame_1.n_rolls = 100\ngame_1.do_it_all()\n\nSides: 6\nModel:\n1    0.17\n2    0.17\n3    0.17\n4    0.17\n5    0.17\n6    0.17\ndtype: float64\nRolls: 100\n\n\n\n\n\n\n\n\n\n\ngame_1.plot_probs()\n\n\n\n\n\n\n\n\n\ngame_2 = DieGame()\ngame_2.n_rolls = 100\ngame_2.weights = [1,1,1,5,10,10]\ngame_2.do_it_all()\n\nSides: 6\nModel:\n1    0.04\n2    0.04\n3    0.04\n4    0.18\n5    0.36\n6    0.36\ndtype: float64\nRolls: 100\n\n\n\n\n\n\n\n\n\n\ngame_2.plot_probs()",
+    "objectID": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html#method-3-functions-as-methods-in-a-class",
+    "href": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html#method-3-functions-as-methods-in-a-class",
+    "title": "NB: From Functions to Classes",
+    "section": "Method 3: Functions as Methods in a Class",
+    "text": "Method 3: Functions as Methods in a Class\nFinally, let’s define a class that combines the configuration data structure and all the functions as attributes and methods.\n\nclass DieGame():\n        \n    def __init__(self):\n        \"Initalize the object by defining the number of rolls and the die weights. These can be changed after initialization.\"\n        self.n_rolls = 10\n        self.weights = [1,1,1,1,1,1]\n        \n    def create_die(self):\n        \"Create the die using the object's weights. Save to self as a DataFrame.\"\n        self.n_sides = len(self.weights)\n        self.my_probs = [i/sum(self.weights) for i in self.weights]\n        self.die = pd.DataFrame({\n            'side': range(1, self.n_sides + 1),\n            'weights': self.my_probs\n        })\n    \n    def roll_die(self):\n        \"Roll the die using the object's specified number of rolls and die. Save to self as a Series.\"\n        results = []\n        for i in range(self.n_rolls):\n            result = self.die.side.sample(weights=self.die.weights).values[0]\n            results.append(result)\n        self.results = pd.Series(results)        \n        \n    def plot_results(self):\n        \"Plot the results using the state stored in self.\"\n        prob_model = pd.Series({i+1:round(p, 2) for i, p in enumerate(self.my_probs)})\n        print(\"Sides:\", self.n_sides)\n        print(\"Model:\")\n        print(prob_model)\n        print(\"Rolls:\", self.n_rolls)\n        self.results.value_counts().sort_index().plot.bar(rot=0);\n        \n    # We add another method because it's so easy :-)\n    def plot_probs(self):\n        \"Plot the probabilities of the die sides.\"\n        pd.Series(self.my_probs).plot.pie(title=\"Die Model\")\n        \n    def do_it_all(self):\n        \"The main function that does everything.\"\n        self.create_die()\n        self.roll_die()\n        self.plot_results()\n        \n\nLet’s use our class, but change the number of rolls.\n\ngame_1 = DieGame()\ngame_1.n_rolls = 100 # We override the default\ngame_1.do_it_all()\n\nSides: 6\nModel:\n1    0.17\n2    0.17\n3    0.17\n4    0.17\n5    0.17\n6    0.17\ndtype: float64\nRolls: 100\n\n\n\n\n\n\n\n\n\nAnd let’s visualize the probabilities of each side as a pie chart.\n\ngame_1.plot_probs()\n\n\n\n\n\n\n\n\nLet’s create a new object, this time overriding both initial values.\n\ngame_2 = DieGame()\ngame_2.n_rolls = 100\ngame_2.weights = [1,1,1,5,10,10]\ngame_2.do_it_all()\n\nSides: 6\nModel:\n1    0.04\n2    0.04\n3    0.04\n4    0.18\n5    0.36\n6    0.36\ndtype: float64\nRolls: 100\n\n\n\n\n\n\n\n\n\n\ngame_2.plot_probs()",
     "crumbs": [
       "M07 Classes",
-      "<span class='chapter-number'>38</span>  <span class='chapter-title'>NB: Classes Example</span>"
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>NB: From Functions to Classes</span>"
     ]
   },
   {
-    "objectID": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html#conclusions",
-    "href": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html#conclusions",
-    "title": "NB: Classes Example",
-    "section": "Conclusions",
-    "text": "Conclusions\nThe OOP approach handles scoping issues as well as data management.\nNotice how the dictionary is replaced by the object.\nNot only does it provide a place to store the data, it also provides a schema for it: * You don’t need to remember what keys to put in the data dictionary of method 2. The object specifies them.\nNotice also that we don’t pass arguments to the object as we do with functions (although we can).\nWe assign values to attributes directly.",
+    "objectID": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html#some-conclusions",
+    "href": "notebooks/M07_PythonClasses/M07-02-ClassesExample.html#some-conclusions",
+    "title": "NB: From Functions to Classes",
+    "section": "Some Conclusions",
+    "text": "Some Conclusions\nNote how the class definition basically wraps both data and functions into a single entity.\nThe class defines a scope that replaces the use of globals in our second method.\nself replaces the need to create a shared, global data structure like config.\nInstead, each method shares the data in self.\nNote also that we don’t pass arguments to the object as we do with functions (although we can).\nAt each stage with interact with the object by setting attributes and calling methods.",
     "crumbs": [
       "M07 Classes",
-      "<span class='chapter-number'>38</span>  <span class='chapter-title'>NB: Classes Example</span>"
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>NB: From Functions to Classes</span>"
     ]
   },
   {
@@ -3382,7 +3360,7 @@
     "href": "notebooks/M07_PythonClasses/M07-03-MoreOnClasses.html",
     "title": "NB: More About Classes",
     "section": "",
-    "text": "Some Useful Facts about Python Classes",
+    "text": "Some Useful Facts about Python Classes\nYou can put your classes in a .py file and import them into your other scripts.\nYou can put more than one class in a file.\nClass names are usually written in CamelCase, but not instances.\nWhen saving to a file:",
     "crumbs": [
       "M07 Classes",
       "<span class='chapter-number'>39</span>  <span class='chapter-title'>NB: More About Classes</span>"
@@ -3393,7 +3371,7 @@
     "href": "notebooks/M07_PythonClasses/M07-03-MoreOnClasses.html#some-useful-facts-about-python-classes",
     "title": "NB: More About Classes",
     "section": "",
-    "text": "You can put your classes in a .py file and import them into your other scripts.\nYou can put more than one class in a file.\nClass names are usually written in CamelCase, but not instances.\nWhen saving to a file:\n\nIf only one class, use a lower case name of the class in the file name.\nIf more than one, use a package name, one that stands for the logical group the classes belong to.",
+    "text": "If only one class, use a lower case name of the class in the file name.\nIf more than one, use a package name, one that stands for the logical group the classes belong to.",
     "crumbs": [
       "M07 Classes",
       "<span class='chapter-number'>39</span>  <span class='chapter-title'>NB: More About Classes</span>"
@@ -3404,18 +3382,18 @@
     "href": "notebooks/M07_PythonClasses/M07-03-MoreOnClasses.html#anatomy-of-a-python-class",
     "title": "NB: More About Classes",
     "section": "Anatomy of a Python Class",
-    "text": "Anatomy of a Python Class\n\n## Import class dependencies here, outside of the class definition\n\nimport pandas as pd\nimport numpy as np\nimport re\nimport requests\n# from lxml import etree\n\n## Use CamelCase to name your class\nclass MyClass(object): # Optionally pass ancestor classes to use inheritance\n    \"\"\"\n    Extensive docstring describing structure and function of class.\n    \"\"\"\n    \n    # Class attributes go here with initial values if applicable\n    att1 = True \n    att2 = 'Foo'\n    _private_att = 'Bar' # A variable that is meant to be internally only; not intended to accessed by users\n    \n    # Object initializer; called when an instance of the class is created\n    def __init__(self):\n        pass\n    \n    # Methods that share state via the self variable\n    def get_something(self):\n        pass\n    \n    # Name your methods consistently -- prefix with verbs\n    def put_something(self):\n        pass\n    \n    def do_something(self):\n        pass\n\n    def show_something(self):\n        pass\n\n    # A private method\n    def _private_method(self): \n        pass\n    \n    def do_something_else(self):\n        # Use private method\n        self._private_method()\n    \n    # A static method\n    def static_method():\n        pass",
+    "text": "Anatomy of a Python Class\nLet’s look a little more closely at the contents of a Python class.\n\n# Import class dependencies here, outside of the class definition\nimport pandas as pd\nimport numpy as np\n\n# Use CamelCase to name your class\nclass MyClass(object): # Optionally pass ancestor classes to use inheritance\n    \"\"\"\n    Extensive docstring describing structure and function of class.\n    \"\"\"\n    \n    # Class attributes go here with initial values if applicable\n    att1 = True \n    att2 = 'Foo'\n    _private_att = 'Bar' # A variable that is meant to be internally only; not intended to accessed by users\n    \n    # Object initializer; called when an instance of the class is created\n    def __init__(self):\n        pass\n    \n    # Methods that share state via the self variable\n    def get_something(self):\n        pass\n    \n    # Name your methods consistently -- prefix with verbs\n    def put_something(self):\n        pass\n    \n    def do_something(self):\n        pass\n\n    def show_something(self):\n        pass\n\n    # A private method\n    def _private_method(self): \n        pass\n    \n    def do_something_else(self):\n        # Use private method\n        self._private_method()\n    \n    # A static method -- no self\n    def static_method():\n        pass\n\n\nhelp(MyClass)\n\nHelp on class MyClass in module __main__:\n\nclass MyClass(builtins.object)\n |  Extensive docstring describing structure and function of class.\n |  \n |  Methods defined here:\n |  \n |  __init__(self)\n |      Initialize self.  See help(type(self)) for accurate signature.\n |  \n |  do_something(self)\n |  \n |  do_something_else(self)\n |  \n |  get_something(self)\n |      # Methods that share state via the self variable\n |  \n |  put_something(self)\n |      # Name your methods consistently -- prefix with verbs\n |  \n |  show_something(self)\n |  \n |  static_method()\n |      # A static method\n |  \n |  ----------------------------------------------------------------------\n |  Data descriptors defined here:\n |  \n |  __dict__\n |      dictionary for instance variables (if defined)\n |  \n |  __weakref__\n |      list of weak references to the object (if defined)\n |  \n |  ----------------------------------------------------------------------\n |  Data and other attributes defined here:\n |  \n |  att1 = True\n |  \n |  att2 = 'Foo'",
     "crumbs": [
       "M07 Classes",
       "<span class='chapter-number'>39</span>  <span class='chapter-title'>NB: More About Classes</span>"
     ]
   },
   {
-    "objectID": "notebooks/M07_PythonClasses/M07-03-MoreOnClasses.html#privacy",
-    "href": "notebooks/M07_PythonClasses/M07-03-MoreOnClasses.html#privacy",
+    "objectID": "notebooks/M07_PythonClasses/M07-03-MoreOnClasses.html#private-attributes-and-methods",
+    "href": "notebooks/M07_PythonClasses/M07-03-MoreOnClasses.html#private-attributes-and-methods",
     "title": "NB: More About Classes",
-    "section": "Privacy",
-    "text": "Privacy\nUsers are free to access private attributes and methods, but they not shown in the help docs.\n\nhelp(MyClass)\n\nHelp on class MyClass in module __main__:\n\nclass MyClass(builtins.object)\n |  Extensive docstring describing structure and function of class.\n |  \n |  Methods defined here:\n |  \n |  __init__(self)\n |      Initialize self.  See help(type(self)) for accurate signature.\n |  \n |  do_something(self)\n |  \n |  do_something_else(self)\n |  \n |  get_something(self)\n |      # Methods that share state via the self variable\n |  \n |  put_something(self)\n |      # Name your methods consistently -- prefix with verbs\n |  \n |  show_something(self)\n |  \n |  static_method()\n |      # A static method\n |  \n |  ----------------------------------------------------------------------\n |  Data descriptors defined here:\n |  \n |  __dict__\n |      dictionary for instance variables (if defined)\n |  \n |  __weakref__\n |      list of weak references to the object (if defined)\n |  \n |  ----------------------------------------------------------------------\n |  Data and other attributes defined here:\n |  \n |  att1 = True\n |  \n |  att2 = 'Foo'",
+    "section": "Private Attributes and Methods",
+    "text": "Private Attributes and Methods\nPython supports the use of private attributes and methods.\nPrivacy in this context means that they are hidden from users in various ways:\n\nThey are not visible in help()\nThey are not imported into the namespace of a calling module — we’ll learn about this later.\n\nHowever, is a user wishes to call a private method or inspect a private attribute, they can by doing something like this:\nmy_object._my_private_method()\nHowever, this can lead to problems, since by convention private methods and attribute may change or disappear in future versions of the class.\nClasses are meant to be black boxes from the user perspective — you pass and receive data from them in predictable ways without any dependencies on what’s inside the class.\nDevelopers are free to refactor their code over time, significantly changing its internals, so long as the public methods and attributes remain the same.",
     "crumbs": [
       "M07 Classes",
       "<span class='chapter-number'>39</span>  <span class='chapter-title'>NB: More About Classes</span>"
@@ -3426,7 +3404,7 @@
     "href": "notebooks/M07_PythonClasses/M07-03-MoreOnClasses.html#static-classes",
     "title": "NB: More About Classes",
     "section": "Static Classes",
-    "text": "Static Classes\nStatic classes don’t have instance methods.\nStatic classes don’t need to be instantiated.\nThey can be used to store a collection of stand-alone helper functions as methods.\nNote the absence of self …\n\nclass StaticClass():\n\n    def add_these(*nums):\n        sum = 0\n        for num in nums: sum += num\n        return sum\n    \n    def square_me(x):\n        return x**2\n\n\nStaticClass.add_these(1,5,6)\n\n12\n\n\n\nStaticClass.square_me(5)\n\n25\n\n\nThis won’t work …\n\nsc = StaticClass()\n\n\nsc.square_me(10)\n\nTypeError: StaticClass.square_me() takes 1 positional argument but 2 were given\n\n\nNor will this,\n\nsc.square_me()\n\nTypeError: unsupported operand type(s) for ** or pow(): 'StaticClass' and 'int'",
+    "text": "Static Classes\nStatic classes are class that don’t have instance methods.\nStatic classes don’t need to be instantiated.\nThey can be used to store a collection of stand-alone helper functions as methods.\nIn the example below, note the absence of self.\n\nclass StaticClass():\n\n    def add_these(*nums):\n        sum = 0\n        for num in nums: sum += num\n        return sum\n    \n    def square_me(x):\n        return x**2\n\n\nStaticClass.add_these(1,5,6)\n\n12\n\n\n\nStaticClass.square_me(5)\n\n25\n\n\nThis won’t work:\n\nsc = StaticClass()\n\n\nsc.square_me(10)\n\nTypeError: StaticClass.square_me() takes 1 positional argument but 2 were given\n\n\nNor will this:\n\nsc.square_me()\n\nTypeError: unsupported operand type(s) for ** or pow(): 'StaticClass' and 'int'",
     "crumbs": [
       "M07 Classes",
       "<span class='chapter-number'>39</span>  <span class='chapter-title'>NB: More About Classes</span>"
@@ -3437,21 +3415,10 @@
     "href": "notebooks/M07_PythonClasses/M07-03-MoreOnClasses.html#classes-as-data-structures",
     "title": "NB: More About Classes",
     "section": "Classes as Data Structures",
-    "text": "Classes as Data Structures\nClasses are a quick way to store data, similar to dictionaries.\nHere we define a static class to store some configuration data.\n\nclass MyConfig:\n    a = 10\n    b = 'foo'\n    c = 'something else'\n    f = lambda x: x + 10\n\nUnlike dictionaries, their keys, or attributes, can be accessed with less typing.\n\nMyConfig.a\n\n10\n\n\nNote also that attributes can be viewed with tab completion (in Jupyter and other IDEs).\n\n\nMyConfig.f(100)\n\n110\n\n\nYou can dynamically add attributes, too.\n\nMyConfig.x = 50\n\nNote that lambda functions are attributes, too:\n\nMyConfig.y = lambda x: x**2\n\n\nMyConfig.y(100)\n\n10000\n\n\nIt’s harder to add true functions, though.\nIf you wanted to create a data structure template, you could create a non-static class like this:\n\nclass ConfigTemplate:\n    \n    def __init__(self):\n        self.project_name = ''\n        self.project_type = ''\n        self.default_url = ''\n        self.description = ''\n\n\nconfig1 = ConfigTemplate()\nconfig1.project_name = 'Apollo'\nconfig1.project_type = 'Moon Mission'\n\n\nconfig2 = ConfigTemplate()\nconfig2.project_name = 'Artemis'\nconfig1.project_type = 'Moon Mission'\n\n\nconfig1.project_name\n\n'Apollo'\n\n\n\nconfig2.project_name\n\n'Artemis'",
+    "text": "Classes as Data Structures\nClasses are a quick way to store data, similar to dictionaries.\nHere we define a static class to store some configuration data.\n\nclass MyConfig:\n    a = 10\n    b = 'foo'\n    c = 'something else'\n    f = lambda x: x + 10\n\nObjects attributes can be accessed with less typing than dictionary keys.\n\nMyConfig.a\n\n10\n\n\n\nMyConfig.f(100)\n\n110\n\n\nNote also that attributes can be viewed with tab completion (in Jupyter and other IDEs).\n\nYou can dynamically add attributes, too.\n\nMyConfig.x = 50\n\nNote that lambda functions are attributes, too, so you can do this:\n\nMyConfig.y = lambda x: x**2\n\n\nMyConfig.y(100)\n\n10000\n\n\nIt’s harder to add true functions, though.\nIf you wanted to create a data structure template, you could create a non-static class like this:\n\nclass ConfigTemplate:\n    \n    def __init__(self):\n        self.project_name = ''\n        self.project_type = ''\n        self.default_url = ''\n        self.description = ''\n\n\nconfig1 = ConfigTemplate()\nconfig1.project_name = 'Apollo'\nconfig1.project_type = 'Moon Mission'\n\n\nconfig2 = ConfigTemplate()\nconfig2.project_name = 'Artemis'\nconfig1.project_type = 'Moon Mission'\n\n\nconfig1.project_name\n\n'Apollo'\n\n\n\nconfig2.project_name\n\n'Artemis'",
     "crumbs": [
       "M07 Classes",
       "<span class='chapter-number'>39</span>  <span class='chapter-title'>NB: More About Classes</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M07_PythonClasses/M07-05-Example.html",
-    "href": "notebooks/M07_PythonClasses/M07-05-Example.html",
-    "title": "NB: Example",
-    "section": "",
-    "text": "In this example, we put our class code in a separate .py file.\nThen we call it from within our notebook.\nThis is normal practice – class files cannot reside in notebooks if they are to be used by other code!\nOpen the file diegame.py in the course repo to inspect the code.\n\nfrom diegame import DieGame\n\n\ndg1 = DieGame()\ndg2 = DieGame()\n\n\ndef check_values():\n    print('n_rolls:', dg1.n_rolls, dg2.n_rolls, DieGame.n_rolls, sep='\\n\\t')\n    print('weights:', dg1.weights, dg2.weights, DieGame.weights, sep='\\n\\t')\n\n\ndg1.n_rolls = 20\n\n\ndg1.weights = [1, 10, 1, 1, 1, 1]\n\n\ndg2.weights.append(1) # Also alters the static because this is not an assignment\n\n\nDieGame.n_rolls = 50\n\n\ncheck_values()\n\nn_rolls:\n    20\n    50\n    50\nweights:\n    [1, 10, 1, 1, 1, 1]\n    [1, 1, 1, 1, 1, 1, 1]\n    [1, 1, 1, 1, 1, 1, 1]\n\n\n\ndg1\n\n&lt;diegame.DieGame at 0x7f2577017950&gt;",
-    "crumbs": [
-      "M07 Classes",
-      "<span class='chapter-number'>40</span>  <span class='chapter-title'>NB: Example</span>"
     ]
   },
   {
@@ -3459,10 +3426,10 @@
     "href": "notebooks/M07_PythonClasses/M07-04-ClassAttributeWeirdness.html",
     "title": "NB: Understanding Class Attributes",
     "section": "",
-    "text": "A Simple Example\nWe define a class with one attribute.\nclass Foo(): x = 1\nWe create an instance of the class.\nfoo1 = Foo()\nNotice that the class defines the value for the instance.\nfoo1.x, Foo.x\n\n(1, 1)\nNow, the instance attribute changes if the class attribute is changed.\nFoo.x = 2\nfoo1.x, Foo.x\n\n(2, 2)\nWhat if we change the local attribute’s value?\nWhat happens to the class attribute?\nfoo1.x = 3\nfoo1.x, Foo.x\n\n(3, 1)\nTurns out we cannot override a global with a local.\nWe can see that the instance attribute is now unaffected by changing the value of the global.\nFoo.x = 4\nfoo1.x, Foo.x\n\n(3, 4)\nWhat happened?\nBy assigning a value to the instance attribute, we converted from global in the class to local in the instance.\nThis is similar to what we saw with local and global variables in functions.\nFinally, notice how changing the value of the class attribute changes all the instance attributes that have not overridden the attribute.\nfoo2 = Foo()\nfoo3 = Foo()\nFoo.x = 10\nfoo1.x, foo2.x, foo3.x, Foo.x\n\n(3, 10, 10, 10)",
+    "text": "A Simple Example\nWe define a class with one attribute.\nclass Foo(): x = 1\nThen we create an instance of the class.\nfoo1 = Foo()\nNotice that the class defines the value for the instance.\nfoo1.x, Foo.x\n\n(1, 1)\nNote also that the instance attribute changes if the class attribute is changed.\nFoo.x = 2\nfoo1.x, Foo.x\n\n(2, 2)\nWhat if we change the local attribute’s value?\nWhat happens to the class attribute?\nfoo1.x = 3\nfoo1.x, Foo.x\n\n(3, 2)\nTurns out we cannot override the class attribute with the local.\nWe can also see that the instance attribute is now unaffected by changing the value of the global.\nFoo.x = 4\nfoo1.x, Foo.x\n\n(3, 4)\nWhat happened?\nBy assigning a value to the instance attribute, we converted from global in the class to local in the instance.\nThis is similar to what we saw with local and global variables in functions.\nFinally, notice how changing the value of the class attribute changes all the instance attributes that have not overridden the attribute.\nfoo2 = Foo()\nfoo3 = Foo()\nFoo.x = 10\nfoo1.x, foo2.x, foo3.x, Foo.x\n\n(3, 10, 10, 10)",
     "crumbs": [
       "M07 Classes",
-      "<span class='chapter-number'>41</span>  <span class='chapter-title'>NB: Understanding Class Attributes</span>"
+      "<span class='chapter-number'>40</span>  <span class='chapter-title'>NB: Understanding Class Attributes</span>"
     ]
   },
   {
@@ -3470,10 +3437,32 @@
     "href": "notebooks/M07_PythonClasses/M07-04-ClassAttributeWeirdness.html#mutable-class-attributes",
     "title": "NB: Understanding Class Attributes",
     "section": "Mutable Class Attributes",
-    "text": "Mutable Class Attributes\nThere is an interesting gotcha regarding class attributes in Python.\nLists and other mutable data structures can be class attributes and yet have their values modified by instances.\nThis is kind of weird, and you should look out for it.\nTo demonstrate, we define a class with two instance variables, one a scalar and one a list.\nWe define a method to alter the value of each.\nWe also define a method compare the state of the instance with that of its class.\n\nclass MyTest():\n    \n    # Two class attributes\n    foo = 0  \n    bar = [] \n    \n    def add_one(self):\n        \"A method to alter the values of the class attributes.\"\n        self.foo += 1       \n        self.bar.append(1)  \n        \n    def replace_bar(self, new_list = []):\n        \"A method to redefine the class list attribute.\"\n        self.bar = new_list \n        \n    def compare_states(self):\n        \"A method to compare the state of instance to that of its class.\"\n        print('i.foo =', self.foo)\n        print('c.foo =', __class__.foo) # Notice how we can refer to an instance's class\n        print('i.bar =', self.bar)\n        print('c.bar =', __class__.bar)\n        \n\nNow let’s run some tests.\nWe define an instance and change nothing.\n\ntest1 = MyTest()\n\n\ntest1.compare_states()\n\ni.foo = 0\nc.foo = 0\ni.bar = []\nc.bar = []\n\n\nNow let’s increment the attributes and see the results.\n\ntest1.add_one()\n\n\ntest1.compare_states()\n\ni.foo = 1\nc.foo = 0\ni.bar = [1]\nc.bar = [1]\n\n\nThe method does disconnect the instance foo from the class foo.\nBut it does not disconnect the instance bar from the class bar.\nInstead, a change that took place in one instance affects the state of all other instances!\nThe difference is that foo is a scalar, and bar is a list, i.e. mutable data structure.\nWhen the instance mutates the class attribute, the class attribute is not reassigned – only its contents change.\nWe do it again to drive the point home.\n\ntest1.add_one()\n\n\ntest1.compare_states()\n\ni.foo = 2\nc.foo = 0\ni.bar = [1, 1]\nc.bar = [1, 1]\n\n\nNow, let’s replace list itself in the instance.\n\ntest1.bar = []\n\n\n# test1.replace_bar()\n\n\nfor i in range(5):\n    print(\"Iter\", i)\n    test1.add_one()\n    test1.compare_states()\n    print()\n\nIter 0\ni.foo = 23\nc.foo = 0\ni.bar = [1, 1, 1, 1, 1, 1]\nc.bar = [1, 1]\n\nIter 1\ni.foo = 24\nc.foo = 0\ni.bar = [1, 1, 1, 1, 1, 1, 1]\nc.bar = [1, 1]\n\nIter 2\ni.foo = 25\nc.foo = 0\ni.bar = [1, 1, 1, 1, 1, 1, 1, 1]\nc.bar = [1, 1]\n\nIter 3\ni.foo = 26\nc.foo = 0\ni.bar = [1, 1, 1, 1, 1, 1, 1, 1, 1]\nc.bar = [1, 1]\n\nIter 4\ni.foo = 27\nc.foo = 0\ni.bar = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]\nc.bar = [1, 1]\n\n\n\nNotice that now the class list is not altered by the instance list.\nIt remains in the state before the list itself was re-assigned by the instance.\nThis is because we redefined the list itself, not just its content.\nLet’s define a second instance.\n\ntest2 = MyTest()\n\n\ntest2.compare_states()\n\ni.foo = 0\nc.foo = 0\ni.bar = [1, 1]\nc.bar = [1, 1]\n\n\nThe new instance has the original value of foo.\nHowever, notice it starts off with the modified value of bar before it was replaced.\nWe do it a few more times to drive the point home.\n\nfor i in range(5):\n    print(\"Iter\", i)\n    test2.add_one()\n    test2.compare_states()\n    print()\n\nIter 0\ni.foo = 6\nc.foo = 0\ni.bar = [1, 1, 1, 1, 1, 1, 1, 1]\nc.bar = [1, 1, 1, 1, 1, 1, 1, 1]\n\nIter 1\ni.foo = 7\nc.foo = 0\ni.bar = [1, 1, 1, 1, 1, 1, 1, 1, 1]\nc.bar = [1, 1, 1, 1, 1, 1, 1, 1, 1]\n\nIter 2\ni.foo = 8\nc.foo = 0\ni.bar = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]\nc.bar = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]\n\nIter 3\ni.foo = 9\nc.foo = 0\ni.bar = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]\nc.bar = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]\n\nIter 4\ni.foo = 10\nc.foo = 0\ni.bar = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]\nc.bar = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]\n\n\n\nSome take-aways:\n\nClass attribute changes affect those attributes in all of it instances …\n… unless the instance assigns a value to the attribute.\nHowever, appending to a list — or, more generally, modifying data in a mutable data structure — does not count as an assignment operation. The instance changes will affect the class state.\nBottom line: DEFINE CLASS ATTRIBUTES WITH CAUTION.",
+    "text": "Mutable Class Attributes\nThere is an interesting gotcha regarding class attributes in Python.\nLists and other mutable data structures can be class attributes and yet have their values modified by instances.\nThis is kind of weird, and you should look out for it.\nTo demonstrate, we define a class with two instance variables, one a scalar and one a list.\nWe define a method to alter the value of each.\nWe also define a method compare the state of the instance with that of its class.\n\nclass MyTest():\n    \n    # Two class attributes\n    foo = 0  \n    bar = [] \n    \n    def add_one(self):\n        \"A method to alter the values of the class attributes.\"\n        self.foo += 1       \n        self.bar.append(1)  \n        \n    def replace_bar(self, new_list = []):\n        \"A method to redefine the class list attribute.\"\n        self.bar = new_list \n        \n    def compare_states(self):\n        \"A method to compare the state of instance to that of its class.\"\n        print('instance.foo =', self.foo)\n        print('class.foo =', __class__.foo) # Notice how we can refer to an instance's class\n        print('instance.bar =', self.bar)\n        print('class.bar =', __class__.bar)\n        \n\nNow let’s run some tests.\nWe define an instance and change nothing.\n\ntest1 = MyTest()\n\n\ntest1.compare_states()\n\ninstance.foo = 0\nclass.foo = 0\ninstance.bar = []\nclass.bar = []\n\n\nNow let’s increment the attributes and see the results.\n\ntest1.add_one()\n\n\ntest1.compare_states()\n\ninstance.foo = 1\nclass.foo = 0\ninstance.bar = [1]\nclass.bar = [1]\n\n\nThe method does disconnect the instance foo from the class foo.\nBut it does not disconnect the instance bar from the class bar.\nInstead, a change that took place in one instance affects the state of all other instances!\nThe difference is that foo is a scalar, and bar is a list, i.e. mutable data structure.\nWhen the instance mutates the class attribute, the class attribute is not reassigned — only its contents change.\nWe do it again to drive the point home.\n\ntest1.add_one()\ntest1.compare_states()\n\ninstance.foo = 2\nclass.foo = 0\ninstance.bar = [1, 1]\nclass.bar = [1, 1]\n\n\nNow, let’s replace list itself in the instance.\n\ntest1.replace_bar()\n# test1.bar = [] # Same as\n\nfor i in range(5):\n    print(\"Iter\", i)\n    test1.add_one()\n    test1.compare_states()\n    print()\n\nIter 0\ninstance.foo = 3\nclass.foo = 0\ninstance.bar = [1]\nclass.bar = [1, 1]\n\nIter 1\ninstance.foo = 4\nclass.foo = 0\ninstance.bar = [1, 1]\nclass.bar = [1, 1]\n\nIter 2\ninstance.foo = 5\nclass.foo = 0\ninstance.bar = [1, 1, 1]\nclass.bar = [1, 1]\n\nIter 3\ninstance.foo = 6\nclass.foo = 0\ninstance.bar = [1, 1, 1, 1]\nclass.bar = [1, 1]\n\nIter 4\ninstance.foo = 7\nclass.foo = 0\ninstance.bar = [1, 1, 1, 1, 1]\nclass.bar = [1, 1]\n\n\n\nNotice that now the class list is not altered by the instance list.\nIt remains in the state before the list itself was re-assigned by the instance.\nThis is because we redefined the list itself, not just its content.\nLet’s define a second instance.\n\ntest2 = MyTest()\ntest2.compare_states()\n\ninstance.foo = 0\nclass.foo = 0\ninstance.bar = [1, 1]\nclass.bar = [1, 1]\n\n\nThe new instance has the original value of foo.\nHowever, notice it starts off with the modified value of bar before it was replaced.\nWe do it a few more times to drive the point home.\n\nfor i in range(5):\n    print(\"Iter\", i)\n    test2.add_one()\n    test2.compare_states()\n    print()\n\nIter 0\ninstance.foo = 1\nclass.foo = 0\ninstance.bar = [1, 1, 1]\nclass.bar = [1, 1, 1]\n\nIter 1\ninstance.foo = 2\nclass.foo = 0\ninstance.bar = [1, 1, 1, 1]\nclass.bar = [1, 1, 1, 1]\n\nIter 2\ninstance.foo = 3\nclass.foo = 0\ninstance.bar = [1, 1, 1, 1, 1]\nclass.bar = [1, 1, 1, 1, 1]\n\nIter 3\ninstance.foo = 4\nclass.foo = 0\ninstance.bar = [1, 1, 1, 1, 1, 1]\nclass.bar = [1, 1, 1, 1, 1, 1]\n\nIter 4\ninstance.foo = 5\nclass.foo = 0\ninstance.bar = [1, 1, 1, 1, 1, 1, 1]\nclass.bar = [1, 1, 1, 1, 1, 1, 1]",
     "crumbs": [
       "M07 Classes",
-      "<span class='chapter-number'>41</span>  <span class='chapter-title'>NB: Understanding Class Attributes</span>"
+      "<span class='chapter-number'>40</span>  <span class='chapter-title'>NB: Understanding Class Attributes</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M07_PythonClasses/M07-04-ClassAttributeWeirdness.html#some-observations",
+    "href": "notebooks/M07_PythonClasses/M07-04-ClassAttributeWeirdness.html#some-observations",
+    "title": "NB: Understanding Class Attributes",
+    "section": "Some Observations",
+    "text": "Some Observations\nClass attribute changes affect those attributes in all of it instances …\n… unless the instance assigns a value to the attribute.\nHowever, appending to a list — or, more generally, modifying data in a mutable data structure — does not count as an assignment operation. The instance changes will affect the class state.\nBottom line: DEFINE CLASS ATTRIBUTES WITH CAUTION.",
+    "crumbs": [
+      "M07 Classes",
+      "<span class='chapter-number'>40</span>  <span class='chapter-title'>NB: Understanding Class Attributes</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M07_PythonClasses/M07-05-Example.html",
+    "href": "notebooks/M07_PythonClasses/M07-05-Example.html",
+    "title": "NB: Putting Your Class in a File",
+    "section": "",
+    "text": "Programming for Data Science\nIn this notebook, we demonstrate that you can put our class code in a separate .py file and then call it from within a notebook.\nThis is normal practice – class files cannot reside in notebooks if they are to be used by other code!\nOpen the file diegame.py in the course repo to inspect the code.\n\n!more diegame.py\n\nimport pandas as pd\n\nclass DieGame():\n    \"\"\"\n    Just another Python class.\n    \"\"\"\n    n_rolls = 10\n    weights = [1,1,1,1,1,1]\n    \n    def __init__(self):\n        pass\n        \n    def create_die(self):\n        self.n_sides = len(self.weights)\n        self.my_probs = [i/sum(self.weights) for i in self.weights]\n        self.die = pd.DataFrame({\n            'side': range(1, self.n_sides + 1),\n            'weights': self.my_probs\n        })\n    \n    def roll_die(self):\n        results = []\n        for i in range(self.n_rolls):\nm--More--(38%)\n\n\nWe import the class in diegame.py into this notebook.\n\nfrom diegame import DieGame\n\nWe initialize two objects.\n\ndg1 = DieGame()\ndg2 = DieGame()\n\n\ndg1.do_it_all()\n\nSides: 6\nModel:\n1    0.17\n2    0.17\n3    0.17\n4    0.17\n5    0.17\n6    0.17\ndtype: float64\nRolls: 10\n\n\n\n\n\n\n\n\n\n\ndg2.do_it_all()\n\nSides: 6\nModel:\n1    0.17\n2    0.17\n3    0.17\n4    0.17\n5    0.17\n6    0.17\ndtype: float64\nRolls: 10\n\n\n\n\n\n\n\n\n\nTo demonstrate the point made in the previous notebook about class and instance attributes, let’s update our objects.\n\ndg1.n_rolls = 20 # This overrides the Class attribute\ndg1.weights = [1, 10, 1, 1, 1, 1] # So does this\ndg2.weights.append(1) # But this also alters the static because this is not an assignment!\nDieGame.n_rolls = 50 # This should change dg2 but not dg1\n\n\nresults = [\n    ('n_roles', dg1.n_rolls, dg2.n_rolls, DieGame.n_rolls),\n    ('weights', dg1.weights, dg2.weights, DieGame.weights)\n]\n\n\nimport pandas as pd\n\n\npd.DataFrame(results, columns=['attribute', 'dg1', 'dg2', 'DieGame']).set_index('attribute').T\n\n\n\n\n\n\n\n\nattribute\nn_roles\nweights\n\n\n\n\ndg1\n20\n[1, 10, 1, 1, 1, 1]\n\n\ndg2\n50\n[1, 1, 1, 1, 1, 1, 1, 1]\n\n\nDieGame\n50\n[1, 1, 1, 1, 1, 1, 1, 1]",
+    "crumbs": [
+      "M07 Classes",
+      "<span class='chapter-number'>41</span>  <span class='chapter-title'>NB: Putting Your Class in a File</span>"
     ]
   },
   {
@@ -3491,7 +3480,7 @@
     "href": "modules/m08/m08-intro.html#topics",
     "title": "M08 Testing",
     "section": "",
-    "text": "Become acquainted with Exception Handling, Testing, and Debuggings\nUnderstand the cyclical relationship among these\nUnderstand the relation to function and class design\nUnderstand benefits of literate and well-styled coding",
+    "text": "Become acquainted with Exception Handling, Testing, and Debugging\nUnderstand the cyclical relationship among these\nUnderstand the relation to function and class design\nUnderstand benefits of literate and well-styled coding",
     "crumbs": [
       "M08 Testing"
     ]
@@ -3501,7 +3490,7 @@
     "href": "modules/m08/m08-intro.html#readings",
     "title": "M08 Testing",
     "section": "Readings",
-    "text": "Readings\n\nRequired\n\nLutz 2017, Part 7: Exceptions and Tools\nTesting and Verification (see next Module item)",
+    "text": "Readings\n\nSuggested\n\nLutz 2017, Part 7: Exceptions and Tools\nTesting and Verification (see next Module item)",
     "crumbs": [
       "M08 Testing"
     ]
@@ -3795,7 +3784,7 @@
     "href": "modules/m09/m09-intro.html#readings",
     "title": "M09 Modules",
     "section": "Readings",
-    "text": "Readings\n\nRequired\n\nLutz 2017, Part V. Modules and Packages → Up to Ch. 24.\nPython Package Tutorial\n\n\n\nOptional\n\nPython Docs",
+    "text": "Readings\n\nSuggested\n\nLutz 2017, Part V. Modules and Packages → Up to Ch. 24.\nPython Package Tutorial\n\n\n\nOptional\n\nPython Docs",
     "crumbs": [
       "M09 Modules"
     ]
@@ -5114,7 +5103,7 @@
     "href": "modules/m13/m13-intro.html#readings",
     "title": "M13 Agile",
     "section": "Readings",
-    "text": "Readings\n\nRequired\n\nManifesto for Agile Software Development (agilemanifesto.org)\nTwelve Principles of Agile Software (agilemanifesto.org)\nUser Stories: An Overview (Digité)\nProject Charters (Princeton)\nDataset Curation Template (Princeton)",
+    "text": "Readings\n\nRequired\n\nManifesto for Agile Software Development (agilemanifesto.org)\nTwelve Principles of Agile Software (agilemanifesto.org)\nUser Stories: An Overview (Digité)\n\n\n\nOptional\n\nProject Charters (Princeton)\nDataset Curation Template (Princeton)",
     "crumbs": [
       "M13 Agile"
     ]

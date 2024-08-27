@@ -9,7 +9,7 @@
 
 ## Readings
 
-### Required
+### Suggested
 
 -   [Katz and Katz 2019, Section 1, Preparing the Workspace](https://learning.oreilly.com/library/view/learn-python-by/9781789535365/8f352965-cebb-43c0-b2ca-0f6bf944899e.xhtml)
 -   [Lutz, Learning Python, Part I: Getting Started, Chapter 2](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch02.html)

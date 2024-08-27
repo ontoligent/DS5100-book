@@ -10,5 +10,7 @@
 
 ## Readings
 
+### Suggested
+
 -   [Classes (Official Python)](https://docs.python.org/3/tutorial/classes.html)
 -   [Lutz 2019, Part VI, Classes and OOP, Chapters 26–29.](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/part06.html)

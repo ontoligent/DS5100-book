@@ -2,7 +2,7 @@
 
 ## Topics
 
-* Introduce the course
-* Access Rivanna
-* Explore the Unix command line
-* Explore use of Git and GitHub
+-   Introduce the course
+-   Access Rivanna
+-   Explore the Unix command line
+-   Explore use of Git and GitHub

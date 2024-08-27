@@ -10,7 +10,7 @@
 
 ## Readings
 
-### Required
+### Suggested
 
 -   [Lutz, 2019, Part III, Chapter 10. Introducing Python Statements](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch10.html)
 -   [Lutz, 2019, Part III, Chapter 11. Assignments, Expressions, and Prints](https://learning.oreilly.com/library/view/learning-python-5th/9781449355722/ch11.html)

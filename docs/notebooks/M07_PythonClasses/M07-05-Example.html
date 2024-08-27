@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DS 5100: Programming for Data Science - NB: Example</title>
+<title>DS 5100: Programming for Data Science - NB: Putting Your Class in a File</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,15 +57,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../notebooks/M07_PythonClasses/M07-04-ClassAttributeWeirdness.html" rel="next">
-<link href="../../notebooks/M07_PythonClasses/M07-03-MoreOnClasses.html" rel="prev">
+<link href="../../modules/m08/m08-intro.html" rel="next">
+<link href="../../notebooks/M07_PythonClasses/M07-04-ClassAttributeWeirdness.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -102,6 +102,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -115,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m07/m07-intro.html">M07 Classes</a></li><li class="breadcrumb-item"><a href="../../notebooks/M07_PythonClasses/M07-05-Example.html"><span class="chapter-title">NB: Example</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m07/m07-intro.html">M07 Classes</a></li><li class="breadcrumb-item"><a href="../../notebooks/M07_PythonClasses/M07-05-Example.html"><span class="chapter-title">NB: Putting Your Class in a File</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -267,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M03_ControlStructures/M03-04-NestedComprehensions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Nested Comprehensions</span></a>
+  <a href="../../notebooks/M03_ControlStructures/M03-04-NestedComprehensions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Nested Comprehensions</span></a>
   </div>
 </li>
       </ul>
@@ -416,7 +419,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M07_PythonClasses/M07-02-ClassesExample.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Classes Example</span></a>
+  <a href="../../notebooks/M07_PythonClasses/M07-02-ClassesExample.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: From Functions to Classes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -426,12 +429,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M07_PythonClasses/M07-05-Example.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: Example</span></a>
+  <a href="../../notebooks/M07_PythonClasses/M07-04-ClassAttributeWeirdness.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Understanding Class Attributes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M07_PythonClasses/M07-04-ClassAttributeWeirdness.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Understanding Class Attributes</span></a>
+  <a href="../../notebooks/M07_PythonClasses/M07-05-Example.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: Putting Your Class in a File</span></a>
   </div>
 </li>
       </ul>
@@ -624,9 +627,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m07/m07-intro.html">M07 Classes</a></li><li class="breadcrumb-item"><a href="../../notebooks/M07_PythonClasses/M07-05-Example.html"><span class="chapter-title">NB: Example</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m07/m07-intro.html">M07 Classes</a></li><li class="breadcrumb-item"><a href="../../notebooks/M07_PythonClasses/M07-05-Example.html"><span class="chapter-title">NB: Putting Your Class in a File</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">NB: Example</span></h1>
+<h1 class="title"><span class="chapter-title">NB: Putting Your Class in a File</span></h1>
 </div>
 
 
@@ -643,51 +646,144 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In this example, we put our class code in a separate <code>.py</code> file.</p>
-<p>Then we call it from within our notebook.</p>
+<p>Programming for Data Science</p>
+<p>In this notebook, we demonstrate that you can put our class code in a separate <code>.py</code> file and then call it from within a notebook.</p>
 <p>This is normal practice – <strong>class files cannot reside in notebooks if they are to be used by other code!</strong></p>
 <p>Open the file <code>diegame.py</code> in the course repo to inspect the code.</p>
-<div id="9cfc0c00-fadd-44e9-844a-9b150798c721" class="cell" data-tags="[]" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> diegame <span class="im">import</span> DieGame</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="41450056-251e-4876-93a2-80e7d489717b" class="cell" data-tags="[]" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dg1 <span class="op">=</span> DieGame()</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dg2 <span class="op">=</span> DieGame()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="c5afa016-0c58-42e5-9071-b75d2fd5277a" class="cell" data-tags="[]" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check_values():</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'n_rolls:'</span>, dg1.n_rolls, dg2.n_rolls, DieGame.n_rolls, sep<span class="op">=</span><span class="st">'</span><span class="ch">\n\t</span><span class="st">'</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'weights:'</span>, dg1.weights, dg2.weights, DieGame.weights, sep<span class="op">=</span><span class="st">'</span><span class="ch">\n\t</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="368936b0-155e-491b-9ea9-8eff39314a7b" class="cell" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dg1.n_rolls <span class="op">=</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="7965b259-570d-41dc-b990-c06df29ea73f" class="cell" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dg1.weights <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="30a64acb-7ccc-4033-97a7-306bc1894ddc" class="cell" data-tags="[]" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dg2.weights.append(<span class="dv">1</span>) <span class="co"># Also alters the static because this is not an assignment</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="b4138d63-05ac-4092-8e5a-df9e4f5c56a2" class="cell" data-tags="[]" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>DieGame.n_rolls <span class="op">=</span> <span class="dv">50</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="6da593da-1fd5-4480-8280-41a7069b4bd2" class="cell" data-tags="[]" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>check_values()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a3eef161-bdde-4739-bca7-ee436b2d81fd" class="cell" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>more diegame.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>n_rolls:
-    20
-    50
-    50
-weights:
-    [1, 10, 1, 1, 1, 1]
-    [1, 1, 1, 1, 1, 1, 1]
-    [1, 1, 1, 1, 1, 1, 1]</code></pre>
+<pre><code>import pandas as pd
+
+class DieGame():
+    """
+    Just another Python class.
+    """
+    n_rolls = 10
+    weights = [1,1,1,1,1,1]
+    
+    def __init__(self):
+        pass
+        
+    def create_die(self):
+        self.n_sides = len(self.weights)
+        self.my_probs = [i/sum(self.weights) for i in self.weights]
+        self.die = pd.DataFrame({
+            'side': range(1, self.n_sides + 1),
+            'weights': self.my_probs
+        })
+    
+    def roll_die(self):
+        results = []
+        for i in range(self.n_rolls):
+m--More--(38%)</code></pre>
 </div>
 </div>
-<div id="ed6be975-29e2-48b2-84e8-1de72edb347a" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dg1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>&lt;diegame.DieGame at 0x7f2577017950&gt;</code></pre>
+<p>We import the class in <code>diegame.py</code> into this notebook.</p>
+<div id="360c77d9-fc2b-47a2-9739-3c8f929c49f8" class="cell" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> diegame <span class="im">import</span> DieGame</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We initialize two objects.</p>
+<div id="28f3529c-fa38-49ac-b859-3361abf74af6" class="cell" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dg1 <span class="op">=</span> DieGame()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>dg2 <span class="op">=</span> DieGame()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="099e8584-4fea-4bd6-b3ae-0668c4cba782" class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dg1.do_it_all()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sides: 6
+Model:
+1    0.17
+2    0.17
+3    0.17
+4    0.17
+5    0.17
+6    0.17
+dtype: float64
+Rolls: 10</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="M07-05-Example_files/figure-html/cell-5-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="1fd1ec54-2199-4992-a567-46e5287ac648" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dg2.do_it_all()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sides: 6
+Model:
+1    0.17
+2    0.17
+3    0.17
+4    0.17
+5    0.17
+6    0.17
+dtype: float64
+Rolls: 10</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="M07-05-Example_files/figure-html/cell-6-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>To demonstrate the point made in the previous notebook about class and instance attributes, let’s update our objects.</p>
+<div id="c2b992c1-29ac-412c-b802-5aa029aea106" class="cell" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dg1.n_rolls <span class="op">=</span> <span class="dv">20</span> <span class="co"># This overrides the Class attribute</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>dg1.weights <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>] <span class="co"># So does this</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>dg2.weights.append(<span class="dv">1</span>) <span class="co"># But this also alters the static because this is not an assignment!</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>DieGame.n_rolls <span class="op">=</span> <span class="dv">50</span> <span class="co"># This should change dg2 but not dg1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="1fabb3c5-26fd-47d7-af8a-31bab3e840f6" class="cell" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> [</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'n_roles'</span>, dg1.n_rolls, dg2.n_rolls, DieGame.n_rolls),</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'weights'</span>, dg1.weights, dg2.weights, DieGame.weights)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="d56a0342-f60f-41dc-87cb-55c0c86efcd3" class="cell" data-tags="[]" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="b0401e82-074b-4059-9c6f-0c4dbc67a3d3" class="cell" data-tags="[]" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(results, columns<span class="op">=</span>[<span class="st">'attribute'</span>, <span class="st">'dg1'</span>, <span class="st">'dg2'</span>, <span class="st">'DieGame'</span>]).set_index(<span class="st">'attribute'</span>).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">attribute</th>
+<th data-quarto-table-cell-role="th">n_roles</th>
+<th data-quarto-table-cell-role="th">weights</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">dg1</td>
+<td>20</td>
+<td>[1, 10, 1, 1, 1, 1]</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">dg2</td>
+<td>50</td>
+<td>[1, 1, 1, 1, 1, 1, 1, 1]</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">DieGame</td>
+<td>50</td>
+<td>[1, 1, 1, 1, 1, 1, 1, 1]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -1112,13 +1208,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../notebooks/M07_PythonClasses/M07-03-MoreOnClasses.html" class="pagination-link" aria-label="NB: More About Classes">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">NB: More About Classes</span></span>
+      <a href="../../notebooks/M07_PythonClasses/M07-04-ClassAttributeWeirdness.html" class="pagination-link" aria-label="NB: Understanding Class Attributes">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">NB: Understanding Class Attributes</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../notebooks/M07_PythonClasses/M07-04-ClassAttributeWeirdness.html" class="pagination-link" aria-label="NB: Understanding Class Attributes">
-        <span class="nav-page-text"><span class="chapter-title">NB: Understanding Class Attributes</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../modules/m08/m08-intro.html" class="pagination-link" aria-label="M08 Testing">
+        <span class="nav-page-text">M08 Testing</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

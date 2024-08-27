@@ -267,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M03_ControlStructures/M03-04-NestedComprehensions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Nested Comprehensions</span></a>
+  <a href="../../notebooks/M03_ControlStructures/M03-04-NestedComprehensions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Nested Comprehensions</span></a>
   </div>
 </li>
       </ul>
@@ -416,7 +416,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M07_PythonClasses/M07-02-ClassesExample.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Classes Example</span></a>
+  <a href="../../notebooks/M07_PythonClasses/M07-02-ClassesExample.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: From Functions to Classes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -426,12 +426,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M07_PythonClasses/M07-05-Example.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Example</span></a>
+  <a href="../../notebooks/M07_PythonClasses/M07-04-ClassAttributeWeirdness.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Understanding Class Attributes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M07_PythonClasses/M07-04-ClassAttributeWeirdness.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Understanding Class Attributes</span></a>
+  <a href="../../notebooks/M07_PythonClasses/M07-05-Example.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Putting Your Class in a File</span></a>
   </div>
 </li>
       </ul>
@@ -627,10 +627,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#a-first-example" id="toc-a-first-example" class="nav-link" data-scroll-target="#a-first-example">A First Example</a></li>
   </ul></li>
+  <li><a href="#the-meaning-of-self" id="toc-the-meaning-of-self" class="nav-link" data-scroll-target="#the-meaning-of-self">The Meaning of <code>self</code></a></li>
   <li><a href="#the-.__init__-method" id="toc-the-.__init__-method" class="nav-link" data-scroll-target="#the-.__init__-method">The <code>.__init__()</code> method</a></li>
   <li><a href="#instance-vs-class-attributes" id="toc-instance-vs-class-attributes" class="nav-link" data-scroll-target="#instance-vs-class-attributes">Instance vs Class Attributes</a></li>
-  <li><a href="#the-meaning-of-self" id="toc-the-meaning-of-self" class="nav-link" data-scroll-target="#the-meaning-of-self">The Meaning of <code>self</code></a></li>
-  <li><a href="#summary-and-additional-info" id="toc-summary-and-additional-info" class="nav-link" data-scroll-target="#summary-and-additional-info">Summary and additional info</a></li>
+  <li><a href="#summary-and-additional-info" id="toc-summary-and-additional-info" class="nav-link" data-scroll-target="#summary-and-additional-info">Summary and Additional Info</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M07_PythonClasses/M07-01-Classes.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -656,11 +656,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>Programming for Data Science</p>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Classes are a way of <strong>organizing code</strong> into bundles of variables and functions called <strong>attributes</strong> and <strong>methods</strong>.</p>
 <p>Each class <strong>models</strong> some thing — a thing in the world, a process, a model, or just some convenient way of grouping code.</p>
-<p>For example, a logistic regression model would have attributes like:</p>
+<p>For example, a logistic regression model would have <strong>attributes</strong> like:</p>
 <ul>
 <li>weights</li>
 <li>an optional intercept term</li>
@@ -688,23 +689,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>an attribute, which is number of cylinders in the engine</li>
 <li>a method</li>
 </ul>
-<div id="cell-4" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="3">
+<div id="cell-4" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Ferrari458:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""This is a Ferrari 458 object"""</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"This is a Ferrari 458 object"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    cylinders <span class="op">=</span> <span class="dv">8</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> print_origin(<span class="va">self</span>):</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'I was built in Italy!'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">"Returns a string"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'I was built in Italy!'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You can learn about the class by printing the docstring:</p>
-<div id="cell-6" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="4">
+<div id="cell-6" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Ferrari458.__doc__</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>'This is a Ferrari 458 object'</code></pre>
 </div>
 </div>
 <p>You can also get detailed help like this:</p>
-<div id="cell-8" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="5">
+<div id="cell-8" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(Ferrari458)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Help on class Ferrari458 in module __main__:
@@ -715,6 +717,7 @@ class Ferrari458(builtins.object)
  |  Methods defined here:
  |  
  |  print_origin(self)
+ |      Returns a string
  |  
  |  ----------------------------------------------------------------------
  |  Data descriptors defined here:
@@ -732,30 +735,30 @@ class Ferrari458(builtins.object)
 </code></pre>
 </div>
 </div>
-<p>Next, we create an object from the class (also called an <strong>instance</strong> of the class).</p>
-<p>It is called like a function with no parameters.</p>
+<p>Next, we <strong>create an object</strong> from the class (also called an <strong>instance</strong> of the class).</p>
+<p>It is called like a <strong>function</strong>.</p>
 <p>The process is called <strong>instantiation</strong>.</p>
-<div id="cell-10" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="6">
+<div id="cell-10" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>myferrari <span class="op">=</span> Ferrari458()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We show the number of cylinders by using the <code>object.attribute</code> format:</p>
-<div id="cell-12" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="7">
+<p>We can show the number of <code>myferrari</code> cylinders by using the <code>object.attribute</code> format:</p>
+<div id="cell-12" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>myferrari.cylinders</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>8</code></pre>
 </div>
 </div>
-<p>Then we call its method <code>.print_origin()</code> to learn where this sweet machine was built.</p>
+<p>We can call its method <code>.print_origin()</code> to learn where the car was built:</p>
 <div id="cell-14" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>myferrari.print_origin()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>'I was built in Italy!'</code></pre>
 </div>
 </div>
-<p>As a convention, instance methods take <code>self</code> as their first argument.</p>
-<p>These methods can then use <code>self.attribute</code> to extract the attributes associated with the instantiated object.</p>
-<p>Here is an example, with method <code>get_cylinders</code>.</p>
-<div id="cell-16" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="17">
+<p>Note that the method takes <code>self</code> as its first argument.</p>
+<p>By doing this, the method can use the <code>self.attribute</code> and <code>self.method()</code> pattern to access the attributes and methods contained in other parts of the class.</p>
+<p>Here is an example, with the method <code>.get_cylinders()</code>:</p>
+<div id="cell-16" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Ferrari458_v2:</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""This is a Ferrari 458 object"""</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    cylinders <span class="op">=</span> <span class="dv">8</span></span>
@@ -766,23 +769,39 @@ class Ferrari458(builtins.object)
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_cylinders(<span class="va">self</span>):</span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.cylinders</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-17" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>myferrari <span class="op">=</span> Ferrari458_v2()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-18" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>myferrari.get_cylinders()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div id="cell-17" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>myferrari <span class="op">=</span> Ferrari458_v2()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>myferrari.get_cylinders()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="71">
 <pre><code>8</code></pre>
 </div>
 </div>
+<p>For the method <code>.get_cylinders()</code> to see the attribute <code>cylinders</code>, it has to access the attribute as a property of <code>self</code>.</p>
+<p>This is because the scope inside the class doesn’t behave like global scope in a module.</p>
+<p>Each method can only see what is inside of it, or what is global to the code that defined the class.</p>
+<p>Instead of having globals, it has the shared variable <code>self</code> that methods can use to share information.</p>
 </section>
+</section>
+<section id="the-meaning-of-self" class="level2">
+<h2 class="anchored" data-anchor-id="the-meaning-of-self">The Meaning of <code>self</code></h2>
+<p><code>self</code> stands for the intantiated object itself.</p>
+<p>It is a proxy in the template for an actual instance of the class.</p>
+<p>So, to repeat what was said earlier, if you want your method to access the other attributes and methods of an object, you need to put self as its first argument.</p>
+<p>Note that when you use the method with an instance, you don’t pass the object name as an argument:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>myferrari.get_cylinders() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The object name <code>myferrari</code> is passed implicitly by Python.</p>
+<p>You can use any valid name you want for the name of the object itself, but the convention is to use <code>self</code>.</p>
+<p>Note that <code>self</code> is <strong>only used within the methods</strong> of a class, not outside of it in the rest of the class definition.</p>
+<p>Attributes defined outside of methods but inside a class are implicitly attached to <code>self</code>.</p>
+<p>The <code>self</code> variable is the mechanism that allows methods to share data without having to pass and return a bunch of variables.</p>
+<p>Think of <code>self</code> as a <strong>data structure that stores the program itself</strong></p>
 </section>
 <section id="the-.__init__-method" class="level2">
 <h2 class="anchored" data-anchor-id="the-.__init__-method">The <code>.__init__()</code> method</h2>
-<p>There is a special function called <code>__init__</code> that will <strong>initialize</strong> the state of an object when you create it.</p>
+<p>There is a special method called <code>.__init__()</code> that will <strong>initialize</strong> the state of an object when you create it.</p>
 <p>Use it to supply more context-dependent information about your instance.</p>
 <p>Let’s look at another version of the class with <code>__init__()</code>.</p>
-<div id="cell-20" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="21">
+<div id="cell-24" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Ferrari458_v3:</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""this is a Ferrari 458 object"""</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    cylinders <span class="op">=</span> <span class="dv">8</span></span>
@@ -796,40 +815,40 @@ class Ferrari458(builtins.object)
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_color(<span class="va">self</span>):</span>
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.color</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>By adding the <code>__init__()</code> function, we can create objects if we pass the number of cylinders.</p>
+<p>By adding the <code>.__init__()</code> method, we can create objects if we pass the number of cylinders.</p>
 <p>If we don’t pass this parameter, there will be an error.</p>
 <p>This is because we did not define a default value for the color argument in our initialization method.</p>
-<div id="cell-22" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="30">
+<div id="cell-27" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ferr1 <span class="op">=</span> Ferrari458_v3()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>TypeError: Ferrari458_v3.__init__() missing 1 required positional argument: 'color'</code></pre>
+<pre><code>TypeError: __init__() missing 1 required positional argument: 'color'</code></pre>
 </div>
 </div>
 <p>This works:</p>
-<div id="cell-24" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="31">
+<div id="cell-29" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ferr1 <span class="op">=</span> Ferrari458_v3(<span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can access the initialized attribute using the dot operator, just as if it were declared at the top of the class:</p>
-<div id="cell-26" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="32">
+<div id="cell-31" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="75">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ferr1.color</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="32">
+<div class="cell-output cell-output-display" data-execution_count="75">
 <pre><code>'red'</code></pre>
 </div>
 </div>
 <p>Or we can call the accessor method that we created.</p>
-<div id="cell-28" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="33">
+<div id="cell-33" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="76">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ferr1.get_color()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="33">
+<div class="cell-output cell-output-display" data-execution_count="76">
 <pre><code>'red'</code></pre>
 </div>
 </div>
 <p>Note that even though we initialized the car object with “red”, we can always change it:</p>
-<div id="cell-30" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="34">
+<div id="cell-35" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="77">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>ferr1.color <span class="op">=</span> <span class="st">"Cobalt"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-31" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="35">
+<div id="cell-36" class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="78">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ferr1.get_color()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="35">
+<div class="cell-output cell-output-display" data-execution_count="78">
 <pre><code>'Cobalt'</code></pre>
 </div>
 </div>
@@ -837,41 +856,70 @@ class Ferrari458(builtins.object)
 <section id="instance-vs-class-attributes" class="level2">
 <h2 class="anchored" data-anchor-id="instance-vs-class-attributes">Instance vs Class Attributes</h2>
 <p>Notice the difference between the <code>cylinders</code> and the <code>color</code> attributes.</p>
-<p>The first is a <strong>class</strong> attribute. Its value will apply to all instances of the class, unless the instance overrides it.</p>
-<p>The second is an <strong>instance</strong> attribute. Its value is meant to be changed with each instance.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Ferrari458_v3:</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""this is a Ferrari 458 object"""</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    cylinders <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, color):</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.color <span class="op">=</span> color</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The first is a <strong>class</strong> attribute.</p>
+<p>It is defined <strong>outside</strong> of any method.</p>
+<p>Its value will apply to all instances of the class, unless the instance overrides it.</p>
+<p>The second is an <strong>instance</strong> attribute.</p>
+<p>It is defined <strong>inside</strong> of a method.</p>
+<p>Its value is meant to be changed with each instance.</p>
 <p>Look what happens if we change the value of <code>cylinders</code> in the class:</p>
-<div id="cell-33" class="cell" data-tags="[]" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>Ferrari458_v3.cylinders <span class="op">=</span> <span class="dv">12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-39" class="cell" data-tags="[]" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>Ferrari458_v3.cylinders <span class="op">=</span> <span class="dv">12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-34" class="cell" data-tags="[]" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ferr1.cylinders</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="55">
+<div id="cell-40" class="cell" data-tags="[]" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ferr1.cylinders</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="80">
 <pre><code>12</code></pre>
 </div>
 </div>
 <p>The value will be changed with <em>all</em> of the instances created from the class.</p>
-</section>
-<section id="the-meaning-of-self" class="level2">
-<h2 class="anchored" data-anchor-id="the-meaning-of-self">The Meaning of <code>self</code></h2>
-<p>Note the presence of an argument and variable called <strong><code>self</code> in the method definitions</strong>. - This stands for the intantiated object itself.</p>
-<p>So, when you create an object like so:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>foo <span class="op">=</span> Foo()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><code>foo</code> is represented in the class definition as <code>self</code>.</li>
-</ul>
-<p>If you want your method to access the other attributes and methods in an object, <strong>you need to put self as its first argument</strong>. - Note that when you use the method with an instance, you don’t pass the object name as an argument - The object name is passed implicitly by Python, since it knows which object called the methid</p>
-<p>You can use any valid name you want for the name of the object itself, but the convention is to use <code>self</code>.</p>
-<p>Note that <code>self</code> is <strong>only used within the methods</strong> of a class, not outside of it. - Like functions, they don’t know what’s outside of them, nor does the containing code know what’s inside of them. - The <code>self</code> variable is the mechanism that allows methods to share data without having to pass and return a bunch of variables.</p>
-<p>Think of <code>self</code> as a <strong>data structure that stores the program itself</strong> - In this sense, it’s similar to <strong>recursion</strong>: A class definition contains a reference to itself! - But remember, the class definition is not a thing – it’s a template. - <code>self</code> is just a pronoun that allows an instance to access it’s own state.</p>
+<p>Now, if we change the instance variable, the class is unaffected.</p>
+<div id="cell-43" class="cell" data-tags="[]" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>ferr1.cylinders <span class="op">=</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-44" class="cell" data-tags="[]" data-execution_count="84">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Ferrari458_v3.cylinders</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="84">
+<pre><code>12</code></pre>
+</div>
+</div>
 </section>
 <section id="summary-and-additional-info" class="level2">
-<h2 class="anchored" data-anchor-id="summary-and-additional-info">Summary and additional info</h2>
-<p>An <strong>cobject</strong> is a self-contained bundle of <strong>methods and attributes</strong>. * Methods are basically functions. * Attributes are basically variables.</p>
-<p>A <strong>class</strong> definition is a <strong>template</strong> for creating objects. * Objects are <strong>class instances</strong>. * Classes are <strong>onbject types</strong>.</p>
-<p>Objects have <strong>their own scope</strong>, like functions. * They are meant to <strong>exchange information</strong> with their environment only through accessing attributes and calling methods</p>
-<p>When objects are first created, <strong>they often expect to have data passed to them</strong>. * This is called <strong>initializing</strong> the object. * These data are handled internally by the <code>.__init__()</code> method. * Data that are passed this way can be <strong>overridden</strong> by accessing the attributes they assigned to.</p>
-<p>The methods of a class begin with <code>self</code> as the first argument. * This stands for <strong>the instance itself</strong>. * <strong>All methods and attributes are avaible</strong> to all other methods in the object <strong>through the <code>self</code> object</strong>.</p>
-<p>If a method does not have <code>self</code> as its first argument, it cannot access the internal state or methods of the object. * The internal state is just the attributes and their current values. * These are called <strong>static</strong> methods. * Static methods are useful in providing functions to the environment in which their containing object is instantiated.</p>
+<h2 class="anchored" data-anchor-id="summary-and-additional-info">Summary and Additional Info</h2>
+<p>An <strong>object</strong> is a self-contained bundle of <strong>methods and attributes</strong>.</p>
+<ul>
+<li>Methods are basically functions.</li>
+<li>Attributes are basically variables.</li>
+</ul>
+<p>A <strong>class</strong> definition is a <strong>template</strong> for creating objects.</p>
+<ul>
+<li>Objects are <strong>class instances</strong>.</li>
+<li>Classes are <strong>object types</strong>.</li>
+</ul>
+<p>Objects have <strong>their own scope</strong>, like functions.</p>
+<p>When objects are first created, <strong>they often expected to have data passed to them</strong>.</p>
+<ul>
+<li>This is called <strong>initializing</strong> the object.</li>
+<li>These data are handled internally by the <code>.__init__()</code> method.</li>
+<li>Data that are passed this way may be <strong>overridden</strong> by accessing the attributes they assigned to.</li>
+</ul>
+<p>The methods of a class begin with <code>self</code> as the first argument.</p>
+<ul>
+<li>This stands for <strong>the instance itself</strong>.</li>
+<li><strong>All methods and attributes are available</strong> to all other methods in the object <strong>through the <code>self</code> object</strong>.</li>
+</ul>
+<p>If a method does not have <code>self</code> as its first argument, it cannot access the internal state or methods of the object.</p>
+<ul>
+<li>The internal state is just the attributes and their current values.</li>
+<li>These are called <strong>static</strong> methods.</li>
+<li>Static methods are useful in providing functions to the environment in which their containing object is instantiated.</li>
+</ul>
 <p><strong>There is a lot more to the subject, but this is good enough to get started!</strong></p>
 
 
@@ -1301,8 +1349,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../notebooks/M07_PythonClasses/M07-02-ClassesExample.html" class="pagination-link" aria-label="NB: Classes Example">
-        <span class="nav-page-text"><span class="chapter-title">NB: Classes Example</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../notebooks/M07_PythonClasses/M07-02-ClassesExample.html" class="pagination-link" aria-label="NB: From Functions to Classes">
+        <span class="nav-page-text"><span class="chapter-title">NB: From Functions to Classes</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

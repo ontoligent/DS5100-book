@@ -691,8 +691,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>(3, 2)</code></pre>
 </div>
 </div>
-<p>Turns out we cannot override the class attribute with the local.</p>
-<p>We can also see that the instance attribute is now unaffected by changing the value of the global.</p>
+<p>Turns out we cannot override the class attribute with the instance.</p>
+<p>We can also see that the instance attribute is now unaffected by changing the value in the class.</p>
 <div id="cell-16" class="cell" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Foo.x <span class="op">=</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -779,7 +779,7 @@ instance.bar = [1]
 class.bar = [1]</code></pre>
 </div>
 </div>
-<p>The method <strong>does</strong> disconnect the instance <code>foo</code> from the class <code>foo</code>.</p>
+<p>The method <code>.add_one()</code> <strong>does</strong> disconnect the instance <code>foo</code> from the class <code>foo</code>.</p>
 <p>But it <strong>does not</strong> disconnect the instance <code>bar</code> from the class <code>bar</code>.</p>
 <p>Instead, a change that took place in one instance affects the state of all other instances!</p>
 <p>The difference is that <code>foo</code> is a scalar, and <code>bar</code> is a list, i.e.&nbsp;mutable data structure.</p>
@@ -899,8 +899,8 @@ class.bar = [1, 1, 1, 1, 1, 1, 1]
 <h2 class="anchored" data-anchor-id="some-observations">Some Observations</h2>
 <p>Class attribute changes affect those attributes in all of it instances …</p>
 <p>… unless the instance assigns a value to the attribute.</p>
-<p>However, appending to a list — or, more generally, modifying data in a mutable data structure — does not count as an assignment operation. The instance changes will affect the class state.</p>
-<p>Bottom line: DEFINE CLASS ATTRIBUTES WITH CAUTION.</p>
+<p>However, appending to a list from an instance — or, more generally, modifying data in a mutable data structure — does not count as an assignment operation. The instance changes will affect the class state.</p>
+<p>Bottom line: <strong>use class attributes with caution</strong>.</p>
 
 
 </section>

@@ -3507,55 +3507,154 @@
     ]
   },
   {
-    "objectID": "modules/m08/m08-testing-and-verification.html",
-    "href": "modules/m08/m08-testing-and-verification.html",
+    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html",
+    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html",
     "title": "Testing and Verification",
     "section": "",
-    "text": "When Code Breaks\nIn this module, we learn about how to deal with broken code.\nBy “broken code,” we mean everything from code that does not run to code that does not meet the purpose for writing the code.\nThis is a broad topic that covers many levels, facets, and many approaches.\nThese are some basic questions that define the space of the topic:\nWe’ll try to cover this space, and introduce you to some Python tools designed to handle broken code.",
+    "text": "When Code Breaks\nIn this module, we learn about how to deal with broken code.\nBy “broken code,” we mean everything from code that does not run to code that does not meet users’ expectations.\nThis is a broad topic, with lots of cases in between, so let’s break it down.\nIn the first case, code may not work for a variety of reasons:\nIn the second case, code may not meet the general or specific user expectations for the code.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
     ]
   },
   {
-    "objectID": "modules/m08/m08-testing-and-verification.html#when-code-breaks",
-    "href": "modules/m08/m08-testing-and-verification.html#when-code-breaks",
+    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#when-code-breaks",
+    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#when-code-breaks",
     "title": "Testing and Verification",
     "section": "",
-    "text": "What constitutes broken code?\nHow do you prevent your code from breaking?\nHow to tell if your code is broken?",
+    "text": "It may not run at all.\nIt may be “brittle” or “buggy.”\nIt may be sensitive to contextual factors like bad user input or a bad database connection.\nIt may run but produce incorrect outcomes.\n\n\n\nIt may not do what is is supposed to do.\nIt may perform too poorly to be useful.\nIt may not add any value to a business process.\nIt may be unethical or harmful.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
     ]
   },
   {
-    "objectID": "modules/m08/m08-testing-and-verification.html#specifications",
-    "href": "modules/m08/m08-testing-and-verification.html#specifications",
+    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#quality-assurance",
+    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#quality-assurance",
+    "title": "Testing and Verification",
+    "section": "Quality Assurance",
+    "text": "Quality Assurance\nDealing with broken code at both levels falls under the broad category of quality assurance, or QA.\nTwo broad appraoches to QA are through good design and through principled testing based on requirements.",
+    "crumbs": [
+      "M08 Testing",
+      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#design",
+    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#design",
+    "title": "Testing and Verification",
+    "section": "Design",
+    "text": "Design\nGood design means following sound architectural principles and patterns, as well as using the right tools (e.g. Python :-)\nSome principles of good design are:\n\nFavor the simple over the complex.\nInvest in data design to simplify algorithm design.\nWrite literate code so that it is intellible to you and others.\nUse tools that are documented and have a strong user community.",
+    "crumbs": [
+      "M08 Testing",
+      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#specifications",
+    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#specifications",
     "title": "Testing and Verification",
     "section": "Specifications",
-    "text": "Specifications\nOne way to frame this topic is to think in terms of standards of code against which the concept of broken code makes sense.\nThis perspective begins with the concept of a specification: A precise and detailed statement that a stakeholder defines about the properties the code must have.\nThere are different kinds of specification, or “spec”. For example:\n- A design specification specification provides exact instructions for how to build something.\n\nA requirements specification provides exact statements about what should be built. These specify what the code shoudl do, not how or why.\n\n\nTwo kinds of requirements matching are verification and validation.\nVerification ensures the software is built right, according to the requirements, while validation ensures the software is doing the right thing, relative to the problem the client is trying to solve. This is captured by the requirements, but also by the value proposition that motivates the code in the first place.\nThe distinction is similar to that referenced by Peter Drucker in this quote:\n\nIt’s more important to do the right thing than to do things right.",
+    "text": "Specifications\nTesting, on the other hand, depends on the codification of performance expectations, independent of how things are built.\nExpectations are typically encoded in specifications: A document that contains a precise and detailed statement that stakeholders define about the properties the code must have.\nThere are different kinds of specification, or “spec”.\nHere are two common ones:\nA design specification provides exact instructions for how to build something. This goes beyond principles and identifies specific tools, platforms, etc.\nA requirements specification provides exact statements about what should be built. These specify what the code should do, not how or why.\nHere, we will focus on requirements.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
     ]
   },
   {
-    "objectID": "modules/m08/m08-testing-and-verification.html#testing",
-    "href": "modules/m08/m08-testing-and-verification.html#testing",
+    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#requirements",
+    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#requirements",
     "title": "Testing and Verification",
-    "section": "Testing",
-    "text": "Testing\nTo ensure that our code aligns with our requirements and is of the highest quality we can provide, we follow testing and verification procedures.\nTesting is an essential part of verification – doing things right.\nWe use specifications to guide program testing.\n\nThat is, if you don’t have specifications for the product, you cannot verify that you’re doing the right thing.\nLikewise, if behavior is not defined, then it becomes difficult to know what is incorrect behavior.\n\n\n\n\n\n\n\nNote\n\n\n\nSpecifications are rarely perfect. They can change over time for a variety of reasons.\nIn fact, some have joked that programming is the act of “debugging the spec”. We’ll learn more about this when we cover project management.\n\n\nBroadly speaking, there are two kinds of testing and verificaiton:\n\nFormal Verification\nFormal verification involves proof. There are three types:\n\nHand-written, hand-checked\nHand-written, machine-checked (proof-carrying code)\nMachine-written, machine-checked (static analysis)\n\nNone of them are very widely used yet, but the latter two are increasing in popularity.\nFormal verification is complex, difficult, and takes a great deal of effort.\n\n\nEmpirical Verification\nWith empirical procedures, correctness is demonstrated through empirical testing.\nEmpirical testing shows it works on several inputs. In general, testing is:\n\nA lot easier than proof\nA lot harder (and more involved) than writing code \n\n\n\nTypes of Empirical Testing\nThere are many kinds of empirical testing, but we will focus on unit testing in this module.\n\nUnit Testing is where we write code that tests the smallest possible units of the spec (must attempt to test every flow path). The programmer does unit testing as part of the coding process.\nThis assumes that code is componential, i.e. that the smallest units are functionally independent and can be combined in principled ways.\nThis raises the issue of writing well-designed functions and classes.\n\nTwo other kinds of testing are integration and acceptance (beta) testing, which are out of the scope of this lesson. See below for a short description.\n\nIntegration Testing: Test that units work together.\nAcceptance Testing (Beta Testing): Give product to real users to try it out.\n\n\n\n\n\n\n\nDebugging\nAnother aspect of testing and verification which we will not cover here is debugging.\nDebugging – derived from Grace Hopper’s expression “bug” – refers to the process of investigating precisely where and when code breaks.\nProgramming environments like Jupyter Lab and VS Code provide good tools for debugging.",
+    "section": "Requirements",
+    "text": "Requirements\nRequirements are elicited from stakeholders through a process that typically involves project management. We will cover this topic in more depth in a later module.\nFor now, assuming that we have some requirements in hand, our job as coders is to meet those requirements.\nThis means both designing code in accordance with the specs, and ensuring, or verifying and validating, in a shareable way that the code does in fact meet those requirements.\nVerification ensures the software is built right, according to the requirements.\nValidation ensures the software is doing the right thing, relative to the problem the client is trying to solve.\nThe distinction is similar to that referenced by Peter Drucker in this quote:\n\nIt’s more important to do the right thing than to do things right.\n\nIn this module, we focus on verification.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
     ]
   },
   {
-    "objectID": "modules/m08/m08-testing-and-verification.html#a-note-of-caution",
-    "href": "modules/m08/m08-testing-and-verification.html#a-note-of-caution",
+    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#requirements-testing",
+    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#requirements-testing",
+    "title": "Testing and Verification",
+    "section": "Requirements Testing",
+    "text": "Requirements Testing\nTo verify that our code aligns with our requirements and is of the highest quality we can provide, we follow testing procedures.\nThis is where requirements specifications come in. They provide the blueprint for testing.\nIf you don’t have specifications for the product, you cannot verify that you’re doing the right thing.\nIt also becomes difficult to identify  incorrect behavior.",
+    "crumbs": [
+      "M08 Testing",
+      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#debugging-the-spec",
+    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#debugging-the-spec",
+    "title": "Testing and Verification",
+    "section": "Debugging the Spec",
+    "text": "Debugging the Spec\nSpecifications are rarely perfect. They can change over time for a variety of reasons.\nIn fact, some have joked that programming is the act of “debugging the spec”:\n\nThe process of interpreting what is wanted and making something sort of like it happen on a monitor is one that very much requires the kinds of interpretation Gadamer describes — in fact, the act of interpreting the original articulation generally leads to a re-formulation of the activity itself, so that programming becomes a way to change how people think of themselves and their work, not simply a reflection of the tasks at hand.\nHalsted 2001\n\nDon’t worry about who Gadamer is other than to note that he is a famous German philosopher who argued that the essence of knowledge is interpretation and interpretation always involves play.\nBroadly speaking, there are two kinds of testing and verification: formal and empirical.",
+    "crumbs": [
+      "M08 Testing",
+      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#formal-verification",
+    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#formal-verification",
+    "title": "Testing and Verification",
+    "section": "Formal Verification",
+    "text": "Formal Verification\nFormal verification is the process of mathematically proving that a system satisfies a given property.\nIt works by defining a formal model for the system and its behavior and then comparing the software to the model.\nGiven their complexity, these are not widely used.",
+    "crumbs": [
+      "M08 Testing",
+      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#empirical-verification",
+    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#empirical-verification",
+    "title": "Testing and Verification",
+    "section": "Empirical Verification",
+    "text": "Empirical Verification\nWith empirical procedures, requirements matching is demonstrated through empirical testing.\nEmpirical testing seeks to see if software works in practice.\nIt is easier than using proofs.\nBut it hard then just writing code.\nWe will focus on empirical testing.",
+    "crumbs": [
+      "M08 Testing",
+      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#unit-testing",
+    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#unit-testing",
+    "title": "Testing and Verification",
+    "section": "Unit Testing",
+    "text": "Unit Testing\nThere are many kinds of empirical testing.\nThe most popular is unit testing.\nIn unit testing, we write code that tests the smallest possible units of the requirements spec.\nThe programmer does unit testing as part of the coding process.\nIt expects that code is componential, i.e. that the smallest units are functionally independent and can be combined in principled ways.\nThis raises the issue of writing well-designed functions and classes.\nTwo other kinds of testing are integration and acceptance (beta) testing, which are out of the scope of this lesson. See below for a short description.\nIntegration Testing: Test that units work together.\nAcceptance Testing (Beta Testing): Give product to real users to try it out.\nWe will focus on unit testing.",
+    "crumbs": [
+      "M08 Testing",
+      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#debugging",
+    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#debugging",
+    "title": "Testing and Verification",
+    "section": "Debugging",
+    "text": "Debugging\nAnother aspect of testing and verification which we will not cover here is debugging.\nDebugging — derived from Grace Hopper’s expression “bug” — refers to the process of investigating precisely where and when code breaks.\nProgramming environments like Jupyter Lab and Visual Studio Code provide good tools for debugging.",
+    "crumbs": [
+      "M08 Testing",
+      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#a-note-of-caution",
+    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#a-note-of-caution",
     "title": "Testing and Verification",
     "section": "A Note of Caution",
-    "text": "A Note of Caution\nEdsger Dijkstra was a famous computer scientist and A. M. Turing award winner. He said:\n\n“Program testing can effectively show the presence of bugs but is\nhopeless for showing their absence.”     — Edsger Dijkstra\n\nEven if you write a test suite of carefully crafted test cases, and if they all run and pass, it doesn’t mean that no further bugs exist.\nIt is much easier to prove the existence of something than to disprove the existence of something. \nThis realization should motivate us to learn how to create carefully crafted unit tests so that we can test as much as we can.",
+    "text": "A Note of Caution\nEdsger Dijkstra was a famous computer scientist and A. M. Turing award winner. He said:\n\n“Program testing can effectively show the presence of bugs but is\nhopeless for showing their absence.”\n    — Edsger Dijkstra\n\nEven if you write a test suite of carefully crafted test cases, and if they all run and pass, it doesn’t mean that no further bugs exist.\nIt is much easier to prove the existence of something than to disprove the existence of something. \nThis realization should motivate us to learn how to create carefully crafted unit tests so that we can test as much as we can.",
+    "crumbs": [
+      "M08 Testing",
+      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#visual-summary",
+    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#visual-summary",
+    "title": "Testing and Verification",
+    "section": "Visual Summary",
+    "text": "Visual Summary",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
@@ -3573,22 +3672,22 @@
     ]
   },
   {
-    "objectID": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#overview",
-    "href": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#overview",
+    "objectID": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#errors",
+    "href": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#errors",
     "title": "NB: Exception Handling",
     "section": "",
-    "text": "Does it do what is is supposed to do?\nDoes it add value to a process?\nIs it ethical? Does it do harm?\n\n\n\nDoes the run at all?\nIs the code brittle or buggy?\nIs it sensitive to contextual factors like bad user input or a bad database connection?\nDoes the code “work” but produce incorrect outcomes?\n\n\n\nStrategic: Project management\nTactical: Testing and debugging\n\n\n\nWe want to know whether our code is working or not.\nWe also want to know if our code is of a high quality.\n\n\n\nThrough good design\nThroigh principled testing\n\n\n\nFavor the simple over the complex.\n\n\nDon’t confuse the easy with the simple!\n\n\nInvest in data design to simplify algorithm design.\nWrite literate code so that it is intellible to you and others.\nGiven a choice, use tools that are documented and have a user community.\nMany other things :-)\n\n\n\nSyntax checking.\nDebugging.\nAd hoc testing.\nUnit-testing.\nUser testing.\n\n\n\nBeware of silent failures.\nTesting for the absence of bugs is impossible.\n\n\nLike Popper’s concept of falsifiability: We can never prove a scientific hypothesis to be true, we can only falsify.",
+    "text": "Syntactic errors, AKA parsing errors, which are caused by not following Python’s rules for writing code. For example, you start a variable name with a number.\nLogical errors, such as dividing by 0 or indexing into a list for an element that doesn’t exist.\nUser errors, such as when a user inputs the wrong data type for an operation.\nSystem errors, such as when a database connection is down or a a write operation is blocked by incorrectly set file permissions.\nDependency errors, such as when a module expects a version of another library that is not installed.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>43</span>  <span class='chapter-title'>NB: Exception Handling</span>"
     ]
   },
   {
-    "objectID": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#errors-vs-exceptions",
-    "href": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#errors-vs-exceptions",
+    "objectID": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#exceptions",
+    "href": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#exceptions",
     "title": "NB: Exception Handling",
-    "section": "Errors vs Exceptions",
-    "text": "Errors vs Exceptions\nThere is a broad distinction between an error and an exception.\nAn error is a serious problem that a reasonable application should not try to catch.\nAn error will stop execution. It means the code if broken and needs to be rewritten.\nAn exception is an issue that is expected or known to occur (e.g., division by zero).\nSoftware must handle exceptions. For example, one bad row of data shouldn’t bring down the application.\nActually, exceptions are also called errors, so it may be better make a distinction between flaws and exceptions.\nIt may help to distinquish between internal and external problems.\nInternal problems are problems with the code itself which the coder needs to address ad design-time.\nExternal problems are problems with how the code may interact with the external world—the user, external data sources, the network, APIs, etc. These are problems whihc users of the code will need to address at run-time.",
+    "section": "Exceptions",
+    "text": "Exceptions\nThe official Python documentation defines an exception as follows:\n\nErrors detected during execution are called exceptions.\n\nThis excludes syntactic errors and dependency errors and focuces on problems that arise when code is running and data is being processed.\nHowever, this definition does not make a distinction between what’s in an out of your control.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>43</span>  <span class='chapter-title'>NB: Exception Handling</span>"
@@ -3639,6 +3738,17 @@
     ]
   },
   {
+    "objectID": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#else-and-finally",
+    "href": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#else-and-finally",
+    "title": "NB: Exception Handling",
+    "section": "else and finally",
+    "text": "else and finally\nException handling blocks may also contain else and finally statements.\nelse statements run if no errors are caught.\nfinally statements are run no matter what happens. This is used in cases where variables or connections are set up in the process of testing and need to be deleted or closed.\nHere is a an example of a function that contains a fully qualified exception handling block:\n\ndef divide(x, y): \n    try: \n        result = x / y \n\n    except ZeroDivisionError: \n        print(\"Error: Can't divide by 0!\") \n    \n    else:\n        print(\"Result:\", result) \n    \n    finally:  \n        print('This is always executed')   \n\n\ndivide(3, 2) \n\nResult: 1.5\nThis is always executed\n\n\n\ndivide(3, 0)\n\nError: Can't divide by 0!\nThis is always executed",
+    "crumbs": [
+      "M08 Testing",
+      "<span class='chapter-number'>43</span>  <span class='chapter-title'>NB: Exception Handling</span>"
+    ]
+  },
+  {
     "objectID": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#assert-statements",
     "href": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#assert-statements",
     "title": "NB: Exception Handling",
@@ -3661,11 +3771,11 @@
     ]
   },
   {
-    "objectID": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#futher-reading",
-    "href": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#futher-reading",
+    "objectID": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#summary",
+    "href": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#summary",
     "title": "NB: Exception Handling",
-    "section": "Futher Reading",
-    "text": "Futher Reading\n\nhttps://www.geeksforgeeks.org/errors-and-exceptions-in-python/\nhttps://www.tutorialspoint.com/python/assertions_in_python.htm",
+    "section": "Summary",
+    "text": "Summary\nExceptions are errors that arise in a running program that are expected to happen.\nWe handle exceptions with try and except statements.\nraise and assert statements are ways to make your code responsive to errors that may arise.\nWe sometimes use these to actually stop program flow so that users of our code can catch them and handle them.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>43</span>  <span class='chapter-title'>NB: Exception Handling</span>"
@@ -3683,6 +3793,39 @@
     ]
   },
   {
+    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#role-of-functions",
+    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#role-of-functions",
+    "title": "NB: Unit Testing with Unittest",
+    "section": "Role of Functions",
+    "text": "Role of Functions\nThe elementary unit of code is usually the function.\nRecall that functions should be written to perform relatively simple things — simple, well-defined tasks.\nUnit test are meant to eliminate errors produced by the coder.\nUnit tests may also be designed to test whether or not functions perform correctly in a range of error-producing conditions.\nThese conditions include edge cases, invalid inputs, and error conditions to verify that functions handle these situations gracefully.",
+    "crumbs": [
+      "M08 Testing",
+      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#integration-testing",
+    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#integration-testing",
+    "title": "NB: Unit Testing with Unittest",
+    "section": "Integration Testing",
+    "text": "Integration Testing\nUnit testing typically focuses on individual functions in isolation.\nTo test how groups of related functions interact and perform, we employ integration testing.\nIntegration testing is more complex, given the combinatorial complexity of coding.",
+    "crumbs": [
+      "M08 Testing",
+      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#role-of-design",
+    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#role-of-design",
+    "title": "NB: Unit Testing with Unittest",
+    "section": "Role of Design",
+    "text": "Role of Design\nIt is worth noting that unit testing entails a kind of design.\nIf you design functions that are not well-defined and focused, then you are unlikely to test them effectively.\nSo part of unit testing is what we might call unit design.\nA broad area of programming called functional programming implements this kind of design.\nSo, unit testing goes hand-in-hand with software design.",
+    "crumbs": [
+      "M08 Testing",
+      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
+    ]
+  },
+  {
     "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#benefits-of-unit-testing",
     "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#benefits-of-unit-testing",
     "title": "NB: Unit Testing with Unittest",
@@ -3694,11 +3837,11 @@
     ]
   },
   {
-    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#the-unittest-framework",
-    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#the-unittest-framework",
+    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#unit-testing-frameworks",
+    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#unit-testing-frameworks",
     "title": "NB: Unit Testing with Unittest",
-    "section": "The unittest Framework",
-    "text": "The unittest Framework\nOne of the popular unit testing frameworks is Unittest.\nIt is works well and is easy to use.\nThere are other tools, though—here’s a comparison of 6 Python testing frameworks.",
+    "section": "Unit Testing Frameworks",
+    "text": "Unit Testing Frameworks\nThere are many of these available to Python users, including:\nUnittest: A full-featured unit testing system, inspired by Java’s JUnit. Part of the Python Standard Library (as an external project it was called PyUnit).\nDocTest: A lightweight test framework that allows you to embed tests directly in the docstrings, making it easy to combine code examples and test cases in one place. Part of the Python Standard Library.\nPyTest: An alternative to PyUnit and with a simpler syntax.\nnose2: A discovery-based framwork that extends unittest (successor to nose).\nTestify: A Pythonic testing framework compatible with unittest tests.\nRobot: A framework for test automation and robotic process automation (not just for Python).\nBehave: A framework for Behavior-Driven Development.\nHypothesis: A powerful property-based testing.\n— Adapted from https://wiki.python.org/moin/UnitTests\nWe will focus on Unittest.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
@@ -3727,11 +3870,44 @@
     ]
   },
   {
-    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#assert-methods",
-    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#assert-methods",
+    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#examples",
+    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#examples",
     "title": "NB: Unit Testing with Unittest",
-    "section": "Assert Methods",
-    "text": "Assert Methods\n\n.assertTrue()\n\nNegative Test Case\nRun M08-02-script1.py\nclass TestStringMethods(unittest.TestCase):\n\n    # test function\n    def test_negative(self):\n\n        testValue = False\n        \n        # error message in case if test case got failed\n        message = \"Test value is not true.\"\n        \n        # assertTrue() to check true of test value\n        self.assertTrue(testValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script1.py\n\ntest_negative (__main__.TestStringMethods.test_negative) ... FAIL\n\n======================================================================\nFAIL: test_negative (__main__.TestStringMethods.test_negative)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M08_PythonTesting/M08-02-script1.py\", line 14, in test_negative\n    self.assertTrue(testValue, message)\nAssertionError: False is not true : Test value is not true.\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n\n\n\n\nPositive Test Case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    \n    # test function\n    def test_positive(self):\n        \n        testValue = True\n        \n        # error message in case if test case got failed\n        message = \"Test value is not true.\"\n        \n        # assertTrue() to check true of test value\n        self.assertTrue( testValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script2.py\n\ntest_positive (__main__.TestStringMethods.test_positive) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n\n\n\n\n\n.assertFalse()\n\nNegative Test Case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    # test function\n    def test_negative(self):\n        testValue = True\n        # error message in case if test case got failed\n        message = \"Test value is not false.\"\n        # assetFalse() to check test value as false\n        self.assertFalse( testValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script3.py\n\nF\n======================================================================\nFAIL: test_negative (__main__.TestStringMethods.test_negative)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M08_PythonTesting/M08-02-script3.py\", line 10, in test_negative\n    self.assertFalse( testValue, message)\nAssertionError: True is not false : Test value is not false.\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n\n\n\n\nPositive Test Case\n## unit test case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    # test function\n    def test_positive(self):\n        testValue = False\n        # error message in case if test case got failed\n        message = \"Test value is not false.\"\n        # assertFalse() to check test value as false\n        self.assertFalse( testValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script4.py\n\n.\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n\n\n\n\n\n.assertEqual()\nHere is a case where we expect two values to be equal.\n\nNegative Test Case\n## unit test case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    # test function to test equality of two value\n    def test_negative(self):\n        firstValue = \"geeks\"\n        secondValue = \"gfg\"\n        # error message in case if test case got failed\n        message = \"First value and second value are not equal !\"\n        # assertEqual() to check equality of first & second value\n        self.assertEqual(firstValue, secondValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script5.py\n\nF\n======================================================================\nFAIL: test_negative (__main__.TestStringMethods.test_negative)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M08_PythonTesting/M08-02-script5.py\", line 12, in test_negative\n    self.assertEqual(firstValue, secondValue, message)\nAssertionError: 'geeks' != 'gfg'\n- geeks\n+ gfg\n : First value and second value are not equal !\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n\n\n\n\nPositive Test Case\n## unit test case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    # test function to test equality of two value\n    def test_positive(self):\n        firstValue = \"geeks\"\n        secondValue = \"geeks\"\n        # error message in case if test case got failed\n        message = \"First value and second value are not equal !\"\n        # assertEqual() to check equality of first & second value\n        self.assertEqual(firstValue, secondValue, message)\n\nif __name__ == '__main__':\n    unittest.main(verbosity=2)\n\n!python M08-02-script6.py\n\ntest_positive (__main__.TestStringMethods.test_positive) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
+    "section": "Examples",
+    "text": "Examples",
+    "crumbs": [
+      "M08 Testing",
+      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#asserttrue",
+    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#asserttrue",
+    "title": "NB: Unit Testing with Unittest",
+    "section": ".assertTrue()",
+    "text": ".assertTrue()\nNegative Test Case\nRun M08-02-script1.py\nclass TestStringMethods(unittest.TestCase):\n\n    def test_negative(self):\n        testValue = False        \n        message = \"Test value is not true.\"\n        self.assertTrue(testValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script1.py\n\ntest_negative (__main__.TestStringMethods.test_negative) ... FAIL\n\n======================================================================\nFAIL: test_negative (__main__.TestStringMethods.test_negative)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M08_PythonTesting/M08-02-script1.py\", line 14, in test_negative\n    self.assertTrue(testValue, message)\nAssertionError: False is not true : Test value is not true.\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n\n\nPositive Test Case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    \n    # test function\n    def test_positive(self):\n        \n        testValue = True\n        \n        # error message in case if test case got failed\n        message = \"Test value is not true.\"\n        \n        # assertTrue() to check true of test value\n        self.assertTrue( testValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script2.py\n\ntest_positive (__main__.TestStringMethods.test_positive) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
+    "crumbs": [
+      "M08 Testing",
+      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#assertfalse",
+    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#assertfalse",
+    "title": "NB: Unit Testing with Unittest",
+    "section": ".assertFalse()",
+    "text": ".assertFalse()\nNegative Test Case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    # test function\n    def test_negative(self):\n        testValue = True\n        # error message in case if test case got failed\n        message = \"Test value is not false.\"\n        # assetFalse() to check test value as false\n        self.assertFalse( testValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script3.py\n\nF\n======================================================================\nFAIL: test_negative (__main__.TestStringMethods.test_negative)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M08_PythonTesting/M08-02-script3.py\", line 10, in test_negative\n    self.assertFalse( testValue, message)\nAssertionError: True is not false : Test value is not false.\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n\n\nPositive Test Case\n## unit test case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    # test function\n    def test_positive(self):\n        testValue = False\n        # error message in case if test case got failed\n        message = \"Test value is not false.\"\n        # assertFalse() to check test value as false\n        self.assertFalse( testValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script4.py\n\n.\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
+    "crumbs": [
+      "M08 Testing",
+      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#assertequal",
+    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#assertequal",
+    "title": "NB: Unit Testing with Unittest",
+    "section": ".assertEqual()",
+    "text": ".assertEqual()\nHere is a case where we expect two values to be equal.\nNegative Test Case\n## unit test case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    # test function to test equality of two value\n    def test_negative(self):\n        firstValue = \"geeks\"\n        secondValue = \"gfg\"\n        # error message in case if test case got failed\n        message = \"First value and second value are not equal !\"\n        # assertEqual() to check equality of first & second value\n        self.assertEqual(firstValue, secondValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script5.py\n\nF\n======================================================================\nFAIL: test_negative (__main__.TestStringMethods.test_negative)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M08_PythonTesting/M08-02-script5.py\", line 12, in test_negative\n    self.assertEqual(firstValue, secondValue, message)\nAssertionError: 'geeks' != 'gfg'\n- geeks\n+ gfg\n : First value and second value are not equal !\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n\n\nPositive Test Case\n## unit test case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    # test function to test equality of two value\n    def test_positive(self):\n        firstValue = \"geeks\"\n        secondValue = \"geeks\"\n        # error message in case if test case got failed\n        message = \"First value and second value are not equal !\"\n        # assertEqual() to check equality of first & second value\n        self.assertEqual(firstValue, secondValue, message)\n\nif __name__ == '__main__':\n    unittest.main(verbosity=2)\n\n!python M08-02-script6.py\n\ntest_positive (__main__.TestStringMethods.test_positive) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
@@ -3754,17 +3930,6 @@
     "title": "NB: Unit Testing with Unittest",
     "section": "Example with External Class",
     "text": "Example with External Class\nWe create a class called Student and save it in a local file called student.py.\nclass Student:\n    \n    # constructor\n    def __init__(self, name, courses=None):\n        self.name = name # string type\n        self.courses = [] if courses is None else courses # list of strings\n        self.num_courses = len(self.courses)\n        \n    # enroll in a course\n    def enroll_in_course(self, course_name): \n        self.courses.append(course_name)\n        self.num_courses += 1 # increment the number of courses\nThen we create a companion test file for our class, saving it in a file called student_test.py.\nfrom student import Student\nimport unittest\n\nclass EnrollInTestCase(unittest.TestCase): \n    \n    def test_is_incremented_correctly(self):\n        # test if enrollInCourse() method successfully increments the\n        # num_courses attribute of the Student object \n\n        # Create student instance, adding some courses\n        student1 = Student('Katherine', ['DS 5100'])\n        student1.enroll_in_course(\"CS 5050\")\n        student1.enroll_in_course(\"CS 5777\")\n        print(student1.courses)\n        print(student1.num_courses)\n        \n        # Test\n        expected = 3\n        # unittest.TestCase brings in the assertEqual() method\n        self.assertEqual(student1.num_courses, expected)\n        \nif __name__ == '__main__':\n    unittest.main(verbosity=2)\n\n!python student_test.py\n\ntest_01_is_numCoursincremented_correctly (__main__.EnrollInTestCase.test_01_is_numCoursincremented_correctly) ... ['DS 5100', 'CS 5050', 'CS 5777']\n3\nok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n\n\nThe messages that unittest prints are error messages on Unix, so if we want to direct them to a file, we need to use 2&gt;.\nNotice how this command only shows the print messages contained in the program.\n\n!python student_test.py 2&gt; student_results.txt\n\n['DS 5100', 'CS 5050', 'CS 5777']\n3\n\n\nThis one, on the other hand, captures the print methods and only shows the errors.\n\n!python student_test.py &gt; student_results1.txt\n\ntest_01_is_numCoursincremented_correctly (__main__.EnrollInTestCase.test_01_is_numCoursincremented_correctly) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#further-reading",
-    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#further-reading",
-    "title": "NB: Unit Testing with Unittest",
-    "section": "Further Reading",
-    "text": "Further Reading\n\nunittest — Unit testing framework (Official Docs)\nHow To Use unittest to Write a Test Case for a Function in Python (Digital Ocean)\nA Cheat-sheet of Unittest Assert Methods",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
@@ -5194,292 +5359,6 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>60</span>  <span class='chapter-title'>Setting Up O'Reilly</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html",
-    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html",
-    "title": "Testing and Verification",
-    "section": "",
-    "text": "When Code Breaks\nIn this module, we learn about how to deal with broken code.\nBy “broken code,” we mean everything from code that does not run to code that does not meet users’ expectations.\nThis is a broad topic, with lots of cases in between, so let’s break it down.\nIn the first case, code may not work for a variety of reasons:\nIn the second case, code may not meet the general or specific user expectations for the code.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#when-code-breaks",
-    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#when-code-breaks",
-    "title": "Testing and Verification",
-    "section": "",
-    "text": "It may not run at all.\nIt may be “brittle” or “buggy.”\nIt may be sensitive to contextual factors like bad user input or a bad database connection.\nIt may run but produce incorrect outcomes.\n\n\n\nIt may not do what is is supposed to do.\nIt may perform too poorly to be useful.\nIt may not add any value to a business process.\nIt may be unethical or harmful.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#quality-assurance",
-    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#quality-assurance",
-    "title": "Testing and Verification",
-    "section": "Quality Assurance",
-    "text": "Quality Assurance\nDealing with broken code at both levels falls under the broad category of quality assurance, or QA.\nTwo broad appraoches to QA are through good design and through principled testing based on requirements.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#design",
-    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#design",
-    "title": "Testing and Verification",
-    "section": "Design",
-    "text": "Design\nGood design means following sound architectural principles and patterns, as well as using the right tools (e.g. Python :-)\nSome principles of good design are:\n\nFavor the simple over the complex.\nInvest in data design to simplify algorithm design.\nWrite literate code so that it is intellible to you and others.\nUse tools that are documented and have a strong user community.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#specifications",
-    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#specifications",
-    "title": "Testing and Verification",
-    "section": "Specifications",
-    "text": "Specifications\nTesting, on the other hand, depends on the codification of performance expectations, independent of how things are built.\nExpectations are typically encoded in specifications: A document that contains a precise and detailed statement that stakeholders define about the properties the code must have.\nThere are different kinds of specification, or “spec”.\nHere are two common ones:\nA design specification provides exact instructions for how to build something. This goes beyond principles and identifies specific tools, platforms, etc.\nA requirements specification provides exact statements about what should be built. These specify what the code should do, not how or why.\nHere, we will focus on requirements.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#requirements",
-    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#requirements",
-    "title": "Testing and Verification",
-    "section": "Requirements",
-    "text": "Requirements\nRequirements are elicited from stakeholders through a process that typically involves project management. We will cover this topic in more depth in a later module.\nFor now, assuming that we have some requirements in hand, our job as coders is to meet those requirements.\nThis means both designing code in accordance with the specs, and ensuring, or verifying and validating, in a shareable way that the code does in fact meet those requirements.\nVerification ensures the software is built right, according to the requirements.\nValidation ensures the software is doing the right thing, relative to the problem the client is trying to solve.\nThe distinction is similar to that referenced by Peter Drucker in this quote:\n\nIt’s more important to do the right thing than to do things right.\n\nIn this module, we focus on verification.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#requirements-testing",
-    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#requirements-testing",
-    "title": "Testing and Verification",
-    "section": "Requirements Testing",
-    "text": "Requirements Testing\nTo verify that our code aligns with our requirements and is of the highest quality we can provide, we follow testing procedures.\nThis is where requirements specifications come in. They provide the blueprint for testing.\nIf you don’t have specifications for the product, you cannot verify that you’re doing the right thing.\nIt also becomes difficult to identify  incorrect behavior.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#debugging-the-spec",
-    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#debugging-the-spec",
-    "title": "Testing and Verification",
-    "section": "Debugging the Spec",
-    "text": "Debugging the Spec\nSpecifications are rarely perfect. They can change over time for a variety of reasons.\nIn fact, some have joked that programming is the act of “debugging the spec”:\n\nThe process of interpreting what is wanted and making something sort of like it happen on a monitor is one that very much requires the kinds of interpretation Gadamer describes — in fact, the act of interpreting the original articulation generally leads to a re-formulation of the activity itself, so that programming becomes a way to change how people think of themselves and their work, not simply a reflection of the tasks at hand.\nHalsted 2001\n\nDon’t worry about who Gadamer is other than to note that he is a famous German philosopher who argued that the essence of knowledge is interpretation and interpretation always involves play.\nBroadly speaking, there are two kinds of testing and verification: formal and empirical.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#formal-verification",
-    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#formal-verification",
-    "title": "Testing and Verification",
-    "section": "Formal Verification",
-    "text": "Formal Verification\nFormal verification is the process of mathematically proving that a system satisfies a given property.\nIt works by defining a formal model for the system and its behavior and then comparing the software to the model.\nGiven their complexity, these are not widely used.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#empirical-verification",
-    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#empirical-verification",
-    "title": "Testing and Verification",
-    "section": "Empirical Verification",
-    "text": "Empirical Verification\nWith empirical procedures, requirements matching is demonstrated through empirical testing.\nEmpirical testing seeks to see if software works in practice.\nIt is easier than using proofs.\nBut it hard then just writing code.\nWe will focus on empirical testing.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#unit-testing",
-    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#unit-testing",
-    "title": "Testing and Verification",
-    "section": "Unit Testing",
-    "text": "Unit Testing\nThere are many kinds of empirical testing.\nThe most popular is unit testing.\nIn unit testing, we write code that tests the smallest possible units of the requirements spec.\nThe programmer does unit testing as part of the coding process.\nIt expects that code is componential, i.e. that the smallest units are functionally independent and can be combined in principled ways.\nThis raises the issue of writing well-designed functions and classes.\nTwo other kinds of testing are integration and acceptance (beta) testing, which are out of the scope of this lesson. See below for a short description.\nIntegration Testing: Test that units work together.\nAcceptance Testing (Beta Testing): Give product to real users to try it out.\nWe will focus on unit testing.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#debugging",
-    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#debugging",
-    "title": "Testing and Verification",
-    "section": "Debugging",
-    "text": "Debugging\nAnother aspect of testing and verification which we will not cover here is debugging.\nDebugging — derived from Grace Hopper’s expression “bug” — refers to the process of investigating precisely where and when code breaks.\nProgramming environments like Jupyter Lab and Visual Studio Code provide good tools for debugging.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#a-note-of-caution",
-    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#a-note-of-caution",
-    "title": "Testing and Verification",
-    "section": "A Note of Caution",
-    "text": "A Note of Caution\nEdsger Dijkstra was a famous computer scientist and A. M. Turing award winner. He said:\n\n“Program testing can effectively show the presence of bugs but is\nhopeless for showing their absence.”\n    — Edsger Dijkstra\n\nEven if you write a test suite of carefully crafted test cases, and if they all run and pass, it doesn’t mean that no further bugs exist.\nIt is much easier to prove the existence of something than to disprove the existence of something. \nThis realization should motivate us to learn how to create carefully crafted unit tests so that we can test as much as we can.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#visual-summary",
-    "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#visual-summary",
-    "title": "Testing and Verification",
-    "section": "Visual Summary",
-    "text": "Visual Summary",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#errors",
-    "href": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#errors",
-    "title": "NB: Exception Handling",
-    "section": "",
-    "text": "Syntactic errors, AKA parsing errors, which are caused by not following Python’s rules for writing code. For example, you start a variable name with a number.\nLogical errors, such as dividing by 0 or indexing into a list for an element that doesn’t exist.\nUser errors, such as when a user inputs the wrong data type for an operation.\nSystem errors, such as when a database connection is down or a a write operation is blocked by incorrectly set file permissions.\nDependency errors, such as when a module expects a version of another library that is not installed.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>43</span>  <span class='chapter-title'>NB: Exception Handling</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#exceptions",
-    "href": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#exceptions",
-    "title": "NB: Exception Handling",
-    "section": "Exceptions",
-    "text": "Exceptions\nThe official Python documentation defines an exception as follows:\n\nErrors detected during execution are called exceptions.\n\nThis excludes syntactic errors and dependency errors and focuces on problems that arise when code is running and data is being processed.\nHowever, this definition does not make a distinction between what’s in an out of your control.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>43</span>  <span class='chapter-title'>NB: Exception Handling</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#else-and-finally",
-    "href": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#else-and-finally",
-    "title": "NB: Exception Handling",
-    "section": "else and finally",
-    "text": "else and finally\nException handling blocks may also contain else and finally statements.\nelse statements run if no errors are caught.\nfinally statements are run no matter what happens. This is used in cases where variables or connections are set up in the process of testing and need to be deleted or closed.\nHere is a an example of a function that contains a fully qualified exception handling block:\n\ndef divide(x, y): \n    try: \n        result = x / y \n\n    except ZeroDivisionError: \n        print(\"Error: Can't divide by 0!\") \n    \n    else:\n        print(\"Result:\", result) \n    \n    finally:  \n        print('This is always executed')   \n\n\ndivide(3, 2) \n\nResult: 1.5\nThis is always executed\n\n\n\ndivide(3, 0)\n\nError: Can't divide by 0!\nThis is always executed",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>43</span>  <span class='chapter-title'>NB: Exception Handling</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#summary",
-    "href": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#summary",
-    "title": "NB: Exception Handling",
-    "section": "Summary",
-    "text": "Summary\nExceptions are errors that arise in a running program that are expected to happen.\nWe handle exceptions with try and except statements.\nraise and assert statements are ways to make your code responsive to errors that may arise.\nWe sometimes use these to actually stop program flow so that users of our code can catch them and handle them.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>43</span>  <span class='chapter-title'>NB: Exception Handling</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#role-of-functions",
-    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#role-of-functions",
-    "title": "NB: Unit Testing with Unittest",
-    "section": "Role of Functions",
-    "text": "Role of Functions\nThe elementary unit of code is usually the function.\nRecall that functions should be written to perform relatively simple things — simple, well-defined tasks.\nUnit test are meant to eliminate errors produced by the coder.\nUnit tests may also be designed to test whether or not functions perform correctly in a range of error-producing conditions.\nThese conditions include edge cases, invalid inputs, and error conditions to verify that functions handle these situations gracefully.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#integration-testing",
-    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#integration-testing",
-    "title": "NB: Unit Testing with Unittest",
-    "section": "Integration Testing",
-    "text": "Integration Testing\nUnit testing typically focuses on individual functions in isolation.\nTo test how groups of related functions interact and perform, we employ integration testing.\nIntegration testing is more complex, given the combinatorial complexity of coding.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#role-of-design",
-    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#role-of-design",
-    "title": "NB: Unit Testing with Unittest",
-    "section": "Role of Design",
-    "text": "Role of Design\nIt is worth noting that unit testing entails a kind of design.\nIf you design functions that are not well-defined and focused, then you are unlikely to test them effectively.\nSo part of unit testing is what we might call unit design.\nA broad area of programming called functional programming implements this kind of design.\nSo, unit testing goes hand-in-hand with software design.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#unit-testing-frameworks",
-    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#unit-testing-frameworks",
-    "title": "NB: Unit Testing with Unittest",
-    "section": "Unit Testing Frameworks",
-    "text": "Unit Testing Frameworks\nThere are many of these available to Python users, including:\nUnittest: A full-featured unit testing system, inspired by Java’s JUnit. Part of the Python Standard Library (as an external project it was called PyUnit).\nDocTest: A lightweight test framework that allows you to embed tests directly in the docstrings, making it easy to combine code examples and test cases in one place. Part of the Python Standard Library.\nPyTest: An alternative to PyUnit and with a simpler syntax.\nnose2: A discovery-based framwork that extends unittest (successor to nose).\nTestify: A Pythonic testing framework compatible with unittest tests.\nRobot: A framework for test automation and robotic process automation (not just for Python).\nBehave: A framework for Behavior-Driven Development.\nHypothesis: A powerful property-based testing.\n— Adapted from https://wiki.python.org/moin/UnitTests\nWe will focus on Unittest.",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#examples",
-    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#examples",
-    "title": "NB: Unit Testing with Unittest",
-    "section": "Examples",
-    "text": "Examples",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#asserttrue",
-    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#asserttrue",
-    "title": "NB: Unit Testing with Unittest",
-    "section": ".assertTrue()",
-    "text": ".assertTrue()\nNegative Test Case\nRun M08-02-script1.py\nclass TestStringMethods(unittest.TestCase):\n\n    def test_negative(self):\n        testValue = False        \n        message = \"Test value is not true.\"\n        self.assertTrue(testValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script1.py\n\ntest_negative (__main__.TestStringMethods.test_negative) ... FAIL\n\n======================================================================\nFAIL: test_negative (__main__.TestStringMethods.test_negative)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M08_PythonTesting/M08-02-script1.py\", line 14, in test_negative\n    self.assertTrue(testValue, message)\nAssertionError: False is not true : Test value is not true.\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n\n\nPositive Test Case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    \n    # test function\n    def test_positive(self):\n        \n        testValue = True\n        \n        # error message in case if test case got failed\n        message = \"Test value is not true.\"\n        \n        # assertTrue() to check true of test value\n        self.assertTrue( testValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script2.py\n\ntest_positive (__main__.TestStringMethods.test_positive) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#assertfalse",
-    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#assertfalse",
-    "title": "NB: Unit Testing with Unittest",
-    "section": ".assertFalse()",
-    "text": ".assertFalse()\nNegative Test Case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    # test function\n    def test_negative(self):\n        testValue = True\n        # error message in case if test case got failed\n        message = \"Test value is not false.\"\n        # assetFalse() to check test value as false\n        self.assertFalse( testValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script3.py\n\nF\n======================================================================\nFAIL: test_negative (__main__.TestStringMethods.test_negative)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M08_PythonTesting/M08-02-script3.py\", line 10, in test_negative\n    self.assertFalse( testValue, message)\nAssertionError: True is not false : Test value is not false.\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n\n\nPositive Test Case\n## unit test case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    # test function\n    def test_positive(self):\n        testValue = False\n        # error message in case if test case got failed\n        message = \"Test value is not false.\"\n        # assertFalse() to check test value as false\n        self.assertFalse( testValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script4.py\n\n.\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#assertequal",
-    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#assertequal",
-    "title": "NB: Unit Testing with Unittest",
-    "section": ".assertEqual()",
-    "text": ".assertEqual()\nHere is a case where we expect two values to be equal.\nNegative Test Case\n## unit test case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    # test function to test equality of two value\n    def test_negative(self):\n        firstValue = \"geeks\"\n        secondValue = \"gfg\"\n        # error message in case if test case got failed\n        message = \"First value and second value are not equal !\"\n        # assertEqual() to check equality of first & second value\n        self.assertEqual(firstValue, secondValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script5.py\n\nF\n======================================================================\nFAIL: test_negative (__main__.TestStringMethods.test_negative)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M08_PythonTesting/M08-02-script5.py\", line 12, in test_negative\n    self.assertEqual(firstValue, secondValue, message)\nAssertionError: 'geeks' != 'gfg'\n- geeks\n+ gfg\n : First value and second value are not equal !\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n\n\nPositive Test Case\n## unit test case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    # test function to test equality of two value\n    def test_positive(self):\n        firstValue = \"geeks\"\n        secondValue = \"geeks\"\n        # error message in case if test case got failed\n        message = \"First value and second value are not equal !\"\n        # assertEqual() to check equality of first & second value\n        self.assertEqual(firstValue, secondValue, message)\n\nif __name__ == '__main__':\n    unittest.main(verbosity=2)\n\n!python M08-02-script6.py\n\ntest_positive (__main__.TestStringMethods.test_positive) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
     ]
   }
 ]

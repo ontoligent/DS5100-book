@@ -1,0 +1,2 @@
+Course names: ['DS 5100', 'CS 5050', 'CS 5777']
+Course count: 3

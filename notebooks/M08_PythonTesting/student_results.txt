@@ -1,6 +1,1 @@
-test_01_is_numCoursincremented_correctly (__main__.EnrollInTestCase.test_01_is_numCoursincremented_correctly) ... ok
-
-----------------------------------------------------------------------
-Ran 1 test in 0.000s
-
-OK
+python: can't open file '/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M08_PythonTesting/student_test.py': [Errno 2] No such file or directory

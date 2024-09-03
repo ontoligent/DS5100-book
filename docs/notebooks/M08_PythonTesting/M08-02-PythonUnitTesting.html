@@ -625,13 +625,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#benefits-of-unit-testing" id="toc-benefits-of-unit-testing" class="nav-link" data-scroll-target="#benefits-of-unit-testing">Benefits of Unit Testing</a></li>
   <li><a href="#unit-testing-frameworks" id="toc-unit-testing-frameworks" class="nav-link" data-scroll-target="#unit-testing-frameworks">Unit Testing Frameworks</a></li>
   <li><a href="#the-basic-idea" id="toc-the-basic-idea" class="nav-link" data-scroll-target="#the-basic-idea">The Basic Idea</a></li>
+  <li><a href="#assert-methods" id="toc-assert-methods" class="nav-link" data-scroll-target="#assert-methods">Assert Methods</a></li>
   <li><a href="#the-basic-pattern" id="toc-the-basic-pattern" class="nav-link" data-scroll-target="#the-basic-pattern">The Basic Pattern</a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
-  <li><a href="#asserttrue" id="toc-asserttrue" class="nav-link" data-scroll-target="#asserttrue"><code>.assertTrue()</code></a></li>
-  <li><a href="#assertfalse" id="toc-assertfalse" class="nav-link" data-scroll-target="#assertfalse"><code>.assertFalse()</code></a></li>
-  <li><a href="#assertequal" id="toc-assertequal" class="nav-link" data-scroll-target="#assertequal"><code>.assertEqual()</code></a></li>
-  <li><a href="#example-with-user-defined-function" id="toc-example-with-user-defined-function" class="nav-link" data-scroll-target="#example-with-user-defined-function">Example with User-defined Function</a></li>
-  <li><a href="#example-with-external-class" id="toc-example-with-external-class" class="nav-link" data-scroll-target="#example-with-external-class">Example with External Class</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example 1</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example 2</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -662,38 +659,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="unit-testing">Unit Testing</h2>
 <p>Unit testing is <strong>bottom-up</strong> approach to testing code.</p>
 <p>It assumes that code may be decomposed into <strong>elementary units</strong> that are independent.</p>
-<p>Quality assurance is achieved by testing each of these units for their expected behavior, and then <strong>progressively</strong> testing how they interact at increasing levels of relationship.</p>
+<p>Quality assurance is achieved by <strong>testing each of these units</strong> for their expected behavior under a variety of conditions.</p>
 </section>
 <section id="role-of-functions" class="level2">
 <h2 class="anchored" data-anchor-id="role-of-functions">Role of Functions</h2>
 <p>The elementary unit of code is usually the <strong>function</strong>.</p>
 <p>Recall that functions should be written to perform relatively <strong>simple things</strong> — simple, well-defined tasks.</p>
-<p>Unit test are meant to eliminate errors produced by the coder.</p>
-<p>Unit tests may also be designed to test whether or not functions perform correctly in a range of error-producing <strong>conditions</strong>.</p>
-<p>These conditions include edge cases, invalid inputs, and error conditions to verify that functions handle these situations gracefully.</p>
+<p>Unit tests are meant to eliminate <strong>design-time</strong> errors, i.e.&nbsp;those <strong>produced by the coder</strong>.</p>
+<p>Unit tests may also be designed to test whether or not functions perform correctly during <strong>run-time</strong>, across a range of error-producing <strong>conditions</strong>.</p>
+<p>These conditions include edge cases, invalid user inputs, broken connections, etc.</p>
 </section>
 <section id="integration-testing" class="level2">
 <h2 class="anchored" data-anchor-id="integration-testing">Integration Testing</h2>
-<p>Unit testing typically focuses on individual functions in isolation.</p>
+<p>Unit testing typically focuses on <strong>individual functions</strong> in isolation.</p>
 <p>To test how <strong>groups of related functions</strong> interact and perform, we employ <strong>integration testing</strong>.</p>
 <p>Integration testing is more <strong>complex</strong>, given the combinatorial complexity of coding.</p>
+<p>Ultimately, the best way to test interacting functions — and the software system as a whole — is through <strong>user testing</strong>.</p>
+<p>But unit testing establishes a sold <strong>foundation</strong> on which to conduct these higher-level tests.</p>
 </section>
 <section id="role-of-design" class="level2">
 <h2 class="anchored" data-anchor-id="role-of-design">Role of Design</h2>
-<p>It is worth noting that unit testing entails a kind of <strong>design</strong>.</p>
+<p>It is worth noting that unit testing benefits from a kind of <strong>design</strong>.</p>
 <p>If you design functions that are <strong>not well-defined and focused</strong>, then you are <strong>unlikely to test them</strong> effectively.</p>
-<p>So part of unit testing is what we might call <strong>unit design</strong>.</p>
+<p>So part of unit testing is <strong>function design</strong> in the first place.</p>
 <p>A broad area of programming called <strong>functional programming</strong> implements this kind of design.</p>
 <p>So, unit testing goes <strong>hand-in-hand</strong> with software design.</p>
 </section>
 <section id="benefits-of-unit-testing" class="level2">
 <h2 class="anchored" data-anchor-id="benefits-of-unit-testing">Benefits of Unit Testing</h2>
-<p>Developers can work in a <strong>predictable</strong> way on developing code.</p>
-<p>Developers can <strong>write their own unit tests</strong>.</p>
-<p>You can get <strong>a rapid response</strong> for testing small changes</p>
-<p>Reduces <strong>defects in the newly developed features</strong> or reduces bugs when changing the existing functionality.</p>
-<p>Reduces <strong>cost of testing</strong>, since defects are captured in very early phase.</p>
-<p><strong>Improves design</strong> and allows better refactoring of code.</p>
+<p>Developers can work in a <strong>predictable</strong> way as they develop code.</p>
+<p>Developers can <strong>write their own unit tests</strong> and check themselves as they build.</p>
+<p>Unit testing provides <strong>rapid responses</strong> when testing small changes.</p>
+<p>It reduces <strong>defects in the newly developed features</strong> or reduces bugs when changing the existing functionality.</p>
+<p>And it reduces <strong>cost of testing</strong>, since defects are captured in very early phase.</p>
+<p>Finally, it <strong>improves design</strong> and allows better <strong>refactoring</strong> of code.</p>
 </section>
 <section id="unit-testing-frameworks" class="level2">
 <h2 class="anchored" data-anchor-id="unit-testing-frameworks">Unit Testing Frameworks</h2>
@@ -711,18 +710,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-basic-idea" class="level2">
 <h2 class="anchored" data-anchor-id="the-basic-idea">The Basic Idea</h2>
-<p>The Unittest framework provides you with <strong>a bunch of <code>assert</code> methods</strong>.</p>
-<p>These are wrappers around Python’s built-in <code>assert</code> function.</p>
+<p>The Unittest framework provides you with a <strong>testing class</strong> that you can inherit.</p>
+<p>This class contains <strong>a bunch of <code>assert</code> methods</strong>.</p>
 <p>The basic idea is to <strong>write functions that test other functions</strong> by using these assert methods.</p>
 <p>These functions are put in <strong>another file</strong> that calls your module.</p>
 <p>This prevents you from <strong>peppering your code</strong> with assert statements.</p>
 <p>It aslo allows a clean <strong>separation of concerns</strong>.</p>
-<p>Unittest provides <strong>many assert methods</strong> – see this <a href="https://kapeli.com/cheat_sheets/Python_unittest_Assertions.docset/Contents/Resources/Documents/index">cheat sheet</a> for more.</p>
-<p>We will focus on three:</p>
+</section>
+<section id="assert-methods" class="level2">
+<h2 class="anchored" data-anchor-id="assert-methods">Assert Methods</h2>
+<p>Unittest provides <strong>many assert methods</strong> — see this <a href="https://kapeli.com/cheat_sheets/Python_unittest_Assertions.docset/Contents/Resources/Documents/index">cheat sheet</a> for more.</p>
+<p>These are wrappers around Python’s built-in <code>assert</code> function.</p>
+<p>Assert methods compare <strong>actual</strong> with <strong>expected</strong> results.</p>
+<p>Some commonly used assert methods are:</p>
 <ul>
 <li><code>assertTrue()</code>: Used to test if your function produces an <strong>actual</strong> result that matches an <strong>expected</strong> result.</li>
 <li><code>assertFalse()</code>: Used to test if the actual result <strong>fails</strong> in an expected way.</li>
-<li><code>assertEqual()</code>: Used to test if two results are equal.</li>
+<li><code>assertEqual()</code>: Used to test if actual and expected results are equal.</li>
+<li><code>assertRaises()</code>: Used to test if <code>raise</code> statement is raising the correct exception.</li>
 </ul>
 </section>
 <section id="the-basic-pattern" class="level2">
@@ -747,360 +752,145 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Let’s look at some examples.</p>
 </section>
-<section id="examples" class="level2">
-<h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<div id="cell-13" class="cell" data-tags="[]" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># math_ops.py</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MathOps:</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add(a, b):</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> a <span class="op">+</span> b</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> subtract(a, b):</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> a <span class="op">-</span> b</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> multiply(a, b):</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> a <span class="op">*</span> b</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> divide(a, b):</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> b <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Cannot divide by zero"</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> a <span class="op">/</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="example-1" class="level2">
+<h2 class="anchored" data-anchor-id="example-1">Example 1</h2>
+<p>Consider the case of this simple static class, stored in <code>demo/math_ops.py</code>, to perform basic arithmetic operations.</p>
+<p>class MathOps:</p>
+<pre><code>def add(a, b):
+    return a + b
+    
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    if b == 0:
+        raise ValueError("Cannot divide by zero")
+    return a / b</code></pre>
+<p>if <strong>name</strong> == ‘<strong>main</strong>’: print(“This is the MathOps class. It’s meant to be imported into another module.”) print(“But since you called it directly, I’ll show you how it works!”) x = 5 y = 10 print(“5 + 10 =”, MathOps.add(x, y)) print(“5 - 10 =”, MathOps.subtract(x, y)) print(“5 * 10 =”, MathOps.multiply(x, y)) print(“5 / 10 =”, MathOps.divide(x, y))</p>
+<div id="cell-14" class="cell" data-tags="[]" data-execution_count="74">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python demo<span class="op">/</span>math_ops.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>This is the MathOps class. It's meant to be imported into another module.
+But since you called it directly, I'll show you how it works!
+5 + 10 = 15
+5 - 10 = -5
+5 * 10 = 50
+5 / 10 = 0.5</code></pre>
 </div>
-<div id="cell-14" class="cell" data-tags="[]" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># test_math_operations.py</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math_operations <span class="im">import</span> add, subtract, multiply, divide</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestMathOperations(unittest.TestCase):</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_add(<span class="va">self</span>):</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(add(<span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">5</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(add(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="dv">0</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(add(<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>), <span class="op">-</span><span class="dv">2</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_subtract(<span class="va">self</span>):</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(subtract(<span class="dv">5</span>, <span class="dv">3</span>), <span class="dv">2</span>)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(subtract(<span class="dv">1</span>, <span class="dv">1</span>), <span class="dv">0</span>)</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(subtract(<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>), <span class="dv">0</span>)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_multiply(<span class="va">self</span>):</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(multiply(<span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">6</span>)</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(multiply(<span class="op">-</span><span class="dv">2</span>, <span class="dv">3</span>), <span class="op">-</span><span class="dv">6</span>)</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(multiply(<span class="dv">0</span>, <span class="dv">5</span>), <span class="dv">0</span>)</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_divide(<span class="va">self</span>):</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(divide(<span class="dv">6</span>, <span class="dv">3</span>), <span class="dv">2</span>)</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(divide(<span class="dv">7</span>, <span class="dv">2</span>), <span class="fl">3.5</span>)</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertRaises(<span class="pp">ValueError</span>, divide, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    unittest.main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>ModuleNotFoundError: No module named 'math_operations'</code></pre>
+</div>
+<p>Here is an example unittest file, stored in <code>demo/math_ops_test.py</code>, to test the methods in the class:</p>
+<p>import unittest from math_ops import MathOps</p>
+<p>class TestMathOperations(unittest.TestCase):</p>
+<pre><code>def test_add(self):
+    self.assertEqual(MathOps.add(2, 3), 5)
+    self.assertEqual(MathOps.add(-1, 1), 0)
+    self.assertEqual(MathOps.add(-1, -1), -2)
+
+def test_subtract(self):
+    self.assertEqual(MathOps.subtract(5, 3), 2)
+    self.assertEqual(MathOps.subtract(1, 1), 0)
+    self.assertEqual(MathOps.subtract(-1, -1), 0)
+
+def test_multiply(self):
+    self.assertEqual(MathOps.multiply(2, 3), 6)
+    self.assertEqual(MathOps.multiply(-2, 3), -6)
+    self.assertEqual(MathOps.multiply(0, 5), 0)
+
+def test_divide(self):
+    self.assertEqual(MathOps.divide(6, 3), 2)
+    self.assertEqual(MathOps.divide(7, 2), 3.5)
+    self.assertRaises(ValueError, MathOps.divide, 1, 0)</code></pre>
+<p>if <strong>name</strong> == ‘<strong>main</strong>’: unittest.main()</p>
+<p>To run the test file, we put the two files in the same directory and run the test file from the command line.</p>
+<div id="cell-18" class="cell" data-tags="[]" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python demo<span class="op">/</span>math_ops_test.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>....
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK</code></pre>
+</div>
+</div>
+<p>To save the results of our test to a file, we can do this:</p>
+<div id="cell-20" class="cell" data-tags="[]" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python demo<span class="op">/</span>math_ops_test.py <span class="dv">2</span><span class="op">&gt;</span> demo<span class="op">/</span>math_ops_results.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We use <code>2&gt;</code> because the messages that <code>unittest</code> prints are error messages on Unix.</p>
+<p>We can see our results using <code>more</code>:</p>
+<div id="cell-23" class="cell" data-tags="[]" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>more demo<span class="op">/</span>math_ops_results.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>....
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK</code></pre>
 </div>
 </div>
 </section>
-<section id="asserttrue" class="level2">
-<h2 class="anchored" data-anchor-id="asserttrue"><code>.assertTrue()</code></h2>
-<p><strong>Negative Test Case</strong></p>
-<p>Run <code>M08-02-script1.py</code></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestStringMethods(unittest.TestCase):</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_negative(<span class="va">self</span>):</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        testValue <span class="op">=</span> <span class="va">False</span>        </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        message <span class="op">=</span> <span class="st">"Test value is not true."</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertTrue(testValue, message)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    unittest.main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-16" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python M08<span class="op">-</span><span class="dv">0</span><span class="er">2</span><span class="op">-</span>script1.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="example-2" class="level2">
+<h2 class="anchored" data-anchor-id="example-2">Example 2</h2>
+<p>In this example, we create a class called <code>Student</code> and save it in a local file called <code>demo/student.py</code>.</p>
+<p>class Student:</p>
+<pre><code># constructor
+def __init__(self, name, courses=None):
+    self.name = name 
+    self.courses = [] if courses is None else courses 
+    self.num_courses = len(self.courses)
+    
+# enroll in a course
+def enroll_in_course(self, course_name): 
+    self.courses.append(course_name)
+    self.num_courses += 1 </code></pre>
+<p>Then we create a companion test file for our class, saving it in a file called <code>demo/student_test.py</code>.</p>
+<p>from student import Student import unittest</p>
+<p>class EnrollInTestCase(unittest.TestCase):</p>
+<pre><code>def test_is_incremented_correctly(self):
+    """
+    Test if enrollInCourse() method successfully increments the
+    num_courses attribute of the Student object 
+    """
+
+    student1 = Student('Katherine', ['DS 5100'])
+    student1.enroll_in_course("CS 5050")
+    student1.enroll_in_course("CS 5777")
+    print('Course names:', student1.courses)
+    print('Course count:', student1.num_courses)
+    
+    expected = 3
+    self.assertEqual(student1.num_courses, expected)</code></pre>
+<p>if <strong>name</strong> == ‘<strong>main</strong>’: unittest.main()</p>
+<p>To run our tests, we run the test file from the command line:</p>
+<div id="cell-29" class="cell" data-tags="[]" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python demo<span class="op">/</span>student_test.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>test_negative (__main__.TestStringMethods.test_negative) ... FAIL
-
-======================================================================
-FAIL: test_negative (__main__.TestStringMethods.test_negative)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M08_PythonTesting/M08-02-script1.py", line 14, in test_negative
-    self.assertTrue(testValue, message)
-AssertionError: False is not true : Test value is not true.
-
-----------------------------------------------------------------------
-Ran 1 test in 0.001s
-
-FAILED (failures=1)</code></pre>
-</div>
-</div>
-<p><strong>Positive Test Case</strong></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestStringMethods(unittest.TestCase):</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># test function</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_positive(<span class="va">self</span>):</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        testValue <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># error message in case if test case got failed</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        message <span class="op">=</span> <span class="st">"Test value is not true."</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># assertTrue() to check true of test value</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertTrue( testValue, message)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    unittest.main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-18" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python M08<span class="op">-</span><span class="dv">0</span><span class="er">2</span><span class="op">-</span>script2.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>test_positive (__main__.TestStringMethods.test_positive) ... ok
-
+<pre><code>Course names: ['DS 5100', 'CS 5050', 'CS 5777']
+Course count: 3
+.
 ----------------------------------------------------------------------
 Ran 1 test in 0.000s
 
 OK</code></pre>
 </div>
 </div>
-</section>
-<section id="assertfalse" class="level2">
-<h2 class="anchored" data-anchor-id="assertfalse"><code>.assertFalse()</code></h2>
-<p><strong>Negative Test Case</strong></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestStringMethods(unittest.TestCase):</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># test function</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_negative(<span class="va">self</span>):</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        testValue <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># error message in case if test case got failed</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        message <span class="op">=</span> <span class="st">"Test value is not false."</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># assetFalse() to check test value as false</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertFalse( testValue, message)</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    unittest.main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-20" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python M08<span class="op">-</span><span class="dv">0</span><span class="er">2</span><span class="op">-</span>script3.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Again, to capture the results, we do this:</p>
+<div id="cell-31" class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python demo<span class="op">/</span>student_test.py <span class="dv">2</span><span class="op">&gt;</span> demo<span class="op">/</span>student_results.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>F
-======================================================================
-FAIL: test_negative (__main__.TestStringMethods.test_negative)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M08_PythonTesting/M08-02-script3.py", line 10, in test_negative
-    self.assertFalse( testValue, message)
-AssertionError: True is not false : Test value is not false.
-
-----------------------------------------------------------------------
-Ran 1 test in 0.001s
-
-FAILED (failures=1)</code></pre>
+<pre><code>Course names: ['DS 5100', 'CS 5050', 'CS 5777']
+Course count: 3</code></pre>
 </div>
 </div>
-<p><strong>Positive Test Case</strong></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">## unit test case</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestStringMethods(unittest.TestCase):</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># test function</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_positive(<span class="va">self</span>):</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        testValue <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># error message in case if test case got failed</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        message <span class="op">=</span> <span class="st">"Test value is not false."</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># assertFalse() to check test value as false</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertFalse( testValue, message)</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    unittest.main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-22" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python M08<span class="op">-</span><span class="dv">0</span><span class="er">2</span><span class="op">-</span>script4.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that program still outputs our print statements.</p>
+<p>Here we capture the print calls in the module and only shows the errors.</p>
+<div id="cell-34" class="cell" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python demo<span class="op">/</span>student_test.py <span class="op">&gt;</span> demo<span class="op">/</span>student_results1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>.
-----------------------------------------------------------------------
-Ran 1 test in 0.000s
-
-OK</code></pre>
-</div>
-</div>
-</section>
-<section id="assertequal" class="level2">
-<h2 class="anchored" data-anchor-id="assertequal"><code>.assertEqual()</code></h2>
-<p>Here is a case where we expect two values to be equal.</p>
-<p><strong>Negative Test Case</strong></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">## unit test case</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestStringMethods(unittest.TestCase):</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># test function to test equality of two value</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_negative(<span class="va">self</span>):</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        firstValue <span class="op">=</span> <span class="st">"geeks"</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        secondValue <span class="op">=</span> <span class="st">"gfg"</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># error message in case if test case got failed</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        message <span class="op">=</span> <span class="st">"First value and second value are not equal !"</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># assertEqual() to check equality of first &amp; second value</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(firstValue, secondValue, message)</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    unittest.main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-24" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python M08<span class="op">-</span><span class="dv">0</span><span class="er">2</span><span class="op">-</span>script5.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>F
-======================================================================
-FAIL: test_negative (__main__.TestStringMethods.test_negative)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M08_PythonTesting/M08-02-script5.py", line 12, in test_negative
-    self.assertEqual(firstValue, secondValue, message)
-AssertionError: 'geeks' != 'gfg'
-- geeks
-+ gfg
- : First value and second value are not equal !
-
-----------------------------------------------------------------------
-Ran 1 test in 0.001s
-
-FAILED (failures=1)</code></pre>
-</div>
-</div>
-<p><strong>Positive Test Case</strong></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">## unit test case</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestStringMethods(unittest.TestCase):</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># test function to test equality of two value</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_positive(<span class="va">self</span>):</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>        firstValue <span class="op">=</span> <span class="st">"geeks"</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>        secondValue <span class="op">=</span> <span class="st">"geeks"</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># error message in case if test case got failed</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>        message <span class="op">=</span> <span class="st">"First value and second value are not equal !"</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># assertEqual() to check equality of first &amp; second value</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(firstValue, secondValue, message)</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    unittest.main(verbosity<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-26" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python M08<span class="op">-</span><span class="dv">0</span><span class="er">2</span><span class="op">-</span>script6.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>test_positive (__main__.TestStringMethods.test_positive) ... ok
-
-----------------------------------------------------------------------
-Ran 1 test in 0.000s
-
-OK</code></pre>
-</div>
-</div>
-</section>
-<section id="example-with-user-defined-function" class="level2">
-<h2 class="anchored" data-anchor-id="example-with-user-defined-function">Example with User-defined Function</h2>
-<p><strong>Function to test</strong></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_fish_to_aquarium(fish_list):</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(fish_list) <span class="op">&gt;</span> <span class="dv">10</span>:</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"A maximum of 10 fish can be added to the aquarium"</span>)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"tank_a"</span>: fish_list}</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Class to test the function</strong></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestAddFishToAquarium(unittest.TestCase):</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_add_fish_to_aquarium_success(<span class="va">self</span>):</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        actual <span class="op">=</span> add_fish_to_aquarium(fish_list<span class="op">=</span>[<span class="st">"shark"</span>, <span class="st">"tuna"</span>])</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        expected <span class="op">=</span> {<span class="st">"tank_a"</span>: [<span class="st">"shark"</span>, <span class="st">"tuna"</span>]}</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(actual, expected)</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_add_fish_to_aquarium_exception(<span class="va">self</span>):</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>        too_many_fish <span class="op">=</span> [<span class="st">"shark"</span>] <span class="op">*</span> <span class="dv">25</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="va">self</span>.assertRaises(<span class="pp">ValueError</span>) <span class="im">as</span> exception_context:</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>            add_fish_to_aquarium(fish_list<span class="op">=</span>too_many_fish)</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>            <span class="bu">str</span>(exception_context.exception),</span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">"A maximum of 10 fish can be added to the aquarium"</span></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>    unittest.main(verbosity<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-28" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python M08<span class="op">-</span><span class="dv">0</span><span class="er">2</span><span class="op">-</span>script7.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>test_add_fish_to_aquarium_exception (__main__.TestAddFishToAquarium.test_add_fish_to_aquarium_exception) ... ok
-test_add_fish_to_aquarium_success (__main__.TestAddFishToAquarium.test_add_fish_to_aquarium_success) ... ok
-
-----------------------------------------------------------------------
-Ran 2 tests in 0.000s
-
-OK</code></pre>
-</div>
-</div>
-</section>
-<section id="example-with-external-class" class="level2">
-<h2 class="anchored" data-anchor-id="example-with-external-class">Example with External Class</h2>
-<p>We create a class called <code>Student</code> and save it in a local file called <code>student.py</code>.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Student:</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># constructor</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, courses<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name <span class="co"># string type</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.courses <span class="op">=</span> [] <span class="cf">if</span> courses <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> courses <span class="co"># list of strings</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.num_courses <span class="op">=</span> <span class="bu">len</span>(<span class="va">self</span>.courses)</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># enroll in a course</span></span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> enroll_in_course(<span class="va">self</span>, course_name): </span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.courses.append(course_name)</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.num_courses <span class="op">+=</span> <span class="dv">1</span> <span class="co"># increment the number of courses</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Then we create a companion test file for our class, saving it in a file called <code>student_test.py</code>.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> student <span class="im">import</span> Student</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> EnrollInTestCase(unittest.TestCase): </span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_is_incremented_correctly(<span class="va">self</span>):</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># test if enrollInCourse() method successfully increments the</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># num_courses attribute of the Student object </span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create student instance, adding some courses</span></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>        student1 <span class="op">=</span> Student(<span class="st">'Katherine'</span>, [<span class="st">'DS 5100'</span>])</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>        student1.enroll_in_course(<span class="st">"CS 5050"</span>)</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>        student1.enroll_in_course(<span class="st">"CS 5777"</span>)</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(student1.courses)</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(student1.num_courses)</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Test</span></span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>        expected <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># unittest.TestCase brings in the assertEqual() method</span></span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(student1.num_courses, expected)</span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>    unittest.main(verbosity<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-30" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python student_test.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>test_01_is_numCoursincremented_correctly (__main__.EnrollInTestCase.test_01_is_numCoursincremented_correctly) ... ['DS 5100', 'CS 5050', 'CS 5777']
-3
-ok
-
-----------------------------------------------------------------------
-Ran 1 test in 0.000s
-
-OK</code></pre>
-</div>
-</div>
-<p>The messages that <code>unittest</code> prints are error messages on Unix, so if we want to direct them to a file, we need to use <code>2&gt;</code>.</p>
-<p>Notice how this command only shows the print messages contained in the program.</p>
-<div id="cell-32" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python student_test.py <span class="dv">2</span><span class="op">&gt;</span> student_results.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>['DS 5100', 'CS 5050', 'CS 5777']
-3</code></pre>
-</div>
-</div>
-<p>This one, on the other hand, captures the print methods and only shows the errors.</p>
-<div id="cell-34" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python student_test.py <span class="op">&gt;</span> student_results1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>test_01_is_numCoursincremented_correctly (__main__.EnrollInTestCase.test_01_is_numCoursincremented_correctly) ... ok
-
 ----------------------------------------------------------------------
 Ran 1 test in 0.000s
 

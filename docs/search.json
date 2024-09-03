@@ -3786,7 +3786,7 @@
     "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html",
     "title": "NB: Unit Testing with Unittest",
     "section": "",
-    "text": "Unit Testing\nUnit testing is bottom-up approach to testing code.\nIt assumes that code may be decomposed into elementary units that are independent.\nQuality assurance is achieved by testing each of these units for their expected behavior, and then progressively testing how they interact at increasing levels of relationship.",
+    "text": "Unit Testing\nUnit testing is bottom-up approach to testing code.\nIt assumes that code may be decomposed into elementary units that are independent.\nQuality assurance is achieved by testing each of these units for their expected behavior under a variety of conditions.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
@@ -3797,7 +3797,7 @@
     "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#role-of-functions",
     "title": "NB: Unit Testing with Unittest",
     "section": "Role of Functions",
-    "text": "Role of Functions\nThe elementary unit of code is usually the function.\nRecall that functions should be written to perform relatively simple things — simple, well-defined tasks.\nUnit test are meant to eliminate errors produced by the coder.\nUnit tests may also be designed to test whether or not functions perform correctly in a range of error-producing conditions.\nThese conditions include edge cases, invalid inputs, and error conditions to verify that functions handle these situations gracefully.",
+    "text": "Role of Functions\nThe elementary unit of code is usually the function.\nRecall that functions should be written to perform relatively simple things — simple, well-defined tasks.\nUnit tests are meant to eliminate design-time errors, i.e. those produced by the coder.\nUnit tests may also be designed to test whether or not functions perform correctly during run-time, across a range of error-producing conditions.\nThese conditions include edge cases, invalid user inputs, broken connections, etc.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
@@ -3808,7 +3808,7 @@
     "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#integration-testing",
     "title": "NB: Unit Testing with Unittest",
     "section": "Integration Testing",
-    "text": "Integration Testing\nUnit testing typically focuses on individual functions in isolation.\nTo test how groups of related functions interact and perform, we employ integration testing.\nIntegration testing is more complex, given the combinatorial complexity of coding.",
+    "text": "Integration Testing\nUnit testing typically focuses on individual functions in isolation.\nTo test how groups of related functions interact and perform, we employ integration testing.\nIntegration testing is more complex, given the combinatorial complexity of coding.\nUltimately, the best way to test interacting functions — and the software system as a whole — is through user testing.\nBut unit testing establishes a sold foundation on which to conduct these higher-level tests.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
@@ -3819,7 +3819,7 @@
     "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#role-of-design",
     "title": "NB: Unit Testing with Unittest",
     "section": "Role of Design",
-    "text": "Role of Design\nIt is worth noting that unit testing entails a kind of design.\nIf you design functions that are not well-defined and focused, then you are unlikely to test them effectively.\nSo part of unit testing is what we might call unit design.\nA broad area of programming called functional programming implements this kind of design.\nSo, unit testing goes hand-in-hand with software design.",
+    "text": "Role of Design\nIt is worth noting that unit testing benefits from a kind of design.\nIf you design functions that are not well-defined and focused, then you are unlikely to test them effectively.\nSo part of unit testing is function design in the first place.\nA broad area of programming called functional programming implements this kind of design.\nSo, unit testing goes hand-in-hand with software design.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
@@ -3830,7 +3830,7 @@
     "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#benefits-of-unit-testing",
     "title": "NB: Unit Testing with Unittest",
     "section": "Benefits of Unit Testing",
-    "text": "Benefits of Unit Testing\nDevelopers can work in a predictable way on developing code.\nDevelopers can write their own unit tests.\nYou can get a rapid response for testing small changes\nReduces defects in the newly developed features or reduces bugs when changing the existing functionality.\nReduces cost of testing, since defects are captured in very early phase.\nImproves design and allows better refactoring of code.",
+    "text": "Benefits of Unit Testing\nDevelopers can work in a predictable way as they develop code.\nDevelopers can write their own unit tests and check themselves as they build.\nUnit testing provides rapid responses when testing small changes.\nIt reduces defects in the newly developed features or reduces bugs when changing the existing functionality.\nAnd it reduces cost of testing, since defects are captured in very early phase.\nFinally, it improves design and allows better refactoring of code.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
@@ -3852,7 +3852,18 @@
     "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#the-basic-idea",
     "title": "NB: Unit Testing with Unittest",
     "section": "The Basic Idea",
-    "text": "The Basic Idea\nThe Unittest framework provides you with a bunch of assert methods.\nThese are wrappers around Python’s built-in assert function.\nThe basic idea is to write functions that test other functions by using these assert methods.\nThese functions are put in another file that calls your module.\nThis prevents you from peppering your code with assert statements.\nIt aslo allows a clean separation of concerns.\nUnittest provides many assert methods – see this cheat sheet for more.\nWe will focus on three:\n\nassertTrue(): Used to test if your function produces an actual result that matches an expected result.\nassertFalse(): Used to test if the actual result fails in an expected way.\nassertEqual(): Used to test if two results are equal.",
+    "text": "The Basic Idea\nThe Unittest framework provides you with a testing class that you can inherit.\nThis class contains a bunch of assert methods.\nThe basic idea is to write functions that test other functions by using these assert methods.\nThese functions are put in another file that calls your module.\nThis prevents you from peppering your code with assert statements.\nIt aslo allows a clean separation of concerns.",
+    "crumbs": [
+      "M08 Testing",
+      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#assert-methods",
+    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#assert-methods",
+    "title": "NB: Unit Testing with Unittest",
+    "section": "Assert Methods",
+    "text": "Assert Methods\nUnittest provides many assert methods — see this cheat sheet for more.\nThese are wrappers around Python’s built-in assert function.\nAssert methods compare actual with expected results.\nSome commonly used assert methods are:\n\nassertTrue(): Used to test if your function produces an actual result that matches an expected result.\nassertFalse(): Used to test if the actual result fails in an expected way.\nassertEqual(): Used to test if actual and expected results are equal.\nassertRaises(): Used to test if raise statement is raising the correct exception.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
@@ -3870,66 +3881,22 @@
     ]
   },
   {
-    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#examples",
-    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#examples",
+    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#example-1",
+    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#example-1",
     "title": "NB: Unit Testing with Unittest",
-    "section": "Examples",
-    "text": "Examples\n\n# math_ops.py\n\nclass MathOps:\n\n    def add(a, b):\n        return a + b\n\n    def subtract(a, b):\n        return a - b\n\n    def multiply(a, b):\n        return a * b\n\n    def divide(a, b):\n        if b == 0:\n            raise ValueError(\"Cannot divide by zero\")\n        return a / b\n\n\n# test_math_operations.py\n\nimport unittest\nfrom math_operations import add, subtract, multiply, divide\n\nclass TestMathOperations(unittest.TestCase):\n    \n    def test_add(self):\n        self.assertEqual(add(2, 3), 5)\n        self.assertEqual(add(-1, 1), 0)\n        self.assertEqual(add(-1, -1), -2)\n\n    def test_subtract(self):\n        self.assertEqual(subtract(5, 3), 2)\n        self.assertEqual(subtract(1, 1), 0)\n        self.assertEqual(subtract(-1, -1), 0)\n\n    def test_multiply(self):\n        self.assertEqual(multiply(2, 3), 6)\n        self.assertEqual(multiply(-2, 3), -6)\n        self.assertEqual(multiply(0, 5), 0)\n\n    def test_divide(self):\n        self.assertEqual(divide(6, 3), 2)\n        self.assertEqual(divide(7, 2), 3.5)\n        self.assertRaises(ValueError, divide, 1, 0)\n\nif __name__ == '__main__':\n    unittest.main()\n\nModuleNotFoundError: No module named 'math_operations'",
+    "section": "Example 1",
+    "text": "Example 1\nConsider the case of this simple static class, stored in demo/math_ops.py, to perform basic arithmetic operations.\nclass MathOps:\ndef add(a, b):\n    return a + b\n    \ndef subtract(a, b):\n    return a - b\n\ndef multiply(a, b):\n    return a * b\n\ndef divide(a, b):\n    if b == 0:\n        raise ValueError(\"Cannot divide by zero\")\n    return a / b\nif name == ‘main’: print(“This is the MathOps class. It’s meant to be imported into another module.”) print(“But since you called it directly, I’ll show you how it works!”) x = 5 y = 10 print(“5 + 10 =”, MathOps.add(x, y)) print(“5 - 10 =”, MathOps.subtract(x, y)) print(“5 * 10 =”, MathOps.multiply(x, y)) print(“5 / 10 =”, MathOps.divide(x, y))\n\n!python demo/math_ops.py\n\nThis is the MathOps class. It's meant to be imported into another module.\nBut since you called it directly, I'll show you how it works!\n5 + 10 = 15\n5 - 10 = -5\n5 * 10 = 50\n5 / 10 = 0.5\n\n\nHere is an example unittest file, stored in demo/math_ops_test.py, to test the methods in the class:\nimport unittest from math_ops import MathOps\nclass TestMathOperations(unittest.TestCase):\ndef test_add(self):\n    self.assertEqual(MathOps.add(2, 3), 5)\n    self.assertEqual(MathOps.add(-1, 1), 0)\n    self.assertEqual(MathOps.add(-1, -1), -2)\n\ndef test_subtract(self):\n    self.assertEqual(MathOps.subtract(5, 3), 2)\n    self.assertEqual(MathOps.subtract(1, 1), 0)\n    self.assertEqual(MathOps.subtract(-1, -1), 0)\n\ndef test_multiply(self):\n    self.assertEqual(MathOps.multiply(2, 3), 6)\n    self.assertEqual(MathOps.multiply(-2, 3), -6)\n    self.assertEqual(MathOps.multiply(0, 5), 0)\n\ndef test_divide(self):\n    self.assertEqual(MathOps.divide(6, 3), 2)\n    self.assertEqual(MathOps.divide(7, 2), 3.5)\n    self.assertRaises(ValueError, MathOps.divide, 1, 0)\nif name == ‘main’: unittest.main()\nTo run the test file, we put the two files in the same directory and run the test file from the command line.\n\n!python demo/math_ops_test.py\n\n....\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n\n\nTo save the results of our test to a file, we can do this:\n\n!python demo/math_ops_test.py 2&gt; demo/math_ops_results.txt\n\nWe use 2&gt; because the messages that unittest prints are error messages on Unix.\nWe can see our results using more:\n\n!more demo/math_ops_results.txt\n\n....\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
     ]
   },
   {
-    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#asserttrue",
-    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#asserttrue",
+    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#example-2",
+    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#example-2",
     "title": "NB: Unit Testing with Unittest",
-    "section": ".assertTrue()",
-    "text": ".assertTrue()\nNegative Test Case\nRun M08-02-script1.py\nclass TestStringMethods(unittest.TestCase):\n\n    def test_negative(self):\n        testValue = False        \n        message = \"Test value is not true.\"\n        self.assertTrue(testValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script1.py\n\ntest_negative (__main__.TestStringMethods.test_negative) ... FAIL\n\n======================================================================\nFAIL: test_negative (__main__.TestStringMethods.test_negative)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M08_PythonTesting/M08-02-script1.py\", line 14, in test_negative\n    self.assertTrue(testValue, message)\nAssertionError: False is not true : Test value is not true.\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n\n\nPositive Test Case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    \n    # test function\n    def test_positive(self):\n        \n        testValue = True\n        \n        # error message in case if test case got failed\n        message = \"Test value is not true.\"\n        \n        # assertTrue() to check true of test value\n        self.assertTrue( testValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script2.py\n\ntest_positive (__main__.TestStringMethods.test_positive) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#assertfalse",
-    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#assertfalse",
-    "title": "NB: Unit Testing with Unittest",
-    "section": ".assertFalse()",
-    "text": ".assertFalse()\nNegative Test Case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    # test function\n    def test_negative(self):\n        testValue = True\n        # error message in case if test case got failed\n        message = \"Test value is not false.\"\n        # assetFalse() to check test value as false\n        self.assertFalse( testValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script3.py\n\nF\n======================================================================\nFAIL: test_negative (__main__.TestStringMethods.test_negative)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M08_PythonTesting/M08-02-script3.py\", line 10, in test_negative\n    self.assertFalse( testValue, message)\nAssertionError: True is not false : Test value is not false.\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n\n\nPositive Test Case\n## unit test case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    # test function\n    def test_positive(self):\n        testValue = False\n        # error message in case if test case got failed\n        message = \"Test value is not false.\"\n        # assertFalse() to check test value as false\n        self.assertFalse( testValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script4.py\n\n.\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#assertequal",
-    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#assertequal",
-    "title": "NB: Unit Testing with Unittest",
-    "section": ".assertEqual()",
-    "text": ".assertEqual()\nHere is a case where we expect two values to be equal.\nNegative Test Case\n## unit test case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    # test function to test equality of two value\n    def test_negative(self):\n        firstValue = \"geeks\"\n        secondValue = \"gfg\"\n        # error message in case if test case got failed\n        message = \"First value and second value are not equal !\"\n        # assertEqual() to check equality of first & second value\n        self.assertEqual(firstValue, secondValue, message)\n\nif __name__ == '__main__':\n    unittest.main()\n\n!python M08-02-script5.py\n\nF\n======================================================================\nFAIL: test_negative (__main__.TestStringMethods.test_negative)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M08_PythonTesting/M08-02-script5.py\", line 12, in test_negative\n    self.assertEqual(firstValue, secondValue, message)\nAssertionError: 'geeks' != 'gfg'\n- geeks\n+ gfg\n : First value and second value are not equal !\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n\n\nPositive Test Case\n## unit test case\nimport unittest\n\nclass TestStringMethods(unittest.TestCase):\n    # test function to test equality of two value\n    def test_positive(self):\n        firstValue = \"geeks\"\n        secondValue = \"geeks\"\n        # error message in case if test case got failed\n        message = \"First value and second value are not equal !\"\n        # assertEqual() to check equality of first & second value\n        self.assertEqual(firstValue, secondValue, message)\n\nif __name__ == '__main__':\n    unittest.main(verbosity=2)\n\n!python M08-02-script6.py\n\ntest_positive (__main__.TestStringMethods.test_positive) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#example-with-user-defined-function",
-    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#example-with-user-defined-function",
-    "title": "NB: Unit Testing with Unittest",
-    "section": "Example with User-defined Function",
-    "text": "Example with User-defined Function\nFunction to test\ndef add_fish_to_aquarium(fish_list):\n    if len(fish_list) &gt; 10:\n        raise ValueError(\"A maximum of 10 fish can be added to the aquarium\")\n    return {\"tank_a\": fish_list}\n\nimport unittest\nClass to test the function\nclass TestAddFishToAquarium(unittest.TestCase):\n    \n    def test_add_fish_to_aquarium_success(self):\n        actual = add_fish_to_aquarium(fish_list=[\"shark\", \"tuna\"])\n        expected = {\"tank_a\": [\"shark\", \"tuna\"]}\n        self.assertEqual(actual, expected)\n\n    def test_add_fish_to_aquarium_exception(self):\n        too_many_fish = [\"shark\"] * 25\n        with self.assertRaises(ValueError) as exception_context:\n            add_fish_to_aquarium(fish_list=too_many_fish)\n        self.assertEqual(\n            str(exception_context.exception),\n            \"A maximum of 10 fish can be added to the aquarium\"\n        )\n\nif __name__ == '__main__':\n    unittest.main(verbosity=2)\n\n!python M08-02-script7.py\n\ntest_add_fish_to_aquarium_exception (__main__.TestAddFishToAquarium.test_add_fish_to_aquarium_exception) ... ok\ntest_add_fish_to_aquarium_success (__main__.TestAddFishToAquarium.test_add_fish_to_aquarium_success) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK",
-    "crumbs": [
-      "M08 Testing",
-      "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#example-with-external-class",
-    "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#example-with-external-class",
-    "title": "NB: Unit Testing with Unittest",
-    "section": "Example with External Class",
-    "text": "Example with External Class\nWe create a class called Student and save it in a local file called student.py.\nclass Student:\n    \n    # constructor\n    def __init__(self, name, courses=None):\n        self.name = name # string type\n        self.courses = [] if courses is None else courses # list of strings\n        self.num_courses = len(self.courses)\n        \n    # enroll in a course\n    def enroll_in_course(self, course_name): \n        self.courses.append(course_name)\n        self.num_courses += 1 # increment the number of courses\nThen we create a companion test file for our class, saving it in a file called student_test.py.\nfrom student import Student\nimport unittest\n\nclass EnrollInTestCase(unittest.TestCase): \n    \n    def test_is_incremented_correctly(self):\n        # test if enrollInCourse() method successfully increments the\n        # num_courses attribute of the Student object \n\n        # Create student instance, adding some courses\n        student1 = Student('Katherine', ['DS 5100'])\n        student1.enroll_in_course(\"CS 5050\")\n        student1.enroll_in_course(\"CS 5777\")\n        print(student1.courses)\n        print(student1.num_courses)\n        \n        # Test\n        expected = 3\n        # unittest.TestCase brings in the assertEqual() method\n        self.assertEqual(student1.num_courses, expected)\n        \nif __name__ == '__main__':\n    unittest.main(verbosity=2)\n\n!python student_test.py\n\ntest_01_is_numCoursincremented_correctly (__main__.EnrollInTestCase.test_01_is_numCoursincremented_correctly) ... ['DS 5100', 'CS 5050', 'CS 5777']\n3\nok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n\n\nThe messages that unittest prints are error messages on Unix, so if we want to direct them to a file, we need to use 2&gt;.\nNotice how this command only shows the print messages contained in the program.\n\n!python student_test.py 2&gt; student_results.txt\n\n['DS 5100', 'CS 5050', 'CS 5777']\n3\n\n\nThis one, on the other hand, captures the print methods and only shows the errors.\n\n!python student_test.py &gt; student_results1.txt\n\ntest_01_is_numCoursincremented_correctly (__main__.EnrollInTestCase.test_01_is_numCoursincremented_correctly) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
+    "section": "Example 2",
+    "text": "Example 2\nIn this example, we create a class called Student and save it in a local file called demo/student.py.\nclass Student:\n# constructor\ndef __init__(self, name, courses=None):\n    self.name = name \n    self.courses = [] if courses is None else courses \n    self.num_courses = len(self.courses)\n    \n# enroll in a course\ndef enroll_in_course(self, course_name): \n    self.courses.append(course_name)\n    self.num_courses += 1 \nThen we create a companion test file for our class, saving it in a file called demo/student_test.py.\nfrom student import Student import unittest\nclass EnrollInTestCase(unittest.TestCase):\ndef test_is_incremented_correctly(self):\n    \"\"\"\n    Test if enrollInCourse() method successfully increments the\n    num_courses attribute of the Student object \n    \"\"\"\n\n    student1 = Student('Katherine', ['DS 5100'])\n    student1.enroll_in_course(\"CS 5050\")\n    student1.enroll_in_course(\"CS 5777\")\n    print('Course names:', student1.courses)\n    print('Course count:', student1.num_courses)\n    \n    expected = 3\n    self.assertEqual(student1.num_courses, expected)\nif name == ‘main’: unittest.main()\nTo run our tests, we run the test file from the command line:\n\n!python demo/student_test.py\n\nCourse names: ['DS 5100', 'CS 5050', 'CS 5777']\nCourse count: 3\n.\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n\n\nAgain, to capture the results, we do this:\n\n!python demo/student_test.py 2&gt; demo/student_results.txt\n\nCourse names: ['DS 5100', 'CS 5050', 'CS 5777']\nCourse count: 3\n\n\nNote that program still outputs our print statements.\nHere we capture the print calls in the module and only shows the errors.\n\n!python demo/student_test.py &gt; demo/student_results1.txt\n\n.\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"

@@ -3874,7 +3874,7 @@
     "href": "notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html#examples",
     "title": "NB: Unit Testing with Unittest",
     "section": "Examples",
-    "text": "Examples",
+    "text": "Examples\n\n# math_ops.py\n\nclass MathOps:\n\n    def add(a, b):\n        return a + b\n\n    def subtract(a, b):\n        return a - b\n\n    def multiply(a, b):\n        return a * b\n\n    def divide(a, b):\n        if b == 0:\n            raise ValueError(\"Cannot divide by zero\")\n        return a / b\n\n\n# test_math_operations.py\n\nimport unittest\nfrom math_operations import add, subtract, multiply, divide\n\nclass TestMathOperations(unittest.TestCase):\n    \n    def test_add(self):\n        self.assertEqual(add(2, 3), 5)\n        self.assertEqual(add(-1, 1), 0)\n        self.assertEqual(add(-1, -1), -2)\n\n    def test_subtract(self):\n        self.assertEqual(subtract(5, 3), 2)\n        self.assertEqual(subtract(1, 1), 0)\n        self.assertEqual(subtract(-1, -1), 0)\n\n    def test_multiply(self):\n        self.assertEqual(multiply(2, 3), 6)\n        self.assertEqual(multiply(-2, 3), -6)\n        self.assertEqual(multiply(0, 5), 0)\n\n    def test_divide(self):\n        self.assertEqual(divide(6, 3), 2)\n        self.assertEqual(divide(7, 2), 3.5)\n        self.assertRaises(ValueError, divide, 1, 0)\n\nif __name__ == '__main__':\n    unittest.main()\n\nModuleNotFoundError: No module named 'math_operations'",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>NB: Unit Testing with Unittest</span>"

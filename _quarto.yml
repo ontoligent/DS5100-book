@@ -76,8 +76,9 @@ book:
         - notebooks/M07_PythonClasses/M07-04-ClassAttributeWeirdness.ipynb
         - notebooks/M07_PythonClasses/M07-05-Example.ipynb
     - part: modules/m08/m08-intro.qmd # "08 Testing"
-      chapters: 
-        - modules/m08/m08-testing-and-verification.qmd
+      chapters:
+        # - modules/m08/m08-testing-and-verification.qmd
+        - notebooks/M08_PythonTesting/M08-00-TestingAndVerification.ipynb
         - notebooks/M08_PythonTesting/M08-01-ExceptionHandling.ipynb 
         - notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.ipynb
     - part: modules/m09/m09-intro.qmd # "09 Modules"
@@ -111,7 +112,7 @@ book:
     - part: "Appendices"
       chapters: 
         - topics/oreilly-accounts.qmd
-        - topics/refreshing-the-course-repo.qmd
+        # - topics/refreshing-the-course-repo.qmd
   
   sidebar:
     style: docked

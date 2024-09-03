@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.html" rel="next">
-<link href="../../modules/m08/m08-testing-and-verification.html" rel="prev">
+<link href="../../notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -447,7 +447,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../modules/m08/m08-testing-and-verification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Testing and Verification</span></a>
+  <a href="../../notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Testing and Verification</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -606,11 +606,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <a href="../../topics/oreilly-accounts.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Setting Up O’Reilly</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../topics/refreshing-the-course-repo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Refreshing the Course Repo</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -623,21 +618,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#errors-vs-exceptions" id="toc-errors-vs-exceptions" class="nav-link" data-scroll-target="#errors-vs-exceptions">Errors vs Exceptions</a></li>
+  <li><a href="#errors" id="toc-errors" class="nav-link active" data-scroll-target="#errors">Errors</a></li>
+  <li><a href="#exceptions" id="toc-exceptions" class="nav-link" data-scroll-target="#exceptions">Exceptions</a></li>
   <li><a href="#exception-handling" id="toc-exception-handling" class="nav-link" data-scroll-target="#exception-handling">Exception Handling</a></li>
   <li><a href="#pythons-tools" id="toc-pythons-tools" class="nav-link" data-scroll-target="#pythons-tools">Python’s Tools</a></li>
   <li><a href="#some-common-built-in-exceptions" id="toc-some-common-built-in-exceptions" class="nav-link" data-scroll-target="#some-common-built-in-exceptions">Some Common Built-in Exceptions</a>
   <ul class="collapse">
   <li><a href="#zerodivisionerror" id="toc-zerodivisionerror" class="nav-link" data-scroll-target="#zerodivisionerror"><code>ZeroDivisionError</code></a></li>
-  <li><a href="#syntax-error" id="toc-syntax-error" class="nav-link" data-scroll-target="#syntax-error"><code>Syntax Error</code></a></li>
+  <li><a href="#syntaxerror" id="toc-syntaxerror" class="nav-link" data-scroll-target="#syntaxerror"><code>SyntaxError</code></a></li>
   <li><a href="#nameerror" id="toc-nameerror" class="nav-link" data-scroll-target="#nameerror"><code>NameError</code></a></li>
   <li><a href="#indexerror" id="toc-indexerror" class="nav-link" data-scroll-target="#indexerror"><code>IndexError</code></a></li>
   </ul></li>
   <li><a href="#exception-handling-with-tryexcept" id="toc-exception-handling-with-tryexcept" class="nav-link" data-scroll-target="#exception-handling-with-tryexcept">Exception Handling with <code>try/except</code></a></li>
+  <li><a href="#else-and-finally" id="toc-else-and-finally" class="nav-link" data-scroll-target="#else-and-finally"><code>else</code> and <code>finally</code></a></li>
   <li><a href="#assert-statements" id="toc-assert-statements" class="nav-link" data-scroll-target="#assert-statements">Assert Statements</a></li>
-  <li><a href="#raise" id="toc-raise" class="nav-link" data-scroll-target="#raise"><code>raise()</code></a></li>
-  <li><a href="#futher-reading" id="toc-futher-reading" class="nav-link" data-scroll-target="#futher-reading">Futher Reading</a></li>
+  <li><a href="#raise" id="toc-raise" class="nav-link" data-scroll-target="#raise"><code>raise</code></a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M08_PythonTesting/M08-01-ExceptionHandling.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -663,154 +659,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>There are two ways that programs can break:</p>
-<p>They can meet or not meet the general and specific <strong>requirements</strong> for the code.</p>
+<p>Programming for Data Science</p>
+<section id="errors" class="level2">
+<h2 class="anchored" data-anchor-id="errors">Errors</h2>
+<p>An error is anything that causes a program to stop working.</p>
+<p>Anything in the realm of writing and running code, that is — we are not considering here such things as power and hardware failures.</p>
+<p>Errors may be classified into a variety of broad types:</p>
 <ul>
-<li><p>Does it do what is is supposed to do?</p></li>
-<li><p>Does it add value to a process?</p></li>
-<li><p>Is it ethical? Does it do harm?</p></li>
+<li><p><strong>Syntactic</strong> errors, AKA parsing errors, which are caused by not following Python’s rules for writing code. For example, you start a variable name with a number.</p></li>
+<li><p><strong>Logical</strong> errors, such as dividing by 0 or indexing into a list for an element that doesn’t exist.</p></li>
+<li><p><strong>User</strong> errors, such as when a user inputs the wrong data type for an operation.</p></li>
+<li><p><strong>System</strong> errors, such as when a database connection is down or a a write operation is blocked by incorrectly set file permissions.</p></li>
+<li><p><strong>Dependency</strong> errors, such as when a module expects a version of another library that is not installed.</p></li>
 </ul>
-<p>They can just <strong>work or not work</strong>:</p>
-<ul>
-<li><p>Does the run at all?</p></li>
-<li><p>Is the code brittle or buggy?</p></li>
-<li><p>Is it sensitive to contextual factors like bad user input or a bad database connection?</p></li>
-<li><p>Does the code “work” but produce incorrect outcomes?</p></li>
-</ul>
-<p>These lead to <strong>two practices</strong>:</p>
-<ul>
-<li><p>Strategic: <strong>Project management</strong></p></li>
-<li><p>Tactical: <strong>Testing and debugging</strong></p></li>
-</ul>
-<p>Today, we will focus on some concepts and tools for the latter.</p>
-<ul>
-<li><p>We want to know whether our code is <strong>working or not</strong>.</p></li>
-<li><p>We also want to know if our code is of a <strong>high quality</strong>.</p></li>
-</ul>
-<p><strong>Approaches to quality</strong></p>
-<ul>
-<li><p>Through good <strong>design</strong></p></li>
-<li><p>Throigh principled <strong>testing</strong></p></li>
-</ul>
-<p><strong>Some design principles</strong></p>
-<ul>
-<li>Favor the <strong>simple over the complex</strong>.</li>
-</ul>
-<blockquote class="blockquote">
-<p>Don’t confuse the easy with the simple!</p>
-</blockquote>
-<ul>
-<li><p>Invest in <strong>data design</strong> to simplify algorithm design.</p></li>
-<li><p>Write <strong>literate code</strong> so that it is intellible to you and others.</p></li>
-<li><p>Given a choice, use tools that are <strong>documented</strong> and have a <strong>user community</strong>.</p></li>
-<li><p>Many other things :-)</p></li>
-</ul>
-<p><strong>Some testing activities</strong></p>
-<ul>
-<li><p>Syntax checking.</p></li>
-<li><p>Debugging.</p></li>
-<li><p>Ad hoc testing.</p></li>
-<li><p><strong>Unit-testing</strong>.</p></li>
-<li><p>User testing.</p></li>
-</ul>
-<p><strong>Some concepts</strong></p>
-<ul>
-<li><p>Beware of <strong>silent failures</strong>.</p></li>
-<li><p>Testing for <strong>the absence of bugs</strong> is impossible.</p></li>
-</ul>
-<blockquote class="blockquote">
-<p>Like Popper’s concept of falsifiability: We can never prove a scientific hypothesis to be true, we can only falsify.</p>
-</blockquote>
+<p>And so on.</p>
+<p>Some of errors are <strong>in your control</strong> and some are <strong>not</strong>.</p>
+<p>You <strong>can</strong> control how you write and design your code.</p>
+<p>And you, or your team, can often control what software is installed and running on the system running your code.</p>
+<p>But you <strong>can’t</strong> control how users or external systems will behave.</p>
+<p>In cases where errors are <strong>in</strong> your control, you should <strong>update your code</strong> to eliminate them.</p>
+<p>In cases where they are <strong>out</strong> of your control, you should <strong>anticipate and handle them</strong> so that your code may continue to execute.</p>
 </section>
-<section id="errors-vs-exceptions" class="level2">
-<h2 class="anchored" data-anchor-id="errors-vs-exceptions">Errors vs Exceptions</h2>
-<p>There is a broad distinction between an <strong>error</strong> and an <strong>exception</strong>.</p>
-<p>An <strong>error</strong> is a serious problem that a reasonable application should not try to catch.</p>
-<p>An error will stop execution. It means the code if broken and needs to be rewritten.</p>
-<p>An <strong>exception</strong> is an issue that is expected or known to occur (e.g., division by zero).</p>
-<p>Software must handle exceptions. For example, one bad row of data shouldn’t bring down the application.</p>
-<p>Actually, exceptions are also called errors, so it may be better make a distinction between <strong>flaws</strong> and <strong>exceptions</strong>.</p>
-<p>It may help to distinquish between internal and external problems.</p>
-<p><strong>Internal problems</strong> are problems with the code itself which the coder needs to address ad design-time.</p>
-<p><strong>External problems</strong> are problems with how the code may interact with the external world—the user, external data sources, the network, APIs, etc. These are problems whihc users of the code will need to address at run-time.</p>
+<section id="exceptions" class="level2">
+<h2 class="anchored" data-anchor-id="exceptions">Exceptions</h2>
+<p>The <a href="https://docs.python.org/3/tutorial/errors.html">official Python documentation</a> defines an exception as follows:</p>
+<blockquote class="blockquote">
+<p>Errors detected during execution are called exceptions.</p>
+</blockquote>
+<p>This excludes syntactic errors and dependency errors and focuces on problems that arise when code is running and data is being processed.</p>
+<p>However, this definition does not make a distinction between what’s in an out of your control.</p>
 </section>
 <section id="exception-handling" class="level2">
 <h2 class="anchored" data-anchor-id="exception-handling">Exception Handling</h2>
-<p>Programming languages offer many tools for testing.</p>
-<p>These include mechanisms to <strong>define and capture errors</strong> in code.</p>
-<p>We call these errors <strong>exceptions</strong>.</p>
+<p>In practice, errors that are out of your control require that you make <strong>exceptions</strong> for them.</p>
+<p>Anticipating and working around these errors is called <strong>exception handling.</strong></p>
+<p>To handle an exception means two things:</p>
 <ul>
-<li>An exception is an event that occurs during the execution of a program that disrupts the normal flow of the program’s instructions.</li>
+<li><p>To provide a way of catching it</p></li>
+<li><p>To provide a response when it is caught</p></li>
 </ul>
-<p>We call we call dealing with these errors <strong>exception handling</strong>.</p>
-<ul>
-<li>When a Python script encounters a code failure, it raises an exception.</li>
-</ul>
-<blockquote class="blockquote">
-<p>Exception handling is the foundation of unit testing.</p>
-</blockquote>
 </section>
 <section id="pythons-tools" class="level2">
 <h2 class="anchored" data-anchor-id="pythons-tools">Python’s Tools</h2>
-<p><strong>Exceptions</strong></p>
+<p>Python provides tools for identifying errors and handling them when they arise.</p>
+<p><strong>Exceptions</strong> are represented as a collection of Python <strong>object</strong> that classify errors.</p>
+<p>For example, a <code>ValueError</code> is one in which an incorrect value is used for a given operation.</p>
+<p><strong>Exception Handlers</strong> are control structures and functions to deal with exceptions. These include:</p>
 <ul>
-<li><p>A type of Python <strong>object</strong> that represents an error, such as a <code>ValueError</code>.</p></li>
-<li><p>These classify kinds of errors.</p></li>
-<li><p>Coders can define these.</p></li>
-</ul>
-<p><strong>Exception Handlers</strong></p>
-<ul>
-<li><p>Control structures and functions to deal with exceptions, such as:</p></li>
-<li><p><code>try</code>/<code>except</code></p></li>
-<li><p><code>raise</code></p></li>
-<li><p><code>assert</code></p></li>
-</ul>
-<p><strong>Unit Testing Frameworks</strong></p>
-<p>There are many of these available to Python users, including:</p>
-<ul>
-<li><p>Robot</p></li>
-<li><p>PyTest</p></li>
-<li><p><strong>Unittest</strong></p></li>
-<li><p>DocTest</p></li>
-<li><p>Nose2</p></li>
-<li><p>Testify</p></li>
+<li><code>try</code>/<code>except</code></li>
+<li><code>raise</code></li>
+<li><code>assert</code></li>
 </ul>
 </section>
 <section id="some-common-built-in-exceptions" class="level2">
 <h2 class="anchored" data-anchor-id="some-common-built-in-exceptions">Some Common Built-in Exceptions</h2>
-<p>Python comes with a number of predefined exceptions.</p>
-<p>Libraries introduce new ones, too.</p>
-<p>They used in <code>raise</code> statement by the authors of programs when a possible error is anticipated.</p>
+<p>Python comes with a number of predefined exceptions, in addition to <code>ValueErrror</code>.</p>
+<p>Modules introduce new ones, too. For example, a database connection module might include exceptions for a broken connection or for a SQL constraint violation.</p>
+<p>Exceptions are used in a <code>raise</code> statement by the authors of programs when a possible error is anticipated.</p>
 <p>Here are some common examples.</p>
 <section id="zerodivisionerror" class="level3">
 <h3 class="anchored" data-anchor-id="zerodivisionerror"><code>ZeroDivisionError</code></h3>
-<div id="cell-5" class="cell" data-tags="[]" data-execution_count="2">
+<div id="cell-9" class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="op">/</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>ZeroDivisionError: division by zero</code></pre>
 </div>
 </div>
 </section>
-<section id="syntax-error" class="level3">
-<h3 class="anchored" data-anchor-id="syntax-error"><code>Syntax Error</code></h3>
-<div id="cell-7" class="cell" data-tags="[]" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">## if-statement missing colon at end</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"uh oh"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="syntaxerror" class="level3">
+<h3 class="anchored" data-anchor-id="syntaxerror"><code>SyntaxError</code></h3>
+<p>An if-statement missing colon at end:</p>
+<div id="cell-11" class="cell" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"uh oh"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>SyntaxError: expected ':' (223904042.py, line 3)</code></pre>
+<pre><code>SyntaxError: expected ':' (2612676770.py, line 1)</code></pre>
 </div>
 </div>
 </section>
 <section id="nameerror" class="level3">
 <h3 class="anchored" data-anchor-id="nameerror"><code>NameError</code></h3>
-<div id="cell-9" class="cell" data-tags="[]" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">## references an undefined variable</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This code references an undefined variable:</p>
+<div id="cell-13" class="cell" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>NameError: name 'x' is not defined</code></pre>
 </div>
@@ -818,13 +749,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="indexerror" class="level3">
 <h3 class="anchored" data-anchor-id="indexerror"><code>IndexError</code></h3>
-<div id="cell-11" class="cell" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">## loop goes off the end of the list</span></span>
+<p>This loop goes beyond the length of the list:</p>
+<div id="cell-15" class="cell" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(lst[i])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(lst[i])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0
 1
@@ -834,35 +764,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>IndexError: list index out of range</code></pre>
 </div>
 </div>
+<p>You can see that when Python encounters errors, it stops running and prints an error message detailing the error type and its location in code.</p>
+<p>You should get used to reading these messages. Although they may be off-putting and suffer from TMI, they do point to the specific line in your code where the error was encountered.</p>
 </section>
 </section>
 <section id="exception-handling-with-tryexcept" class="level2">
 <h2 class="anchored" data-anchor-id="exception-handling-with-tryexcept">Exception Handling with <code>try/except</code></h2>
-<p>We use <code>try/except</code> blocks to handle exceptions in our code.</p>
+<p>Python provides <code>try/except</code> blocks to handle exceptions in uyour code.</p>
 <p>These blocks work as follows:</p>
+<p>First, the <code>try</code> block will contain a statement.</p>
+<p>Then, if the statement inside the block fails, the flow switches to the <code>except</code> block.</p>
+<p>The exception block will have code to handle the error, rather than halting the program.</p>
+<p>The process is very similar to <code>if/then</code>:</p>
 <ul>
-<li>The <code>try</code> block will contain a statement.</li>
-<li>If the statement fails, the the flow goes to the <code>except</code> block.</li>
-<li>The exception block will have code to handle the error, rather than halting the program.</li>
+<li><strong>If</strong> there is an <strong>error</strong>, <strong>then</strong> raise an <strong>excpetion</strong>.</li>
 </ul>
-<p>The process is very similar to <code>if/then</code>: * <strong>If</strong> there is an <strong>error</strong>, <strong>then</strong> raise an <strong>excpetion</strong>.</p>
 <p>Multiple <code>except</code> statements may be given, to handle specific exceptions.</p>
 <p>Below, we give a catch-all <code>except</code> for any kind of exception.</p>
-<p>An <strong>excpetion</strong> is a mistake that will halt the execution of code.</p>
-<ul>
-<li>For example, trying to access a dictionary key that does not exit.</li>
-<li>Or, a database connection fails.</li>
-<li>Very often, execeptions are caused by an external dependency failing, such as another system or the user.</li>
-</ul>
-<p>Let’s try referencing a variable that doesn’t exist with no exception handling.</p>
-<div id="cell-13" class="cell" data-tags="[]" data-execution_count="5">
+<div id="cell-19" class="cell" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>NameError: name 'a' is not defined</code></pre>
 </div>
 </div>
 <p>Now let’s try referencing a variable that doesn’t exist with a <code>try/except</code> block to handle the exception.</p>
-<div id="cell-15" class="cell" data-tags="[]" data-execution_count="6">
+<div id="cell-21" class="cell" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(a)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span>:</span>
@@ -871,92 +797,129 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>caught an exception</code></pre>
 </div>
 </div>
+<p>We could also do this:</p>
+<div id="cell-23" class="cell" data-tags="[]" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(a)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">NameError</span> <span class="im">as</span> e:</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>name 'a' is not defined</code></pre>
+</div>
+</div>
+<p>Here we print the message, but the program continues to run.</p>
+</section>
+<section id="else-and-finally" class="level2">
+<h2 class="anchored" data-anchor-id="else-and-finally"><code>else</code> and <code>finally</code></h2>
+<p>Exception handling blocks may also contain <code>else</code> and <code>finally</code> statements.</p>
+<p><code>else</code> statements run if no errors are caught.</p>
+<p><code>finally</code> statements are run no matter what happens. This is used in cases where variables or connections are set up in the process of testing and need to be deleted or closed.</p>
+<p>Here is a an example of a function that contains a fully qualified exception handling block:</p>
+<div id="cell-27" class="cell" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> divide(x, y): </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>: </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> x <span class="op">/</span> y </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">ZeroDivisionError</span>: </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Error: Can't divide by 0!"</span>) </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Result:"</span>, result) </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">finally</span>:  </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'This is always executed'</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-28" class="cell" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>divide(<span class="dv">3</span>, <span class="dv">2</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Result: 1.5
+This is always executed</code></pre>
+</div>
+</div>
+<div id="cell-29" class="cell" data-tags="[]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>divide(<span class="dv">3</span>, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Error: Can't divide by 0!
+This is always executed</code></pre>
+</div>
+</div>
 </section>
 <section id="assert-statements" class="level2">
 <h2 class="anchored" data-anchor-id="assert-statements">Assert Statements</h2>
-<p>Another way to catch errors before they happen is to test if computations turned out as expected.</p>
-<p>We use <code>assert</code> to verify an expression is True.</p>
-<ul>
-<li><p>if expression is True, nothing happens.</p></li>
-<li><p>if expression is False, Python raises an <code>AssertionError</code> exception.</p></li>
-</ul>
-<p>Assert statements have the followinf syntax:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> Expression[, Arguments]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>where <code>[, Arguments]</code> denotes optional arguments.</p>
-<p>For example, let’s say a program is expecting three arguments to be passed from the command line.</p>
-<p>The variable <code>num_args</code> counts the arguments.</p>
-<div id="cell-17" class="cell" data-tags="[]" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>num_args <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> num_args <span class="op">==</span> <span class="dv">3</span>, <span class="st">"number of arguments must be 3!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Another way to catch errors is to test if computations turned out as expected.</p>
+<p>We use <code>assert</code> to verify if an expression is <code>True</code>.</p>
+<p>If an expression is <code>True</code>, nothing happens.</p>
+<p>If an expression is <code>False</code>, Python raises an <code>AssertionError</code> exception.</p>
+<p>Assert statements have the following syntax:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> Expression, Message</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The message is optional. It is printed if the expression is <code>False</code>.</p>
+<p>For example, consider a program that is expecting three arguments to be passed from the command line.</p>
+<p>Assume the variable <code>num_args</code> represents the number of arguments.</p>
+<div id="cell-33" class="cell" data-tags="[]" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>num_args <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> num_args <span class="op">==</span> <span class="dv">3</span>, <span class="st">"number of arguments must be 3!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code>assert</code> evaluates to True, and things proceed normally without exception.</p>
+<p>Here, the <code>assert</code> evaluates to <code>True</code>, and things proceed normally without exception.</p>
 <p>If we change <code>num_args = 4</code> this will throw an <code>AssertionError</code> with the provided message.</p>
 <p>The program then stops.</p>
-<div id="cell-19" class="cell" data-tags="[]" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>num_args <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> num_args <span class="op">==</span> <span class="dv">3</span>, <span class="st">"number of arguments must be 3!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-36" class="cell" data-tags="[]" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>num_args <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> num_args <span class="op">==</span> <span class="dv">3</span>, <span class="st">"number of arguments must be 3!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>AssertionError: number of arguments must be 3!</code></pre>
 </div>
 </div>
-<p>If the <code>assert</code> is not given a message, it throws <code>AssertionError:</code></p>
-<div id="cell-21" class="cell" data-tags="[]" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>num_args <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> num_args <span class="op">==</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If the <code>assert</code> is not given a message, it throws <code>AssertionError:</code> without a message.</p>
+<div id="cell-38" class="cell" data-tags="[]" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>num_args <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> num_args <span class="op">==</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>AssertionError: </code></pre>
 </div>
 </div>
 <p>You can mix <code>assert</code> statements with<code>try</code>/<code>except</code> blocks.</p>
-<div id="cell-23" class="cell" data-tags="[]" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> num_args <span class="op">==</span> <span class="dv">3</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span>:</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Got an error"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-40" class="cell" data-tags="[]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> num_args <span class="op">==</span> <span class="dv">3</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span>:</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Got an error"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Got an error</code></pre>
 </div>
 </div>
-<p>Note that the <code>except</code> message will append the <code>assert</code> message.</p>
-<div id="cell-25" class="cell" data-tags="[]" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> num_args <span class="op">==</span> <span class="dv">3</span>, <span class="st">"Assert: Number of arguments must be 3!"</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">AssertionError</span> <span class="im">as</span> e:</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Except:'</span>, e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that the <code>except</code> message will append the <code>assert</code> message in this case.</p>
+<div id="cell-42" class="cell" data-tags="[]" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> num_args <span class="op">==</span> <span class="dv">3</span>, <span class="st">"Assert: Number of arguments must be 3!"</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">AssertionError</span> <span class="im">as</span> e:</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Except:'</span>, e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Except: Assert: Number of arguments must be 3!</code></pre>
 </div>
 </div>
 </section>
 <section id="raise" class="level2">
-<h2 class="anchored" data-anchor-id="raise"><code>raise()</code></h2>
+<h2 class="anchored" data-anchor-id="raise"><code>raise</code></h2>
 <p>Exceptions can be <strong>raised</strong>, too.</p>
-<p>Use this if you want to halt the program and let other code that is using this code handle it.|</p>
-<div id="cell-27" class="cell" data-tags="[]" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">10</span><span class="op">/</span><span class="dv">0</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span>:</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ZeroDivisionError</span>(<span class="st">"Hey, you can't divide by zero!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When using <code>raise</code>, you must pass it an exception type function.</p>
+<p>The argument of the function is a message.</p>
+<p>In this example, we want to stop the program if the code encounters a <code>ZeroDivisionError</code>.</p>
+<div id="cell-44" class="cell" data-tags="[]" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">0</span> <span class="co"># Some value given by a user</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ZeroDivisionError</span>(<span class="st">"Hey, you can't divide by zero!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>ZeroDivisionError: Hey, you can't divide by zero!</code></pre>
 </div>
 </div>
-<div id="cell-28" class="cell" data-tags="[]" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">raise</span> <span class="pp">IndexError</span>(<span class="st">"Bad Index"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>IndexError: Bad Index</code></pre>
-</div>
-</div>
 </section>
-<section id="futher-reading" class="level2">
-<h2 class="anchored" data-anchor-id="futher-reading">Futher Reading</h2>
-<ul>
-<li>https://www.geeksforgeeks.org/errors-and-exceptions-in-python/</li>
-<li>https://www.tutorialspoint.com/python/assertions_in_python.htm</li>
-</ul>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Exceptions are errors that arise in a running program that are expected to happen.</p>
+<p>We handle exceptions with <code>try</code> and <code>except</code> statements.</p>
+<p><code>raise</code> and <code>assert</code> statements are ways to make your code responsive to errors that may arise.</p>
+<p>We sometimes use these to actually stop program flow so that users of our code can catch them and handle them.</p>
 
 
 </section>
@@ -1380,7 +1343,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../modules/m08/m08-testing-and-verification.html" class="pagination-link" aria-label="Testing and Verification">
+      <a href="../../notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html" class="pagination-link" aria-label="Testing and Verification">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Testing and Verification</span></span>
       </a>          
   </div>

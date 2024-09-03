@@ -1,0 +1,28 @@
+digraph K {
+
+       node [shape=rectangle, fontname="Arial"]
+
+       QA [label="Quality\nAssurance"]
+       DES [label="Design\nPrinciples"]
+       SPEC [label="Specifications"]
+       DSPEC [label="Design\nSpecifications\n(how)"]
+       RSPEC [label="Requirements\nSpecifications\n(what)"]
+       VAL [label="Validation\n(doing the right things)"]
+       VER [label="Verification\n(doing things right)"]
+       FTEST [label="Formal\nVerification"]
+       ETEST [label="Empirical\nVerification"]
+       OTHER [label="Beta\nTesting\netc."]
+       UNIT [label="Unit\nTesting"]
+
+       QA -> SPEC
+       QA -> DES
+       SPEC -> DSPEC
+       SPEC -> RSPEC
+       RSPEC -> VER
+       RSPEC -> VAL
+       VER -> FTEST
+       VER -> ETEST
+       ETEST -> OTHER
+       ETEST -> UNIT
+
+}

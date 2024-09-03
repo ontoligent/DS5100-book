@@ -447,7 +447,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../modules/m08/m08-testing-and-verification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Testing and Verification</span></a>
+  <a href="../../notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Testing and Verification</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -606,11 +606,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <a href="../../topics/oreilly-accounts.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Setting Up O’Reilly</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../topics/refreshing-the-course-repo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Refreshing the Course Repo</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -624,19 +619,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#unit-testing" id="toc-unit-testing" class="nav-link active" data-scroll-target="#unit-testing">Unit Testing</a></li>
+  <li><a href="#role-of-functions" id="toc-role-of-functions" class="nav-link" data-scroll-target="#role-of-functions">Role of Functions</a></li>
+  <li><a href="#integration-testing" id="toc-integration-testing" class="nav-link" data-scroll-target="#integration-testing">Integration Testing</a></li>
+  <li><a href="#role-of-design" id="toc-role-of-design" class="nav-link" data-scroll-target="#role-of-design">Role of Design</a></li>
   <li><a href="#benefits-of-unit-testing" id="toc-benefits-of-unit-testing" class="nav-link" data-scroll-target="#benefits-of-unit-testing">Benefits of Unit Testing</a></li>
-  <li><a href="#the-unittest-framework" id="toc-the-unittest-framework" class="nav-link" data-scroll-target="#the-unittest-framework">The <code>unittest</code> Framework</a></li>
+  <li><a href="#unit-testing-frameworks" id="toc-unit-testing-frameworks" class="nav-link" data-scroll-target="#unit-testing-frameworks">Unit Testing Frameworks</a></li>
   <li><a href="#the-basic-idea" id="toc-the-basic-idea" class="nav-link" data-scroll-target="#the-basic-idea">The Basic Idea</a></li>
   <li><a href="#the-basic-pattern" id="toc-the-basic-pattern" class="nav-link" data-scroll-target="#the-basic-pattern">The Basic Pattern</a></li>
-  <li><a href="#assert-methods" id="toc-assert-methods" class="nav-link" data-scroll-target="#assert-methods">Assert Methods</a>
-  <ul class="collapse">
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#asserttrue" id="toc-asserttrue" class="nav-link" data-scroll-target="#asserttrue"><code>.assertTrue()</code></a></li>
   <li><a href="#assertfalse" id="toc-assertfalse" class="nav-link" data-scroll-target="#assertfalse"><code>.assertFalse()</code></a></li>
   <li><a href="#assertequal" id="toc-assertequal" class="nav-link" data-scroll-target="#assertequal"><code>.assertEqual()</code></a></li>
-  </ul></li>
   <li><a href="#example-with-user-defined-function" id="toc-example-with-user-defined-function" class="nav-link" data-scroll-target="#example-with-user-defined-function">Example with User-defined Function</a></li>
   <li><a href="#example-with-external-class" id="toc-example-with-external-class" class="nav-link" data-scroll-target="#example-with-external-class">Example with External Class</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M08_PythonTesting/M08-02-PythonUnitTesting.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -662,84 +657,113 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>Programming for Data Science</p>
 <section id="unit-testing" class="level2">
 <h2 class="anchored" data-anchor-id="unit-testing">Unit Testing</h2>
-<p>Unit testing is a testing technique in which <strong>individual modules are tested</strong> to determine if there are any issues by the developer himself.</p>
-<p>It is concerned with <strong>functional correctness</strong> of the stand-alone modules.</p>
-<p>It is also concerned with both <strong>internal</strong> and <strong>external</strong> errors: those that arise from faulty logic and those that arise from environmental conditions.</p>
-<p>The main aim is to <strong>isolate each unit</strong> of the code base to identify, analyze and fix the defects.</p>
-<p>These units are typicallly <strong>functions and methods</strong>.</p>
+<p>Unit testing is <strong>bottom-up</strong> approach to testing code.</p>
+<p>It assumes that code may be decomposed into <strong>elementary units</strong> that are independent.</p>
+<p>Quality assurance is achieved by testing each of these units for their expected behavior, and then <strong>progressively</strong> testing how they interact at increasing levels of relationship.</p>
+</section>
+<section id="role-of-functions" class="level2">
+<h2 class="anchored" data-anchor-id="role-of-functions">Role of Functions</h2>
+<p>The elementary unit of code is usually the <strong>function</strong>.</p>
+<p>Recall that functions should be written to perform relatively <strong>simple things</strong> — simple, well-defined tasks.</p>
+<p>Unit test are meant to eliminate errors produced by the coder.</p>
+<p>Unit tests may also be designed to test whether or not functions perform correctly in a range of error-producing <strong>conditions</strong>.</p>
+<p>These conditions include edge cases, invalid inputs, and error conditions to verify that functions handle these situations gracefully.</p>
+</section>
+<section id="integration-testing" class="level2">
+<h2 class="anchored" data-anchor-id="integration-testing">Integration Testing</h2>
+<p>Unit testing typically focuses on individual functions in isolation.</p>
+<p>To test how <strong>groups of related functions</strong> interact and perform, we employ <strong>integration testing</strong>.</p>
+<p>Integration testing is more <strong>complex</strong>, given the combinatorial complexity of coding.</p>
+</section>
+<section id="role-of-design" class="level2">
+<h2 class="anchored" data-anchor-id="role-of-design">Role of Design</h2>
+<p>It is worth noting that unit testing entails a kind of <strong>design</strong>.</p>
+<p>If you design functions that are <strong>not well-defined and focused</strong>, then you are <strong>unlikely to test them</strong> effectively.</p>
+<p>So part of unit testing is what we might call <strong>unit design</strong>.</p>
+<p>A broad area of programming called <strong>functional programming</strong> implements this kind of design.</p>
+<p>So, unit testing goes <strong>hand-in-hand</strong> with software design.</p>
 </section>
 <section id="benefits-of-unit-testing" class="level2">
 <h2 class="anchored" data-anchor-id="benefits-of-unit-testing">Benefits of Unit Testing</h2>
-<ul>
-<li><p>Developers can work in a <strong>predictable</strong> way on developing code.</p></li>
-<li><p>Developers can <strong>write their own unit tests</strong>.</p></li>
-<li><p>You can get <strong>a rapid response</strong> for testing small changes</p></li>
-</ul>
-<p>Also:</p>
-<ul>
-<li><p>Reduces <strong>defects in the newly developed features</strong> or reduces bugs when changing the existing functionality.</p></li>
-<li><p>Reduces <strong>cost of testing</strong>, since defects are captured in very early phase.</p></li>
-<li><p><strong>Improves design</strong> and allows better refactoring of code.</p></li>
-</ul>
-<p>Testing in Python is a huge topic and can come with a lot of complexity, but it doesn’t need to be hard.</p>
-<p>You can get started creating simple tests for your application in a few easy steps and then build on it from there.</p>
+<p>Developers can work in a <strong>predictable</strong> way on developing code.</p>
+<p>Developers can <strong>write their own unit tests</strong>.</p>
+<p>You can get <strong>a rapid response</strong> for testing small changes</p>
+<p>Reduces <strong>defects in the newly developed features</strong> or reduces bugs when changing the existing functionality.</p>
+<p>Reduces <strong>cost of testing</strong>, since defects are captured in very early phase.</p>
+<p><strong>Improves design</strong> and allows better refactoring of code.</p>
 </section>
-<section id="the-unittest-framework" class="level2">
-<h2 class="anchored" data-anchor-id="the-unittest-framework">The <code>unittest</code> Framework</h2>
-<p>One of the popular unit testing frameworks is Unittest.</p>
-<p>It is works well and is easy to use.</p>
-<p>There are other tools, though—here’s <a href="https://www.softwaretestinghelp.com/python-testing-frameworks/">a comparison of 6 Python testing frameworks</a>.</p>
+<section id="unit-testing-frameworks" class="level2">
+<h2 class="anchored" data-anchor-id="unit-testing-frameworks">Unit Testing Frameworks</h2>
+<p>There are many of these available to Python users, including:</p>
+<p><strong>Unittest</strong>: A full-featured unit testing system, inspired by Java’s JUnit. Part of the Python Standard Library (as an external project it was called PyUnit).<br>
+<strong>DocTest</strong>: A lightweight test framework that allows you to embed tests directly in the docstrings, making it easy to combine code examples and test cases in one place. Part of the Python Standard Library.<br>
+<strong>PyTest</strong>: An alternative to PyUnit and with a simpler syntax.<br>
+<strong>nose2</strong>: A discovery-based framwork that extends unittest (successor to nose).<br>
+<strong>Testify</strong>: A Pythonic testing framework compatible with unittest tests.<br>
+<strong>Robot</strong>: A framework for test automation and robotic process automation (not just for Python).<br>
+<strong>Behave</strong>: A framework for Behavior-Driven Development.<br>
+<strong>Hypothesis</strong>: A powerful property-based testing.</p>
+<p>— Adapted from https://wiki.python.org/moin/UnitTests</p>
+<p>We will focus on Unittest.</p>
 </section>
 <section id="the-basic-idea" class="level2">
 <h2 class="anchored" data-anchor-id="the-basic-idea">The Basic Idea</h2>
-<p>The Unittest framework provides you with <strong>a bunch of <code>assert</code> methods</strong>, which are essentially wrappers around Python’s built-in <code>assert</code> function.</p>
-<p>The basic idea is to <strong>write functions that test other functions</strong> by using these assert methods <strong>instead of peppering your code</strong> with them.</p>
+<p>The Unittest framework provides you with <strong>a bunch of <code>assert</code> methods</strong>.</p>
+<p>These are wrappers around Python’s built-in <code>assert</code> function.</p>
+<p>The basic idea is to <strong>write functions that test other functions</strong> by using these assert methods.</p>
+<p>These functions are put in <strong>another file</strong> that calls your module.</p>
+<p>This prevents you from <strong>peppering your code</strong> with assert statements.</p>
+<p>It aslo allows a clean <strong>separation of concerns</strong>.</p>
 <p>Unittest provides <strong>many assert methods</strong> – see this <a href="https://kapeli.com/cheat_sheets/Python_unittest_Assertions.docset/Contents/Resources/Documents/index">cheat sheet</a> for more.</p>
-<p>We will focus on three: * <code>assertTrue()</code> * <code>assertFalse()</code> * <code>assertEqual()</code></p>
+<p>We will focus on three:</p>
+<ul>
+<li><code>assertTrue()</code>: Used to test if your function produces an <strong>actual</strong> result that matches an <strong>expected</strong> result.</li>
+<li><code>assertFalse()</code>: Used to test if the actual result <strong>fails</strong> in an expected way.</li>
+<li><code>assertEqual()</code>: Used to test if two results are equal.</li>
+</ul>
 </section>
 <section id="the-basic-pattern" class="level2">
 <h2 class="anchored" data-anchor-id="the-basic-pattern">The Basic Pattern</h2>
 <p>The Unittest framework works as follows:</p>
-<p><strong>Choose</strong> a package or class that you want to test.</p>
-<p>Createa a <code>.py</code> file to put your <code>unittest</code> code.</p>
-<p>In the file, <strong>create a class</strong> that is a subclass of <code>unittest.TestCase</code>.</p>
-<p>In that class <strong>write methods</strong> that are designed to test the behavior of methods in the code you want to test.</p>
+<ol type="1">
+<li><p><strong>Choose</strong> a package or class that you want to test.</p></li>
+<li><p><strong>Create</strong> a <code>.py</code> file to put your <code>unittest</code> code.</p></li>
+<li><p>In the file, <strong>create a class</strong> that is a subclass of <code>unittest.TestCase</code>.</p></li>
+<li><p>In that class <strong>write methods</strong> that are designed to test the behavior of methods in the code you want to test.</p></li>
+<li><p><strong>Run</strong> the script from the command line and see the results.</p></li>
+<li><p><strong>Update</strong> the script as you create new methods or refactor existing ones.</p></li>
+</ol>
+<p>In the test class:</p>
 <ul>
-<li><p>These <strong>test methods</strong> focus on one behavior of one method (or function).</p></li>
+<li><p>Each <strong>test method</strong> focuses on one behavior of one method (or function).</p></li>
 <li><p>There can be <strong>many test methods</strong> for each target method.</p></li>
-<li><p>Each test method name must be prefixed by <strong><code>test_</code></strong>.</p></li>
-<li><p>Tests are executing in alphabetical order, so name them in the order you want them executed.</p></li>
-<li><p>Each test makes use of an <strong>assert method</strong>. These methods typically compare <strong>expected</strong> with <strong>actual</strong> methods and return <code>False</code> if they don’t match and <code>True</code> if they do.</p></li>
-<li><p>You always want tests to pass, so if you want to test if something breaks, you return <code>True</code> for a <code>False</code> condition.</p></li>
+<li><p>Each test method name must be <strong>prefixed</strong> by <strong><code>test_</code></strong>.</p></li>
+<li><p>Tests are executed in <strong>alphabetical order</strong>, so name them in the order you want them executed.</p></li>
+<li><p>Each test makes use of an <strong>assert method</strong>.</p></li>
+<li><p>You want <strong>all tests to pass</strong>, so if you want to test if something breaks, you return <code>True</code> for a <code>False</code> condition.</p></li>
 </ul>
-<p><strong>Run</strong> the script from the command line and see the results.</p>
-<p><strong>Update</strong> the script as you create new methods or refactor existing ones.</p>
+<p>Let’s look at some examples.</p>
 </section>
-<section id="assert-methods" class="level2">
-<h2 class="anchored" data-anchor-id="assert-methods">Assert Methods</h2>
-<section id="asserttrue" class="level3">
-<h3 class="anchored" data-anchor-id="asserttrue"><code>.assertTrue()</code></h3>
-<section id="negative-test-case" class="level4">
-<h4 class="anchored" data-anchor-id="negative-test-case">Negative Test Case</h4>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+</section>
+<section id="asserttrue" class="level2">
+<h2 class="anchored" data-anchor-id="asserttrue"><code>.assertTrue()</code></h2>
+<p><strong>Negative Test Case</strong></p>
 <p>Run <code>M08-02-script1.py</code></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestStringMethods(unittest.TestCase):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># test function</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_negative(<span class="va">self</span>):</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        testValue <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># error message in case if test case got failed</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        message <span class="op">=</span> <span class="st">"Test value is not true."</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># assertTrue() to check true of test value</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertTrue(testValue, message)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    unittest.main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-2" class="cell" data-execution_count="4">
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_negative(<span class="va">self</span>):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        testValue <span class="op">=</span> <span class="va">False</span>        </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        message <span class="op">=</span> <span class="st">"Test value is not true."</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertTrue(testValue, message)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    unittest.main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-14" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python M08<span class="op">-</span><span class="dv">0</span><span class="er">2</span><span class="op">-</span>script1.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>test_negative (__main__.TestStringMethods.test_negative) ... FAIL
@@ -758,9 +782,7 @@ Ran 1 test in 0.001s
 FAILED (failures=1)</code></pre>
 </div>
 </div>
-</section>
-<section id="positive-test-case" class="level4">
-<h4 class="anchored" data-anchor-id="positive-test-case">Positive Test Case</h4>
+<p><strong>Positive Test Case</strong></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestStringMethods(unittest.TestCase):</span>
@@ -778,7 +800,7 @@ FAILED (failures=1)</code></pre>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    unittest.main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-4" class="cell" data-execution_count="5">
+<div id="cell-16" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python M08<span class="op">-</span><span class="dv">0</span><span class="er">2</span><span class="op">-</span>script2.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>test_positive (__main__.TestStringMethods.test_positive) ... ok
@@ -790,11 +812,9 @@ OK</code></pre>
 </div>
 </div>
 </section>
-</section>
-<section id="assertfalse" class="level3">
-<h3 class="anchored" data-anchor-id="assertfalse"><code>.assertFalse()</code></h3>
-<section id="negative-test-case-1" class="level4">
-<h4 class="anchored" data-anchor-id="negative-test-case-1">Negative Test Case</h4>
+<section id="assertfalse" class="level2">
+<h2 class="anchored" data-anchor-id="assertfalse"><code>.assertFalse()</code></h2>
+<p><strong>Negative Test Case</strong></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestStringMethods(unittest.TestCase):</span>
@@ -808,7 +828,7 @@ OK</code></pre>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    unittest.main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-6" class="cell" data-execution_count="6">
+<div id="cell-18" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python M08<span class="op">-</span><span class="dv">0</span><span class="er">2</span><span class="op">-</span>script3.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>F
@@ -826,9 +846,7 @@ Ran 1 test in 0.001s
 FAILED (failures=1)</code></pre>
 </div>
 </div>
-</section>
-<section id="positive-test-case-1" class="level4">
-<h4 class="anchored" data-anchor-id="positive-test-case-1">Positive Test Case</h4>
+<p><strong>Positive Test Case</strong></p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">## unit test case</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -843,7 +861,7 @@ FAILED (failures=1)</code></pre>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    unittest.main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-8" class="cell" data-execution_count="7">
+<div id="cell-20" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python M08<span class="op">-</span><span class="dv">0</span><span class="er">2</span><span class="op">-</span>script4.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>.
@@ -854,12 +872,10 @@ OK</code></pre>
 </div>
 </div>
 </section>
-</section>
-<section id="assertequal" class="level3">
-<h3 class="anchored" data-anchor-id="assertequal"><code>.assertEqual()</code></h3>
+<section id="assertequal" class="level2">
+<h2 class="anchored" data-anchor-id="assertequal"><code>.assertEqual()</code></h2>
 <p>Here is a case where we expect two values to be equal.</p>
-<section id="negative-test-case-2" class="level4">
-<h4 class="anchored" data-anchor-id="negative-test-case-2">Negative Test Case</h4>
+<p><strong>Negative Test Case</strong></p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">## unit test case</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -875,7 +891,7 @@ OK</code></pre>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
 <span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    unittest.main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-10" class="cell" data-execution_count="8">
+<div id="cell-22" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python M08<span class="op">-</span><span class="dv">0</span><span class="er">2</span><span class="op">-</span>script5.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>F
@@ -896,9 +912,7 @@ Ran 1 test in 0.001s
 FAILED (failures=1)</code></pre>
 </div>
 </div>
-</section>
-<section id="positive-test-case-2" class="level4">
-<h4 class="anchored" data-anchor-id="positive-test-case-2">Positive Test Case</h4>
+<p><strong>Positive Test Case</strong></p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">## unit test case</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -914,7 +928,7 @@ FAILED (failures=1)</code></pre>
 <span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
 <span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    unittest.main(verbosity<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-12" class="cell" data-execution_count="9">
+<div id="cell-24" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python M08<span class="op">-</span><span class="dv">0</span><span class="er">2</span><span class="op">-</span>script6.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>test_positive (__main__.TestStringMethods.test_positive) ... ok
@@ -925,8 +939,6 @@ Ran 1 test in 0.000s
 OK</code></pre>
 </div>
 </div>
-</section>
-</section>
 </section>
 <section id="example-with-user-defined-function" class="level2">
 <h2 class="anchored" data-anchor-id="example-with-user-defined-function">Example with User-defined Function</h2>
@@ -956,7 +968,7 @@ OK</code></pre>
 <span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
 <span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    unittest.main(verbosity<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-14" class="cell" data-execution_count="10">
+<div id="cell-26" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python M08<span class="op">-</span><span class="dv">0</span><span class="er">2</span><span class="op">-</span>script7.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>test_add_fish_to_aquarium_exception (__main__.TestAddFishToAquarium.test_add_fish_to_aquarium_exception) ... ok
@@ -1008,7 +1020,7 @@ OK</code></pre>
 <span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
 <span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>    unittest.main(verbosity<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-16" class="cell" data-execution_count="12">
+<div id="cell-28" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python student_test.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>test_01_is_numCoursincremented_correctly (__main__.EnrollInTestCase.test_01_is_numCoursincremented_correctly) ... ['DS 5100', 'CS 5050', 'CS 5777']
@@ -1023,7 +1035,7 @@ OK</code></pre>
 </div>
 <p>The messages that <code>unittest</code> prints are error messages on Unix, so if we want to direct them to a file, we need to use <code>2&gt;</code>.</p>
 <p>Notice how this command only shows the print messages contained in the program.</p>
-<div id="cell-18" class="cell" data-execution_count="13">
+<div id="cell-30" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python student_test.py <span class="dv">2</span><span class="op">&gt;</span> student_results.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['DS 5100', 'CS 5050', 'CS 5777']
@@ -1031,7 +1043,7 @@ OK</code></pre>
 </div>
 </div>
 <p>This one, on the other hand, captures the print methods and only shows the errors.</p>
-<div id="cell-20" class="cell" data-execution_count="14">
+<div id="cell-32" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python student_test.py <span class="op">&gt;</span> student_results1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>test_01_is_numCoursincremented_correctly (__main__.EnrollInTestCase.test_01_is_numCoursincremented_correctly) ... ok
@@ -1042,14 +1054,6 @@ Ran 1 test in 0.000s
 OK</code></pre>
 </div>
 </div>
-</section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="https://python.readthedocs.io/en/stable/library/unittest.html?highlight=re#module-unittest"><strong>unittest</strong> — Unit testing framework (Official Docs)</a></li>
-<li><a href="https://www.digitalocean.com/community/tutorials/how-to-use-unittest-to-write-a-test-case-for-a-function-in-python">How To Use unittest to Write a Test Case for a Function in Python (Digital Ocean)</a></li>
-<li><a href="https://kapeli.com/cheat_sheets/Python_unittest_Assertions.docset/Contents/Resources/Documents/index">A Cheat-sheet of Unittest Assert Methods</a></li>
-</ul>
 
 
 </section>

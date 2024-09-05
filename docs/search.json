@@ -3577,7 +3577,7 @@
     "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#requirements-testing",
     "title": "Testing and Verification",
     "section": "Requirements Testing",
-    "text": "Requirements Testing\nTo verify that our code aligns with our requirements and is of the highest quality we can provide, we follow testing procedures.\nThis is where requirements specifications come in. They provide the blueprint for testing.\nIf you don’t have specifications for the product, you cannot verify that you’re doing the right thing.\nIt also becomes difficult to identify  incorrect behavior.",
+    "text": "Requirements Testing\nTo verify that our code aligns with our requirements and is of the highest quality we can provide, we follow testing procedures.\nThis is where requirements specifications come in. They provide the blueprint for testing.\nIf you don’t have specifications for the product, you cannot verify that you’re doing the right thing.\nIt also becomes difficult to identify incorrect behavior.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
@@ -3599,7 +3599,7 @@
     "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#formal-verification",
     "title": "Testing and Verification",
     "section": "Formal Verification",
-    "text": "Formal Verification\nFormal verification is the process of mathematically proving that a system satisfies a given property.\nIt works by defining a formal model for the system and its behavior and then comparing the software to the model.\nGiven their complexity, these are not widely used.",
+    "text": "Formal Verification\nFormal verification is the process of mathematically proving that a system satisfies a given property.\nIt works by defining a formal model for the system and its behavior and then comparing the software to the model.\nGiven their complexity, formal verification methods are not widely used.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
@@ -3610,7 +3610,7 @@
     "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#empirical-verification",
     "title": "Testing and Verification",
     "section": "Empirical Verification",
-    "text": "Empirical Verification\nWith empirical procedures, requirements matching is demonstrated through empirical testing.\nEmpirical testing seeks to see if software works in practice.\nIt is easier than using proofs.\nBut it hard then just writing code.\nWe will focus on empirical testing.",
+    "text": "Empirical Verification\nWith empirical procedures, requirements matching is demonstrated through empirical testing.\nEmpirical testing seeks to see if software works in practice.\nIt is easier than using proofs.\nBut it’s harder than just writing code.\nWe will focus on empirical testing.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
@@ -3621,7 +3621,7 @@
     "href": "notebooks/M08_PythonTesting/M08-00-TestingAndVerification.html#unit-testing",
     "title": "Testing and Verification",
     "section": "Unit Testing",
-    "text": "Unit Testing\nThere are many kinds of empirical testing.\nThe most popular is unit testing.\nIn unit testing, we write code that tests the smallest possible units of the requirements spec.\nThe programmer does unit testing as part of the coding process.\nIt expects that code is componential, i.e. that the smallest units are functionally independent and can be combined in principled ways.\nThis raises the issue of writing well-designed functions and classes.\nTwo other kinds of testing are integration and acceptance (beta) testing, which are out of the scope of this lesson. See below for a short description.\nIntegration Testing: Test that units work together.\nAcceptance Testing (Beta Testing): Give product to real users to try it out.\nWe will focus on unit testing.",
+    "text": "Unit Testing\nThere are many kinds of empirical testing.\nThe most popular is unit testing.\nIn unit testing, we write code that tests the smallest possible units of the requirements spec.\nThe programmer does unit testing as part of the coding process.\nIt expects that code is componential, i.e. that the smallest units are functionally independent and can be combined in principled ways.\nThis raises the issue of writing well-designed functions and classes.\nTwo other kinds of testing are integration and acceptance (beta) testing.\nIntegration Testing: Test that units work together.\nAcceptance Testing (Beta Testing): Give product to real users to try it out.\nWe will not cover these here.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>42</span>  <span class='chapter-title'>Testing and Verification</span>"
@@ -3676,7 +3676,7 @@
     "href": "notebooks/M08_PythonTesting/M08-01-ExceptionHandling.html#errors",
     "title": "NB: Exception Handling",
     "section": "",
-    "text": "Syntactic errors, AKA parsing errors, which are caused by not following Python’s rules for writing code. For example, you start a variable name with a number.\nLogical errors, such as dividing by 0 or indexing into a list for an element that doesn’t exist.\nUser errors, such as when a user inputs the wrong data type for an operation.\nSystem errors, such as when a database connection is down or a a write operation is blocked by incorrectly set file permissions.\nDependency errors, such as when a module expects a version of another library that is not installed.",
+    "text": "Syntactic errors, AKA parsing errors, which are caused by not following Python’s rules for writing code. For example, you start a variable name with a number.\nLogical errors, such as dividing by 0 or indexing into a list for an element that doesn’t exist.\nUser errors, such as when a user inputs the wrong data type for an operation.\nSystem errors, such as when a database connection is down or a write operation is blocked by incorrectly set file permissions.\nDependency errors, such as when a module expects a version of another library that is not installed.",
     "crumbs": [
       "M08 Testing",
       "<span class='chapter-number'>43</span>  <span class='chapter-title'>NB: Exception Handling</span>"

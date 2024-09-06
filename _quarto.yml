@@ -36,6 +36,7 @@ book:
         - notebooks/M02_BasicPython/M02-03-Booleans.ipynb
         - notebooks/M02_BasicPython/M02-04-Strings.ipynb
         - notebooks/M02_BasicPython/M02-05-Structures.ipynb
+        - notebooks/M02_BasicPython/M02-06-AsideOnImmutables.ipynb
     - part: modules/m03/m03-intro.qmd # 03 Control Structures
       chapters:
         - topics/vals-vars-expressions-statements.qmd

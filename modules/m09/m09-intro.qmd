@@ -15,4 +15,6 @@
 
 ### Optional 
 
-* [Python Docs](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
+* [Namespaces and Scope in Python (Real Python)](https://realpython.com/python-namespaces-scope/) for a good primer.
+* [Packaging Projects (Python Docs)](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
+* [Python Packaging User Guide (Python Packaging Authority)](https://packaging.python.org/en/latest/overview/)

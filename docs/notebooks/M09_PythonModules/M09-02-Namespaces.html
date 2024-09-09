@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DS 5100: Programming for Data Science - NB: Namespaces</title>
+<title>DS 5100: Programming for Data Science - NB: Namespaces and Paths</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m09/m09-intro.html">M09 Modules</a></li><li class="breadcrumb-item"><a href="../../notebooks/M09_PythonModules/M09-02-Namespaces.html"><span class="chapter-title">NB: Namespaces</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m09/m09-intro.html">M09 Modules</a></li><li class="breadcrumb-item"><a href="../../notebooks/M09_PythonModules/M09-02-Namespaces.html"><span class="chapter-title">NB: Namespaces and Paths</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -483,7 +483,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M09_PythonModules/M09-02-Namespaces.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: Namespaces</span></a>
+  <a href="../../notebooks/M09_PythonModules/M09-02-Namespaces.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: Namespaces and Paths</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -619,16 +619,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#namespaces" id="toc-namespaces" class="nav-link active" data-scroll-target="#namespaces">Namespaces</a></li>
+  <li><a href="#namespace-levels" id="toc-namespace-levels" class="nav-link" data-scroll-target="#namespace-levels">Namespace Levels</a></li>
   <li><a href="#how-python-finds-things" id="toc-how-python-finds-things" class="nav-link" data-scroll-target="#how-python-finds-things">How Python finds things</a></li>
+  <li><a href="#relative-vs-absolute-paths" id="toc-relative-vs-absolute-paths" class="nav-link" data-scroll-target="#relative-vs-absolute-paths">Relative vs Absolute Paths</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M09_PythonModules/M09-02-Namespaces.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m09/m09-intro.html">M09 Modules</a></li><li class="breadcrumb-item"><a href="../../notebooks/M09_PythonModules/M09-02-Namespaces.html"><span class="chapter-title">NB: Namespaces</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m09/m09-intro.html">M09 Modules</a></li><li class="breadcrumb-item"><a href="../../notebooks/M09_PythonModules/M09-02-Namespaces.html"><span class="chapter-title">NB: Namespaces and Paths</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">NB: Namespaces</span></h1>
+<h1 class="title"><span class="chapter-title">NB: Namespaces and Paths</span></h1>
 </div>
 
 
@@ -648,25 +650,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Programming for Data Science</p>
 <section id="namespaces" class="level2">
 <h2 class="anchored" data-anchor-id="namespaces">Namespaces</h2>
-<p>You can see that a python <strong>module</strong> acts as a single <strong>namespace</strong>, which is used to organize a collection of values:</p>
+<p>You can see that a python <strong>module</strong> acts as a unit for organizing a collection of elements or attributes:</p>
 <ul>
 <li>functions</li>
 <li>constants</li>
-<li>class definitions</li>
-<li>really any old value</li>
+<li>classes</li>
+<li>etc.</li>
 </ul>
-<p>A namespace is <strong>a collection of currently defined names</strong> being used by a program.</p>
-<p>You can think of it as something like a Python dictionary.</p>
-<p>The keys are the object names and the values are the objects themselves.</p>
-<p>It’s a way of making sure variable and function names do not collide or get confused with each other.</p>
-<p>Python has four namespaces:</p>
-<p><strong>Built-In</strong>: Contains the names of all of Python’s built-in objects.</p>
-<p>See <code>dir(__builtins__)</code></p>
-<p><strong>Global</strong>: Contains any names defined at the level of the main program.</p>
-<p>A global namespace is also created for any module that your program imports. See <code>globals()</code>.</p>
-<p><strong>Enclosing</strong>: The namespaces of a function for any functions defined within that function.</p>
-<p><strong>Local</strong>: Contains any names defined in a function.</p>
-<p>Namespaces are related to <strong>scope</strong>.</p>
+<p>All of these things are accessed by the formula:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>module.attribute</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The module name in this formula defines the <strong>namespace</strong> for the attributes it contains.</p>
+<p>So, a namespace holds <strong>a collection of currently defined names</strong> being used by a program.</p>
+<p>You can think of it as something like a Python <strong>dictionary</strong>.</p>
+<p>The keys are the module or package names and the values are the attribures contained by them.</p>
+<p>It’s a way of making sure variable and function names <strong>do not collide</strong> or get confused with each other.</p>
+<p>So, two functions with the same name from different modules can be used in the same program if they are called with their namespaces:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>module1.my_function()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>module1.my_function()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="namespace-levels" class="level2">
+<h2 class="anchored" data-anchor-id="namespace-levels">Namespace Levels</h2>
+<p>Python has <strong>four</strong> namespace <strong>levels</strong>:</p>
+<p><strong>B: Built-In</strong>: Contains the names of all of Python’s built-in objects.</p>
+<p><strong>G: Global</strong>: Contains any names defined at the level of the main program.</p>
+<ul>
+<li>A global namespace is also created for any module that your program imports.</li>
+<li>In other words, global refers to the top-level namespace <strong>within a module</strong> or file.</li>
+</ul>
+<p><strong>E: Enclosing</strong>: The namespaces of a function for any functions defined within that function.</p>
+<ul>
+<li>We saw this with <code>nonlocal</code> when going over functions and scope.</li>
+</ul>
+<p><strong>L: Local</strong>: Contains any names defined inside of a function.</p>
 <p>To know the context in which a name has meaning, Python searches namespaces from the inside out.</p>
 <pre><code>L -&gt; E -&gt; G -&gt; B</code></pre>
 <div class="quarto-figure quarto-figure-center">
@@ -675,53 +690,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>image.png</figcaption>
 </figure>
 </div>
-<p>See <code>M09-01a-Globals.ipynb</code> for a demo.</p>
-<p>See <a href="https://realpython.com/python-namespaces-scope/">Namespaces and Scope in Python (Real Python)</a> for a good primer.</p>
 <p>Here is a demonstration of namespaces:</p>
-<div id="2769be84-bc35-4697-a3a8-43b86d83c160" class="cell" data-tags="[]" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> foo():</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> y <span class="op">=</span> z <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">locals</span>())</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> bar():</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> b <span class="op">=</span> c <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="bu">locals</span>())</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    bar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="2769be84-bc35-4697-a3a8-43b86d83c160" class="cell" data-tags="[]" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> foo():</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> y <span class="op">=</span> z <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Locals in foo:"</span>, <span class="bu">locals</span>())</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> bar():</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> b <span class="op">=</span> c <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Locals in bar:"</span>, <span class="bu">locals</span>())</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Global g:"</span>, <span class="bu">globals</span>()[<span class="st">'g'</span>])</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    bar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a4664b13-441f-4f0d-b93d-ba78ff797768" class="cell" data-tags="[]" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>foo()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a4664b13-441f-4f0d-b93d-ba78ff797768" class="cell" data-tags="[]" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>foo()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>{'x': 1, 'y': 1, 'z': 1}
-{'a': 2, 'b': 2, 'c': 2}</code></pre>
+<pre><code>Locals in foo: {'x': 1, 'y': 1, 'z': 1}
+Locals in bar: {'a': 2, 'b': 2, 'c': 2}
+Global g: 100</code></pre>
 </div>
 </div>
-<p>What happens if we print <code>globals()</code>?</p>
+<p>Notice how namespaces are related to <strong>scope</strong>.</p>
 </section>
 <section id="how-python-finds-things" class="level2">
 <h2 class="anchored" data-anchor-id="how-python-finds-things">How Python finds things</h2>
 <p>How does Python know where to find modules?</p>
-<p>The interpreter keeps a list of all the places that it looks for modules or packages when you do an import. It is stored in the <code>sys</code> module.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> sys.path:</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span> p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can edit that list to add or remove paths to let python find modules on a new place.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sys.path.append(some_local_dir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Remember that every module has a <code>__file__</code> name that points to the path it lives in.</p>
-<p>This lets you add paths relative to where you are, etc.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="ss">f"</span><span class="sc">{</span><span class="va">__file__</span><span class="sc">}</span><span class="ss">/local_module_directory"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="15f55dd8-7c58-40ee-9e3b-3a19b6cf06d8" class="cell" data-tags="[]" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="c614e977-a678-4966-a8c0-cd3a4faa809b" class="cell" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>'/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M09_PythonModules'</code></pre>
-</div>
-</div>
-<div id="5a5655e9-8c94-4bd3-b74f-d2625833d3c4" class="cell" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sys.path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<p>The interpreter keeps a list of places that it looks for modules or packages when you do an import.</p>
+<p>You can access this list from the <code>path</code> attribute in the <code>sys</code> module.</p>
+<div id="938eaf89-8fd8-43a5-be21-9e03e7801f24" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-tags="[]" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>sys.path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>['/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M09_PythonModules',
  '/apps/software/standard/core/jupyterlab/3.6.3-py3.11/lib/python311.zip',
  '/apps/software/standard/core/jupyterlab/3.6.3-py3.11/lib/python3.11',
@@ -731,7 +734,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  '/apps/software/standard/core/jupyterlab/3.6.3-py3.11/lib/python3.11/site-packages']</code></pre>
 </div>
 </div>
-<p>To install a package, you need a setup file. This allows you to build a package.</p>
+<p>You can edit that list to add or remove paths to let python find modules on a new place.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sys.path.append(some_local_dir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="relative-vs-absolute-paths" class="level2">
+<h2 class="anchored" data-anchor-id="relative-vs-absolute-paths">Relative vs Absolute Paths</h2>
+<p>You will sometimes see a dot <code>.</code> used in the import statements found in package intitialization files.</p>
+<p>It is used in the context of a <code>from</code> statement.</p>
+<p>For example:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> . <span class="im">import</span> funniest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>or</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .funniest <span class="im">import</span> joke</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The dot is used to create <strong>relative</strong> path names to packages and modules.</p>
+<p>This is in contrast to <strong>absolute</strong> path names, which is how Python accesses things by default.</p>
+<p>With <strong>absolute</strong> path names, Python will interpret package and module paths from the perspective of the <strong>proejct directory</strong></p>
+<p>The project directory of the file that is importing the module, sometimes called the <strong>main</strong> file.</p>
+<p>When you are just importing a module that is in your directory, the project directory is the <strong>directory of your script</strong>.</p>
+<p>When you are importing a module that has been installed using <code>setup.py</code>, the project directory is the directory that contains the setup file.</p>
+<p>We’ll look at setup files in another notebook.</p>
+<p>With <strong>relative</strong> path names, when you import modules in an <code>__init__.py</code> file within a package directory, the dot <code>.</code> refers to the <strong>current</strong> package or module’s namespace, not the calling file’s.</p>
+<p>For example, consider a package structure like this:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">myproject/</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">main.py</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">mypackage/</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="ex">__init__.py</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="ex">module1.py</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        <span class="ex">module2.py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Imagine that <code>main.py</code> is your program, and inside of it you want to import the modules in <code>mypackage</code> to do some things.</p>
+<p>Also imagine that <code>__init__.py</code> contains an import statement to pre-import <code>module1</code> and <code>module2</code>:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mypackage <span class="im">import</span> moudle1, module2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>So, you might do this from <code>main.py</code>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mypackage <span class="im">as</span> mp</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>mp.module1.function1()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, when <code>myproject</code> is imported into main, the path in <code>__init__.py</code> is interpreted from <strong>the perspective of the calling module</strong>, i.e.&nbsp;<code>main.py</code>.</p>
+<p>This is why even though <code>__init__.py</code> is inside of <code>mypackage</code>, it will include <code>mypackage</code> in the import path, as if <code>mypackage</code> were below the directory that contains <code>__init__.py</code>.</p>
+<p>To override this behavior, and have <code>__init__.py</code> use paths relative to itself, you can use a dot <code>.</code> to stand for the <strong>current directory</strong>.</p>
+<p>So, if you import <code>module1</code> using a relative import with a dot <code>.</code>, it would look like this:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> . <span class="im">import</span> module1, module2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will probably not make much sense to you now.</p>
+<p>We will learn more about paths when we go over creating your own packages.</p>
 
 
 </section>

@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../notebooks/M09_PythonModules/M09-01a-Globals.html" rel="next">
+<link href="../../notebooks/M09_PythonModules/M09-02-Namespaces.html" rel="next">
 <link href="../../modules/m09/m09-intro.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -512,17 +512,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M09_PythonModules/M09-01a-Globals.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: More on Classes and Globals</span></a>
+  <a href="../../notebooks/M09_PythonModules/M09-02-Namespaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Namespaces</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M09_PythonModules/M09-02-MakingYourOwn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: User Created Packages</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../modules/m09/m09-review.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Review</span></a>
+  <a href="../../notebooks/M09_PythonModules/M09-03-MakingYourOwn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: User Created Packages</span></a>
   </div>
 </li>
       </ul>
@@ -652,26 +647,16 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#modules" id="toc-modules" class="nav-link active" data-scroll-target="#modules">Modules</a>
-  <ul class="collapse">
-  <li><a href="#module-names" id="toc-module-names" class="nav-link" data-scroll-target="#module-names">Module names</a></li>
+  <li><a href="#modules" id="toc-modules" class="nav-link active" data-scroll-target="#modules">Modules</a></li>
+  <li><a href="#importing" id="toc-importing" class="nav-link" data-scroll-target="#importing">Importing</a></li>
+  <li><a href="#module-names" id="toc-module-names" class="nav-link" data-scroll-target="#module-names">Module Names</a></li>
   <li><a href="#name__" id="toc-name__" class="nav-link" data-scroll-target="#name__"><code>__name__</code></a></li>
-  </ul></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a>
-  <ul class="collapse">
-  <li><a href="#importing-from-modules-from-packages" id="toc-importing-from-modules-from-packages" class="nav-link" data-scroll-target="#importing-from-modules-from-packages">Importing from modules from packages</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#from" id="toc-from" class="nav-link" data-scroll-target="#from"><code>from</code></a></li>
-  </ul></li>
-  <li><a href="#preloading-modules-and-functions" id="toc-preloading-modules-and-functions" class="nav-link" data-scroll-target="#preloading-modules-and-functions">Preloading Modules and Functions</a>
-  <ul class="collapse">
+  <li><a href="#preloading-modules-and-functions" id="toc-preloading-modules-and-functions" class="nav-link" data-scroll-target="#preloading-modules-and-functions">Preloading Modules and Functions</a></li>
   <li><a href="#example-1-empty-__init__.py" id="toc-example-1-empty-__init__.py" class="nav-link" data-scroll-target="#example-1-empty-__init__.py">Example 1: Empty <code>__init__.py</code></a></li>
   <li><a href="#example-2-edited-__init__.py" id="toc-example-2-edited-__init__.py" class="nav-link" data-scroll-target="#example-2-edited-__init__.py">Example 2: Edited <code>__init__.py</code></a></li>
-  <li><a href="#relative-vs-absolute-paths" id="toc-relative-vs-absolute-paths" class="nav-link" data-scroll-target="#relative-vs-absolute-paths">Relative vs Absolute Paths</a></li>
-  </ul></li>
-  <li><a href="#namespaces" id="toc-namespaces" class="nav-link" data-scroll-target="#namespaces">Namespaces</a></li>
-  <li><a href="#how-python-finds-things" id="toc-how-python-finds-things" class="nav-link" data-scroll-target="#how-python-finds-things">How Python finds things</a></li>
-  <li><a href="#more-info" id="toc-more-info" class="nav-link" data-scroll-target="#more-info">More Info</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M09_PythonModules/M09-01-ModulesAndPackages.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -700,9 +685,9 @@ window.Quarto = {
 <p>Programming for Data Science</p>
 <section id="modules" class="level2">
 <h2 class="anchored" data-anchor-id="modules">Modules</h2>
-<p>In Python, a <strong>module is a file</strong> containing Python code—basically, a collection of expressions and statements.</p>
-<p>It will usually contain functions, classes, and fixed variables (“constants”) such as the value of <span class="math inline">\(\Large\pi\)</span>.</p>
-<p>For instance, let’s say we have a file called <code>fibo.py</code> with the following code:</p>
+<p>In Python, a <strong>module is a file</strong> containing Python code — basically, a collection of expressions and statements.</p>
+<p>It will usually <strong>contain</strong> functions, classes, and fixed variables (“constants”) such as the value of <span class="math inline">\(\Large\pi\)</span>.</p>
+<p>For instance, let’s say we have a file called <code>fibo.py</code> that contains the following code:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Fibonacci numbers module</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fib(n):</span>
@@ -721,59 +706,65 @@ window.Quarto = {
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        result.append(a)</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        a, b <span class="op">=</span> b, a<span class="op">+</span>b</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>To use this module, you <strong>import</strong> it into the script you are working in as follows:</p>
-<div id="74827140-683a-4fcd-b310-fe4b31325cc2" class="cell" data-tags="[]" data-execution_count="4">
+<p>We would say that these two function belong to the module <code>fibo</code>, based on the filename used to store the code.</p>
+</section>
+<section id="importing" class="level2">
+<h2 class="anchored" data-anchor-id="importing">Importing</h2>
+<p>To use the functions in this module in another program, you would need to <strong>import</strong> it.</p>
+<p>You can import a module into the script you are working in as follows:</p>
+<div id="74827140-683a-4fcd-b310-fe4b31325cc2" class="cell" data-tags="[]" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fibo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Since <code>fibo.py</code> is sitting in the same directory as our notebook, so we can do this.</p>
-<div id="7e1b074e-2ed9-4447-93c8-c6246f0923cd" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ls <span class="op">|</span> grep fibo.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can do this since <code>fibo.py</code> is sitting in the same directory as our notebook.</p>
+<div id="7e1b074e-2ed9-4447-93c8-c6246f0923cd" class="cell" data-tags="[]" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">|</span> grep fibo.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>fibo.py</code></pre>
 </div>
 </div>
-<p>Now we can use it’s attributes (as they are called) in our code.</p>
-<div id="7817c836-de97-46f3-ae5f-69adc287a9fe" class="cell" data-tags="[]" data-execution_count="6">
+<p>Once we have imported the module, we can use its attributes (as they are called) in our code.</p>
+<div id="7817c836-de97-46f3-ae5f-69adc287a9fe" class="cell" data-tags="[]" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fibo.fib(<span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 </code></pre>
 </div>
 </div>
-<div id="1fba2e0f-13c8-4c2f-882a-49505a2710b8" class="cell" data-tags="[]" data-execution_count="7">
+<div id="1fba2e0f-13c8-4c2f-882a-49505a2710b8" class="cell" data-tags="[]" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fibo.fib2(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]</code></pre>
 </div>
 </div>
-<section id="module-names" class="level3">
-<h3 class="anchored" data-anchor-id="module-names">Module names</h3>
+</section>
+<section id="module-names" class="level2">
+<h2 class="anchored" data-anchor-id="module-names">Module Names</h2>
 <p>Note that the module’s <strong>name</strong> we used to import is just the file name without the <code>.py</code> suffix.</p>
 <p>So, we say that the file <code>fibo.py</code> contains the module <code>fibo</code>.</p>
 </section>
-<section id="name__" class="level3">
-<h3 class="anchored" data-anchor-id="name__"><code>__name__</code></h3>
+<section id="name__" class="level2">
+<h2 class="anchored" data-anchor-id="name__"><code>__name__</code></h2>
 <p>Python provides a special variable called <code>__name__</code> that you can use to get the name of a module.</p>
+<p>We saw this in our discussion of <code>unittest</code>.</p>
 <p>For example:</p>
-<div id="533d6f40-ea5c-425e-a1f8-94798ce67346" class="cell" data-tags="[]" data-execution_count="9">
+<div id="533d6f40-ea5c-425e-a1f8-94798ce67346" class="cell" data-tags="[]" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fibo.<span class="va">__name__</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>'fibo'</code></pre>
 </div>
 </div>
 <p>Note that when the module being run is the current file, the name changes to <code>__main__</code>.</p>
 <p>Let’s look at the name of this notebook.</p>
-<div id="a7f7ee3e-d98e-4038-9095-50289745cbba" class="cell" data-tags="[]" data-execution_count="10">
+<div id="a7f7ee3e-d98e-4038-9095-50289745cbba" class="cell" data-tags="[]" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="va">__name__</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>'__main__'</code></pre>
 </div>
 </div>
 </section>
-</section>
 <section id="packages" class="level2">
 <h2 class="anchored" data-anchor-id="packages">Packages</h2>
 <p><strong>A package is just a directory</strong> that may contain other modules and packages.</p>
-<p>For a directory to become a package, it <del>must</del> should contain an <code>__init__.py</code> file.</p>
+<p>For a directory to become a package, it should contain an <code>__init__.py</code> file.</p>
 <p>Note that as of Python 3.3, this file is optional. However, it is still useful and commonly used.</p>
 <p>The <code>__init__.py</code> can be <strong>totally empty</strong> or it can have some Python code in it.</p>
 <p>We’ll see why you would put code in it below.</p>
@@ -781,308 +772,207 @@ window.Quarto = {
 <p>a_package_dir/ <strong>init</strong>.py # Can be empty module_a.py # Contains functions, classes, etc.</p>
 <p>Here is an example directory structure of a package that contains another package:</p>
 <p>a_package_dir/ <strong>init</strong>.py module_a.py a_sub_package_dir/ # A subdirectory <strong>init</strong>.py module_b.py</p>
-<section id="importing-from-modules-from-packages" class="level3">
-<h3 class="anchored" data-anchor-id="importing-from-modules-from-packages">Importing from modules from packages</h3>
 <p>Given the above directory and file structures, within a Python file you can import the package <code>a_package</code> like this:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> a_package</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will run any code in <code>a_package/__init__.py</code>.</p>
 <p>Any variable or function names defined in the <code>__init__.py</code> will be available like this:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>a_package.a_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>However, no <strong>modules</strong> will be imported unless explicity commanded to.</p>
-<p>So, in the following,</p>
+<p>So, the following will not work:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>a_package.module_a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>module_a</code> will <strong>not</strong> be imported.</p>
-<p>To access <code>module_a</code>, you need to explicitly import it:</p>
+<p>This is because <code>module_a</code> has <strong>not</strong> be imported.</p>
+<p>To access <code>module_a</code>, we need to explicitly import it:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> a_package.module_a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="examples" class="level3">
-<h3 class="anchored" data-anchor-id="examples">Examples</h3>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>Let’s look at an example with actual files.</p>
-<p>We import a package …</p>
-<div id="5454fa1a-4422-45de-95a5-ac5300074be3" class="cell" data-tags="[]" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> demo_package1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d64423d8-d9b3-4498-9ef0-5cf680a8736f" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">-</span>l demo_package1<span class="op">/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>total 12
+-rw------- 1 rca2t users   0 May  8 15:36 __init__.py
+-rw------- 1 rca2t users  49 May  8 15:36 module1.py
+drwx--S--- 2 rca2t users 512 Sep  9 09:23 __pycache__</code></pre>
+</div>
+</div>
+<div id="2c245599-b753-40e6-90ec-ee4c3f156295" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-tags="[]" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>more demo_package1<span class="op">/</span><span class="fu">__init__</span>.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="7615823c-5102-4117-872e-1678b48dca0f" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-tags="[]" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>more demo_package1<span class="op">/</span>module1.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>def welcome1():
+    print("Hi, I'm from Demo 1!")</code></pre>
+</div>
+</div>
+<p>We import the package …</p>
+<div id="5454fa1a-4422-45de-95a5-ac5300074be3" class="cell" data-tags="[]" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> demo_package1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>But cannot access the module.</p>
-<div id="7ca651bd-71e1-4dc9-9ea8-1eb02c849bce" class="cell" data-scrolled="true" data-tags="[]" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>demo_package1.module1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>AttributeError: module 'demo_package1' has no attribute 'module1'</code></pre>
+<div id="7ca651bd-71e1-4dc9-9ea8-1eb02c849bce" class="cell" data-scrolled="true" data-tags="[]" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>demo_package1.module1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>&lt;module 'demo_package1.module1' from '/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M09_PythonModules/demo_package1/module1.py'&gt;</code></pre>
 </div>
 </div>
-<p>To access it, we have to specify it in the import path:</p>
-<div id="93b5fbc4-1a20-46fa-9ff1-58778aebc151" class="cell" data-tags="[]" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> demo_package1.module1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To access the module in the package directory, we have to specify it in the <strong>import path</strong>:</p>
+<div id="93b5fbc4-1a20-46fa-9ff1-58778aebc151" class="cell" data-tags="[]" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> demo_package1.module1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="158307cd-9600-4a0d-a792-6870a662c46b" class="cell" data-tags="[]" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>demo_package1.module1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>&lt;module 'demo_package1.module1' from '/Users/rca2t1/Dropbox/Courses/DS/DS5100/repo-book/notebooks/M09_PythonModules/demo_package1/module1.py'&gt;</code></pre>
+<div id="158307cd-9600-4a0d-a792-6870a662c46b" class="cell" data-tags="[]" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>demo_package1.module1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>&lt;module 'demo_package1.module1' from '/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M09_PythonModules/demo_package1/module1.py'&gt;</code></pre>
 </div>
 </div>
 <p>Now we have it in memory and can access its attributes.</p>
-<div id="fdc4bd71-f6fc-4ab6-8275-f995dbedc6b0" class="cell" data-tags="[]" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>demo_package1.module1.welcome1()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fdc4bd71-f6fc-4ab6-8275-f995dbedc6b0" class="cell" data-tags="[]" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>demo_package1.module1.welcome1()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hi, I'm from Demo 1!</code></pre>
 </div>
 </div>
 </section>
-<section id="from" class="level3">
-<h3 class="anchored" data-anchor-id="from"><code>from</code></h3>
+<section id="from" class="level2">
+<h2 class="anchored" data-anchor-id="from"><code>from</code></h2>
 <p>We can use the <code>from</code> statement to provide a context for our imports.</p>
 <p>This allows use to directly import the module into our code.</p>
-<div id="ad4ddbe0-512e-4dad-a967-38161d18cb6e" class="cell" data-tags="[]" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> demo_package1 <span class="im">import</span> module1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ad4ddbe0-512e-4dad-a967-38161d18cb6e" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-tags="[]" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> demo_package1 <span class="im">import</span> module1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="ce47f0cc-3f5e-4f0e-b466-9e4e4d7d9e77" class="cell" data-tags="[]" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>module1.welcome1()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ce47f0cc-3f5e-4f0e-b466-9e4e4d7d9e77" class="cell" data-tags="[]" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>module1.welcome1()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hi, I'm from Demo 1!</code></pre>
 </div>
 </div>
-<div id="68aa15e5-a8a1-49d3-a18b-e08f57128721" class="cell" data-tags="[]" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> demo_package1.module1 <span class="im">import</span> welcome1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="68aa15e5-a8a1-49d3-a18b-e08f57128721" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-tags="[]" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> demo_package1.module1 <span class="im">import</span> welcome1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="140a25ac-f04b-4144-afea-000a03d717b4" class="cell" data-tags="[]" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>welcome1()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="140a25ac-f04b-4144-afea-000a03d717b4" class="cell" data-tags="[]" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>welcome1()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hi, I'm from Demo 1!</code></pre>
 </div>
 </div>
-</section>
+<p>Note how we avoid having to name the package or module in these examples.</p>
+<p>Note that we can’t do this:</p>
+<div id="78682598-f41d-42d4-8d07-14a20275bb0c" class="cell" data-tags="[]" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> demo_package1 <span class="im">import</span> module1.welcome1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>SyntaxError: invalid syntax (2584258834.py, line 1)</code></pre>
+</div>
+</div>
+<p>This is because you can only import what a module or package <strong>direclty</strong> contains.</p>
+<p>So, although <code>demo_package1</code> contains <code>module1</code>,<br>
+and <code>module1</code> contains <code>welcome1</code>,<br>
+<code>demo_package1</code> does <strong>not</strong> contain <code>welcome1</code>.</p>
+<p>Notice the <strong>grammar</strong> here.</p>
+<p>The <code>from</code> keyword provides the <strong>context</strong> resource, and the <code>import</code> keyword specifies the <strong>attribute name</strong> directly contained by the resource.</p>
+<p>In each case, what follows <code>import</code> is the name of the resource you will use to access it.</p>
 </section>
 <section id="preloading-modules-and-functions" class="level2">
 <h2 class="anchored" data-anchor-id="preloading-modules-and-functions">Preloading Modules and Functions</h2>
 <p>Rembmer that you can put any code you want in a <code>__init__.py</code> file.</p>
-<p>It’s as if the package directory is a module, and the contents the init file is the content of the module.</p>
+<p>It’s as if the package directory is a module, and the contents the initialization file is the content of the module.</p>
 <p>A <strong>common use case</strong> for putting code into the package initialization file is to <strong>preload modules</strong> when importing the package.</p>
 <p>This can be useful if you want to make certain modules available to all other modules in your project.</p>
 <p>You can also use it to import files to be shared by modules in your own project for convenience.</p>
 <p>For example, let’s say you have the following package set up:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">funny/</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">__init__.py</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">funniest.py</span> <span class="co"># contains the function joke()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If you wanted to import the module <code>funniest</code> and have access to the function <code>joke()</code>, you’d have to do this:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> funny.funniest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ex">funny/</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">__init__.py</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">funniest.py</span> <span class="co"># contains the function joke()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you wanted to import the module <code>funniest</code> into a script and have access to the function <code>joke()</code>, you’d have to do this:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> funny.funniest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And then to use the function, do this:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>funny.funniest.joke()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You <strong>can’t</strong> do this:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> funny</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>funny.funniest.joke()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You could also do this:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> funny <span class="im">import</span> funniest</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>funniest.joke()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Or even this:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> funny.funniest <span class="im">import</span> joke</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>joke()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Note, you <strong>can’t</strong> do this:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> funny <span class="im">import</span> funniest.joke</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Notice the grammar here.</p>
-<p>The <code>from</code> command provides a <strong>context</strong>, and the <code>import</code> command specifies the variable name for the resource.</p>
-<p>In each case, what follows <code>import</code> is the name of the resource you will use to access it.</p>
-<p>Now, you can <strong>by-pass</strong> having to import the module doing this in the init file.</p>
-<p>Basically, you can put the same import line into the init file, and it’s as if you did it in your program.</p>
-<p>Here are some scenarios.</p>
-<p>In the init file:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> funny.funniest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Then in the program:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> funny</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>funny.funniest.joke()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Or, in the init file:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> funny <span class="im">import</span> funniest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Then in the program:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>funny.funniest.joke()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>But, remember, you <strong>can’t</strong> do this:</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> funny</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>funny.funniest.joke()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Or, you can put this in the initialization file:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> funny.funniest <span class="im">import</span> joke</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Then in the program, you can do this:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> funny</span>
+<p>However, you <em>could</em> do this if you want to simplify how you access the function:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> funny <span class="im">import</span> funniest</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>funniest.joke()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or even this:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> funny.funniest <span class="im">import</span> joke</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>funny.joke()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>joke()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, you can <strong>by-pass</strong> having to import the module doing all of this in the initialization file.</p>
+<p>Basically, you can put the same import line into the initialization file, and it’s as if you did it in your program.</p>
+<p>Here are some scenarios.</p>
+<p>In <code>__init__.py</code> put:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> funny.funniest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> funny <span class="im">import</span> funniest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then in the program:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> funny</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>funny.funniest.joke()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It looks like we violated the principle that you can only access what is immediately contained by the resource, but we secretly imported the contained module in our package initializer.</p>
+<p>Or, you can put this in the initialization file:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> funny.funniest <span class="im">import</span> joke</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then in the program, you can do this:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> funny</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>funny.joke()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Or this:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> funny <span class="im">import</span> joke</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>joke()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> funny <span class="im">import</span> joke</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>joke()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>See how it simplifies the import statement?</p>
 <p>Let’s looks at some examples with real files.</p>
-<section id="example-1-empty-__init__.py" class="level3">
-<h3 class="anchored" data-anchor-id="example-1-empty-__init__.py">Example 1: Empty <code>__init__.py</code></h3>
+</section>
+<section id="example-1-empty-__init__.py" class="level2">
+<h2 class="anchored" data-anchor-id="example-1-empty-__init__.py">Example 1: Empty <code>__init__.py</code></h2>
 <p>Let’s import a module, this time using an alias.</p>
-<div id="b6950e5e-7489-4640-a3f2-e287b18338af" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> demo_package1.module1 <span class="im">as</span> d1m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b6950e5e-7489-4640-a3f2-e287b18338af" class="cell" data-tags="[]" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> demo_package1.module1 <span class="im">as</span> d1m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="88715859-ad41-4367-ab4f-35f01ca432b0" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>d1m.welcome1()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="88715859-ad41-4367-ab4f-35f01ca432b0" class="cell" data-tags="[]" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>d1m.welcome1()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hi, I'm from Demo 1!</code></pre>
 </div>
 </div>
 <p>Here we use a <code>from</code> statement to provide context.</p>
-<div id="6bb3ef0e-822f-4fff-8b27-5e99f370fc55" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> demo_package1.module1 <span class="im">import</span> welcome1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6bb3ef0e-822f-4fff-8b27-5e99f370fc55" class="cell" data-tags="[]" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> demo_package1.module1 <span class="im">import</span> welcome1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8bb2ebc2-f133-4880-b8fe-24cf85a44ef0" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>welcome1()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8bb2ebc2-f133-4880-b8fe-24cf85a44ef0" class="cell" data-tags="[]" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>welcome1()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hi, I'm from Demo 1!</code></pre>
 </div>
 </div>
 </section>
-<section id="example-2-edited-__init__.py" class="level3">
-<h3 class="anchored" data-anchor-id="example-2-edited-__init__.py">Example 2: Edited <code>__init__.py</code></h3>
+<section id="example-2-edited-__init__.py" class="level2">
+<h2 class="anchored" data-anchor-id="example-2-edited-__init__.py">Example 2: Edited <code>__init__.py</code></h2>
 <p>Now, we can allow the users to import a module function directly from a package by simply adding the following to our package initializer:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> package.module <span class="im">import</span> func <span class="co"># or class</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> package.module <span class="im">import</span> func <span class="co"># or class</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For example, our Demo2 <code>__init__().py</code> contains:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> demo_package2.module2 <span class="im">import</span> welcome2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> demo_package2.module2 <span class="im">import</span> welcome2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This allows us to do this in our calling script:</p>
-<div id="b35a9f72-e6e2-4943-8ff2-d9a30ed13854" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> demo_package2 <span class="im">as</span> d2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="95ee3764-1e88-473e-8c92-eb7211eea1d8" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>d2.welcome2()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8f6d822f-2373-4a65-b464-959eb319c8c4" class="cell" data-tags="[]" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> demo_package2 <span class="im">as</span> d2</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>d2.welcome2()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hi, I'm from Demo 2!</code></pre>
 </div>
 </div>
 <p>Or this:</p>
-<div id="d9ea6be2-278b-41bf-bd6e-77b7e4e7ddbb" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> demo_package2 <span class="im">import</span> welcome2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="0583e1b9-675e-4402-a6cb-bf4b2fb86dac" class="cell" data-tags="[]" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>welcome2()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8bc445bc-ab82-4130-8733-af150244f6a4" class="cell" data-tags="[]" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> demo_package2 <span class="im">import</span> welcome2</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>welcome2()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hi, I'm from Demo 2!</code></pre>
 </div>
 </div>
 <p>It turns out, this is a common practice.</p>
-</section>
-<section id="relative-vs-absolute-paths" class="level3">
-<h3 class="anchored" data-anchor-id="relative-vs-absolute-paths">Relative vs Absolute Paths</h3>
-<p>You will sometimes see a dot <code>.</code> used in the import statements found in init files.</p>
-<p>It is used in the context a <code>from</code> statement. For example:</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> . <span class="im">import</span> funniest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>or</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .funniest <span class="im">import</span> joke</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The dot is used to shift from absolute to relative path.</p>
-<p>In other words, when you import modules in an <code>__init__.py</code> file within a package, the dot (<code>.</code>) refers to the current package or module’s namespace.</p>
-<p>For example, consider a package structure like this:</p>
-<pre><code>mypackage/
-    __init__.py
-    module1.py
-    module2.py</code></pre>
-<p>Inside the <code>__init__.py</code> file, if you import <code>module1</code> using a relative import with a dot (<code>.</code>), it would look like this:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> . <span class="im">import</span> module1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This means that <code>module1</code> is being imported from the current package (<code>mypackage</code> in this case).</p>
-<p>Similarly, if you wanted to import <code>module2</code> from <code>module1</code>, you could do it like this:</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> . <span class="im">import</span> module2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This would import <code>module2</code> from the same package as the <code>__init__.py</code> file.</p>
-<p>Using dot notation for imports in <code>__init__.py</code> is a way to make relative imports within the package, making the code more readable and maintainable.</p>
-</section>
-</section>
-<section id="namespaces" class="level2">
-<h2 class="anchored" data-anchor-id="namespaces">Namespaces</h2>
-<p>You can see that a python <strong>module</strong> acts as a single <strong>namespace</strong>, which is used to organize a collection of values:</p>
-<ul>
-<li>functions</li>
-<li>constants</li>
-<li>class definitions</li>
-<li>really any old value</li>
-</ul>
-<p>A namespace is <strong>a collection of currently defined names</strong> being used by a program.</p>
-<blockquote class="blockquote">
-<p>You can think of it as something like a Python dictionary in which the keys are the object names<br>
-and the values are the objects themselves.</p>
-</blockquote>
-<p>It’s a way of making sure variable and function names do not collide or get confused with each other.</p>
-<p>Python has four namespaces:</p>
-<ul>
-<li><p><strong>Built-In</strong>: Contains the names of all of Python’s built-in objects. See <code>dir(__builtins__)</code></p></li>
-<li><p><strong>Global</strong>: Contains any names defined at the level of the main program.</p></li>
-</ul>
-<blockquote class="blockquote">
-<p>A global namespace is also created for any module that your program imports. See <code>globals()</code>.</p>
-</blockquote>
-<ul>
-<li><p><strong>Enclosing</strong>: The namespaces of a function for any functions defined within that function.</p></li>
-<li><p><strong>Local</strong>: Contains any names defined in a function.</p></li>
-</ul>
-<p>Namespaces are related to <strong>scope</strong>.</p>
-<p>To know the context in which a name has meaning, Python searches namespaces from the inside out.</p>
-<pre><code>L -&gt; E -&gt; G -&gt; B</code></pre>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../media/scope.png" class="img-fluid figure-img"></p>
-<figcaption>image.png</figcaption>
-</figure>
-</div>
-<p>See <code>M09-01a-Globals.ipynb</code> for a demo.</p>
-<p>See <a href="https://realpython.com/python-namespaces-scope/">Namespaces and Scope in Python (Real Python)</a> for a good primer.</p>
-<p>Here is a demonstration of namespaces:</p>
-<div id="2769be84-bc35-4697-a3a8-43b86d83c160" class="cell" data-tags="[]" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> foo():</span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> y <span class="op">=</span> z <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">locals</span>())</span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> bar():</span>
-<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> b <span class="op">=</span> c <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="bu">locals</span>())</span>
-<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>    bar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="a4664b13-441f-4f0d-b93d-ba78ff797768" class="cell" data-tags="[]" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>foo()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>{'x': 1, 'y': 1, 'z': 1}
-{'a': 2, 'b': 2, 'c': 2}</code></pre>
-</div>
-</div>
-<p>What happens if we print <code>globals()</code>?</p>
-</section>
-<section id="how-python-finds-things" class="level2">
-<h2 class="anchored" data-anchor-id="how-python-finds-things">How Python finds things</h2>
-<p>How does Python know where to find modules?</p>
-<p>The interpreter keeps a list of all the places that it looks for modules or packages when you do an import. It is stored in the <code>sys</code> module.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> sys.path:</span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span> p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can edit that list to add or remove paths to let python find modules on a new place.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>sys.path.append(some_local_dir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Remember that every module has a <code>__file__</code> name that points to the path it lives in.</p>
-<p>This lets you add paths relative to where you are, etc.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="ss">f"</span><span class="sc">{</span><span class="va">__file__</span><span class="sc">}</span><span class="ss">/local_module_directory"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="15f55dd8-7c58-40ee-9e3b-3a19b6cf06d8" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="c614e977-a678-4966-a8c0-cd3a4faa809b" class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
-<pre><code>'/Users/rca2t1/Dropbox/Courses/DS/DS5100/repo-book/notebooks/M09_PythonModules'</code></pre>
-</div>
-</div>
-<div id="5a5655e9-8c94-4bd3-b74f-d2625833d3c4" class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>sys.path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="35">
-<pre><code>['/Users/rca2t1/anaconda3/lib/python311.zip',
- '/Users/rca2t1/anaconda3/lib/python3.11',
- '/Users/rca2t1/anaconda3/lib/python3.11/lib-dynload',
- '',
- '/Users/rca2t1/anaconda3/lib/python3.11/site-packages',
- '/Users/rca2t1/anaconda3/lib/python3.11/site-packages/aeosa']</code></pre>
-</div>
-</div>
-<p>To install a package, you need a setup file. This allows you to build a package.</p>
-</section>
-<section id="more-info" class="level2">
-<h2 class="anchored" data-anchor-id="more-info">More Info</h2>
-<p>There is, of course, a lot more to this topic than what’s covered here.</p>
-<p>We’ve covered what you need to know to get started.</p>
-<p>See <a href="https://docs.python.org/3/tutorial/modules.html#packages">the official docs on modules</a> for more depth.</p>
-<p>Discuss the idea of a project directory. The project directory contains the package directories and modules, as well as the setup file and other auxiliary files.</p>
 
 
 </section>
@@ -1511,8 +1401,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../notebooks/M09_PythonModules/M09-01a-Globals.html" class="pagination-link" aria-label="NB: More on Classes and Globals">
-        <span class="nav-page-text"><span class="chapter-title">NB: More on Classes and Globals</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../notebooks/M09_PythonModules/M09-02-Namespaces.html" class="pagination-link" aria-label="NB: Namespaces">
+        <span class="nav-page-text"><span class="chapter-title">NB: Namespaces</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

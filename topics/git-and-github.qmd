@@ -10,7 +10,7 @@ Here are some basic things to know:
 
 2.  **GitHub** is a **company** that offers a cloud-based Git repository hosting **service** that makes it easy to use Git for version control, collaboration, and sharing code. This service is offered through a website.
 
-3.  There are other Git hosting services out there, including **GitLab**, and open source tool that can be installed on a local server.
+3.  There are other Git hosting services out there, including **GitLab**, an open source tool that can be installed on a local server.
 
 4.  **GitHub** (and services like it) builds on top of Git, **adding some functionality** to it, while Git can interact with GitHub through actions like cloning, pushing, and pulling. However,
 

@@ -12,7 +12,7 @@ Here are some basic things to know:
 
 3.  There are other Git hosting services out there, including **GitLab**, an open source tool that can be installed on a local server.
 
-4.  **GitHub** (and services like it) builds on top of Git, **adding some functionality** to it, while Git can interact with GitHub through actions like cloning, pushing, and pulling. However,
+4.  **GitHub** (and services like it) builds on top of Git, **adding some functionality** to it, while Git can interact with GitHub through actions like cloning, pushing, and pulling.
 
     For example, git does not require GitHub to function. **For example, git** **does not have a fork command**. GitHub (and other hosting services such as GitLab) have added this command as a convenient way to copy repositories.
 

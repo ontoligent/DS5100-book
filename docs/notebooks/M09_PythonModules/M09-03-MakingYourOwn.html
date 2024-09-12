@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DS 5100: Programming for Data Science - NB: User Created Packages</title>
+<title>DS 5100: Programming for Data Science - NB: User-Created Packages</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m09/m09-intro.html">M09 Modules</a></li><li class="breadcrumb-item"><a href="../../notebooks/M09_PythonModules/M09-03-MakingYourOwn.html"><span class="chapter-title">NB: User Created Packages</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m09/m09-intro.html">M09 Modules</a></li><li class="breadcrumb-item"><a href="../../notebooks/M09_PythonModules/M09-03-MakingYourOwn.html"><span class="chapter-title">NB: User-Created Packages</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -488,7 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M09_PythonModules/M09-03-MakingYourOwn.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: User Created Packages</span></a>
+  <a href="../../notebooks/M09_PythonModules/M09-03-MakingYourOwn.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: User-Created Packages</span></a>
   </div>
 </li>
       </ul>
@@ -619,10 +619,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#why-build-a-package" id="toc-why-build-a-package" class="nav-link active" data-scroll-target="#why-build-a-package">Why Build a Package?</a></li>
-  <li><a href="#projects" id="toc-projects" class="nav-link" data-scroll-target="#projects">Projects</a>
-  <ul class="collapse">
-  <li><a href="#what-is-a-project" id="toc-what-is-a-project" class="nav-link" data-scroll-target="#what-is-a-project">What is a Project?</a></li>
-  </ul></li>
+  <li><a href="#projects" id="toc-projects" class="nav-link" data-scroll-target="#projects">Projects</a></li>
   <li><a href="#what-does-it-mean-to-build-your-package" id="toc-what-does-it-mean-to-build-your-package" class="nav-link" data-scroll-target="#what-does-it-mean-to-build-your-package">What does it mean to build your package?</a></li>
   <li><a href="#about-setup.py" id="toc-about-setup.py" class="nav-link" data-scroll-target="#about-setup.py">About <code>setup.py</code></a></li>
   <li><a href="#example-setup-files" id="toc-example-setup-files" class="nav-link" data-scroll-target="#example-setup-files">Example Setup Files</a>
@@ -653,9 +650,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m09/m09-intro.html">M09 Modules</a></li><li class="breadcrumb-item"><a href="../../notebooks/M09_PythonModules/M09-03-MakingYourOwn.html"><span class="chapter-title">NB: User Created Packages</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m09/m09-intro.html">M09 Modules</a></li><li class="breadcrumb-item"><a href="../../notebooks/M09_PythonModules/M09-03-MakingYourOwn.html"><span class="chapter-title">NB: User-Created Packages</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">NB: User Created Packages</span></h1>
+<h1 class="title"><span class="chapter-title">NB: User-Created Packages</span></h1>
 </div>
 
 
@@ -674,28 +671,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Programming for Data Science</p>
 <p>Now that we have seen what modules and packages are, let’s create our own.</p>
-<p>But first, let’s pause to take a look at how some other collections of packages, called <strong>libraries</strong>, are structured.</p>
-<p><strong>Some Examples of Packages</strong></p>
-<ul>
-<li>Scikit Learn: <a href="https://github.com/scikit-learn/scikit-learn">Repo</a> | <a href="https://scikit-learn.org/stable/">Site</a> (Structure models code)</li>
-<li>NLTK <a href="https://github.com/nltk/nltk">Repo</a> | <a href="https://www.nltk.org/">Site</a> (Structure models spaghetti)</li>
-<li>SpaCy <a href="https://github.com/explosion/spaCy">Repo</a> | <a href="https://spacy.io/api">Site (API)</a> (Structure kinda models code)</li>
-<li>https://github.com/ontoligent/mazo</li>
-<li>https://github.com/ontoligent-design/polo2</li>
-</ul>
 <section id="why-build-a-package" class="level2">
 <h2 class="anchored" data-anchor-id="why-build-a-package">Why Build a Package?</h2>
-<p>You package code in order to add it to your python system for <strong>general use</strong>, and to <strong>share</strong> it with others.</p>
-<p>It’s also good to have well <strong>organized code</strong>.<br>
-This applies to how to organize your programs internally, and externally as files and directories.</p>
-<p>It’s <strong>easy</strong> to do. There are a bunch of nifty tools that help you build, install and distribute packages.</p>
+<p>You package code in order to add it to your Python system for <strong>general use</strong>, and to <strong>share</strong> it with others (via GitHub or other means).</p>
+<p>It is also a good way to <strong>organize</strong> your code.</p>
+<p>This applies to how to organize your programs internally, and externally as files and directories.</p>
+<p>And it’s <strong>easy</strong> to do.</p>
 </section>
 <section id="projects" class="level2">
 <h2 class="anchored" data-anchor-id="projects">Projects</h2>
-<section id="what-is-a-project" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-a-project">What is a Project?</h3>
-<p>We define a project as an encompassing directory within which to put a package and all the code necessary to actually use it.</p>
-<p>So, a project directory contains <strong>A collection of packages and modules</strong> (python files) along with:</p>
+<p>An important organizational concept when creating packages for installation by other users is the <strong>project</strong>.</p>
+<p>We define a project as an <strong>encompassing directory</strong> within which to put a package and all the code necessary to actually use it.</p>
+<p>So, a project directory contains <strong>a collection of packages and modules</strong> (Python files) along with:</p>
 <ul>
 <li><strong>documentation</strong>, e.g.&nbsp;READMDE files.</li>
 <li><strong>tests</strong>, e.g.&nbsp;unit tests and results.</li>
@@ -705,11 +692,10 @@ This applies to how to organize your programs internally, and externally as file
 </ul>
 <p>The project directory is often a git repo.</p>
 </section>
-</section>
 <section id="what-does-it-mean-to-build-your-package" class="level2">
 <h2 class="anchored" data-anchor-id="what-does-it-mean-to-build-your-package">What does it mean to build your package?</h2>
 <p>To build your own package, you of course need some Python files you want to deploy.</p>
-<p>Then you create the following:</p>
+<p>Then you do the following:</p>
 <ol type="1">
 <li>Create the basic package structure, such as <code>EXAMPLE 3</code> below.</li>
 <li>Write a <code>setup.py</code> using a package tool (see below).</li>
@@ -824,7 +810,7 @@ This applies to how to organize your programs internally, and externally as file
 <section id="directory" class="level3">
 <h3 class="anchored" data-anchor-id="directory">Directory</h3>
 <p>Here is our directory structure:</p>
-<div id="cell-17" class="cell" data-tags="[]" data-execution_count="3">
+<div id="cell-15" class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">-</span>lR demo_package3<span class="op">/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>demo_package3/:
@@ -843,7 +829,7 @@ total 8
 <section id="setup-file" class="level3">
 <h3 class="anchored" data-anchor-id="setup-file">Setup file</h3>
 <p>Here is what out <code>setup.py</code> file has inside:</p>
-<div id="cell-19" class="cell" data-tags="[]" data-execution_count="4">
+<div id="cell-17" class="cell" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">open</span>(<span class="st">'demo_package3/setup.py'</span>, <span class="st">'r'</span>).read())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>from setuptools import setup
@@ -861,7 +847,7 @@ setup(name='funniest',
 </section>
 <section id="init__.py" class="level3">
 <h3 class="anchored" data-anchor-id="init__.py"><code>__init__.py</code></h3>
-<div id="cell-21" class="cell" data-tags="[]" data-execution_count="5">
+<div id="cell-19" class="cell" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">open</span>(<span class="st">'demo_package3/funniest/__init__.py'</span>, <span class="st">'r'</span>).read())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>from . funniest import joke
@@ -872,7 +858,7 @@ print("Have I got a joke for you!")</code></pre>
 </section>
 <section id="funniest.py" class="level3">
 <h3 class="anchored" data-anchor-id="funniest.py"><code>funniest.py</code></h3>
-<div id="cell-23" class="cell" data-tags="[]" data-execution_count="6">
+<div id="cell-21" class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">open</span>(<span class="st">'demo_package3/funniest/funniest.py'</span>, <span class="st">'r'</span>).read())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>def joke():
@@ -884,7 +870,7 @@ print("Have I got a joke for you!")</code></pre>
 </section>
 <section id="install" class="level3">
 <h3 class="anchored" data-anchor-id="install">Install</h3>
-<div id="cell-25" class="cell" data-tags="[]" data-execution_count="7">
+<div id="cell-23" class="cell" data-tags="[]" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cd demo_package3<span class="op">/;</span> pip install .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Defaulting to user installation because normal site-packages is not writeable
@@ -903,10 +889,10 @@ Successfully installed funniest-0.1</code></pre>
 <section id="try-it-out" class="level3">
 <h3 class="anchored" data-anchor-id="try-it-out">Try it out</h3>
 <p>This should be done from a directory other than the one that contains the source files.</p>
-<div id="cell-27" class="cell" data-tags="[]" data-execution_count="10">
+<div id="cell-25" class="cell" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> funniest <span class="im">import</span> joke</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-28" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-tags="[]" data-execution_count="11">
+<div id="cell-26" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>joke()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>'Wenn ist das Nunstück git und Slotermeyer? Ja! ... Beiherhund das Oder die Flipperwaldt gersput.'</code></pre>

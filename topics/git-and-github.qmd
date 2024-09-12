@@ -6,19 +6,17 @@ Git and GitHub are two tools that work together, but it is important to understa
 
 Here are some basic things to know:
 
-1.  **Git** is a **stand-alone** version control system that runs on a variety of platforms, including Linux, MacOS, and Windows.
+1.  [**Git**](https://git-scm.com/) is a **stand-alone** version control system that runs from the command-line on a variety of platforms, including Linux, MacOS, and Windows.
 
-2.  **GitHub** is a **company** that offers a cloud-based Git repository hosting **service** that makes it easy to use Git for version control, collaboration, and sharing code. This service is offered through a website.
+2.  [**GitHub**](https://github.com) is a cloud-based Git repository hosting **service** that makes it easy to use Git for version control, collaboration, and sharing code. This service is offered through a website.
 
 3.  There are other Git hosting services out there, including **GitLab**, an open source tool that can be installed on a local server.
 
-4.  **GitHub** (and services like it) builds on top of Git, **adding some functionality** to it, while Git can interact with GitHub through actions like cloning, pushing, and pulling.
-
-    For example, git does not require GitHub to function. **For example, git** **does not have a fork command**. GitHub (and other hosting services such as GitLab) have added this command as a convenient way to copy repositories.
+4.  **GitHub** (and services like it) builds on top of Git, **adding some functionality** to it, while Git can interact with GitHub through actions like cloning, pushing, and pulling. **For example, Git** **does not have a fork command**. GitHub (and other hosting services such as GitLab) have added this command as a convenient way to copy repositories.
 
 ## Using Git and GitHub Together
 
-In practice, we tend to use Git and GitHub **together**.
+In practice, although Git does not require GitHub, we tend to use Git and GitHub **together**.
 
 We use **Git** to perform **version** **control** on our code, and we use **GitHub** to **share** code and to **collaborate** on coding projects.
 
@@ -27,7 +25,7 @@ When we use Git and GitHub together, we typically follow **patterns**.
 For **example**, a basic series of actions one continually makes with Git are the following:
 
 | Action             | Description                                                                                                                                                                                                                 | Command                                                                                                                                                                                                                                     |
-|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|--------------|----------------------------|------------------------------|
 | **Fork**           | Forking a repo makes a copy of someone else's repo in your GitHub account, which you can now modify. Note: Forking does not have to be performed if you are not interested in altering the code. You can clone it directly. | This is done through GitHub's web interface by clicking on the Fork button.                                                                                                                                                                 |
 | **Clone**          | Cloning the repo to a workspace to which you have access, whether a local machine or a remote resource (e.g. Rivanna).                                                                                                      | `git clone <repo>`                                                                                                                                                                                                                          |
 | **Add**            | Creating or editing a file locally and then adding it to the list of files git will keep track of.                                                                                                                          | `git add <filename>`<br>Note that you may use wildcards here, e.g. \*, to add more than one file at a time.                                                                                                                                 |
@@ -45,11 +43,11 @@ Here is a visualization of the process:
 
 ![Diagram of common git workflow](../media/git-process.png)
 
-In this diagram, the dashed lines refer to actions performed only once for a give repo.
+In this diagram, the dashed lines refer to actions performed only once for a given repo.
 
-**Forking** and **cloning** are done to acquire a repo.
+**Forking** and **cloning** are done once to acquire a repo.
 
-**Fetch** upstream (aka sync fork) and **pull** requests on the GitHub server.
+**Fetch** upstream (aka sync fork) and **pull** requests take place on the GitHub server.
 
 **Pull** and **push** on your local machine are done repeatedly as you develop and share code.
 
@@ -59,7 +57,7 @@ In any case, note that these two copies of the same repo do not communicate with
 
 ## To Learn More
 
-The Git website has excellent learning materials. Use the following links to access vides and
+The Git website has excellent learning materials. Use the following links to access videos and tutorials:
 
 -   [Videos](https://git-scm.com/videos)
 -   [Book](https://git-scm.com/book/en/v2)

@@ -221,7 +221,7 @@
     "href": "topics/git-and-github.html#introduction",
     "title": "Git and GitHub",
     "section": "",
-    "text": "Git is a stand-alone version control system that runs on a variety of platforms, including Linux, MacOS, and Windows.\nGitHub is a company that offers a cloud-based Git repository hosting service that makes it easy to use Git for version control, collaboration, and sharing code. This service is offered through a website.\nThere are other Git hosting services out there, including GitLab, an open source tool that can be installed on a local server.\nGitHub (and services like it) builds on top of Git, adding some functionality to it, while Git can interact with GitHub through actions like cloning, pushing, and pulling.\nFor example, git does not require GitHub to function. For example, git does not have a fork command. GitHub (and other hosting services such as GitLab) have added this command as a convenient way to copy repositories.",
+    "text": "Git is a stand-alone version control system that runs from the command-line on a variety of platforms, including Linux, MacOS, and Windows.\nGitHub is a cloud-based Git repository hosting service that makes it easy to use Git for version control, collaboration, and sharing code. This service is offered through a website.\nThere are other Git hosting services out there, including GitLab, an open source tool that can be installed on a local server.\nGitHub (and services like it) builds on top of Git, adding some functionality to it, while Git can interact with GitHub through actions like cloning, pushing, and pulling. For example, Git does not have a fork command. GitHub (and other hosting services such as GitLab) have added this command as a convenient way to copy repositories.",
     "crumbs": [
       "M01 Getting Started",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Git and GitHub</span>"
@@ -232,7 +232,7 @@
     "href": "topics/git-and-github.html#using-git-and-github-together",
     "title": "Git and GitHub",
     "section": "Using Git and GitHub Together",
-    "text": "Using Git and GitHub Together\nIn practice, we tend to use Git and GitHub together.\nWe use Git to perform version control on our code, and we use GitHub to share code and to collaborate on coding projects.\nWhen we use Git and GitHub together, we typically follow patterns.\nFor example, a basic series of actions one continually makes with Git are the following:\n\n\n\nAction\nDescription\nCommand\n\n\n\n\nFork\nForking a repo makes a copy of someone else’s repo in your GitHub account, which you can now modify. Note: Forking does not have to be performed if you are not interested in altering the code. You can clone it directly.\nThis is done through GitHub’s web interface by clicking on the Fork button.\n\n\nClone\nCloning the repo to a workspace to which you have access, whether a local machine or a remote resource (e.g. Rivanna).\ngit clone &lt;repo&gt;\n\n\nAdd\nCreating or editing a file locally and then adding it to the list of files git will keep track of.\ngit add &lt;filename&gt;Note that you may use wildcards here, e.g. *, to add more than one file at a time.\n\n\nCommit\nCommitting the changes made to the file by adding them to the repo’s database of changes. This is accompanied by a brief, descriptive message of the changes made.\ngit commit -m \"What you did\"\n\n\nPush\nPushing the changes to the remote repo that you cloned from. This uploads both the files and the database changes to the repo.\ngit push\n\n\nPull\nPulling, i.e. downloading, any changes that have been made to the remote repo to your local repo. This usually happens if you are working in teams on the same project.\ngit pull\n\n\nPull Request\nThis is a request made to the owner of the original repo to pull in the changes you’ve made to your forked copy.\nThis is done through GitHub’s web interface. Read the docs. \n\n\nFetch Upstream\nThis refreshes the content of your forked repo with the content from the original repo.\nThis is done through GitHub’s web interface. Read the docs. \n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThis is not the only pattern to use with Git. Here is another — the Git Fork-Branch-Pull Workflow\n\n\nHere is a visualization of the process:\n\n\n\nDiagram of common git workflow\n\n\nIn this diagram, the dashed lines refer to actions performed only once for a give repo.\nForking and cloning are done to acquire a repo.\nFetch upstream (aka sync fork) and pull requests on the GitHub server.\nPull and push on your local machine are done repeatedly as you develop and share code.\nNote that the here the expression “remote workstation” may be confusing; it means remote relative to your laptop, e.g. Rivanna, which we sometimes call local relative to the GitHub repo.\nIn any case, note that these two copies of the same repo do not communicate with each other directly, but rather through their common relationship with the GitHub hosted instance of the repo.",
+    "text": "Using Git and GitHub Together\nIn practice, although Git does not require GitHub, we tend to use Git and GitHub together.\nWe use Git to perform version control on our code, and we use GitHub to share code and to collaborate on coding projects.\nWhen we use Git and GitHub together, we typically follow patterns.\nFor example, a basic series of actions one continually makes with Git are the following:\n\n\n\nAction\nDescription\nCommand\n\n\n\n\nFork\nForking a repo makes a copy of someone else’s repo in your GitHub account, which you can now modify. Note: Forking does not have to be performed if you are not interested in altering the code. You can clone it directly.\nThis is done through GitHub’s web interface by clicking on the Fork button.\n\n\nClone\nCloning the repo to a workspace to which you have access, whether a local machine or a remote resource (e.g. Rivanna).\ngit clone &lt;repo&gt;\n\n\nAdd\nCreating or editing a file locally and then adding it to the list of files git will keep track of.\ngit add &lt;filename&gt;Note that you may use wildcards here, e.g. *, to add more than one file at a time.\n\n\nCommit\nCommitting the changes made to the file by adding them to the repo’s database of changes. This is accompanied by a brief, descriptive message of the changes made.\ngit commit -m \"What you did\"\n\n\nPush\nPushing the changes to the remote repo that you cloned from. This uploads both the files and the database changes to the repo.\ngit push\n\n\nPull\nPulling, i.e. downloading, any changes that have been made to the remote repo to your local repo. This usually happens if you are working in teams on the same project.\ngit pull\n\n\nPull Request\nThis is a request made to the owner of the original repo to pull in the changes you’ve made to your forked copy.\nThis is done through GitHub’s web interface. Read the docs. \n\n\nFetch Upstream\nThis refreshes the content of your forked repo with the content from the original repo.\nThis is done through GitHub’s web interface. Read the docs. \n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThis is not the only pattern to use with Git. Here is another — the Git Fork-Branch-Pull Workflow\n\n\nHere is a visualization of the process:\n\n\n\nDiagram of common git workflow\n\n\nIn this diagram, the dashed lines refer to actions performed only once for a given repo.\nForking and cloning are done once to acquire a repo.\nFetch upstream (aka sync fork) and pull requests take place on the GitHub server.\nPull and push on your local machine are done repeatedly as you develop and share code.\nNote that the here the expression “remote workstation” may be confusing; it means remote relative to your laptop, e.g. Rivanna, which we sometimes call local relative to the GitHub repo.\nIn any case, note that these two copies of the same repo do not communicate with each other directly, but rather through their common relationship with the GitHub hosted instance of the repo.",
     "crumbs": [
       "M01 Getting Started",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Git and GitHub</span>"
@@ -243,7 +243,7 @@
     "href": "topics/git-and-github.html#to-learn-more",
     "title": "Git and GitHub",
     "section": "To Learn More",
-    "text": "To Learn More\nThe Git website has excellent learning materials. Use the following links to access vides and\n\nVideos\nBook\n\n\n\n\nXKCD #1597\n\n\nSource",
+    "text": "To Learn More\nThe Git website has excellent learning materials. Use the following links to access videos and tutorials:\n\nVideos\nBook\n\n\n\n\nXKCD #1597\n\n\nSource",
     "crumbs": [
       "M01 Getting Started",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Git and GitHub</span>"
@@ -4021,11 +4021,11 @@
     ]
   },
   {
-    "objectID": "notebooks/M09_PythonModules/M09-01-ModulesAndPackages.html#examples",
-    "href": "notebooks/M09_PythonModules/M09-01-ModulesAndPackages.html#examples",
+    "objectID": "notebooks/M09_PythonModules/M09-01-ModulesAndPackages.html#example",
+    "href": "notebooks/M09_PythonModules/M09-01-ModulesAndPackages.html#example",
     "title": "NB: Modules and Packages",
-    "section": "Examples",
-    "text": "Examples\nLet’s look at an example with actual files.\n\n!ls -l demo_package1/\n\ntotal 12\n-rw------- 1 rca2t users   0 May  8 15:36 __init__.py\n-rw------- 1 rca2t users  49 May  8 15:36 module1.py\ndrwx--S--- 2 rca2t users 512 Sep  9 09:23 __pycache__\n\n\n\n!more demo_package1/__init__.py\n\n\n!more demo_package1/module1.py\n\ndef welcome1():\n    print(\"Hi, I'm from Demo 1!\")\n\n\nWe import the package …\n\nimport demo_package1\n\nBut cannot access the module.\n\ndemo_package1.module1\n\n&lt;module 'demo_package1.module1' from '/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M09_PythonModules/demo_package1/module1.py'&gt;\n\n\nTo access the module in the package directory, we have to specify it in the import path:\n\nimport demo_package1.module1\n\n\ndemo_package1.module1\n\n&lt;module 'demo_package1.module1' from '/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M09_PythonModules/demo_package1/module1.py'&gt;\n\n\nNow we have it in memory and can access its attributes.\n\ndemo_package1.module1.welcome1()\n\nHi, I'm from Demo 1!",
+    "section": "Example",
+    "text": "Example\nLet’s look at an example with actual files.\n\n!ls -l demo_package1/\n\ntotal 8\n-rw------- 1 rca2t users  0 May  8 15:36 __init__.py\n-rw------- 1 rca2t users 49 May  8 15:36 module1.py\n\n\n\n!more demo_package1/__init__.py\n\n\n!more demo_package1/module1.py\n\ndef welcome1():\n    print(\"Hi, I'm from Demo 1!\")\n\n\nWe import the package …\n\nimport demo_package1\n\nBut cannot access the module.\n\ndemo_package1.module1\n\nAttributeError: module 'demo_package1' has no attribute 'module1'\n\n\nTo access the module in the package directory, we have to specify it in the import path:\n\nimport demo_package1.module1\n\n\ndemo_package1.module1\n\n&lt;module 'demo_package1.module1' from '/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M09_PythonModules/demo_package1/module1.py'&gt;\n\n\nNow we have it in memory and can access its attributes.\n\ndemo_package1.module1.welcome1()\n\nHi, I'm from Demo 1!",
     "crumbs": [
       "M09 Modules",
       "<span class='chapter-number'>46</span>  <span class='chapter-title'>NB: Modules and Packages</span>"
@@ -4080,18 +4080,18 @@
     "href": "notebooks/M09_PythonModules/M09-02-Namespaces.html",
     "title": "NB: Namespaces and Paths",
     "section": "",
-    "text": "Namespaces\nYou can see that a python module acts as a unit for organizing a collection of elements or attributes:\nAll of these things are accessed by the formula:\nThe module name in this formula defines the namespace for the attributes it contains.\nSo, a namespace holds a collection of currently defined names being used by a program.\nYou can think of it as something like a Python dictionary.\nThe keys are the module or package names and the values are the attribures contained by them.\nIt’s a way of making sure variable and function names do not collide or get confused with each other.\nSo, two functions with the same name from different modules can be used in the same program if they are called with their namespaces:",
+    "text": "What is a Namespace?\nYou can see that a python module acts as a unit for organizing a collection of elements or attributes:\nAll of these things are accessed by the formula:\nThe module name in this formula defines the namespace for the attributes it contains.\nSo, a namespace holds a collection of currently defined names being used by a program.\nYou can think of it as something like a Python dictionary.\nThe keys are the module or package names and the values are the attribures contained by them.\nIt’s a way of making sure variable and function names do not collide or get confused with each other.\nSo, two functions with the same name from different modules can be used in the same program if they are called with their namespaces:",
     "crumbs": [
       "M09 Modules",
       "<span class='chapter-number'>47</span>  <span class='chapter-title'>NB: Namespaces and Paths</span>"
     ]
   },
   {
-    "objectID": "notebooks/M09_PythonModules/M09-02-Namespaces.html#namespaces",
-    "href": "notebooks/M09_PythonModules/M09-02-Namespaces.html#namespaces",
+    "objectID": "notebooks/M09_PythonModules/M09-02-Namespaces.html#what-is-a-namespace",
+    "href": "notebooks/M09_PythonModules/M09-02-Namespaces.html#what-is-a-namespace",
     "title": "NB: Namespaces and Paths",
     "section": "",
-    "text": "functions\nconstants\nclasses\netc.\n\n\nmodule.attribute\n\n\n\n\n\n\nmodule1.my_function()\nmodule1.my_function()",
+    "text": "functions\nconstants\nclasses\netc.\n\n\nmodule.attribute\n\n\n\n\n\n\nmodule1.my_function()\nmodule2.my_function()",
     "crumbs": [
       "M09 Modules",
       "<span class='chapter-number'>47</span>  <span class='chapter-title'>NB: Namespaces and Paths</span>"
@@ -4112,8 +4112,8 @@
     "objectID": "notebooks/M09_PythonModules/M09-02-Namespaces.html#how-python-finds-things",
     "href": "notebooks/M09_PythonModules/M09-02-Namespaces.html#how-python-finds-things",
     "title": "NB: Namespaces and Paths",
-    "section": "How Python finds things",
-    "text": "How Python finds things\nHow does Python know where to find modules?\nThe interpreter keeps a list of places that it looks for modules or packages when you do an import.\nYou can access this list from the path attribute in the sys module.\n\nimport sys\n\nsys.path\n\n['/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M09_PythonModules',\n '/apps/software/standard/core/jupyterlab/3.6.3-py3.11/lib/python311.zip',\n '/apps/software/standard/core/jupyterlab/3.6.3-py3.11/lib/python3.11',\n '/apps/software/standard/core/jupyterlab/3.6.3-py3.11/lib/python3.11/lib-dynload',\n '',\n '/home/rca2t/.local/lib/python3.11/site-packages',\n '/apps/software/standard/core/jupyterlab/3.6.3-py3.11/lib/python3.11/site-packages']\n\n\nYou can edit that list to add or remove paths to let python find modules on a new place.\nsys.path.append(some_local_dir)",
+    "section": "How Python Finds Things",
+    "text": "How Python Finds Things\nHow does Python know where to find modules?\nThe interpreter keeps a list of places that it looks for modules or packages when you do an import.\nYou can access this list from the path attribute in the sys module.\n\nimport sys\n\nsys.path\n\n['/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M09_PythonModules',\n '/apps/software/standard/core/jupyterlab/3.6.3-py3.11/lib/python311.zip',\n '/apps/software/standard/core/jupyterlab/3.6.3-py3.11/lib/python3.11',\n '/apps/software/standard/core/jupyterlab/3.6.3-py3.11/lib/python3.11/lib-dynload',\n '',\n '/home/rca2t/.local/lib/python3.11/site-packages',\n '/apps/software/standard/core/jupyterlab/3.6.3-py3.11/lib/python3.11/site-packages']\n\n\nYou can edit that list to add or remove paths to let python find modules on a new place.\nsys.path.append(some_local_dir)",
     "crumbs": [
       "M09 Modules",
       "<span class='chapter-number'>47</span>  <span class='chapter-title'>NB: Namespaces and Paths</span>"
@@ -4124,7 +4124,7 @@
     "href": "notebooks/M09_PythonModules/M09-02-Namespaces.html#relative-vs-absolute-paths",
     "title": "NB: Namespaces and Paths",
     "section": "Relative vs Absolute Paths",
-    "text": "Relative vs Absolute Paths\nYou will sometimes see a dot . used in the import statements found in package intitialization files.\nIt is used in the context of a from statement.\nFor example:\nfrom . import funniest\nor\nfrom .funniest import joke\nThe dot is used to create relative path names to packages and modules.\nThis is in contrast to absolute path names, which is how Python accesses things by default.\nWith absolute path names, Python will interpret package and module paths from the perspective of the proejct directory\nThe project directory of the file that is importing the module, sometimes called the main file.\nWhen you are just importing a module that is in your directory, the project directory is the directory of your script.\nWhen you are importing a module that has been installed using setup.py, the project directory is the directory that contains the setup file.\nWe’ll look at setup files in another notebook.\nWith relative path names, when you import modules in an __init__.py file within a package directory, the dot . refers to the current package or module’s namespace, not the calling file’s.\nFor example, consider a package structure like this:\nmyproject/\n    main.py\n    mypackage/\n        __init__.py\n        module1.py\n        module2.py\nImagine that main.py is your program, and inside of it you want to import the modules in mypackage to do some things.\nAlso imagine that __init__.py contains an import statement to pre-import module1 and module2:\nfrom mypackage import moudle1, module2\nSo, you might do this from main.py:\nimport mypackage as mp\n\nmp.module1.function1()\nNow, when myproject is imported into main, the path in __init__.py is interpreted from the perspective of the calling module, i.e. main.py.\nThis is why even though __init__.py is inside of mypackage, it will include mypackage in the import path, as if mypackage were below the directory that contains __init__.py.\nTo override this behavior, and have __init__.py use paths relative to itself, you can use a dot . to stand for the current directory.\nSo, if you import module1 using a relative import with a dot ., it would look like this:\nfrom . import module1, module2\nThis will probably not make much sense to you now.\nWe will learn more about paths when we go over creating your own packages.",
+    "text": "Relative vs Absolute Paths\nYou will sometimes see a dot . used in the import statements found in package intitialization files.\nIt is used in the context of a from statement.\nFor example:\nfrom . import funniest\nor\nfrom .funniest import joke\nThe dot is used to create relative path names to packages and modules.\nThis is in contrast to absolute path names, which is how Python accesses things by default.\nWith absolute path names, Python will interpret package and module paths from the perspective of the project directory.\nThe project directory contains the file that is importing the module, sometimes called the main file.\nWhen you are just importing a module that is in your directory, the project directory is the directory of your script.\nWhen you are importing a module that has been installed using setup.py, the project directory is the directory that contains the setup file.\nWe’ll look at setup files in another notebook.\nWith relative path names, when you import modules in an __init__.py file within a package directory, the dot . refers to the current package or module’s namespace, not the calling file’s.\nFor example, consider a package structure like this:\nmyproject/\n    main.py\n    mypackage/\n        __init__.py\n        module1.py\n        module2.py\nImagine that main.py is your program, and inside of it you want to import the modules in mypackage to do some things.\nAlso imagine that __init__.py contains an import statement to pre-import module1 and module2:\nfrom mypackage import moudle1, module2\nSo, you might do this from main.py:\nimport mypackage as mp\n\nmp.module1.function1()\nNow, when myproject is imported into main, the path in __init__.py is interpreted from the perspective of the calling module, i.e. main.py.\nThis is why even though __init__.py is inside of mypackage, it will include mypackage in the import path, as if mypackage were below the directory that contains __init__.py.\nTo override this behavior, and have __init__.py use paths relative to itself, you can use a dot . to stand for the current directory.\nSo, if you import module1 using a relative import with a dot ., it would look like this:\nfrom . import module1, module2\nThis will probably not make much sense to you now.\nWe will learn more about paths when we go over creating your own packages.",
     "crumbs": [
       "M09 Modules",
       "<span class='chapter-number'>47</span>  <span class='chapter-title'>NB: Namespaces and Paths</span>"
@@ -4133,111 +4133,111 @@
   {
     "objectID": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html",
     "href": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html",
-    "title": "NB: User Created Packages",
+    "title": "NB: User-Created Packages",
     "section": "",
-    "text": "Why Build a Package?\nYou package code in order to add it to your python system for general use, and to share it with others.\nIt’s also good to have well organized code.\nThis applies to how to organize your programs internally, and externally as files and directories.\nIt’s easy to do. There are a bunch of nifty tools that help you build, install and distribute packages.",
+    "text": "Why Build a Package?\nYou package code in order to add it to your Python system for general use, and to share it with others (via GitHub or other means).\nIt is also a good way to organize your code.\nThis applies to how to organize your programs internally, and externally as files and directories.\nAnd it’s easy to do.",
     "crumbs": [
       "M09 Modules",
-      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User Created Packages</span>"
+      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User-Created Packages</span>"
     ]
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#projects",
     "href": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#projects",
-    "title": "NB: User Created Packages",
+    "title": "NB: User-Created Packages",
     "section": "Projects",
-    "text": "Projects\n\nWhat is a Project?\nWe define a project as an encompassing directory within which to put a package and all the code necessary to actually use it.\nSo, a project directory contains A collection of packages and modules (python files) along with:\n\ndocumentation, e.g. READMDE files.\ntests, e.g. unit tests and results.\nany top-level scripts, e.g. the Scenario notebooks for your final project.\nany data files required.\ninstructions and scripts to build and install the code.\n\nThe project directory is often a git repo.",
+    "text": "Projects\nAn important organizational concept when creating packages for installation by other users is the project.\nWe define a project as an encompassing directory within which to put a package and all the code necessary to actually use it.\nSo, a project directory contains a collection of packages and modules (Python files) along with:\n\ndocumentation, e.g. READMDE files.\ntests, e.g. unit tests and results.\nany top-level scripts, e.g. the Scenario notebooks for your final project.\nany data files required.\ninstructions and scripts to build and install the code.\n\nThe project directory is often a git repo.",
     "crumbs": [
       "M09 Modules",
-      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User Created Packages</span>"
+      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User-Created Packages</span>"
     ]
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#what-does-it-mean-to-build-your-package",
     "href": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#what-does-it-mean-to-build-your-package",
-    "title": "NB: User Created Packages",
+    "title": "NB: User-Created Packages",
     "section": "What does it mean to build your package?",
-    "text": "What does it mean to build your package?\nTo build your own package, you of course need some Python files you want to deploy.\nThen you create the following:\n\nCreate the basic package structure, such as EXAMPLE 3 below.\nWrite a setup.py using a package tool (see below).\n\n## EXAMPLE 3\n\na_package_dir\n    __init__.py\n    module_a.py\ntests\n    ...\nsetup.py # Or pyproject.toml \nThis will be contained by a project directory.",
+    "text": "What does it mean to build your package?\nTo build your own package, you of course need some Python files you want to deploy.\nThen you do the following:\n\nCreate the basic package structure, such as EXAMPLE 3 below.\nWrite a setup.py using a package tool (see below).\n\n## EXAMPLE 3\n\na_package_dir\n    __init__.py\n    module_a.py\ntests\n    ...\nsetup.py # Or pyproject.toml \nThis will be contained by a project directory.",
     "crumbs": [
       "M09 Modules",
-      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User Created Packages</span>"
+      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User-Created Packages</span>"
     ]
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#about-setup.py",
     "href": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#about-setup.py",
-    "title": "NB: User Created Packages",
+    "title": "NB: User-Created Packages",
     "section": "About setup.py",
     "text": "About setup.py\nYour setup.py file describes your package, and tells the packaging tool how to package, build, and install it.\nIt is Python code, so you can add anything custom you need to it.\nIn the simple case, it is basically a configuration files with keys and values.\nWhat does setup.py contain?\n\nVersion & package metadata\nList of packages to include\nList of other files to include\nList of dependencies\nList of extensions to be compiled\n\nAbout pyproject.toml\nFor a lot reasons that beyond the scope of this document, setup.py is being superceded by the use of pyproject.toml files to store setup configuration information.\nHowever, for now we’re going to stick to the old school approach.",
     "crumbs": [
       "M09 Modules",
-      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User Created Packages</span>"
+      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User-Created Packages</span>"
     ]
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#example-setup-files",
     "href": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#example-setup-files",
-    "title": "NB: User Created Packages",
+    "title": "NB: User-Created Packages",
     "section": "Example Setup Files",
     "text": "Example Setup Files\n\nExample 1\nfrom distutils.core import setup\n\nsetup(name='mypkg',\n      version='1.0',\n      \n      # list folders, not files\n      packages=['mypkg', 'mypkg.subpkg'], # Include packages in the project\n      install_requires=['click']          # Required libraries\n)\n\n\nExample 2\nfrom setuptools import setup, find_packages\n\nsetup(\n    name='MyPackageName',\n    version='1.0.0',\n    url='https://github.com/mypackage.git',\n    author='Author Name',\n    author_email='author@gmail.com',\n    description='Description of my package',\n    packages=find_packages(),    \n    install_requires=['numpy &gt;= 1.11.1', 'matplotlib &gt;= 1.5.1']\n)\n\n\nExample 3\nfrom setuptools import setup\n\nsetup(\n    name = 'PackageName',\n    version = '0.1.0',\n    author = 'An Awesome Coder',\n    author_email = 'aac@example.com',\n    packages = ['package_name', 'package_name.test'],\n    scripts = ['bin/script1','bin/script2'],\n    url = 'http://pypi.python.org/pypi/PackageName/',\n    license = 'LICENSE.txt',\n    description = 'An awesome package that does something',\n    long_description = open('README.txt').read(),\n    install_requires = [\n        \"Django &gt;= 1.1.1\",\n        \"pytest\",\n    ]\n)",
     "crumbs": [
       "M09 Modules",
-      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User Created Packages</span>"
+      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User-Created Packages</span>"
     ]
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#a-summary-of-keys",
     "href": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#a-summary-of-keys",
-    "title": "NB: User Created Packages",
+    "title": "NB: User-Created Packages",
     "section": "A Summary of Keys",
     "text": "A Summary of Keys\nAs mentioned about, the main content of basic setup files is configuraton information. The keys that you should include in your projects are the following:\n\nname: A string of the package name as title, not a filename.\nversion: A string of the version number expression, typically using the MAJOR.MINOR.PATCH pattern. See Semantic Versioning for more information.\nauthor: A string with the creator’s name.\nauthor_email: A string with the creator’s email address.\npackages: A list of strings of package directories in the project.\nurl: A string of the URL to the code repo.\nlicense: A string of the license file name.\ndescription: A string with a short blurb of the project.\nlong_description: A link to a longer description. Can do something like open('README.txt').read().\ninstall_requires: A list of strings of external libraries that the project requires.\n\n\nPython packaging tools\nIn writing setup.py, you need to use a packaging tool.\nNotice that we’ve imported the setuptools library.\n\nThe package tool distutils is included with Python, but it is not recommended.\nInstead, use setuptools, a third party tool that extends distutils and is used in most modern Python installations.",
     "crumbs": [
       "M09 Modules",
-      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User Created Packages</span>"
+      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User-Created Packages</span>"
     ]
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#quick-demo",
     "href": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#quick-demo",
-    "title": "NB: User Created Packages",
+    "title": "NB: User-Created Packages",
     "section": "Quick Demo",
     "text": "Quick Demo\nSo, let’s look at a simple package.\nSource: Minimal Structure (python-packaging)\n\nDirectory\nHere is our directory structure:\n\n!ls -lR demo_package3/\n\ndemo_package3/:\ntotal 12\ndrwx--S--- 2 rca2t users 1024 May  8 15:36 funniest\n-rw------- 1 rca2t users  301 May  8 15:36 setup.py\n-rw------- 1 rca2t users    0 May  8 15:36 test.py\n\ndemo_package3/funniest:\ntotal 8\n-rw------- 1 rca2t users 197 May  8 15:36 funniest.py\n-rw------- 1 rca2t users  64 May  8 15:36 __init__.py\n\n\n\n\nSetup file\nHere is what out setup.py file has inside:\n\nprint(open('demo_package3/setup.py', 'r').read())\n\nfrom setuptools import setup\n\nsetup(name='funniest',\n      version='0.1',\n      description='The funniest joke in the world',\n      url='http://github.com/storborg/funniest',\n      author='Flying Circus',\n      author_email='flyingcircus@example.com',\n      license='MIT',\n      packages=['funniest'])\n\n\n\n\n__init__.py\n\nprint(open('demo_package3/funniest/__init__.py', 'r').read())\n\nfrom . funniest import joke\n\nprint(\"Have I got a joke for you!\")\n\n\n\n\nfunniest.py\n\nprint(open('demo_package3/funniest/funniest.py', 'r').read())\n\ndef joke():\n    \"This function just tells a joke. Or tries to.\"\n    return (u'Wenn ist das Nunst\\u00fcck git und Slotermeyer? Ja! ... '\n            u'Beiherhund das Oder die Flipperwaldt gersput.')\n\n\n\n\nInstall\n\n!cd demo_package3/; pip install .\n\nDefaulting to user installation because normal site-packages is not writeable\nProcessing /sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M09_PythonModules/demo_package3\n  Preparing metadata (setup.py) ... done\nBuilding wheels for collected packages: funniest\n  Building wheel for funniest (setup.py) ... done\n  Created wheel for funniest: filename=funniest-0.1-py3-none-any.whl size=1569 sha256=c3829948b6683f573d78df49d933ae95e47f32d59e0d536bfd96ae9b3c7f746a\n  Stored in directory: /tmp/pip-ephem-wheel-cache-ajl4pgec/wheels/7a/bf/b4/a80ff477ce7f61df01ebc8eacffd6f8c08035d70d16a6e68e4\nSuccessfully built funniest\nInstalling collected packages: funniest\nSuccessfully installed funniest-0.1\n\n\n\n\nTry it out\nThis should be done from a directory other than the one that contains the source files.\n\nfrom funniest import joke\n\n\njoke()\n\n'Wenn ist das Nunstück git und Slotermeyer? Ja! ... Beiherhund das Oder die Flipperwaldt gersput.'",
     "crumbs": [
       "M09 Modules",
-      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User Created Packages</span>"
+      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User-Created Packages</span>"
     ]
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#many-ways-to-install",
     "href": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#many-ways-to-install",
-    "title": "NB: User Created Packages",
+    "title": "NB: User-Created Packages",
     "section": "Many Ways to Install",
     "text": "Many Ways to Install\nRunning setup.py directly with python\npython setup.py sdist   # Builds a source distribution as tar archie\npython setup.py build   # Builds from source\npython setup.py install # Installs to Python\npython setup.py develop # Installs in develop mode (changes are immediately reflected)\nUsing pip\npip install .    # Installs to Python\npip install -e . # To create symlink, so you can keep working on the code (develop mode)",
     "crumbs": [
       "M09 Modules",
-      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User Created Packages</span>"
+      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User-Created Packages</span>"
     ]
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#testing-code",
     "href": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#testing-code",
-    "title": "NB: User Created Packages",
+    "title": "NB: User-Created Packages",
     "section": "Testing Code",
     "text": "Testing Code\nAs you work, you will want to write tests and put them somewhere. A good idea is to put your tests in the root of the project directory. There are other options and approaches though, some of which are covered in the resource below.\nSee Where to Put Tests?.",
     "crumbs": [
       "M09 Modules",
-      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User Created Packages</span>"
+      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User-Created Packages</span>"
     ]
   },
   {
     "objectID": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#a-more-complex-project-structure",
     "href": "notebooks/M09_PythonModules/M09-03-MakingYourOwn.html#a-more-complex-project-structure",
-    "title": "NB: User Created Packages",
+    "title": "NB: User-Created Packages",
     "section": "A More Complex Project Structure",
     "text": "A More Complex Project Structure\nproject_name/\n    bin/\n    CHANGES.txt\n    docs/\n    LICENSE.txt\n    MANIFEST.in\n    README.txt\n    setup.py\n    test_module_1.py\n    test_module2.py      \n    package_name/\n        __init__.py\n        module1.py\n        module2.py\n\nCHANGES.txt: log of changes with each release\nLICENSE.txt: text of the license you choose (do choose one!)\nMANIFEST.in: description of what non-code files to include\nREADME.txt: description of the package should be written in ReST or Markdown (for PyPi):\nsetup.py: the script for building/installing package.\nbin/: This is where you put top-level scripts (some folks use scripts)\ndocs/: the documentation\npackage_name/: The main package this is where the code goes.\ntest/: your unit tests. Options here:",
     "crumbs": [
       "M09 Modules",
-      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User Created Packages</span>"
+      "<span class='chapter-number'>48</span>  <span class='chapter-title'>NB: User-Created Packages</span>"
     ]
   },
   {

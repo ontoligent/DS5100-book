@@ -100,8 +100,12 @@ book:
         # - modules/m09/m09-review.qmd
     - part: modules/m10/m10-intro.qmd # "10 Basic R"
       chapters: 
-        - notebooks/M10_RBasics/M10-01-DataTypesAndStructures.qmd
-        - notebooks/M10_RBasics/M10-02-ControlStructuresAndFunctions.qmd
+        - notebooks/M10_RBasics/M10-01-Intro.ipynb
+        - notebooks/M10_RBasics/M10-02-DataTypes.ipynb
+        - notebooks/M10_RBasics/M10-03-DataStructures.ipynb
+        - notebooks/M10_RBasics/M10-04-DataFrames.ipynb
+        - notebooks/M10_RBasics/M10-05-ControlStructures.ipynb
+        - notebooks/M10_RBasics/M10-06-Functions.ipynb
         
     - part: modules/m11/m11-intro.qmd # "11 Dplyr"
       chapters: 

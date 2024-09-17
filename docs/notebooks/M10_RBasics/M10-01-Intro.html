@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,9 +102,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -512,7 +509,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Data Types</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Data Types and Operators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -527,12 +524,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-05-ControlStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Control Structures and Functions</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-05-ControlStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Control Structures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-06-Functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Functions</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-06-Functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Functions</span></a>
   </div>
 </li>
       </ul>
@@ -646,9 +643,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#rs-design" id="toc-rs-design" class="nav-link" data-scroll-target="#rs-design">R’s Design</a></li>
   <li><a href="#r-syntax" id="toc-r-syntax" class="nav-link" data-scroll-target="#r-syntax">R Syntax</a></li>
   <li><a href="#using-r" id="toc-using-r" class="nav-link" data-scroll-target="#using-r">Using R</a></li>
-  <li><a href="#working-directory" id="toc-working-directory" class="nav-link" data-scroll-target="#working-directory">Working Directory</a></li>
+  <li><a href="#command-line-r" id="toc-command-line-r" class="nav-link" data-scroll-target="#command-line-r">Command Line R</a></li>
   <li><a href="#installing-and-loading-packages" id="toc-installing-and-loading-packages" class="nav-link" data-scroll-target="#installing-and-loading-packages">Installing and Loading Packages</a></li>
-  <li><a href="#installing-an-r-kernel" id="toc-installing-an-r-kernel" class="nav-link" data-scroll-target="#installing-an-r-kernel">Installing an R Kernel</a></li>
+  <li><a href="#using-r-in-jupyter" id="toc-using-r-in-jupyter" class="nav-link" data-scroll-target="#using-r-in-jupyter">Using R in Jupyter</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M10_RBasics/M10-01-Intro.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -674,125 +671,96 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>Programming for Data Science</p>
 <section id="what-is-r" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-r">What is R?</h2>
-<p>We have been studying Python as a data processing language from the perspective of data science. But <strong>R is in many ways the original data science language</strong>.</p>
-<p>It was built from the beginning by and for data analysts, statisticians, and scientists.</p>
-<p>Note, however, the R was <em>not</em> built by and for data miners, who compose a large segment of the data science community.</p>
+<p>R is an open source programming language developed in the 1990s <strong>by and for statisticians</strong>.</p>
+<p>It was based on <strong>the earlier langauge S</strong>, first developed at Bell Labs in the mid-1970s, also by and for statisticians.</p>
+<p>It is a <strong>purpose-built</strong> language designed to provide a relatively low-code scripting language to explore, visualize, and model data.</p>
 </section>
 <section id="why-study-r" class="level2">
 <h2 class="anchored" data-anchor-id="why-study-r">Why Study R?</h2>
-<p>There are many reasons for this:</p>
-<ul>
-<li><p><strong>Python borrows</strong> many concepts from R, including the data frame.</p></li>
-<li><p>The R community provides <strong>insights</strong> into data processing through excellent documentation and well-designed code.</p></li>
-<li><p>Although not as popular as it once was, it is still widely used—<strong>you may find yourself on a team that prefers it</strong>.</p></li>
-<li><p>Many of the courses in the <strong>UVA SDS programs use R</strong>.</p></li>
-<li><p>It’s <strong>not that hard</strong>, especially once you know basic programming concepts.</p></li>
-</ul>
+<p><strong>R is in many ways the original data science programming language</strong>.</p>
+<p><strong>Python borrows</strong> many concepts from R, including the data frame.</p>
+<p>The R community provides <strong>insights</strong> into data processing through excellent documentation and well-designed code.</p>
+<p>Although not as popular as it once was, it is still widely used — <strong>you may find yourself on a team that prefers it</strong>.</p>
+<p>Many courses in the <strong>UVA SDS programs use R</strong>.</p>
+<p>It’s <strong>not that hard</strong>, especially once you know basic programming concepts.</p>
 </section>
 <section id="rs-design" class="level2">
 <h2 class="anchored" data-anchor-id="rs-design">R’s Design</h2>
-<ul>
-<li><p>A scripting language, like Python.</p></li>
-<li><p>Designed to support statistical computing above all.</p></li>
-<li><p>Very strong academic community.</p></li>
-<li><p>Many domain-specific functions are built-in.</p></li>
-<li><p>Vector-first thinking.</p></li>
-<li><p>Everything is an object.</p></li>
-</ul>
+<p>R was designed to support <strong>statistical computing</strong> above all.</p>
+<p>In constrast to Python, it is <strong>not a general purpose language</strong>, although it may be used for many things.</p>
+<p>It has a very strong <strong>academic community</strong> which is reflected in its <strong>high quality documentation</strong>, the variety of <strong>its scientific libraries</strong>, and in its <strong>well-organized resources</strong>.</p>
+<p>It has many <strong>statistical functions</strong> built into it, i.e.&nbsp;to get get started with statistical computing you don’t need to import anything.</p>
+<p>It is based on what we might call <strong>vector-first</strong> thinking.</p>
+<p>As withg Python, <strong>everything is an object</strong>.</p>
 </section>
 <section id="r-syntax" class="level2">
 <h2 class="anchored" data-anchor-id="r-syntax">R Syntax</h2>
-<ul>
-<li><p>Syntax loosely follows traditional <code>C</code>-style</p>
-<ul>
-<li><p><strong>Braces</strong> <code>{</code> and <code>}</code> are used to form blocks.</p></li>
-<li><p><strong>Semi-colons</strong> are used optionally to end statements, required if on same line.</p></li>
-</ul></li>
-<li><p><strong>Assignments</strong> are made with <code>&lt;-</code> or <code>-&gt;</code>.</p></li>
-<li><p><strong>Dots</strong> <code>.</code> have no special meaning—they are not operators.</p>
-<ul>
-<li>They are used like underscores <code>_</code> in Python.</li>
-</ul></li>
-<li><p>Single and double <strong>quotes</strong> have the same meaning, but double quotes tend to be preferred.</p>
-<ul>
-<li><p>Use single quotes if you expect your string to contain double quotes.</p></li>
-<li><p>Backslash escape applies to R strings, although since there are no raw strings—Python’s <code>r" "</code>—we often have to supply double backslashes in regular expressions.</p></li>
-</ul></li>
-</ul>
+<p>Syntax loosely follows traditional <code>C</code>-style syntax.</p>
+<p>It uses <strong>braces</strong> <code>{</code> and <code>}</code> to form code blocks.</p>
+<p>It uses <strong>semi-colons</strong> to end statements (optionally) or separate them if on same line.</p>
+<p>Notably, <strong>assignments</strong> are made with <code>&lt;-</code> or <code>-&gt;</code> operators.</p>
+<p><strong>Dots</strong> <code>.</code> have no special meaning — they are <em>not</em> operators.</p>
+<p>In effect, they are used like underscores <code>_</code> in Python.</p>
+<p>Single and double <strong>quotes</strong> have the same meaning, but double quotes tend to be preferred.</p>
+<p>Use single quotes if you expect your string to contain double quotes.</p>
+<p>Backslash escape applies to R strings, although since there are no raw strings — Python’s <code>r" "</code> — we often have to supply double backslashes in regular expressions.</p>
 </section>
 <section id="using-r" class="level2">
 <h2 class="anchored" data-anchor-id="using-r">Using R</h2>
-<ul>
-<li><p>Although there are many ways to run R programs, by far the most common is to use <strong>R Studio</strong>.</p></li>
-<li><p>R Studio provides <strong>a fully-functional programming environment</strong> that includes an editor, a command-line, access to the file system, a help system, an installation system, etc.</p>
-<ul>
-<li>Other programs run R too, though, such as VSCode and Jupyter.</li>
-</ul></li>
-<li><p>R programs can be plain text files with an <code>.r</code> suffix, R Markdown files (<code>.Rmd</code>), or many other kinds of file.</p>
-<ul>
-<li>We will discuss these in a later module.</li>
-</ul></li>
-</ul>
-<p>OK, so let’s get into the basics—beginning with data types.</p>
+<p>Although there are many ways to run R programs, by far the most common is to use <a href="https://posit.co/download/rstudio-desktop/"><strong>R Studio</strong></a>.</p>
+<p>R Studio provides <strong>a fully-functional programming environment</strong> that includes an editor, a command-line, access to the file system,a help system, an installation system, etc.</p>
+<p>You may use other programs run R too, though, such as VSCode and Jupyter.</p>
+<p>In practice, however, RStudio is almost universally used.</p>
+<p>R programs can be plain text files with an <code>.r</code> suffix, R Markdown files (<code>.Rmd</code>), or many other kinds of file.</p>
+<p>We will discuss these in a later module.</p>
 </section>
-<section id="working-directory" class="level2">
-<h2 class="anchored" data-anchor-id="working-directory">Working Directory</h2>
-<p>Finally, the code samples above assume the data files are located in the R working directory, which can be found with the function <code>getwd()</code>.</p>
-<p>Note that these things can also be set using the RStudio’s GUI.</p>
-<div id="9218c8f0-f512-4711-82da-8cf9fd22f0df" class="cell" data-tags="[]" data-execution_count="215">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()               <span class="co"># get current working directory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-'/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M10_RBasics'
-</div>
-</div>
-<p>You can select a different working directory with the function setwd(), and thus avoid entering the full path of the data files</p>
-<div id="bf0b6322-6463-4ca5-97b3-8139baddc1a7" class="cell" data-tags="[]" data-execution_count="203">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># setwd("&lt;new path&gt;")   # set working directory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Note that the forward slash should be used as the path separator even on Windows platform</p>
-<div id="15971f25-80f3-4848-97cb-db344a9053ee" class="cell" data-tags="[]" data-execution_count="197">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># setwd("C:/MyDoc")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="command-line-r" class="level2">
+<h2 class="anchored" data-anchor-id="command-line-r">Command Line R</h2>
+<p>R can also be run from the command line.</p>
+<p>R is invoked by calling <code>R</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If properly installed, that should produce a message like this:</p>
+<p>R version 4.3.1 (2023-06-16) – “Beagle Scouts” Copyright (C) 2023 The R Foundation for Statistical Computing Platform: x86_64-conda-linux-gnu (64-bit)</p>
+<p>R is free software and comes with ABSOLUTELY NO WARRANTY. You are welcome to redistribute it under certain conditions. Type ‘license()’ or ‘licence()’ for distribution details.</p>
+<p>Natural language support but running in an English locale</p>
+<p>R is a collaborative project with many contributors. Type ‘contributors()’ for more information and ‘citation()’ on how to cite R or R packages in publications.</p>
+<p>Type ‘demo()’ for some demos, ‘help()’ for on-line help, or ‘help.start()’ for an HTML browser interface to help. Type ‘q()’ to quit R.</p>
+<p>[Previously saved workspace restored]</p>
+<blockquote class="blockquote">
+
+</blockquote>
 </section>
 <section id="installing-and-loading-packages" class="level2">
 <h2 class="anchored" data-anchor-id="installing-and-loading-packages">Installing and Loading Packages</h2>
-<p>Packages need to be installed once.</p>
-<div id="66a57db5-836b-4de7-b069-18f49662aabd" class="cell" data-tags="[]" data-execution_count="105">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tm"</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>also installing the dependencies ‘NLP’, ‘slam’, ‘BH’
-
-
-Warning message in install.packages("tm"):
-“installation of package ‘slam’ had non-zero exit status”
-Warning message in install.packages("tm"):
-“installation of package ‘tm’ had non-zero exit status”</code></pre>
+<p>As with Python, R allows you to install and import packages to extend the program’s capabilities.</p>
+<p>Packages can be installed from within a program as follows:</p>
+<div id="66a57db5-836b-4de7-b069-18f49662aabd" class="cell" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tm")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>You can also install thing using the Package window.</p>
+<p>Here installed the Text Mining <code>tm</code> package.</p>
+<p>You only have to install a package once.</p>
+<p>You can also install packages using R Studio’s Package window or from the command line.</p>
 <p>Once they are installed, you import them with the <code>library()</code> function:</p>
-<div id="547a6083-d1d1-44cb-bd47-afa727b4645f" class="cell" data-tags="[]" data-execution_count="104">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>ERROR: Error in library(tm): there is no package called ‘tm’</code></pre>
-</div>
+<div id="547a6083-d1d1-44cb-bd47-afa727b4645f" class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that the library name is quoted in when installing, but not when using <code>library</code>.</p>
 </section>
-<section id="installing-an-r-kernel" class="level2">
-<h2 class="anchored" data-anchor-id="installing-an-r-kernel">Installing an R Kernel</h2>
-<p>You can run R in Jupyter by installing an R kernel.</p>
-<!-- Here's a [how to](M11_00_Rkernel.pdf) document to set this up. -->
-<p>In brief, here’s what you do. First, at the command line:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> r_env r-essentials r-base</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate r_env</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> <span class="co"># This opens the R shell</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="using-r-in-jupyter" class="level2">
+<h2 class="anchored" data-anchor-id="using-r-in-jupyter">Using R in Jupyter</h2>
+<p>If you want to use R within a Jupyter notebook file, you can create and load an R kernel using Anaconda’s package manager <code>conda</code>. In brief, here’s what you do.</p>
+<p>First, at the command line:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> r_env r-essentials r-base</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate r_env</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> <span class="co"># This opens the R shell</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then, in the R shell:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>IRkernel<span class="sc">::</span><span class="fu">installspec</span>(<span class="at">name =</span> <span class="st">'r_env'</span>, <span class="at">displayname =</span> <span class="st">'R Environment'</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Now, fire up a Jupyter Lab instance from the OpenOnDemand page and select the kernel when you create a new notebook.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>IRkernel<span class="sc">::</span><span class="fu">installspec</span>(<span class="at">name =</span> <span class="st">'r_env'</span>, <span class="at">displayname =</span> <span class="st">'R Environment'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, fire up a Jupyter Lab or Jupyter Notebook instance from the OpenOnDemand page and select the kernel when you create a new notebook.</p>
+<p>Note that the name <code>r_evn</code> can be replaced by whatever you want.</p>
 
 
 </section>
@@ -1221,8 +1189,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html" class="pagination-link" aria-label="NB: Data Types">
-        <span class="nav-page-text"><span class="chapter-title">NB: Data Types</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html" class="pagination-link" aria-label="NB: R Data Types and Operators">
+        <span class="nav-page-text"><span class="chapter-title">NB: R Data Types and Operators</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

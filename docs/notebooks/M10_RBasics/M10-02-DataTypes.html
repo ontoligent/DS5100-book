@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DS 5100: Programming for Data Science - NB: Data Types</title>
+<title>DS 5100: Programming for Data Science - NB: R Data Types and Operators</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m10/m10-intro.html">M10 Basic R</a></li><li class="breadcrumb-item"><a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html"><span class="chapter-title">NB: Data Types</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m10/m10-intro.html">M10 Basic R</a></li><li class="breadcrumb-item"><a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html"><span class="chapter-title">NB: R Data Types and Operators</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -512,7 +512,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: Data Types</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: R Data Types and Operators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -527,12 +527,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-05-ControlStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Control Structures and Functions</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-05-ControlStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Control Structures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-06-Functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Functions</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-06-Functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Functions</span></a>
   </div>
 </li>
       </ul>
@@ -641,9 +641,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#r-data-types-and-operators" id="toc-r-data-types-and-operators" class="nav-link active" data-scroll-target="#r-data-types-and-operators">R Data Types and Operators</a>
-  <ul class="collapse">
-  <li><a href="#numeric" id="toc-numeric" class="nav-link" data-scroll-target="#numeric">Numeric</a></li>
+  <li><a href="#numeric" id="toc-numeric" class="nav-link active" data-scroll-target="#numeric">Numeric</a></li>
   <li><a href="#integers" id="toc-integers" class="nav-link" data-scroll-target="#integers">Integers</a></li>
   <li><a href="#math-operators" id="toc-math-operators" class="nav-link" data-scroll-target="#math-operators">Math Operators</a></li>
   <li><a href="#logical-boolean" id="toc-logical-boolean" class="nav-link" data-scroll-target="#logical-boolean">Logical (Boolean)</a></li>
@@ -653,17 +651,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#sprintf" id="toc-sprintf" class="nav-link" data-scroll-target="#sprintf"><code>sprintf()</code></a></li>
   <li><a href="#substr" id="toc-substr" class="nav-link" data-scroll-target="#substr"><code>substr()</code></a></li>
   <li><a href="#sub" id="toc-sub" class="nav-link" data-scroll-target="#sub"><code>sub()</code></a></li>
-  </ul></li>
-  <li><a href="#factors" id="toc-factors" class="nav-link" data-scroll-target="#factors">Factors</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M10_RBasics/M10-02-DataTypes.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m10/m10-intro.html">M10 Basic R</a></li><li class="breadcrumb-item"><a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html"><span class="chapter-title">NB: Data Types</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m10/m10-intro.html">M10 Basic R</a></li><li class="breadcrumb-item"><a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html"><span class="chapter-title">NB: R Data Types and Operators</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">NB: Data Types</span></h1>
+<h1 class="title"><span class="chapter-title">NB: R Data Types and Operators</span></h1>
 </div>
 
 
@@ -680,9 +676,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="r-data-types-and-operators" class="level1">
-<h1>R Data Types and Operators</h1>
-<p>There are several basic R data types.</p>
+<p>Programming for Data Science</p>
+<p>R supports the following <strong>basic data types</strong>:</p>
 <ul>
 <li>Numeric</li>
 <li>Integer</li>
@@ -690,41 +685,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Logical</li>
 <li>Character</li>
 </ul>
+<p>Let’s go over each briefly.</p>
 <section id="numeric" class="level2">
 <h2 class="anchored" data-anchor-id="numeric">Numeric</h2>
 <p>Floating point numbers are called “numerics” in R.</p>
 <p>It is the <strong>default</strong> data type.</p>
-<p>If we assign a decimal value to a variable x, x will be of numeric type:</p>
-<div id="743bd372-3991-44bc-9808-bbef759f4ab8" class="cell" data-tags="[]" data-execution_count="201">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">10.5</span>      <span class="co"># assign a decimal value </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x              <span class="co"># print the value of x </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If we assign a decimal value to a variable <code>x</code>, <code>x</code> will be of numeric type:</p>
+<div id="743bd372-3991-44bc-9808-bbef759f4ab8" class="cell" data-tags="[]" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">10.5</span>      </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x              </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 10.5
 </div>
 </div>
-<div id="f512b879-b5ec-40a1-b006-1c7a9f726fcf" class="cell" data-tags="[]" data-execution_count="132">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)      <span class="co"># print the class name of x </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can learn the type of data stored by a variable with the <code>class()</code> function.</p>
+<div id="f512b879-b5ec-40a1-b006-1c7a9f726fcf" class="cell" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)      </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 'numeric'
 </div>
 </div>
-<p>Even if we assign an integer to a variable k, it is will still be saved as a numeric value.</p>
-<div id="f2d58797-56bb-4f38-8920-3faee7487361" class="cell" data-tags="[]" data-execution_count="133">
+<p>Even if we assign an integer to a variable <code>k</code>, it is will still be saved as a numeric value.</p>
+<div id="f2d58797-56bb-4f38-8920-3faee7487361" class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>k              <span class="co"># print the value of k </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>k              </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 1
 </div>
 </div>
-<div id="3d8a940a-1bc3-4116-91fc-b86a163a247d" class="cell" data-tags="[]" data-execution_count="134">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(k)       <span class="co"># print the class name of k </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3d8a940a-1bc3-4116-91fc-b86a163a247d" class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(k)       </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 'numeric'
 </div>
 </div>
-<p>That k is not an integer can be confirmed with <code>is.integer()</code>:</p>
+<p>That <code>k</code> is not an integer can be confirmed with <code>is.integer()</code>:</p>
 <div id="8c0e42cc-30ad-4b60-b854-6f2b267a0139" class="cell" data-tags="[]" data-execution_count="135">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.integer</span>(k)  <span class="co"># is k an integer?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.integer</span>(k)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 FALSE
 </div>
@@ -733,16 +730,16 @@ FALSE
 <section id="integers" class="level2">
 <h2 class="anchored" data-anchor-id="integers">Integers</h2>
 <p>To create an integer variable in R, we use <code>as.integer()</code>.</p>
-<div id="0747b55f-f9f9-4848-8aa8-6e891c88553c" class="cell" data-tags="[]" data-execution_count="204">
+<div id="0747b55f-f9f9-4848-8aa8-6e891c88553c" class="cell" data-tags="[]" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="dv">3</span>) </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>y              <span class="co"># print the value of y </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>y              </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 3
 </div>
 </div>
-<div id="e4898a9e-f6f5-47c1-ab06-86efde129c6d" class="cell" data-tags="[]" data-execution_count="205">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)       <span class="co"># print the class name of y </span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.integer</span>(y)  <span class="co"># is y an integer? </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e4898a9e-f6f5-47c1-ab06-86efde129c6d" class="cell" data-tags="[]" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)       </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.integer</span>(y)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 'integer'
 </div>
@@ -751,30 +748,33 @@ TRUE
 </div>
 </div>
 <p>We can also declare an integer by appending an <code>L</code> suffix.</p>
-<div id="95d3691e-cc76-4c17-b9fc-fdd02c9d7d84" class="cell" data-tags="[]" data-execution_count="206">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span>L </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.integer</span>(y)  <span class="co"># is y an integer? </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4472b5a2-a8d0-4e65-8dcc-419731b3105f" class="cell" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span>L </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To see if a variable is an integer, you can use <code>is.integer()</code>:</p>
+<div id="ff71ace6-bf87-41b6-8d46-17d2abd2686f" class="cell" data-tags="[]" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.integer</span>(y) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 TRUE
 </div>
 </div>
-<p>We can coerce, or cast, a numeric value into an integer with <code>as.integer()</code>.</p>
+<p>We can also coerce, or cast, a numeric value into an integer with <code>as.integer()</code>.</p>
 <div id="79bf00af-ee12-4be6-95c0-c6c6b744b5eb" class="cell" data-tags="[]" data-execution_count="207">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(<span class="fl">3.14</span>)    <span class="co"># coerce a numeric value </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(<span class="fl">3.14</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 3
 </div>
 </div>
 <p>And we can parse a string for decimal values in much the same way.</p>
 <div id="432533d8-174d-415a-8261-3d522279a0b6" class="cell" data-tags="[]" data-execution_count="208">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(<span class="st">"5.27"</span>)  <span class="co"># coerce a decimal string </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(<span class="st">"5.27"</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 5
 </div>
 </div>
 <p>On the other hand, you can’t parse a non-decimal string.</p>
 <div id="37e49214-4cf5-488a-9dc4-a43de17ba47d" class="cell" data-tags="[]" data-execution_count="209">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(<span class="st">"Joe"</span>)   <span class="co"># coerce an non-decimal string </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(<span class="st">"Joe"</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message in eval(expr, envir, enclos):
 “NAs introduced by coercion”</code></pre>
@@ -785,8 +785,8 @@ TRUE
 </div>
 <p>We can convert booleans to numbers this way, too.</p>
 <div id="6399d07b-8e60-4fef-9bab-e2a27bb55db6" class="cell" data-tags="[]" data-execution_count="210">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(<span class="cn">TRUE</span>)    <span class="co"># the numeric value of TRUE </span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(<span class="cn">FALSE</span>)   <span class="co"># the numeric value of FALSE </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(<span class="cn">TRUE</span>)    </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(<span class="cn">FALSE</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 1
 </div>
@@ -839,18 +839,20 @@ TRUE
 </section>
 <section id="logical-boolean" class="level2">
 <h2 class="anchored" data-anchor-id="logical-boolean">Logical (Boolean)</h2>
+<p>Boolean data are called “logical” in R.</p>
+<p>They take the values <code>TRUE</code> and <code>FALSE</code>, or <code>T</code> and <code>F</code> for short.</p>
 <p>A logical value is often produced from the <strong>comparison</strong> between values.</p>
-<div id="e96fdf82-96a2-47f9-9665-5b3424018aa5" class="cell" data-tags="[]" data-execution_count="211">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span>      <span class="co"># sample values </span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> x <span class="sc">&gt;</span> y  <span class="co"># is x larger than y? </span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>z           <span class="co"># print the logical value </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e96fdf82-96a2-47f9-9665-5b3424018aa5" class="cell" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span>      </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> x <span class="sc">&gt;</span> y  </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>z           </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 FALSE
 </div>
 </div>
-<div id="65504c17-4d19-44c5-a2ab-b1e384b004de" class="cell" data-tags="[]" data-execution_count="212">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(z)       <span class="co"># print the class name of z </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="65504c17-4d19-44c5-a2ab-b1e384b004de" class="cell" data-tags="[]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(z) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 'logical'
 </div>
@@ -858,32 +860,32 @@ FALSE
 </section>
 <section id="logical-operators" class="level2">
 <h2 class="anchored" data-anchor-id="logical-operators">Logical Operators</h2>
-<p>The standard logical operations are <code>&amp;</code> (and), <code>|</code> (or), and <code>!</code> (negation).</p>
-<div id="f389a98c-df40-4c61-a2ec-1496e2e400e3" class="cell" data-tags="[]" data-execution_count="213">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>u <span class="sc">&amp;</span> v          <span class="co"># u AND v </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>R supports the standard logical operations: <code>&amp;</code> stands for “and”, <code>|</code> for stands for “or”, and <code>!</code> stands for negation.</p>
+<div id="f389a98c-df40-4c61-a2ec-1496e2e400e3" class="cell" data-tags="[]" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>u <span class="sc">&amp;</span> v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 FALSE
 </div>
 </div>
-<div id="6578e12d-d2a0-44d0-a2d2-14267f79c000" class="cell" data-tags="[]" data-execution_count="214">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>u <span class="sc">|</span> v          <span class="co"># u OR v </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6578e12d-d2a0-44d0-a2d2-14267f79c000" class="cell" data-tags="[]" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>u <span class="sc">|</span> v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 TRUE
 </div>
 </div>
-<div id="d7f89b44-8cc0-41ff-9b43-29983ec8d013" class="cell" data-tags="[]" data-execution_count="147">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>u             <span class="co"># negation of u </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d7f89b44-8cc0-41ff-9b43-29983ec8d013" class="cell" data-tags="[]" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>u</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 FALSE
 </div>
 </div>
-<p>Note that you can use <code>T</code> and <code>F</code> instead of <code>TRUE</code> and <code>FALSE</code>.</p>
-<div id="fa6cc7d0-1765-408f-aeba-6fe5eaea59a0" class="cell" data-tags="[]" data-execution_count="148">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> T</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> F</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>a <span class="sc">&amp;</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Again, you may use <code>T</code> and <code>F</code> instead of <code>TRUE</code> and <code>FALSE</code>.</p>
+<div id="fa6cc7d0-1765-408f-aeba-6fe5eaea59a0" class="cell" data-tags="[]" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> T</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> F</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>a <span class="sc">&amp;</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 FALSE
 </div>
@@ -891,18 +893,18 @@ FALSE
 </section>
 <section id="characters" class="level2">
 <h2 class="anchored" data-anchor-id="characters">Characters</h2>
-<p>A character object is used to represent string values in R.</p>
-<p>This may confusing if you are coming from a language where ‘character’ means an individual character, such as <code>A</code>.</p>
+<p>Strings are called “character” objects in R.</p>
+<p>This may confusing if you are coming from a language, such as Java, where “character” means an individual character, such as <code>A</code>.</p>
 <p>We may convert non-character objects into characters with the <code>as.character()</code> function:</p>
-<div id="6d99ac7a-fb3e-4c53-8e7e-19cd630e96f1" class="cell" data-tags="[]" data-execution_count="149">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fl">3.14</span>) </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6d99ac7a-fb3e-4c53-8e7e-19cd630e96f1" class="cell" data-tags="[]" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fl">3.14</span>) </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 '3.14'
 </div>
 </div>
-<div id="17f7cc60-c456-4a25-9b8b-6075fa39315d" class="cell" data-tags="[]" data-execution_count="150">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)       <span class="co"># print the class name of x </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="17f7cc60-c456-4a25-9b8b-6075fa39315d" class="cell" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)       <span class="co"># print the class name of x </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 'character'
 </div>
@@ -911,28 +913,34 @@ FALSE
 <section id="paste" class="level2">
 <h2 class="anchored" data-anchor-id="paste"><code>paste()</code></h2>
 <p>Two character values can be concatenated with the <code>paste()</code> function.</p>
-<p>R does <em>not</em> overload the <code>+</code> operator.</p>
-<div id="16c2474b-06ec-4238-aecf-0447bed35d6a" class="cell" data-tags="[]" data-execution_count="151">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fname <span class="ot">&lt;-</span> <span class="st">"Joe"</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>lname <span class="ot">&lt;-</span><span class="st">"Smith"</span> </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(fname, lname) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="16c2474b-06ec-4238-aecf-0447bed35d6a" class="cell" data-tags="[]" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fname <span class="ot">&lt;-</span> <span class="st">"Joe"</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>lname <span class="ot">&lt;-</span> <span class="st">"Smith"</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(fname, lname) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 'Joe Smith'
 </div>
 </div>
 <p><code>paste()</code> takes a <code>sep</code> argument:</p>
-<div id="15535b36-2b1d-40b9-b704-9949b01d01e8" class="cell" data-tags="[]" data-execution_count="152">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="at">sep=</span><span class="st">"--"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="15535b36-2b1d-40b9-b704-9949b01d01e8" class="cell" data-tags="[]" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="at">sep=</span><span class="st">"--"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 'A--B--C'
+</div>
+</div>
+<p>Note that R does <em>not</em> overload the <code>+</code> operator.</p>
+<div id="6082ebbb-97fc-42c3-9515-507572055b68" class="cell" data-tags="[]" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fname <span class="sc">+</span> lname</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>ERROR: Error in fname + lname: non-numeric argument to binary operator</code></pre>
 </div>
 </div>
 </section>
 <section id="sprintf" class="level2">
 <h2 class="anchored" data-anchor-id="sprintf"><code>sprintf()</code></h2>
 <p>It is often convenient to create a readable string with the <code>sprintf()</code> function, which has a C language syntax.</p>
-<div id="aaf9727c-c55f-44ac-a16c-43d7029c6ca8" class="cell" data-tags="[]" data-execution_count="153">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sprintf</span>(<span class="st">"%s has %d dollars"</span>, <span class="st">"Sam"</span>, <span class="dv">100</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="aaf9727c-c55f-44ac-a16c-43d7029c6ca8" class="cell" data-tags="[]" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sprintf</span>(<span class="st">"%s has %d dollars"</span>, <span class="st">"Sam"</span>, <span class="dv">100</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 'Sam has 100 dollars'
 </div>
@@ -943,7 +951,7 @@ FALSE
 <p>To extract a substring, we apply the <code>substr()</code> function.</p>
 <p>Here is an example showing how to extract the substring between the third and twelfth positions in a string.</p>
 <div id="d3d9692f-353c-4383-ba73-a31553470f8a" class="cell" data-tags="[]" data-execution_count="154">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(<span class="st">"Mary has a little lamb."</span>, <span class="at">start=</span><span class="dv">3</span>, <span class="at">stop=</span><span class="dv">12</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(<span class="st">"Mary has a little lamb."</span>, <span class="at">start=</span><span class="dv">3</span>, <span class="at">stop=</span><span class="dv">12</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 'ry has a l'
 </div>
@@ -954,166 +962,11 @@ FALSE
 <p>And to replace the first occurrence of the word “little” by another word “big” in the string, we apply the <code>sub()</code> function.</p>
 <p>This function can use regular expressions.</p>
 <div id="852cd14a-9f92-4f01-9a0e-06fad7f36bd3" class="cell" data-tags="[]" data-execution_count="155">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sub</span>(<span class="st">"little"</span>, <span class="st">"big"</span>, <span class="st">"Mary has a little lamb."</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sub</span>(<span class="st">"little"</span>, <span class="st">"big"</span>, <span class="st">"Mary has a little lamb."</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 'Mary has a big lamb.'
 </div>
 </div>
-</section>
-</section>
-<section id="factors" class="level1">
-<h1>Factors</h1>
-<ul>
-<li><p>Implicitly, a kind of <strong>data structure</strong>, since they organize data types.</p>
-<ul>
-<li>They can store both strings and integers.</li>
-</ul></li>
-<li><p>The categorize data as <strong>levels</strong>.</p>
-<ul>
-<li><p>Levels are <strong>distinct</strong>, like sets in Python or LOVs in SQL.</p></li>
-<li><p>Levels are <strong>stored</strong> alongside the vector.</p></li>
-<li><p>Levels <strong>constrain</strong> what can be added to the factor vector.</p></li>
-<li><p>Levels are always <strong>characters</strong>, even when the data are numeric or boolean</p></li>
-</ul></li>
-<li><p>Useful in data frame columns that have a list of values which make sense as a group.</p>
-<ul>
-<li><p>Male, Female</p></li>
-<li><p>True, False</p></li>
-<li><p>1, 2, 3, 4, 5</p></li>
-</ul></li>
-<li><p>Created with <code>factor()</code> taking a vector as input.</p></li>
-<li><p>Analagous to <strong>Categories in Pandas</strong>.</p></li>
-</ul>
-<p><strong>Example</strong></p>
-<p>Take a vector of integers.</p>
-<div id="c728fa5c-e791-4f2b-91ad-6bd65902c8ce" class="cell" data-tags="[]" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>See that it has not levels associated with it.</p>
-<div id="aae7b500-dc90-4429-82cc-a68c63eb3820" class="cell" data-tags="[]" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(v1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>NULL</code></pre>
-</div>
-</div>
-<p>Convert the vector in a factor.</p>
-<div id="2ec01503-316b-4b1e-a97e-396859ce5a10" class="cell" data-tags="[]" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">=</span> <span class="fu">factor</span>(v1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now see that it has extracted a distinct list of items and converted them to strings.</p>
-<div id="afae4354-3521-47d5-a238-96e65f0443e9" class="cell" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(f1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<ol class="list-inline">
-    <li>'0'</li>
-    <li>'1'</li>
-    <li>'2'</li>
-    <li>'3'</li>
-    <li>'4'</li>
-    <li>'5'</li>
-    <li>'6'</li>
-    <li>'7'</li>
-    <li>'8'</li>
-    <li>'9'</li>
-</ol>
-</div>
-</div>
-<p>Printing the factor shows that the object contains two structures:</p>
-<div id="684d952f-8de0-49c9-937d-073c08cf78eb" class="cell" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(f1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 5 6 9 4 3 5 8 7 6 3 0 0 0 1 2 3 6 4 5 7 9
-Levels: 0 1 2 3 4 5 6 7 8 9</code></pre>
-</div>
-</div>
-<p>The object has properties accessible by functions.</p>
-<div id="a744ee31-a40e-45ef-b67a-513926f525a8" class="cell" data-tags="[]" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nlevels</span>(f1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-10
-</div>
-</div>
-<p>Note that levels act as a constraint on the factor vector.</p>
-<p>So, if we want to edit the factor to have a value that is not in the distinct list of levels, we get an error.</p>
-<div id="7e095002-187b-44c2-bb77-10ce6d2df8c2" class="cell" data-tags="[]" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>f1[<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-4
-<details>
-    <summary style="display:list-item;cursor:pointer">
-        <strong>Levels</strong>:
-    </summary>
-    <ol class="list-inline">
-        <li>'0'</li>
-        <li>'1'</li>
-        <li>'2'</li>
-        <li>'3'</li>
-        <li>'4'</li>
-        <li>'5'</li>
-        <li>'6'</li>
-        <li>'7'</li>
-        <li>'8'</li>
-        <li>'9'</li>
-    </ol>
-</details>
-</div>
-</div>
-<div id="47358da9-be32-4dc4-87be-97f959abbbcd" class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-tags="[]" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>f1[<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning message in `[&lt;-.factor`(`*tmp*`, 5, value = 20):
-“invalid factor level, NA generated”</code></pre>
-</div>
-</div>
-<p>Note that we also blow away the original value!</p>
-<div id="bed55d15-ad0c-4aef-8c53-04610ab7b625" class="cell" data-tags="[]" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>f1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<ol class="list-inline">
-    <li>1</li>
-    <li>5</li>
-    <li>6</li>
-    <li>9</li>
-    <li>&lt;NA&gt;</li>
-    <li>3</li>
-    <li>5</li>
-    <li>8</li>
-    <li>7</li>
-    <li>6</li>
-    <li>3</li>
-    <li>0</li>
-    <li>0</li>
-    <li>0</li>
-    <li>1</li>
-    <li>2</li>
-    <li>3</li>
-    <li>6</li>
-    <li>4</li>
-    <li>5</li>
-    <li>7</li>
-    <li>9</li>
-</ol>
-
-<details>
-    <summary style="display:list-item;cursor:pointer">
-        <strong>Levels</strong>:
-    </summary>
-    <ol class="list-inline">
-        <li>'0'</li>
-        <li>'1'</li>
-        <li>'2'</li>
-        <li>'3'</li>
-        <li>'4'</li>
-        <li>'5'</li>
-        <li>'6'</li>
-        <li>'7'</li>
-        <li>'8'</li>
-        <li>'9'</li>
-    </ol>
-</details>
-</div>
-</div>
-<p>Be careful out there.</p>
 
 
 </section>

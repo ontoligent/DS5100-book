@@ -4275,7 +4275,7 @@
     "href": "notebooks/M10_RBasics/M10-01-Intro.html",
     "title": "NB: Introducing R",
     "section": "",
-    "text": "What is R?\nWe have been studying Python as a data processing language from the perspective of data science. But R is in many ways the original data science language.\nIt was built from the beginning by and for data analysts, statisticians, and scientists.\nNote, however, the R was not built by and for data miners, who compose a large segment of the data science community.",
+    "text": "What is R?\nR is an open source programming language developed in the 1990s by and for statisticians.\nIt was based on the earlier langauge S, first developed at Bell Labs in the mid-1970s, also by and for statisticians.\nIt is a purpose-built language designed to provide a relatively low-code scripting language to explore, visualize, and model data.",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>49</span>  <span class='chapter-title'>NB: Introducing R</span>"
@@ -4286,7 +4286,7 @@
     "href": "notebooks/M10_RBasics/M10-01-Intro.html#why-study-r",
     "title": "NB: Introducing R",
     "section": "Why Study R?",
-    "text": "Why Study R?\nThere are many reasons for this:\n\nPython borrows many concepts from R, including the data frame.\nThe R community provides insights into data processing through excellent documentation and well-designed code.\nAlthough not as popular as it once was, it is still widely used—you may find yourself on a team that prefers it.\nMany of the courses in the UVA SDS programs use R.\nIt’s not that hard, especially once you know basic programming concepts.",
+    "text": "Why Study R?\nR is in many ways the original data science programming language.\nPython borrows many concepts from R, including the data frame.\nThe R community provides insights into data processing through excellent documentation and well-designed code.\nAlthough not as popular as it once was, it is still widely used — you may find yourself on a team that prefers it.\nMany courses in the UVA SDS programs use R.\nIt’s not that hard, especially once you know basic programming concepts.",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>49</span>  <span class='chapter-title'>NB: Introducing R</span>"
@@ -4297,7 +4297,7 @@
     "href": "notebooks/M10_RBasics/M10-01-Intro.html#rs-design",
     "title": "NB: Introducing R",
     "section": "R’s Design",
-    "text": "R’s Design\n\nA scripting language, like Python.\nDesigned to support statistical computing above all.\nVery strong academic community.\nMany domain-specific functions are built-in.\nVector-first thinking.\nEverything is an object.",
+    "text": "R’s Design\nR was designed to support statistical computing above all.\nIn constrast to Python, it is not a general purpose language, although it may be used for many things.\nIt has a very strong academic community which is reflected in its high quality documentation, the variety of its scientific libraries, and in its well-organized resources.\nIt has many statistical functions built into it, i.e. to get get started with statistical computing you don’t need to import anything.\nIt is based on what we might call vector-first thinking.\nAs withg Python, everything is an object.",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>49</span>  <span class='chapter-title'>NB: Introducing R</span>"
@@ -4308,7 +4308,7 @@
     "href": "notebooks/M10_RBasics/M10-01-Intro.html#r-syntax",
     "title": "NB: Introducing R",
     "section": "R Syntax",
-    "text": "R Syntax\n\nSyntax loosely follows traditional C-style\n\nBraces { and } are used to form blocks.\nSemi-colons are used optionally to end statements, required if on same line.\n\nAssignments are made with &lt;- or -&gt;.\nDots . have no special meaning—they are not operators.\n\nThey are used like underscores _ in Python.\n\nSingle and double quotes have the same meaning, but double quotes tend to be preferred.\n\nUse single quotes if you expect your string to contain double quotes.\nBackslash escape applies to R strings, although since there are no raw strings—Python’s r\" \"—we often have to supply double backslashes in regular expressions.",
+    "text": "R Syntax\nSyntax loosely follows traditional C-style syntax.\nIt uses braces { and } to form code blocks.\nIt uses semi-colons to end statements (optionally) or separate them if on same line.\nNotably, assignments are made with &lt;- or -&gt; operators.\nDots . have no special meaning — they are not operators.\nIn effect, they are used like underscores _ in Python.\nSingle and double quotes have the same meaning, but double quotes tend to be preferred.\nUse single quotes if you expect your string to contain double quotes.\nBackslash escape applies to R strings, although since there are no raw strings — Python’s r\" \" — we often have to supply double backslashes in regular expressions.",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>49</span>  <span class='chapter-title'>NB: Introducing R</span>"
@@ -4319,7 +4319,7 @@
     "href": "notebooks/M10_RBasics/M10-01-Intro.html#using-r",
     "title": "NB: Introducing R",
     "section": "Using R",
-    "text": "Using R\n\nAlthough there are many ways to run R programs, by far the most common is to use R Studio.\nR Studio provides a fully-functional programming environment that includes an editor, a command-line, access to the file system, a help system, an installation system, etc.\n\nOther programs run R too, though, such as VSCode and Jupyter.\n\nR programs can be plain text files with an .r suffix, R Markdown files (.Rmd), or many other kinds of file.\n\nWe will discuss these in a later module.\n\n\nOK, so let’s get into the basics—beginning with data types.",
+    "text": "Using R\nAlthough there are many ways to run R programs, by far the most common is to use R Studio.\nR Studio provides a fully-functional programming environment that includes an editor, a command-line, access to the file system,a help system, an installation system, etc.\nYou may use other programs run R too, though, such as VSCode and Jupyter.\nIn practice, however, RStudio is almost universally used.\nR programs can be plain text files with an .r suffix, R Markdown files (.Rmd), or many other kinds of file.\nWe will discuss these in a later module.",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>49</span>  <span class='chapter-title'>NB: Introducing R</span>"
@@ -4341,7 +4341,7 @@
     "href": "notebooks/M10_RBasics/M10-01-Intro.html#installing-and-loading-packages",
     "title": "NB: Introducing R",
     "section": "Installing and Loading Packages",
-    "text": "Installing and Loading Packages\nPackages need to be installed once.\n\ninstall.packages(\"tm\")  \n\nalso installing the dependencies ‘NLP’, ‘slam’, ‘BH’\n\n\nWarning message in install.packages(\"tm\"):\n“installation of package ‘slam’ had non-zero exit status”\nWarning message in install.packages(\"tm\"):\n“installation of package ‘tm’ had non-zero exit status”\n\n\nYou can also install thing using the Package window.\nOnce they are installed, you import them with the library() function:\n\nlibrary(tm)\n\nERROR: Error in library(tm): there is no package called ‘tm’\n\n\nNote that the library name is quoted in when installing, but not when using library.",
+    "text": "Installing and Loading Packages\nAs with Python, R allows you to install and import packages to extend the program’s capabilities.\nPackages can be installed from within a program as follows:\n\n# install.packages(\"tm\")\n\nHere installed the Text Mining tm package.\nYou only have to install a package once.\nYou can also install packages using R Studio’s Package window or from the command line.\nOnce they are installed, you import them with the library() function:\n\nlibrary(tm)\n\nNote that the library name is quoted in when installing, but not when using library.",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>49</span>  <span class='chapter-title'>NB: Introducing R</span>"
@@ -4361,12 +4361,12 @@
   {
     "objectID": "notebooks/M10_RBasics/M10-02-DataTypes.html",
     "href": "notebooks/M10_RBasics/M10-02-DataTypes.html",
-    "title": "NB: Data Types",
+    "title": "NB: R Data Types and Operators",
     "section": "",
-    "text": "R Data Types and Operators\nThere are several basic R data types.",
+    "text": "Numeric\nFloating point numbers are called “numerics” in R.\nIt is the default data type.\nIf we assign a decimal value to a variable x, x will be of numeric type:\nx &lt;- 10.5      \nx              \n\n10.5\nWe can learn the type of data stored by a variable with the class() function.\nclass(x)      \n\n'numeric'\nEven if we assign an integer to a variable k, it is will still be saved as a numeric value.\nk &lt;- 1\nk              \n\n1\nclass(k)       \n\n'numeric'\nThat k is not an integer can be confirmed with is.integer():\nis.integer(k)  \n\nFALSE",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: Data Types</span>"
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: R Data Types and Operators</span>"
     ]
   },
   {
@@ -4383,100 +4383,100 @@
   {
     "objectID": "notebooks/M10_RBasics/M10-02-DataTypes.html#integers",
     "href": "notebooks/M10_RBasics/M10-02-DataTypes.html#integers",
-    "title": "NB: Data Types",
+    "title": "NB: R Data Types and Operators",
     "section": "Integers",
-    "text": "Integers\nTo create an integer variable in R, we use as.integer().\n\ny &lt;- as.integer(3) \ny              # print the value of y \n\n3\n\n\n\nclass(y)       # print the class name of y \nis.integer(y)  # is y an integer? \n\n'integer'\n\n\nTRUE\n\n\nWe can also declare an integer by appending an L suffix.\n\ny &lt;- 3L \nis.integer(y)  # is y an integer? \n\nTRUE\n\n\nWe can coerce, or cast, a numeric value into an integer with as.integer().\n\nas.integer(3.14)    # coerce a numeric value \n\n3\n\n\nAnd we can parse a string for decimal values in much the same way.\n\nas.integer(\"5.27\")  # coerce a decimal string \n\n5\n\n\nOn the other hand, you can’t parse a non-decimal string.\n\nas.integer(\"Joe\")   # coerce an non-decimal string \n\nWarning message in eval(expr, envir, enclos):\n“NAs introduced by coercion”\n\n\n&lt;NA&gt;\n\n\nWe can convert booleans to numbers this way, too.\n\nas.integer(TRUE)    # the numeric value of TRUE \nas.integer(FALSE)   # the numeric value of FALSE \n\n1\n\n\n0",
+    "text": "Integers\nTo create an integer variable in R, we use as.integer().\n\ny &lt;- as.integer(3) \ny              \n\n3\n\n\n\nclass(y)       \nis.integer(y)  \n\n'integer'\n\n\nTRUE\n\n\nWe can also declare an integer by appending an L suffix.\n\ny &lt;- 3L \n\nTo see if a variable is an integer, you can use is.integer():\n\nis.integer(y) \n\nTRUE\n\n\nWe can also coerce, or cast, a numeric value into an integer with as.integer().\n\nas.integer(3.14)    \n\n3\n\n\nAnd we can parse a string for decimal values in much the same way.\n\nas.integer(\"5.27\")  \n\n5\n\n\nOn the other hand, you can’t parse a non-decimal string.\n\nas.integer(\"Joe\")   \n\nWarning message in eval(expr, envir, enclos):\n“NAs introduced by coercion”\n\n\n&lt;NA&gt;\n\n\nWe can convert booleans to numbers this way, too.\n\nas.integer(TRUE)    \nas.integer(FALSE)   \n\n1\n\n\n0",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: Data Types</span>"
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: R Data Types and Operators</span>"
     ]
   },
   {
     "objectID": "notebooks/M10_RBasics/M10-02-DataTypes.html#math-operators",
     "href": "notebooks/M10_RBasics/M10-02-DataTypes.html#math-operators",
-    "title": "NB: Data Types",
+    "title": "NB: R Data Types and Operators",
     "section": "Math Operators",
     "text": "Math Operators\nNumerics and integers are subject to the standard array of arithmetic operations.\n\n\n\nOperator\nDescription\n\n\n\n\n+\naddition\n\n\n-\nsubtraction\n\n\n*\nmultiplication\n\n\n/\ndivision\n\n\n^ or **\nexponentiation\n\n\nx %% y\nmodulus (x mod y) 5%%2 is 1\n\n\nx %/% y\ninteger division 5%/%2 is 2",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: Data Types</span>"
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: R Data Types and Operators</span>"
     ]
   },
   {
     "objectID": "notebooks/M10_RBasics/M10-02-DataTypes.html#logical-boolean",
     "href": "notebooks/M10_RBasics/M10-02-DataTypes.html#logical-boolean",
-    "title": "NB: Data Types",
+    "title": "NB: R Data Types and Operators",
     "section": "Logical (Boolean)",
-    "text": "Logical (Boolean)\nA logical value is often produced from the comparison between values.\n\nx &lt;- 1\ny &lt;- 2      # sample values \nz &lt;- x &gt; y  # is x larger than y? \nz           # print the logical value \n\nFALSE\n\n\n\nclass(z)       # print the class name of z \n\n'logical'",
+    "text": "Logical (Boolean)\nBoolean data are called “logical” in R.\nThey take the values TRUE and FALSE, or T and F for short.\nA logical value is often produced from the comparison between values.\n\nx &lt;- 1\ny &lt;- 2      \nz &lt;- x &gt; y  \nz           \n\nFALSE\n\n\n\nclass(z) \n\n'logical'",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: Data Types</span>"
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: R Data Types and Operators</span>"
     ]
   },
   {
     "objectID": "notebooks/M10_RBasics/M10-02-DataTypes.html#logical-operators",
     "href": "notebooks/M10_RBasics/M10-02-DataTypes.html#logical-operators",
-    "title": "NB: Data Types",
+    "title": "NB: R Data Types and Operators",
     "section": "Logical Operators",
-    "text": "Logical Operators\nThe standard logical operations are & (and), | (or), and ! (negation).\n\nu &lt;- TRUE\nv &lt;- FALSE\nu & v          # u AND v \n\nFALSE\n\n\n\nu | v          # u OR v \n\nTRUE\n\n\n\n!u             # negation of u \n\nFALSE\n\n\nNote that you can use T and F instead of TRUE and FALSE.\n\na &lt;- T\nb &lt;- F\na & b\n\nFALSE",
+    "text": "Logical Operators\nR supports the standard logical operations: & stands for “and”, | for stands for “or”, and ! stands for negation.\n\nu &lt;- TRUE\nv &lt;- FALSE\nu & v\n\nFALSE\n\n\n\nu | v\n\nTRUE\n\n\n\n!u\n\nFALSE\n\n\nAgain, you may use T and F instead of TRUE and FALSE.\n\na &lt;- T\nb &lt;- F\na & b\n\nFALSE",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: Data Types</span>"
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: R Data Types and Operators</span>"
     ]
   },
   {
     "objectID": "notebooks/M10_RBasics/M10-02-DataTypes.html#characters",
     "href": "notebooks/M10_RBasics/M10-02-DataTypes.html#characters",
-    "title": "NB: Data Types",
+    "title": "NB: R Data Types and Operators",
     "section": "Characters",
-    "text": "Characters\nA character object is used to represent string values in R.\nThis may confusing if you are coming from a language where ‘character’ means an individual character, such as A.\nWe may convert non-character objects into characters with the as.character() function:\n\nx &lt;- as.character(3.14) \nx\n\n'3.14'\n\n\n\nclass(x)       # print the class name of x \n\n'character'",
+    "text": "Characters\nStrings are called “character” objects in R.\nThis may confusing if you are coming from a language, such as Java, where “character” means an individual character, such as A.\nWe may convert non-character objects into characters with the as.character() function:\n\nx &lt;- as.character(3.14) \nx\n\n'3.14'\n\n\n\nclass(x)       # print the class name of x \n\n'character'",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: Data Types</span>"
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: R Data Types and Operators</span>"
     ]
   },
   {
     "objectID": "notebooks/M10_RBasics/M10-02-DataTypes.html#paste",
     "href": "notebooks/M10_RBasics/M10-02-DataTypes.html#paste",
-    "title": "NB: Data Types",
+    "title": "NB: R Data Types and Operators",
     "section": "paste()",
-    "text": "paste()\nTwo character values can be concatenated with the paste() function.\nR does not overload the + operator.\n\nfname &lt;- \"Joe\"\nlname &lt;-\"Smith\" \npaste(fname, lname) \n\n'Joe Smith'\n\n\npaste() takes a sep argument:\n\npaste(\"A\", \"B\", \"C\", sep=\"--\")\n\n'A--B--C'",
+    "text": "paste()\nTwo character values can be concatenated with the paste() function.\n\nfname &lt;- \"Joe\"\nlname &lt;- \"Smith\" \npaste(fname, lname) \n\n'Joe Smith'\n\n\npaste() takes a sep argument:\n\npaste(\"A\", \"B\", \"C\", sep=\"--\")\n\n'A--B--C'\n\n\nNote that R does not overload the + operator.\n\nfname + lname\n\nERROR: Error in fname + lname: non-numeric argument to binary operator",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: Data Types</span>"
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: R Data Types and Operators</span>"
     ]
   },
   {
     "objectID": "notebooks/M10_RBasics/M10-02-DataTypes.html#sprintf",
     "href": "notebooks/M10_RBasics/M10-02-DataTypes.html#sprintf",
-    "title": "NB: Data Types",
+    "title": "NB: R Data Types and Operators",
     "section": "sprintf()",
     "text": "sprintf()\nIt is often convenient to create a readable string with the sprintf() function, which has a C language syntax.\n\nsprintf(\"%s has %d dollars\", \"Sam\", 100) \n\n'Sam has 100 dollars'",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: Data Types</span>"
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: R Data Types and Operators</span>"
     ]
   },
   {
     "objectID": "notebooks/M10_RBasics/M10-02-DataTypes.html#substr",
     "href": "notebooks/M10_RBasics/M10-02-DataTypes.html#substr",
-    "title": "NB: Data Types",
+    "title": "NB: R Data Types and Operators",
     "section": "substr()",
     "text": "substr()\nTo extract a substring, we apply the substr() function.\nHere is an example showing how to extract the substring between the third and twelfth positions in a string.\n\nsubstr(\"Mary has a little lamb.\", start=3, stop=12) \n\n'ry has a l'",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: Data Types</span>"
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: R Data Types and Operators</span>"
     ]
   },
   {
     "objectID": "notebooks/M10_RBasics/M10-02-DataTypes.html#sub",
     "href": "notebooks/M10_RBasics/M10-02-DataTypes.html#sub",
-    "title": "NB: Data Types",
+    "title": "NB: R Data Types and Operators",
     "section": "sub()",
     "text": "sub()\nAnd to replace the first occurrence of the word “little” by another word “big” in the string, we apply the sub() function.\nThis function can use regular expressions.\n\nsub(\"little\", \"big\", \"Mary has a little lamb.\") \n\n'Mary has a big lamb.'",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: Data Types</span>"
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: R Data Types and Operators</span>"
     ]
   },
   {
@@ -4484,7 +4484,7 @@
     "href": "notebooks/M10_RBasics/M10-03-DataStructures.html",
     "title": "NB: R Data Structures",
     "section": "",
-    "text": "Vectors and c()\nA vector is a sequence of data elements of the same basic type.\nMembers in a vector are officially called components, but many call them members.\nVectors may be created with the c() function (“c” stands for combine).\nHere is a vector of three numeric values 2, 3 and 5.\nc(2, 3, 5) \n\n\n235\nAnd here is a vector of logical values.\nc(TRUE, FALSE, TRUE, FALSE, FALSE) \n\n\nTRUEFALSETRUEFALSEFALSE\nA vector can contain character strings.\nc(\"aa\", \"bb\", \"cc\", \"dd\", \"ee\") \n\n\n'aa''bb''cc''dd''ee'",
+    "text": "Vector\nA vector is an ordered collection of elements where each elements contains the same data type (integers or characters or reals or whatever).\nVectors are immutable.\nVectors are indexed beginning with the number \\(1\\).\n\\(1\\)-based indexing is used throughout R.",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
@@ -4561,7 +4561,7 @@
     "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#vector-indexes",
     "title": "NB: R Data Structures",
     "section": "Vector Indexes",
-    "text": "Vector Indexes\nWe retrieve values in a vector by declaring an index inside a single square bracket index [] operator.\nVector indexes are 1-based.\n\ns &lt;- c(\"aa\", \"bb\", \"cc\", \"dd\", \"ee\") \ns[3] \n\n'cc'",
+    "text": "Vector Indexes\nWe retrieve values in a vector by declaring an index inside a single square bracket index [] operator.\nVector indexes are \\(1\\)-based.\n\ns &lt;- c(\"aa\", \"bb\", \"cc\", \"dd\", \"ee\") \ns[3] \n\n'cc'",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
@@ -4616,7 +4616,7 @@
     "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#out-of-order-indexes",
     "title": "NB: R Data Structures",
     "section": "Out-of-Order Indexes",
-    "text": "Out-of-Order Indexes\nThe index vector can even be out-of-order. Here is a vector slice with the order of first and second members reversed.\n\ns[c(2, 1, 3)] \n\n\n'bb''aa''cc'",
+    "text": "Out-of-Order Indexes\nThe index vector can even be out-of-order. Here is a vector slice with the order of first and second members reversed.\n\ns[c(2, 1, 3)] \n\n\n'bb''aa''cc'\n\n\nIn Python, we called this “fancy indexing.”",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
@@ -4638,7 +4638,7 @@
     "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#logical-index-vectors",
     "title": "NB: R Data Structures",
     "section": "Logical Index Vectors",
-    "text": "Logical Index Vectors\nA new vector can be sliced from a given vector with a logical index vector.\nThe logical vector must the same length as the original vector.\nIts members are TRUE if the corresponding members in the original vector are to be included in the slice, and FALSE if otherwise.\n\nThis is what we called boolean indexing and masking in Python.\n\nFor example, consider the following vector s of length 5.\n\ns &lt;- c(\"aa\", \"bb\", \"cc\", \"dd\", \"ee\")\n\nTo retrieve the the second and fourth members of s, we define a logical vector L of the same length, and have its second and fourth members set as TRUE.\n\nL = c(FALSE, TRUE, FALSE, TRUE, FALSE)\ns[L] \n\n\n'bb''dd'\n\n\nThe code can be abbreviated into a single line.\n\ns[c(FALSE, TRUE, FALSE, TRUE, FALSE)]\n\n\n'bb''dd'",
+    "text": "Logical Index Vectors\nA new vector can be sliced from a given vector with a logical index vector.\nThe logical vector must the same length as the original vector.\nIts members are TRUE if the corresponding members in the original vector are to be included in the slice, and FALSE if otherwise.\nThis is what we called boolean indexing and masking in Python.\nFor example, consider the following vector s of length 5.\n\ns &lt;- c(\"aa\", \"bb\", \"cc\", \"dd\", \"ee\")\n\nTo retrieve the the second and fourth members of s, we define a logical vector L of the same length, and have its second and fourth members set as TRUE.\n\nL = c(FALSE, TRUE, FALSE, TRUE, FALSE)\ns[L] \n\n\n'bb''dd'\n\n\nThe code can be abbreviated into a single line.\n\ns[c(FALSE, TRUE, FALSE, TRUE, FALSE)]\n\n\n'bb''dd'",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
@@ -4671,7 +4671,7 @@
     "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#member-reference-with",
     "title": "NB: R Data Structures",
     "section": "Member Reference with [[]]",
-    "text": "Member Reference with [[]]\nTo reference a list member directly, we use the double square bracket [[]] operator.\nThe following object x[[2]] is the second member of x.\nIn other words, x[[2]] is a true copy of s, not a slice containing s or its copy.\n\nx[2]\n\n\n    \n'aa''bb''cc''dd''ee'\n\n\n\n\n\nx[[2]]\n\n\n'aa''bb''cc''dd''ee'\n\n\nWe can modify its content directly.\n\nx[[2]][1] = \"ta\" \n\n\nx[2]\n\n\n    \n'ta''bb''cc''dd''ee'\n\n\n\n\nAnd s is unaffected.\n\ns\n\n\n'aa''bb''cc''dd''ee'",
+    "text": "Member Reference with [[]]\nTo reference a list member directly, we use the double square bracket [[]] operator.\nThe following object x[[2]] is the second member of x.\nIn other words, x[[2]] is a true copy of s, not a slice containing s or its copy.\n\nprint(x[2])\n\n[[1]]\n[1] \"aa\" \"bb\" \"cc\" \"dd\" \"ee\"\n\n\n\n\nprint(x[[2]])\n\n[1] \"aa\" \"bb\" \"cc\" \"dd\" \"ee\"\n\n\nWe can modify its content directly.\n\nx[[2]][1] = \"ta\" \n\n\nprint(x[2])\n\n[[1]]\n[1] \"aa\" \"bb\" \"cc\" \"dd\" \"ee\"\n\n\n\nAnd s is unaffected.\n\nprint(s)\n\n[1] \"aa\" \"bb\" \"cc\" \"dd\" \"ee\"\n\n\nNote that this notation is opposite to Python’s syntax in NumPy and Pandas.\nIn Python, a double bracket containing a single value passed to a DataFrame would return a DataFrame, whereas a single bracket would return a Series.\nThis is because the double bracket means a list is being used to select data, whereas a single bracket means a scalar is being used\ndf[[x]] # Returns a one column DataFrame\ndf[x]   # Returns a Series",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
@@ -4682,7 +4682,7 @@
     "href": "notebooks/M10_RBasics/M10-04-DataFrames.html",
     "title": "NB: R Data Frames",
     "section": "",
-    "text": "Data Frames\nA data frame is used for storing data tables.\nIt is essentially a list of vectors of equal length.\nFor example, the following variable df is a data frame containing three vectors n, s, b.\nn &lt;- c(2, 3, 5) \ns &lt;- c(\"aa\", \"bb\", \"cc\") \nb &lt;- c(TRUE, FALSE, TRUE) \ndf &lt;- data.frame(n, s, b)\ndf\n\n\n\nA data.frame: 3 × 3\n\n\nn\ns\nb\n\n\n&lt;dbl&gt;\n&lt;chr&gt;\n&lt;lgl&gt;\n\n\n\n\n2\naa\nTRUE\n\n\n3\nbb\nFALSE\n\n\n5\ncc\nTRUE\nNotice that data frames are built column-wise.\nWhen displayed, the top line of the data frame is the header; it contains the column names.\nThe data type is listed below the column name.\nEach horizontal line afterward denotes a data row, which may begin with the name of the row, and then followed by the actual data.\nEach data member of a row is called a cell.",
+    "text": "Data Frames\nA data frame is used for storing data tables.\nIt is essentially a list of vectors of equal length.\nFor example, the following variable df is a data frame containing three vectors n, s, b.\nn &lt;- c(2, 3, 5) \ns &lt;- c(\"aa\", \"bb\", \"cc\") \nb &lt;- c(TRUE, FALSE, TRUE) \ndf &lt;- data.frame(n, s, b)\ndf\n\n\n\nA data.frame: 3 × 3\n\n\nn\ns\nb\n\n\n&lt;dbl&gt;\n&lt;chr&gt;\n&lt;lgl&gt;\n\n\n\n\n2\naa\nTRUE\n\n\n3\nbb\nFALSE\n\n\n5\ncc\nTRUE\nNotice that data frames are built column-wise.\nWhen displayed in certain environemnts, the top line of the data frame is the header and it contains the column names.\nThe data type is listed below the column name.\nEach horizontal line afterward denotes a data row, which may begin with the name of the row, and then followed by the actual data.\nEach data member of a row is called a cell.\nNote that on Jupyter, if we print a data frame, we get this:\nprint(df)\n\n  n  s     b\n1 2 aa  TRUE\n2 3 bb FALSE\n3 5 cc  TRUE",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4693,7 +4693,7 @@
     "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#built-in-data-frames",
     "title": "NB: R Data Frames",
     "section": "Built-in Data Frames",
-    "text": "Built-in Data Frames\nHere is a built-in data frame in R, called mtcars.\nNote that it comes with R without having to import anything.\n\nmtcars\n\n\n\nA data.frame: 32 × 11\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nMazda RX4\n21.0\n6\n160.0\n110\n3.90\n2.620\n16.46\n0\n1\n4\n4\n\n\nMazda RX4 Wag\n21.0\n6\n160.0\n110\n3.90\n2.875\n17.02\n0\n1\n4\n4\n\n\nDatsun 710\n22.8\n4\n108.0\n93\n3.85\n2.320\n18.61\n1\n1\n4\n1\n\n\nHornet 4 Drive\n21.4\n6\n258.0\n110\n3.08\n3.215\n19.44\n1\n0\n3\n1\n\n\nHornet Sportabout\n18.7\n8\n360.0\n175\n3.15\n3.440\n17.02\n0\n0\n3\n2\n\n\nValiant\n18.1\n6\n225.0\n105\n2.76\n3.460\n20.22\n1\n0\n3\n1\n\n\nDuster 360\n14.3\n8\n360.0\n245\n3.21\n3.570\n15.84\n0\n0\n3\n4\n\n\nMerc 240D\n24.4\n4\n146.7\n62\n3.69\n3.190\n20.00\n1\n0\n4\n2\n\n\nMerc 230\n22.8\n4\n140.8\n95\n3.92\n3.150\n22.90\n1\n0\n4\n2\n\n\nMerc 280\n19.2\n6\n167.6\n123\n3.92\n3.440\n18.30\n1\n0\n4\n4\n\n\nMerc 280C\n17.8\n6\n167.6\n123\n3.92\n3.440\n18.90\n1\n0\n4\n4\n\n\nMerc 450SE\n16.4\n8\n275.8\n180\n3.07\n4.070\n17.40\n0\n0\n3\n3\n\n\nMerc 450SL\n17.3\n8\n275.8\n180\n3.07\n3.730\n17.60\n0\n0\n3\n3\n\n\nMerc 450SLC\n15.2\n8\n275.8\n180\n3.07\n3.780\n18.00\n0\n0\n3\n3\n\n\nCadillac Fleetwood\n10.4\n8\n472.0\n205\n2.93\n5.250\n17.98\n0\n0\n3\n4\n\n\nLincoln Continental\n10.4\n8\n460.0\n215\n3.00\n5.424\n17.82\n0\n0\n3\n4\n\n\nChrysler Imperial\n14.7\n8\n440.0\n230\n3.23\n5.345\n17.42\n0\n0\n3\n4\n\n\nFiat 128\n32.4\n4\n78.7\n66\n4.08\n2.200\n19.47\n1\n1\n4\n1\n\n\nHonda Civic\n30.4\n4\n75.7\n52\n4.93\n1.615\n18.52\n1\n1\n4\n2\n\n\nToyota Corolla\n33.9\n4\n71.1\n65\n4.22\n1.835\n19.90\n1\n1\n4\n1\n\n\nToyota Corona\n21.5\n4\n120.1\n97\n3.70\n2.465\n20.01\n1\n0\n3\n1\n\n\nDodge Challenger\n15.5\n8\n318.0\n150\n2.76\n3.520\n16.87\n0\n0\n3\n2\n\n\nAMC Javelin\n15.2\n8\n304.0\n150\n3.15\n3.435\n17.30\n0\n0\n3\n2\n\n\nCamaro Z28\n13.3\n8\n350.0\n245\n3.73\n3.840\n15.41\n0\n0\n3\n4\n\n\nPontiac Firebird\n19.2\n8\n400.0\n175\n3.08\n3.845\n17.05\n0\n0\n3\n2\n\n\nFiat X1-9\n27.3\n4\n79.0\n66\n4.08\n1.935\n18.90\n1\n1\n4\n1\n\n\nPorsche 914-2\n26.0\n4\n120.3\n91\n4.43\n2.140\n16.70\n0\n1\n5\n2\n\n\nLotus Europa\n30.4\n4\n95.1\n113\n3.77\n1.513\n16.90\n1\n1\n5\n2\n\n\nFord Pantera L\n15.8\n8\n351.0\n264\n4.22\n3.170\n14.50\n0\n1\n5\n4\n\n\nFerrari Dino\n19.7\n6\n145.0\n175\n3.62\n2.770\n15.50\n0\n1\n5\n6\n\n\nMaserati Bora\n15.0\n8\n301.0\n335\n3.54\n3.570\n14.60\n0\n1\n5\n8\n\n\nVolvo 142E\n21.4\n4\n121.0\n109\n4.11\n2.780\n18.60\n1\n1\n4\n2\n\n\n\n\n\n\nTo retrieve data in a cell, we enter its row and column coordinates in the single square bracket [ ] operator.\nThe two coordinates are separated by a comma, e.g. [row, col].\nHere is the cell value from the first row, second column of mtcars.\n\nmtcars[1, 2]\n\n6\n\n\nWe can use names instead of the numeric coordinates.\n\nmtcars[\"Mazda RX4\", \"cyl\"]\n\n6\n\n\nLastly, the number of data rows in the data frame is given by the nrow() function.\n\nnrow(mtcars)\n\n32\n\n\nAnd the number of columns of a data frame is given by the ncol() function.\n\nncol(mtcars)\n\n11\n\n\nWe get the shape of the data frame withdim(), which stands for ‘dimension’.\n\ndim(mtcars)\n\n\n3211\n\n\nFurther details of the mtcars data set is available in the R documentation.\n\n# help(mtcars)",
+    "text": "Built-in Data Frames\nTo learn more about data frames in R, let’s look at some built in data.\nR comes with many built-in data sets to get you started.\nThese do not need to be imported.\nHere is the mtcars data frame.\n\nmtcars\n\n\n\nA data.frame: 32 × 11\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nMazda RX4\n21.0\n6\n160.0\n110\n3.90\n2.620\n16.46\n0\n1\n4\n4\n\n\nMazda RX4 Wag\n21.0\n6\n160.0\n110\n3.90\n2.875\n17.02\n0\n1\n4\n4\n\n\nDatsun 710\n22.8\n4\n108.0\n93\n3.85\n2.320\n18.61\n1\n1\n4\n1\n\n\nHornet 4 Drive\n21.4\n6\n258.0\n110\n3.08\n3.215\n19.44\n1\n0\n3\n1\n\n\nHornet Sportabout\n18.7\n8\n360.0\n175\n3.15\n3.440\n17.02\n0\n0\n3\n2\n\n\nValiant\n18.1\n6\n225.0\n105\n2.76\n3.460\n20.22\n1\n0\n3\n1\n\n\nDuster 360\n14.3\n8\n360.0\n245\n3.21\n3.570\n15.84\n0\n0\n3\n4\n\n\nMerc 240D\n24.4\n4\n146.7\n62\n3.69\n3.190\n20.00\n1\n0\n4\n2\n\n\nMerc 230\n22.8\n4\n140.8\n95\n3.92\n3.150\n22.90\n1\n0\n4\n2\n\n\nMerc 280\n19.2\n6\n167.6\n123\n3.92\n3.440\n18.30\n1\n0\n4\n4\n\n\nMerc 280C\n17.8\n6\n167.6\n123\n3.92\n3.440\n18.90\n1\n0\n4\n4\n\n\nMerc 450SE\n16.4\n8\n275.8\n180\n3.07\n4.070\n17.40\n0\n0\n3\n3\n\n\nMerc 450SL\n17.3\n8\n275.8\n180\n3.07\n3.730\n17.60\n0\n0\n3\n3\n\n\nMerc 450SLC\n15.2\n8\n275.8\n180\n3.07\n3.780\n18.00\n0\n0\n3\n3\n\n\nCadillac Fleetwood\n10.4\n8\n472.0\n205\n2.93\n5.250\n17.98\n0\n0\n3\n4\n\n\nLincoln Continental\n10.4\n8\n460.0\n215\n3.00\n5.424\n17.82\n0\n0\n3\n4\n\n\nChrysler Imperial\n14.7\n8\n440.0\n230\n3.23\n5.345\n17.42\n0\n0\n3\n4\n\n\nFiat 128\n32.4\n4\n78.7\n66\n4.08\n2.200\n19.47\n1\n1\n4\n1\n\n\nHonda Civic\n30.4\n4\n75.7\n52\n4.93\n1.615\n18.52\n1\n1\n4\n2\n\n\nToyota Corolla\n33.9\n4\n71.1\n65\n4.22\n1.835\n19.90\n1\n1\n4\n1\n\n\nToyota Corona\n21.5\n4\n120.1\n97\n3.70\n2.465\n20.01\n1\n0\n3\n1\n\n\nDodge Challenger\n15.5\n8\n318.0\n150\n2.76\n3.520\n16.87\n0\n0\n3\n2\n\n\nAMC Javelin\n15.2\n8\n304.0\n150\n3.15\n3.435\n17.30\n0\n0\n3\n2\n\n\nCamaro Z28\n13.3\n8\n350.0\n245\n3.73\n3.840\n15.41\n0\n0\n3\n4\n\n\nPontiac Firebird\n19.2\n8\n400.0\n175\n3.08\n3.845\n17.05\n0\n0\n3\n2\n\n\nFiat X1-9\n27.3\n4\n79.0\n66\n4.08\n1.935\n18.90\n1\n1\n4\n1\n\n\nPorsche 914-2\n26.0\n4\n120.3\n91\n4.43\n2.140\n16.70\n0\n1\n5\n2\n\n\nLotus Europa\n30.4\n4\n95.1\n113\n3.77\n1.513\n16.90\n1\n1\n5\n2\n\n\nFord Pantera L\n15.8\n8\n351.0\n264\n4.22\n3.170\n14.50\n0\n1\n5\n4\n\n\nFerrari Dino\n19.7\n6\n145.0\n175\n3.62\n2.770\n15.50\n0\n1\n5\n6\n\n\nMaserati Bora\n15.0\n8\n301.0\n335\n3.54\n3.570\n14.60\n0\n1\n5\n8\n\n\nVolvo 142E\n21.4\n4\n121.0\n109\n4.11\n2.780\n18.60\n1\n1\n4\n2\n\n\n\n\n\n\nTo retrieve data in a cell, we enter its row and column coordinates in the single square bracket [ ] operator.\nThe two coordinates are separated by a comma, e.g. [row, col].\nHere is the cell value from the first row, second column of mtcars.\n\nmtcars[1, 2]\n\n6\n\n\nWe can use names instead of the numeric coordinates.\n\nmtcars[\"Mazda RX4\", \"cyl\"]\n\n6\n\n\nThe number of data rows in the data frame is given by the nrow() function.\n\nnrow(mtcars)\n\n32\n\n\nAnd the number of columns of a data frame is given by the ncol() function.\n\nncol(mtcars)\n\n11\n\n\nWe get the shape of the data frame withdim(), which stands for “dimension.”\n\ndim(mtcars)\n\n\n3211",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4704,7 +4704,7 @@
     "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#preview-with-head",
     "title": "NB: R Data Frames",
     "section": "Preview with head()",
-    "text": "Preview with head()\nInstead of printing out the entire data frame, it is often desirable to preview it with the head function beforehand\nhead(mtcars)",
+    "text": "Preview with head()\nInstead of printing out the entire data frame, it is often desirable to preview it with the head function beforehand\n\nhead(mtcars)\n\n\n\nA data.frame: 6 × 11\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nMazda RX4\n21.0\n6\n160\n110\n3.90\n2.620\n16.46\n0\n1\n4\n4\n\n\nMazda RX4 Wag\n21.0\n6\n160\n110\n3.90\n2.875\n17.02\n0\n1\n4\n4\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.320\n18.61\n1\n1\n4\n1\n\n\nHornet 4 Drive\n21.4\n6\n258\n110\n3.08\n3.215\n19.44\n1\n0\n3\n1\n\n\nHornet Sportabout\n18.7\n8\n360\n175\n3.15\n3.440\n17.02\n0\n0\n3\n2\n\n\nValiant\n18.1\n6\n225\n105\n2.76\n3.460\n20.22\n1\n0\n3\n1",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4715,7 +4715,7 @@
     "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#data-frame-column-vectors",
     "title": "NB: R Data Frames",
     "section": "Data Frame Column Vectors",
-    "text": "Data Frame Column Vectors\nWe reference a data frame column with the double square bracket [[]] operator, just as we do for lists.\nFor example, to retrieve the ninth column vector of the built-in data set mtcars, we write\n\nmtcars[[9]]\n\n\n11100000000000000111000001111111\n\n\nWe can retrieve the same column vector by its name\n\nmtcars[[\"am\"]]\n\n\n11100000000000000111000001111111\n\n\nWe can also retrieve with the $ operator in lieu of the double square bracket operator.\nThis is like using a dot in Pandas.\n\nmtcars$am\n\n\n11100000000000000111000001111111\n\n\nYet another way to retrieve the same column vector is to use the single square bracket [] operator.\nWe prepend the column name with a comma character, which signals a wildcard match for the row position\n\nmtcars[, \"am\"] \n\n\n11100000000000000111000001111111",
+    "text": "Data Frame Column Vectors\nWe reference a the data inside a column with the double square bracket [[]] operator, just as we do for lists.\nFor example, to retrieve the ninth column vector from mtcars, we write:\n\nmtcars[[9]]\n\n\n11100000000000000111000001111111\n\n\nWe can retrieve the same column vector by its name\n\nmtcars[[\"am\"]]\n\n\n11100000000000000111000001111111\n\n\nWe can also retrieve with the $ operator in lieu of the double square bracket operator.\nThis is like using a dot in Pandas.\n\nmtcars$am\n\n\n11100000000000000111000001111111\n\n\nYet another way to retrieve the same column vector is to use the single square bracket [] operator.\nWe prepend the column name with a comma character, which signals a wildcard match for the row position\n\nmtcars[, \"am\"]\n\n\n11100000000000000111000001111111",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4726,7 +4726,7 @@
     "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#data-frame-column-slice",
     "title": "NB: R Data Frames",
     "section": "Data Frame Column Slice",
-    "text": "Data Frame Column Slice\nWe retrieve a data frame column slice with the single square bracket [ ] operator.\nNote: This is like a one-column dataframe in Pandas, as opposed to a Series.",
+    "text": "Data Frame Column Slice\nIn contrast to retrieving vectors from within a dat frame, we retrieve a slice of a data frame with the single square bracket [ ] operator.\nA slice of a data frame is just a smaller data frame.\nIt is not a lower-dimensional data strucure, i.e. a vector.\nWe saw this with lists earlier.\nThis is like a one-column dataframe in Pandas, as opposed to a Series.",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4737,7 +4737,7 @@
     "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#numeric-indexing",
     "title": "NB: R Data Frames",
     "section": "Numeric Indexing",
-    "text": "Numeric Indexing\nThe following is a slice containing the first column of the built-in data set mtcars\n\nmtcars[[1]]\nmtcars[1]\n\n\n212122.821.418.718.114.324.422.819.217.816.417.315.210.410.414.732.430.433.921.515.515.213.319.227.32630.415.819.71521.4\n\n\n\n\nA data.frame: 32 × 1\n\n\n\nmpg\n\n\n\n&lt;dbl&gt;\n\n\n\n\nMazda RX4\n21.0\n\n\nMazda RX4 Wag\n21.0\n\n\nDatsun 710\n22.8\n\n\nHornet 4 Drive\n21.4\n\n\nHornet Sportabout\n18.7\n\n\nValiant\n18.1\n\n\nDuster 360\n14.3\n\n\nMerc 240D\n24.4\n\n\nMerc 230\n22.8\n\n\nMerc 280\n19.2\n\n\nMerc 280C\n17.8\n\n\nMerc 450SE\n16.4\n\n\nMerc 450SL\n17.3\n\n\nMerc 450SLC\n15.2\n\n\nCadillac Fleetwood\n10.4\n\n\nLincoln Continental\n10.4\n\n\nChrysler Imperial\n14.7\n\n\nFiat 128\n32.4\n\n\nHonda Civic\n30.4\n\n\nToyota Corolla\n33.9\n\n\nToyota Corona\n21.5\n\n\nDodge Challenger\n15.5\n\n\nAMC Javelin\n15.2\n\n\nCamaro Z28\n13.3\n\n\nPontiac Firebird\n19.2\n\n\nFiat X1-9\n27.3\n\n\nPorsche 914-2\n26.0\n\n\nLotus Europa\n30.4\n\n\nFord Pantera L\n15.8\n\n\nFerrari Dino\n19.7\n\n\nMaserati Bora\n15.0\n\n\nVolvo 142E\n21.4",
+    "text": "Numeric Indexing\nThe following is a slice containing the first column of mtcars:\n\nhead(mtcars[1])\n\n\n\nA data.frame: 6 × 1\n\n\n\nmpg\n\n\n\n&lt;dbl&gt;\n\n\n\n\nMazda RX4\n21.0\n\n\nMazda RX4 Wag\n21.0\n\n\nDatsun 710\n22.8\n\n\nHornet 4 Drive\n21.4\n\n\nHornet Sportabout\n18.7\n\n\nValiant\n18.1\n\n\n\n\n\n\nTo reinforce this difference between getting a slice of a data frame and getting the data is contains, compare the classes of the results in each case.\n\nclass(mtcars[1]); class(mtcars[[1]])\n\n'data.frame'\n\n\n'numeric'",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4748,7 +4748,7 @@
     "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#name-indexing",
     "title": "NB: R Data Frames",
     "section": "Name Indexing",
-    "text": "Name Indexing\nWe can retrieve the same column slice by its name\n\nmtcars[\"mpg\"] \n\n\n\nA data.frame: 32 × 1\n\n\n\nmpg\n\n\n\n&lt;dbl&gt;\n\n\n\n\nMazda RX4\n21.0\n\n\nMazda RX4 Wag\n21.0\n\n\nDatsun 710\n22.8\n\n\nHornet 4 Drive\n21.4\n\n\nHornet Sportabout\n18.7\n\n\nValiant\n18.1\n\n\nDuster 360\n14.3\n\n\nMerc 240D\n24.4\n\n\nMerc 230\n22.8\n\n\nMerc 280\n19.2\n\n\nMerc 280C\n17.8\n\n\nMerc 450SE\n16.4\n\n\nMerc 450SL\n17.3\n\n\nMerc 450SLC\n15.2\n\n\nCadillac Fleetwood\n10.4\n\n\nLincoln Continental\n10.4\n\n\nChrysler Imperial\n14.7\n\n\nFiat 128\n32.4\n\n\nHonda Civic\n30.4\n\n\nToyota Corolla\n33.9\n\n\nToyota Corona\n21.5\n\n\nDodge Challenger\n15.5\n\n\nAMC Javelin\n15.2\n\n\nCamaro Z28\n13.3\n\n\nPontiac Firebird\n19.2\n\n\nFiat X1-9\n27.3\n\n\nPorsche 914-2\n26.0\n\n\nLotus Europa\n30.4\n\n\nFord Pantera L\n15.8\n\n\nFerrari Dino\n19.7\n\n\nMaserati Bora\n15.0\n\n\nVolvo 142E\n21.4\n\n\n\n\n\n\nCompare to accessing the column vector data directly:\n\nmtcars[[\"mpg\"]]\n\n\n212122.821.418.718.114.324.422.819.217.816.417.315.210.410.414.732.430.433.921.515.515.213.319.227.32630.415.819.71521.4\n\n\nTo retrieve a data frame slice with the two columns mpg and hp, we put the column names into a vector inside the single square bracket operator:\n\nmtcars[c(\"mpg\", \"hp\")]\n\n\n\nA data.frame: 32 × 2\n\n\n\nmpg\nhp\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nMazda RX4\n21.0\n110\n\n\nMazda RX4 Wag\n21.0\n110\n\n\nDatsun 710\n22.8\n93\n\n\nHornet 4 Drive\n21.4\n110\n\n\nHornet Sportabout\n18.7\n175\n\n\nValiant\n18.1\n105\n\n\nDuster 360\n14.3\n245\n\n\nMerc 240D\n24.4\n62\n\n\nMerc 230\n22.8\n95\n\n\nMerc 280\n19.2\n123\n\n\nMerc 280C\n17.8\n123\n\n\nMerc 450SE\n16.4\n180\n\n\nMerc 450SL\n17.3\n180\n\n\nMerc 450SLC\n15.2\n180\n\n\nCadillac Fleetwood\n10.4\n205\n\n\nLincoln Continental\n10.4\n215\n\n\nChrysler Imperial\n14.7\n230\n\n\nFiat 128\n32.4\n66\n\n\nHonda Civic\n30.4\n52\n\n\nToyota Corolla\n33.9\n65\n\n\nToyota Corona\n21.5\n97\n\n\nDodge Challenger\n15.5\n150\n\n\nAMC Javelin\n15.2\n150\n\n\nCamaro Z28\n13.3\n245\n\n\nPontiac Firebird\n19.2\n175\n\n\nFiat X1-9\n27.3\n66\n\n\nPorsche 914-2\n26.0\n91\n\n\nLotus Europa\n30.4\n113\n\n\nFord Pantera L\n15.8\n264\n\n\nFerrari Dino\n19.7\n175\n\n\nMaserati Bora\n15.0\n335\n\n\nVolvo 142E\n21.4\n109",
+    "text": "Name Indexing\nWe can also retrieve a column slice by its name.\n\nhead(mtcars[\"mpg\"])\n\n\n\nA data.frame: 6 × 1\n\n\n\nmpg\n\n\n\n&lt;dbl&gt;\n\n\n\n\nMazda RX4\n21.0\n\n\nMazda RX4 Wag\n21.0\n\n\nDatsun 710\n22.8\n\n\nHornet 4 Drive\n21.4\n\n\nHornet Sportabout\n18.7\n\n\nValiant\n18.1\n\n\n\n\n\n\nTo retrieve a data frame slice with the two columns mpg and hp, we put the column names into a vector inside the single square bracket operator:\n\nhead(mtcars[c(\"mpg\", \"hp\")])\n\n\n\nA data.frame: 6 × 2\n\n\n\nmpg\nhp\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nMazda RX4\n21.0\n110\n\n\nMazda RX4 Wag\n21.0\n110\n\n\nDatsun 710\n22.8\n93\n\n\nHornet 4 Drive\n21.4\n110\n\n\nHornet Sportabout\n18.7\n175\n\n\nValiant\n18.1\n105",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4770,7 +4770,7 @@
     "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#numeric-indexing-1",
     "title": "NB: R Data Frames",
     "section": "Numeric Indexing",
-    "text": "Numeric Indexing\nFor example, the following retrieves a row record of the built-in data set mtcars. Please notice the extra comma in the square bracket operator, and it is not a typo. It states that the 1974 Camaro Z28 has a gas mileage of \\(13.3\\) miles per gallon, and an eight cylinder \\(245\\) horse power engine, …, etc\n\nmtcars[24,]\n\n\n\nA data.frame: 1 × 11\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nCamaro Z28\n13.3\n8\n350\n245\n3.73\n3.84\n15.41\n0\n0\n3\n4\n\n\n\n\n\n\nTo retrieve more than one rows, we use a numeric index vector\n\nmtcars[c(3, 24),]\n\n\n\nA data.frame: 2 × 11\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.32\n18.61\n1\n1\n4\n1\n\n\nCamaro Z28\n13.3\n8\n350\n245\n3.73\n3.84\n15.41\n0\n0\n3\n4",
+    "text": "Numeric Indexing\nWe can access a row of data by its index number.\nFor example, the following retrieves the 24th row record.\n\nmtcars[24,]\n\n\n\nA data.frame: 1 × 11\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nCamaro Z28\n13.3\n8\n350\n245\n3.73\n3.84\n15.41\n0\n0\n3\n4\n\n\n\n\n\n\nTo retrieve more than one row, we use a numeric index vector:\n\nmtcars[c(3, 24),]\n\n\n\nA data.frame: 2 × 11\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.32\n18.61\n1\n1\n4\n1\n\n\nCamaro Z28\n13.3\n8\n350\n245\n3.73\n3.84\n15.41\n0\n0\n3\n4",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4781,7 +4781,7 @@
     "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#name-indexing-1",
     "title": "NB: R Data Frames",
     "section": "Name Indexing",
-    "text": "Name Indexing\nWe can retrieve a row by its name.\n\nmtcars[\"Camaro Z28\",]\n\n\n\nA data.frame: 1 × 11\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nCamaro Z28\n13.3\n8\n350\n245\n3.73\n3.84\n15.41\n0\n0\n3\n4\n\n\n\n\n\n\nAnd we can pack the row names in an index vector in order to retrieve multiple rows.\n\nmtcars[c(\"Datsun 710\", \"Camaro Z28\"),]\n\n\n\nA data.frame: 2 × 11\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.32\n18.61\n1\n1\n4\n1\n\n\nCamaro Z28\n13.3\n8\n350\n245\n3.73\n3.84\n15.41\n0\n0\n3\n4",
+    "text": "Name Indexing\nWe can retrieve a row by its index name.\n\nmtcars[\"Camaro Z28\",]\n\n\n\nA data.frame: 1 × 11\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nCamaro Z28\n13.3\n8\n350\n245\n3.73\n3.84\n15.41\n0\n0\n3\n4\n\n\n\n\n\n\nAnd we can pack the row names in an index vector in order to retrieve multiple rows.\n\nmtcars[c(\"Datsun 710\", \"Camaro Z28\"),]\n\n\n\nA data.frame: 2 × 11\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.32\n18.61\n1\n1\n4\n1\n\n\nCamaro Z28\n13.3\n8\n350\n245\n3.73\n3.84\n15.41\n0\n0\n3\n4",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4792,7 +4792,7 @@
     "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#logical-indexing",
     "title": "NB: R Data Frames",
     "section": "Logical Indexing",
-    "text": "Logical Indexing\nLastly, we can retrieve rows with a logical index vector. In the following vector L, the member value is TRUE if the car has automatic transmission, and FALSE if otherwise.\n\nL &lt;- mtcars$am == 1 \nL\n\n\nTRUETRUETRUEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSETRUETRUETRUEFALSEFALSEFALSEFALSEFALSETRUETRUETRUETRUETRUETRUETRUE\n\n\nHere is the list of vehicles with automatic transmission\n\nmtcars[L,]\n\n\n\nA data.frame: 13 × 11\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nMazda RX4\n21.0\n6\n160.0\n110\n3.90\n2.620\n16.46\n0\n1\n4\n4\n\n\nMazda RX4 Wag\n21.0\n6\n160.0\n110\n3.90\n2.875\n17.02\n0\n1\n4\n4\n\n\nDatsun 710\n22.8\n4\n108.0\n93\n3.85\n2.320\n18.61\n1\n1\n4\n1\n\n\nFiat 128\n32.4\n4\n78.7\n66\n4.08\n2.200\n19.47\n1\n1\n4\n1\n\n\nHonda Civic\n30.4\n4\n75.7\n52\n4.93\n1.615\n18.52\n1\n1\n4\n2\n\n\nToyota Corolla\n33.9\n4\n71.1\n65\n4.22\n1.835\n19.90\n1\n1\n4\n1\n\n\nFiat X1-9\n27.3\n4\n79.0\n66\n4.08\n1.935\n18.90\n1\n1\n4\n1\n\n\nPorsche 914-2\n26.0\n4\n120.3\n91\n4.43\n2.140\n16.70\n0\n1\n5\n2\n\n\nLotus Europa\n30.4\n4\n95.1\n113\n3.77\n1.513\n16.90\n1\n1\n5\n2\n\n\nFord Pantera L\n15.8\n8\n351.0\n264\n4.22\n3.170\n14.50\n0\n1\n5\n4\n\n\nFerrari Dino\n19.7\n6\n145.0\n175\n3.62\n2.770\n15.50\n0\n1\n5\n6\n\n\nMaserati Bora\n15.0\n8\n301.0\n335\n3.54\n3.570\n14.60\n0\n1\n5\n8\n\n\nVolvo 142E\n21.4\n4\n121.0\n109\n4.11\n2.780\n18.60\n1\n1\n4\n2\n\n\n\n\n\n\nAnd here is the gas mileage data for automatic transmission\n\nmtcars[L,]$mpg\n\n\n212122.832.430.433.927.32630.415.819.71521.4",
+    "text": "Logical Indexing\nWe can also retrieve rows with a logical index vector.\nIn the following logical (boolean) vector expression, the member value is TRUE if the car has automatic transmission, and FALSE if otherwise.\n\nmtcars$am == 1 \n\n\nTRUETRUETRUEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSETRUETRUETRUEFALSEFALSEFALSEFALSEFALSETRUETRUETRUETRUETRUETRUETRUE\n\n\nPassing this vector expression as a row selector, we get the subset of rows with vehicles that have automatic transmission:\n\nmtcars[mtcars$am == 1,]\n\n\n\nA data.frame: 13 × 11\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nMazda RX4\n21.0\n6\n160.0\n110\n3.90\n2.620\n16.46\n0\n1\n4\n4\n\n\nMazda RX4 Wag\n21.0\n6\n160.0\n110\n3.90\n2.875\n17.02\n0\n1\n4\n4\n\n\nDatsun 710\n22.8\n4\n108.0\n93\n3.85\n2.320\n18.61\n1\n1\n4\n1\n\n\nFiat 128\n32.4\n4\n78.7\n66\n4.08\n2.200\n19.47\n1\n1\n4\n1\n\n\nHonda Civic\n30.4\n4\n75.7\n52\n4.93\n1.615\n18.52\n1\n1\n4\n2\n\n\nToyota Corolla\n33.9\n4\n71.1\n65\n4.22\n1.835\n19.90\n1\n1\n4\n1\n\n\nFiat X1-9\n27.3\n4\n79.0\n66\n4.08\n1.935\n18.90\n1\n1\n4\n1\n\n\nPorsche 914-2\n26.0\n4\n120.3\n91\n4.43\n2.140\n16.70\n0\n1\n5\n2\n\n\nLotus Europa\n30.4\n4\n95.1\n113\n3.77\n1.513\n16.90\n1\n1\n5\n2\n\n\nFord Pantera L\n15.8\n8\n351.0\n264\n4.22\n3.170\n14.50\n0\n1\n5\n4\n\n\nFerrari Dino\n19.7\n6\n145.0\n175\n3.62\n2.770\n15.50\n0\n1\n5\n6\n\n\nMaserati Bora\n15.0\n8\n301.0\n335\n3.54\n3.570\n14.60\n0\n1\n5\n8\n\n\nVolvo 142E\n21.4\n4\n121.0\n109\n4.11\n2.780\n18.60\n1\n1\n4\n2\n\n\n\n\n\n\nAnd here is the gas mileage data for automatic transmission\n\nmtcars[mtcars$am == 1,]$mpg\n\n\n212122.832.430.433.927.32630.415.819.71521.4",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4814,7 +4814,7 @@
     "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#importing-data",
     "title": "NB: R Data Frames",
     "section": "Importing Data",
-    "text": "Importing Data\nIt is often necessary to import sample textbook data into R before you start working on your homework.\nExcel Files\nQuite frequently, the sample data is in Excel format, and needs to be imported into R prior to use. For this, we can use the function read.xls from the gdata package. It reads from an Excel spreadsheet and returns a data frame. The following shows how to load an Excel spreadsheet named “mydata.xls”. This method requires Perl runtime to be present in the system\n\n##library(gdata)                   # load gdata package \n##help(read.xls)                   # documentation \n##mydata &lt;- read.xls(\"mydata.xls\")  # read from first sheet\n\nAlternatively, we can use the function loadWorkbook from the XLConnect package to read the entire workbook, and then load the worksheets with readWorksheet. The XLConnect package requires Java to be pre-installed\n\n##library(XLConnect)               # load XLConnect package \n##wk &lt;- loadWorkbook(\"mydata.xls\") \n##df &lt;- readWorksheet(wk, sheet=\"Sheet1\")\n\nTable Files\nA data table can reside in a text file.\nThe cells inside the table are separated by blank characters.\nHere is an example of a table with 4 rows and 3 columns.\n100 a1 b1 \n200 a2 b2 \n300 a3 b3 \n400 a4 b4\nNow copy and paste the table above in a file named “mydata.txt” with a text editor.\nThen load the data into the workspace with the function read.table\n\nmydata &lt;- read.table(\"mydata.txt\")  # read text file \nmydata                             # print data frame \n\nWarning message in read.table(\"mydata.txt\"):\n“incomplete final line found by readTableHeader on 'mydata.txt'”\n\n\n\n\nA data.frame: 4 × 3\n\n\nV1\nV2\nV3\n\n\n&lt;int&gt;\n&lt;chr&gt;\n&lt;chr&gt;\n\n\n\n\n100\na1\nb1\n\n\n200\na2\nb2\n\n\n300\na3\nb3\n\n\n400\na4\nb4\n\n\n\n\n\n\nCSV Files\nThe sample data can also be in comma separated values (CSV) format. Each cell inside such data file is separated by a special character, which usually is a comma, although other characters can be used as well.\nThe first row of the data file should contain the column names instead of the actual data. Here is a sample of the expected format.\nCol1,Col2,Col3 \n100,a1,b1 \n200,a2,b2 \n300,a3,b3\nAfter we copy and paste the data above in a file named “mydata.csv” with a text editor, we can read the data with the function read.csv\n\nmydata &lt;- read.csv(\"mydata.csv\")  # read csv file \nmydata\n\nWarning message in read.table(file = file, header = header, sep = sep, quote = quote, :\n“incomplete final line found by readTableHeader on 'mydata.csv'”\n\n\n\n\nA data.frame: 3 × 3\n\n\nCol1\nCol2\nCol3\n\n\n&lt;int&gt;\n&lt;chr&gt;\n&lt;chr&gt;\n\n\n\n\n100\na1\nb1\n\n\n200\na2\nb2\n\n\n300\na3\nb3\n\n\n\n\n\n\nIn various European locales, as the comma character serves as the decimal point, the function read.csv2 should be used instead. For further detail of the read.csv and read.csv2 functions, please consult the R documentation\n\n# help(read.csv)\n\n\ngetwd()               # get current working directory\n\n'/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M10_RBasics'\n\n\nYou can select a different working directory with the function setwd(), and thus avoid entering the full path of the data files\n\n## setwd(\"&lt;new path&gt;\")   # set working directory\n\nNote that the forward slash should be used as the path separator even on Windows platform\n\n## setwd(\"C:/MyDoc\")",
+    "text": "Importing Data\nTo retrieve data from external files and convert them in to data frames, R offers a number of import functions.\nTo read CSV files, you can use the built-in function read.csv().\nHere’s a quick example.\n\ndf_from_csv &lt;- read.csv(\"mydata.csv\")\n\n\ndf_from_csv\n\n\n\nA data.frame: 3 × 3\n\n\nCol1\nCol2\nCol3\n\n\n&lt;int&gt;\n&lt;chr&gt;\n&lt;chr&gt;\n\n\n\n\n100\na1\nb1\n\n\n200\na2\nb2\n\n\n300\na3\nb3\n\n\n\n\n\n\nR has a special function for reading in table data where cell data are separated by spaces.\n\ndf_from_table &lt;- read.table(\"mydata.txt\")\ndf_from_table\n\n\n\nA data.frame: 4 × 3\n\n\nV1\nV2\nV3\n\n\n&lt;int&gt;\n&lt;chr&gt;\n&lt;chr&gt;\n\n\n\n\n100\na1\nb1\n\n\n200\na2\nb2\n\n\n300\na3\nb3\n\n\n400\na4\nb4",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4825,7 +4825,7 @@
     "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#plotting-data-with-plot",
     "title": "NB: R Data Frames",
     "section": "Plotting Data with plot()",
-    "text": "Plotting Data with plot()\nR is know for its high-quality visualizations, and we’ll explore at these in more detail when we look at GGPlot.\nFor now, consider the plot() function.\nLet’s plot the data from the built in data frame airquality.\n\nairquality\n\n\n\nA data.frame: 153 × 6\n\n\nOzone\nSolar.R\nWind\nTemp\nMonth\nDay\n\n\n&lt;int&gt;\n&lt;int&gt;\n&lt;dbl&gt;\n&lt;int&gt;\n&lt;int&gt;\n&lt;int&gt;\n\n\n\n\n41\n190\n7.4\n67\n5\n1\n\n\n36\n118\n8.0\n72\n5\n2\n\n\n12\n149\n12.6\n74\n5\n3\n\n\n18\n313\n11.5\n62\n5\n4\n\n\nNA\nNA\n14.3\n56\n5\n5\n\n\n28\nNA\n14.9\n66\n5\n6\n\n\n23\n299\n8.6\n65\n5\n7\n\n\n19\n99\n13.8\n59\n5\n8\n\n\n8\n19\n20.1\n61\n5\n9\n\n\nNA\n194\n8.6\n69\n5\n10\n\n\n7\nNA\n6.9\n74\n5\n11\n\n\n16\n256\n9.7\n69\n5\n12\n\n\n11\n290\n9.2\n66\n5\n13\n\n\n14\n274\n10.9\n68\n5\n14\n\n\n18\n65\n13.2\n58\n5\n15\n\n\n14\n334\n11.5\n64\n5\n16\n\n\n34\n307\n12.0\n66\n5\n17\n\n\n6\n78\n18.4\n57\n5\n18\n\n\n30\n322\n11.5\n68\n5\n19\n\n\n11\n44\n9.7\n62\n5\n20\n\n\n1\n8\n9.7\n59\n5\n21\n\n\n11\n320\n16.6\n73\n5\n22\n\n\n4\n25\n9.7\n61\n5\n23\n\n\n32\n92\n12.0\n61\n5\n24\n\n\nNA\n66\n16.6\n57\n5\n25\n\n\nNA\n266\n14.9\n58\n5\n26\n\n\nNA\nNA\n8.0\n57\n5\n27\n\n\n23\n13\n12.0\n67\n5\n28\n\n\n45\n252\n14.9\n81\n5\n29\n\n\n115\n223\n5.7\n79\n5\n30\n\n\n⋮\n⋮\n⋮\n⋮\n⋮\n⋮\n\n\n96\n167\n6.9\n91\n9\n1\n\n\n78\n197\n5.1\n92\n9\n2\n\n\n73\n183\n2.8\n93\n9\n3\n\n\n91\n189\n4.6\n93\n9\n4\n\n\n47\n95\n7.4\n87\n9\n5\n\n\n32\n92\n15.5\n84\n9\n6\n\n\n20\n252\n10.9\n80\n9\n7\n\n\n23\n220\n10.3\n78\n9\n8\n\n\n21\n230\n10.9\n75\n9\n9\n\n\n24\n259\n9.7\n73\n9\n10\n\n\n44\n236\n14.9\n81\n9\n11\n\n\n21\n259\n15.5\n76\n9\n12\n\n\n28\n238\n6.3\n77\n9\n13\n\n\n9\n24\n10.9\n71\n9\n14\n\n\n13\n112\n11.5\n71\n9\n15\n\n\n46\n237\n6.9\n78\n9\n16\n\n\n18\n224\n13.8\n67\n9\n17\n\n\n13\n27\n10.3\n76\n9\n18\n\n\n24\n238\n10.3\n68\n9\n19\n\n\n16\n201\n8.0\n82\n9\n20\n\n\n13\n238\n12.6\n64\n9\n21\n\n\n23\n14\n9.2\n71\n9\n22\n\n\n36\n139\n10.3\n81\n9\n23\n\n\n7\n49\n10.3\n69\n9\n24\n\n\n14\n20\n16.6\n63\n9\n25\n\n\n30\n193\n6.9\n70\n9\n26\n\n\nNA\n145\n13.2\n77\n9\n27\n\n\n14\n191\n14.3\n75\n9\n28\n\n\n18\n131\n8.0\n76\n9\n29\n\n\n20\n223\n11.5\n68\n9\n30\n\n\n\n\n\n\n\nplot(airquality)\n\n\n\n\n\n\n\n\n\nplot(airquality[, c(\"Temp\", \"Wind\")])\n\n\n\n\n\n\n\n\n\nplot(airquality$Temp, type='l')\n\n\n\n\n\n\n\n\n\n# ?plot",
+    "text": "Plotting Data with plot()\nR is know for its high-quality visualizations, and we’ll explore at these in more detail when we look at GGPlot.\nFor now, consider the plot() function.\nOne of the nice features of plot() is that it produced plots based on the shape and type of data you give it.\nTo see this, let’s plot the data from the built in data frame airquality.\n\nhead(airquality)\n\n\n\nA data.frame: 6 × 6\n\n\n\nOzone\nSolar.R\nWind\nTemp\nMonth\nDay\n\n\n\n&lt;int&gt;\n&lt;int&gt;\n&lt;dbl&gt;\n&lt;int&gt;\n&lt;int&gt;\n&lt;int&gt;\n\n\n\n\n1\n41\n190\n7.4\n67\n5\n1\n\n\n2\n36\n118\n8.0\n72\n5\n2\n\n\n3\n12\n149\n12.6\n74\n5\n3\n\n\n4\n18\n313\n11.5\n62\n5\n4\n\n\n5\nNA\nNA\n14.3\n56\n5\n5\n\n\n6\n28\nNA\n14.9\n66\n5\n6\n\n\n\n\n\n\nIf we pass it the whole data frame, it produces a scatter plot lattice:\n\nplot(airquality)\n\n\n\n\n\n\n\n\nIf we pass it just two columns, it produces a scatter plot:\n\nplot(airquality[, c(\"Temp\", \"Wind\")])\n\n\n\n\n\n\n\n\nAnd if pass it one, it produces a line graph:\n\nplot(airquality$Temp, type='l')\n\n\n\n\n\n\n\n\nThe hist() function will create a histogram:\n\nhist(airquality$Temp)",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4836,7 +4836,7 @@
     "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#value-counts-with-table",
     "title": "NB: R Data Frames",
     "section": "Value Counts with table()",
-    "text": "Value Counts with table()\nThis function is like .value_counts() in Pandas. It does a quick count of all the value types of a feature or combination of them.\nHere we get a table of values and their counts for airquality$Temp, convert this into a data frame, and then plot the results.\n\ntemps &lt;- table(airquality$Temp)\ntemps\n\n\n56 57 58 59 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 \n 1  3  2  2  3  2  1  2  2  3  4  4  3  1  3  3  5  4  4  9  7  6  6  5 11  9 \n83 84 85 86 87 88 89 90 91 92 93 94 96 97 \n 4  5  5  7  5  3  2  3  2  5  3  2  1  1 \n\n\n\ntemps.df &lt;- data.frame(temps)\ntemps.df\n\n\n\nA data.frame: 40 × 2\n\n\nVar1\nFreq\n\n\n&lt;fct&gt;\n&lt;int&gt;\n\n\n\n\n56\n1\n\n\n57\n3\n\n\n58\n2\n\n\n59\n2\n\n\n61\n3\n\n\n62\n2\n\n\n63\n1\n\n\n64\n2\n\n\n65\n2\n\n\n66\n3\n\n\n67\n4\n\n\n68\n4\n\n\n69\n3\n\n\n70\n1\n\n\n71\n3\n\n\n72\n3\n\n\n73\n5\n\n\n74\n4\n\n\n75\n4\n\n\n76\n9\n\n\n77\n7\n\n\n78\n6\n\n\n79\n6\n\n\n80\n5\n\n\n81\n11\n\n\n82\n9\n\n\n83\n4\n\n\n84\n5\n\n\n85\n5\n\n\n86\n7\n\n\n87\n5\n\n\n88\n3\n\n\n89\n2\n\n\n90\n3\n\n\n91\n2\n\n\n92\n5\n\n\n93\n3\n\n\n94\n2\n\n\n96\n1\n\n\n97\n1\n\n\n\n\n\n\n\nplot(temps.df, xlab=\"Temp\", type=\"b\")",
+    "text": "Value Counts with table()\nThis function is like .value_counts() in Pandas.\nIt does a quick count of all the value types of a feature or combination of them.\nHere we get a table of values and their counts for airquality$Month.\n\nmonths &lt;- table(airquality$Month)\nmonths.df &lt;- data.frame(months)\nnames(months.df) &lt;- c(\"Month\", \"Freq\")\nt(months.df)\n\n\n\nA matrix: 2 × 5 of type chr\n\n\nMonth\n5\n6\n7\n8\n9\n\n\nFreq\n31\n30\n31\n31\n30\n\n\n\n\n\n\nNote we used t() to transpose the data frame.",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4845,12 +4845,12 @@
   {
     "objectID": "notebooks/M10_RBasics/M10-05-ControlStructures.html",
     "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html",
-    "title": "NB: Control Structures and Functions",
+    "title": "NB: R Control Structures",
     "section": "",
-    "text": "if/else Statements\nYou’ve seen this in Python.\nThey work the same way in both languages.\nHere’s their syntax in R.\nGenerate a uniform random number:\nx &lt;- runif(1, 0, 10) # From the Uniform Distribution\n\nif (x &gt; 3) {\n    y &lt;- 10\n} else {\n    y &lt;- 0\n}\n\nx\ny\n\n7.01629590708762\n\n\n10\nYou assign an if statement to a variable.\nz &lt;- if (x &gt; 3) {\n  10\n} else { \n  0\n}\n\nz\n\n10\nOf course, you can stack if blocks, too.",
+    "text": "Conditional Statements\nR supports conditional statements in the standard way.\nIt provides the following statements:\nif, else if, and else.\nHere’s a skeletal control structure in R:\nHere is a more compact way of writing it:\nLet’s look at some examples.\nHere, we generate a uniform random number, using the function runif().\nx &lt;- runif(1, 0, 10)\nx\n\n6.64551414083689\nif (x &gt; 3) {\n    y &lt;- 10\n} else {\n    y &lt;- 0\n}\ny\n\n10\nYou can assign an if statement to a variable.\nz &lt;- if (x &gt; 3) {10} else {0}\nz\n\n10\nOf course, you can stack if blocks, too.",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: Control Structures and Functions</span>"
+      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"
     ]
   },
   {
@@ -4867,89 +4867,89 @@
   {
     "objectID": "notebooks/M10_RBasics/M10-05-ControlStructures.html#for-loops",
     "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html#for-loops",
-    "title": "NB: Control Structures and Functions",
+    "title": "NB: R Control Structures",
     "section": "for Loops",
-    "text": "for Loops\nFor loops are straight-forward. The take an iterator variable, e.g. i, and assign it successive values from a sequence or vector.\nFor loops are often used to iterate over the elements of an object (list, vector, etc.).\n\nfor (i in 1:10) {\n  print(i)\n}\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n[1] 6\n[1] 7\n[1] 8\n[1] 9\n[1] 10\n\n\nAccording to Hadley Wickham, loops are pretty much the only looping construct that you will need in R.\nThe following three loops all have the same behavior.\n\nx &lt;- c(\"a\", \"b\", \"c\", \"d\")\nfor (i in 1:4) {\n  print(x[i])  \n}\n\n[1] \"a\"\n[1] \"b\"\n[1] \"c\"\n[1] \"d\"",
+    "text": "for Loops\nFor loops are straight-forward in R.\nThey take an iterator variable, e.g. i, and assign it successive values from a sequence or vector.\n\nfor (i in 1:10) {\n  print(i)\n}\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n[1] 6\n[1] 7\n[1] 8\n[1] 9\n[1] 10",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: Control Structures and Functions</span>"
+      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"
     ]
   },
   {
     "objectID": "notebooks/M10_RBasics/M10-05-ControlStructures.html#seq_along",
     "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html#seq_along",
-    "title": "NB: Control Structures and Functions",
+    "title": "NB: R Control Structures",
     "section": "seq_along()",
-    "text": "seq_along()\nThe seq_along() function is commonly used in conjunction with for loops in order to generate an integer sequence based on the length of an object (in this case, the object x).\n\nx\n\n\n'a''b''c''d'\n\n\nGenerate a sequence based on length of ‘x’:\n\nfor (i in seq_along(x)) {   \n  print(x[i])\n}\n\n[1] \"a\"\n[1] \"b\"\n[1] \"c\"\n[1] \"d\"\n\n\nIt is not necessary to use an index-type variable.\n\nfor (letter in x) {\n  print(letter)\n}\n\n[1] \"a\"\n[1] \"b\"\n[1] \"c\"\n[1] \"d\"\n\n\nFor one line loops, the curly braces are not strictly necessary.\n\nfor (i in 1:4) print(x[i])\n\n[1] \"a\"\n[1] \"b\"\n[1] \"c\"\n[1] \"d\"",
+    "text": "seq_along()\nThe seq_along() function is commonly used in conjunction with for loops.\nIt generates an integer sequence based on the length of an object.\n\nx &lt;- c(\"a\", \"b\", \"c\", \"d\")\nfor (i in seq_along(x)) {\n  print(x[i])  \n}\n\n[1] \"a\"\n[1] \"b\"\n[1] \"c\"\n[1] \"d\"\n\n\nNote that it is not necessary to use an index-type variable to iterate through an iterable object.\n\nfor (letter in x) {\n  print(letter)\n}\n\n[1] \"a\"\n[1] \"b\"\n[1] \"c\"\n[1] \"d\"\n\n\nFor one line loops, the curly braces are not strictly necessary.\n\nfor (i in 1:4) print(x[i])\n\n[1] \"a\"\n[1] \"b\"\n[1] \"c\"\n[1] \"d\"",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: Control Structures and Functions</span>"
+      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"
     ]
   },
   {
     "objectID": "notebooks/M10_RBasics/M10-05-ControlStructures.html#nested-for-loops",
     "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html#nested-for-loops",
-    "title": "NB: Control Structures and Functions",
+    "title": "NB: R Control Structures",
     "section": "Nested for loops",
-    "text": "Nested for loops\nDor loops can be nested inside of each other.\n\nx &lt;- matrix(1:6, 2, 3)\nfor (i in seq_len(nrow(x))) {\n  for (j in seq_len(ncol(x))) {\n    print(x[i, j])\n  }   \n}\n\n[1] 1\n[1] 3\n[1] 5\n[1] 2\n[1] 4\n[1] 6\n\n\nNested loops are used to generate multidimensional or hierarchical data structures (e.g. matrices, lists).",
+    "text": "Nested for loops\nFor loops can be nested inside of each other.\nThe number of levels you nest is often a function of the number of dimensions in your iterable.\nHere we iterate through a \\(2\\)-D data structure.\n\nx &lt;- matrix(1:6, 2, 3)\nfor (i in seq_len(nrow(x))) {\n  for (j in seq_len(ncol(x))) {\n    print(x[i, j])\n  }   \n}\n\n[1] 1\n[1] 3\n[1] 5\n[1] 2\n[1] 4\n[1] 6",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: Control Structures and Functions</span>"
+      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"
     ]
   },
   {
     "objectID": "notebooks/M10_RBasics/M10-05-ControlStructures.html#while-loops",
     "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html#while-loops",
-    "title": "NB: Control Structures and Functions",
+    "title": "NB: R Control Structures",
     "section": "while Loops",
-    "text": "while Loops\nAs with Python, while loops start with a condition. It loops while the condition is true and stops when it is false.\nRemembe, while loops can go on forever is the truth condition is never met.\n\ncount &lt;- 0\nwhile (count &lt; 10) {\n  print(count)\n  count &lt;- count + 1\n}\n\n[1] 0\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n[1] 6\n[1] 7\n[1] 8\n[1] 9",
+    "text": "while Loops\nAs with Python, while loops start with a condition.\nIt iterates while the condition is TRUE and stops when it is FALSE.\nRemember, while loops can go on forever is the truth condition is never met!\n\ncount &lt;- 0\nwhile (count &lt; 10) {\n  print(count)\n  count &lt;- count + 1\n}\n\n[1] 0\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n[1] 6\n[1] 7\n[1] 8\n[1] 9",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: Control Structures and Functions</span>"
+      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"
     ]
   },
   {
     "objectID": "notebooks/M10_RBasics/M10-05-ControlStructures.html#repeat-loops",
     "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html#repeat-loops",
-    "title": "NB: Control Structures and Functions",
+    "title": "NB: R Control Structures",
     "section": "repeat Loops",
-    "text": "repeat Loops\nrepeat loops are used by R.\nThey initiate an infinite loop right from the start.\nThe only way to exit a repeat loop is to call break on an internal condition.\nx0 &lt;- 1\ntol &lt;- 1e-8\n\nrepeat {\n  x1 &lt;- computeEstimate()\n  if (abs(x1 - x0) &lt; tol) {  ## Close enough?\n    break\n  } else {\n    x0 &lt;- x1\n  } \n}",
+    "text": "repeat Loops\nrepeat loops are used by R.\nThey initiate an infinite loop right from the start.\nThe only way to exit a repeat loop is to call break on an internal condition.\nHere’s an example of what one might look like:\nx0 &lt;- 1\ntol &lt;- 1e-8\n\nrepeat {\n  x1 &lt;- computeEstimate()\n  if (abs(x1 - x0) &lt; tol) {  ## Close enough?\n    break\n  } else {\n    x0 &lt;- x1\n  } \n}",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: Control Structures and Functions</span>"
+      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"
     ]
   },
   {
     "objectID": "notebooks/M10_RBasics/M10-05-ControlStructures.html#next-and-break",
     "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html#next-and-break",
-    "title": "NB: Control Structures and Functions",
+    "title": "NB: R Control Structures",
     "section": "next and break",
     "text": "next and break\nnext is used to skip an iteration of a loop.\nThis is the same as continue in Python.\n\nfor (i in 1:100) {\n  if (i &lt;= 20) {\n    # Skip the first 20 iterations\n    next                \n  }     \n  # Do something here\n}\n\nbreak is used to exit a loop immediately.\n\nfor (i in 1:100) {\n  print(i)\n  if (i &gt; 20) {\n    # Stop loop after 20 iterations\n    break  \n  }     \n}\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n[1] 6\n[1] 7\n[1] 8\n[1] 9\n[1] 10\n[1] 11\n[1] 12\n[1] 13\n[1] 14\n[1] 15\n[1] 16\n[1] 17\n[1] 18\n[1] 19\n[1] 20\n[1] 21",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: Control Structures and Functions</span>"
+      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"
     ]
   },
   {
     "objectID": "notebooks/M10_RBasics/M10-06-Functions.html",
     "href": "notebooks/M10_RBasics/M10-06-Functions.html",
-    "title": "NB: Functions",
+    "title": "NB: R Functions",
     "section": "",
-    "text": "Using conditions in functions\nA function returns 1 if passed value is odd, 0 if even\n%% is mod operator (returns remainder).\nis_odd &lt;- function(x){ if (x %% 2 == 1) { \n    return(1) \n  } else { \n    return(0)\n  } \n}\nCall to test some cases:\nis_odd(4)\nis_odd(3)\n\n0\n\n\n1\nFunction arguments can use default values:\nthreshold_vals &lt;- function(p, thresh = 0.5) {\n  # for each element in p, returns TRUE if value &gt; thresh, else FALSE\n  p &gt; thresh\n}\nthreshold_vals(c(0.6, 0.4, 0.1, 1))\n\n\nTRUEFALSEFALSETRUE\nNow, pass a different threshold:\nthreshold_vals(c(0.6, 0.4, 0.1, 1), 0.7)\n\n\nFALSEFALSEFALSETRUE\nYou can assert important preconditions with stop():\nadd_vectors &lt;- function(x, y) {\n  \n  # assert the lengths of vectors x and y match\n  # if they do, sum elementwise, else throw error with stop()\n  if (length(x) != length(y)) {\n    stop(\"x and y must be the same length\", call. = FALSE)\n  }\n\n  x + y\n}\nadd_vectors(c(1, 2, 3), c(3, 3, 3))\n\n\n456\nThis breaks:\nadd_vectors(c(1, 2, 3), c(3, 3, 3, 3)) # breaks\n\nERROR: Error: x and y must be the same length",
+    "text": "Default Argument Values\nFunction arguments can use default values:\nthreshold_vals &lt;- function(p, thresh = 0.5) {\n  p &gt; thresh\n}\nHere we use the default thresh.\nthreshold_vals(c(0.6, 0.4, 0.1, 1))\n\n\nTRUEFALSEFALSETRUE\nNow, pass a different threshold:\nthreshold_vals(c(0.6, 0.4, 0.1, 1), 0.7)\n\n\nFALSEFALSEFALSETRUE",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>54</span>  <span class='chapter-title'>NB: Functions</span>"
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>NB: R Functions</span>"
     ]
   },
   {
     "objectID": "notebooks/M10_RBasics/M10-06-Functions.html#scoping-rules",
     "href": "notebooks/M10_RBasics/M10-06-Functions.html#scoping-rules",
-    "title": "NB: Functions",
+    "title": "NB: R Functions",
     "section": "Scoping Rules",
-    "text": "Scoping Rules\n\nz &lt;- 4\ntest_fcn &lt;- function(x) {\n  x^z\n}\n\nNow look at this:\n\ntest_fcn(2)\n\n16\n\n\nIf z isn’t defined in the function, how does this work?\nR’s scoping rules are similar to Python’s.\nSince z isn’t in the function, R looks in the function’s environment for it.\nFor more on scoping rules, see Chapter 15: Scoping Rules of R in Peng’s R Programming For Data Science.",
+    "text": "Scoping Rules\nScoping rules for functions are similar to those in Python.\nR uses the tinted glass model discussed earlier.\n\nz &lt;- 4\ntest_fcn &lt;- function(x) {\n  x^z\n}\n\n\ntest_fcn(2)\n\n16\n\n\nSince z isn’t in the function, R looks in the function’s environment for it.\nNote that R handles potential scope conflicts differently to Python.\nRecall that Python would not have allowed the following to run, since the function treats m as both global and local.\n\nm &lt;- 5\ntest_2 &lt;- function(x) {\n    print(m)\n    m &lt;- x**2\n    print(m)\n}\n\n\ntest_2(10)\n\n[1] 5\n[1] 100",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>54</span>  <span class='chapter-title'>NB: Functions</span>"
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>NB: R Functions</span>"
     ]
   },
   {
@@ -5909,6 +5909,138 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>64</span>  <span class='chapter-title'>Setting Up O'Reilly</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-01-Intro.html#command-line-r",
+    "href": "notebooks/M10_RBasics/M10-01-Intro.html#command-line-r",
+    "title": "NB: Introducing R",
+    "section": "Command Line R",
+    "text": "Command Line R\nR can also be run from the command line.\nR is invoked by calling R:\n&gt; R\nIf properly installed, that should produce a message like this:\nR version 4.3.1 (2023-06-16) – “Beagle Scouts” Copyright (C) 2023 The R Foundation for Statistical Computing Platform: x86_64-conda-linux-gnu (64-bit)\nR is free software and comes with ABSOLUTELY NO WARRANTY. You are welcome to redistribute it under certain conditions. Type ‘license()’ or ‘licence()’ for distribution details.\nNatural language support but running in an English locale\nR is a collaborative project with many contributors. Type ‘contributors()’ for more information and ‘citation()’ on how to cite R or R packages in publications.\nType ‘demo()’ for some demos, ‘help()’ for on-line help, or ‘help.start()’ for an HTML browser interface to help. Type ‘q()’ to quit R.\n[Previously saved workspace restored]",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>49</span>  <span class='chapter-title'>NB: Introducing R</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-01-Intro.html#using-r-in-jupyter",
+    "href": "notebooks/M10_RBasics/M10-01-Intro.html#using-r-in-jupyter",
+    "title": "NB: Introducing R",
+    "section": "Using R in Jupyter",
+    "text": "Using R in Jupyter\nIf you want to use R within a Jupyter notebook file, you can create and load an R kernel using Anaconda’s package manager conda. In brief, here’s what you do.\nFirst, at the command line:\nconda create -n r_env r-essentials r-base\nconda activate r_env\nR # This opens the R shell\nThen, in the R shell:\nIRkernel::installspec(name = 'r_env', displayname = 'R Environment')\nquit()\nNow, fire up a Jupyter Lab or Jupyter Notebook instance from the OpenOnDemand page and select the kernel when you create a new notebook.\nNote that the name r_evn can be replaced by whatever you want.",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>49</span>  <span class='chapter-title'>NB: Introducing R</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#matrix",
+    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#matrix",
+    "title": "NB: R Data Structures",
+    "section": "Matrix",
+    "text": "Matrix\nA matrix is just a two-dimensional vector.\nIt too has one data type and is immutable.",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#array",
+    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#array",
+    "title": "NB: R Data Structures",
+    "section": "Array",
+    "text": "Array\nAn array in R is a generalization of the vector and matrix. It may have one or more dimensions.\nSo, an array with one dimension is almost the same as a vector.\nAn array with two dimensions is almost the same as a matrix.\nAn array with three or more dimensions is an n-dimensional array.\nThey are like NumPy arrays in Python.",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#list",
+    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#list",
+    "title": "NB: R Data Structures",
+    "section": "List",
+    "text": "List\nA list can hold items of different types and the list size can be increased on the fly.\nList contents can be accessed either by index (like mylist[[1]]) or by name (like mylist$age).\nLists are like lists in Python.\nA data frame is called a table in many languages.\nThis is the workhorse of R.\nEach column holds the same type, and the columns can have header names.\nA data frame is essential a kind of a list — a list of vectors each with the same length, but of varying data types.",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#summary",
+    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#summary",
+    "title": "NB: R Data Structures",
+    "section": "Summary",
+    "text": "Summary\n\n\n\nStructure\nDim\nData Type\nShape\nPython\n\n\n\n\nVector\n\\(1\\)\nuniform\n—\n—\n\n\nMatrix\n\\(2\\)\nuniform\nuniform\n—\n\n\nArray\n\\(N\\)\nuniform\nuniform\nNumPy array\n\n\nList\n\\(1\\)\nnon-uniform\nragged\nList, Dict\n\n\nData Frame\n\\(2\\)\nmultiple\nuniform\nPandas Data Frame\n\n\n\nThese reflect the evolution of R.\nWe mainly use Vectors and Data Frames.",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#sequences",
+    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#sequences",
+    "title": "NB: R Data Structures",
+    "section": "Sequences",
+    "text": "Sequences\nVectors may be created from sequences using :, seq(), and rep()\nVectors can be made out of sequences which may be generated in a few ways.\n\ns1 &lt;- 2:5\ns1\n\n\n2345\n\n\nThe seq() function is like Python’s range().\n\ns2 &lt;- seq(from=1, to=5, by=2)\ns2\n\n\n135\n\n\nYou can drop the argument names and write seq(1,5,2).\nThe rep() function will create a series of repeated values:\n\ns3 &lt;- rep(1, 5)\ns3\n\n\n11111",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#combining-vectors",
+    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#combining-vectors",
+    "title": "NB: R Data Structures",
+    "section": "Combining Vectors",
+    "text": "Combining Vectors\nVectors can be combined via the function c().\n\nn &lt;- c(2, 3, 5) \ns &lt;- c(\"aa\", \"bb\", \"cc\", \"dd\", \"ee\") \n c(n, s) \n\n\n'2''3''5''aa''bb''cc''dd''ee'",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-04-DataFrames.html#data-frame-row-slices",
+    "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#data-frame-row-slices",
+    "title": "NB: R Data Frames",
+    "section": "Data Frame Row Slices",
+    "text": "Data Frame Row Slices\nWe also retrieve rows from a data frame with the single square bracket operator.\nBut, we need append an extra comma character, which implies getting all columns.\nmtcar[&lt;row&gt;,]\nWhere &lt;row&gt; is a row index number or a name.\nIn Python, we would have done this:\ndf[&lt;row&gt;, :]",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-05-ControlStructures.html#conditional-statements",
+    "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html#conditional-statements",
+    "title": "NB: R Control Structures",
+    "section": "",
+    "text": "if (&lt;condition&gt;) {\n        ## do something\n} \n\nif (&lt;condition&gt;) {\n        ## do something\n} \nelse {\n        ## do something else\n}\n\nif (&lt;condition1&gt;) {\n        ## do something\n} else if (&lt;condition2&gt;)  {\n        ## do something different\n} else {\n        ## do something different\n}\n\n\n\n\n\n\n\nif (&lt;condition1&gt;) {\n    \n}\n\nif (&lt;condition2&gt;) {\n\n}",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-05-ControlStructures.html#seq_len",
+    "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html#seq_len",
+    "title": "NB: R Control Structures",
+    "section": "seq_len()",
+    "text": "seq_len()\nThe seq_len() function is also used in conjunction with for loops.\nIt generates an integer sequence based a number.\n\nfor (i in seq_len(length(x))) {\n  print(x[i])  \n}\n\n[1] \"a\"\n[1] \"b\"\n[1] \"c\"\n[1] \"d\"\n\n\nseq_len() is like seq(), but it doesn’t have the flexibility of the latter.\nIt handles the common case of beginning at \\(1\\) and stepping by \\(1\\).\n\nseq(length(x))\nseq_len(length(x))\n\n\n123456\n\n\n\n123456",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-06-Functions.html#error-trapping",
+    "href": "notebooks/M10_RBasics/M10-06-Functions.html#error-trapping",
+    "title": "NB: R Functions",
+    "section": "Error Trapping",
+    "text": "Error Trapping\nYou can assert important preconditions with stop().\nHere, we assert that the lengths of vectors x and y match.\nIf they don’t. we throw an error with stop().\n\nadd_vectors &lt;- function(x, y) {\n  if (length(x) != length(y)) {\n    stop(\"x and y must be the same length\", call. = FALSE)\n  }\n  x + y\n}\n\n\nadd_vectors(c(1, 2, 3), c(3, 3, 3))\n\n\n456\n\n\nLet’s see if it traps this error:\n\nadd_vectors(c(1, 2, 3), c(3, 3, 3, 3))\n\nERROR: Error: x and y must be the same length",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>NB: R Functions</span>"
     ]
   }
 ]

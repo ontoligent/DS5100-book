@@ -22,3 +22,16 @@ td.data {
 .reveal pre code {
     font-size: 120%;
 }
+
+.rise-enabled .jp-OutputArea-output {
+/*      font-size: 100%; */
+    font-size:16pt;
+}
+
+.reveal table td {
+    font-size:16pt;
+}
+
+.reveal table th {
+    font-size:14pt;
+}

@@ -106,35 +106,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -541,7 +512,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Data Types</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Data Types and Operators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -556,12 +527,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-05-ControlStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Control Structures and Functions</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-05-ControlStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Control Structures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-06-Functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Functions</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-06-Functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Functions</span></a>
   </div>
 </li>
       </ul>
@@ -674,17 +645,23 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#built-in-data-frames" id="toc-built-in-data-frames" class="nav-link" data-scroll-target="#built-in-data-frames">Built-in Data Frames</a></li>
   <li><a href="#preview-with-head" id="toc-preview-with-head" class="nav-link" data-scroll-target="#preview-with-head">Preview with <code>head()</code></a></li>
+  </ul></li>
+  <li><a href="#extracting-column-data" id="toc-extracting-column-data" class="nav-link" data-scroll-target="#extracting-column-data">Extracting Column Data</a>
+  <ul class="collapse">
   <li><a href="#data-frame-column-vectors" id="toc-data-frame-column-vectors" class="nav-link" data-scroll-target="#data-frame-column-vectors">Data Frame Column Vectors</a></li>
   <li><a href="#data-frame-column-slice" id="toc-data-frame-column-slice" class="nav-link" data-scroll-target="#data-frame-column-slice">Data Frame Column Slice</a></li>
   <li><a href="#numeric-indexing" id="toc-numeric-indexing" class="nav-link" data-scroll-target="#numeric-indexing">Numeric Indexing</a></li>
   <li><a href="#name-indexing" id="toc-name-indexing" class="nav-link" data-scroll-target="#name-indexing">Name Indexing</a></li>
-  <li><a href="#data-frame-row-slice" id="toc-data-frame-row-slice" class="nav-link" data-scroll-target="#data-frame-row-slice">Data Frame Row Slice</a></li>
+  </ul></li>
+  <li><a href="#extracting-row-data" id="toc-extracting-row-data" class="nav-link" data-scroll-target="#extracting-row-data">Extracting Row Data</a>
+  <ul class="collapse">
+  <li><a href="#data-frame-row-slices" id="toc-data-frame-row-slices" class="nav-link" data-scroll-target="#data-frame-row-slices">Data Frame Row Slices</a></li>
   <li><a href="#numeric-indexing-1" id="toc-numeric-indexing-1" class="nav-link" data-scroll-target="#numeric-indexing-1">Numeric Indexing</a></li>
   <li><a href="#name-indexing-1" id="toc-name-indexing-1" class="nav-link" data-scroll-target="#name-indexing-1">Name Indexing</a></li>
   <li><a href="#logical-indexing" id="toc-logical-indexing" class="nav-link" data-scroll-target="#logical-indexing">Logical Indexing</a></li>
-  <li><a href="#change-the-name-of-a-column" id="toc-change-the-name-of-a-column" class="nav-link" data-scroll-target="#change-the-name-of-a-column">Change the name of a column</a></li>
   </ul></li>
-  <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra">Extra</a>
+  <li><a href="#changing-column-names" id="toc-changing-column-names" class="nav-link" data-scroll-target="#changing-column-names">Changing Column Names</a></li>
+  <li><a href="#a-few-more-things" id="toc-a-few-more-things" class="nav-link" data-scroll-target="#a-few-more-things">A Few More Things</a>
   <ul class="collapse">
   <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing Data</a></li>
   <li><a href="#plotting-data-with-plot" id="toc-plotting-data-with-plot" class="nav-link" data-scroll-target="#plotting-data-with-plot">Plotting Data with <code>plot()</code></a></li>
@@ -715,12 +692,13 @@ window.Quarto = {
 </header>
 
 
+<p>Programming for Data Science</p>
 <section id="data-frames" class="level1">
 <h1>Data Frames</h1>
 <p>A data frame is used for storing data tables.</p>
 <p>It is essentially <strong>a list of vectors of equal length</strong>.</p>
 <p>For example, the following variable <code>df</code> is a data frame containing three vectors <code>n</code>, <code>s</code>, <code>b</code>.</p>
-<div id="463e6624-2c9d-418e-95ce-e3209f95e5c6" class="cell" data-tags="[]" data-execution_count="192">
+<div id="463e6624-2c9d-418e-95ce-e3209f95e5c6" class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>) </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"aa"</span>, <span class="st">"bb"</span>, <span class="st">"cc"</span>) </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>) </span>
@@ -764,16 +742,28 @@ window.Quarto = {
 </div>
 </div>
 <p>Notice that data frames are built <strong>column-wise</strong>.</p>
-<p>When displayed, the top line of the data frame is the <strong>header</strong>; it contains the column names.</p>
-<p>The data type is listed below the column name.</p>
-<p>Each horizontal line afterward denotes a data row, which may begin with the name of the row, and then followed by the actual data.</p>
-<p>Each data member of a row is called a cell.</p>
+<p>When displayed in certain environemnts, the top line of the data frame is the <strong>header</strong> and it contains the <strong>column</strong> names.</p>
+<p>The <strong>data type</strong> is listed below the column name.</p>
+<p>Each horizontal line afterward denotes a data <strong>row</strong>, which may begin with the <strong>name</strong> of the row, and then followed by the actual data.</p>
+<p>Each data member of a row is called a <strong>cell</strong>.</p>
+<p>Note that on Jupyter, if we print a data frame, we get this:</p>
+<div id="c80e38bb-7a3c-4e8c-a232-ab2c085ce4fa" class="cell" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  n  s     b
+1 2 aa  TRUE
+2 3 bb FALSE
+3 5 cc  TRUE</code></pre>
+</div>
+</div>
 <section id="built-in-data-frames" class="level2">
 <h2 class="anchored" data-anchor-id="built-in-data-frames">Built-in Data Frames</h2>
-<p>Here is a built-in data frame in R, called <code>mtcars</code>.</p>
-<p>Note that it comes with R without having to import anything.</p>
-<div id="6bd7cbc2-1733-435c-bb0d-33ce27541198" class="cell" data-tags="[]" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mtcars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To learn more about data frames in R, let’s look at some built in data.</p>
+<p>R comes with many built-in data sets to get you started.</p>
+<p>These do not need to be imported.</p>
+<p>Here is the <code>mtcars</code> data frame.</p>
+<div id="6bd7cbc2-1733-435c-bb0d-33ce27541198" class="cell" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mtcars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
@@ -1265,36 +1255,36 @@ window.Quarto = {
 <p>To retrieve data in a cell, we enter its <strong>row</strong> and <strong>column</strong> coordinates in the single square bracket <code>[ ]</code> operator.</p>
 <p>The two coordinates are separated by a comma, e.g.&nbsp;<code>[row, col]</code>.</p>
 <p>Here is the cell value from the first row, second column of mtcars.</p>
-<div id="e932e4df-cff9-409d-83ba-998cb0aeb743" class="cell" data-tags="[]" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="dv">1</span>, <span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e932e4df-cff9-409d-83ba-998cb0aeb743" class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="dv">1</span>, <span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 6
 </div>
 </div>
 <p>We can use names instead of the numeric coordinates.</p>
-<div id="2d7a0854-b079-4862-82ac-ae99f07a104f" class="cell" data-tags="[]" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">"Mazda RX4"</span>, <span class="st">"cyl"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="2d7a0854-b079-4862-82ac-ae99f07a104f" class="cell" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">"Mazda RX4"</span>, <span class="st">"cyl"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 6
 </div>
 </div>
-<p>Lastly, the number of data rows in the data frame is given by the <code>nrow()</code> function.</p>
-<div id="56c933e0-59d2-46bb-83ca-eb2a9d6a0153" class="cell" data-tags="[]" data-execution_count="67">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The number of data rows in the data frame is given by the <code>nrow()</code> function.</p>
+<div id="56c933e0-59d2-46bb-83ca-eb2a9d6a0153" class="cell" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 32
 </div>
 </div>
 <p>And the number of columns of a data frame is given by the <code>ncol()</code> function.</p>
-<div id="139a19bc-fbb3-4cec-9cf5-e8700bc22bb5" class="cell" data-tags="[]" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="139a19bc-fbb3-4cec-9cf5-e8700bc22bb5" class="cell" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 11
 </div>
 </div>
-<p>We get the shape of the data frame with<code>dim()</code>, which stands for ‘dimension’.</p>
-<div id="100753de-2102-4d84-ad61-d3282daf6881" class="cell" data-tags="[]" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We get the shape of the data frame with<code>dim()</code>, which stands for “dimension.”</p>
+<div id="100753de-2102-4d84-ad61-d3282daf6881" class="cell" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -1304,22 +1294,146 @@ window.Quarto = {
 <ol class="list-inline"><li>32</li><li>11</li></ol>
 </div>
 </div>
-<p>Further details of the mtcars data set is available in the R documentation.</p>
-<div id="4f245f8b-4f7a-4aa8-b6a8-e541c58c08ff" class="cell" data-tags="[]" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># help(mtcars)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="preview-with-head" class="level2">
 <h2 class="anchored" data-anchor-id="preview-with-head">Preview with <code>head()</code></h2>
 <p>Instead of printing out the entire data frame, it is often desirable to preview it with the head function beforehand</p>
-<p>head(mtcars)</p>
+<div id="e2723fb2-c6e3-4e14-bb68-7bc4623ce657" class="cell" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A data.frame: 6 × 11</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" scope="col">mpg</th>
+<th data-quarto-table-cell-role="th" scope="col">cyl</th>
+<th data-quarto-table-cell-role="th" scope="col">disp</th>
+<th data-quarto-table-cell-role="th" scope="col">hp</th>
+<th data-quarto-table-cell-role="th" scope="col">drat</th>
+<th data-quarto-table-cell-role="th" scope="col">wt</th>
+<th data-quarto-table-cell-role="th" scope="col">qsec</th>
+<th data-quarto-table-cell-role="th" scope="col">vs</th>
+<th data-quarto-table-cell-role="th" scope="col">am</th>
+<th data-quarto-table-cell-role="th" scope="col">gear</th>
+<th data-quarto-table-cell-role="th" scope="col">carb</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row">Mazda RX4</td>
+<td>21.0</td>
+<td>6</td>
+<td>160</td>
+<td>110</td>
+<td>3.90</td>
+<td>2.620</td>
+<td>16.46</td>
+<td>0</td>
+<td>1</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row">Mazda RX4 Wag</td>
+<td>21.0</td>
+<td>6</td>
+<td>160</td>
+<td>110</td>
+<td>3.90</td>
+<td>2.875</td>
+<td>17.02</td>
+<td>0</td>
+<td>1</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row">Datsun 710</td>
+<td>22.8</td>
+<td>4</td>
+<td>108</td>
+<td>93</td>
+<td>3.85</td>
+<td>2.320</td>
+<td>18.61</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row">Hornet 4 Drive</td>
+<td>21.4</td>
+<td>6</td>
+<td>258</td>
+<td>110</td>
+<td>3.08</td>
+<td>3.215</td>
+<td>19.44</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row">Hornet Sportabout</td>
+<td>18.7</td>
+<td>8</td>
+<td>360</td>
+<td>175</td>
+<td>3.15</td>
+<td>3.440</td>
+<td>17.02</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row">Valiant</td>
+<td>18.1</td>
+<td>6</td>
+<td>225</td>
+<td>105</td>
+<td>2.76</td>
+<td>3.460</td>
+<td>20.22</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </section>
+</section>
+<section id="extracting-column-data" class="level1">
+<h1>Extracting Column Data</h1>
 <section id="data-frame-column-vectors" class="level2">
 <h2 class="anchored" data-anchor-id="data-frame-column-vectors">Data Frame Column Vectors</h2>
-<p>We reference a data frame column with the double square bracket <code>[[]]</code> operator, just as we do for lists.</p>
-<p>For example, to retrieve the ninth column vector of the built-in data set <code>mtcars</code>, we write</p>
-<div id="6f6cdd13-c403-4db8-bdf6-a962866c213c" class="cell" data-tags="[]" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mtcars[[<span class="dv">9</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We reference a the data inside a column with the double square bracket <code>[[]]</code> operator, just as we do for lists.</p>
+<p>For example, to retrieve the ninth column vector from <code>mtcars</code>, we write:</p>
+<div id="6f6cdd13-c403-4db8-bdf6-a962866c213c" class="cell" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mtcars[[<span class="dv">9</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -1330,8 +1444,8 @@ window.Quarto = {
 </div>
 </div>
 <p>We can retrieve the same column vector by its name</p>
-<div id="edd387b1-81cb-40fe-ac4c-1e7607548c07" class="cell" data-tags="[]" data-execution_count="72">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mtcars[[<span class="st">"am"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="edd387b1-81cb-40fe-ac4c-1e7607548c07" class="cell" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mtcars[[<span class="st">"am"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -1343,8 +1457,8 @@ window.Quarto = {
 </div>
 <p>We can also retrieve with the <code>$</code> operator in lieu of the double square bracket operator.</p>
 <p>This is like using a dot in Pandas.</p>
-<div id="81f9d9f4-6d6a-4824-99b3-bc992208ecf4" class="cell" data-tags="[]" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>am</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="81f9d9f4-6d6a-4824-99b3-bc992208ecf4" class="cell" data-tags="[]" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>am</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -1356,8 +1470,8 @@ window.Quarto = {
 </div>
 <p>Yet another way to retrieve the same column vector is to use the single square bracket <code>[]</code> operator.</p>
 <p>We prepend the column name with a comma character, which signals a wildcard match for the row position</p>
-<div id="48c1cc93-2827-4aaa-a027-39615075298e" class="cell" data-tags="[]" data-execution_count="74">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mtcars[, <span class="st">"am"</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="48c1cc93-2827-4aaa-a027-39615075298e" class="cell" data-tags="[]" data-execution_count="89">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mtcars[, <span class="st">"am"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -1370,27 +1484,21 @@ window.Quarto = {
 </section>
 <section id="data-frame-column-slice" class="level2">
 <h2 class="anchored" data-anchor-id="data-frame-column-slice">Data Frame Column Slice</h2>
-<p>We retrieve a data frame column <strong>slice</strong> with the single square bracket <code>[ ]</code> operator.</p>
-<p>Note: This is like a one-column dataframe in Pandas, as opposed to a Series.</p>
+<p>In contrast to retrieving vectors from within a dat frame, we retrieve a <strong>slice</strong> of a data frame with the single square bracket <code>[ ]</code> operator.</p>
+<p>A slice of a data frame is just a <strong>smaller data frame</strong>.</p>
+<p>It is not a lower-dimensional data strucure, i.e.&nbsp;a vector.</p>
+<p>We saw this with lists earlier.</p>
+<p>This is like a one-column dataframe in Pandas, as opposed to a Series.</p>
 </section>
 <section id="numeric-indexing" class="level2">
 <h2 class="anchored" data-anchor-id="numeric-indexing">Numeric Indexing</h2>
-<p>The following is a slice containing the first column of the built-in data set mtcars</p>
-<div id="eec27bae-560e-4911-b759-f4d11609276c" class="cell" data-tags="[]" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mtcars[[<span class="dv">1</span>]]</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>21</li><li>21</li><li>22.8</li><li>21.4</li><li>18.7</li><li>18.1</li><li>14.3</li><li>24.4</li><li>22.8</li><li>19.2</li><li>17.8</li><li>16.4</li><li>17.3</li><li>15.2</li><li>10.4</li><li>10.4</li><li>14.7</li><li>32.4</li><li>30.4</li><li>33.9</li><li>21.5</li><li>15.5</li><li>15.2</li><li>13.3</li><li>19.2</li><li>27.3</li><li>26</li><li>30.4</li><li>15.8</li><li>19.7</li><li>15</li><li>21.4</li></ol>
-</div>
+<p>The following is a slice containing the first column of <code>mtcars</code>:</p>
+<div id="2a74a0f9-413a-46a4-9354-1ebec30b2d34" class="cell" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>A data.frame: 32 × 1</caption>
+<caption>A data.frame: 6 × 1</caption>
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1426,125 +1534,31 @@ window.Quarto = {
 <td data-quarto-table-cell-role="th" scope="row">Valiant</td>
 <td>18.1</td>
 </tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Duster 360</td>
-<td>14.3</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Merc 240D</td>
-<td>24.4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Merc 230</td>
-<td>22.8</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Merc 280</td>
-<td>19.2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Merc 280C</td>
-<td>17.8</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Merc 450SE</td>
-<td>16.4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Merc 450SL</td>
-<td>17.3</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Merc 450SLC</td>
-<td>15.2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Cadillac Fleetwood</td>
-<td>10.4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Lincoln Continental</td>
-<td>10.4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Chrysler Imperial</td>
-<td>14.7</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Fiat 128</td>
-<td>32.4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Honda Civic</td>
-<td>30.4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Toyota Corolla</td>
-<td>33.9</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Toyota Corona</td>
-<td>21.5</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Dodge Challenger</td>
-<td>15.5</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">AMC Javelin</td>
-<td>15.2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Camaro Z28</td>
-<td>13.3</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Pontiac Firebird</td>
-<td>19.2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Fiat X1-9</td>
-<td>27.3</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Porsche 914-2</td>
-<td>26.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Lotus Europa</td>
-<td>30.4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Ford Pantera L</td>
-<td>15.8</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Ferrari Dino</td>
-<td>19.7</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Maserati Bora</td>
-<td>15.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Volvo 142E</td>
-<td>21.4</td>
-</tr>
 </tbody>
 </table>
 </div>
+</div>
+</div>
+<p>To reinforce this difference between getting a slice of a data frame and getting the data is contains, compare the classes of the results in each case.</p>
+<div id="9bd08c36-0c64-4acd-a3bb-919f6119a7fa" class="cell" data-tags="[]" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mtcars[<span class="dv">1</span>]); <span class="fu">class</span>(mtcars[[<span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+'data.frame'
+</div>
+<div class="cell-output cell-output-display">
+'numeric'
 </div>
 </div>
 </section>
 <section id="name-indexing" class="level2">
 <h2 class="anchored" data-anchor-id="name-indexing">Name Indexing</h2>
-<p>We can retrieve the same column slice by its name</p>
-<div id="346077d1-9b99-4c12-ab28-1fbcbee98d8b" class="cell" data-tags="[]" data-execution_count="76">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">"mpg"</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can also retrieve a column slice by its <strong>name</strong>.</p>
+<div id="346077d1-9b99-4c12-ab28-1fbcbee98d8b" class="cell" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars[<span class="st">"mpg"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>A data.frame: 32 × 1</caption>
+<caption>A data.frame: 6 × 1</caption>
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1580,134 +1594,18 @@ window.Quarto = {
 <td data-quarto-table-cell-role="th" scope="row">Valiant</td>
 <td>18.1</td>
 </tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Duster 360</td>
-<td>14.3</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Merc 240D</td>
-<td>24.4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Merc 230</td>
-<td>22.8</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Merc 280</td>
-<td>19.2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Merc 280C</td>
-<td>17.8</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Merc 450SE</td>
-<td>16.4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Merc 450SL</td>
-<td>17.3</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Merc 450SLC</td>
-<td>15.2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Cadillac Fleetwood</td>
-<td>10.4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Lincoln Continental</td>
-<td>10.4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Chrysler Imperial</td>
-<td>14.7</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Fiat 128</td>
-<td>32.4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Honda Civic</td>
-<td>30.4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Toyota Corolla</td>
-<td>33.9</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Toyota Corona</td>
-<td>21.5</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Dodge Challenger</td>
-<td>15.5</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">AMC Javelin</td>
-<td>15.2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Camaro Z28</td>
-<td>13.3</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Pontiac Firebird</td>
-<td>19.2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Fiat X1-9</td>
-<td>27.3</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Porsche 914-2</td>
-<td>26.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Lotus Europa</td>
-<td>30.4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Ford Pantera L</td>
-<td>15.8</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Ferrari Dino</td>
-<td>19.7</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Maserati Bora</td>
-<td>15.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Volvo 142E</td>
-<td>21.4</td>
-</tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<p>Compare to accessing the column vector data directly:</p>
-<div id="e9901659-293d-4950-b2e8-cb472a7c93b4" class="cell" data-tags="[]" data-execution_count="77">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mtcars[[<span class="st">"mpg"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>21</li><li>21</li><li>22.8</li><li>21.4</li><li>18.7</li><li>18.1</li><li>14.3</li><li>24.4</li><li>22.8</li><li>19.2</li><li>17.8</li><li>16.4</li><li>17.3</li><li>15.2</li><li>10.4</li><li>10.4</li><li>14.7</li><li>32.4</li><li>30.4</li><li>33.9</li><li>21.5</li><li>15.5</li><li>15.2</li><li>13.3</li><li>19.2</li><li>27.3</li><li>26</li><li>30.4</li><li>15.8</li><li>19.7</li><li>15</li><li>21.4</li></ol>
-</div>
-</div>
 <p>To retrieve a data frame slice with the two columns <code>mpg</code> and <code>hp</code>, we put the column names into a vector inside the single square bracket operator:</p>
-<div id="981633be-4e6c-462d-8960-34c1dd0321b3" class="cell" data-tags="[]" data-execution_count="78">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="fu">c</span>(<span class="st">"mpg"</span>, <span class="st">"hp"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="981633be-4e6c-462d-8960-34c1dd0321b3" class="cell" data-tags="[]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars[<span class="fu">c</span>(<span class="st">"mpg"</span>, <span class="st">"hp"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>A data.frame: 32 × 2</caption>
+<caption>A data.frame: 6 × 2</caption>
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1751,151 +1649,30 @@ window.Quarto = {
 <td>18.1</td>
 <td>105</td>
 </tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Duster 360</td>
-<td>14.3</td>
-<td>245</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Merc 240D</td>
-<td>24.4</td>
-<td>62</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Merc 230</td>
-<td>22.8</td>
-<td>95</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Merc 280</td>
-<td>19.2</td>
-<td>123</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Merc 280C</td>
-<td>17.8</td>
-<td>123</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Merc 450SE</td>
-<td>16.4</td>
-<td>180</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Merc 450SL</td>
-<td>17.3</td>
-<td>180</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Merc 450SLC</td>
-<td>15.2</td>
-<td>180</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Cadillac Fleetwood</td>
-<td>10.4</td>
-<td>205</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Lincoln Continental</td>
-<td>10.4</td>
-<td>215</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Chrysler Imperial</td>
-<td>14.7</td>
-<td>230</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Fiat 128</td>
-<td>32.4</td>
-<td>66</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Honda Civic</td>
-<td>30.4</td>
-<td>52</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Toyota Corolla</td>
-<td>33.9</td>
-<td>65</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Toyota Corona</td>
-<td>21.5</td>
-<td>97</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Dodge Challenger</td>
-<td>15.5</td>
-<td>150</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">AMC Javelin</td>
-<td>15.2</td>
-<td>150</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Camaro Z28</td>
-<td>13.3</td>
-<td>245</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Pontiac Firebird</td>
-<td>19.2</td>
-<td>175</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Fiat X1-9</td>
-<td>27.3</td>
-<td>66</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Porsche 914-2</td>
-<td>26.0</td>
-<td>91</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Lotus Europa</td>
-<td>30.4</td>
-<td>113</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Ford Pantera L</td>
-<td>15.8</td>
-<td>264</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Ferrari Dino</td>
-<td>19.7</td>
-<td>175</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th" scope="row">Maserati Bora</td>
-<td>15.0</td>
-<td>335</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th" scope="row">Volvo 142E</td>
-<td>21.4</td>
-<td>109</td>
-</tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
 </section>
-<section id="data-frame-row-slice" class="level2">
-<h2 class="anchored" data-anchor-id="data-frame-row-slice">Data Frame Row Slice</h2>
-<p>We retrieve rows from a data frame with the single square bracket operator, just like what we did with columns. However, in additional to an index vector of row positions, we append an extra comma character. This is important, as the extra comma signals a wildcard match for the second coordinate for column positions.</p>
+</section>
+<section id="extracting-row-data" class="level1">
+<h1>Extracting Row Data</h1>
+<section id="data-frame-row-slices" class="level2">
+<h2 class="anchored" data-anchor-id="data-frame-row-slices">Data Frame Row Slices</h2>
+<p>We also retrieve rows from a data frame with the single square bracket operator.</p>
+<p>But, we need append <strong>an extra comma</strong> character, which implies getting <strong>all</strong> columns.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mtcar[<span class="sc">&lt;</span>row<span class="sc">&gt;</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Where <code>&lt;row&gt;</code> is a row index number or a name.</p>
+<p>In Python, we would have done this:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df[<span class="op">&lt;</span>row<span class="op">&gt;</span>, :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="numeric-indexing-1" class="level2">
 <h2 class="anchored" data-anchor-id="numeric-indexing-1">Numeric Indexing</h2>
-<p>For example, the following retrieves a row record of the built-in data set mtcars. Please notice the extra comma in the square bracket operator, and it is not a typo. It states that the 1974 Camaro Z28 has a gas mileage of <span class="math inline">\(13.3\)</span> miles per gallon, and an eight cylinder <span class="math inline">\(245\)</span> horse power engine, …, etc</p>
-<div id="564d82ce-663f-45c6-9f13-28258c8dfee1" class="cell" data-tags="[]" data-execution_count="79">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="dv">24</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can access a row of data by its index number.</p>
+<p>For example, the following retrieves the 24th row record.</p>
+<div id="564d82ce-663f-45c6-9f13-28258c8dfee1" class="cell" data-tags="[]" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="dv">24</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
@@ -1950,9 +1727,9 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>To retrieve more than one rows, we use a numeric index vector</p>
-<div id="455a1245-7e76-4f80-9ed9-67eb5d83fd06" class="cell" data-tags="[]" data-execution_count="80">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">24</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To retrieve more than one row, we use a numeric index <strong>vector</strong>:</p>
+<div id="455a1245-7e76-4f80-9ed9-67eb5d83fd06" class="cell" data-tags="[]" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">24</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
@@ -2024,9 +1801,9 @@ window.Quarto = {
 </section>
 <section id="name-indexing-1" class="level2">
 <h2 class="anchored" data-anchor-id="name-indexing-1">Name Indexing</h2>
-<p>We can retrieve a row by its name.</p>
-<div id="1b325096-e0f1-4dbf-b0f9-6be3451cff59" class="cell" data-tags="[]" data-execution_count="81">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">"Camaro Z28"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can retrieve a row by its index <strong>name</strong>.</p>
+<div id="1b325096-e0f1-4dbf-b0f9-6be3451cff59" class="cell" data-tags="[]" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">"Camaro Z28"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
@@ -2082,8 +1859,8 @@ window.Quarto = {
 </div>
 </div>
 <p>And we can pack the row names in an index vector in order to retrieve multiple rows.</p>
-<div id="3f88fc20-8ea2-4055-b115-567e2ecbc585" class="cell" data-tags="[]" data-execution_count="82">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="fu">c</span>(<span class="st">"Datsun 710"</span>, <span class="st">"Camaro Z28"</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3f88fc20-8ea2-4055-b115-567e2ecbc585" class="cell" data-tags="[]" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="fu">c</span>(<span class="st">"Datsun 710"</span>, <span class="st">"Camaro Z28"</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
@@ -2155,10 +1932,10 @@ window.Quarto = {
 </section>
 <section id="logical-indexing" class="level2">
 <h2 class="anchored" data-anchor-id="logical-indexing">Logical Indexing</h2>
-<p>Lastly, we can retrieve rows with a logical index vector. In the following vector <code>L</code>, the member value is <code>TRUE</code> if the car has automatic transmission, and <code>FALSE</code> if otherwise.</p>
-<div id="328831f5-e7d9-4540-8f0e-f365dd12baee" class="cell" data-tags="[]" data-execution_count="83">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>am <span class="sc">==</span> <span class="dv">1</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>L</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can also retrieve rows with a logical index vector.</p>
+<p>In the following logical (boolean) vector expression, the member value is <code>TRUE</code> if the car has automatic transmission, and <code>FALSE</code> if otherwise.</p>
+<div id="328831f5-e7d9-4540-8f0e-f365dd12baee" class="cell" data-tags="[]" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>am <span class="sc">==</span> <span class="dv">1</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -2168,9 +1945,9 @@ window.Quarto = {
 <ol class="list-inline"><li>TRUE</li><li>TRUE</li><li>TRUE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>TRUE</li><li>TRUE</li><li>TRUE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>TRUE</li><li>TRUE</li><li>TRUE</li><li>TRUE</li><li>TRUE</li><li>TRUE</li><li>TRUE</li></ol>
 </div>
 </div>
-<p>Here is the list of vehicles with automatic transmission</p>
-<div id="b2e96132-3a7d-4497-bccd-cd8a0e20953f" class="cell" data-tags="[]" data-execution_count="84">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mtcars[L,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Passing this vector expression as a row selector, we get the subset of rows with vehicles that have automatic transmission:</p>
+<div id="b2e96132-3a7d-4497-bccd-cd8a0e20953f" class="cell" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>mtcars[mtcars<span class="sc">$</span>am <span class="sc">==</span> <span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
@@ -2394,8 +2171,8 @@ window.Quarto = {
 </div>
 </div>
 <p>And here is the gas mileage data for automatic transmission</p>
-<div id="b5de9c55-49ec-463a-9dd5-3e701ad18653" class="cell" data-tags="[]" data-execution_count="85">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mtcars[L,]<span class="sc">$</span>mpg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b5de9c55-49ec-463a-9dd5-3e701ad18653" class="cell" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>mtcars[mtcars<span class="sc">$</span>am <span class="sc">==</span> <span class="dv">1</span>,]<span class="sc">$</span>mpg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -2406,48 +2183,193 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="change-the-name-of-a-column" class="level2">
-<h2 class="anchored" data-anchor-id="change-the-name-of-a-column">Change the name of a column</h2>
-<div id="658c04d9-5118-4e32-a1fc-a0935ac3ddbc" class="cell" data-tags="[]" data-execution_count="193">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)[<span class="fu">names</span>(df) <span class="sc">==</span> <span class="st">'old.var.name'</span>] <span class="ot">&lt;-</span> <span class="st">'new.var.name'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="changing-column-names" class="level1">
+<h1>Changing Column Names</h1>
+<p>Changing column names is a little tricky.</p>
+<p>You need to use the function <code>names()</code>, which returns a vector of names for a given data frame.</p>
+<p>For example, let’s change the column name <code>n</code> to <code>number</code> in a copy of <code>df</code>.</p>
+<div id="893d4ee1-0217-4228-a658-978631469fa2" class="cell" data-tags="[]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> df</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A data.frame: 3 × 3</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">n</th>
+<th data-quarto-table-cell-role="th" scope="col">s</th>
+<th data-quarto-table-cell-role="th" scope="col">b</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;lgl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>aa</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>bb</td>
+<td>FALSE</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>cc</td>
+<td>TRUE</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>To make the change, we create a logical vector of column names that have the old name.</p>
+<p>Then we assign the new value, using the same <code>names()</code> function.</p>
+<div id="658c04d9-5118-4e32-a1fc-a0935ac3ddbc" class="cell" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df2)[<span class="fu">names</span>(df2) <span class="sc">==</span> <span class="st">'n'</span>] <span class="ot">&lt;-</span> <span class="st">'number'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="b06fa603-c2e1-484f-8931-03ded9e39496" class="cell" data-tags="[]" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A data.frame: 3 × 3</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">number</th>
+<th data-quarto-table-cell-role="th" scope="col">s</th>
+<th data-quarto-table-cell-role="th" scope="col">b</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;lgl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>aa</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>bb</td>
+<td>FALSE</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>cc</td>
+<td>TRUE</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Note, by the way, that the original <code>df</code> is unchanged.</p>
+<p>This is because R does not make a shallow copy.</p>
+<div id="75f3facc-d5a3-4eb0-89ef-34da61039f47" class="cell" data-tags="[]" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A data.frame: 3 × 3</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">n</th>
+<th data-quarto-table-cell-role="th" scope="col">s</th>
+<th data-quarto-table-cell-role="th" scope="col">b</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;lgl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>aa</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>bb</td>
+<td>FALSE</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>cc</td>
+<td>TRUE</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </section>
-</section>
-<section id="extra" class="level1">
-<h1>Extra</h1>
+<section id="a-few-more-things" class="level1">
+<h1>A Few More Things</h1>
+<p>There’s a lot more to know about data frames, but this is enough to get you started.</p>
+<p>The following items may also be useful.</p>
 <section id="importing-data" class="level2">
 <h2 class="anchored" data-anchor-id="importing-data">Importing Data</h2>
-<p>It is often necessary to import sample textbook data into R before you start working on your homework.</p>
-<p><strong>Excel Files</strong></p>
-<p>Quite frequently, the sample data is in Excel format, and needs to be imported into R prior to use. For this, we can use the function read.xls from the gdata package. It reads from an Excel spreadsheet and returns a data frame. The following shows how to load an Excel spreadsheet named “mydata.xls”. This method requires Perl runtime to be present in the system</p>
-<div id="8215703f-2f8c-4db1-a11d-5790a8160eca" class="cell" data-tags="[]" data-execution_count="107">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="do">##library(gdata)                   # load gdata package </span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="do">##help(read.xls)                   # documentation </span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="do">##mydata &lt;- read.xls("mydata.xls")  # read from first sheet</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To retrieve data from external files and convert them in to data frames, R offers a number of import functions.</p>
+<p>To read <code>CSV</code> files, you can use the built-in function <code>read.csv()</code>.</p>
+<p>Here’s a quick example.</p>
+<div id="4149a8d9-a3a9-411a-a7fd-678afd3315df" class="cell" data-tags="[]" data-execution_count="91">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df_from_csv <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"mydata.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Alternatively, we can use the function loadWorkbook from the XLConnect package to read the entire workbook, and then load the worksheets with readWorksheet. The XLConnect package requires Java to be pre-installed</p>
-<div id="f7dc5b22-880b-4689-8a2f-9fc2ae1efcef" class="cell" data-tags="[]" data-execution_count="108">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="do">##library(XLConnect)               # load XLConnect package </span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="do">##wk &lt;- loadWorkbook("mydata.xls") </span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="do">##df &lt;- readWorksheet(wk, sheet="Sheet1")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="37e9dc75-5040-4629-a3a4-425cf5488fe0" class="cell" data-tags="[]" data-execution_count="92">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df_from_csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A data.frame: 3 × 3</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">Col1</th>
+<th data-quarto-table-cell-role="th" scope="col">Col2</th>
+<th data-quarto-table-cell-role="th" scope="col">Col3</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;int&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>100</td>
+<td>a1</td>
+<td>b1</td>
+</tr>
+<tr class="even">
+<td>200</td>
+<td>a2</td>
+<td>b2</td>
+</tr>
+<tr class="odd">
+<td>300</td>
+<td>a3</td>
+<td>b3</td>
+</tr>
+</tbody>
+</table>
 </div>
-<p><strong>Table Files</strong></p>
-<p>A data table can reside in a text file.</p>
-<p>The cells inside the table are separated by blank characters.</p>
-<p>Here is an example of a table with 4 rows and 3 columns.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> a1 b1 </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="dv">200</span> a2 b2 </span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="dv">300</span> a3 b3 </span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="dv">400</span> a4 b4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Now copy and paste the table above in a file named “mydata.txt” with a text editor.</p>
-<p>Then load the data into the workspace with the function read.table</p>
-<div id="c3d5e23a-c522-46c0-830b-75eba580b3c8" class="cell" data-tags="[]" data-execution_count="109">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"mydata.txt"</span>)  <span class="co"># read text file </span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>mydata                             <span class="co"># print data frame </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning message in read.table("mydata.txt"):
-“incomplete final line found by readTableHeader on 'mydata.txt'”</code></pre>
 </div>
+</div>
+<p>R has a special function for reading in table data where cell data are separated by spaces.</p>
+<div id="c3d5e23a-c522-46c0-830b-75eba580b3c8" class="cell" data-tags="[]" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df_from_table <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"mydata.txt"</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>df_from_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
@@ -2490,90 +2412,22 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p><strong>CSV Files</strong></p>
-<p>The sample data can also be in comma separated values (CSV) format. Each cell inside such data file is separated by a special character, which usually is a comma, although other characters can be used as well.</p>
-<p>The first row of the data file should contain the column names instead of the actual data. Here is a sample of the expected format.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Col1,Col2,Col3 </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span>,a1,b1 </span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="dv">200</span>,a2,b2 </span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="dv">300</span>,a3,b3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>After we copy and paste the data above in a file named “mydata.csv” with a text editor, we can read the data with the function read.csv</p>
-<div id="27615de6-34e4-414e-b5d7-5d4813992e22" class="cell" data-tags="[]" data-execution_count="90">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"mydata.csv"</span>)  <span class="co"># read csv file </span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>mydata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning message in read.table(file = file, header = header, sep = sep, quote = quote, :
-“incomplete final line found by readTableHeader on 'mydata.csv'”</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>A data.frame: 3 × 3</caption>
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th" scope="col">Col1</th>
-<th data-quarto-table-cell-role="th" scope="col">Col2</th>
-<th data-quarto-table-cell-role="th" scope="col">Col3</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th" scope="col">&lt;int&gt;</th>
-<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
-<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>100</td>
-<td>a1</td>
-<td>b1</td>
-</tr>
-<tr class="even">
-<td>200</td>
-<td>a2</td>
-<td>b2</td>
-</tr>
-<tr class="odd">
-<td>300</td>
-<td>a3</td>
-<td>b3</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<p>In various European locales, as the comma character serves as the decimal point, the function read.csv2 should be used instead. For further detail of the read.csv and read.csv2 functions, please consult the R documentation</p>
-<div id="40f7d45b-0ce6-4979-ad0f-7ea6e4817dd3" class="cell" data-tags="[]" data-execution_count="110">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># help(read.csv)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="29d9ccf4-7b33-4f41-b1a6-48b937fedf14" class="cell" data-tags="[]" data-execution_count="92">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()               <span class="co"># get current working directory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-'/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M10_RBasics'
-</div>
-</div>
-<p>You can select a different working directory with the function setwd(), and thus avoid entering the full path of the data files</p>
-<div id="9e69e00c-a42f-4201-91ff-5e35755f4813" class="cell" data-tags="[]" data-execution_count="93">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="do">## setwd("&lt;new path&gt;")   # set working directory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Note that the forward slash should be used as the path separator even on Windows platform</p>
-<div id="d15ba503-e067-462d-8223-001eac421bda" class="cell" data-tags="[]" data-execution_count="94">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="do">## setwd("C:/MyDoc")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="plotting-data-with-plot" class="level2">
 <h2 class="anchored" data-anchor-id="plotting-data-with-plot">Plotting Data with <code>plot()</code></h2>
 <p>R is know for its high-quality visualizations, and we’ll explore at these in more detail when we look at GGPlot.</p>
 <p>For now, consider the <code>plot()</code> function.</p>
-<p>Let’s plot the data from the built in data frame <code>airquality</code>.</p>
-<div id="7900f04c-daf9-4362-91a8-06e04f9fc9cf" class="cell" data-tags="[]" data-execution_count="95">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>airquality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>One of the nice features of <code>plot()</code> is that it produced plots based on the shape and type of data you give it.</p>
+<p>To see this, let’s plot the data from the built in data frame <code>airquality</code>.</p>
+<div id="7900f04c-daf9-4362-91a8-06e04f9fc9cf" class="cell" data-tags="[]" data-execution_count="90">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>A data.frame: 153 × 6</caption>
+<caption>A data.frame: 6 × 6</caption>
 <thead>
 <tr class="header">
+<th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th" scope="col">Ozone</th>
 <th data-quarto-table-cell-role="th" scope="col">Solar.R</th>
 <th data-quarto-table-cell-role="th" scope="col">Wind</th>
@@ -2582,6 +2436,7 @@ window.Quarto = {
 <th data-quarto-table-cell-role="th" scope="col">Day</th>
 </tr>
 <tr class="odd">
+<th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th" scope="col">&lt;int&gt;</th>
 <th data-quarto-table-cell-role="th" scope="col">&lt;int&gt;</th>
 <th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
@@ -2592,6 +2447,7 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row">1</td>
 <td>41</td>
 <td>190</td>
 <td>7.4</td>
@@ -2600,6 +2456,7 @@ window.Quarto = {
 <td>1</td>
 </tr>
 <tr class="even">
+<td data-quarto-table-cell-role="th" scope="row">2</td>
 <td>36</td>
 <td>118</td>
 <td>8.0</td>
@@ -2608,6 +2465,7 @@ window.Quarto = {
 <td>2</td>
 </tr>
 <tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row">3</td>
 <td>12</td>
 <td>149</td>
 <td>12.6</td>
@@ -2616,6 +2474,7 @@ window.Quarto = {
 <td>3</td>
 </tr>
 <tr class="even">
+<td data-quarto-table-cell-role="th" scope="row">4</td>
 <td>18</td>
 <td>313</td>
 <td>11.5</td>
@@ -2624,6 +2483,7 @@ window.Quarto = {
 <td>4</td>
 </tr>
 <tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row">5</td>
 <td>NA</td>
 <td>NA</td>
 <td>14.3</td>
@@ -2632,460 +2492,33 @@ window.Quarto = {
 <td>5</td>
 </tr>
 <tr class="even">
+<td data-quarto-table-cell-role="th" scope="row">6</td>
 <td>28</td>
 <td>NA</td>
 <td>14.9</td>
 <td>66</td>
 <td>5</td>
 <td>6</td>
-</tr>
-<tr class="odd">
-<td>23</td>
-<td>299</td>
-<td>8.6</td>
-<td>65</td>
-<td>5</td>
-<td>7</td>
-</tr>
-<tr class="even">
-<td>19</td>
-<td>99</td>
-<td>13.8</td>
-<td>59</td>
-<td>5</td>
-<td>8</td>
-</tr>
-<tr class="odd">
-<td>8</td>
-<td>19</td>
-<td>20.1</td>
-<td>61</td>
-<td>5</td>
-<td>9</td>
-</tr>
-<tr class="even">
-<td>NA</td>
-<td>194</td>
-<td>8.6</td>
-<td>69</td>
-<td>5</td>
-<td>10</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>NA</td>
-<td>6.9</td>
-<td>74</td>
-<td>5</td>
-<td>11</td>
-</tr>
-<tr class="even">
-<td>16</td>
-<td>256</td>
-<td>9.7</td>
-<td>69</td>
-<td>5</td>
-<td>12</td>
-</tr>
-<tr class="odd">
-<td>11</td>
-<td>290</td>
-<td>9.2</td>
-<td>66</td>
-<td>5</td>
-<td>13</td>
-</tr>
-<tr class="even">
-<td>14</td>
-<td>274</td>
-<td>10.9</td>
-<td>68</td>
-<td>5</td>
-<td>14</td>
-</tr>
-<tr class="odd">
-<td>18</td>
-<td>65</td>
-<td>13.2</td>
-<td>58</td>
-<td>5</td>
-<td>15</td>
-</tr>
-<tr class="even">
-<td>14</td>
-<td>334</td>
-<td>11.5</td>
-<td>64</td>
-<td>5</td>
-<td>16</td>
-</tr>
-<tr class="odd">
-<td>34</td>
-<td>307</td>
-<td>12.0</td>
-<td>66</td>
-<td>5</td>
-<td>17</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>78</td>
-<td>18.4</td>
-<td>57</td>
-<td>5</td>
-<td>18</td>
-</tr>
-<tr class="odd">
-<td>30</td>
-<td>322</td>
-<td>11.5</td>
-<td>68</td>
-<td>5</td>
-<td>19</td>
-</tr>
-<tr class="even">
-<td>11</td>
-<td>44</td>
-<td>9.7</td>
-<td>62</td>
-<td>5</td>
-<td>20</td>
-</tr>
-<tr class="odd">
-<td>1</td>
-<td>8</td>
-<td>9.7</td>
-<td>59</td>
-<td>5</td>
-<td>21</td>
-</tr>
-<tr class="even">
-<td>11</td>
-<td>320</td>
-<td>16.6</td>
-<td>73</td>
-<td>5</td>
-<td>22</td>
-</tr>
-<tr class="odd">
-<td>4</td>
-<td>25</td>
-<td>9.7</td>
-<td>61</td>
-<td>5</td>
-<td>23</td>
-</tr>
-<tr class="even">
-<td>32</td>
-<td>92</td>
-<td>12.0</td>
-<td>61</td>
-<td>5</td>
-<td>24</td>
-</tr>
-<tr class="odd">
-<td>NA</td>
-<td>66</td>
-<td>16.6</td>
-<td>57</td>
-<td>5</td>
-<td>25</td>
-</tr>
-<tr class="even">
-<td>NA</td>
-<td>266</td>
-<td>14.9</td>
-<td>58</td>
-<td>5</td>
-<td>26</td>
-</tr>
-<tr class="odd">
-<td>NA</td>
-<td>NA</td>
-<td>8.0</td>
-<td>57</td>
-<td>5</td>
-<td>27</td>
-</tr>
-<tr class="even">
-<td>23</td>
-<td>13</td>
-<td>12.0</td>
-<td>67</td>
-<td>5</td>
-<td>28</td>
-</tr>
-<tr class="odd">
-<td>45</td>
-<td>252</td>
-<td>14.9</td>
-<td>81</td>
-<td>5</td>
-<td>29</td>
-</tr>
-<tr class="even">
-<td>115</td>
-<td>223</td>
-<td>5.7</td>
-<td>79</td>
-<td>5</td>
-<td>30</td>
-</tr>
-<tr class="odd">
-<td>⋮</td>
-<td>⋮</td>
-<td>⋮</td>
-<td>⋮</td>
-<td>⋮</td>
-<td>⋮</td>
-</tr>
-<tr class="even">
-<td>96</td>
-<td>167</td>
-<td>6.9</td>
-<td>91</td>
-<td>9</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td>78</td>
-<td>197</td>
-<td>5.1</td>
-<td>92</td>
-<td>9</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>73</td>
-<td>183</td>
-<td>2.8</td>
-<td>93</td>
-<td>9</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td>91</td>
-<td>189</td>
-<td>4.6</td>
-<td>93</td>
-<td>9</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td>47</td>
-<td>95</td>
-<td>7.4</td>
-<td>87</td>
-<td>9</td>
-<td>5</td>
-</tr>
-<tr class="odd">
-<td>32</td>
-<td>92</td>
-<td>15.5</td>
-<td>84</td>
-<td>9</td>
-<td>6</td>
-</tr>
-<tr class="even">
-<td>20</td>
-<td>252</td>
-<td>10.9</td>
-<td>80</td>
-<td>9</td>
-<td>7</td>
-</tr>
-<tr class="odd">
-<td>23</td>
-<td>220</td>
-<td>10.3</td>
-<td>78</td>
-<td>9</td>
-<td>8</td>
-</tr>
-<tr class="even">
-<td>21</td>
-<td>230</td>
-<td>10.9</td>
-<td>75</td>
-<td>9</td>
-<td>9</td>
-</tr>
-<tr class="odd">
-<td>24</td>
-<td>259</td>
-<td>9.7</td>
-<td>73</td>
-<td>9</td>
-<td>10</td>
-</tr>
-<tr class="even">
-<td>44</td>
-<td>236</td>
-<td>14.9</td>
-<td>81</td>
-<td>9</td>
-<td>11</td>
-</tr>
-<tr class="odd">
-<td>21</td>
-<td>259</td>
-<td>15.5</td>
-<td>76</td>
-<td>9</td>
-<td>12</td>
-</tr>
-<tr class="even">
-<td>28</td>
-<td>238</td>
-<td>6.3</td>
-<td>77</td>
-<td>9</td>
-<td>13</td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td>24</td>
-<td>10.9</td>
-<td>71</td>
-<td>9</td>
-<td>14</td>
-</tr>
-<tr class="even">
-<td>13</td>
-<td>112</td>
-<td>11.5</td>
-<td>71</td>
-<td>9</td>
-<td>15</td>
-</tr>
-<tr class="odd">
-<td>46</td>
-<td>237</td>
-<td>6.9</td>
-<td>78</td>
-<td>9</td>
-<td>16</td>
-</tr>
-<tr class="even">
-<td>18</td>
-<td>224</td>
-<td>13.8</td>
-<td>67</td>
-<td>9</td>
-<td>17</td>
-</tr>
-<tr class="odd">
-<td>13</td>
-<td>27</td>
-<td>10.3</td>
-<td>76</td>
-<td>9</td>
-<td>18</td>
-</tr>
-<tr class="even">
-<td>24</td>
-<td>238</td>
-<td>10.3</td>
-<td>68</td>
-<td>9</td>
-<td>19</td>
-</tr>
-<tr class="odd">
-<td>16</td>
-<td>201</td>
-<td>8.0</td>
-<td>82</td>
-<td>9</td>
-<td>20</td>
-</tr>
-<tr class="even">
-<td>13</td>
-<td>238</td>
-<td>12.6</td>
-<td>64</td>
-<td>9</td>
-<td>21</td>
-</tr>
-<tr class="odd">
-<td>23</td>
-<td>14</td>
-<td>9.2</td>
-<td>71</td>
-<td>9</td>
-<td>22</td>
-</tr>
-<tr class="even">
-<td>36</td>
-<td>139</td>
-<td>10.3</td>
-<td>81</td>
-<td>9</td>
-<td>23</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>49</td>
-<td>10.3</td>
-<td>69</td>
-<td>9</td>
-<td>24</td>
-</tr>
-<tr class="even">
-<td>14</td>
-<td>20</td>
-<td>16.6</td>
-<td>63</td>
-<td>9</td>
-<td>25</td>
-</tr>
-<tr class="odd">
-<td>30</td>
-<td>193</td>
-<td>6.9</td>
-<td>70</td>
-<td>9</td>
-<td>26</td>
-</tr>
-<tr class="even">
-<td>NA</td>
-<td>145</td>
-<td>13.2</td>
-<td>77</td>
-<td>9</td>
-<td>27</td>
-</tr>
-<tr class="odd">
-<td>14</td>
-<td>191</td>
-<td>14.3</td>
-<td>75</td>
-<td>9</td>
-<td>28</td>
-</tr>
-<tr class="even">
-<td>18</td>
-<td>131</td>
-<td>8.0</td>
-<td>76</td>
-<td>9</td>
-<td>29</td>
-</tr>
-<tr class="odd">
-<td>20</td>
-<td>223</td>
-<td>11.5</td>
-<td>68</td>
-<td>9</td>
-<td>30</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<div id="6b686f10-d01a-43fa-85e6-aa97d2a96536" class="cell" data-tags="[]" data-execution_count="96">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If we pass it the whole data frame, it produces a scatter plot lattice:</p>
+<div id="6b686f10-d01a-43fa-85e6-aa97d2a96536" class="cell" data-tags="[]" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="M10-04-DataFrames_files/figure-html/cell-34-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>If we pass it just two columns, it produces a scatter plot:</p>
+<div id="80715925-fe21-469a-9b74-bc949266b9dd" class="cell" data-tags="[]" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality[, <span class="fu">c</span>(<span class="st">"Temp"</span>, <span class="st">"Wind"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -3094,8 +2527,9 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="80715925-fe21-469a-9b74-bc949266b9dd" class="cell" data-tags="[]" data-execution_count="97">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality[, <span class="fu">c</span>(<span class="st">"Temp"</span>, <span class="st">"Wind"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And if pass it one, it produces a line graph:</p>
+<div id="95235aa7-e329-489f-ae42-4d9e863a5791" class="cell" data-tags="[]" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality<span class="sc">$</span>Temp, <span class="at">type=</span><span class="st">'l'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -3104,8 +2538,9 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="96ad36ea-ddb4-46d0-8599-be528379f9ca" class="cell" data-tags="[]" data-execution_count="98">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality<span class="sc">$</span>Temp, <span class="at">type=</span><span class="st">'l'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>hist()</code> function will create a histogram:</p>
+<div id="037a9af0-66d1-436c-842a-0ebf6b1b25f0" class="cell" data-tags="[]" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(airquality<span class="sc">$</span>Temp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -3114,218 +2549,44 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="aa219ed0-55bc-4bb0-8913-8e72d46a3fd9" class="cell" data-tags="[]" data-execution_count="111">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ?plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="value-counts-with-table" class="level2">
 <h2 class="anchored" data-anchor-id="value-counts-with-table">Value Counts with <code>table()</code></h2>
-<p>This function is like <code>.value_counts()</code> in Pandas. It does a quick count of all the value types of a feature or combination of them.</p>
-<p>Here we get a table of values and their counts for <code>airquality$Temp</code>, convert this into a data frame, and then plot the results.</p>
-<div id="79822d02-e511-4969-87d4-25c3a3816328" class="cell" data-tags="[]" data-execution_count="100">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>temps <span class="ot">&lt;-</span> <span class="fu">table</span>(airquality<span class="sc">$</span>Temp)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>temps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>
-56 57 58 59 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 
- 1  3  2  2  3  2  1  2  2  3  4  4  3  1  3  3  5  4  4  9  7  6  6  5 11  9 
-83 84 85 86 87 88 89 90 91 92 93 94 96 97 
- 4  5  5  7  5  3  2  3  2  5  3  2  1  1 </code></pre>
-</div>
-</div>
-<div id="39f4506e-41ac-46ff-8426-6bd2b2e42e44" class="cell" data-tags="[]" data-execution_count="101">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>temps.df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(temps)</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>temps.df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This function is like <code>.value_counts()</code> in Pandas.</p>
+<p>It does a quick count of all the value types of a feature or combination of them.</p>
+<p>Here we get a table of values and their counts for <code>airquality$Month</code>.</p>
+<div id="79822d02-e511-4969-87d4-25c3a3816328" class="cell" data-tags="[]" data-execution_count="86">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>months <span class="ot">&lt;-</span> <span class="fu">table</span>(airquality<span class="sc">$</span>Month)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>months.df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(months)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(months.df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Month"</span>, <span class="st">"Freq"</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(months.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>A data.frame: 40 × 2</caption>
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th" scope="col">Var1</th>
-<th data-quarto-table-cell-role="th" scope="col">Freq</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th" scope="col">&lt;fct&gt;</th>
-<th data-quarto-table-cell-role="th" scope="col">&lt;int&gt;</th>
-</tr>
-</thead>
+<caption>A matrix: 2 × 5 of type chr</caption>
 <tbody>
 <tr class="odd">
-<td>56</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>57</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td>58</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>59</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>61</td>
-<td>3</td>
-</tr>
-<tr class="even">
-<td>62</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>63</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>64</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>65</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>66</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td>67</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td>68</td>
-<td>4</td>
-</tr>
-<tr class="odd">
-<td>69</td>
-<td>3</td>
-</tr>
-<tr class="even">
-<td>70</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td>71</td>
-<td>3</td>
-</tr>
-<tr class="even">
-<td>72</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td>73</td>
+<td data-quarto-table-cell-role="th" scope="row">Month</td>
 <td>5</td>
-</tr>
-<tr class="even">
-<td>74</td>
-<td>4</td>
-</tr>
-<tr class="odd">
-<td>75</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td>76</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
 <td>9</td>
 </tr>
-<tr class="odd">
-<td>77</td>
-<td>7</td>
-</tr>
 <tr class="even">
-<td>78</td>
-<td>6</td>
-</tr>
-<tr class="odd">
-<td>79</td>
-<td>6</td>
-</tr>
-<tr class="even">
-<td>80</td>
-<td>5</td>
-</tr>
-<tr class="odd">
-<td>81</td>
-<td>11</td>
-</tr>
-<tr class="even">
-<td>82</td>
-<td>9</td>
-</tr>
-<tr class="odd">
-<td>83</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td>84</td>
-<td>5</td>
-</tr>
-<tr class="odd">
-<td>85</td>
-<td>5</td>
-</tr>
-<tr class="even">
-<td>86</td>
-<td>7</td>
-</tr>
-<tr class="odd">
-<td>87</td>
-<td>5</td>
-</tr>
-<tr class="even">
-<td>88</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td>89</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>90</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td>91</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>92</td>
-<td>5</td>
-</tr>
-<tr class="odd">
-<td>93</td>
-<td>3</td>
-</tr>
-<tr class="even">
-<td>94</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>96</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>97</td>
-<td>1</td>
+<td data-quarto-table-cell-role="th" scope="row">Freq</td>
+<td>31</td>
+<td>30</td>
+<td>31</td>
+<td>31</td>
+<td>30</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<div id="18969cfb-a427-41b5-9982-717f9b27504f" class="cell" data-tags="[]" data-execution_count="102">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(temps.df, <span class="at">xlab=</span><span class="st">"Temp"</span>, <span class="at">type=</span><span class="st">"b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="M10-04-DataFrames_files/figure-html/cell-41-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>Note we used <code>t()</code> to transpose the data frame.</p>
 
 
 </section>
@@ -3755,8 +3016,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../notebooks/M10_RBasics/M10-05-ControlStructures.html" class="pagination-link" aria-label="NB: Control Structures and Functions">
-        <span class="nav-page-text"><span class="chapter-title">NB: Control Structures and Functions</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../notebooks/M10_RBasics/M10-05-ControlStructures.html" class="pagination-link" aria-label="NB: R Control Structures">
+        <span class="nav-page-text"><span class="chapter-title">NB: R Control Structures</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

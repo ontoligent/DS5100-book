@@ -1297,7 +1297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="preview-with-head" class="level2">
 <h2 class="anchored" data-anchor-id="preview-with-head">Preview with <code>head()</code></h2>
-<p>Instead of printing out the entire data frame, it is often desirable to preview it with the head function beforehand</p>
+<p>Instead of printing out the entire data frame, it is often desirable to preview it with the head function first.</p>
 <div id="e2723fb2-c6e3-4e14-bb68-7bc4623ce657" class="cell" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1484,7 +1484,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="data-frame-column-slice" class="level2">
 <h2 class="anchored" data-anchor-id="data-frame-column-slice">Data Frame Column Slice</h2>
-<p>In contrast to retrieving vectors from within a dat frame, we retrieve a <strong>slice</strong> of a data frame with the single square bracket <code>[ ]</code> operator.</p>
+<p>In contrast to retrieving vectors from within a data frame, we retrieve a <strong>slice</strong> of a data frame with the single square bracket <code>[ ]</code> operator.</p>
 <p>A slice of a data frame is just a <strong>smaller data frame</strong>.</p>
 <p>It is not a lower-dimensional data strucure, i.e.&nbsp;a vector.</p>
 <p>We saw this with lists earlier.</p>
@@ -1539,7 +1539,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>To reinforce this difference between getting a slice of a data frame and getting the data is contains, compare the classes of the results in each case.</p>
+<p>To reinforce this difference between getting a slice of a data frame and getting the data it contains, compare the classes of the results in each case.</p>
 <div id="9bd08c36-0c64-4acd-a3bb-919f6119a7fa" class="cell" data-tags="[]" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mtcars[<span class="dv">1</span>]); <span class="fu">class</span>(mtcars[[<span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1553,7 +1553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="name-indexing" class="level2">
 <h2 class="anchored" data-anchor-id="name-indexing">Name Indexing</h2>
 <p>We can also retrieve a column slice by its <strong>name</strong>.</p>
-<div id="346077d1-9b99-4c12-ab28-1fbcbee98d8b" class="cell" data-tags="[]" data-execution_count="17">
+<div id="346077d1-9b99-4c12-ab28-1fbcbee98d8b" class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars[<span class="st">"mpg"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -2367,9 +2367,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>R has a special function for reading in table data where cell data are separated by spaces.</p>
+<p>In this example, <code>mydata.txt</code> contains this:</p>
+<pre><code>100 a1 b1 
+200 a2 b2 
+300 a3 b3 
+400 a4 b4</code></pre>
 <div id="c3d5e23a-c522-46c0-830b-75eba580b3c8" class="cell" data-tags="[]" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df_from_table <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"mydata.txt"</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>df_from_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df_from_table <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"mydata.txt"</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>df_from_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
@@ -2420,7 +2425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>One of the nice features of <code>plot()</code> is that it produced plots based on the shape and type of data you give it.</p>
 <p>To see this, let’s plot the data from the built in data frame <code>airquality</code>.</p>
 <div id="7900f04c-daf9-4362-91a8-06e04f9fc9cf" class="cell" data-tags="[]" data-execution_count="90">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
@@ -2507,7 +2512,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>If we pass it the whole data frame, it produces a scatter plot lattice:</p>
 <div id="6b686f10-d01a-43fa-85e6-aa97d2a96536" class="cell" data-tags="[]" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2518,7 +2523,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>If we pass it just two columns, it produces a scatter plot:</p>
 <div id="80715925-fe21-469a-9b74-bc949266b9dd" class="cell" data-tags="[]" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality[, <span class="fu">c</span>(<span class="st">"Temp"</span>, <span class="st">"Wind"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality[, <span class="fu">c</span>(<span class="st">"Temp"</span>, <span class="st">"Wind"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2529,7 +2534,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>And if pass it one, it produces a line graph:</p>
 <div id="95235aa7-e329-489f-ae42-4d9e863a5791" class="cell" data-tags="[]" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality<span class="sc">$</span>Temp, <span class="at">type=</span><span class="st">'l'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality<span class="sc">$</span>Temp, <span class="at">type=</span><span class="st">'l'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2540,7 +2545,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The <code>hist()</code> function will create a histogram:</p>
 <div id="037a9af0-66d1-436c-842a-0ebf6b1b25f0" class="cell" data-tags="[]" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(airquality<span class="sc">$</span>Temp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(airquality<span class="sc">$</span>Temp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2556,10 +2561,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>It does a quick count of all the value types of a feature or combination of them.</p>
 <p>Here we get a table of values and their counts for <code>airquality$Month</code>.</p>
 <div id="79822d02-e511-4969-87d4-25c3a3816328" class="cell" data-tags="[]" data-execution_count="86">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>months <span class="ot">&lt;-</span> <span class="fu">table</span>(airquality<span class="sc">$</span>Month)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>months.df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(months)</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(months.df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Month"</span>, <span class="st">"Freq"</span>)</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(months.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>months <span class="ot">&lt;-</span> <span class="fu">table</span>(airquality<span class="sc">$</span>Month)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>months.df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(months)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(months.df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Month"</span>, <span class="st">"Freq"</span>)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(months.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">

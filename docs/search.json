@@ -4297,7 +4297,7 @@
     "href": "notebooks/M10_RBasics/M10-01-Intro.html#rs-design",
     "title": "NB: Introducing R",
     "section": "R’s Design",
-    "text": "R’s Design\nR was designed to support statistical computing above all.\nIn constrast to Python, it is not a general purpose language, although it may be used for many things.\nIt has a very strong academic community which is reflected in its high quality documentation, the variety of its scientific libraries, and in its well-organized resources.\nIt has many statistical functions built into it, i.e. to get get started with statistical computing you don’t need to import anything.\nIt is based on what we might call vector-first thinking.\nAs withg Python, everything is an object.",
+    "text": "R’s Design\nR was designed to support statistical computing above all.\nIn constrast to Python, it is not a general purpose language, although it may be used for many things.\nIt has a very strong academic community which is reflected in its high quality documentation, the variety of its scientific libraries, and in its well-organized resources.\nIt has many statistical functions built into it, i.e. to get started with statistical computing you don’t need to import anything.\nIt is based on what we might call vector-first thinking.\nAs with Python, everything is an object.",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>49</span>  <span class='chapter-title'>NB: Introducing R</span>"
@@ -4319,7 +4319,7 @@
     "href": "notebooks/M10_RBasics/M10-01-Intro.html#using-r",
     "title": "NB: Introducing R",
     "section": "Using R",
-    "text": "Using R\nAlthough there are many ways to run R programs, by far the most common is to use R Studio.\nR Studio provides a fully-functional programming environment that includes an editor, a command-line, access to the file system,a help system, an installation system, etc.\nYou may use other programs run R too, though, such as VSCode and Jupyter.\nIn practice, however, RStudio is almost universally used.\nR programs can be plain text files with an .r suffix, R Markdown files (.Rmd), or many other kinds of file.\nWe will discuss these in a later module.",
+    "text": "Using R\nAlthough there are many ways to run R programs, by far the most common is to use R Studio.\nR Studio provides a fully-functional programming environment that includes an editor, a command-line, access to the file system, a help system, an installation system, etc.\nYou may use other programs run R too, though, such as VSCode and Jupyter.\nIn practice, however, RStudio is almost universally used.\nR programs can be plain text files with an .r suffix, R Markdown files (.Rmd), or many other kinds of file.\nWe will discuss these in a later module.",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>49</span>  <span class='chapter-title'>NB: Introducing R</span>"
@@ -4429,7 +4429,7 @@
     "href": "notebooks/M10_RBasics/M10-02-DataTypes.html#characters",
     "title": "NB: R Data Types and Operators",
     "section": "Characters",
-    "text": "Characters\nStrings are called “character” objects in R.\nThis may confusing if you are coming from a language, such as Java, where “character” means an individual character, such as A.\nWe may convert non-character objects into characters with the as.character() function:\n\nx &lt;- as.character(3.14) \nx\n\n'3.14'\n\n\n\nclass(x)       # print the class name of x \n\n'character'",
+    "text": "Characters\nStrings are called “character” objects in R.\nThis may be confusing if you are coming from a language, such as Java, where “character” means an individual character, such as A.\nWe may convert non-character objects into characters with the as.character() function:\n\nx &lt;- as.character(3.14) \nx\n\n'3.14'\n\n\n\nclass(x)       # print the class name of x \n\n'character'",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: R Data Types and Operators</span>"
@@ -4550,7 +4550,7 @@
     "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#the-recycling-rule",
     "title": "NB: R Data Structures",
     "section": "The Recycling Rule",
-    "text": "The Recycling Rule\nIf two vectors are of unequal length, the shorter one will be recycled in order to match the longer vector.\nThis is similar to broadcasting in NumPy and Pandas.\nFor example, the following vectors u and v have different lengths, and their sum is computed by recycling values of the shorter vector u.\n\nu &lt;- c(10, 20, 30) \nv &lt;- c(1, 2, 3, 4, 5, 6, 7, 8, 9) \nu + v \n\n\n112233142536172839",
+    "text": "The Recycling Rule\nIf two vectors in an operation are of unequal length, the shorter one will be recycled in order to match the longer vector.\nThis is similar to broadcasting in NumPy and Pandas.\nFor example, the following vectors u and v have different lengths, and their sum is computed by recycling values of the shorter vector u.\n\nu &lt;- c(10, 20, 30) \nv &lt;- c(1, 2, 3, 4, 5, 6, 7, 8, 9) \nu + v \n\n\n112233142536172839",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
@@ -4627,7 +4627,7 @@
     "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#range-index",
     "title": "NB: R Data Structures",
     "section": "Range Index",
-    "text": "Range Index\nTo produce a vector slice between two indexes, we can use the colon operator “:”. This can be convenient for situations involving large vectors.\n\ns[2:4] \n\n\n'bb''cc''dd'",
+    "text": "Range Index\nTo produce a vector slice between two indexes, we can use the colon sequence operator :.\nThis can be convenient for situations involving large vectors.\n\ns[2:4] \n\n\n'bb''cc''dd'",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
@@ -4638,7 +4638,7 @@
     "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#logical-index-vectors",
     "title": "NB: R Data Structures",
     "section": "Logical Index Vectors",
-    "text": "Logical Index Vectors\nA new vector can be sliced from a given vector with a logical index vector.\nThe logical vector must the same length as the original vector.\nIts members are TRUE if the corresponding members in the original vector are to be included in the slice, and FALSE if otherwise.\nThis is what we called boolean indexing and masking in Python.\nFor example, consider the following vector s of length 5.\n\ns &lt;- c(\"aa\", \"bb\", \"cc\", \"dd\", \"ee\")\n\nTo retrieve the the second and fourth members of s, we define a logical vector L of the same length, and have its second and fourth members set as TRUE.\n\nL = c(FALSE, TRUE, FALSE, TRUE, FALSE)\ns[L] \n\n\n'bb''dd'\n\n\nThe code can be abbreviated into a single line.\n\ns[c(FALSE, TRUE, FALSE, TRUE, FALSE)]\n\n\n'bb''dd'",
+    "text": "Logical Index Vectors\nA new vector can be sliced from a given vector with a logical index vector.\nThe logical vector must the same length as the original vector.\nIts members are TRUE if the corresponding members in the original vector are to be included in the slice, and FALSE if otherwise.\nThis is what we called boolean indexing and masking in Python.\nFor example, consider the following vector s of length \\(5\\).\n\ns &lt;- c(\"aa\", \"bb\", \"cc\", \"dd\", \"ee\")\n\nTo retrieve the the second and fourth members of s, we define a logical vector L of the same length, and have its second and fourth members set as TRUE.\n\nL = c(FALSE, TRUE, FALSE, TRUE, FALSE)\ns[L] \n\n\n'bb''dd'\n\n\nThe code can be abbreviated into a single line.\n\ns[c(FALSE, TRUE, FALSE, TRUE, FALSE)]\n\n\n'bb''dd'",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
@@ -4649,7 +4649,7 @@
     "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#naming-vector-members-with-names",
     "title": "NB: R Data Structures",
     "section": "Naming Vector Members with names()",
-    "text": "Naming Vector Members with names()\nWe can assign names to vector members, too.\n\nv &lt;- c(\"Mary\", \"Sue\") \nnames(v) &lt;- c(\"First\", \"Last\") \nv \n\nFirst'Mary'Last'Sue'\n\n\nNow we can retrieve the first member by name, much like a Python dictionary.\n\nv[\"First\"] \n\nFirst: 'Mary'\n\n\nWe can also reverse the order with a character string index vector.\n\nv[c(\"Last\", \"First\")]\n\nLast'Sue'First'Mary'",
+    "text": "Naming Vector Members with names()\nWe can assign names to vector members, too.\n\nv &lt;- c(\"Mary\", \"Sue\") \nnames(v) &lt;- c(\"First\", \"Last\") \nv\n\nFirst'Mary'Last'Sue'\n\n\nNow we can retrieve the first member by name, much like a Python dictionary.\n\nv[\"First\"]\n\nFirst: 'Mary'\n\n\nWe can also reverse the order with a character string index vector.\n\nv[c(\"Last\", \"First\")]\n\nLast'Sue'First'Mary'",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
@@ -4671,7 +4671,7 @@
     "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#member-reference-with",
     "title": "NB: R Data Structures",
     "section": "Member Reference with [[]]",
-    "text": "Member Reference with [[]]\nTo reference a list member directly, we use the double square bracket [[]] operator.\nThe following object x[[2]] is the second member of x.\nIn other words, x[[2]] is a true copy of s, not a slice containing s or its copy.\n\nprint(x[2])\n\n[[1]]\n[1] \"aa\" \"bb\" \"cc\" \"dd\" \"ee\"\n\n\n\n\nprint(x[[2]])\n\n[1] \"aa\" \"bb\" \"cc\" \"dd\" \"ee\"\n\n\nWe can modify its content directly.\n\nx[[2]][1] = \"ta\" \n\n\nprint(x[2])\n\n[[1]]\n[1] \"aa\" \"bb\" \"cc\" \"dd\" \"ee\"\n\n\n\nAnd s is unaffected.\n\nprint(s)\n\n[1] \"aa\" \"bb\" \"cc\" \"dd\" \"ee\"\n\n\nNote that this notation is opposite to Python’s syntax in NumPy and Pandas.\nIn Python, a double bracket containing a single value passed to a DataFrame would return a DataFrame, whereas a single bracket would return a Series.\nThis is because the double bracket means a list is being used to select data, whereas a single bracket means a scalar is being used\ndf[[x]] # Returns a one column DataFrame\ndf[x]   # Returns a Series",
+    "text": "Member Reference with [[]]\nTo reference a list member directly, we use the double square bracket [[]] operator.\nThe following object x[[2]] is the second member of x.\nIn other words, *x[[2]] is a true copy of s, not a slice containing s or its copy.\n\nprint(x[2])\n\n[[1]]\n[1] \"aa\" \"bb\" \"cc\" \"dd\" \"ee\"\n\n\n\n\nprint(x[[2]])\n\n[1] \"aa\" \"bb\" \"cc\" \"dd\" \"ee\"\n\n\nWe can modify its content directly.\n\nx[[2]][1] &lt;- \"ta\" \n\n\nprint(x[2])\n\n[[1]]\n[1] \"ta\" \"bb\" \"cc\" \"dd\" \"ee\"\n\n\n\nAnd s is unaffected.\n\nprint(s)\n\n[1] \"aa\" \"bb\" \"cc\" \"dd\" \"ee\"\n\n\nNote that this notation is opposite to Python’s syntax in NumPy and Pandas.\nIn Python, a double bracket containing a single value passed to a DataFrame would return a DataFrame, whereas a single bracket would return a Series.\nThis is because the double bracket means a list is being used to select data, whereas a single bracket means a scalar is being used.\ndf[[x]] # Returns a one column DataFrame\ndf[x]   # Returns a Series",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
@@ -4704,7 +4704,7 @@
     "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#preview-with-head",
     "title": "NB: R Data Frames",
     "section": "Preview with head()",
-    "text": "Preview with head()\nInstead of printing out the entire data frame, it is often desirable to preview it with the head function beforehand\n\nhead(mtcars)\n\n\n\nA data.frame: 6 × 11\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nMazda RX4\n21.0\n6\n160\n110\n3.90\n2.620\n16.46\n0\n1\n4\n4\n\n\nMazda RX4 Wag\n21.0\n6\n160\n110\n3.90\n2.875\n17.02\n0\n1\n4\n4\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.320\n18.61\n1\n1\n4\n1\n\n\nHornet 4 Drive\n21.4\n6\n258\n110\n3.08\n3.215\n19.44\n1\n0\n3\n1\n\n\nHornet Sportabout\n18.7\n8\n360\n175\n3.15\n3.440\n17.02\n0\n0\n3\n2\n\n\nValiant\n18.1\n6\n225\n105\n2.76\n3.460\n20.22\n1\n0\n3\n1",
+    "text": "Preview with head()\nInstead of printing out the entire data frame, it is often desirable to preview it with the head function first.\n\nhead(mtcars)\n\n\n\nA data.frame: 6 × 11\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nMazda RX4\n21.0\n6\n160\n110\n3.90\n2.620\n16.46\n0\n1\n4\n4\n\n\nMazda RX4 Wag\n21.0\n6\n160\n110\n3.90\n2.875\n17.02\n0\n1\n4\n4\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.320\n18.61\n1\n1\n4\n1\n\n\nHornet 4 Drive\n21.4\n6\n258\n110\n3.08\n3.215\n19.44\n1\n0\n3\n1\n\n\nHornet Sportabout\n18.7\n8\n360\n175\n3.15\n3.440\n17.02\n0\n0\n3\n2\n\n\nValiant\n18.1\n6\n225\n105\n2.76\n3.460\n20.22\n1\n0\n3\n1",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4726,7 +4726,7 @@
     "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#data-frame-column-slice",
     "title": "NB: R Data Frames",
     "section": "Data Frame Column Slice",
-    "text": "Data Frame Column Slice\nIn contrast to retrieving vectors from within a dat frame, we retrieve a slice of a data frame with the single square bracket [ ] operator.\nA slice of a data frame is just a smaller data frame.\nIt is not a lower-dimensional data strucure, i.e. a vector.\nWe saw this with lists earlier.\nThis is like a one-column dataframe in Pandas, as opposed to a Series.",
+    "text": "Data Frame Column Slice\nIn contrast to retrieving vectors from within a data frame, we retrieve a slice of a data frame with the single square bracket [ ] operator.\nA slice of a data frame is just a smaller data frame.\nIt is not a lower-dimensional data strucure, i.e. a vector.\nWe saw this with lists earlier.\nThis is like a one-column dataframe in Pandas, as opposed to a Series.",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4737,7 +4737,7 @@
     "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#numeric-indexing",
     "title": "NB: R Data Frames",
     "section": "Numeric Indexing",
-    "text": "Numeric Indexing\nThe following is a slice containing the first column of mtcars:\n\nhead(mtcars[1])\n\n\n\nA data.frame: 6 × 1\n\n\n\nmpg\n\n\n\n&lt;dbl&gt;\n\n\n\n\nMazda RX4\n21.0\n\n\nMazda RX4 Wag\n21.0\n\n\nDatsun 710\n22.8\n\n\nHornet 4 Drive\n21.4\n\n\nHornet Sportabout\n18.7\n\n\nValiant\n18.1\n\n\n\n\n\n\nTo reinforce this difference between getting a slice of a data frame and getting the data is contains, compare the classes of the results in each case.\n\nclass(mtcars[1]); class(mtcars[[1]])\n\n'data.frame'\n\n\n'numeric'",
+    "text": "Numeric Indexing\nThe following is a slice containing the first column of mtcars:\n\nhead(mtcars[1])\n\n\n\nA data.frame: 6 × 1\n\n\n\nmpg\n\n\n\n&lt;dbl&gt;\n\n\n\n\nMazda RX4\n21.0\n\n\nMazda RX4 Wag\n21.0\n\n\nDatsun 710\n22.8\n\n\nHornet 4 Drive\n21.4\n\n\nHornet Sportabout\n18.7\n\n\nValiant\n18.1\n\n\n\n\n\n\nTo reinforce this difference between getting a slice of a data frame and getting the data it contains, compare the classes of the results in each case.\n\nclass(mtcars[1]); class(mtcars[[1]])\n\n'data.frame'\n\n\n'numeric'",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4814,7 +4814,7 @@
     "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#importing-data",
     "title": "NB: R Data Frames",
     "section": "Importing Data",
-    "text": "Importing Data\nTo retrieve data from external files and convert them in to data frames, R offers a number of import functions.\nTo read CSV files, you can use the built-in function read.csv().\nHere’s a quick example.\n\ndf_from_csv &lt;- read.csv(\"mydata.csv\")\n\n\ndf_from_csv\n\n\n\nA data.frame: 3 × 3\n\n\nCol1\nCol2\nCol3\n\n\n&lt;int&gt;\n&lt;chr&gt;\n&lt;chr&gt;\n\n\n\n\n100\na1\nb1\n\n\n200\na2\nb2\n\n\n300\na3\nb3\n\n\n\n\n\n\nR has a special function for reading in table data where cell data are separated by spaces.\n\ndf_from_table &lt;- read.table(\"mydata.txt\")\ndf_from_table\n\n\n\nA data.frame: 4 × 3\n\n\nV1\nV2\nV3\n\n\n&lt;int&gt;\n&lt;chr&gt;\n&lt;chr&gt;\n\n\n\n\n100\na1\nb1\n\n\n200\na2\nb2\n\n\n300\na3\nb3\n\n\n400\na4\nb4",
+    "text": "Importing Data\nTo retrieve data from external files and convert them in to data frames, R offers a number of import functions.\nTo read CSV files, you can use the built-in function read.csv().\nHere’s a quick example.\n\ndf_from_csv &lt;- read.csv(\"mydata.csv\")\n\n\ndf_from_csv\n\n\n\nA data.frame: 3 × 3\n\n\nCol1\nCol2\nCol3\n\n\n&lt;int&gt;\n&lt;chr&gt;\n&lt;chr&gt;\n\n\n\n\n100\na1\nb1\n\n\n200\na2\nb2\n\n\n300\na3\nb3\n\n\n\n\n\n\nR has a special function for reading in table data where cell data are separated by spaces.\nIn this example, mydata.txt contains this:\n100 a1 b1 \n200 a2 b2 \n300 a3 b3 \n400 a4 b4\n\ndf_from_table &lt;- read.table(\"mydata.txt\")\ndf_from_table\n\n\n\nA data.frame: 4 × 3\n\n\nV1\nV2\nV3\n\n\n&lt;int&gt;\n&lt;chr&gt;\n&lt;chr&gt;\n\n\n\n\n100\na1\nb1\n\n\n200\na2\nb2\n\n\n300\na3\nb3\n\n\n400\na4\nb4",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4847,7 +4847,7 @@
     "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html",
     "title": "NB: R Control Structures",
     "section": "",
-    "text": "Conditional Statements\nR supports conditional statements in the standard way.\nIt provides the following statements:\nif, else if, and else.\nHere’s a skeletal control structure in R:\nHere is a more compact way of writing it:\nLet’s look at some examples.\nHere, we generate a uniform random number, using the function runif().\nx &lt;- runif(1, 0, 10)\nx\n\n6.64551414083689\nif (x &gt; 3) {\n    y &lt;- 10\n} else {\n    y &lt;- 0\n}\ny\n\n10\nYou can assign an if statement to a variable.\nz &lt;- if (x &gt; 3) {10} else {0}\nz\n\n10\nOf course, you can stack if blocks, too.",
+    "text": "Conditional Statements\nR supports conditional statements in the standard way.\nIt provides the following statements:\nif, else if, and else.\nHere’s a skeletal control structure in R:\nHere is a more compact way of writing it:\nLet’s look at some examples.\nHere, we generate a uniform random number, using the function runif().\nThe first argument determines the number of results, and the second two define the upper and lower bound.\nx &lt;- runif(1, 0, 10)\nx\n\n6.29529620986432\nif (x &gt; 3) {\n    y &lt;- 10\n} else {\n    y &lt;- 0\n}\ny\n\n10\nYou can assign an if statement to a variable.\nz &lt;- if (x &gt; 3) {10} else {0}\nz\n\n10\nNote you can drop the braces when doing a one-liner.\nz &lt;- if (x &gt; 3) 10 else 0\nz\n\n10\nYou do need to keep the parentheses around the comparison expression, though.\nOf course, you can stack if blocks, too.",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"
@@ -5927,7 +5927,7 @@
     "href": "notebooks/M10_RBasics/M10-01-Intro.html#using-r-in-jupyter",
     "title": "NB: Introducing R",
     "section": "Using R in Jupyter",
-    "text": "Using R in Jupyter\nIf you want to use R within a Jupyter notebook file, you can create and load an R kernel using Anaconda’s package manager conda. In brief, here’s what you do.\nFirst, at the command line:\nconda create -n r_env r-essentials r-base\nconda activate r_env\nR # This opens the R shell\nThen, in the R shell:\nIRkernel::installspec(name = 'r_env', displayname = 'R Environment')\nquit()\nNow, fire up a Jupyter Lab or Jupyter Notebook instance from the OpenOnDemand page and select the kernel when you create a new notebook.\nNote that the name r_evn can be replaced by whatever you want.",
+    "text": "Using R in Jupyter\nIf you want to use R within a Jupyter notebook file, you can create and load an R kernel using Anaconda’s package manager conda. In brief, here’s what you do.\nFirst, at the command line:\nconda create -n r_env r-essentials r-base\nconda activate r_env\nR # This opens the R shell\nThen, in the R shell:\nIRkernel::installspec(name = 'r_env', displayname = 'R Environment')\nquit()\nNow, fire up a Jupyter Lab or Jupyter Notebook instance from the OpenOnDemand page and select the kernel when you create a new notebook.\nNote that the name r_env can be replaced by whatever you want.",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>49</span>  <span class='chapter-title'>NB: Introducing R</span>"
@@ -5971,7 +5971,7 @@
     "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#summary",
     "title": "NB: R Data Structures",
     "section": "Summary",
-    "text": "Summary\n\n\n\nStructure\nDim\nData Type\nShape\nPython\n\n\n\n\nVector\n\\(1\\)\nuniform\n—\n—\n\n\nMatrix\n\\(2\\)\nuniform\nuniform\n—\n\n\nArray\n\\(N\\)\nuniform\nuniform\nNumPy array\n\n\nList\n\\(1\\)\nnon-uniform\nragged\nList, Dict\n\n\nData Frame\n\\(2\\)\nmultiple\nuniform\nPandas Data Frame\n\n\n\nThese reflect the evolution of R.\nWe mainly use Vectors and Data Frames.",
+    "text": "Summary\n\n\n\nStructure\nDim\nData Type\nShape\nPython\n\n\n\n\nVector\n\\(1\\)\nsingle\n—\n—\n\n\nMatrix\n\\(2\\)\nsingle\nuniform\n—\n\n\nArray\n\\(N\\)\nsingle\nuniform\nNumPy array\n\n\nList\n\\(1\\)\nmultiple\nragged\nList, Dict\n\n\nData Frame\n\\(2\\)\nmultiple\nuniform\nPandas Data Frame\n\n\n\nThese reflect the evolution of R.\nWe mainly use Vectors and Data Frames.",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
@@ -6015,7 +6015,7 @@
     "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html#conditional-statements",
     "title": "NB: R Control Structures",
     "section": "",
-    "text": "if (&lt;condition&gt;) {\n        ## do something\n} \n\nif (&lt;condition&gt;) {\n        ## do something\n} \nelse {\n        ## do something else\n}\n\nif (&lt;condition1&gt;) {\n        ## do something\n} else if (&lt;condition2&gt;)  {\n        ## do something different\n} else {\n        ## do something different\n}\n\n\n\n\n\n\n\nif (&lt;condition1&gt;) {\n    \n}\n\nif (&lt;condition2&gt;) {\n\n}",
+    "text": "if (&lt;condition&gt;) {\n        ## do something\n} \n\nif (&lt;condition&gt;) {\n        ## do something\n} \nelse {\n        ## do something else\n}\n\nif (&lt;condition1&gt;) {\n        ## do something\n} else if (&lt;condition2&gt;)  {\n        ## do something different\n} else {\n        ## do something different\n}\n\n\n\n\n\n\n\n\n\n\n\nif (&lt;condition1&gt;) {\n    \n}\n\nif (&lt;condition2&gt;) {\n\n}",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"

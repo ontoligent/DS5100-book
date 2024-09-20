@@ -780,28 +780,28 @@ window.Quarto = {
 <tr class="odd">
 <td>Vector</td>
 <td><span class="math inline">\(1\)</span></td>
-<td>uniform</td>
+<td>single</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr class="even">
 <td>Matrix</td>
 <td><span class="math inline">\(2\)</span></td>
-<td>uniform</td>
+<td>single</td>
 <td>uniform</td>
 <td>—</td>
 </tr>
 <tr class="odd">
 <td>Array</td>
 <td><span class="math inline">\(N\)</span></td>
-<td>uniform</td>
+<td>single</td>
 <td>uniform</td>
 <td>NumPy array</td>
 </tr>
 <tr class="even">
 <td>List</td>
 <td><span class="math inline">\(1\)</span></td>
-<td>non-uniform</td>
+<td>multiple</td>
 <td>ragged</td>
 <td>List, Dict</td>
 </tr>
@@ -822,7 +822,7 @@ window.Quarto = {
 <p>Vectors may be created with the <code>c()</code> function (“c” stands for combine).</p>
 <p>Here is a vector of three numeric values:</p>
 <div id="79c336cb-eff3-4720-a75f-8387bf5d879d" class="cell" data-tags="[]" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -845,7 +845,7 @@ window.Quarto = {
 </div>
 </div>
 <p>A vector can also contain character strings:</p>
-<div id="d5405d79-99ce-4461-a9e0-605d451db710" class="cell" data-tags="[]" data-execution_count="158">
+<div id="d5405d79-99ce-4461-a9e0-605d451db710" class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"aa"</span>, <span class="st">"bb"</span>, <span class="st">"cc"</span>, <span class="st">"dd"</span>, <span class="st">"ee"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -860,7 +860,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="sequences">Sequences</h2>
 <p>Vectors may be created from sequences using <code>:</code>, <code>seq()</code>, and <code>rep()</code></p>
 <p>Vectors can be made out of sequences which may be generated in a few ways.</p>
-<div id="312fc0b1-14db-4c02-a61a-d101be7eb603" class="cell" data-execution_count="159">
+<div id="312fc0b1-14db-4c02-a61a-d101be7eb603" class="cell" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>s1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -873,7 +873,7 @@ window.Quarto = {
 </div>
 </div>
 <p>The <code>seq()</code> function is like Python’s <code>range()</code>.</p>
-<div id="4a56448a-6287-4283-919d-4ffc0797eac8" class="cell" data-tags="[]" data-execution_count="3">
+<div id="4a56448a-6287-4283-919d-4ffc0797eac8" class="cell" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1</span>, <span class="at">to=</span><span class="dv">5</span>, <span class="at">by=</span><span class="dv">2</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>s2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -887,7 +887,7 @@ window.Quarto = {
 </div>
 <p>You can drop the argument names and write <code>seq(1,5,2)</code>.</p>
 <p>The <code>rep()</code> function will create a series of repeated values:</p>
-<div id="af643f75-fc3a-45a1-bbb4-94218f96383c" class="cell" data-tags="[]" data-execution_count="4">
+<div id="af643f75-fc3a-45a1-bbb4-94218f96383c" class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>s3 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">5</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>s3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -903,7 +903,7 @@ window.Quarto = {
 <section id="length" class="level2">
 <h2 class="anchored" data-anchor-id="length"><code>length()</code></h2>
 <p>The number of members in a vector is given by the <code>length()</code> function.</p>
-<div id="2386b144-d860-4b3e-8cb2-7755ce7ed9b4" class="cell" data-tags="[]" data-execution_count="162">
+<div id="2386b144-d860-4b3e-8cb2-7755ce7ed9b4" class="cell" data-tags="[]" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">c</span>(<span class="st">"aa"</span>, <span class="st">"bb"</span>, <span class="st">"cc"</span>, <span class="st">"dd"</span>, <span class="st">"ee"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 5
@@ -913,7 +913,7 @@ window.Quarto = {
 <section id="combining-vectors" class="level2">
 <h2 class="anchored" data-anchor-id="combining-vectors">Combining Vectors</h2>
 <p>Vectors can be combined via the function <code>c()</code>.</p>
-<div id="45078e5c-201b-404d-acc6-74e99b4c3d24" class="cell" data-tags="[]" data-execution_count="163">
+<div id="45078e5c-201b-404d-acc6-74e99b4c3d24" class="cell" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>) </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"aa"</span>, <span class="st">"bb"</span>, <span class="st">"cc"</span>, <span class="st">"dd"</span>, <span class="st">"ee"</span>) </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">c</span>(n, s) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -937,12 +937,12 @@ window.Quarto = {
 <p>Arithmetic operations of vectors are performed member-by-member, i.e., <strong>member-wise</strong>.</p>
 <p>We called this ‘element-wise’ in the context of NumPy.</p>
 <p>For example, suppose we have two vectors <code>a</code> and <code>b</code>.</p>
-<div id="c1075bba-47eb-4271-8fe0-39e26efbe18d" class="cell" data-tags="[]" data-execution_count="164">
+<div id="c1075bba-47eb-4271-8fe0-39e26efbe18d" class="cell" data-tags="[]" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>) </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If we multiply <code>a</code> by 5, we would get a vector with each of its members multiplied by 5.</p>
-<div id="0f435130-88af-4c02-b761-f709eb7e0c73" class="cell" data-tags="[]" data-execution_count="165">
+<div id="0f435130-88af-4c02-b761-f709eb7e0c73" class="cell" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">*</span> a </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -954,7 +954,7 @@ window.Quarto = {
 </div>
 </div>
 <p>And if we add <code>a</code> and <code>b</code> together, the sum would be a vector whose members are the sum of the corresponding members from <code>a</code> and <code>b</code>.</p>
-<div id="b7325d0e-bd2e-4a16-b3cc-706fb6a30927" class="cell" data-tags="[]" data-execution_count="166">
+<div id="b7325d0e-bd2e-4a16-b3cc-706fb6a30927" class="cell" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -966,7 +966,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Similarly for subtraction, multiplication and division, we get new vectors via member-wise operations.</p>
-<div id="24cec95f-0108-4466-8fa8-b9c0b72166df" class="cell" data-tags="[]" data-execution_count="167">
+<div id="24cec95f-0108-4466-8fa8-b9c0b72166df" class="cell" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">-</span> b </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -977,7 +977,7 @@ window.Quarto = {
 <ol class="list-inline"><li>0</li><li>1</li><li>1</li><li>-1</li></ol>
 </div>
 </div>
-<div id="4fbeb0d6-e305-4a48-9921-3456135c6ea7" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="168">
+<div id="4fbeb0d6-e305-4a48-9921-3456135c6ea7" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">*</span> b </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -988,7 +988,7 @@ window.Quarto = {
 <ol class="list-inline"><li>1</li><li>6</li><li>20</li><li>56</li></ol>
 </div>
 </div>
-<div id="430de61d-b9e6-44fc-bd73-bb61108ec866" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="169">
+<div id="430de61d-b9e6-44fc-bd73-bb61108ec866" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;slide&quot;}" data-tags="[]" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">/</span> b </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -1002,10 +1002,10 @@ window.Quarto = {
 </section>
 <section id="the-recycling-rule" class="level2">
 <h2 class="anchored" data-anchor-id="the-recycling-rule">The Recycling Rule</h2>
-<p>If two vectors are of unequal length, the <strong>shorter one will be recycled</strong> in order to match the longer vector.</p>
+<p>If two vectors in an operation are of unequal length, the <strong>shorter one will be recycled</strong> in order to match the longer vector.</p>
 <p>This is similar to broadcasting in NumPy and Pandas.</p>
 <p>For example, the following vectors <code>u</code> and <code>v</code> have different lengths, and their sum is computed by recycling values of the shorter vector <code>u</code>.</p>
-<div id="ca52c2f6-9362-4ede-899b-592fda30937f" class="cell" data-tags="[]" data-execution_count="170">
+<div id="ca52c2f6-9362-4ede-899b-592fda30937f" class="cell" data-tags="[]" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>) </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>) </span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>u <span class="sc">+</span> v </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1023,7 +1023,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="vector-indexes">Vector Indexes</h2>
 <p>We retrieve values in a vector by declaring an index inside a single square bracket index <code>[]</code> operator.</p>
 <p>Vector indexes are <span class="math inline">\(1\)</span>-based.</p>
-<div id="2ad772a8-da5f-406f-b671-e8e190985e8c" class="cell" data-tags="[]" data-execution_count="171">
+<div id="2ad772a8-da5f-406f-b671-e8e190985e8c" class="cell" data-tags="[]" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"aa"</span>, <span class="st">"bb"</span>, <span class="st">"cc"</span>, <span class="st">"dd"</span>, <span class="st">"ee"</span>) </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">3</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1036,7 +1036,7 @@ window.Quarto = {
 <p>Unlike Python, if the index is negative, <strong>it will remove the member</strong> whose position has the same absolute value as the negative index.</p>
 <p>It really does mean subtraction!</p>
 <p>For example, the following creates a vector slice with the third member removed.</p>
-<div id="500932fa-a512-4d91-837d-ac6501c4dd3e" class="cell" data-tags="[]" data-execution_count="172">
+<div id="500932fa-a512-4d91-837d-ac6501c4dd3e" class="cell" data-tags="[]" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>s[<span class="sc">-</span><span class="dv">3</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -1051,7 +1051,7 @@ window.Quarto = {
 <section id="out-of-range-indexes" class="level2">
 <h2 class="anchored" data-anchor-id="out-of-range-indexes">Out-of-Range Indexes</h2>
 <p>Values for out-of-range indexes are reported as <code>NA</code>.</p>
-<div id="bc911e79-9af9-4864-854c-bb25609332ab" class="cell" data-tags="[]" data-execution_count="173">
+<div id="bc911e79-9af9-4864-854c-bb25609332ab" class="cell" data-tags="[]" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">10</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 NA
@@ -1063,7 +1063,7 @@ NA
 <p>A new vector can be sliced from a given vector with a numeric vector passed to the indexing operator.</p>
 <p>Index vectors consist of member positions of the original vector to be retrieved.</p>
 <p>Here we see how to retrieve a vector slice containing the second and third members of a given vector <code>s</code>.</p>
-<div id="af388edd-8c5f-450b-99c6-80a4e4feb174" class="cell" data-tags="[]" data-execution_count="174">
+<div id="af388edd-8c5f-450b-99c6-80a4e4feb174" class="cell" data-tags="[]" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"aa"</span>, <span class="st">"bb"</span>, <span class="st">"cc"</span>, <span class="st">"dd"</span>, <span class="st">"ee"</span>) </span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>s[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1079,7 +1079,7 @@ NA
 <section id="duplicate-indexes" class="level2">
 <h2 class="anchored" data-anchor-id="duplicate-indexes">Duplicate Indexes</h2>
 <p>The index vector allows duplicate values. Hence the following retrieves a member twice in one operation.</p>
-<div id="ee55ad4d-0da8-4a6f-9887-86d953ebe529" class="cell" data-tags="[]" data-execution_count="175">
+<div id="ee55ad4d-0da8-4a6f-9887-86d953ebe529" class="cell" data-tags="[]" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>s[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>)] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -1094,7 +1094,7 @@ NA
 <section id="out-of-order-indexes" class="level2">
 <h2 class="anchored" data-anchor-id="out-of-order-indexes">Out-of-Order Indexes</h2>
 <p>The index vector can even be out-of-order. Here is a vector slice with the order of first and second members reversed.</p>
-<div id="8f5f6c80-a77b-49fa-8a68-c094a621d828" class="cell" data-tags="[]" data-execution_count="176">
+<div id="8f5f6c80-a77b-49fa-8a68-c094a621d828" class="cell" data-tags="[]" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>s[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>)] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -1109,8 +1109,9 @@ NA
 </section>
 <section id="range-index" class="level2">
 <h2 class="anchored" data-anchor-id="range-index">Range Index</h2>
-<p>To produce a vector slice between two indexes, we can use the colon operator “:”. This can be convenient for situations involving large vectors.</p>
-<div id="6eab24f7-5c0f-4372-b8d2-9c394b0edcb4" class="cell" data-tags="[]" data-execution_count="177">
+<p>To produce a vector slice between two indexes, we can use the colon sequence operator <code>:</code>.</p>
+<p>This can be convenient for situations involving large vectors.</p>
+<div id="6eab24f7-5c0f-4372-b8d2-9c394b0edcb4" class="cell" data-tags="[]" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -1128,12 +1129,12 @@ NA
 <p>The logical vector must the same length as the original vector.</p>
 <p>Its members are <code>TRUE</code> if the corresponding members in the original vector are to be included in the slice, and <code>FALSE</code> if otherwise.</p>
 <p>This is what we called <strong>boolean indexing</strong> and masking in Python.</p>
-<p>For example, consider the following vector s of length 5.</p>
-<div id="14cf4b51-1b0d-4ca1-a714-e5f3d265f23c" class="cell" data-tags="[]" data-execution_count="178">
+<p>For example, consider the following vector <code>s</code> of length <span class="math inline">\(5\)</span>.</p>
+<div id="14cf4b51-1b0d-4ca1-a714-e5f3d265f23c" class="cell" data-tags="[]" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"aa"</span>, <span class="st">"bb"</span>, <span class="st">"cc"</span>, <span class="st">"dd"</span>, <span class="st">"ee"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To retrieve the the second and fourth members of s, we define a logical vector L of the same length, and have its second and fourth members set as <code>TRUE</code>.</p>
-<div id="4d6d083e-b29f-4e3a-9d8a-5265ed72e24a" class="cell" data-tags="[]" data-execution_count="179">
+<p>To retrieve the the second and fourth members of <code>s</code>, we define a logical vector <code>L</code> of the same length, and have its second and fourth members set as <code>TRUE</code>.</p>
+<div id="4d6d083e-b29f-4e3a-9d8a-5265ed72e24a" class="cell" data-tags="[]" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>L <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>s[L] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1146,7 +1147,7 @@ NA
 </div>
 </div>
 <p>The code can be abbreviated into a single line.</p>
-<div id="83febd2e-0e90-4a5f-96fa-38ea51ba6b0b" class="cell" data-tags="[]" data-execution_count="180">
+<div id="83febd2e-0e90-4a5f-96fa-38ea51ba6b0b" class="cell" data-tags="[]" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>s[<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -1161,10 +1162,10 @@ NA
 <section id="naming-vector-members-with-names" class="level2">
 <h2 class="anchored" data-anchor-id="naming-vector-members-with-names">Naming Vector Members with <code>names()</code></h2>
 <p>We can assign names to vector members, too.</p>
-<div id="b73e0d58-0043-4ca9-bc85-b38520864d9b" class="cell" data-tags="[]" data-execution_count="181">
+<div id="b73e0d58-0043-4ca9-bc85-b38520864d9b" class="cell" data-tags="[]" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Mary"</span>, <span class="st">"Sue"</span>) </span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(v) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"First"</span>, <span class="st">"Last"</span>) </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>v </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .dl-inline {width: auto; margin:0; padding: 0}
@@ -1175,14 +1176,14 @@ NA
 </div>
 </div>
 <p>Now we can retrieve the first member by name, much like a Python dictionary.</p>
-<div id="1c64ad48-0d3c-4be4-9572-a01e0f2ca4b0" class="cell" data-tags="[]" data-execution_count="182">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>v[<span class="st">"First"</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1c64ad48-0d3c-4be4-9572-a01e0f2ca4b0" class="cell" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>v[<span class="st">"First"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <strong>First:</strong> 'Mary'
 </div>
 </div>
 <p>We can also reverse the order with a character string index vector.</p>
-<div id="3071fff8-9e98-4b3e-8e9b-5b7fb7e1cd8f" class="cell" data-tags="[]" data-execution_count="183">
+<div id="3071fff8-9e98-4b3e-8e9b-5b7fb7e1cd8f" class="cell" data-tags="[]" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>v[<span class="fu">c</span>(<span class="st">"Last"</span>, <span class="st">"First"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -1200,7 +1201,7 @@ NA
 <p>A list is a generic vector containing other objects.</p>
 <p>This is close to a Python list.</p>
 <p>The following variable <code>x</code> is a list containing copies of three vectors <code>n</code>, <code>s</code>, <code>b</code>, and <code>a</code> numeric value <span class="math inline">\(3\)</span>.</p>
-<div id="751920ea-73e7-4598-8706-cbf4151de431" class="cell" data-tags="[]" data-execution_count="2">
+<div id="751920ea-73e7-4598-8706-cbf4151de431" class="cell" data-tags="[]" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>) </span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"aa"</span>, <span class="st">"bb"</span>, <span class="st">"cc"</span>, <span class="st">"dd"</span>, <span class="st">"ee"</span>) </span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>) </span>
@@ -1235,7 +1236,7 @@ NA
 </div>
 </div>
 <p>We can call the print function to show how R represents these values internally.</p>
-<div id="428f2bd4-54b9-4130-b826-8d3c888e729d" class="cell" data-tags="[]" data-execution_count="4">
+<div id="428f2bd4-54b9-4130-b826-8d3c888e729d" class="cell" data-tags="[]" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
@@ -1258,7 +1259,7 @@ NA
 <h2 class="anchored" data-anchor-id="list-slicing">List Slicing</h2>
 <p>We retrieve a list slice with the single square bracket <code>[]</code> operator.</p>
 <p>The following is a slice containing the second member of <code>x</code>, which is a copy of <code>s</code>.</p>
-<div id="f05108ae-c7d5-4402-91b2-4bf88965b4ed" class="cell" data-tags="[]" data-execution_count="185">
+<div id="f05108ae-c7d5-4402-91b2-4bf88965b4ed" class="cell" data-tags="[]" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <ol>
@@ -1274,7 +1275,7 @@ NA
 </div>
 <p>With a vector, we can retrieve a slice with multiple members.</p>
 <p>Here a slice containing the second and fourth members of <code>x</code>.</p>
-<div id="1bcce2b3-63d5-41b1-8b9b-6a8d7d9bbae1" class="cell" data-tags="[]" data-execution_count="186">
+<div id="1bcce2b3-63d5-41b1-8b9b-6a8d7d9bbae1" class="cell" data-tags="[]" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <ol>
@@ -1294,8 +1295,8 @@ NA
 <h2 class="anchored" data-anchor-id="member-reference-with">Member Reference with <code>[[]]</code></h2>
 <p>To reference a list member directly, we use the double square bracket <code>[[]]</code> operator.</p>
 <p>The following object <code>x[[2]]</code> is the second member of <code>x</code>.</p>
-<p>In other words, <strong><code>x[[2]]</code> is a true copy of <code>s</code>, not a slice containing <code>s</code> or its copy</strong>.</p>
-<div id="a18b2651-4317-440d-adb5-4d6fd7ab06d2" class="cell" data-tags="[]" data-execution_count="5">
+<p>In other words, *<code>x[[2]]</code> is a true <strong>copy</strong> of <code>s</code>, not a slice containing <code>s</code> or its copy.</p>
+<div id="a18b2651-4317-440d-adb5-4d6fd7ab06d2" class="cell" data-tags="[]" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
@@ -1303,26 +1304,26 @@ NA
 </code></pre>
 </div>
 </div>
-<div id="4bbf152e-1376-4e5d-a65b-89a699f6707e" class="cell" data-tags="[]" data-execution_count="6">
+<div id="4bbf152e-1376-4e5d-a65b-89a699f6707e" class="cell" data-tags="[]" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x[[<span class="dv">2</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "aa" "bb" "cc" "dd" "ee"</code></pre>
 </div>
 </div>
 <p>We can modify its content directly.</p>
-<div id="05320396-72a6-4137-872c-e21936c27dd0" class="cell" data-tags="[]" data-execution_count="189">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">2</span>]][<span class="dv">1</span>] <span class="ot">=</span> <span class="st">"ta"</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="05320396-72a6-4137-872c-e21936c27dd0" class="cell" data-tags="[]" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">2</span>]][<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"ta"</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="7ae2ea16-9df3-4ea3-8f8b-6399e43a392c" class="cell" data-tags="[]" data-execution_count="7">
+<div id="7ae2ea16-9df3-4ea3-8f8b-6399e43a392c" class="cell" data-tags="[]" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-[1] "aa" "bb" "cc" "dd" "ee"
+[1] "ta" "bb" "cc" "dd" "ee"
 </code></pre>
 </div>
 </div>
 <p>And <code>s</code> is unaffected.</p>
-<div id="7651d4c5-8766-4aca-ae69-a57fef857ae2" class="cell" data-tags="[]" data-execution_count="8">
+<div id="7651d4c5-8766-4aca-ae69-a57fef857ae2" class="cell" data-tags="[]" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "aa" "bb" "cc" "dd" "ee"</code></pre>
@@ -1330,7 +1331,7 @@ NA
 </div>
 <p>Note that this notation is opposite to Python’s syntax in NumPy and Pandas.</p>
 <p>In Python, a double bracket containing a single value passed to a DataFrame would return a DataFrame, whereas a single bracket would return a Series.</p>
-<p>This is because the double bracket means a list is being used to select data, whereas a single bracket means a scalar is being used</p>
+<p>This is because the double bracket means a list is being used to select data, whereas a single bracket means a scalar is being used.</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df[[x]] <span class="co"># Returns a one column DataFrame</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>df[x]   <span class="co"># Returns a Series</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
@@ -1357,29 +1358,29 @@ NA
 <p>They are analagous to <strong>categories in Pandas</strong>.</p>
 <p>Let’s looks at an example.</p>
 <p>Take a vector of integers.</p>
-<div id="48fab223-82bc-4213-9896-d72d22962fca" class="cell" data-tags="[]" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="48fab223-82bc-4213-9896-d72d22962fca" class="cell" data-tags="[]" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Noticess that it has no levels associated with it.</p>
-<div id="24cd4a44-485c-4c54-b77d-ef71da3fdc39" class="cell" data-tags="[]" data-execution_count="11">
+<div id="24cd4a44-485c-4c54-b77d-ef71da3fdc39" class="cell" data-tags="[]" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(v1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>NULL</code></pre>
 </div>
 </div>
 <p>We may convert the vector in a factor, like so:</p>
-<div id="a65487fd-dc7a-46b5-be5b-9b5b9719acd1" class="cell" data-tags="[]" data-execution_count="13">
+<div id="a65487fd-dc7a-46b5-be5b-9b5b9719acd1" class="cell" data-tags="[]" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">=</span> <span class="fu">factor</span>(v1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now see that it has extracted a distinct list of items and converted them to strings.</p>
-<div id="f1b132d6-009f-410e-92a3-45d374eff976" class="cell" data-tags="[]" data-execution_count="21">
+<div id="f1b132d6-009f-410e-92a3-45d374eff976" class="cell" data-tags="[]" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">levels</span>(f1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "0" "1" "2" "3" "4" "5" "6" "7" "8" "9"</code></pre>
 </div>
 </div>
 <p>Printing the factor shows that the object contains two structures:</p>
-<div id="00bdccb8-9fd7-4e64-b7ca-4a68b03e82f2" class="cell" data-tags="[]" data-execution_count="5">
+<div id="00bdccb8-9fd7-4e64-b7ca-4a68b03e82f2" class="cell" data-tags="[]" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(f1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 1 5 6 9 4 3 5 8 7 6 3 0 0 0 1 2 3 6 4 5 7 9
@@ -1387,13 +1388,13 @@ Levels: 0 1 2 3 4 5 6 7 8 9</code></pre>
 </div>
 </div>
 <p>The object has properties accessible by functions.</p>
-<div id="1020b268-46da-4871-a438-1519fd2477d1" class="cell" data-tags="[]" data-execution_count="22">
+<div id="1020b268-46da-4871-a438-1519fd2477d1" class="cell" data-tags="[]" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">nlevels</span>(f1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
 </div>
-<div id="87e0e05f-9b50-4f00-828c-00998e577239" class="cell" data-tags="[]" data-execution_count="23">
+<div id="87e0e05f-9b50-4f00-828c-00998e577239" class="cell" data-tags="[]" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">levels</span>(f1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "0" "1" "2" "3" "4" "5" "6" "7" "8" "9"</code></pre>
@@ -1401,7 +1402,7 @@ Levels: 0 1 2 3 4 5 6 7 8 9</code></pre>
 </div>
 <p>Note that levels act as a <strong>constraint</strong> on the factor vector.</p>
 <p>If we want to edit the factor to have a value that is not in the distinct list of levels, we get an error.</p>
-<div id="0c3562ba-204d-4574-9ed0-d412a3b62e62" class="cell" data-tags="[]" data-execution_count="19">
+<div id="0c3562ba-204d-4574-9ed0-d412a3b62e62" class="cell" data-tags="[]" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>f1[<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message in `[&lt;-.factor`(`*tmp*`, 5, value = 20):
@@ -1409,7 +1410,7 @@ Levels: 0 1 2 3 4 5 6 7 8 9</code></pre>
 </div>
 </div>
 <p>Note that we also blow away the original value!</p>
-<div id="a2525c75-42c5-4971-a95b-ef7dda74f551" class="cell" data-tags="[]" data-execution_count="24">
+<div id="a2525c75-42c5-4971-a95b-ef7dda74f551" class="cell" data-tags="[]" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(f1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 1    5    6    9    &lt;NA&gt; 3    5    8    7    6    3    0    0    0    1   

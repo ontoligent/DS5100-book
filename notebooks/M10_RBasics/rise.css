@@ -23,6 +23,11 @@ td.data {
     font-size: 120%;
 }
 
+.rise-enabled .jp-OutputArea-output li {
+/*      font-size: 100%; */
+    font-size:16pt;
+}
+
 .rise-enabled .jp-OutputArea-output {
 /*      font-size: 100%; */
     font-size:16pt;

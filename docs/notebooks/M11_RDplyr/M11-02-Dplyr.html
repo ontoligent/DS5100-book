@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,6 +102,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -538,7 +541,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Data Types</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Data Types and Operators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -553,12 +556,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-05-ControlStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Control Structures and Functions</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-05-ControlStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Control Structures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-06-Functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Functions</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-06-Functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Functions</span></a>
   </div>
 </li>
       </ul>
@@ -574,7 +577,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M11_RDplyr/M11-01-Tibbles.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Introducing Tibbles</span></a>
+  <a href="../../notebooks/M11_RDplyr/M11-01-Tibbles.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: The Tidyverse and Tibbles</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -667,11 +670,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#dplyr-grammar" id="toc-dplyr-grammar" class="nav-link active" data-scroll-target="#dplyr-grammar"><code>dplyr</code> Grammar</a></li>
-  <li><a href="#common-dplyr-function-properties" id="toc-common-dplyr-function-properties" class="nav-link" data-scroll-target="#common-dplyr-function-properties">Common <code>dplyr</code> Function Properties</a></li>
+  <li><a href="#what-is-dplyr" id="toc-what-is-dplyr" class="nav-link active" data-scroll-target="#what-is-dplyr">What is Dplyr?</a></li>
+  <li><a href="#why-dplyr" id="toc-why-dplyr" class="nav-link" data-scroll-target="#why-dplyr">Why Dplyr?</a></li>
+  <li><a href="#a-grammar-of-data" id="toc-a-grammar-of-data" class="nav-link" data-scroll-target="#a-grammar-of-data">A Grammar of Data</a></li>
+  <li><a href="#common-function-properties" id="toc-common-function-properties" class="nav-link" data-scroll-target="#common-function-properties">Common Function Properties</a></li>
   <li><a href="#installing-the-dplyr-package" id="toc-installing-the-dplyr-package" class="nav-link" data-scroll-target="#installing-the-dplyr-package">Installing the <code>dplyr</code> package</a></li>
   <li><a href="#getting-a-dataset" id="toc-getting-a-dataset" class="nav-link" data-scroll-target="#getting-a-dataset">Getting a dataset</a></li>
-  <li><a href="#core-methods" id="toc-core-methods" class="nav-link" data-scroll-target="#core-methods">Core Methods</a>
+  <li><a href="#dplyr-functions-in-depth" id="toc-dplyr-functions-in-depth" class="nav-link" data-scroll-target="#dplyr-functions-in-depth">Dplyr Functions in Depth</a>
   <ul class="collapse">
   <li><a href="#select" id="toc-select" class="nav-link" data-scroll-target="#select"><code>select()</code></a></li>
   <li><a href="#aside-helper-functions" id="toc-aside-helper-functions" class="nav-link" data-scroll-target="#aside-helper-functions">Aside: Helper Functions</a></li>
@@ -681,9 +686,8 @@ window.Quarto = {
   <li><a href="#mutate" id="toc-mutate" class="nav-link" data-scroll-target="#mutate"><code>mutate()</code></a></li>
   <li><a href="#group_by" id="toc-group_by" class="nav-link" data-scroll-target="#group_by"><code>group_by()</code></a></li>
   </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ontoligent/DS5100-book/edit/main/notebooks/M11_RDplyr/M11-02-Dplyr.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M11_RDplyr/M11-02-Dplyr.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -707,69 +711,123 @@ window.Quarto = {
 </header>
 
 
-<p>The <code>dplyr</code> package was developed by Hadley Wickham of RStudio. It is an optimized and distilled version of his previous <code>plyr</code> package, which was an attempt to organize much of the functionality of the <code>*apply</code> family of functions in base R. Although in many ways superseded the <code>plyr</code> and <code>dplyr</code>, <a href="https://stackoverflow.com/questions/3505701/grouping-functions-tapply-by-aggregate-and-the-apply-family">these older functions remain useful</a>.</p>
-<p>The <code>dplyr</code> package does not provide any new functionality to R per se; everything <code>dplyr</code> does could already be done with base R. But it <em>greatly</em> simplifies existing functionality in R.</p>
-<p>One important contribution of the <code>dplyr</code> package is that it provides a <strong>grammar</strong> for data manipulation and for operating on data frames.</p>
-<p>With this grammar, you can clearly <strong>express and</strong> <strong>communicate</strong> what it is that you are doing to a data frame that other people can understand.</p>
+<p>Programming for Data Science</p>
+<section id="what-is-dplyr" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-dplyr">What is Dplyr?</h2>
+<p>The <code>dplyr</code> package is a <strong>cetnral</strong> component of the Tidyverse.</p>
+<p>Technically, <code>dplyr</code> is an optimized and <strong>distilled</strong> version of his previous <code>plyr</code> package.</p>
+<p>The <code>plyr</code> package organizes much of the functionality of the family of <strong>apply functions in base R</strong>.</p>
+<p>These functions perform the <strong>same action on multiple chunks</strong> of data in a repetitive way.</p>
+<p>For example, <code>apply()</code> applies a function to every element of a row or column in a dataset.</p>
+<p>Although in many ways superseded the <code>plyr</code> and <code>dplyr</code>, <a href="https://stackoverflow.com/questions/3505701/grouping-functions-tapply-by-aggregate-and-the-apply-family">these older functions remain useful</a>.</p>
+</section>
+<section id="why-dplyr" class="level2">
+<h2 class="anchored" data-anchor-id="why-dplyr">Why Dplyr?</h2>
+<p><code>dplyr</code> was developed to provide a <strong>clean and intelligble</strong> way to process data tables.</p>
+<p>It does this by providing a simple <strong>grammar</strong> for data manipulation and for operating on data frames.</p>
+<p>With this grammar, you can clearly <strong>express and</strong> <strong>communicate</strong> what it is that you are doing to a data frame that other people can understand.|</p>
 <p>This is useful because it provides an abstraction for data manipulation that previously did not exist within R and other programming languages.</p>
 <p>Another useful contribution is that the <code>dplyr</code> functions are <strong>very</strong> fast, as many key operations are coded in C++.</p>
-<section id="dplyr-grammar" class="level2">
-<h2 class="anchored" data-anchor-id="dplyr-grammar"><code>dplyr</code> Grammar</h2>
+<p>Note that <code>dplyr</code> does not provide any new functionality to R per se.</p>
+<p>Everything <code>dplyr</code> does may already be done with base R.</p>
+<p>But it greatly simplifies existing functionality in R.</p>
+<p>In the table below, you can see that that dplyr provides a consistent way of phrasing the someone chaotic idioms of base R.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>dplyr</th>
+<th>base R</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>arrange(df, x)</code></td>
+<td><code>df[order(x), , drop = FALSE]</code></td>
+</tr>
+<tr class="even">
+<td><code>distinct(df, x)</code></td>
+<td><code>df[!duplicated(x), , drop = FALSE], unique()</code></td>
+</tr>
+<tr class="odd">
+<td><code>filter(df, x)</code></td>
+<td><code>df[which(x), , drop = FALSE], subset()</code></td>
+</tr>
+<tr class="even">
+<td><code>mutate(df, z = x + y)</code></td>
+<td><code>df$z &lt;- df$x + df$y, transform()</code></td>
+</tr>
+<tr class="odd">
+<td><code>pull(df, 1)</code></td>
+<td><code>df[[1]]</code></td>
+</tr>
+<tr class="even">
+<td><code>pull(df, x)</code></td>
+<td><code>df$x</code></td>
+</tr>
+<tr class="odd">
+<td><code>rename(df, y = x)</code></td>
+<td><code>names(df)[names(df) == "x"] &lt;- "y"</code></td>
+</tr>
+<tr class="even">
+<td><code>relocate(df, y)</code></td>
+<td><code>df[union("y", names(df))]</code></td>
+</tr>
+<tr class="odd">
+<td><code>select(df, x, y)</code></td>
+<td><code>df[c("x", "y")], subset()</code></td>
+</tr>
+<tr class="even">
+<td><code>select(df, starts_with("x"))</code></td>
+<td><code>df[grepl("</code></td>
+</tr>
+<tr class="odd">
+<td><code>summarise(df, mean(x))</code></td>
+<td><code>mean(df$x), tapply(), aggregate(), by()</code></td>
+</tr>
+<tr class="even">
+<td><code>slice(df, c(1, 2, 5))</code></td>
+<td><code>df[c(1, 2, 5), , drop = FALSE]</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="a-grammar-of-data" class="level2">
+<h2 class="anchored" data-anchor-id="a-grammar-of-data">A Grammar of Data</h2>
 <p>Some of the key “verbs” provided by the <code>dplyr</code> package are:</p>
 <ul>
-<li><p><code>select</code>: return a subset of the columns of a data frame, using a flexible notation</p></li>
-<li><p><code>filter</code>: extract a subset of rows from a data frame based on logical conditions</p></li>
-<li><p><code>arrange</code>: reorder rows of a data frame</p></li>
-<li><p><code>rename</code>: rename variables in a data frame</p></li>
-<li><p><code>mutate</code>: add new variables/columns or transform existing variables</p></li>
-<li><p><code>summarise</code> / <code>summarize</code>: generate summary statistics of different variables in the data frame, possibly within strata</p></li>
-<li><p><code>%&gt;%</code>: the “pipe” operator is used to connect multiple verb actions together into a pipeline</p></li>
+<li><code>select</code>: return a subset of the columns of a data frame, using a flexible notation.</li>
+<li><code>filter</code>: extract a subset of rows from a data frame based on logical conditions.</li>
+<li><code>arrange</code>: reorder rows of a. data frame.</li>
+<li><code>rename</code>: rename variables in a data frame.</li>
+<li><code>mutate</code>: add new variables/columns or transform existing variables.</li>
+<li><code>summarise</code> / <code>summarize</code>: generate summary statistics of different variables in the data frame, possibly within strata.</li>
+<li><code>%&gt;%</code>: the “pipe” operator is used to connect multiple verb actions together into a pipeline.</li>
 </ul>
 </section>
-<section id="common-dplyr-function-properties" class="level2">
-<h2 class="anchored" data-anchor-id="common-dplyr-function-properties">Common <code>dplyr</code> Function Properties</h2>
-<p>All of the functions that we will discuss in this Chapter will have a few common characteristics. In particular,</p>
+<section id="common-function-properties" class="level2">
+<h2 class="anchored" data-anchor-id="common-function-properties">Common Function Properties</h2>
+<p>All <code>dplyr</code> functions have a some common characteristics:</p>
 <ol type="1">
-<li><p>The <strong>first argument</strong> is a <strong>data frame</strong>.</p></li>
-<li><p>The subsequent arguments describe what to do with the data frame specified in the first argument, and <strong>you can refer to columns in the data frame directly</strong> without using the $ operator (just use the column names).</p></li>
-<li><p>The <strong>return</strong> result of a function is <strong>a new data frame</strong>.</p></li>
-<li><p><strong>Data frames must be properly formatted and annotated</strong> for this to all be useful.</p></li>
+<li>The <strong>first argument</strong> is a <strong>data frame</strong> (or <strong>tibble</strong>).</li>
+<li>The succeeding arguments describe <strong>what to do with the data frame</strong> specified in the first argument.</li>
+<li>The <strong>return</strong> result of a function is <strong>a new data frame</strong>.</li>
 </ol>
-<p>In particular, the data must be <a href="https://tidyr.tidyverse.org/articles/tidy-data.html">tidy</a> The main principles of tidy data are:</p>
-<ol type="1">
-<li><p>Each variable forms a column.</p></li>
-<li><p>Each observation forms a row.</p></li>
-<li><p>Each type of observational unit forms a table.</p></li>
-</ol>
+<p>In addition, <code>dplyr</code> expects data frames to be be <strong>properly structured</strong> as tidy data.</p>
 </section>
 <section id="installing-the-dplyr-package" class="level2">
 <h2 class="anchored" data-anchor-id="installing-the-dplyr-package">Installing the <code>dplyr</code> package</h2>
-<p>The <code>dplyr</code> package can be installed from CRAN or from GitHub using the <code>devtools</code> package and the <code>install_github()</code> function.</p>
-<p>The GitHub repository will usually contain the latest updates to the package and the development version.</p>
-<p>To install from CRAN, just run</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>To install from GitHub you can run</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">"hadley/dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>After installing the package it is important that you load it into your R session with the <code>library()</code> function.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.0.5</code></pre>
+<p>You can install <code>dplyr</code> directly or as part of <code>tidyverse</code>, which we installed in the previous notebook.</p>
+<div id="a7c45fa8-599c-432b-9aa0-096821a84ba8" class="cell" data-tags="[]" data-execution_count="126">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("dplyr")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
+<p>Once the package is installed, you may load it into your R session by calling the <code>library()</code> function.</p>
+<div id="95f58652-3054-4712-91f8-be872410c4c3" class="cell" data-tags="[]" data-execution_count="127">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(dplyr)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
+<p>Of course, you can also just install <code>tidyverse</code> if you plan to visualize your results.</p>
+<p>Since we did this in our previous notebook, we can import it now.</p>
+<div id="449b6987-8d3a-41b2-ab56-f834dd10bb4a" class="cell" data-tags="[]" data-execution_count="158">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You may get some warnings when the package is loaded because there are functions in the <code>dplyr</code> package that have the same name as functions in other packages. For now you can ignore the warnings.</p>
 </section>
@@ -777,176 +835,432 @@ Attaching package: 'dplyr'</code></pre>
 <h2 class="anchored" data-anchor-id="getting-a-dataset">Getting a dataset</h2>
 <p>Let’s use a dataset containing air pollution and temperature data for the <a href="http://www.biostat.jhsph.edu/~rpeng/leanpub/rprog/chicago_data.zip">city of Chicago</a> in the U.S.</p>
 <p>You will find the data in the directory for this module.</p>
-<p>Load the data into R using the <code>readRDS()</code> function.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"chicago.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We load the data into R using the <code>readRDS()</code> function and then convert it to a tibble.</p>
+<div id="71ba5671-ba70-4e76-ac72-569acf32d804" class="cell" data-tags="[]" data-execution_count="129">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"chicago.rds"</span>) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You can see some basic characteristics of the dataset with the <code>dim()</code> and <code>str()</code> functions.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(chicago)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can see some basic characteristics of the dataset with the <code>print()</code> function.</p>
+<div id="9ecb8993-4d2c-4833-95ff-abd93647a302" class="cell" data-tags="[]" data-execution_count="130">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(chicago)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6940    8</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(chicago)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   6940 obs. of  8 variables:
- $ city      : chr  "chic" "chic" "chic" "chic" ...
- $ tmpd      : num  31.5 33 33 29 32 40 34.5 29 26.5 32.5 ...
- $ dptp      : num  31.5 29.9 27.4 28.6 28.9 ...
- $ date      : Date, format: "1987-01-01" "1987-01-02" ...
- $ pm25tmean2: num  NA NA NA NA NA NA NA NA NA NA ...
- $ pm10tmean2: num  34 NA 34.2 47 NA ...
- $ o3tmean2  : num  4.25 3.3 3.33 4.38 4.75 ...
- $ no2tmean2 : num  20 23.2 23.8 30.4 30.3 ...</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chicago)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  city tmpd   dptp       date pm25tmean2 pm10tmean2 o3tmean2 no2tmean2
-1 chic 31.5 31.500 1987-01-01         NA   34.00000 4.250000  19.98810
-2 chic 33.0 29.875 1987-01-02         NA         NA 3.304348  23.19099
-3 chic 33.0 27.375 1987-01-03         NA   34.16667 3.333333  23.81548
-4 chic 29.0 28.625 1987-01-04         NA   47.00000 4.375000  30.43452
-5 chic 32.0 28.875 1987-01-05         NA         NA 4.750000  30.33333
-6 chic 40.0 35.125 1987-01-06         NA   48.00000 5.833333  25.77233</code></pre>
+<pre><code># A tibble: 6,940 × 8
+   city   tmpd  dptp date       pm25tmean2 pm10tmean2 o3tmean2 no2tmean2
+   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;date&gt;          &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+ 1 chic   31.5  31.5 1987-01-01         NA       34       4.25      20.0
+ 2 chic   33    29.9 1987-01-02         NA       NA       3.30      23.2
+ 3 chic   33    27.4 1987-01-03         NA       34.2     3.33      23.8
+ 4 chic   29    28.6 1987-01-04         NA       47       4.38      30.4
+ 5 chic   32    28.9 1987-01-05         NA       NA       4.75      30.3
+ 6 chic   40    35.1 1987-01-06         NA       48       5.83      25.8
+ 7 chic   34.5  26.8 1987-01-07         NA       41       9.29      20.6
+ 8 chic   29    22   1987-01-08         NA       36      11.3       17.0
+ 9 chic   26.5  29   1987-01-09         NA       33.3     4.5       23.4
+10 chic   32.5  27.8 1987-01-10         NA       NA       4.96      19.5
+# ℹ 6,930 more rows</code></pre>
 </div>
 </div>
 </section>
-<section id="core-methods" class="level1">
-<h1>Core Methods</h1>
+<section id="dplyr-functions-in-depth" class="level1">
+<h1>Dplyr Functions in Depth</h1>
+<p>Let’s use this tibble to explore each of the Dplyr verbs in a little more depth.</p>
 <section id="select" class="level2">
 <h2 class="anchored" data-anchor-id="select"><code>select()</code></h2>
 <p>We use the <code>select()</code> function to <strong>select columns you want to focus on</strong>.</p>
-<p>Suppose we wanted to take the first 3 columns only.</p>
-<p>There are a few ways to do this.</p>
-<p>We could for example use numerical indices.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chicago[<span class="fu">names</span>(chicago)[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  city tmpd   dptp
-1 chic 31.5 31.500
-2 chic 33.0 29.875
-3 chic 33.0 27.375
-4 chic 29.0 28.625
-5 chic 32.0 28.875
-6 chic 40.0 35.125</code></pre>
+<p>For example, we can inspect the <code>tmpd</code> column like so:</p>
+<div id="eb8771ba-2aca-40b9-a2aa-82f0b2ca95d5" class="cell" data-tags="[]" data-execution_count="131">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span> <span class="fu">select</span>(tmpd) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 × 1</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">tmpd</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>31.5</td>
+</tr>
+<tr class="even">
+<td>33.0</td>
+</tr>
+<tr class="odd">
+<td>33.0</td>
+</tr>
+<tr class="even">
+<td>29.0</td>
+</tr>
+<tr class="odd">
+<td>32.0</td>
+</tr>
+<tr class="even">
+<td>40.0</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<p>But we can also use the names directly.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(city<span class="sc">:</span>dptp) <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   city tmpd   dptp
-1  chic 31.5 31.500
-2  chic 33.0 29.875
-3  chic 33.0 27.375
-4  chic 29.0 28.625
-5  chic 32.0 28.875
-6  chic 40.0 35.125
-7  chic 34.5 26.750
-8  chic 29.0 22.000
-9  chic 26.5 29.000
-10 chic 32.5 27.750</code></pre>
+</div>
+<p>In base R, we would do this:</p>
+<div id="fc34192c-7a47-44ee-9646-3935a69ea3b3" class="cell" data-tags="[]" data-execution_count="132">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chicago[<span class="st">"tmpd"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 × 1</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">tmpd</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>31.5</td>
+</tr>
+<tr class="even">
+<td>33.0</td>
+</tr>
+<tr class="odd">
+<td>33.0</td>
+</tr>
+<tr class="even">
+<td>29.0</td>
+</tr>
+<tr class="odd">
+<td>32.0</td>
+</tr>
+<tr class="even">
+<td>40.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Now suppose we wanted to take the first <span class="math inline">\(3\)</span> columns only.</p>
+<p>We could use numerical indices in base R.</p>
+<div id="5241a771-92eb-42ab-bb3f-72de93cabe9d" class="cell" data-tags="[]" data-execution_count="133">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chicago[<span class="fu">names</span>(chicago)[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 × 3</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">city</th>
+<th data-quarto-table-cell-role="th" scope="col">tmpd</th>
+<th data-quarto-table-cell-role="th" scope="col">dptp</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chic</td>
+<td>31.5</td>
+<td>31.500</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>33.0</td>
+<td>29.875</td>
+</tr>
+<tr class="odd">
+<td>chic</td>
+<td>33.0</td>
+<td>27.375</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>29.0</td>
+<td>28.625</td>
+</tr>
+<tr class="odd">
+<td>chic</td>
+<td>32.0</td>
+<td>28.875</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>40.0</td>
+<td>35.125</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>In Dplr, we can use the names directly to create a column range slice:</p>
+<div id="c110327d-398b-4996-8186-e9d715f80906" class="cell" data-tags="[]" data-execution_count="134">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(city<span class="sc">:</span>dptp) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 × 3</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">city</th>
+<th data-quarto-table-cell-role="th" scope="col">tmpd</th>
+<th data-quarto-table-cell-role="th" scope="col">dptp</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chic</td>
+<td>31.5</td>
+<td>31.500</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>33.0</td>
+<td>29.875</td>
+</tr>
+<tr class="odd">
+<td>chic</td>
+<td>33.0</td>
+<td>27.375</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>29.0</td>
+<td>28.625</td>
+</tr>
+<tr class="odd">
+<td>chic</td>
+<td>32.0</td>
+<td>28.875</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>40.0</td>
+<td>35.125</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>Note the use of <code>:</code> inside the <code>select()</code> — you can use it to specify a range of variable names.</p>
 <p>You can also <em>omit</em> variables using the <code>select()</code> function by using <strong>the negative sign</strong>.</p>
 <p>With <code>select()</code> you can do:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>(city<span class="sc">:</span>dptp)) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>         date pm25tmean2 pm10tmean2  o3tmean2 no2tmean2
-1  1987-01-01         NA   34.00000  4.250000  19.98810
-2  1987-01-02         NA         NA  3.304348  23.19099
-3  1987-01-03         NA   34.16667  3.333333  23.81548
-4  1987-01-04         NA   47.00000  4.375000  30.43452
-5  1987-01-05         NA         NA  4.750000  30.33333
-6  1987-01-06         NA   48.00000  5.833333  25.77233
-7  1987-01-07         NA   41.00000  9.291667  20.58171
-8  1987-01-08         NA   36.00000 11.291667  17.03723
-9  1987-01-09         NA   33.28571  4.500000  23.38889
-10 1987-01-10         NA         NA  4.958333  19.54167</code></pre>
+<div id="06303e1a-98ae-4a52-be41-4f77095e7226" class="cell" data-tags="[]" data-execution_count="135">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>(city<span class="sc">:</span>dptp)) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 × 5</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">date</th>
+<th data-quarto-table-cell-role="th" scope="col">pm25tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">pm10tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">o3tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">no2tmean2</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;date&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1987-01-01</td>
+<td>NA</td>
+<td>34.00000</td>
+<td>4.250000</td>
+<td>19.98810</td>
+</tr>
+<tr class="even">
+<td>1987-01-02</td>
+<td>NA</td>
+<td>NA</td>
+<td>3.304348</td>
+<td>23.19099</td>
+</tr>
+<tr class="odd">
+<td>1987-01-03</td>
+<td>NA</td>
+<td>34.16667</td>
+<td>3.333333</td>
+<td>23.81548</td>
+</tr>
+<tr class="even">
+<td>1987-01-04</td>
+<td>NA</td>
+<td>47.00000</td>
+<td>4.375000</td>
+<td>30.43452</td>
+</tr>
+<tr class="odd">
+<td>1987-01-05</td>
+<td>NA</td>
+<td>NA</td>
+<td>4.750000</td>
+<td>30.33333</td>
+</tr>
+<tr class="even">
+<td>1987-01-06</td>
+<td>NA</td>
+<td>48.00000</td>
+<td>5.833333</td>
+<td>25.77233</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>This indicates that we should include every variable <em>except</em> the variables <code>city</code> through <code>dptp</code>.</p>
-<p>The equivalent code in base R would be</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">match</span>(<span class="st">"city"</span>, <span class="fu">names</span>(chicago))</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>j <span class="ot">&lt;-</span> <span class="fu">match</span>(<span class="st">"dptp"</span>, <span class="fu">names</span>(chicago))</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chicago[, <span class="sc">-</span>(i<span class="sc">:</span>j)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>        date pm25tmean2 pm10tmean2 o3tmean2 no2tmean2
-1 1987-01-01         NA   34.00000 4.250000  19.98810
-2 1987-01-02         NA         NA 3.304348  23.19099
-3 1987-01-03         NA   34.16667 3.333333  23.81548
-4 1987-01-04         NA   47.00000 4.375000  30.43452
-5 1987-01-05         NA         NA 4.750000  30.33333
-6 1987-01-06         NA   48.00000 5.833333  25.77233</code></pre>
-</div>
-</div>
-<p>Not super intuitive, right?</p>
 <p>The <code>select()</code> function also allows a special syntax that allows you to specify <strong>variable names based on patterns</strong>.</p>
-<p>So, for example, if you wanted to keep every variable that ends with a “2”, we could do</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"2"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   pm25tmean2 pm10tmean2  o3tmean2 no2tmean2
-1          NA   34.00000  4.250000  19.98810
-2          NA         NA  3.304348  23.19099
-3          NA   34.16667  3.333333  23.81548
-4          NA   47.00000  4.375000  30.43452
-5          NA         NA  4.750000  30.33333
-6          NA   48.00000  5.833333  25.77233
-7          NA   41.00000  9.291667  20.58171
-8          NA   36.00000 11.291667  17.03723
-9          NA   33.28571  4.500000  23.38889
-10         NA         NA  4.958333  19.54167</code></pre>
+<p>If you wanted to keep every variable that ends with a “2”, we could do this:</p>
+<div id="68b951a4-df02-4e85-ab63-7c90251ad425" class="cell" data-tags="[]" data-execution_count="136">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"2"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 × 4</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">pm25tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">pm10tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">o3tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">no2tmean2</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NA</td>
+<td>34.00000</td>
+<td>4.250000</td>
+<td>19.98810</td>
+</tr>
+<tr class="even">
+<td>NA</td>
+<td>NA</td>
+<td>3.304348</td>
+<td>23.19099</td>
+</tr>
+<tr class="odd">
+<td>NA</td>
+<td>34.16667</td>
+<td>3.333333</td>
+<td>23.81548</td>
+</tr>
+<tr class="even">
+<td>NA</td>
+<td>47.00000</td>
+<td>4.375000</td>
+<td>30.43452</td>
+</tr>
+<tr class="odd">
+<td>NA</td>
+<td>NA</td>
+<td>4.750000</td>
+<td>30.33333</td>
+</tr>
+<tr class="even">
+<td>NA</td>
+<td>48.00000</td>
+<td>5.833333</td>
+<td>25.77233</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<p>Or if we wanted to keep every variable that starts with a “d”, we could do</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"d"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     dptp       date
-1  31.500 1987-01-01
-2  29.875 1987-01-02
-3  27.375 1987-01-03
-4  28.625 1987-01-04
-5  28.875 1987-01-05
-6  35.125 1987-01-06
-7  26.750 1987-01-07
-8  22.000 1987-01-08
-9  29.000 1987-01-09
-10 27.750 1987-01-10</code></pre>
+</div>
+<p>Or if we wanted to keep every variable that starts with a “d”, we could do this:</p>
+<div id="1068074f-1162-4214-bdde-23b644336363" class="cell" data-tags="[]" data-execution_count="137">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"d"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 × 2</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">dptp</th>
+<th data-quarto-table-cell-role="th" scope="col">date</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;date&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>31.500</td>
+<td>1987-01-01</td>
+</tr>
+<tr class="even">
+<td>29.875</td>
+<td>1987-01-02</td>
+</tr>
+<tr class="odd">
+<td>27.375</td>
+<td>1987-01-03</td>
+</tr>
+<tr class="even">
+<td>28.625</td>
+<td>1987-01-04</td>
+</tr>
+<tr class="odd">
+<td>28.875</td>
+<td>1987-01-05</td>
+</tr>
+<tr class="even">
+<td>35.125</td>
+<td>1987-01-06</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>This is super useful if you have a table with prefixes, such as <code>doc_</code>.</p>
 <p>You can also use more general <strong>regular expressions</strong> if necessary.</p>
-<p>See <code>?select</code> for more info.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>?select</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="aside-helper-functions" class="level2">
 <h2 class="anchored" data-anchor-id="aside-helper-functions">Aside: Helper Functions</h2>
-<p>Note the use the function <code>ends_with()</code> inside of the argument space for the function <code>select()</code> above.</p>
-<p><code>ends_with()</code> is an example of a “helper function” — a function that helps make dplyr functions more effective.</p>
-<p>There are many of these introduced by dplyer. Here is a set of helper functions that can be especially useful with <code>select()</code> and related functions to specify variable names based on certain patterns or characteristics:</p>
+<p>Note the use of the function <code>ends_with()</code> inside of the argument space for the function <code>select()</code> above.</p>
+<p><code>ends_with()</code> is an example of a “helper function” — a function that helps make Dplyr functions more effective.</p>
+<p>There are many of these introduced by Dplyr.</p>
+<p>Here is a set of helper functions that can be especially useful with <code>select()</code>:</p>
 <table class="table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 43%">
+<col style="width: 26%">
+<col style="width: 42%">
 <col style="width: 31%">
 </colgroup>
 <thead>
@@ -998,84 +1312,264 @@ Attaching package: 'dplyr'</code></pre>
 <section id="filter" class="level2">
 <h2 class="anchored" data-anchor-id="filter"><code>filter()</code></h2>
 <p>The <code>filter()</code> function extracts <strong>subsets of rows</strong> from a data frame.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><code>select()</code> is a <strong>column-wise</strong> operation, <code>filter()</code> is <strong>row-wise</strong>.</p>
-</div>
-</div>
+<p>Whereas <code>select()</code> is a <strong>column-wise</strong> operation, <code>filter()</code> is <strong>row-wise</strong>.</p>
 <p>This function is similar to the existing <code>subset()</code> function in R but is quite a bit faster.</p>
-<p>Suppose we wanted to extract the rows of the <code>chicago</code> data frame where <strong>the levels of PM2.5 are greater than 30</strong> (which is a reasonably high level), we could do</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pm25tmean2 <span class="sc">&gt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   city tmpd dptp       date pm25tmean2 pm10tmean2  o3tmean2 no2tmean2
-1  chic   23 21.9 1998-01-17      38.10   32.46154  3.180556  25.30000
-2  chic   28 25.8 1998-01-23      33.95   38.69231  1.750000  29.37630
-3  chic   55 51.3 1998-04-30      39.40   34.00000 10.786232  25.31310
-4  chic   59 53.7 1998-05-01      35.40   28.50000 14.295125  31.42905
-5  chic   57 52.0 1998-05-02      33.30   35.00000 20.662879  26.79861
-6  chic   57 56.0 1998-05-07      32.10   34.50000 24.270422  33.99167
-7  chic   75 65.8 1998-05-15      56.50   91.00000 38.573007  29.03261
-8  chic   61 59.0 1998-06-09      33.80   26.00000 17.890810  25.49668
-9  chic   73 60.3 1998-07-13      30.30   64.50000 37.018865  37.93056
-10 chic   78 67.1 1998-07-14      41.40   75.00000 40.080902  32.59054</code></pre>
+<p>Suppose we wanted to extract the rows of the <code>chicago</code> data frame where <strong>the levels of PM2.5 are greater than 30</strong> (which is a reasonably high level), we could do this:</p>
+<div id="07bd86c3-9c5e-421c-8463-a3e3eb39720b" class="cell" data-tags="[]" data-execution_count="138">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pm25tmean2 <span class="sc">&gt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 × 8</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">city</th>
+<th data-quarto-table-cell-role="th" scope="col">tmpd</th>
+<th data-quarto-table-cell-role="th" scope="col">dptp</th>
+<th data-quarto-table-cell-role="th" scope="col">date</th>
+<th data-quarto-table-cell-role="th" scope="col">pm25tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">pm10tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">o3tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">no2tmean2</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;date&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chic</td>
+<td>23</td>
+<td>21.9</td>
+<td>1998-01-17</td>
+<td>38.10</td>
+<td>32.46154</td>
+<td>3.180556</td>
+<td>25.30000</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>28</td>
+<td>25.8</td>
+<td>1998-01-23</td>
+<td>33.95</td>
+<td>38.69231</td>
+<td>1.750000</td>
+<td>29.37630</td>
+</tr>
+<tr class="odd">
+<td>chic</td>
+<td>55</td>
+<td>51.3</td>
+<td>1998-04-30</td>
+<td>39.40</td>
+<td>34.00000</td>
+<td>10.786232</td>
+<td>25.31310</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>59</td>
+<td>53.7</td>
+<td>1998-05-01</td>
+<td>35.40</td>
+<td>28.50000</td>
+<td>14.295125</td>
+<td>31.42905</td>
+</tr>
+<tr class="odd">
+<td>chic</td>
+<td>57</td>
+<td>52.0</td>
+<td>1998-05-02</td>
+<td>33.30</td>
+<td>35.00000</td>
+<td>20.662879</td>
+<td>26.79861</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>57</td>
+<td>56.0</td>
+<td>1998-05-07</td>
+<td>32.10</td>
+<td>34.50000</td>
+<td>24.270422</td>
+<td>33.99167</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>You can see that there are now only 194 rows in the data frame and the distribution of the <code>pm25tmean2</code> values is.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(chicago<span class="sc">$</span>pm25tmean2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-   1.70    9.70   14.66   16.23   20.60   61.50    4447 </code></pre>
+<p>Compare this to base R:</p>
+<div id="4ee2b831-8e69-491c-8e2a-a888d6b8029f" class="cell" data-tags="[]" data-execution_count="139">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">na.omit</span>(chicago[(chicago<span class="sc">$</span>pm25tmean2 <span class="sc">&gt;</span> <span class="dv">30</span>),]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 × 8</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">city</th>
+<th data-quarto-table-cell-role="th" scope="col">tmpd</th>
+<th data-quarto-table-cell-role="th" scope="col">dptp</th>
+<th data-quarto-table-cell-role="th" scope="col">date</th>
+<th data-quarto-table-cell-role="th" scope="col">pm25tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">pm10tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">o3tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">no2tmean2</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;date&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chic</td>
+<td>23</td>
+<td>21.9</td>
+<td>1998-01-17</td>
+<td>38.10</td>
+<td>32.46154</td>
+<td>3.180556</td>
+<td>25.30000</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>28</td>
+<td>25.8</td>
+<td>1998-01-23</td>
+<td>33.95</td>
+<td>38.69231</td>
+<td>1.750000</td>
+<td>29.37630</td>
+</tr>
+<tr class="odd">
+<td>chic</td>
+<td>55</td>
+<td>51.3</td>
+<td>1998-04-30</td>
+<td>39.40</td>
+<td>34.00000</td>
+<td>10.786232</td>
+<td>25.31310</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>59</td>
+<td>53.7</td>
+<td>1998-05-01</td>
+<td>35.40</td>
+<td>28.50000</td>
+<td>14.295125</td>
+<td>31.42905</td>
+</tr>
+<tr class="odd">
+<td>chic</td>
+<td>57</td>
+<td>52.0</td>
+<td>1998-05-02</td>
+<td>33.30</td>
+<td>35.00000</td>
+<td>20.662879</td>
+<td>26.79861</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>57</td>
+<td>56.0</td>
+<td>1998-05-07</td>
+<td>32.10</td>
+<td>34.50000</td>
+<td>24.270422</td>
+<td>33.99167</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<p>We can place an arbitrarily complex logical sequence inside of <code>filter()</code>, so we could for example extract the rows where PM2.5 is greater than 30 <em>and</em> temperature is greater than 80 degrees Fahrenheit.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pm25tmean2 <span class="sc">&gt;</span> <span class="dv">30</span> <span class="sc">&amp;</span> tmpd <span class="sc">&gt;</span> <span class="dv">80</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date, tmpd, pm25tmean2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>         date tmpd pm25tmean2
-1  1998-08-23   81   39.60000
-2  1998-09-06   81   31.50000
-3  2001-07-20   82   32.30000
-4  2001-08-01   84   43.70000
-5  2001-08-08   85   38.83750
-6  2001-08-09   84   38.20000
-7  2002-06-20   82   33.00000
-8  2002-06-23   82   42.50000
-9  2002-07-08   81   33.10000
-10 2002-07-18   82   38.85000
-11 2003-06-25   82   33.90000
-12 2003-07-04   84   32.90000
-13 2005-06-24   86   31.85714
-14 2005-06-27   82   51.53750
-15 2005-06-28   85   31.20000
-16 2005-07-17   84   32.70000
-17 2005-08-03   84   37.90000</code></pre>
 </div>
+<p>Note that we have to filter out the <code>NA</code> values, which Dplyr does for you.</p>
+<p>Note also that column names in Dply do not need to be prefixed by the data frame name; they are called directly.</p>
+<p>For example, compare how the column <code>pm25tmean2</code> is accessed below:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span> <span class="fu">filter</span>(pm25tmean2 <span class="sc">&gt;</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>vs</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>chicago[(chicago<span class="sc">$</span>pm25tmean2 <span class="sc">&gt;</span> <span class="dv">30</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can place an arbitrarily complex logical sequence inside of <code>filter()</code>.</p>
+<p>For example, we may extract the rows where PM2.5 is greater than <span class="math inline">\(30\)</span> <em>and</em> temperature is greater than <span class="math inline">\(80\)</span> degrees Fahrenheit.</p>
+<div id="fca195ec-57e8-46c5-8dd6-1529dcca94e2" class="cell" data-tags="[]" data-execution_count="140">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(pm25tmean2 <span class="sc">&gt;</span> <span class="dv">30</span> <span class="sc">&amp;</span> tmpd <span class="sc">&gt;</span> <span class="dv">80</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(date, tmpd, pm25tmean2) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 × 3</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">date</th>
+<th data-quarto-table-cell-role="th" scope="col">tmpd</th>
+<th data-quarto-table-cell-role="th" scope="col">pm25tmean2</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;date&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1998-08-23</td>
+<td>81</td>
+<td>39.6000</td>
+</tr>
+<tr class="even">
+<td>1998-09-06</td>
+<td>81</td>
+<td>31.5000</td>
+</tr>
+<tr class="odd">
+<td>2001-07-20</td>
+<td>82</td>
+<td>32.3000</td>
+</tr>
+<tr class="even">
+<td>2001-08-01</td>
+<td>84</td>
+<td>43.7000</td>
+</tr>
+<tr class="odd">
+<td>2001-08-08</td>
+<td>85</td>
+<td>38.8375</td>
+</tr>
+<tr class="even">
+<td>2001-08-09</td>
+<td>84</td>
+<td>38.2000</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>?filter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Help on topic 'filter' was found in the following packages:
-
-  Package               Library
-  dplyr                 /Library/Frameworks/R.framework/Versions/4.0/Resources/library
-  stats                 /Library/Frameworks/R.framework/Versions/4.0/Resources/library
-
-
-Using the first match ...</code></pre>
 </div>
 </div>
 <p>Here’s a table of helper functions specifically associated with <code>filter()</code>:</p>
@@ -1128,62 +1622,277 @@ Using the first match ...</code></pre>
 </section>
 <section id="arrange" class="level2">
 <h2 class="anchored" data-anchor-id="arrange"><code>arrange()</code></h2>
-<p>Use <code>arrange()</code> to <strong>reorder rows</strong> of a data frame according to one or more of the <strong>columns</strong>. This normally called <strong>sorting</strong>.</p>
+<p>We use <code>arrange()</code> to <strong>reorder rows</strong> of a data frame according to one or more of the <strong>columns</strong>.</p>
+<p>This normally called <strong>sorting</strong>.</p>
 <p>Reordering rows of a data frame (while preserving corresponding order of other columns) is normally a pain to do in R.</p>
 <p>The <code>arrange()</code> function simplifies the process quite a bit.</p>
 <p>Here we order the rows of the data frame by date in ascending order:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>chicago_by_date <span class="ot">&lt;-</span> chicago <span class="sc">%&gt;%</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date)</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chicago_by_date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  city tmpd   dptp       date pm25tmean2 pm10tmean2 o3tmean2 no2tmean2
-1 chic 31.5 31.500 1987-01-01         NA   34.00000 4.250000  19.98810
-2 chic 33.0 29.875 1987-01-02         NA         NA 3.304348  23.19099
-3 chic 33.0 27.375 1987-01-03         NA   34.16667 3.333333  23.81548
-4 chic 29.0 28.625 1987-01-04         NA   47.00000 4.375000  30.43452
-5 chic 32.0 28.875 1987-01-05         NA         NA 4.750000  30.33333
-6 chic 40.0 35.125 1987-01-06         NA   48.00000 5.833333  25.77233</code></pre>
+<div id="9d7938a9-c5f8-49d8-8699-c2c156afddb4" class="cell" data-tags="[]" data-execution_count="141">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>chicago_by_date <span class="ot">&lt;-</span> chicago <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(date)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>chicago_by_date <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 × 8</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">city</th>
+<th data-quarto-table-cell-role="th" scope="col">tmpd</th>
+<th data-quarto-table-cell-role="th" scope="col">dptp</th>
+<th data-quarto-table-cell-role="th" scope="col">date</th>
+<th data-quarto-table-cell-role="th" scope="col">pm25tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">pm10tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">o3tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">no2tmean2</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;date&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chic</td>
+<td>31.5</td>
+<td>31.500</td>
+<td>1987-01-01</td>
+<td>NA</td>
+<td>34.00000</td>
+<td>4.250000</td>
+<td>19.98810</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>33.0</td>
+<td>29.875</td>
+<td>1987-01-02</td>
+<td>NA</td>
+<td>NA</td>
+<td>3.304348</td>
+<td>23.19099</td>
+</tr>
+<tr class="odd">
+<td>chic</td>
+<td>33.0</td>
+<td>27.375</td>
+<td>1987-01-03</td>
+<td>NA</td>
+<td>34.16667</td>
+<td>3.333333</td>
+<td>23.81548</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>29.0</td>
+<td>28.625</td>
+<td>1987-01-04</td>
+<td>NA</td>
+<td>47.00000</td>
+<td>4.375000</td>
+<td>30.43452</td>
+</tr>
+<tr class="odd">
+<td>chic</td>
+<td>32.0</td>
+<td>28.875</td>
+<td>1987-01-05</td>
+<td>NA</td>
+<td>NA</td>
+<td>4.750000</td>
+<td>30.33333</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>40.0</td>
+<td>35.125</td>
+<td>1987-01-06</td>
+<td>NA</td>
+<td>48.00000</td>
+<td>5.833333</td>
+<td>25.77233</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>We can now check the first few rows</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>chicago_by_date <span class="sc">%&gt;%</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date, pm25tmean2) <span class="sc">%&gt;%</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>        date pm25tmean2
-1 1987-01-01         NA
-2 1987-01-02         NA
-3 1987-01-03         NA</code></pre>
+<div id="b3f4e3a6-6be0-49d2-ba03-9fcfc72254c4" class="cell" data-tags="[]" data-execution_count="142">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>chicago_by_date <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date, pm25tmean2) <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 3 × 2</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">date</th>
+<th data-quarto-table-cell-role="th" scope="col">pm25tmean2</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;date&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1987-01-01</td>
+<td>NA</td>
+</tr>
+<tr class="even">
+<td>1987-01-02</td>
+<td>NA</td>
+</tr>
+<tr class="odd">
+<td>1987-01-03</td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>and the last few rows.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>chicago_by_date <span class="sc">%&gt;%</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date, pm25tmean2) <span class="sc">%&gt;%</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tail</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>           date pm25tmean2
-6938 2005-12-29    7.45000
-6939 2005-12-30   15.05714
-6940 2005-12-31   15.00000</code></pre>
+<div id="34cdea90-60c0-43be-acf6-c17af8ef9751" class="cell" data-tags="[]" data-execution_count="143">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>chicago_by_date <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date, pm25tmean2) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tail</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 3 × 2</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">date</th>
+<th data-quarto-table-cell-role="th" scope="col">pm25tmean2</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;date&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2005-12-29</td>
+<td>7.45000</td>
+</tr>
+<tr class="even">
+<td>2005-12-30</td>
+<td>15.05714</td>
+</tr>
+<tr class="odd">
+<td>2005-12-31</td>
+<td>15.00000</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<p>Columns can be arranged in descending order too by using the special <code>desc()</code> operator.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(date)) <span class="sc">%&gt;%</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  city tmpd dptp       date pm25tmean2 pm10tmean2  o3tmean2 no2tmean2
-1 chic   35 30.1 2005-12-31   15.00000       23.5  2.531250  13.25000
-2 chic   36 31.0 2005-12-30   15.05714       19.2  3.034420  22.80556
-3 chic   35 29.4 2005-12-29    7.45000       23.5  6.794837  19.97222
-4 chic   37 34.5 2005-12-28   17.75000       27.5  3.260417  19.28563
-5 chic   40 33.6 2005-12-27   23.56000       27.0  4.468750  23.50000
-6 chic   35 29.6 2005-12-26    8.40000        8.5 14.041667  16.81944</code></pre>
+</div>
+<p>Columns can be arranged in descending order too by using the <code>desc()</code> helper function.</p>
+<div id="a4aa12e7-3fc1-4d36-bbb7-40d6c6664884" class="cell" data-tags="[]" data-execution_count="144">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(date)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 × 8</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">city</th>
+<th data-quarto-table-cell-role="th" scope="col">tmpd</th>
+<th data-quarto-table-cell-role="th" scope="col">dptp</th>
+<th data-quarto-table-cell-role="th" scope="col">date</th>
+<th data-quarto-table-cell-role="th" scope="col">pm25tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">pm10tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">o3tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">no2tmean2</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;date&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chic</td>
+<td>35</td>
+<td>30.1</td>
+<td>2005-12-31</td>
+<td>15.00000</td>
+<td>23.5</td>
+<td>2.531250</td>
+<td>13.25000</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>36</td>
+<td>31.0</td>
+<td>2005-12-30</td>
+<td>15.05714</td>
+<td>19.2</td>
+<td>3.034420</td>
+<td>22.80556</td>
+</tr>
+<tr class="odd">
+<td>chic</td>
+<td>35</td>
+<td>29.4</td>
+<td>2005-12-29</td>
+<td>7.45000</td>
+<td>23.5</td>
+<td>6.794837</td>
+<td>19.97222</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>37</td>
+<td>34.5</td>
+<td>2005-12-28</td>
+<td>17.75000</td>
+<td>27.5</td>
+<td>3.260417</td>
+<td>19.28563</td>
+</tr>
+<tr class="odd">
+<td>chic</td>
+<td>40</td>
+<td>33.6</td>
+<td>2005-12-27</td>
+<td>23.56000</td>
+<td>27.0</td>
+<td>4.468750</td>
+<td>23.50000</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>35</td>
+<td>29.6</td>
+<td>2005-12-26</td>
+<td>8.40000</td>
+<td>8.5</td>
+<td>14.041667</td>
+<td>16.81944</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>Here’s a table of helper functions specifically associated with <code>arrange()</code>:</p>
@@ -1218,41 +1927,136 @@ Using the first match ...</code></pre>
 </tr>
 </tbody>
 </table>
-<p>Note that while <code>row_number()</code> can be used in conjunction with <code>arrange()</code>, it’s often seen in <code>mutate()</code> for creating an index column based on ordering.</p>
-<p>The <code>across()</code> function, introduced in <code>dplyr</code> version 1.0.0, provides a more concise syntax for working with multiple columns. It can be especially useful in <code>arrange()</code> when you’re trying to order rows based on a selection of columns that match a certain criterion.</p>
-<p>Note that most of the magic with <code>arrange()</code> happens through the way you structure its arguments and not necessarily through a large set of helper functions.</p>
+<p>Note that <code>row_number()</code> is often seen in <code>mutate()</code> for creating an index column based on ordering.</p>
+<p>The <code>across()</code> function provides a more concise syntax for working with multiple columns.</p>
+<p>It is useful in <code>arrange()</code> when you’re trying to order rows based on a selection of columns that match a certain criterion.</p>
+<p>Most of the magic with <code>arrange()</code> happens through the way you structure its arguments and not necessarily through a large set of helper functions.</p>
 </section>
 <section id="rename" class="level2">
 <h2 class="anchored" data-anchor-id="rename"><code>rename()</code></h2>
 <p>Renaming a variable in a data frame in R is surprisingly hard to do!</p>
 <p>The <code>rename()</code> function is designed to make this process easier.</p>
-<p>Here we the names of the first five variables in the <code>chicago</code> data frame.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chicago[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  city tmpd   dptp       date pm25tmean2
-1 chic 31.5 31.500 1987-01-01         NA
-2 chic 33.0 29.875 1987-01-02         NA
-3 chic 33.0 27.375 1987-01-03         NA</code></pre>
+<p>Here we select the names of the first five variables in the <code>chicago</code> data frame.</p>
+<div id="f282bc64-481f-410e-a1d2-2f2351452111" class="cell" data-tags="[]" data-execution_count="145">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 3 × 5</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">city</th>
+<th data-quarto-table-cell-role="th" scope="col">tmpd</th>
+<th data-quarto-table-cell-role="th" scope="col">dptp</th>
+<th data-quarto-table-cell-role="th" scope="col">date</th>
+<th data-quarto-table-cell-role="th" scope="col">pm25tmean2</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;date&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chic</td>
+<td>31.5</td>
+<td>31.500</td>
+<td>1987-01-01</td>
+<td>NA</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>33.0</td>
+<td>29.875</td>
+<td>1987-01-02</td>
+<td>NA</td>
+</tr>
+<tr class="odd">
+<td>chic</td>
+<td>33.0</td>
+<td>27.375</td>
+<td>1987-01-03</td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<p>The <code>dptp</code> column is supposed to represent the dew point temperature and the <code>pm25tmean2</code> column provides the PM2.5 data.</p>
-<p>However, these names are awkward and should be renamed to something more sensible.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="ot">&lt;-</span> chicago <span class="sc">%&gt;%</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">dewpoint =</span> dptp, <span class="at">pm25 =</span> pm25tmean2) </span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span>  </span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  city tmpd dewpoint       date pm25 pm10tmean2 o3tmean2 no2tmean2
-1 chic 31.5   31.500 1987-01-01   NA   34.00000 4.250000  19.98810
-2 chic 33.0   29.875 1987-01-02   NA         NA 3.304348  23.19099
-3 chic 33.0   27.375 1987-01-03   NA   34.16667 3.333333  23.81548</code></pre>
+</div>
+<p>The <code>dptp</code> column represents the dew point temperature and the <code>pm25tmean2</code> column the PM2.5 data.</p>
+<p>These names are cryptic, so let’s rename them.</p>
+<div id="0c870358-cadc-451f-9c6b-dbb745e9fcff" class="cell" data-tags="[]" data-execution_count="146">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="ot">&lt;-</span> chicago <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">dewpoint =</span> dptp, <span class="at">pm25 =</span> pm25tmean2) </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span>  </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 3 × 8</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">city</th>
+<th data-quarto-table-cell-role="th" scope="col">tmpd</th>
+<th data-quarto-table-cell-role="th" scope="col">dewpoint</th>
+<th data-quarto-table-cell-role="th" scope="col">date</th>
+<th data-quarto-table-cell-role="th" scope="col">pm25</th>
+<th data-quarto-table-cell-role="th" scope="col">pm10tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">o3tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">no2tmean2</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;date&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chic</td>
+<td>31.5</td>
+<td>31.500</td>
+<td>1987-01-01</td>
+<td>NA</td>
+<td>34.00000</td>
+<td>4.250000</td>
+<td>19.98810</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>33.0</td>
+<td>29.875</td>
+<td>1987-01-02</td>
+<td>NA</td>
+<td>NA</td>
+<td>3.304348</td>
+<td>23.19099</td>
+</tr>
+<tr class="odd">
+<td>chic</td>
+<td>33.0</td>
+<td>27.375</td>
+<td>1987-01-03</td>
+<td>NA</td>
+<td>34.16667</td>
+<td>3.333333</td>
+<td>23.81548</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>The syntax inside the <code>rename()</code> function is to have the new name on the left-hand side of the <code>=</code> sign and the old name on the right-hand side.</p>
-<p>I leave it as an exercise for the reader to figure how you do this in base R without <code>dplyr</code>.</p>
 <p>Here’s a table of helper functions that can be used with <code>rename()</code>:</p>
 <table class="table">
 <colgroup>
@@ -1295,55 +2099,201 @@ Using the first match ...</code></pre>
 </tr>
 </tbody>
 </table>
-<p>It’s worth noting that these helper functions will typically target the first column that meets the specified criterion. If there are multiple columns that match the criterion (e.g., multiple columns that start with “X”), you’ll need to use these helpers with more precision or utilize other techniques.</p>
+<p>It’s worth noting that these helper functions will typically target the first column that meets the specified criterion.</p>
+<p>If there are multiple columns that match the criterion (e.g., multiple columns that start with “X”), you’ll need to use these helpers with more precision or utilize other techniques.</p>
 <p>Also, remember to always refer to the official <code>dplyr</code> documentation as the package continues to evolve and new functionalities might be added over time.</p>
 </section>
 <section id="mutate" class="level2">
 <h2 class="anchored" data-anchor-id="mutate"><code>mutate()</code></h2>
-<p>The <code>mutate()</code> function creates new columns based on computations usually involving the other columns.</p>
-<p>For example, with air pollution data, <strong>we often want to <em>de-trend</em> the data by subtracting the mean from the data</strong>.</p>
-<p>That way we can look at whether a given day’s air pollution level is higher than or less than average (as opposed to looking at its absolute level).</p>
+<p>The <code>mutate()</code> function creates <strong>new columns</strong> based on computations usually involving the other columns.</p>
+<p>For example, with air pollution data, we often want to <strong>de-trend</strong> the data by subtracting the mean from the data.</p>
+<p>This allows us to see whether a given day’s air pollution level is higher than or less than average.</p>
 <p>Here we create a <code>pm25detrend</code> variable that subtracts the mean from the <code>pm25</code> variable.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="ot">&lt;-</span> chicago <span class="sc">%&gt;%</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pm25detrend =</span> pm25 <span class="sc">-</span> <span class="fu">mean</span>(pm25, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  city tmpd dewpoint       date pm25 pm10tmean2 o3tmean2 no2tmean2 pm25detrend
-1 chic 31.5   31.500 1987-01-01   NA   34.00000 4.250000  19.98810          NA
-2 chic 33.0   29.875 1987-01-02   NA         NA 3.304348  23.19099          NA
-3 chic 33.0   27.375 1987-01-03   NA   34.16667 3.333333  23.81548          NA
-4 chic 29.0   28.625 1987-01-04   NA   47.00000 4.375000  30.43452          NA
-5 chic 32.0   28.875 1987-01-05   NA         NA 4.750000  30.33333          NA
-6 chic 40.0   35.125 1987-01-06   NA   48.00000 5.833333  25.77233          NA</code></pre>
+<p>We also compute the Z-score.</p>
+<div id="eac2896e-a3cf-4b9d-a878-b1f536b466f7" class="cell" data-tags="[]" data-execution_count="149">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="ot">&lt;-</span> chicago <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">pm25detrend =</span> pm25 <span class="sc">-</span> <span class="fu">mean</span>(pm25, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">pm25z =</span> pm25detrend <span class="sc">/</span> <span class="fu">sd</span>(pm25, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span> <span class="fu">tail</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 × 10</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">city</th>
+<th data-quarto-table-cell-role="th" scope="col">tmpd</th>
+<th data-quarto-table-cell-role="th" scope="col">dewpoint</th>
+<th data-quarto-table-cell-role="th" scope="col">date</th>
+<th data-quarto-table-cell-role="th" scope="col">pm25</th>
+<th data-quarto-table-cell-role="th" scope="col">pm10tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">o3tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">no2tmean2</th>
+<th data-quarto-table-cell-role="th" scope="col">pm25detrend</th>
+<th data-quarto-table-cell-role="th" scope="col">pm25z</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;date&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chic</td>
+<td>35</td>
+<td>29.6</td>
+<td>2005-12-26</td>
+<td>8.40000</td>
+<td>8.5</td>
+<td>14.041667</td>
+<td>16.81944</td>
+<td>-7.830958</td>
+<td>-0.9003429</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>40</td>
+<td>33.6</td>
+<td>2005-12-27</td>
+<td>23.56000</td>
+<td>27.0</td>
+<td>4.468750</td>
+<td>23.50000</td>
+<td>7.329042</td>
+<td>0.8426366</td>
+</tr>
+<tr class="odd">
+<td>chic</td>
+<td>37</td>
+<td>34.5</td>
+<td>2005-12-28</td>
+<td>17.75000</td>
+<td>27.5</td>
+<td>3.260417</td>
+<td>19.28563</td>
+<td>1.519042</td>
+<td>0.1746477</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>35</td>
+<td>29.4</td>
+<td>2005-12-29</td>
+<td>7.45000</td>
+<td>23.5</td>
+<td>6.794837</td>
+<td>19.97222</td>
+<td>-8.780958</td>
+<td>-1.0095666</td>
+</tr>
+<tr class="odd">
+<td>chic</td>
+<td>36</td>
+<td>31.0</td>
+<td>2005-12-30</td>
+<td>15.05714</td>
+<td>19.2</td>
+<td>3.034420</td>
+<td>22.80556</td>
+<td>-1.173815</td>
+<td>-0.1349561</td>
+</tr>
+<tr class="even">
+<td>chic</td>
+<td>35</td>
+<td>30.1</td>
+<td>2005-12-31</td>
+<td>15.00000</td>
+<td>23.5</td>
+<td>2.531250</td>
+<td>13.25000</td>
+<td>-1.230958</td>
+<td>-0.1415260</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<p>There is also the related <code>transmute()</code> function, which does the same thing as <code>mutate()</code> but then <strong><em>drops all non-transformed variables</em></strong>.</p>
+</div>
+<p>Note how the new column name <code>pm25detrend</code> can be used immediately within the argument space of <code>mutate()</code>.</p>
+<p>Dplyr also has a related <code>transmute()</code> function.</p>
+<p>It does the same thing as <code>mutate()</code> but then <strong><em>drops all non-transformed variables</em></strong>.</p>
 <p>Here we de-trend the PM10 and ozone (O3) variables.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>chicago_detrended <span class="ot">&lt;-</span> chicago <span class="sc">%&gt;%</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="at">pm10detrend =</span> pm10tmean2 <span class="sc">-</span> <span class="fu">mean</span>(pm10tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">o3detrend =</span> o3tmean2 <span class="sc">-</span> <span class="fu">mean</span>(o3tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chicago_detrended)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  pm10detrend o3detrend
-1   0.1047939 -15.18551
-2          NA -16.13117
-3   0.2714605 -16.10218
-4  13.1047939 -15.06051
-5          NA -14.68551
-6  14.1047939 -13.60218</code></pre>
+<div id="0774ad08-80eb-4344-928f-63e10d1bc814" class="cell" data-tags="[]" data-execution_count="150">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>chicago_detrended <span class="ot">&lt;-</span> chicago <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="at">pm10detrend =</span> pm10tmean2 <span class="sc">-</span> <span class="fu">mean</span>(pm10tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">o3detrend =</span> o3tmean2 <span class="sc">-</span> <span class="fu">mean</span>(o3tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">o3z =</span> o3detrend <span class="sc">/</span> <span class="fu">sd</span>(o3tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>chicago_detrended <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 × 3</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">pm10detrend</th>
+<th data-quarto-table-cell-role="th" scope="col">o3detrend</th>
+<th data-quarto-table-cell-role="th" scope="col">o3z</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.1047939</td>
+<td>-15.18551</td>
+<td>-1.333702</td>
+</tr>
+<tr class="even">
+<td>NA</td>
+<td>-16.13117</td>
+<td>-1.416756</td>
+</tr>
+<tr class="odd">
+<td>0.2714605</td>
+<td>-16.10218</td>
+<td>-1.414211</td>
+</tr>
+<tr class="even">
+<td>13.1047939</td>
+<td>-15.06051</td>
+<td>-1.322724</td>
+</tr>
+<tr class="odd">
+<td>NA</td>
+<td>-14.68551</td>
+<td>-1.289789</td>
+</tr>
+<tr class="even">
+<td>14.1047939</td>
+<td>-13.60218</td>
+<td>-1.194642</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<p>Note that there are only two columns in the transmuted data frame.</p>
+</div>
+<p>Note that there are only three columns in the transmuted data frame.</p>
 <p>Here’s a table of helper functions specifically associated with <code>mutate()</code>:</p>
 <table class="table">
 <colgroup>
-<col style="width: 25%">
+<col style="width: 26%">
 <col style="width: 31%">
-<col style="width: 43%">
+<col style="width: 42%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1419,112 +2369,286 @@ Using the first match ...</code></pre>
 <section id="group_by" class="level2">
 <h2 class="anchored" data-anchor-id="group_by"><code>group_by()</code></h2>
 <p>The <code>group_by()</code> function is used to generate <strong>summary or aggregate statistics</strong> from a data frame.</p>
+<p>In conjunction with the <code>group_by()</code> function we often use the <code>summarize()</code> function.</p>
+<p>The general operation here is a combination of:</p>
+<ul>
+<li><strong>splitting</strong> a table into separate pieces defined by a variable or group of variables (<code>group_by()</code>),</li>
+<li>then <strong>applying</strong> a summary function across those subsets (<code>summarize()</code>),</li>
+<li>then <strong>combining</strong> back into another table.</li>
+</ul>
+<p>This pattern is called <strong>split, apply, and combine</strong>.</p>
+<p>It is a fundamental pattern in data processing.</p>
 <p>For example, in this air pollution dataset, you might want to know the <strong>average annual level of PM2.5</strong>.</p>
-<p>So <strong>the stratum is the year</strong>, which we can derive from the <code>date</code> variable.</p>
-<p><strong>In conjunction with the <code>group_by()</code> function we often use the <code>summarize()</code> function.</strong></p>
-<p>The general operation here is a combination of <strong>splitting</strong> a table into separate pieces defined by a variable or group of variables (<code>group_by()</code>), and then <strong>applying</strong> a summary function across those subsets (<code>summarize()</code>), then <strong>combining</strong> back into another table.</p>
-<blockquote class="blockquote">
-<p>This pattern is called <strong>split, apply, and combine</strong>. It is a fundamental pattern in data processing.</p>
-</blockquote>
+<p>The stratum is the <strong>year</strong>, which we can derive from the <code>date</code> variable.</p>
 <p>First, we can create a <code>year</code> variable using <code>as.POSIXlt()</code>.</p>
 <p>Then we group on our new column and compute summary statistics for each year with the <code>summarize()</code> function.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> chicago <span class="sc">%&gt;%</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.POSIXlt</span>(date)<span class="sc">$</span>year <span class="sc">+</span> <span class="dv">1900</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">pm25 =</span> <span class="fu">mean</span>(pm25, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">o3 =</span> <span class="fu">max</span>(o3tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">no2 =</span> <span class="fu">median</span>(no2tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(years)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-   year  pm25    o3   no2
-  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1  1987   NaN  63.0  23.5
-2  1988   NaN  61.7  24.5
-3  1989   NaN  59.7  26.1
-4  1990   NaN  52.2  22.6
-5  1991   NaN  63.1  21.4
-6  1992   NaN  50.8  24.8</code></pre>
+<div id="72d710d1-c794-40ff-b6c8-d8bc843b5ffc" class="cell" data-tags="[]" data-execution_count="159">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> chicago <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.POSIXlt</span>(date)<span class="sc">$</span>year <span class="sc">+</span> <span class="dv">1900</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">pm25 =</span> <span class="fu">mean</span>(pm25, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">o3 =</span> <span class="fu">max</span>(o3tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">no2 =</span> <span class="fu">median</span>(no2tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>years <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 × 4</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">year</th>
+<th data-quarto-table-cell-role="th" scope="col">pm25</th>
+<th data-quarto-table-cell-role="th" scope="col">o3</th>
+<th data-quarto-table-cell-role="th" scope="col">no2</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1987</td>
+<td>NaN</td>
+<td>62.96966</td>
+<td>23.49369</td>
+</tr>
+<tr class="even">
+<td>1988</td>
+<td>NaN</td>
+<td>61.67708</td>
+<td>24.52296</td>
+</tr>
+<tr class="odd">
+<td>1989</td>
+<td>NaN</td>
+<td>59.72727</td>
+<td>26.14062</td>
+</tr>
+<tr class="even">
+<td>1990</td>
+<td>NaN</td>
+<td>52.22917</td>
+<td>22.59583</td>
+</tr>
+<tr class="odd">
+<td>1991</td>
+<td>NaN</td>
+<td>63.10417</td>
+<td>21.38194</td>
+</tr>
+<tr class="even">
+<td>1992</td>
+<td>NaN</td>
+<td>50.82870</td>
+<td>24.78921</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>To see why we add <span class="math inline">\(1900\)</span> in the preceding mutation, note that the date function returns just the last two digits of the year.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.POSIXlt</span>(chicago<span class="sc">$</span>date)<span class="sc">$</span>year <span class="sc">%&gt;%</span> </span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 87 87 87 87 87 87</code></pre>
+<div id="72e37fed-73eb-4ce5-977f-66c764ad49be" class="cell" data-tags="[]" data-execution_count="154">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.POSIXlt</span>(chicago<span class="sc">$</span>date)<span class="sc">$</span>year <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>87</li><li>87</li><li>87</li><li>87</li><li>87</li><li>87</li></ol>
 </div>
 </div>
 <p>Note in the process, we implicitly created a separate data frame that splits the original data frame by year, which is then passed to <code>summarize()</code>.</p>
 <p><code>summarize()</code> then returns a data frame with columns for <code>year</code> and the annual averages of <code>pm25</code>, <code>o3</code>, and <code>no2</code>.</p>
-<p>In a slightly more complicated example, we might want to know what are the average levels of ozone (<code>o3</code>) and nitrogen dioxide (<code>no2</code>) within quantiles of <code>pm25</code>.</p>
-<p>A slicker way to do this would be through a regression model, but we can actually do this quickly with <code>group_by()</code> and <code>summarize()</code>.</p>
+<p>In a slightly more complicated example, we might want to know what are the average levels of ozone <code>o3</code> and nitrogen dioxide <code>no2</code> within quantiles of <code>pm25</code>.</p>
+<p>We could do this with a regression model, but we can also do this quickly with <code>group_by()</code> and <code>summarize()</code>.</p>
 <p>First, we can create a categorical variable of <code>pm25</code> divided into quantiles.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>qq <span class="ot">&lt;-</span> <span class="fu">quantile</span>(chicago<span class="sc">$</span>pm25, <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.2</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>qq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="57fe034f-1e99-4ca8-a53a-3ce149974d0a" class="cell" data-tags="[]" data-execution_count="155">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>qq <span class="ot">&lt;-</span> <span class="fu">quantile</span>(chicago<span class="sc">$</span>pm25, <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.2</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(qq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    0%    20%    40%    60%    80%   100% 
  1.700  8.700 12.375 16.700 22.610 61.500 </code></pre>
 </div>
 </div>
-<p>Then can group the data frame by the <code>pm25.quint</code> variable. and compute the mean of <code>o3</code> and <code>no2</code> within quantiles of <code>pm25</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pm25.quint =</span> <span class="fu">cut</span>(pm25, qq)) <span class="sc">%&gt;%</span></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(pm25.quint) <span class="sc">%&gt;%</span></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">o3 =</span> <span class="fu">mean</span>(o3tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">no2 =</span> <span class="fu">mean</span>(no2tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">.groups =</span> <span class="st">"drop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  pm25.quint     o3   no2
-  &lt;fct&gt;       &lt;dbl&gt; &lt;dbl&gt;
-1 (1.7,8.7]    21.7  18.0
-2 (8.7,12.4]   20.4  22.1
-3 (12.4,16.7]  20.7  24.4
-4 (16.7,22.6]  19.9  27.3
-5 (22.6,61.5]  20.3  29.6
-6 &lt;NA&gt;         18.8  25.8</code></pre>
+<p>Then we group the data frame by the <code>pm25.quint</code> variable and compute the mean of <code>o3</code> and <code>no2</code> within quantiles of <code>pm25</code>.</p>
+<div id="7f29dc70-af72-41c1-ba16-294320090610" class="cell" data-tags="[]" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pm25.quint =</span> <span class="fu">cut</span>(pm25, qq)) <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(pm25.quint) <span class="sc">%&gt;%</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">o3 =</span> <span class="fu">mean</span>(o3tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">no2 =</span> <span class="fu">mean</span>(no2tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">.groups =</span> <span class="st">"drop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 × 3</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">pm25.quint</th>
+<th data-quarto-table-cell-role="th" scope="col">o3</th>
+<th data-quarto-table-cell-role="th" scope="col">no2</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;fct&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(1.7,8.7]</td>
+<td>21.66401</td>
+<td>17.99129</td>
+</tr>
+<tr class="even">
+<td>(8.7,12.4]</td>
+<td>20.38248</td>
+<td>22.13004</td>
+</tr>
+<tr class="odd">
+<td>(12.4,16.7]</td>
+<td>20.66160</td>
+<td>24.35708</td>
+</tr>
+<tr class="even">
+<td>(16.7,22.6]</td>
+<td>19.88122</td>
+<td>27.27132</td>
+</tr>
+<tr class="odd">
+<td>(22.6,61.5]</td>
+<td>20.31775</td>
+<td>29.64427</td>
+</tr>
+<tr class="even">
+<td>NA</td>
+<td>18.79044</td>
+<td>25.77585</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>From the table, it seems there isn’t a strong relationship between <code>pm25</code> and <code>o3</code>, but there appears to be a positive correlation between <code>pm25</code> and <code>no2</code>.</p>
 <p>More sophisticated statistical modeling can help to provide precise answers to these questions, but a simple application of <code>dplyr</code> functions can often get you most of the way there.</p>
 <p>Here is another example:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span>  </span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">as.POSIXlt</span>(date)<span class="sc">$</span>mon <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span>                              <span class="co"># SPLIT</span></span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">pm25 =</span> <span class="fu">mean</span>(pm25, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),       <span class="co"># APPLY </span></span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">o3 =</span> <span class="fu">max</span>(o3tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">no2 =</span> <span class="fu">median</span>(no2tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 4
-   month  pm25    o3   no2
-   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1     1  17.8  28.2  25.4
- 2     2  20.4  37.4  26.8
- 3     3  17.4  39.0  26.8
- 4     4  13.9  47.9  25.0
- 5     5  14.1  52.8  24.2
- 6     6  15.9  66.6  25.0
- 7     7  16.6  59.5  22.4
- 8     8  16.9  54.0  23.0
- 9     9  15.9  57.5  24.5
-10    10  14.2  47.1  24.2
-11    11  15.2  29.5  23.6
-12    12  17.5  27.7  24.5</code></pre>
+<div id="2a436a25-323d-4870-b49e-a767f9b457fa" class="cell" data-tags="[]" data-execution_count="157">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span>  </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">as.POSIXlt</span>(date)<span class="sc">$</span>mon <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span>                              <span class="co"># SPLIT</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">pm25 =</span> <span class="fu">mean</span>(pm25, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),       <span class="co"># APPLY </span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">o3 =</span> <span class="fu">max</span>(o3tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">no2 =</span> <span class="fu">median</span>(no2tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span>) </span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>                                                    <span class="co"># COMBINE (in the result)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 12 × 4</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">month</th>
+<th data-quarto-table-cell-role="th" scope="col">pm25</th>
+<th data-quarto-table-cell-role="th" scope="col">o3</th>
+<th data-quarto-table-cell-role="th" scope="col">no2</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>17.76996</td>
+<td>28.22222</td>
+<td>25.35417</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>20.37513</td>
+<td>37.37500</td>
+<td>26.78034</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>17.40818</td>
+<td>39.05000</td>
+<td>26.76984</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>13.85879</td>
+<td>47.94907</td>
+<td>25.03125</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>14.07420</td>
+<td>52.75000</td>
+<td>24.22222</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>15.86461</td>
+<td>66.58750</td>
+<td>25.01140</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>16.57087</td>
+<td>59.54167</td>
+<td>22.38442</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>16.93380</td>
+<td>53.96701</td>
+<td>22.98333</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>15.91279</td>
+<td>57.48864</td>
+<td>24.47917</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>14.23557</td>
+<td>47.09275</td>
+<td>24.15217</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>15.15794</td>
+<td>29.45833</td>
+<td>23.56537</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>17.52221</td>
+<td>27.70833</td>
+<td>24.45773</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>                                                   <span class="co"># COMBINE (in the result)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 <p>Here’s a table of helper functions specifically associated with <code>group_by()</code>:</p>
 <table class="table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 44%">
+<col style="width: 26%">
+<col style="width: 43%">
 <col style="width: 30%">
 </colgroup>
 <thead>
@@ -1568,21 +2692,10 @@ Using the first match ...</code></pre>
 </tbody>
 </table>
 <p>It’s worth noting that <code>group_by()</code> often works in tandem with other verbs, so the real power comes from the combined operations. For instance, after grouping data, one often uses <code>summarise()</code> to calculate summary statistics for each group. The combination of these functions and their associated helpers allow for a wide range of group-wise data manipulation tasks.</p>
-</section>
-</section>
-<section id="summary" class="level1">
-<h1>Summary</h1>
-<p>The <code>dplyr</code> package provides a concise set of operations for managing data frames and tibbles.</p>
-<p>It allows us to perform a number of complex operations in just a few lines of code.</p>
-<p>In particular, we can often conduct the beginnings of an exploratory analysis with the powerful combination of <code>group_by()</code> and <code>summarize()</code>.</p>
-<p>Once you learn the <code>dplyr</code> grammar there are a few additional benefits — <code>dplyr</code> can work with other data frame “back ends” such as SQL databases. There is an SQL interface for relational databases via the DBI package — <code>dplyr</code> can be integrated with the <code>data.table</code> package for large fast tables</p>
-<p>The <code>dplyr</code> package is handy way to both simplify and speed up your data frame management code. It’s rare that you get such a combination at the same time!</p>
-<hr>
-<blockquote class="blockquote">
 <p>Based on <a href="https://bookdown.org/rdpeng/rprogdatascience/">Peng 2022</a></p>
-</blockquote>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -2004,8 +3117,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../notebooks/M11_RDplyr/M11-01-Tibbles.html" class="pagination-link" aria-label="NB: Introducing Tibbles">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">NB: Introducing Tibbles</span></span>
+      <a href="../../notebooks/M11_RDplyr/M11-01-Tibbles.html" class="pagination-link" aria-label="NB: The Tidyverse and Tibbles">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">NB: The Tidyverse and Tibbles</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -2019,4 +3132,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ontoligent/DS5100-book/edit/main/notebooks/M11_RDplyr/M11-02-Dplyr.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M11_RDplyr/M11-02-Dplyr.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

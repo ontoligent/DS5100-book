@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DS 5100: Programming for Data Science - NB: Introducing Tibbles</title>
+<title>DS 5100: Programming for Data Science - NB: The Tidyverse and Tibbles</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,6 +102,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -115,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m11/m11-intro.html">M11 Dplyr</a></li><li class="breadcrumb-item"><a href="../../notebooks/M11_RDplyr/M11-01-Tibbles.html"><span class="chapter-title">NB: Introducing Tibbles</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m11/m11-intro.html">M11 Dplyr</a></li><li class="breadcrumb-item"><a href="../../notebooks/M11_RDplyr/M11-01-Tibbles.html"><span class="chapter-title">NB: The Tidyverse and Tibbles</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -509,7 +512,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Data Types</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Data Types and Operators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -524,12 +527,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-05-ControlStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Control Structures and Functions</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-05-ControlStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Control Structures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-06-Functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Functions</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-06-Functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Functions</span></a>
   </div>
 </li>
       </ul>
@@ -545,7 +548,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M11_RDplyr/M11-01-Tibbles.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: Introducing Tibbles</span></a>
+  <a href="../../notebooks/M11_RDplyr/M11-01-Tibbles.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: The Tidyverse and Tibbles</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -639,30 +642,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#the-tidyverse" id="toc-the-tidyverse" class="nav-link active" data-scroll-target="#the-tidyverse">The Tidyverse</a></li>
-  <li><a href="#dplyr" id="toc-dplyr" class="nav-link" data-scroll-target="#dplyr">Dplyr</a></li>
+  <li><a href="#core-libraries" id="toc-core-libraries" class="nav-link" data-scroll-target="#core-libraries">Core Libraries</a>
+  <ul class="collapse">
+  <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data">Tidy Data</a></li>
   <li><a href="#piping-with" id="toc-piping-with" class="nav-link" data-scroll-target="#piping-with">Piping with <code>%&gt;%</code></a></li>
+  </ul></li>
   <li><a href="#tibbles" id="toc-tibbles" class="nav-link" data-scroll-target="#tibbles">Tibbles</a>
   <ul class="collapse">
   <li><a href="#creating-tibbles" id="toc-creating-tibbles" class="nav-link" data-scroll-target="#creating-tibbles">Creating tibbles</a></li>
   <li><a href="#tribbles" id="toc-tribbles" class="nav-link" data-scroll-target="#tribbles">Tribbles</a></li>
   <li><a href="#non-syntactic-names" id="toc-non-syntactic-names" class="nav-link" data-scroll-target="#non-syntactic-names">Non-syntactic names</a></li>
   </ul></li>
-  <li><a href="#tibbles-vs.-data.frame" id="toc-tibbles-vs.-data.frame" class="nav-link" data-scroll-target="#tibbles-vs.-data.frame">Tibbles vs.&nbsp;data.frame</a>
+  <li><a href="#tibbles-vs.-data-frames" id="toc-tibbles-vs.-data-frames" class="nav-link" data-scroll-target="#tibbles-vs.-data-frames">Tibbles vs.&nbsp;Data Frames</a>
   <ul class="collapse">
   <li><a href="#printing" id="toc-printing" class="nav-link" data-scroll-target="#printing">Printing</a></li>
   <li><a href="#using-rstudio-view" id="toc-using-rstudio-view" class="nav-link" data-scroll-target="#using-rstudio-view">Using RStudio <code>View()</code></a></li>
   <li><a href="#extracting-variables" id="toc-extracting-variables" class="nav-link" data-scroll-target="#extracting-variables">Extracting variables</a></li>
   <li><a href="#subsetting" id="toc-subsetting" class="nav-link" data-scroll-target="#subsetting">Subsetting</a></li>
+  <li><a href="#converting" id="toc-converting" class="nav-link" data-scroll-target="#converting">Converting</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ontoligent/DS5100-book/edit/main/notebooks/M11_RDplyr/M11-01-Tibbles.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M11_RDplyr/M11-01-Tibbles.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m11/m11-intro.html">M11 Dplyr</a></li><li class="breadcrumb-item"><a href="../../notebooks/M11_RDplyr/M11-01-Tibbles.html"><span class="chapter-title">NB: Introducing Tibbles</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m11/m11-intro.html">M11 Dplyr</a></li><li class="breadcrumb-item"><a href="../../notebooks/M11_RDplyr/M11-01-Tibbles.html"><span class="chapter-title">NB: The Tidyverse and Tibbles</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">NB: Introducing Tibbles</span></h1>
+<h1 class="title"><span class="chapter-title">NB: The Tidyverse and Tibbles</span></h1>
 </div>
 
 
@@ -679,38 +686,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<blockquote class="blockquote">
-<p>Based on <a href="https://r4ds.had.co.nz/index.html">Wikham and Grolemund 2017</a></p>
-</blockquote>
+<p>Programming for Data Science</p>
+<p>This notebook is based on <a href="https://r4ds.had.co.nz/index.html">Wikham and Grolemund 2017</a>.</p>
 <section id="the-tidyverse" class="level2">
 <h2 class="anchored" data-anchor-id="the-tidyverse">The Tidyverse</h2>
 <p>Tidyverse is a collection of essential R packages for data science.</p>
-<p>The packages included in the Tidyverse are designed to support the pipeline of activities associated with data science, such as filtering, transforming, visualizing, etc.</p>
-<p><img src="images/paste-EE0D9577.png" class="img-fluid"></p>
+<p>The packages included in the Tidyverse are designed to support <strong>the pipeline of activities associated with data science</strong>, such as filtering, transforming, visualizing, etc.</p>
+<p><img src="M11-01-Tibbles_files/figure-html/c6eec373-0892-4a97-ad92-5fb5983af4e3-1-images/paste-EE0D9577.png" class="img-fluid"></p>
 <p>Tidyverse was created by <strong>Hadley Wickham</strong> and his team with the aim of providing all these utilities to clean and work with data.</p>
 <p>Here’s a graphic of the packages associated with the Tidyverse:</p>
-<p><img src="images/paste-32BD3A67.png" class="img-fluid"></p>
+<p><img src="M11-01-Tibbles_files/figure-html/11e1a8bc-01a2-4107-8221-c3e5aabca57c-1-images/paste-32BD3A67.png" class="img-fluid"></p>
 </section>
-<section id="dplyr" class="level2">
-<h2 class="anchored" data-anchor-id="dplyr">Dplyr</h2>
-<p>Dplyr introduces a <strong>new set of functions</strong> that make working with data more intuitive.</p>
+<section id="core-libraries" class="level1">
+<h1>Core Libraries</h1>
+<p>Of these libraries, three fundamental one are the following:</p>
 <ul>
-<li>It does this by introducing a set of functions that work together well to produce pipelines of actions.</li>
+<li><code>dplyr</code>: Provides a way to <strong>process</strong> data frames in an expressive way.</li>
+<li><code>ggplot2</code>: Provides a way to <strong>visualize</strong> data in an expressive way.</li>
+<li><code>tibble</code>: Provides a <strong>foundational data structure</strong> for use by other libraries in the Tidayverse.</li>
 </ul>
-<p>But as important, it introduces a <strong>vocabulary</strong> for talking about data.</p>
-<ul>
-<li>This makes it possible to imagine solutions verbally, and then to implement them in code.</li>
-</ul>
+<p>We’ll cover tibbles in this notebook and the other two in following notebooks.</p>
+<section id="tidy-data" class="level2">
+<h2 class="anchored" data-anchor-id="tidy-data">Tidy Data</h2>
+<p>Note that the word “tidy” in Tidyverse stands for <strong>a specific way to structure data in data frames</strong>.</p>
+<p>Specifically, the data must be “<a href="https://tidyr.tidyverse.org/articles/tidy-data.html">tidy</a>.”</p>
+<p>Tidy data frames have the following qualities:</p>
+<ol type="1">
+<li>Each variable forms a column.</li>
+<li>Each observation forms a row.</li>
+<li>Each type of observational unit forms a table.</li>
+</ol>
 <p>To use the Tidyverse, we often import everything:</p>
-<div class="cell">
+<div id="f85baa73-36a9-402c-b0e0-0181b0a33711" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ dplyr     1.1.3     ✔ readr     2.1.4
 ✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.1
-✔ purrr     1.0.1     
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -721,9 +736,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="piping-with" class="level2">
 <h2 class="anchored" data-anchor-id="piping-with">Piping with <code>%&gt;%</code></h2>
 <p>Just a quick note about this <strong>odd looking</strong> operator that you will start to see.</p>
-<p>One of the key elements of the Tidyverse is the use of <strong>piping</strong>, or the ability of to pass the return values of one function to another, without having to nest functions.</p>
+<p>One of the key elements of the Tidyverse is the use of <strong>piping</strong>.</p>
+<p>Piping is the ability of to <strong>pass the return values</strong> of one function to another, without having to nest functions.</p>
 <p>For example, instead of something like this:</p>
-<div class="cell">
+<div id="0a3e1d9e-4a08-480e-8141-46a1435102aa" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="st">"Hello"</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="st">"World"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -735,14 +751,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Or this:</p>
-<div class="cell">
+<div id="34199df3-b5a9-4d80-9d4a-25fc327dc6cb" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="fu">c</span>(a,b)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Hello" "World"</code></pre>
 </div>
 </div>
 <p>We can do:</p>
-<div class="cell">
+<div id="48a61553-13a9-4d8d-847b-53b7d80bb5ee" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(a, b) <span class="sc">%&gt;%</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -750,16 +766,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] "Hello" "World"</code></pre>
 </div>
 </div>
-<p>Although the last pattern is longer than the preceding, it is much easier to read and write, especially when we are working with several connected functions.</p>
-<p>This is similar to <strong>method chaining</strong> in Python, but is more pervasive.</p>
-<ul>
-<li>In Python you can do it with individual objects that return themselves (as it were).</li>
-<li>In Tidyverse, you can apply it to <strong>any two functions</strong> so long as it makes sense to pass the output of one as the input of another.</li>
-<li>Basically, the output of one function becomes the first argument of the following the <code>%&gt;%</code>.</li>
-</ul>
+<p>You can see that although this pattern is longer than the preceding, it is easier to read and write.</p>
+<p>Piping is similar to <strong>method chaining</strong> in Python, but is more pervasive.</p>
+<p>In Python you can do it with individual objects that return themselves (as it were).</p>
+<p>In Tidyverse, you can apply it to <strong>any two functions</strong> so long as it makes sense to pass the output of one as the input of another.</p>
+<p>Basically, the output of one function becomes the first argument of the following the <code>%&gt;%</code>.</p>
 <p>It is similar to the pipe operator <code>|</code> in Unix shells.</p>
 <p>By the way, the operator comes with the <a href="https://magrittr.tidyverse.org/"><strong>magrittr</strong></a> package, which is a central part of the Tidyverse. It is so central, in fact, that packages in the tidyverse load <code>%&gt;%</code> automatically.</p>
 <p>It provides a set of operators which make your code more readable.</p>
+</section>
 </section>
 <section id="tibbles" class="level1">
 <h1>Tibbles</h1>
@@ -771,195 +786,434 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>The foundational data structure of the Tidyverse is the <strong>tibble</strong>.</p>
 <p>Tibbles are data frames, but they tweak some older behaviors to make your life a little easier.</p>
-<p>To learn more about tibbles, check out the vignette:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">"tibble"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>starting httpd help server ... done</code></pre>
-</div>
-</div>
-<p>This will open a window in RStudio with the following content:</p>
-<p><img src="images/tibbles-vignette.png" class="img-fluid" style="border: 1px solid gray;" width="506"></p>
 <section id="creating-tibbles" class="level2">
 <h2 class="anchored" data-anchor-id="creating-tibbles">Creating tibbles</h2>
-<p>If you need to make a tibble “by hand”, you can use <code>tibble()</code> or <code>tribble()</code> (see below).</p>
+<p>If you need to make a tibble “by hand”, you can use <code>tibble()</code> or <code>tribble()</code>.</p>
 <p><code>tibble()</code> works by assembling individual vectors, a <strong>column-wise</strong> operation:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"h"</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-      x y    
-  &lt;dbl&gt; &lt;chr&gt;
-1     1 a    
-2     2 b    
-3     5 h    </code></pre>
+<div id="58861205-c2db-4a18-a698-81805d88a943" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"h"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 3 × 2</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">x</th>
+<th data-quarto-table-cell-role="th" scope="col">y</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>a</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>b</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>h</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<p>You can also optionally name the inputs, provide data inline with <code>c()</code>, and perform computation:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1 =</span> x,</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x2 =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">25</span>),</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">sqrt</span>(x1<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> x2<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-     x1    x2     y
-  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     1    10  10.0
-2     2    15  15.1
-3     5    25  25.5</code></pre>
+</div>
+<p>You can also name the inputs, provide data inline with <code>c()</code>, and perform computation:</p>
+<div id="1700f851-2fbb-4603-978d-444bcf02672d" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1 =</span> x,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x2 =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">25</span>),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">sqrt</span>(x1<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> x2<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 3 × 3</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">x1</th>
+<th data-quarto-table-cell-role="th" scope="col">x2</th>
+<th data-quarto-table-cell-role="th" scope="col">y</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>10</td>
+<td>10.04988</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>15</td>
+<td>15.13275</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>25</td>
+<td>25.49510</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>Every column in a data frame or tibble must be the same length. If they are not, you will get an error:</p>
+<div id="f0f235d6-22b7-4c8b-8640-7a7b1723971f" class="cell" data-tags="[]" data-execution_count="84">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(  </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>),   </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>) </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-yellow-fg ansi-bold">Error</span><span class="ansi-bold"> in `tibble()`:</span>
+<span class="ansi-yellow-fg">!</span> Tibble columns must have compatible sizes.
+<span class="ansi-cyan-fg">•</span> Size 2: Existing data.
+<span class="ansi-cyan-fg">•</span> Size 3: Column `y`.
+<span class="ansi-cyan-fg">ℹ</span> Only values of size one are recycled.
+</pre>
+</div>
+</div>
+</div>
 <p>As the error suggests, individual values will be recycled to the same length as everything else:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"a"</span>,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">z =</span> <span class="cn">TRUE</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 3
-      x y     z    
-  &lt;int&gt; &lt;chr&gt; &lt;lgl&gt;
-1     1 a     TRUE 
-2     2 a     TRUE 
-3     3 a     TRUE 
-4     4 a     TRUE 
-5     5 a     TRUE </code></pre>
+<div id="63bd9421-fb4c-44dc-9027-9cfcd18b9053" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"a"</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">z =</span> <span class="cn">TRUE</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 5 × 3</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">x</th>
+<th data-quarto-table-cell-role="th" scope="col">y</th>
+<th data-quarto-table-cell-role="th" scope="col">z</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;int&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;lgl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>a</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>a</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>a</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>a</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>a</td>
+<td>TRUE</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </section>
 <section id="tribbles" class="level2">
 <h2 class="anchored" data-anchor-id="tribbles">Tribbles</h2>
-<p>Another way to create a tibble is with <code>tribble()</code>, which short for <strong>transposed tibble</strong>.</p>
-<p><code>tribble()</code> is customized for data entry in code: <strong>column headings start with <code>~</code></strong> and <strong>entries are separated by commas</strong>.</p>
+<p>Another way to create a tibble is with <code>tribble()</code>, which short for <strong>transposed</strong> tibble.</p>
+<p><code>tribble()</code> is customized for entering data directly in code, where <strong>row-wise</strong> entries are more natural.</p>
+<p>Column headings start with <code>~</code>.</p>
+<p>Entries are separated by commas.</p>
 <p>This makes it possible to lay out small amounts of data in an easy to read form:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tribble</span>(</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>x, <span class="sc">~</span>y, <span class="sc">~</span>z,</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"a"</span>, <span class="dv">2</span>, <span class="fl">3.6</span>,</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"b"</span>, <span class="dv">1</span>, <span class="fl">8.5</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 3
-  x         y     z
-  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 a         2   3.6
-2 b         1   8.5</code></pre>
+<div id="edc14f0a-6ec2-4644-8dc4-d580e2272f04" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tribble</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>x, <span class="sc">~</span>y, <span class="sc">~</span>z,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"a"</span>, <span class="dv">2</span>, <span class="fl">3.6</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"b"</span>, <span class="dv">1</span>, <span class="fl">8.5</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 2 × 3</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">x</th>
+<th data-quarto-table-cell-role="th" scope="col">y</th>
+<th data-quarto-table-cell-role="th" scope="col">z</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a</td>
+<td>2</td>
+<td>3.6</td>
+</tr>
+<tr class="even">
+<td>b</td>
+<td>1</td>
+<td>8.5</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<p>Finally, if you have a regular <code>data frame</code> you can turn it into to a tibble with <code>as_tibble()</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 32 × 11
-     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
-   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1  21       6  160    110  3.9   2.62  16.5     0     1     4     4
- 2  21       6  160    110  3.9   2.88  17.0     0     1     4     4
- 3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
- 4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
- 5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
- 6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
- 7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
- 8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
- 9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
-10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
-# ℹ 22 more rows</code></pre>
+</div>
+<p>Finally, if you have a regular data frame you can turn it into to a tibble with <code>as_tibble()</code>:</p>
+<div id="71a9bf1c-51e9-4e12-9fe8-5b945b9a209e" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(mtcars) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 × 11</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">mpg</th>
+<th data-quarto-table-cell-role="th" scope="col">cyl</th>
+<th data-quarto-table-cell-role="th" scope="col">disp</th>
+<th data-quarto-table-cell-role="th" scope="col">hp</th>
+<th data-quarto-table-cell-role="th" scope="col">drat</th>
+<th data-quarto-table-cell-role="th" scope="col">wt</th>
+<th data-quarto-table-cell-role="th" scope="col">qsec</th>
+<th data-quarto-table-cell-role="th" scope="col">vs</th>
+<th data-quarto-table-cell-role="th" scope="col">am</th>
+<th data-quarto-table-cell-role="th" scope="col">gear</th>
+<th data-quarto-table-cell-role="th" scope="col">carb</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>21.0</td>
+<td>6</td>
+<td>160</td>
+<td>110</td>
+<td>3.90</td>
+<td>2.620</td>
+<td>16.46</td>
+<td>0</td>
+<td>1</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>21.0</td>
+<td>6</td>
+<td>160</td>
+<td>110</td>
+<td>3.90</td>
+<td>2.875</td>
+<td>17.02</td>
+<td>0</td>
+<td>1</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>22.8</td>
+<td>4</td>
+<td>108</td>
+<td>93</td>
+<td>3.85</td>
+<td>2.320</td>
+<td>18.61</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>21.4</td>
+<td>6</td>
+<td>258</td>
+<td>110</td>
+<td>3.08</td>
+<td>3.215</td>
+<td>19.44</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>18.7</td>
+<td>8</td>
+<td>360</td>
+<td>175</td>
+<td>3.15</td>
+<td>3.440</td>
+<td>17.02</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>18.1</td>
+<td>6</td>
+<td>225</td>
+<td>105</td>
+<td>2.76</td>
+<td>3.460</td>
+<td>20.22</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<p>The inverse of <code>as_tibble()</code> is <code>as.data.frame()</code>; it converts a tibble back into a regular <code>data.frame</code>.</p>
+</div>
+<p>The inverse of <code>as_tibble()</code> is <code>as.data.frame()</code>.</p>
+<p>It converts a tibble back into a regular <code>data.frame</code>.</p>
 </section>
 <section id="non-syntactic-names" class="level2">
 <h2 class="anchored" data-anchor-id="non-syntactic-names">Non-syntactic names</h2>
 <p>It’s possible for a tibble to have column names that are not valid R variable names, names that are <strong>non-syntactic</strong>.</p>
 <p>For example, the variables might not start with a letter or they might contain unusual characters like a space.</p>
-<p>To refer to these variables, you need to surround them with backticks, <code>`</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>tb <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">:)</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"smile"</span>, </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at"> </span><span class="st">`</span> <span class="ot">=</span> <span class="st">"space"</span>,</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">2000</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"number"</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>tb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 3
-  `:)`  ` `   `2000`
-  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; 
-1 smile space number</code></pre>
+<div id="7f95a9d2-6138-451e-921a-88203e77c996" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tb <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">:)</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"smile"</span>, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at"> </span><span class="st">`</span> <span class="ot">=</span> <span class="st">"space"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">2000</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"number"</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="717fcb66-b9ad-4fcd-b6ef-c0205329fb48" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 1 × 3</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">:)</th>
+<th data-quarto-table-cell-role="th" scope="col"></th>
+<th data-quarto-table-cell-role="th" scope="col">2000</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>smile</td>
+<td>space</td>
+<td>number</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
+</div>
+<p>Note that to refer to these variables, you need to surround them with backticks, <code>`</code>:</p>
 <p>You’ll also need the backticks when working with these variables in other packages, like ggplot2, dplyr, and tidyr.</p>
 </section>
 </section>
-<section id="tibbles-vs.-data.frame" class="level1">
-<h1>Tibbles vs.&nbsp;data.frame</h1>
-<p>There are two main differences in the usage of a tibble vs.&nbsp;a classic <code>data.frame</code>: <strong>printing</strong> and <strong>subsetting</strong>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<section id="tibbles-vs.-data-frames" class="level1">
+<h1>Tibbles vs.&nbsp;Data Frames</h1>
+<p>There are two main differences in the usage of a tibble vs.&nbsp;a classic <code>data.frame</code>:</p>
+<p><strong>printing</strong> and <strong>subsetting</strong>.</p>
 <p>If these differences cause problems when working with older packages, you can turn a tibble back to a regular data frame with <code>as.data.frame()</code>.</p>
-</div>
-</div>
 <section id="printing" class="level2">
 <h2 class="anchored" data-anchor-id="printing">Printing</h2>
-<p>The print method:</p>
-<ul>
-<li>Only the first 10 rows</li>
-<li>All the columns that fit on screen</li>
-</ul>
+<p>The print method will print only <strong>the first 10 rows</strong> and the <strong>columns that fit</strong> on screen.</p>
 <p>This makes it much easier to work with large data.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> lubridate<span class="sc">::</span><span class="fu">now</span>() <span class="sc">+</span> <span class="fu">runif</span>(<span class="fl">1e3</span>) <span class="sc">*</span> <span class="dv">86400</span>,</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> lubridate<span class="sc">::</span><span class="fu">today</span>() <span class="sc">+</span> <span class="fu">runif</span>(<span class="fl">1e3</span>) <span class="sc">*</span> <span class="dv">30</span>,</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> <span class="dv">1</span><span class="sc">:</span><span class="fl">1e3</span>,</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> <span class="fu">runif</span>(<span class="fl">1e3</span>),</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">e =</span> <span class="fu">sample</span>(letters, <span class="fl">1e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="960758bd-c15d-459e-92d8-ab1fbf0fbff4" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>my_trib <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> lubridate<span class="sc">::</span><span class="fu">now</span>() <span class="sc">+</span> <span class="fu">runif</span>(<span class="fl">1e3</span>) <span class="sc">*</span> <span class="dv">86400</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> lubridate<span class="sc">::</span><span class="fu">today</span>() <span class="sc">+</span> <span class="fu">runif</span>(<span class="fl">1e3</span>) <span class="sc">*</span> <span class="dv">30</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> <span class="dv">1</span><span class="sc">:</span><span class="fl">1e3</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> <span class="fu">runif</span>(<span class="fl">1e3</span>),</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">e =</span> <span class="fu">sample</span>(letters, <span class="fl">1e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="e9a77fca-a719-4735-95e2-d8709e17d219" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(my_trib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  a                   b              c     d e    
-  &lt;dttm&gt;              &lt;date&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;
-1 2024-07-08 21:30:14 2024-07-21     1 0.446 h    
-2 2024-07-09 08:14:15 2024-08-03     2 0.904 x    
-3 2024-07-09 02:48:54 2024-07-28     3 0.700 g    
-4 2024-07-09 05:18:44 2024-07-22     4 0.482 t    
-5 2024-07-09 00:18:02 2024-08-04     5 0.101 r    
-6 2024-07-09 09:29:33 2024-07-26     6 0.810 n    </code></pre>
+<pre><code># A tibble: 1,000 × 5
+   a                   b              c      d e    
+   &lt;dttm&gt;              &lt;date&gt;     &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt;
+ 1 2024-09-23 17:54:37 2024-10-04     1 0.712  m    
+ 2 2024-09-23 13:43:48 2024-10-12     2 0.721  t    
+ 3 2024-09-23 15:40:21 2024-10-19     3 0.488  n    
+ 4 2024-09-23 16:18:11 2024-10-18     4 0.908  j    
+ 5 2024-09-23 09:22:48 2024-09-23     5 0.703  n    
+ 6 2024-09-23 21:30:56 2024-09-27     6 0.682  n    
+ 7 2024-09-23 21:29:51 2024-09-30     7 0.558  e    
+ 8 2024-09-23 18:14:04 2024-10-11     8 0.561  t    
+ 9 2024-09-24 00:49:54 2024-10-05     9 0.722  r    
+10 2024-09-23 18:11:49 2024-09-30    10 0.0161 s    
+# ℹ 990 more rows</code></pre>
 </div>
 </div>
 <p>Where possible, <strong>tibbles also use color</strong> to draw your eye to important differences.</p>
 <p>One of the most important distinctions is between the string <code>"NA"</code> and the missing value, <code>NA</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"NA"</span>, <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b673f8da-626f-4f73-975c-32a7cc00393b" class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"NA"</span>, <span class="cn">NA</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 1
   x    
   &lt;chr&gt;
 1 NA   
-2 &lt;NA&gt; </code></pre>
+2 NA   </code></pre>
 </div>
 </div>
 <p>Tibbles are designed to avoid overwhelming your console when you print large data frames.</p>
 <p>But <strong>sometimes you need more output</strong> than the default display.</p>
 <p>There are a few options that can help.</p>
 <p>First, you can explicitly <code>print()</code> the data frame and control the number of rows (<code>n</code>) and the <code>width</code> of the display. <code>width = Inf</code> will display all columns:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">width =</span> <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="934e2b62-8c02-42b0-857d-630377a20246" class="cell" data-tags="[]" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("nycflights13")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="4a98ba52-9c15-4606-a806-016f5d0defcc" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="2aa39a71-d64d-4473-aa93-e7c80642ab16" class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">width =</span> <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 336,776 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
@@ -1013,109 +1267,181 @@ Tip
 <h2 class="anchored" data-anchor-id="using-rstudio-view">Using RStudio <code>View()</code></h2>
 <p>A final option is to use RStudio’s built-in data viewer to get a scrollable view of the complete dataset. This is also often useful at the end of a long chain of manipulations.</p>
 <p>You can open a window with a view to your data by calling <code>View()</code>, like so:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">View</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">View</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here’s what the opened window would looks like:</p>
-<p><img src="images/view-tibble.png" class="img-fluid" style="border: 1px solid gray;"></p>
+<p><img src="M11-01-Tibbles_files/figure-html/87fee023-1d44-40db-85f9-b19c5be1cd67-1-images/view-tibble.png" style="border: 1px solid gray;"></p>
 </section>
 <section id="extracting-variables" class="level2">
 <h2 class="anchored" data-anchor-id="extracting-variables">Extracting variables</h2>
 <p>So far all the tools you’ve learned have worked with complete data frames.</p>
 <p>If you want to pull out a single variable, you can use <code>dplyr::pull()</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>tb <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1  =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y1  =</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="440f5647-2bb3-4abb-991a-bdbe964ecd94" class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>tb <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1  =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y1  =</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>tb <span class="sc">%&gt;%</span>  </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(x1) <span class="co"># by name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 2 3 4 5</code></pre>
+<div id="0daf50ca-a235-4840-9a6d-a6183d3697e2" class="cell" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>tb <span class="sc">%&gt;%</span> <span class="fu">pull</span>(x1) <span class="co"># by name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ol>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>tb <span class="sc">%&gt;%</span>  </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(<span class="dv">1</span>)  <span class="co"># by position</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "A" "B" "C" "D" "E"</code></pre>
+<div id="b4240bf4-8f9a-4585-92c4-a634356cf2aa" class="cell" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>tb <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="dv">1</span>)  <span class="co"># by position</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>'A'</li><li>'B'</li><li>'C'</li><li>'D'</li><li>'E'</li></ol>
 </div>
 </div>
 <p><code>pull()</code> also takes an optional <code>name</code> argument that specifies the column to be used as names for a named vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>tb <span class="sc">%&gt;%</span>  </span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(x1, <span class="at">name =</span> id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f8d89d01-c697-4f3e-b14c-7912e742bee0" class="cell" data-execution_count="86">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>tb <span class="sc">%&gt;%</span> <span class="fu">pull</span>(x1, <span class="at">name =</span> id) <span class="sc">%&gt;%</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>A B C D E 
 1 2 3 4 5 </code></pre>
 </div>
 </div>
-<p>You can also use the base R tools <code>$</code> and <code>[[</code>. <code>[[</code> can extract by name or position; <code>$</code> only extracts by name but is a little less typing.</p>
-<p>Extract by name:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>x1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 2 3 4 5</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>tb[[<span class="st">"x1"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 2 3 4 5</code></pre>
-</div>
-</div>
-<p>Extract by position:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>tb[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "A" "B" "C" "D" "E"</code></pre>
+<p>You can also use the base R tools <code>$</code> and <code>[[</code>.</p>
+<p><code>[[</code> can extract by name or position.</p>
+<p><code>$</code> only extracts by name but is a little less typing.</p>
+<p>Here we extract by name:</p>
+<div id="396d63ad-2d2b-4d1f-8094-330f89a6b7f2" class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>x1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ol>
 </div>
 </div>
-<p>Compared to a <code>data frame</code>, <strong>tibbles are more strict</strong>: they never do partial matching, and they will generate a warning if the column you are trying to access does not exist.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tibbles complain a lot:</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c9d63389-af94-4f2d-9daf-97b2a0cf63f4" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-tags="[]" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>tb[[<span class="st">"x1"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ol>
+</div>
+</div>
+<p>Here we extract by position:</p>
+<div id="7c387297-fa93-41e6-ab5f-863dc6d91180" class="cell" data-execution_count="74">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>tb[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>'A'</li><li>'B'</li><li>'C'</li><li>'D'</li><li>'E'</li></ol>
+</div>
+</div>
+<p>Compared to a <code>data frame</code>, <strong>tibbles are more strict</strong>.</p>
+<p>They never do partial matching.</p>
+<p>Partial matching is when you specify a part of a column name in a selection operation and R returns the column that matches the substring if there is one.</p>
+<p>For example, if you have a data frame <code>df</code> with a column called <code>x1</code> and you do this — <code>df$x</code> — R will return that column, assuming there are no other columns that begin with <code>x</code>.</p>
+<p>Tibbles don’t do that.</p>
+<div id="e6952cf0-a845-44b0-8c7a-4ce27d4f839f" class="cell" data-execution_count="77">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Unknown or uninitialised column: `x`.</code></pre>
+<pre><code>Warning message:
+“Unknown or uninitialised column: `x`.”</code></pre>
 </div>
-<div class="cell-output cell-output-stdout">
+<div class="cell-output cell-output-display">
 <pre><code>NULL</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="07104dfc-f4a2-4c75-a731-8e61f39b99d0" class="cell" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Unknown or uninitialised column: `z`.</code></pre>
+<pre><code>Warning message:
+“Unknown or uninitialised column: `z`.”</code></pre>
 </div>
-<div class="cell-output cell-output-stdout">
+<div class="cell-output cell-output-display">
 <pre><code>NULL</code></pre>
 </div>
 </div>
-<p>Partial matching is when you specify a part of a column name in a selection operation and R returns the column that matches the substring (if there is one). For example, if you have a data frame <code>df</code> with a column called <code>x1</code> and you do this — <code>df$x</code> — R will return that column, assuming there are no other columns that begin with <code>x</code>. Tibbles don’t do that.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data frame use partial matching and don't complain if a column doesn't exist</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(tb)</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 2 3 4 5</code></pre>
+<p>Nor will tibbles generate a warning if the column you are trying to access does not exist.</p>
+<div id="aa3fa442-1806-46ba-9af5-64ceb665a8fe" class="cell" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data frame use partial matching and don't complain if a column doesn't exist</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(tb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<div id="8db0f44b-579e-4cb5-b60d-f43be07c4db5" class="cell" data-execution_count="82">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ol>
+</div>
+</div>
+<div id="39ebfcb2-7783-4318-8ecd-098014e179e9" class="cell" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
 <pre><code>NULL</code></pre>
 </div>
 </div>
-<p>For this reason we sometimes joke that <strong>tibbles are lazy and surly</strong>: they do less and complain more.</p>
+<p>For this reason we sometimes joke that <strong>tibbles are lazy and surly</strong>.</p>
+<p>They do less and complain more :-)</p>
 </section>
 <section id="subsetting" class="level2">
 <h2 class="anchored" data-anchor-id="subsetting">Subsetting</h2>
 <p>Lastly, there are some important differences when using <code>[</code>.</p>
 <p>With <code>data.frame</code>s, <code>[</code> sometimes returns a <code>data.frame</code>, and sometimes returns a vector.</p>
-<ul>
-<li>This is a common source of bugs.</li>
-</ul>
+<p>This is a common source of bugs.</p>
 <p>With tibbles, <strong><code>[</code> always returns another tibble</strong>.</p>
-<ul>
-<li>This can sometimes cause problems when working with older code.</li>
-<li>If you hit one of those functions, just use <code>as.data.frame()</code> to turn your tibble back to a <code>data.frame</code>.</li>
-</ul>
+<p>This can sometimes cause problems when working with older code.</p>
+<p>If you hit one of those functions, just use <code>as.data.frame()</code> to turn your tibble back to a <code>data.frame</code>.</p>
+</section>
+<section id="converting" class="level2">
+<h2 class="anchored" data-anchor-id="converting">Converting</h2>
+<p>You can convert data frames to tibbles and tibbles to data frames with <code>as_tibble()</code> and <code>as.data.frame()</code> respectively.</p>
+<p>The following demonstrates this with the built-in <code>mtcars</code> data frame.</p>
+<div id="8550f36f-d2a1-47f3-b2dc-ae5072dd8429" class="cell" data-tags="[]" data-execution_count="109">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+'data.frame'
+</div>
+</div>
+<div id="3fa7d9be-50b0-4b2b-b998-5f0628c6bc56" class="cell" data-tags="[]" data-execution_count="110">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>mtcars_tib <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="ee9462aa-72d9-4564-befd-09467f7a8068" class="cell" data-tags="[]" data-execution_count="111">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mtcars_tib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>'tbl_df'</li><li>'tbl'</li><li>'data.frame'</li></ol>
+</div>
+</div>
+<div id="6eb3cd12-4032-4eec-9afa-216af0a8b04c" class="cell" data-tags="[]" data-execution_count="112">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>mtcars_df <span class="ot">&lt;-</span> mtcars_tib <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="713da765-e523-4ff9-937a-258e67e5bdf8" class="cell" data-tags="[]" data-execution_count="113">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mtcars_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+'data.frame'
+</div>
+</div>
 
 
 </section>
@@ -1555,4 +1881,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ontoligent/DS5100-book/edit/main/notebooks/M11_RDplyr/M11-01-Tibbles.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M11_RDplyr/M11-01-Tibbles.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

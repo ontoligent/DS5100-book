@@ -1,8 +1,12 @@
 ---
 title: "R Notebook"
-output: html_notebook
-editor_options: 
-  markdown: 
+output:
+  html_document:
+    df_print: paged
+  html_notebook: default
+  pdf_document: default
+editor_options:
+  markdown:
     wrap: sentence
 ---
 

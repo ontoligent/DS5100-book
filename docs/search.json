@@ -5439,8 +5439,8 @@
     ]
   },
   {
-    "objectID": "topics/project-management.html",
-    "href": "topics/project-management.html",
+    "objectID": "notebooks/M13_Agile/project-management.html",
+    "href": "notebooks/M13_Agile/project-management.html",
     "title": "Project Management",
     "section": "",
     "text": "Some basic facts\nProject management is an established field that is used for many activities.\n\nIt is a profession in which you can be certified as a  CPM.\nIt is a field with an established and large body of knowledge – PMBOK.\n\n\nBroadly speaking, it refers to:\n\nA class of rational methods and protocols for organizing the labor of complex activities in order to achieve specific outcomes on time and on budget.\n\nThink NASA’s space program in the 1960s.\nIts history dates to the early 20th century but becomes highly developed in the 1950s and 60s.\n\nIt is closely associated with US military operations, e.g. Gantt Charts and PERT.\nIt was later adapted to software development, due to the complexity and importances of of this kind of work.\n\n\nSource\n\nSoftware is also mission critical\n\n\n\nFrom the beginning, it has been used to support critical operations: weapons systems, air traffic control, financial systems, health care, etc.\n\n\nOnly recently are we seeing the effects of software design – in the form of data products – fail on the basis of bias and other flaws that lead to social harm\n\n\n\nIn the 1960s, the US Department of Defenses study of software problems found that:\n\n\n\n47% of software delivered could not be used, as it usually didn’t meet requirements\n\n\n29% of funded software was never delivered, as it was usually canceled due to cost/schedule overruns\n\n\n19% of software was useful after extensive rework, and it usually cost 36 times more to fix problems after release\n\n\n\nBecause of this, software engineering was developed.\n\n\nBut Software development is hard for many reasons:\n\n\n\nHardware and software are inherently complex.\n\n\nCode is imperfect and error-prone.\n\n\nCode is always an interpretation of specifications that are always underspecified. → DEBUGGING THE SPEC\n\n\n\nUnderspecified in two senses:\n\n\n\nThe inherent inadequacy of language to represent reality.\n\n\n“The map is not the terrain”\n\n\n\n\nThe fact that people don’t know what they want even when they say they do.\n\n\nThat is, reality itself changes.\n\n\n\n\n\nThe slipperiness of writing code that achieves our goals is the subject of humor:\n\nSource\n\n\nMany paradigms of the software development life cycle (SDLC) have been introduced over the years to address these issues:\n\n\n\nWaterfall\n\n\nSpiral\n\n\nEtc. → See Tutorialspoint on SDLC.\n\n\n\nThe Waterfall Model\n\n\n\n\nWaterfall Methodology\n\n\nSource\n\nWhat they all have in is a faith in the power of planning and engineering to achieve results:\n\n\n\nPlanning as the ability to predict accurately how things will unfold\n\n\nand have people understand and follow rules.\n\n\n\n\nEngineering as the operationalization of labor processes\n\n\nThe ability to treat human behavior as a tractable variable.\n\n\nthe logic of the machine applied to the the organization of labor.\n\n\n\n\n\nThese assumptions are reflected in the relationship between client and developer\n\n\n\nNotice that absence of the client in the design, building, and validation\n\n\n\nThis is partly the result of mitigating the mission creep introduced by the client.\n\n\nThe Iron Triangle\n\nThe Iron Triangle concept shows the effect of changing user requirements on a project.\nIf users want to add something to a project — a new feature, for example — this means that scope has increased.\nTherefore, either tine or resources must expand as well to allow for the change.\n\n\nThe Spiral Method\n\n\nThe Spiral Method recognizes the need to be more iterative, and introduces the client at points in an ongoing cycle. \n\n\n\nPresumably, clients are involved in objective identification and testing …\n\n\n\n\nSource\n\n\nThe methods have the virtue of being rational and comprehensive, defining all the things involved in software development\n\n\n\nBut they are very linear\n\n\n\nEven the Spiral method, which is really a 2D linear process, where phases are features and iterations are observations:\n\n\n\n\n\n\n\n\nPrimary sequence\nS = OI → AE → PD → NPP\n\n\nProcess\nP = S1 → S2 → S3 → … → SN",
@@ -5450,8 +5450,8 @@
     ]
   },
   {
-    "objectID": "topics/agile-dev.html",
-    "href": "topics/agile-dev.html",
+    "objectID": "notebooks/M13_Agile/agile-dev.html",
+    "href": "notebooks/M13_Agile/agile-dev.html",
     "title": "Agile Development",
     "section": "",
     "text": "Backstory\nAgile development is essentially a philosophy developed in response to bureaucratic software development processes.\nIt is an approach that focuses on the realities of software:\nEssentially, it is based on a mistrust of machines, plans, contracts, documents, etc.\nThe Agile Manifesto was written in 2001 after a number of lighter and more flexible approaches were developed in the 1990s.\nIt is also a collection of methods and tools:\nAgile is also counter-cultural, like many of the software movements that attended the rise of the web.",
@@ -5461,8 +5461,8 @@
     ]
   },
   {
-    "objectID": "topics/agile-dev.html#backstory",
-    "href": "topics/agile-dev.html#backstory",
+    "objectID": "notebooks/M13_Agile/agile-dev.html#backstory",
+    "href": "notebooks/M13_Agile/agile-dev.html#backstory",
     "title": "Agile Development",
     "section": "",
     "text": "Individuals and interactions over processes and tools\nWorking software over comprehensive documentation\nCustomer collaboration over contract negotiation\nResponding to change over following a plan\n\n\n\n\nSCRUM\nXP (Extreme Program) \nEtc.\n\n\n\nUser stories\nScrum meetings\nSprints\nTask weighting with cards\nEtc.",
@@ -5472,8 +5472,8 @@
     ]
   },
   {
-    "objectID": "topics/agile-dev.html#principles",
-    "href": "topics/agile-dev.html#principles",
+    "objectID": "notebooks/M13_Agile/agile-dev.html#principles",
+    "href": "notebooks/M13_Agile/agile-dev.html#principles",
     "title": "Agile Development",
     "section": "Principles",
     "text": "Principles\nHere are the 12 Principles of Agile SD:\n\nCustomer satisfaction by early and continuous delivery of valuable software. → The “early and often” of open source development.\nWelcome changing requirements, even in late development.\nDeliver working software frequently (weeks rather than months).\nClose, daily cooperation between business people and developers.\nProjects are built around motivated individuals, who should be trusted.\nFace-to-face conversation is the best form of communication (co-location).\nWorking software is the primary measure of progress.\nSustainable development, able to maintain a constant pace.\nContinuous attention to technical excellence and good design.\nSimplicity—the art of maximizing the amount of work not done—is essential.\nBest architectures, requirements, and designs emerge from self-organizing teams.\nRegularly, the team reflects on how to become more effective, and adjusts accordingly.\n\nAs you can see, it’s all about giving teams the freedom and trust to creatively respond to client needs and change.",
@@ -5483,8 +5483,8 @@
     ]
   },
   {
-    "objectID": "topics/agile-dev.html#aside",
-    "href": "topics/agile-dev.html#aside",
+    "objectID": "notebooks/M13_Agile/agile-dev.html#aside",
+    "href": "notebooks/M13_Agile/agile-dev.html#aside",
     "title": "Agile Development",
     "section": "Aside",
     "text": "Aside\nAs an aside, it’s worth noting the effect of the Web on these developments.\n\nAgile was spurred by the affordances of the Web and open source software\nAnd for teams to organize organically, without the oversight of governmental bodies or corporations\nInfluenced by the success of Open Source tools like Linux\nConsistent with Git as a tool for organically organizing software development.",
@@ -5494,8 +5494,8 @@
     ]
   },
   {
-    "objectID": "topics/user-stories.html",
-    "href": "topics/user-stories.html",
+    "objectID": "notebooks/M13_Agile/user-stories.html",
+    "href": "notebooks/M13_Agile/user-stories.html",
     "title": "User Stories",
     "section": "",
     "text": "User Stories are at the heart of Agile development.\nInstead of eliciting requirements through a formal process, teams ask clients to provide statements in verbal form:\n\nAs a [type of user]\nI want [an action or behavior]\nso that [a benefit/value]\n\nThese are written on index cards.\nThese are accompanied by conversation to clarify the meaning of the sentences.\nThese are then converted into requirements:\n\nFunctional – relating specifically to how the software will work, i.e. function.\nNon-functional (so-called) – relating to the broader purpose and context of usage.\nThese map roughly onto the second and third parts of the user story.\nThey also map on MACHINE and HUMAN.\nThis page shows some examples of stories mapping onto features (so-called acceptance criteria).\n\nThese requirements are then prioritized\n\nUsing MSCW – Must / Should / Can / Won’t\nWithin the context of a scope definition in a charter (not discussed here)\nSee this link for some guidance.\n\nAfter this, requirements are serialized into a rough schedule, grouped into milestones.\nIn executing the “plan,” teams meet regularly in brief, stand-up meetings called scrums.\n\nThese happen daily.\nThese involve the development team.\nStakeholder representatives, such as the product manager, may attend too.\n\nAt regular intervals, clients are introduced to the process\n\nPrototypes, MVPs, etc. are presented.\nFeedback is elicited early and often.\n\nThe process is driven by a communication plan:\n\nFrequency of meeting.\nMode of communication – F2F, Slack, Git.\nTask management tools – Jira, Trello, Smartsheet, etc.\n\nOther artifacts are involved in this process:\n\nThe project charter.\nThe project plan.\nA Kan Ban board.",

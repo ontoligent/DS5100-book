@@ -1,0 +1,52 @@
+# User Stories
+
+**User Stories** are at the heart of Agile development.
+
+Instead of eliciting requirements through a formal process, teams ask clients to provide statements in verbal form:
+
+- `As a [type of user]`
+- `I want [an action or behavior]`
+- `so that [a benefit/value]`
+
+These are written on **index cards**.
+
+These are accompanied by **conversation** to clarify the meaning of the sentences.
+
+These are then converted into **requirements:**
+
+- **Functional** &ndash; relating specifically to how the software will work, i.e. function.
+- **Non-functional** (so-called) &ndash; relating to the broader purpose and context of usage.
+- These map roughly onto the second and third parts of the user story.
+- They also map on MACHINE and HUMAN.
+- This [page](https://cuitandokter.com/) shows some examples of stories mapping onto features (so-called acceptance criteria).
+
+These requirements are then **prioritized**
+
+- Using **MSCW** &ndash; Must / Should / Can / Won't
+- Within the context of a **scope** definition in a **charter** (not discussed here)
+- See [this link](https://paper-leaf.com/insights/prioritize-user-stories/) for some guidance.
+
+After this, requirements are serialized into a rough schedule, grouped into **milestones**.
+
+In executing the "plan," teams meet regularly in brief, stand-up meetings called **scrums**.
+
+- These happen daily.
+- These involve the development team.
+- Stakeholder representatives, such as the product manager, may attend too.
+
+At regular intervals, **clients** are introduced to the process
+
+- **Prototypes**, MVPs, etc. are presented.
+- **Feedback** is elicited early and often.
+
+The process is driven by a **communication** plan:
+
+- Frequency of meeting.
+- Mode of communication &ndash; F2F, Slack, Git.
+- Task management tools &ndash; Jira, Trello, Smartsheet, etc.
+
+Other **artifacts** are involved in this process:
+
+- The project **charter**.
+- The project **plan**.
+- A **Kan Ban** board.

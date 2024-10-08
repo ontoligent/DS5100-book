@@ -1,0 +1,131 @@
+# Project Management
+
+**Some basic facts**
+
+Project management is an <strong>established field</strong> that is used for many activities.
+
+- It is a profession in which you can be <strong>certified</strong> as a&nbsp; CPM.
+
+- It is a field with an established and large <strong>body of knowledge</strong> &ndash; PMBOK.</li>
+
+Broadly speaking, it refers to: 
+
+- A class of rational **methods** and protocols for organizing the **labor** of **complex activities** in order to achieve **specific outcomes** on **time and on budget**.
+
+Think <strong>NASA's</strong> space program in the 1960s.
+
+Its history dates to the early 20th century but becomes highly developed in the 1950s and 60s.
+
+- It is closely associated with <strong>US military</strong> operations, e.g. [Gantt Charts](https://en.wikipedia.org/wiki/Gantt_chart) and [PERT](https://en.wikipedia.org/wiki/Program_evaluation_and_review_technique).
+
+- It was later adapted to <strong>software development</strong>, due to the complexity and importances of of this kind of work.
+
+![](../media/early-gantt-chart.png)
+
+[Source](https://www.onepager.com/community/blog/a-brief-history-of-the-gantt-chart/)
+
+<p>Software is also <strong>mission critical</strong></p>
+<ul>
+<li>From the beginning, it has been used to support <strong>critical operations</strong>: weapons systems, air traffic control, financial systems, health care, etc.</li>
+<li>Only recently are we seeing the effects of software design &ndash; in the form of data products &ndash; fail on the basis of bias and other flaws that lead to <strong>social harm</strong></li>
+</ul>
+<p><strong>In the 1960s</strong>, the US Department of Defenses study of software problems found that:</p>
+<ul class="uva-lessons-ul">
+<li>47% of software delivered could not be used, as it usually didn&rsquo;t meet requirements</li>
+<li>29% of funded software was never delivered, as it was usually canceled due to cost/schedule overruns</li>
+<li>19% of software was useful after extensive rework, and it usually cost 36 times more to fix problems after release</li>
+</ul>
+<p>Because of this, <strong>software engineering was developed.</strong></p>
+<p><strong>But Software development is hard</strong> for many reasons:</p>
+<ul>
+<li>Hardware and software are inherently <strong>complex</strong>.</li>
+<li>Code is imperfect and <strong>error-prone</strong>.</li>
+<li>Code is always <strong>an interpretation of specifications</strong> that are always <strong>underspecified</strong>. &rarr; [DEBUGGING THE SPEC](http://johnunsworth.name/KR/halsted.html)</li>
+</ul>
+<p><strong>Underspecified</strong> in two senses:</p>
+<ul>
+<li>The inherent <strong>inadequacy of language</strong> to represent reality.
+<ul>
+<li>"The map is not the terrain"</li>
+</ul>
+</li>
+<li>The fact that <strong>people don't know what they want</strong> even when they say they do.
+<ul>
+<li>That is, reality itself changes.</li>
+</ul>
+</li>
+</ul>
+
+----
+
+The slipperiness of writing code that achieves our goals is **the subject of humor**:
+
+![](../media/pm-operation-success.jpg)
+
+[Source](https://www.pinterest.com/pin/411446115951363129/)
+
+----
+
+<p>Many <strong>paradigms of the software development</strong> <strong>life cycle</strong> (SDLC) have been introduced over the years to address these issues:</p>
+<ul>
+<li>Waterfall</li>
+<li>Spiral</li>
+<li>Etc. &rarr; See <a class="external-link" href="https://www.tutorialspoint.com/sdlc/index.htm">Tutorialspoint on SDLC.</a></li>
+</ul>
+<p><strong>The Waterfall Model</strong></p>
+
+![Waterfall Methodology](../media/pm-waterfall.jpg)
+
+[Source](https://4.bp.blogspot.com/-FJ4rlfMcDfc/V8mDTJfcDQI/AAAAAAAAA4s/f1dd7JC9-QsBh-67gdIDpq5ThubrTcVywCK4B/s1600/maxresdefault.jpg)
+
+<p>What they all have in is a <strong>faith in the power of planning and engineering</strong> to achieve results:</p>
+<ul>
+<li>Planning as the ability to <strong>predict accurately how things will unfold</strong>
+<ul>
+<li>and have people understand and <strong>follow rules</strong>.</li>
+</ul>
+</li>
+<li>Engineering as the <strong>operationalization</strong> of labor processes
+<ul>
+<li>The ability to treat <strong>human behavior</strong> as a <strong>tractable variable</strong>.</li>
+<li><strong>the logic of the machine applied to the the organization of labor.</strong></li>
+</ul>
+</li>
+</ul>
+<p>These assumptions are reflected in the <strong>relationship between client and developer</strong></p>
+<ul>
+<li>Notice that absence of the client in the design, building, and validation</li>
+</ul>
+<p>This is partly the result of mitigating the <strong>mission creep</strong> introduced by the client.</p>
+
+<p><strong>The Iron Triangle</strong></p>
+
+The Iron Triangle concept shows the effect of changing user requirements on a project.
+
+If users want to add something to a project --- a new feature, for example --- this means that **scope** has increased.
+
+Therefore, either **tine** or **resources** must expand as well to allow for the change.
+
+
+![](../media/pm-iron-triangle.png)
+
+<p><strong>The Spiral Method</strong></p>
+<p>The Spiral Method recognizes the need to be more iterative, and introduces the client at points in an <strong>ongoing cycle</strong>.&nbsp;</p>
+<ul>
+<li>Presumably, clients are involved in objective identification and testing ...</li>
+</ul>
+![](../media/pm-sdlc_spiral_model.jpg)
+
+
+<p><span class="placeholder-inline-tasks"><a class="external-link" href="https://www.tutorialspoint.com/sdlc/sdlc_spiral_model.htm">Source</a></span></p>
+
+<p>The methods have the virtue of being <strong>rational</strong> and <strong>comprehensive</strong>, defining all the things involved in software development</p>
+<ul>
+<li>But they are <strong>very linear</strong></li>
+</ul>
+<p>Even the Spiral method, which is really a 2D linear process, where phases are features and iterations are observations:</p>
+
+| | |
+|-|-|
+| Primary sequence | <b><tt>S = OI &rarr; AE &rarr; PD &rarr; NPP</tt></b> |
+| Process          | <b><tt>P = S<sub>1</sub> &rarr; S<sub>2</sub> &rarr; S<sub>3</sub> &rarr; ... &rarr; S<sub>N</sub></tt></b> |

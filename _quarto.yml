@@ -122,9 +122,9 @@ book:
         
     - part: modules/m13/m13-intro.qmd # "13 Agile"
       chapters: 
-        - topics/project-management.qmd
-        - topics/agile-dev.qmd
-        - topics/user-stories.qmd
+        - notebooks/M13_Agile/project-management.qmd
+        - notebooks/M13_Agile/agile-dev.qmd
+        - notebooks/M13_Agile/user-stories.qmd
         # - modules/m13/m13-activity.qmd
         
     - part: "Appendices"

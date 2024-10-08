@@ -1,0 +1,54 @@
+.reveal body {
+    margin: 2rem;
+}
+
+.reveal h1, h2 {
+    margin: 0;
+}
+
+.reveal table td {
+    font-size:16pt;
+}
+
+.reveal table th {
+    font-size:14pt;
+}
+
+.reveal table.dataframe {
+    border: 1px solid black;
+}
+
+.reveal table.dataframe td, th {
+/*      font-size: 200%; */
+}
+
+.reveal td.data {
+    font-size: 200%;
+    font-family: monospace;
+}
+
+.reveal blockquote {
+    margin: 0 5rem;
+    padding: 1rem;
+    width:80%;
+    font-family: serif;
+    border: None;
+}
+
+.reveal pre code {
+    font-size: 120%;
+}
+
+.reveal p {
+    margin-right: 33%;
+}
+
+.rise-enabled .jp-OutputArea-output li {
+/*      font-size: 100%; */
+    font-size:16pt;
+}
+
+.rise-enabled .jp-OutputArea-output {
+/*      font-size: 100%; */
+    font-size:16pt;
+}

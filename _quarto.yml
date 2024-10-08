@@ -109,14 +109,14 @@ book:
         
     - part: modules/m11/m11-intro.qmd # "11 Dplyr"
       chapters: 
-        # - notebooks/M11_RDplyr/M11-00-Addenda.ipynb
         - notebooks/M11_RDplyr/M11-01-Tibbles.ipynb
         - notebooks/M11_RDplyr/M11-02-Dplyr.ipynb
 
     - part: modules/m12/m12-intro.qmd # "12 Visualization"
-      chapters: 
-        - notebooks/M12_RViz/M12-01-GGPlot.qmd
-        - notebooks/M12_RViz/M12-02-RMarkdown.qmd
+      chapters:
+        - notebooks/M12_RViz/M12-00-AGrammarOfGraphics.ipynb      
+        - notebooks/M12_RViz/M12-01-GettingStartedWithGGPlot.ipynb
+        - notebooks/M12_RViz/M12-02-RMarkdown.ipynb
         - notebooks/M12_RViz/M12-03-Qplot-and-Plotly.ipynb
         - notebooks/M12_RViz/M12-04-Plotnine.ipynb
         

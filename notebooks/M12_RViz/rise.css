@@ -1,12 +1,28 @@
-table.dataframe {
+.reveal body {
+    margin: 2rem;
+}
+
+.reveal h1, h2 {
+    margin: 0;
+}
+
+.reveal table td {
+    font-size:16pt;
+}
+
+.reveal table th {
+    font-size:14pt;
+}
+
+.reveal table.dataframe {
     border: 1px solid black;
 }
 
-table.dataframe td, th {
-     font-size: 200%;
+.reveal table.dataframe td, th {
+/*      font-size: 200%; */
 }
 
-td.data {
+.reveal td.data {
     font-size: 200%;
     font-family: monospace;
 }
@@ -23,6 +39,10 @@ td.data {
     font-size: 120%;
 }
 
+.reveal p {
+    margin-right: 33%;
+}
+
 .rise-enabled .jp-OutputArea-output li {
 /*      font-size: 100%; */
     font-size:16pt;
@@ -31,12 +51,4 @@ td.data {
 .rise-enabled .jp-OutputArea-output {
 /*      font-size: 100%; */
     font-size:16pt;
-}
-
-.reveal table td {
-    font-size:16pt;
-}
-
-.reveal table th {
-    font-size:14pt;
 }

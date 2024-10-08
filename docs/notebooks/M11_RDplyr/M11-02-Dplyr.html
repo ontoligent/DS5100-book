@@ -598,17 +598,22 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M12_RViz/M12-01-GGPlot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: GGPlot2</span></a>
+  <a href="../../notebooks/M12_RViz/M12-00-AGrammarOfGraphics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">GGPlot and the Grammar of Graphics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M12_RViz/M12-02-RMarkdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Markdown</span></a>
+  <a href="../../notebooks/M12_RViz/M12-01-GettingStartedWithGGPlot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Getting Started with GGPlot2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Loose Ends</span></a>
+  <a href="../../notebooks/M12_RViz/M12-02-RMarkdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Viridis Demo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Plotly and GGPlotly</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -957,8 +962,8 @@ window.Quarto = {
 </div>
 <p>Now suppose we wanted to take the first <span class="math inline">\(3\)</span> columns only.</p>
 <p>We could use numerical indices in base R.</p>
-<div id="5241a771-92eb-42ab-bb3f-72de93cabe9d" class="cell" data-tags="[]" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chicago[<span class="fu">names</span>(chicago)[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="858969fa-97bc-4d5b-9bab-06fad21886c4" class="cell" data-tags="[]" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chicago[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
@@ -967,7 +972,7 @@ window.Quarto = {
 <tr class="header">
 <th data-quarto-table-cell-role="th" scope="col">city</th>
 <th data-quarto-table-cell-role="th" scope="col">tmpd</th>
-<th data-quarto-table-cell-role="th" scope="col">dptp</th>
+<th data-quarto-table-cell-role="th" scope="col">dewpoint</th>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>

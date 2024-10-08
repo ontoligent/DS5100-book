@@ -4326,11 +4326,11 @@
     ]
   },
   {
-    "objectID": "notebooks/M10_RBasics/M10-01-Intro.html#working-directory",
-    "href": "notebooks/M10_RBasics/M10-01-Intro.html#working-directory",
+    "objectID": "notebooks/M10_RBasics/M10-01-Intro.html#command-line-r",
+    "href": "notebooks/M10_RBasics/M10-01-Intro.html#command-line-r",
     "title": "NB: Introducing R",
-    "section": "Working Directory",
-    "text": "Working Directory\nFinally, the code samples above assume the data files are located in the R working directory, which can be found with the function getwd().\nNote that these things can also be set using the RStudio’s GUI.\n\ngetwd()               # get current working directory\n\n'/sfs/qumulo/qhome/rca2t/Documents/MSDS/DS5100/repo-book/notebooks/M10_RBasics'\n\n\nYou can select a different working directory with the function setwd(), and thus avoid entering the full path of the data files\n\n# setwd(\"&lt;new path&gt;\")   # set working directory\n\nNote that the forward slash should be used as the path separator even on Windows platform\n\n# setwd(\"C:/MyDoc\")",
+    "section": "Command Line R",
+    "text": "Command Line R\nR can also be run from the command line.\nR is invoked by calling R:\n&gt; R\nIf properly installed, that should produce a message like this:\nR version 4.3.1 (2023-06-16) – “Beagle Scouts” Copyright (C) 2023 The R Foundation for Statistical Computing Platform: x86_64-conda-linux-gnu (64-bit)\nR is free software and comes with ABSOLUTELY NO WARRANTY. You are welcome to redistribute it under certain conditions. Type ‘license()’ or ‘licence()’ for distribution details.\nNatural language support but running in an English locale\nR is a collaborative project with many contributors. Type ‘contributors()’ for more information and ‘citation()’ on how to cite R or R packages in publications.\nType ‘demo()’ for some demos, ‘help()’ for on-line help, or ‘help.start()’ for an HTML browser interface to help. Type ‘q()’ to quit R.\n[Previously saved workspace restored]",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>49</span>  <span class='chapter-title'>NB: Introducing R</span>"
@@ -4348,11 +4348,11 @@
     ]
   },
   {
-    "objectID": "notebooks/M10_RBasics/M10-01-Intro.html#installing-an-r-kernel",
-    "href": "notebooks/M10_RBasics/M10-01-Intro.html#installing-an-r-kernel",
+    "objectID": "notebooks/M10_RBasics/M10-01-Intro.html#using-r-in-jupyter",
+    "href": "notebooks/M10_RBasics/M10-01-Intro.html#using-r-in-jupyter",
     "title": "NB: Introducing R",
-    "section": "Installing an R Kernel",
-    "text": "Installing an R Kernel\nYou can run R in Jupyter by installing an R kernel.\n\nIn brief, here’s what you do. First, at the command line:\nconda create -n r_env r-essentials r-base\nconda activate r_env\nR # This opens the R shell\nThen, in the R shell:\nIRkernel::installspec(name = 'r_env', displayname = 'R Environment')\nquit()\nNow, fire up a Jupyter Lab instance from the OpenOnDemand page and select the kernel when you create a new notebook.",
+    "section": "Using R in Jupyter",
+    "text": "Using R in Jupyter\nIf you want to use R within a Jupyter notebook file, you can create and load an R kernel using Anaconda’s package manager conda. In brief, here’s what you do.\nFirst, at the command line:\nconda create -n r_env r-essentials r-base\nconda activate r_env\nR # This opens the R shell\nThen, in the R shell:\nIRkernel::installspec(name = 'r_env', displayname = 'R Environment')\nquit()\nNow, fire up a Jupyter Lab or Jupyter Notebook instance from the OpenOnDemand page and select the kernel when you create a new notebook.\nNote that the name r_env can be replaced by whatever you want.",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>49</span>  <span class='chapter-title'>NB: Introducing R</span>"
@@ -4367,17 +4367,6 @@
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: R Data Types and Operators</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M10_RBasics/M10-02-DataTypes.html#numeric",
-    "href": "notebooks/M10_RBasics/M10-02-DataTypes.html#numeric",
-    "title": "NB: Data Types",
-    "section": "Numeric",
-    "text": "Numeric\nFloating point numbers are called “numerics” in R.\nIt is the default data type.\nIf we assign a decimal value to a variable x, x will be of numeric type:\n\nx &lt;- 10.5      # assign a decimal value \nx              # print the value of x \n\n10.5\n\n\n\nclass(x)      # print the class name of x \n\n'numeric'\n\n\nEven if we assign an integer to a variable k, it is will still be saved as a numeric value.\n\nk &lt;- 1\nk              # print the value of k \n\n1\n\n\n\nclass(k)       # print the class name of k \n\n'numeric'\n\n\nThat k is not an integer can be confirmed with is.integer():\n\nis.integer(k)  # is k an integer?\n\nFALSE",
-    "crumbs": [
-      "M10 Basic R",
-      "<span class='chapter-number'>50</span>  <span class='chapter-title'>NB: Data Types</span>"
     ]
   },
   {
@@ -4491,11 +4480,55 @@
     ]
   },
   {
-    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#vectors-from-sequences-using-seq-and-rep",
-    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#vectors-from-sequences-using-seq-and-rep",
+    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#matrix",
+    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#matrix",
     "title": "NB: R Data Structures",
-    "section": "Vectors from sequences using :, seq(), and rep()",
-    "text": "Vectors from sequences using :, seq(), and rep()\nVectors can be made out of sequences which may be generated in a few ways.\n\ns1 &lt;- 2:5\ns1\n\n\n2345\n\n\nThe seq() function is like Python’s range().\n\ns2 &lt;- seq(from=1, to=5, by=2)\ns2\n\n\n135\n\n\nYou can drop the argument names and write seq(1,5,2).\nThe rep() function will create a series of repeated values:\n\ns3 &lt;- rep(1, 5)\ns3\n\n\n11111",
+    "section": "Matrix",
+    "text": "Matrix\nA matrix is just a two-dimensional vector.\nIt too has one data type and is immutable.",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#array",
+    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#array",
+    "title": "NB: R Data Structures",
+    "section": "Array",
+    "text": "Array\nAn array in R is a generalization of the vector and matrix. It may have one or more dimensions.\nSo, an array with one dimension is almost the same as a vector.\nAn array with two dimensions is almost the same as a matrix.\nAn array with three or more dimensions is an n-dimensional array.\nThey are like NumPy arrays in Python.",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#list",
+    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#list",
+    "title": "NB: R Data Structures",
+    "section": "List",
+    "text": "List\nA list can hold items of different types and the list size can be increased on the fly.\nList contents can be accessed either by index (like mylist[[1]]) or by name (like mylist$age).\nLists are like lists in Python.\nA data frame is called a table in many languages.\nThis is the workhorse of R.\nEach column holds the same type, and the columns can have header names.\nA data frame is essential a kind of a list — a list of vectors each with the same length, but of varying data types.",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#summary",
+    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#summary",
+    "title": "NB: R Data Structures",
+    "section": "Summary",
+    "text": "Summary\n\n\n\nStructure\nDim\nData Type\nShape\nPython\n\n\n\n\nVector\n\\(1\\)\nsingle\n—\n—\n\n\nMatrix\n\\(2\\)\nsingle\nuniform\n—\n\n\nArray\n\\(N\\)\nsingle\nuniform\nNumPy array\n\n\nList\n\\(1\\)\nmultiple\nragged\nList, Dict\n\n\nData Frame\n\\(2\\)\nmultiple\nuniform\nPandas Data Frame\n\n\n\nThese reflect the evolution of R.\nWe mainly use Vectors and Data Frames.",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#sequences",
+    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#sequences",
+    "title": "NB: R Data Structures",
+    "section": "Sequences",
+    "text": "Sequences\nVectors may be created from sequences using :, seq(), and rep()\nVectors can be made out of sequences which may be generated in a few ways.\n\ns1 &lt;- 2:5\ns1\n\n\n2345\n\n\nThe seq() function is like Python’s range().\n\ns2 &lt;- seq(from=1, to=5, by=2)\ns2\n\n\n135\n\n\nYou can drop the argument names and write seq(1,5,2).\nThe rep() function will create a series of repeated values:\n\ns3 &lt;- rep(1, 5)\ns3\n\n\n11111",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
@@ -4513,11 +4546,11 @@
     ]
   },
   {
-    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#combining-vectors-with-c",
-    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#combining-vectors-with-c",
+    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#combining-vectors",
+    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#combining-vectors",
     "title": "NB: R Data Structures",
-    "section": "Combining Vectors with c()",
-    "text": "Combining Vectors with c()\nVectors can be combined via the function c().\n\nn &lt;- c(2, 3, 5) \ns &lt;- c(\"aa\", \"bb\", \"cc\", \"dd\", \"ee\") \n c(n, s) \n\n\n'2''3''5''aa''bb''cc''dd''ee'",
+    "section": "Combining Vectors",
+    "text": "Combining Vectors\nVectors can be combined via the function c().\n\nn &lt;- c(2, 3, 5) \ns &lt;- c(\"aa\", \"bb\", \"cc\", \"dd\", \"ee\") \n c(n, s) \n\n\n'2''3''5''aa''bb''cc''dd''ee'",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
@@ -4755,11 +4788,11 @@
     ]
   },
   {
-    "objectID": "notebooks/M10_RBasics/M10-04-DataFrames.html#data-frame-row-slice",
-    "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#data-frame-row-slice",
+    "objectID": "notebooks/M10_RBasics/M10-04-DataFrames.html#data-frame-row-slices",
+    "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#data-frame-row-slices",
     "title": "NB: R Data Frames",
-    "section": "Data Frame Row Slice",
-    "text": "Data Frame Row Slice\nWe retrieve rows from a data frame with the single square bracket operator, just like what we did with columns. However, in additional to an index vector of row positions, we append an extra comma character. This is important, as the extra comma signals a wildcard match for the second coordinate for column positions.",
+    "section": "Data Frame Row Slices",
+    "text": "Data Frame Row Slices\nWe also retrieve rows from a data frame with the single square bracket operator.\nBut, we need append an extra comma character, which implies getting all columns.\nmtcar[&lt;row&gt;,]\nWhere &lt;row&gt; is a row index number or a name.\nIn Python, we would have done this:\ndf[&lt;row&gt;, :]",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4793,17 +4826,6 @@
     "title": "NB: R Data Frames",
     "section": "Logical Indexing",
     "text": "Logical Indexing\nWe can also retrieve rows with a logical index vector.\nIn the following logical (boolean) vector expression, the member value is TRUE if the car has automatic transmission, and FALSE if otherwise.\n\nmtcars$am == 1 \n\n\nTRUETRUETRUEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSEFALSETRUETRUETRUEFALSEFALSEFALSEFALSEFALSETRUETRUETRUETRUETRUETRUETRUE\n\n\nPassing this vector expression as a row selector, we get the subset of rows with vehicles that have automatic transmission:\n\nmtcars[mtcars$am == 1,]\n\n\n\nA data.frame: 13 × 11\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nMazda RX4\n21.0\n6\n160.0\n110\n3.90\n2.620\n16.46\n0\n1\n4\n4\n\n\nMazda RX4 Wag\n21.0\n6\n160.0\n110\n3.90\n2.875\n17.02\n0\n1\n4\n4\n\n\nDatsun 710\n22.8\n4\n108.0\n93\n3.85\n2.320\n18.61\n1\n1\n4\n1\n\n\nFiat 128\n32.4\n4\n78.7\n66\n4.08\n2.200\n19.47\n1\n1\n4\n1\n\n\nHonda Civic\n30.4\n4\n75.7\n52\n4.93\n1.615\n18.52\n1\n1\n4\n2\n\n\nToyota Corolla\n33.9\n4\n71.1\n65\n4.22\n1.835\n19.90\n1\n1\n4\n1\n\n\nFiat X1-9\n27.3\n4\n79.0\n66\n4.08\n1.935\n18.90\n1\n1\n4\n1\n\n\nPorsche 914-2\n26.0\n4\n120.3\n91\n4.43\n2.140\n16.70\n0\n1\n5\n2\n\n\nLotus Europa\n30.4\n4\n95.1\n113\n3.77\n1.513\n16.90\n1\n1\n5\n2\n\n\nFord Pantera L\n15.8\n8\n351.0\n264\n4.22\n3.170\n14.50\n0\n1\n5\n4\n\n\nFerrari Dino\n19.7\n6\n145.0\n175\n3.62\n2.770\n15.50\n0\n1\n5\n6\n\n\nMaserati Bora\n15.0\n8\n301.0\n335\n3.54\n3.570\n14.60\n0\n1\n5\n8\n\n\nVolvo 142E\n21.4\n4\n121.0\n109\n4.11\n2.780\n18.60\n1\n1\n4\n2\n\n\n\n\n\n\nAnd here is the gas mileage data for automatic transmission\n\nmtcars[mtcars$am == 1,]$mpg\n\n\n212122.832.430.433.927.32630.415.819.71521.4",
-    "crumbs": [
-      "M10 Basic R",
-      "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M10_RBasics/M10-04-DataFrames.html#change-the-name-of-a-column",
-    "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#change-the-name-of-a-column",
-    "title": "NB: R Data Frames",
-    "section": "Change the name of a column",
-    "text": "Change the name of a column\n\nnames(df)[names(df) == 'old.var.name'] &lt;- 'new.var.name'",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
@@ -4854,14 +4876,14 @@
     ]
   },
   {
-    "objectID": "notebooks/M10_RBasics/M10-05-ControlStructures.html#ifelse-statements",
-    "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html#ifelse-statements",
-    "title": "NB: Control Structures and Functions",
+    "objectID": "notebooks/M10_RBasics/M10-05-ControlStructures.html#conditional-statements",
+    "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html#conditional-statements",
+    "title": "NB: R Control Structures",
     "section": "",
-    "text": "if (&lt;condition&gt;) {\n        ## do something\n} \n\nif (&lt;condition&gt;) {\n        ## do something\n} \nelse {\n        ## do something else\n}\n\nif (&lt;condition1&gt;) {\n        ## do something\n} else if (&lt;condition2&gt;)  {\n        ## do something different\n} else {\n        ## do something different\n}\n\n\n\n\n\nif (&lt;condition1&gt;) {\n    \n}\n\nif (&lt;condition2&gt;) {\n\n}",
+    "text": "if (&lt;condition&gt;) {\n        ## do something\n} \n\nif (&lt;condition&gt;) {\n        ## do something\n} \nelse {\n        ## do something else\n}\n\nif (&lt;condition1&gt;) {\n        ## do something\n} else if (&lt;condition2&gt;)  {\n        ## do something different\n} else {\n        ## do something different\n}\n\n\n\n\n\n\n\n\n\n\n\nif (&lt;condition1&gt;) {\n    \n}\n\nif (&lt;condition2&gt;) {\n\n}",
     "crumbs": [
       "M10 Basic R",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: Control Structures and Functions</span>"
+      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"
     ]
   },
   {
@@ -4881,6 +4903,17 @@
     "title": "NB: R Control Structures",
     "section": "seq_along()",
     "text": "seq_along()\nThe seq_along() function is commonly used in conjunction with for loops.\nIt generates an integer sequence based on the length of an object.\n\nx &lt;- c(\"a\", \"b\", \"c\", \"d\")\nfor (i in seq_along(x)) {\n  print(x[i])  \n}\n\n[1] \"a\"\n[1] \"b\"\n[1] \"c\"\n[1] \"d\"\n\n\nNote that it is not necessary to use an index-type variable to iterate through an iterable object.\n\nfor (letter in x) {\n  print(letter)\n}\n\n[1] \"a\"\n[1] \"b\"\n[1] \"c\"\n[1] \"d\"\n\n\nFor one line loops, the curly braces are not strictly necessary.\n\nfor (i in 1:4) print(x[i])\n\n[1] \"a\"\n[1] \"b\"\n[1] \"c\"\n[1] \"d\"",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-05-ControlStructures.html#seq_len",
+    "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html#seq_len",
+    "title": "NB: R Control Structures",
+    "section": "seq_len()",
+    "text": "seq_len()\nThe seq_len() function is also used in conjunction with for loops.\nIt generates an integer sequence based a number.\n\nfor (i in seq_len(length(x))) {\n  print(x[i])  \n}\n\n[1] \"a\"\n[1] \"b\"\n[1] \"c\"\n[1] \"d\"\n\n\nseq_len() is like seq(), but it doesn’t have the flexibility of the latter.\nIt handles the common case of beginning at \\(1\\) and stepping by \\(1\\).\n\nseq(length(x))\nseq_len(length(x))\n\n\n123456\n\n\n\n123456",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"
@@ -4909,17 +4942,6 @@
     ]
   },
   {
-    "objectID": "notebooks/M10_RBasics/M10-05-ControlStructures.html#repeat-loops",
-    "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html#repeat-loops",
-    "title": "NB: R Control Structures",
-    "section": "repeat Loops",
-    "text": "repeat Loops\nrepeat loops are used by R.\nThey initiate an infinite loop right from the start.\nThe only way to exit a repeat loop is to call break on an internal condition.\nHere’s an example of what one might look like:\nx0 &lt;- 1\ntol &lt;- 1e-8\n\nrepeat {\n  x1 &lt;- computeEstimate()\n  if (abs(x1 - x0) &lt; tol) {  ## Close enough?\n    break\n  } else {\n    x0 &lt;- x1\n  } \n}",
-    "crumbs": [
-      "M10 Basic R",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"
-    ]
-  },
-  {
     "objectID": "notebooks/M10_RBasics/M10-05-ControlStructures.html#next-and-break",
     "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html#next-and-break",
     "title": "NB: R Control Structures",
@@ -4931,11 +4953,33 @@
     ]
   },
   {
+    "objectID": "notebooks/M10_RBasics/M10-05-ControlStructures.html#repeat-loops",
+    "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html#repeat-loops",
+    "title": "NB: R Control Structures",
+    "section": "repeat Loops",
+    "text": "repeat Loops\nrepeat loops are used by R.\nThey initiate an infinite loop right from the start.\nThe only way to exit a repeat loop is to call break on an internal condition.\nHere’s an example of what one might look like:\nx0 &lt;- 1\ntol &lt;- 1e-8\n\nrepeat {\n  x1 &lt;- computeEstimate()\n  if (abs(x1 - x0) &lt; tol) {  ## Close enough?\n    break\n  } else {\n    x0 &lt;- x1\n  } \n}",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"
+    ]
+  },
+  {
     "objectID": "notebooks/M10_RBasics/M10-06-Functions.html",
     "href": "notebooks/M10_RBasics/M10-06-Functions.html",
     "title": "NB: R Functions",
     "section": "",
     "text": "Default Argument Values\nFunction arguments can use default values:\nthreshold_vals &lt;- function(p, thresh = 0.5) {\n  p &gt; thresh\n}\nHere we use the default thresh.\nthreshold_vals(c(0.6, 0.4, 0.1, 1))\n\n\nTRUEFALSEFALSETRUE\nNow, pass a different threshold:\nthreshold_vals(c(0.6, 0.4, 0.1, 1), 0.7)\n\n\nFALSEFALSEFALSETRUE",
+    "crumbs": [
+      "M10 Basic R",
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>NB: R Functions</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M10_RBasics/M10-06-Functions.html#error-trapping",
+    "href": "notebooks/M10_RBasics/M10-06-Functions.html#error-trapping",
+    "title": "NB: R Functions",
+    "section": "Error Trapping",
+    "text": "Error Trapping\nYou can assert important preconditions with stop().\nHere, we assert that the lengths of vectors x and y match.\nIf they don’t. we throw an error with stop().\n\nadd_vectors &lt;- function(x, y) {\n  if (length(x) != length(y)) {\n    stop(\"x and y must be the same length\", call. = FALSE)\n  }\n  x + y\n}\n\n\nadd_vectors(c(1, 2, 3), c(3, 3, 3))\n\n\n456\n\n\nLet’s see if it traps this error:\n\nadd_vectors(c(1, 2, 3), c(3, 3, 3, 3))\n\nERROR: Error: x and y must be the same length",
     "crumbs": [
       "M10 Basic R",
       "<span class='chapter-number'>54</span>  <span class='chapter-title'>NB: R Functions</span>"
@@ -4994,14 +5038,25 @@
     ]
   },
   {
-    "objectID": "notebooks/M11_RDplyr/M11-01-Tibbles.html#dplyr",
-    "href": "notebooks/M11_RDplyr/M11-01-Tibbles.html#dplyr",
-    "title": "NB: Introducing Tibbles",
-    "section": "Dplyr",
-    "text": "Dplyr\nDplyr introduces a new set of functions that make working with data more intuitive.\n\nIt does this by introducing a set of functions that work together well to produce pipelines of actions.\n\nBut as important, it introduces a vocabulary for talking about data.\n\nThis makes it possible to imagine solutions verbally, and then to implement them in code.\n\nTo use the Tidyverse, we often import everything:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.1\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors",
+    "objectID": "notebooks/M11_RDplyr/M11-01-Tibbles.html#tidy-data",
+    "href": "notebooks/M11_RDplyr/M11-01-Tibbles.html#tidy-data",
+    "title": "NB: The Tidyverse and Tibbles",
+    "section": "Tidy Data",
+    "text": "Tidy Data\nNote that the word “tidy” in Tidyverse stands for a specific way to structure data in data frames.\nTidy data frames have the following qualities:\nEach variable forms a column.\nEach observation forms a row.\nEach type of observational unit forms a table.",
     "crumbs": [
       "M11 Dplyr",
-      "<span class='chapter-number'>55</span>  <span class='chapter-title'>NB: Introducing Tibbles</span>"
+      "<span class='chapter-number'>55</span>  <span class='chapter-title'>NB: The Tidyverse and Tibbles</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M11_RDplyr/M11-01-Tibbles.html#using-the-tidyverse",
+    "href": "notebooks/M11_RDplyr/M11-01-Tibbles.html#using-the-tidyverse",
+    "title": "NB: The Tidyverse and Tibbles",
+    "section": "Using the Tidyverse",
+    "text": "Using the Tidyverse\nTo use the Tidyverse, we often import everything:\n\ninstall.packages(\"tidyverse\")\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors",
+    "crumbs": [
+      "M11 Dplyr",
+      "<span class='chapter-number'>55</span>  <span class='chapter-title'>NB: The Tidyverse and Tibbles</span>"
     ]
   },
   {
@@ -5104,36 +5159,47 @@
     ]
   },
   {
-    "objectID": "notebooks/M11_RDplyr/M11-02-Dplyr.html#dplyr-grammar",
-    "href": "notebooks/M11_RDplyr/M11-02-Dplyr.html#dplyr-grammar",
-    "title": "NB: The dplyr package",
-    "section": "",
-    "text": "select: return a subset of the columns of a data frame, using a flexible notation\nfilter: extract a subset of rows from a data frame based on logical conditions\narrange: reorder rows of a data frame\nrename: rename variables in a data frame\nmutate: add new variables/columns or transform existing variables\nsummarise / summarize: generate summary statistics of different variables in the data frame, possibly within strata\n%&gt;%: the “pipe” operator is used to connect multiple verb actions together into a pipeline",
+    "objectID": "notebooks/M11_RDplyr/M11-02-Dplyr.html#why-dplyr",
+    "href": "notebooks/M11_RDplyr/M11-02-Dplyr.html#why-dplyr",
+    "title": "NB: Dplyr",
+    "section": "Why Dplyr?",
+    "text": "Why Dplyr?\nDplyr was developed to provide a clean and intelligble way to process data tables.\nIt does this by providing a simple grammar for data manipulation and for operating on data frames.\nWith this grammar, you can clearly express and communicate what it is that you are doing to a data frame that other people can understand.\nThis is useful because it provides an abstraction for data manipulation that previously did not exist within R and other programming languages.\nAnother useful contribution is that the Dplyr functions are very fast, as many key operations are coded in C++.\nNote that Dplyr does not provide any new functionality to R per se.\nEverything Dplyr does may already be done with base R.\nBut it greatly simplifies existing functionality in R.\nIn the table below, you can see that that Dplyr provides a consistent way of phrasing the someone chaotic idioms of base R.\n\n\n\ndplyr\nbase R\n\n\n\n\narrange(df, x)\ndf[order(x), , drop = FALSE]\n\n\ndistinct(df, x)\ndf[!duplicated(x), , drop = FALSE], unique()\n\n\nfilter(df, x)\ndf[which(x), , drop = FALSE], subset()\n\n\nmutate(df, z = x + y)\ndf$z &lt;- df$x + df$y, transform()\n\n\npull(df, 1)\ndf[[1]]\n\n\npull(df, x)\ndf$x\n\n\nrename(df, y = x)\nnames(df)[names(df) == \"x\"] &lt;- \"y\"\n\n\nrelocate(df, y)\ndf[union(\"y\", names(df))]\n\n\nselect(df, x, y)\ndf[c(\"x\", \"y\")], subset()\n\n\nselect(df, starts_with(\"x\"))\ndf[grepl(\"\n\n\nsummarise(df, mean(x))\nmean(df$x), tapply(), aggregate(), by()\n\n\nslice(df, c(1, 2, 5))\ndf[c(1, 2, 5), , drop = FALSE]",
     "crumbs": [
       "M11 Dplyr",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>NB: The `dplyr` package</span>"
+      "<span class='chapter-number'>56</span>  <span class='chapter-title'>NB: Dplyr</span>"
     ]
   },
   {
-    "objectID": "notebooks/M11_RDplyr/M11-02-Dplyr.html#common-dplyr-function-properties",
-    "href": "notebooks/M11_RDplyr/M11-02-Dplyr.html#common-dplyr-function-properties",
-    "title": "NB: The dplyr package",
-    "section": "Common dplyr Function Properties",
-    "text": "Common dplyr Function Properties\nAll of the functions that we will discuss in this Chapter will have a few common characteristics. In particular,\n\nThe first argument is a data frame.\nThe subsequent arguments describe what to do with the data frame specified in the first argument, and you can refer to columns in the data frame directly without using the $ operator (just use the column names).\nThe return result of a function is a new data frame.\nData frames must be properly formatted and annotated for this to all be useful.\n\nIn particular, the data must be tidy The main principles of tidy data are:\n\nEach variable forms a column.\nEach observation forms a row.\nEach type of observational unit forms a table.",
+    "objectID": "notebooks/M11_RDplyr/M11-02-Dplyr.html#a-grammar-of-data",
+    "href": "notebooks/M11_RDplyr/M11-02-Dplyr.html#a-grammar-of-data",
+    "title": "NB: Dplyr",
+    "section": "A Grammar of Data",
+    "text": "A Grammar of Data\nSome of the key “verbs” provided by the Dplyr package are:\n\nselect: return a subset of the columns of a data frame, using a flexible notation.\nfilter: extract a subset of rows from a data frame based on logical conditions.\narrange: reorder rows of a. data frame.\nrename: rename variables in a data frame.\nmutate: add new variables/columns or transform existing variables.\nsummarise / summarize: generate summary statistics of different variables in the data frame, possibly within strata.\n\n%&gt;%: the pipe operator is used to connect multiple verb actions together into a pipeline.",
     "crumbs": [
       "M11 Dplyr",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>NB: The `dplyr` package</span>"
+      "<span class='chapter-number'>56</span>  <span class='chapter-title'>NB: Dplyr</span>"
     ]
   },
   {
-    "objectID": "notebooks/M11_RDplyr/M11-02-Dplyr.html#installing-the-dplyr-package",
-    "href": "notebooks/M11_RDplyr/M11-02-Dplyr.html#installing-the-dplyr-package",
-    "title": "NB: The dplyr package",
-    "section": "Installing the dplyr package",
-    "text": "Installing the dplyr package\nYou can install dplyr directly or as part of tidyverse, which we installed in the previous notebook.\n\n# install.packages(\"dplyr\")\n\nOnce the package is installed, you may load it into your R session by calling the library() function.\n\n# library(dplyr)\n\nOf course, you can also just install tidyverse if you plan to visualize your results.\nSince we did this in our previous notebook, we can import it now.\n\nlibrary(tidyverse)\n\nYou may get some warnings when the package is loaded because there are functions in the dplyr package that have the same name as functions in other packages. For now you can ignore the warnings.",
+    "objectID": "notebooks/M11_RDplyr/M11-02-Dplyr.html#common-function-properties",
+    "href": "notebooks/M11_RDplyr/M11-02-Dplyr.html#common-function-properties",
+    "title": "NB: Dplyr",
+    "section": "Common Function Properties",
+    "text": "Common Function Properties\nAll Dplyr functions have some common characteristics:\n\nThe first argument is a data frame (or tibble).\nThe succeeding arguments describe what to do with the data frame specified in the first argument.\nThe return result of a function is a new data frame.\n\nIn addition, Dplyr expects data frames to be be properly structured as tidy data.",
     "crumbs": [
       "M11 Dplyr",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>NB: The `dplyr` package</span>"
+      "<span class='chapter-number'>56</span>  <span class='chapter-title'>NB: Dplyr</span>"
+    ]
+  },
+  {
+    "objectID": "notebooks/M11_RDplyr/M11-02-Dplyr.html#installing-dplyr",
+    "href": "notebooks/M11_RDplyr/M11-02-Dplyr.html#installing-dplyr",
+    "title": "NB: Dplyr",
+    "section": "Installing Dplyr",
+    "text": "Installing Dplyr\nYou can install Dplyr directly or as part of Tidyverse, which we installed in the previous notebook.\n\n# install.packages(\"dplyr\")\n\nOnce the package is installed, you may load it into your R session by calling the library() function.\n\n# library(dplyr)\n\nOf course, you can also just install tidyverse if you plan to visualize your results.\nSince we did this in our previous notebook, we can import it now.\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nYou may get some warnings when the package is loaded because there are functions in the dplyr package that have the same name as functions in other packages. For now you can ignore the warnings.",
+    "crumbs": [
+      "M11 Dplyr",
+      "<span class='chapter-number'>56</span>  <span class='chapter-title'>NB: Dplyr</span>"
     ]
   },
   {
@@ -5152,7 +5218,7 @@
     "href": "notebooks/M11_RDplyr/M11-02-Dplyr.html#select",
     "title": "NB: Dplyr",
     "section": "select()",
-    "text": "select()\nWe use the select() function to select columns you want to focus on.\nFor example, we can inspect the tmpd column like so:\n\nchicago %&gt;% select(tmpd) %&gt;% head()\n\n\n\nA tibble: 6 × 1\n\n\ntmpd\n\n\n&lt;dbl&gt;\n\n\n\n\n31.5\n\n\n33.0\n\n\n33.0\n\n\n29.0\n\n\n32.0\n\n\n40.0\n\n\n\n\n\n\nIn base R, we would do this:\n\nhead(chicago[\"tmpd\"])\n\n\n\nA tibble: 6 × 1\n\n\ntmpd\n\n\n&lt;dbl&gt;\n\n\n\n\n31.5\n\n\n33.0\n\n\n33.0\n\n\n29.0\n\n\n32.0\n\n\n40.0\n\n\n\n\n\n\nNow suppose we wanted to take the first \\(3\\) columns only.\nWe could use numerical indices in base R.\n\nhead(chicago[names(chicago)[1:3]])\n\n\n\nA tibble: 6 × 3\n\n\ncity\ntmpd\ndptp\n\n\n&lt;chr&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nchic\n31.5\n31.500\n\n\nchic\n33.0\n29.875\n\n\nchic\n33.0\n27.375\n\n\nchic\n29.0\n28.625\n\n\nchic\n32.0\n28.875\n\n\nchic\n40.0\n35.125\n\n\n\n\n\n\nIn Dplr, we can use the names directly to create a column range slice:\n\nchicago %&gt;%\n  select(city:dptp) %&gt;%\n  head()\n\n\n\nA tibble: 6 × 3\n\n\ncity\ntmpd\ndptp\n\n\n&lt;chr&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nchic\n31.5\n31.500\n\n\nchic\n33.0\n29.875\n\n\nchic\n33.0\n27.375\n\n\nchic\n29.0\n28.625\n\n\nchic\n32.0\n28.875\n\n\nchic\n40.0\n35.125\n\n\n\n\n\n\nNote the use of : inside the select() — you can use it to specify a range of variable names.\nYou can also omit variables using the select() function by using the negative sign.\nWith select() you can do:\n\nchicago %&gt;%\n    select(-(city:dptp)) %&gt;% \n    head()\n\n\n\nA tibble: 6 × 5\n\n\ndate\npm25tmean2\npm10tmean2\no3tmean2\nno2tmean2\n\n\n&lt;date&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\n1987-01-01\nNA\n34.00000\n4.250000\n19.98810\n\n\n1987-01-02\nNA\nNA\n3.304348\n23.19099\n\n\n1987-01-03\nNA\n34.16667\n3.333333\n23.81548\n\n\n1987-01-04\nNA\n47.00000\n4.375000\n30.43452\n\n\n1987-01-05\nNA\nNA\n4.750000\n30.33333\n\n\n1987-01-06\nNA\n48.00000\n5.833333\n25.77233\n\n\n\n\n\n\nThis indicates that we should include every variable except the variables city through dptp.\nThe select() function also allows a special syntax that allows you to specify variable names based on patterns.\nIf you wanted to keep every variable that ends with a “2”, we could do this:\n\nchicago %&gt;%\n  select(ends_with(\"2\")) %&gt;%\n  head()\n\n\n\nA tibble: 6 × 4\n\n\npm25tmean2\npm10tmean2\no3tmean2\nno2tmean2\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nNA\n34.00000\n4.250000\n19.98810\n\n\nNA\nNA\n3.304348\n23.19099\n\n\nNA\n34.16667\n3.333333\n23.81548\n\n\nNA\n47.00000\n4.375000\n30.43452\n\n\nNA\nNA\n4.750000\n30.33333\n\n\nNA\n48.00000\n5.833333\n25.77233\n\n\n\n\n\n\nOr if we wanted to keep every variable that starts with a “d”, we could do this:\n\nchicago %&gt;%\n  select(starts_with(\"d\")) %&gt;%\n  head()\n\n\n\nA tibble: 6 × 2\n\n\ndptp\ndate\n\n\n&lt;dbl&gt;\n&lt;date&gt;\n\n\n\n\n31.500\n1987-01-01\n\n\n29.875\n1987-01-02\n\n\n27.375\n1987-01-03\n\n\n28.625\n1987-01-04\n\n\n28.875\n1987-01-05\n\n\n35.125\n1987-01-06\n\n\n\n\n\n\nThis is super useful if you have a table with prefixes, such as doc_.\nYou can also use more general regular expressions if necessary.",
+    "text": "select()\nWe use the select() function to select columns you want to focus on.\nFor example, we can inspect the tmpd column like so:\n\nchicago %&gt;% select(tmpd) %&gt;% head()\n\n\n\nA tibble: 6 × 1\n\n\ntmpd\n\n\n&lt;dbl&gt;\n\n\n\n\n31.5\n\n\n33.0\n\n\n33.0\n\n\n29.0\n\n\n32.0\n\n\n40.0\n\n\n\n\n\n\nIn base R, we would do this:\n\nhead(chicago[\"tmpd\"])\n\n\n\nA tibble: 6 × 1\n\n\ntmpd\n\n\n&lt;dbl&gt;\n\n\n\n\n31.5\n\n\n33.0\n\n\n33.0\n\n\n29.0\n\n\n32.0\n\n\n40.0\n\n\n\n\n\n\nNow suppose we wanted to take the first \\(3\\) columns only.\nWe could use numerical indices in base R.\n\nhead(chicago[1:3])\n\n\n\nA tibble: 6 × 3\n\n\ncity\ntmpd\ndewpoint\n\n\n&lt;chr&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nchic\n31.5\n31.500\n\n\nchic\n33.0\n29.875\n\n\nchic\n33.0\n27.375\n\n\nchic\n29.0\n28.625\n\n\nchic\n32.0\n28.875\n\n\nchic\n40.0\n35.125\n\n\n\n\n\n\nIn Dplr, we can use the names directly to create a column range slice:\n\nchicago %&gt;%\n  select(city:dptp) %&gt;%\n  head()\n\n\n\nA tibble: 6 × 3\n\n\ncity\ntmpd\ndptp\n\n\n&lt;chr&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nchic\n31.5\n31.500\n\n\nchic\n33.0\n29.875\n\n\nchic\n33.0\n27.375\n\n\nchic\n29.0\n28.625\n\n\nchic\n32.0\n28.875\n\n\nchic\n40.0\n35.125\n\n\n\n\n\n\nNote the use of : inside the select() — you can use it to specify a range of variable names.\nYou can also omit variables using the select() function by using the negative sign.\nWith select() you can do:\n\nchicago %&gt;%\n    select(-(city:dptp)) %&gt;% \n    head()\n\n\n\nA tibble: 6 × 5\n\n\ndate\npm25tmean2\npm10tmean2\no3tmean2\nno2tmean2\n\n\n&lt;date&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\n1987-01-01\nNA\n34.00000\n4.250000\n19.98810\n\n\n1987-01-02\nNA\nNA\n3.304348\n23.19099\n\n\n1987-01-03\nNA\n34.16667\n3.333333\n23.81548\n\n\n1987-01-04\nNA\n47.00000\n4.375000\n30.43452\n\n\n1987-01-05\nNA\nNA\n4.750000\n30.33333\n\n\n1987-01-06\nNA\n48.00000\n5.833333\n25.77233\n\n\n\n\n\n\nThis indicates that we should include every variable except the variables city through dptp.\nThe select() function also allows a special syntax that allows you to specify variable names based on patterns.\nIf you wanted to keep every variable that ends with a “2”, we could do this:\n\nchicago %&gt;%\n  select(ends_with(\"2\")) %&gt;%\n  head()\n\n\n\nA tibble: 6 × 4\n\n\npm25tmean2\npm10tmean2\no3tmean2\nno2tmean2\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nNA\n34.00000\n4.250000\n19.98810\n\n\nNA\nNA\n3.304348\n23.19099\n\n\nNA\n34.16667\n3.333333\n23.81548\n\n\nNA\n47.00000\n4.375000\n30.43452\n\n\nNA\nNA\n4.750000\n30.33333\n\n\nNA\n48.00000\n5.833333\n25.77233\n\n\n\n\n\n\nOr if we wanted to keep every variable that starts with a “d”, we could do this:\n\nchicago %&gt;%\n  select(starts_with(\"d\")) %&gt;%\n  head()\n\n\n\nA tibble: 6 × 2\n\n\ndptp\ndate\n\n\n&lt;dbl&gt;\n&lt;date&gt;\n\n\n\n\n31.500\n1987-01-01\n\n\n29.875\n1987-01-02\n\n\n27.375\n1987-01-03\n\n\n28.625\n1987-01-04\n\n\n28.875\n1987-01-05\n\n\n35.125\n1987-01-06\n\n\n\n\n\n\nThis is super useful if you have a table with prefixes, such as doc_.\nYou can also use more general regular expressions if necessary.",
     "crumbs": [
       "M11 Dplyr",
       "<span class='chapter-number'>56</span>  <span class='chapter-title'>NB: Dplyr</span>"
@@ -5255,509 +5321,47 @@
     ]
   },
   {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html",
-    "title": "NB: GGPlot2",
+    "objectID": "notebooks/M12_RViz/M12-00-AGrammarOfGraphics.html",
+    "href": "notebooks/M12_RViz/M12-00-AGrammarOfGraphics.html",
+    "title": "GGPlot and the Grammar of Graphics",
     "section": "",
-    "text": "Introduction\nToday we’ll look at GGPlot2, the graphics package associated with the Tidyverse.",
+    "text": "Programming for Data Science\nGGPlot is the graphics package associated with the Tidyverse.\nIn this notebook, we will present a quick overview of the design principles behind the package.\nAs with Dplyr, GGPlot2 is a an entirely new system that supplants the older graph functions that are built into R.\nIt is founded on a principled analysis of its domain and from this develops a basic grammar which can then be expressed in R.\nJust as Dplyr is built on a grammar of data consisting of pipable verbs that correspond to the logic data transformation, GGPlot2 is built on a grammar of graphics consisting of nouns that correspond to the architecture of a graphic (aka plot).\nThe phrase “grammar of graphics” actually comes from the book by that name written by statistician and computer scientist Leland Wilkinson in 1999 and later revised:\n\nIt is worth reading if you want to get a solid grounding in visualization, which belongs to the design area of data science.\nThe Grammar of Graphics takes an object-oriented approach to visualization and formalizes two main principles:\n\nGraphics are built out of distinct layers.\nIn each layer, meaningful plots are constructed through mappings of data onto aesthetics.\n\nThe primary layers are these:\n\nAccording to Wickham, who adopted these principles and applied them to R,\n\nA grammar of graphics is a tool that enables us to concisely describe the components of a graphic. Such a grammar allows us to move beyond named graphics (e.g., the “scatterplot”) and gain insight into the deep structure that underlies statistical graphics (Wickham 2012).\n\nWickham takes this idea and develops it into this:\n\nSource (see also ScienceCraft).\nIn this model, everything starts with data.\nThen data are mapped on aesthetics within geometries.\n\nGeometries are geometric things like points, lines, and bars.\nAesthetics are visual things like position, size, color and shape.\n\nAlso note that aesthetics make use of visual channels to signify features and their properties.\n\nSize can mean greater than, which is good for numeric scale but not categories\nColor can signify things like value, e.g. via red : dangerous : : green : safe.\n\nThese compose the primary layers.\nThe other layers apply downstream modifications that add more information and style to the graph.",
     "crumbs": [
       "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
+      "<span class='chapter-number'>57</span>  <span class='chapter-title'>GGPlot and the Grammar of Graphics</span>"
     ]
   },
   {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#learning-goal",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#learning-goal",
-    "title": "NB: GGPlot2",
-    "section": "Learning Goal",
-    "text": "Learning Goal\nYou will be introduced into how and why to use visualizations in DS 6001.\n\nVisualizations in EDA.\nVisualization in creating data products that communicate results, such as scientific publications, infographics, and interactive visualizations.\n\nThese things come at the end of the data science pipeline.\nToday, I just want to introduce you to the thinking and design logic behind the package, so you can be confident in learning more as you need to.",
+    "objectID": "notebooks/M12_RViz/M12-01-GettingStartedWithGGPlot.html",
+    "href": "notebooks/M12_RViz/M12-01-GettingStartedWithGGPlot.html",
+    "title": "NB: Getting Started with GGPlot2",
+    "section": "",
+    "text": "Programming for Data Science\nIn this notebook, we look at GGPlot2, the specific graphics package associated with the Tidyverse.\nIt implements the logic of the grammar of graphics model described in the previous notebook.\n\nA First Plot\nEverything starts with getting ggplot(), which is imported when you import tidyverse.\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nGGPlot gives lots of warning messages.\nFor sake of clarity, we are going to turn these off for now.\nWe’re also going to the set the default size of our plots so they display better.\nWe do this with the options() function we saw earlier.\n\noptions(warn=-1)\noptions(repr.plot.width = 16, repr.plot.height = 10)\n\nHere is a basic graph — a scatterplot comparing two features in the iris dataset.\nThe functions and arguments are broken out so you can see how the grammar is implemented:\n\niris %&gt;%\n    ggplot(\n        mapping = aes(x = Sepal.Length, y = Sepal.Width)\n    ) + \n    geom_point(\n        size = 5, \n        aes(color = Species)\n    )\n\n\n\n\n\n\n\n\nHere is an alternate way to build the graph:\n\niris %&gt;%\n    ggplot() +\n    aes(x = Sepal.Length, y = Sepal.Width) + \n    geom_point(size = 5) +\n    aes(color = Species)\n\n\n\n\n\n\n\n\nNote how we can pull the aes() functions out of the geom_ and mapping() functions.\nNote that to create a scatterplot, we did not use a function like geom_scatterplot().\nInstead, we constructed one from scratch using the buildings blocks according to a simple design pattern.\nWe will see that some plot types are constructred this way while others have named functions.\nFor example, a histogram is created with geom_hist().\n\n\nHow it Works\nThe ggplot() function starts by creating a coordinate system that you can add layers to.\nYou can think of it as providing a base layer or canvas.\nOther layers are added by calling geometry functions.\nFor example, geom_point creates a point-based visualization.\nFor each layer, we can apply an aesthetic mapping.\nHere’s a description of what we just plotted:\ngglot() + # Build the coordinate system, i.e. the base layer canvas\n\naes(x = Sepal.Length, y = Sepal.Width) + # Map two features onto the `x` and `y` axes\n\ngeom_point(size = 3) + # Define a geometry that gives visible form to `x` and `y` coordinates\n\naes(color = Species) # Map colors onto coordinates by a third dimension\nNote that the coordinate system can be changed after the graph is initiated.\nThere are many geom_ functions:\n\ngeom_point()\ngeom_bar()\ngeom_histogram()\ngeom_boxplot()\ngeom_violin()\ngeom_density()\n\netc.\nThese can be layered on top of each other in a variety of ways.\nThere are also many channels that can used to represent numeric and categorical features with aes():\n\nx and y positions (in a two-dimensional system)\nColor\nSize\nShape\nText\n\n\n\nA Two Layered Plot\nHere we have a plot with two layers.\nThe second layer is created by a stat_ function.\nThis function internally applies a geom_ function to a statistical transformation to the data.\n\niris %&gt;%\n    ggplot(aes(x = Sepal.Length, y = Sepal.Width)) + \n    geom_point(size = 5, aes(color = Species)) + \n    stat_smooth(method = lm)\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\nThe tilde sign ~ means “as a function of” — in this case, y is being plotted as function of x.\nInterestingly, if we pull the aes() function out of geom_point(), we get a different plot.\n\niris %&gt;%\n    ggplot() +\n    aes(color=Species) +\n    geom_point(size = 5) +\n    aes(x = Sepal.Length, y = Sepal.Width) +\n    stat_smooth(method = lm)\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\nThe + Operator\nYou will notice the use of the + operator to connect GGPlot functions together to produce a final product.\nTheses are not quite the same as pipes %&gt;%.\nWhereas pipes feed data from one function to another, the + operation is a form of method chaining.\nWe saw method chaining in Pandas.\nKeep in mind: the + always goes at the end of a line, never at the beginning.\n\n\nFaceting\nGGPlot also provides plot faceting.\nFaceting is the visual equivalent of grouping in the split-apply-combine pattern.\nJust as with grouping, the distinct values in a data feature are used to divide the visualization into groups.\nEach group takes the same form but shows a different subset of data.\n\niris %&gt;%\n    ggplot(aes(x = Sepal.Length, y = Sepal.Width)) + \n    geom_point(size = 5, aes(color = Species)) + \n    stat_smooth(method = lm) +\n    facet_wrap(facets = vars(Species))\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\nBy the way, this is an example of Simpson’s Paradox.\nThe overall trend is downward, but each group trend upward.\nWe can see this by layering the regression line for the aggregate over the individual ones.\n\niris %&gt;%\n    ggplot(aes(x = Sepal.Length, y = Sepal.Width)) + \n    geom_point(size = 5, aes(color=Species)) + \n    stat_smooth(method = lm, se=F) +\n    stat_smooth(method = lm, se=F, aes(color=Species))\n\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\nNote, the se argument in stat_smooth() toggles whether or not to display the shaded confidence intervals.\n\n\nVisualizing Dimensions\nAesthetics and facets are ways to represent extra dimensions without resorting to increasing the number of axes in our plots.\nFor example, instead of using color or facets to represent species, we might have considered a third axis z to represent this feature.\nWe tend to avoid going beyond two axes in our plots and so resort to other visual devices.\n\n\nBar Chart\nLet’s look at some other geometries.\nHere is a simple bar chart made with gemo_bar().\n\nmtcars %&gt;% \n    ggplot(aes(x = cyl)) +\n    geom_bar(fill = 'limegreen')\n\n\n\n\n\n\n\n\n\n\nHistogram\nThe function geom_hist() will generate a histogram.\nNote that this function actually performs a behind-the-scenes data transformation, which goes beyond mapping the data.\nWe typically see this with the stat_ family of functions.\n\nmtcars %&gt;% \n    ggplot(aes(x = mpg)) + \n    geom_histogram(bins = 20, aes(fill = factor(cyl))) + \n    labs(title=\"Histogram\") \n\n\n\n\n\n\n\n\nNote the use of the lab() function to provide a title.\n\n\nDensity Plot\nHere is a kernel density estimate (KDE) plot made with geom_density().\nA KDE plot is a smoothed version of a histogram.\nAs with geom_histogram(), this function does some behind-the-scenes compuation and then plots the result.\n\nmtcars %&gt;% \n    ggplot(aes(x = mpg)) + \n    geom_density(size = 2, aes(fill = factor(cyl))) + \n    labs(title=\"Density plot\") \n\n\n\n\n\n\n\n\n\n\nBoxplot\nThe function geom_boxplot() gives a classic boxplot, showing the mean, quantiles, and outliers of each variable.\nNote the arguments used — they control how the outliers are rendered.\nNotice we also pull out the aes() function for clarity; it could have remained within the geometry function’s argument space.\n\nmtcars %&gt;% \n    ggplot(aes(x = factor(cyl), y = mpg)) +\n    geom_boxplot(\n        width = 0.5, \n        outlier.colour = \"dodgerblue\", \n        outlier.size = 4, \n        outlier.shape = 16, \n        outlier.stroke = 2, \n    ) + \n    aes(fill = factor(cyl)) +\n    labs(title = \"Box plot\")\n\n\n\n\n\n\n\n\n\n\nViolin Plot\nThis is a violin plot using geom_violin().\nA violin plot is something like a smoothed version of a boxplot.\nThis version is untrimmed, i.e. we set trim to FALSE.\n\nmtcars %&gt;%\n    ggplot(aes(factor(cyl), mpg)) + \n    geom_violin(width = 0.5, trim = F) + \n    aes(fill = factor(cyl)) +\n    labs(title = \"Violin plot\")\n\n\n\n\n\n\n\n\n\n\nHeatmap\nTo create a heatmap, we use geom_tile().\nTo use this function, we first need to reshape our data into narrow form.\nHere, we take a correlation matrix among the features of mtcars.\n\ncorr &lt;- round(cor(mtcars), 2)\ncorr\n\n\n\nA matrix: 11 × 11 of type dbl\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n\nmpg\n1.00\n-0.85\n-0.85\n-0.78\n0.68\n-0.87\n0.42\n0.66\n0.60\n0.48\n-0.55\n\n\ncyl\n-0.85\n1.00\n0.90\n0.83\n-0.70\n0.78\n-0.59\n-0.81\n-0.52\n-0.49\n0.53\n\n\ndisp\n-0.85\n0.90\n1.00\n0.79\n-0.71\n0.89\n-0.43\n-0.71\n-0.59\n-0.56\n0.39\n\n\nhp\n-0.78\n0.83\n0.79\n1.00\n-0.45\n0.66\n-0.71\n-0.72\n-0.24\n-0.13\n0.75\n\n\ndrat\n0.68\n-0.70\n-0.71\n-0.45\n1.00\n-0.71\n0.09\n0.44\n0.71\n0.70\n-0.09\n\n\nwt\n-0.87\n0.78\n0.89\n0.66\n-0.71\n1.00\n-0.17\n-0.55\n-0.69\n-0.58\n0.43\n\n\nqsec\n0.42\n-0.59\n-0.43\n-0.71\n0.09\n-0.17\n1.00\n0.74\n-0.23\n-0.21\n-0.66\n\n\nvs\n0.66\n-0.81\n-0.71\n-0.72\n0.44\n-0.55\n0.74\n1.00\n0.17\n0.21\n-0.57\n\n\nam\n0.60\n-0.52\n-0.59\n-0.24\n0.71\n-0.69\n-0.23\n0.17\n1.00\n0.79\n0.06\n\n\ngear\n0.48\n-0.49\n-0.56\n-0.13\n0.70\n-0.58\n-0.21\n0.21\n0.79\n1.00\n0.27\n\n\ncarb\n-0.55\n0.53\n0.39\n0.75\n-0.09\n0.43\n-0.66\n-0.57\n0.06\n0.27\n1.00\n\n\n\n\n\n\nThe we melt it into narrow form:\n\nnarrow &lt;- reshape2::melt(corr)\n\n\nnarrow %&gt;% head()\n\n\n\nA data.frame: 6 × 3\n\n\n\nVar1\nVar2\nvalue\n\n\n\n&lt;fct&gt;\n&lt;fct&gt;\n&lt;dbl&gt;\n\n\n\n\n1\nmpg\nmpg\n1.00\n\n\n2\ncyl\nmpg\n-0.85\n\n\n3\ndisp\nmpg\n-0.85\n\n\n4\nhp\nmpg\n-0.78\n\n\n5\ndrat\nmpg\n0.68\n\n\n6\nwt\nmpg\n-0.87\n\n\n\n\n\n\nNow we can pass the narrow data frame to our plot constructor:\n\nnarrow %&gt;% ggplot() +\n    aes(x = Var1, y = Var2, fill = value, label = value) +\n    geom_tile() + \n    geom_text(color = \"white\", size = 8) + \n    labs(title=\"mtcars - Correlation plot\") + \n    theme(text=element_text(size = 20), legend.position = \"none\")\n\n\n\n\n\n\n\n\nNote the use of theme() function to remove the legend and alter the font size in the result.\n\n\nAssigning to a Variable\nWe can assign plots to variables and build them incrementally.\n\ngg &lt;- iris %&gt;% ggplot()\ngg\n\n\n\n\n\n\n\n\n\ngg &lt;- gg + aes(x = Sepal.Length, y = Sepal.Width)\ngg\n\n\n\n\n\n\n\n\n\ngg &lt;- gg + geom_point(size=5)\ngg\n\n\n\n\n\n\n\n\n\ngg &lt;- gg + aes(color = Species)\ngg\n\n\n\n\n\n\n\n\n\ngg &lt;- gg + stat_smooth(method = 'lm')\ngg\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\nDesign Pattern\nLet’s use this ability to assign plots to variables to demonstrate another design pattern.\nOften, you will have data of a certain kind and you want to visualize it various ways.\nYou may not be sure of the most effective visualization, so you want to play around.\nFor example, you may want to explore the relationship between two continuous variables.\nThis relationship can visualized using a variety of geometries.\nSo, we may begin by assigning the basic plot to a variable and then applying different geometries to it.\n\nmy_gg &lt;- ggplot(mpg, aes(cty, hwy))\nmy_gg\n\n\n\n\n\n\n\n\nThe object my_gg just contains a blank canvas with two labeled and scaled axes.\nHere we draw a simple scatter plot by adding a geometry to our object.\n\nmy_gg + geom_point(size=5, color='red')\n\n\n\n\n\n\n\n\nHere we show the coordinates as text labels showing cty with a rectangle background.\nThe object remains unchanged by the previous visualization; we are just swapping out geometries.\n\nmy_gg + geom_label(aes(label = cty), nudge_x = 1, nudge_y = 1, color = 'blue') \n\n\n\n\n\n\n\n\nHere is a simple regression line.\n\nmy_gg + geom_smooth(method = lm) \n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\nAnd here is a boxplot …\n\nmy_gg + geom_boxplot()\n\n\n\n\n\n\n\n\nThe geom_density2d() function shows a \\(2\\)D kernel density estimation overlaying a scatterplot.\n\nmy_gg + geom_point() + geom_density2d()\n\n\n\n\n\n\n\n\nAnd here is filled line graph.\n\nmy_gg + geom_area(fill='red')\n\n\n\n\n\n\n\n\n\n\nConclusion\nThis notebook just scratches the surface of what you can do with GGPlot.\nThere are many other features we have not covered, such as changing coordinates.\nIn addition, there are many more geometry and statistics layers we have not shown.\nHowever, hopefully you understanding something of the logic of GGPlot and have gained insight into how graphics are built.\nThis should enable you to make informed guesses and asked effective questions as you develop your knowledge of this powerful toolkit.",
     "crumbs": [
       "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#the-grammar-of-graphics",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#the-grammar-of-graphics",
-    "title": "NB: GGPlot2",
-    "section": "The Grammar of Graphics",
-    "text": "The Grammar of Graphics\nAs with Dplyr, GGPlot2 is a an entirely new system that supplants the older graph functions that are built into R.\nAnd just as with Dplyr, it is founded on a principled analysis of its domain and approaches code design through developing a basic grammar which can then be expressed in R.\nIn effect, Dplyr is built on a grammar of data by defining a set of verbs that can be used to build phrases that are put together into larger constructs.\nThese verbs correspond to a process of data transformation.\nGGPlot2 is built on a grammar of graphics that defines a set of nouns that correspond to the architecture of a graphic (aka plot).\nThe phrase “grammar of graphics” actually comes from the book by that name written by statistician and computer scientist Leland Wilkinson in 1999 and later revised:\n\n\n\nThe Second Edition\n\n\nIt’s worth reading if you want to get a solid grounding in visualization, which belongs to the design area of data science.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#a-layered-model",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#a-layered-model",
-    "title": "NB: GGPlot2",
-    "section": "A Layered Model",
-    "text": "A Layered Model\nWilkinson takes an object-oriented approach to visualization and formalizes two main principles:\n\nGraphics are built out of distinct layers of grammatical elements.\nIn each layer, meaningful plots are constructed through mappings of data onto aesthetics.\n\nThe essential grammatical elements to create any visualization are:\n\nAccording to Wickham, who adopted these principles and applied them to R,\n\nA grammar of graphics is a tool that enables us to concisely describe the components of a graphic. Such a grammar allows us to move beyond named graphics (e.g., the “scatterplot”) and gain insight into the deep structure that underlies statistical graphics (Wickham 2012).\n\nWickham takes this idea and develops it into this:\n\nSource (see also ScienceCraft).\nYou can see that everything starts with data.\nThen data are mapped on aesthetics within geometries.\n\nGeometries are geometric things like points, lines, and bars.\nAesthetics are visual things like position, size, color and shape.\n\nYou can see how the latter are properties of the former.\nAlso note that aesthetics make use of visual channels to signify\n\nSize can mean greater than, which is good for numeric scale but not categories\nColor can signify things like value, e.g. via red : dangerous : : green : safe.\n\nThese are the primary layers.\nThe other layers apply downstream modifications that add more information and style to the graph.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#the-bare-minimum",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#the-bare-minimum",
-    "title": "NB: GGPlot2",
-    "section": "The Bare Minimum",
-    "text": "The Bare Minimum\nEverything starts with ggplot() which is part of the Tidyverse.\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.1\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nHere is a basic graph – a scatterplot comparing two features in the iris dataset. I’ve broken out the functions and arguments so you can see how the grammar is implemented:\n\niris %&gt;%\nggplot(\n  mapping = aes(\n    x = Sepal.Length, \n    y = Sepal.Width)\n  ) + \n  geom_point(size=3, aes(color=Species)\n)\n\n\n\n\n\n\n\n\nggplot() starts by creating a coordinate system that you can add layers to.\n\nThe coordinate system can be changed after the graph is initiated.\n\nThese layers are created by geometry functions.\n\nFor example, geom_point creates a point-based visualization.\nThere are many geom_ functions, and they can be layered on top of each other:\n\ngeom_point()\ngeom_bar()\ngeom_histogram()\ngeom_boxplot()\netc.\n\n\nHere we have a plot with two layers. The second layer is created by a stat function, which is similar to geom, but applies a statistical transformation to the data.\n\niris %&gt;%\nggplot(aes(\n  x = Sepal.Length, \n  y = Sepal.Width)) + \n  geom_point(size=3, aes(color=Species)) + \n  stat_smooth(method = lm)\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\nThe core the process is that each layer maps data onto what are called aesthetics (aes).\nAesthetics are visual objects and properties that can used to represent numeric and categorical values\n\nx and y positions (in a two-dimensional system)\nColor\nSize\nShape\nText\n\nIn addition to these elements, ggplot also provides faceting, which is the visual equivalent of grouping by. Just as with group by, a data feature is used to divide the visualization into groups, each taking the same form but showing a different subset of data.\n\niris %&gt;%\nggplot(aes(\n  x = Sepal.Length, \n  y = Sepal.Width)) + \n  geom_point(size=3, aes(color=Species)) + \n  stat_smooth(method = lm) +\n  facet_wrap(facets = vars(Species))\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\nBy the way, this is an example of Simpson’s Paradox. The overall trend is downward, but each group trend upward.\n\n\niris %&gt;%\n  ggplot(aes(\n    x = Sepal.Length, \n    y = Sepal.Width)) + \n    geom_point(size=3, aes(color=Species)) + \n    stat_smooth(method = lm) +\n    stat_smooth(method = lm, se=FALSE, aes(color=Species))\n\n`geom_smooth()` using formula = 'y ~ x'\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\nAnyway, the general structure of a ggplot statement is the following:\nggplot(data = &lt;DATA&gt;) + \n  &lt;GEOM_FUNCTION&gt;(\n     mapping = aes(&lt;MAPPINGS&gt;),\n     stat = &lt;STAT&gt;, \n     position = &lt;POSITION&gt;\n  ) +\n  &lt;COORDINATE_FUNCTION&gt; +\n  &lt;FACET_FUNCTION&gt;",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#the-operator",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#the-operator",
-    "title": "NB: GGPlot2",
-    "section": "The + operator",
-    "text": "The + operator\nYou will notice the use of the + operator to connect ggplot functions together to produce a final product. Theses are not quite the same as pipes %&gt;%.\nThe difference is that pipes feed data from one function to another, whereas the + operation combines elements to produce an increasingly developed visualization.\nAnother thing to keep in mind: the + always goes at the end of a line, not at the beginning.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#add-title-x-and-y-axis-labels-with-labs",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#add-title-x-and-y-axis-labels-with-labs",
-    "title": "NB: GGPlot2",
-    "section": "Add Title, X and Y axis labels with labs()",
-    "text": "Add Title, X and Y axis labels with labs()\n\ngg1 &lt;- gg + geom_point(aes(color=color))\ngg2 &lt;- gg1 + labs(title=\"Diamonds\", x=\"Carat\", y=\"Price\") \ngg2",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#change-color-of-all-text-with-theme",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#change-color-of-all-text-with-theme",
-    "title": "NB: GGPlot2",
-    "section": "Change color of all text with theme()",
-    "text": "Change color of all text with theme()\n\ngg2 + theme(text=element_text(color=\"blue\"))  # all text turns blue.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#change-title-x-and-y-axis-label-and-text-size",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#change-title-x-and-y-axis-label-and-text-size",
-    "title": "NB: GGPlot2",
-    "section": "Change title, X and Y axis label and text size",
-    "text": "Change title, X and Y axis label and text size\n\nplot.title: Controls plot title.\naxis.title.x: Controls X axis title\naxis.title.y: Controls Y axis title\naxis.text.x: Controls X axis text\naxis.text.y: Controls y axis text\n\n\ngg3 &lt;- gg2 + \n  theme(plot.title=element_text(size=25), \n        axis.title.x=element_text(size=20),\n        axis.title.y=element_text(size=20),\n        axis.text.x=element_text(size=15),\n        axis.text.y=element_text(size=15)\n        )\ngg3",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#change-title-face-color-line-height",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#change-title-face-color-line-height",
-    "title": "NB: GGPlot2",
-    "section": "Change title face, color, line height",
-    "text": "Change title face, color, line height\n\ngg3 + \n  labs(title = \"Plot Title\\nSecond Line of Plot Title\") +\n  theme(plot.title = element_text(\n    face=\"bold\", \n    color=\"steelblue\", \n    lineheight=1.2)\n  )",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#change-point-color",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#change-point-color",
-    "title": "NB: GGPlot2",
-    "section": "Change point color",
-    "text": "Change point color\n\ngg3 + scale_colour_manual(\n  name='Legend', \n  values=c('D'='grey', \n           'E'='red', \n           'F'='blue', \n           'G'='yellow', \n           'H'='black', \n           'I'='green', \n           'J'='firebrick'))",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#adjust-x-and-y-axis-limits",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#adjust-x-and-y-axis-limits",
-    "title": "NB: GGPlot2",
-    "section": "Adjust X and Y axis limits",
-    "text": "Adjust X and Y axis limits\nMethod 1: Zoom in\n\ngg3 + \n    coord_cartesian(xlim=c(0,3), ylim=c(0, 5000)) + \n    geom_smooth()  # zoom in\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\n\n\n\n\n\n\n\nMethod 2: Deletes the points outside limits\n\ngg3 + \n  xlim(c(0,3)) + \n  ylim(c(0, 5000)) + \n  geom_smooth()  # deletes the points \n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 14714 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 14714 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\nMethod 3: Deletes the points outside limits\n\ngg3 + scale_x_continuous(limits=c(0,3)) + \n  scale_y_continuous(limits=c(0, 5000)) +\n  geom_smooth()  # deletes the points outside limits\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 14714 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 14714 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\nNotice the change in smoothing line because of deleted points. This could sometimes be misleading in your analysis.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#change-x-and-y-axis-labels",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#change-x-and-y-axis-labels",
-    "title": "NB: GGPlot2",
-    "section": "Change X and Y axis labels",
-    "text": "Change X and Y axis labels\n\ngg3 + scale_x_continuous(\n  labels=c(\"zero\", \"one\", \"two\", \"three\", \"four\", \"five\")) \n\n\n\n\n\n\n\n  scale_y_continuous(breaks=seq(0, 20000, 4000))  # if Y is continuous, if X is a factor\n\n&lt;ScaleContinuousPosition&gt;\n Range:  \n Limits:    0 --    1\n\n\nUse scale_x_discrete instead, if X variable is a factor.\nRotate axis text\n\ngg3 + theme(axis.text.x=element_text(angle=45), axis.text.y=element_text(angle=45))",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#flip-x-and-y-axis",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#flip-x-and-y-axis",
-    "title": "NB: GGPlot2",
-    "section": "Flip X and Y Axis",
-    "text": "Flip X and Y Axis\n\ngg3 + coord_flip()  # flips X and Y axis.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#grid-lines-and-panel-background",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#grid-lines-and-panel-background",
-    "title": "NB: GGPlot2",
-    "section": "Grid lines and panel background",
-    "text": "Grid lines and panel background\n\ngg3 + theme(panel.background = element_rect(fill = 'springgreen'),\n  panel.grid.major = element_line(colour = \"firebrick\", size=3),\n  panel.grid.minor = element_line(colour = \"blue\", size=1))\n\nWarning: The `size` argument of `element_line()` is deprecated as of ggplot2 3.4.0.\nℹ Please use the `linewidth` argument instead.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#plot-margin-and-background",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#plot-margin-and-background",
-    "title": "NB: GGPlot2",
-    "section": "Plot margin and background",
-    "text": "Plot margin and background\n\ngg3 + theme(plot.background=element_rect(fill=\"yellowgreen\"), plot.margin = unit(c(2, 4, 1, 3), \"cm\")) # top, right, bottom, left",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#hide-legend",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#hide-legend",
-    "title": "NB: GGPlot2",
-    "section": "Hide legend",
-    "text": "Hide legend\n\ngg3 + theme(legend.position=\"none\")  # hides the legend",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#change-legend-title",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#change-legend-title",
-    "title": "NB: GGPlot2",
-    "section": "Change legend title",
-    "text": "Change legend title\n\ngg3 + scale_color_discrete(name=\"\")  # Remove legend title (method1)\n\n\n\n\n\n\n\n# Remove legend title (method)\np1 &lt;- gg3 + theme(legend.title=element_blank())  \n\n# Change legend title\np2 &lt;- gg3 + scale_color_discrete(name=\"Diamonds\")  \n\n\n# install.packages(\"gridExtra\")\n\n\nlibrary(gridExtra)\n\n\nAttaching package: 'gridExtra'\n\n\nThe following object is masked from 'package:dplyr':\n\n    combine\n\ngrid.arrange(p1, p2, ncol=2)  # arrange",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#change-legend-and-point-color",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#change-legend-and-point-color",
-    "title": "NB: GGPlot2",
-    "section": "Change legend and point color",
-    "text": "Change legend and point color\n\ngg3 + scale_colour_manual(name='Legend', values=c('D'='grey', 'E'='red', 'F'='blue', 'G'='yellow', 'H'='black', 'I'='green', 'J'='firebrick'))",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#change-legend-position",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#change-legend-position",
-    "title": "NB: GGPlot2",
-    "section": "Change legend position",
-    "text": "Change legend position\nOutside plot\n\np1 &lt;- gg3 + theme(legend.position=\"top\")  # top / bottom / left / right\n\nInside plot\n\np2 &lt;- gg3 + theme(legend.justification=c(1,0), legend.position=c(1,0))  # legend justification is the anchor point on the legend, considering the bottom left of legend as (0,0)\n\nWarning: A numeric `legend.position` argument in `theme()` was deprecated in ggplot2\n3.5.0.\nℹ Please use the `legend.position.inside` argument of `theme()` instead.\n\ngridExtra::grid.arrange(p1, p2, ncol=2)",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#change-order-of-legend-items",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#change-order-of-legend-items",
-    "title": "NB: GGPlot2",
-    "section": "Change order of legend items",
-    "text": "Change order of legend items\n\n#df$newLegendColumn &lt;- factor(df$legendcolumn, levels=c(new_order_of_legend_items), ordered = TRUE) \n\nCreate a new factor variable used in the legend, ordered as you need. Then use this variable instead in the plot.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#legend-title-text-box-symbol",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#legend-title-text-box-symbol",
-    "title": "NB: GGPlot2",
-    "section": "Legend title, text, box, symbol",
-    "text": "Legend title, text, box, symbol\n\nlegend.title - Change legend title\nlegend.text - Change legend text\nlegend.key - Change legend box\nguides - Change legend symbols\n\n\ngg3 + theme(legend.title = element_text(size=20, color = \"firebrick\"), legend.text = element_text(size=15), legend.key=element_rect(fill='steelblue')) + guides(colour = guide_legend(override.aes = list(size=2, shape=4, stroke=2)))  # legend title color and size, box color, symbol color, size and shape.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#add-text-in-chart",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#add-text-in-chart",
-    "title": "NB: GGPlot2",
-    "section": "Add text in chart",
-    "text": "Add text in chart\n\n# Not Run: gg + geom_text(aes(xcol, ycol, label=round(labelCol), size=3)) \n# general format \ngg + geom_text(aes(label=color, color=color), size=4)\n\n\n\n\n\n\n\n\n##Annotation\n\nlibrary(grid) \nmy_grob = grobTree(textGrob(\"My Custom Text\", x=0.8, y=0.2, \n                            gp=gpar(col=\"firebrick\", fontsize=25, fontface=\"bold\"))) \n\ngg3 + annotation_custom(my_grob)",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#multiple-chart-panels",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#multiple-chart-panels",
-    "title": "NB: GGPlot2",
-    "section": "Multiple chart panels",
-    "text": "Multiple chart panels\n\np1 &lt;- gg1 + facet_grid(color ~ cut) # arrange in a grid. More space for plots. Free X and Y axis scales\n\nBy setting scales=‘free’, the scales of both X and Y axis is freed. Use scales=‘free_x’ to free only X-axis and scales=‘free_y’ to free only Y-axis.\n\np2 &lt;- gg1 + facet_wrap(color ~ cut, scales=\"free\") # free the x and yaxis scales.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#arrange-multiple-plots",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#arrange-multiple-plots",
-    "title": "NB: GGPlot2",
-    "section": "Arrange multiple plots",
-    "text": "Arrange multiple plots\n\nlibrary(gridExtra) \ngrid.arrange(p1, p2, ncol=2)",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#add-smoothing-line",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#add-smoothing-line",
-    "title": "NB: GGPlot2",
-    "section": "Add smoothing line",
-    "text": "Add smoothing line\n\ngg3 + geom_smooth(aes(color=color)) # method could be - 'lm', 'loess', 'gam'\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#add-horizontal-vertical-line",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#add-horizontal-vertical-line",
-    "title": "NB: GGPlot2",
-    "section": "Add horizontal / vertical line",
-    "text": "Add horizontal / vertical line\n\np1 &lt;- gg3 + geom_hline(yintercept=5000, size=2, linetype=\"dotted\", color=\"blue\") # linetypes: solid, dashed, dotted, dotdash, longdash and twodash \n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\np2 &lt;- gg3 + geom_vline(xintercept=4, size=2, color=\"firebrick\") \np3 &lt;- gg3 + geom_segment(aes(x=4, y=5000, xend=4, yend=10000, size=2, lineend=\"round\")) \n\nWarning in geom_segment(aes(x = 4, y = 5000, xend = 4, yend = 10000, size = 2, :\nIgnoring unknown aesthetics: lineend\n\np4 &lt;- gg3 + geom_segment(aes(x=carat, y=price,\nxend=carat, yend=price-500, color=color), size=2) + coord_cartesian(xlim=c(3, 5)) # x, y: start points. xend, yend: endpoints \ngridExtra::grid.arrange(p1,p2,p3,p4, ncol=2)\n\nWarning in geom_segment(aes(x = 4, y = 5000, xend = 4, yend = 10000, size = 2, : All aesthetics have length 1, but the data has 53940 rows.\nℹ Please consider using `annotate()` or provide this layer with data containing\n  a single row.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#add-bar-chart",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#add-bar-chart",
-    "title": "NB: GGPlot2",
-    "section": "Add bar chart",
-    "text": "Add bar chart\n\n# Frequency bar chart: Specify only X axis. \ngg &lt;- ggplot(mtcars, aes(x=cyl)) \ngg + geom_bar() # frequency table\n\n\n\n\n\n\n\n\n\ngg &lt;- ggplot(mtcars, aes(x=cyl)) \np1 &lt;- gg + geom_bar(position=\"dodge\", aes(fill=factor(vs))) # side-by-side \np2 &lt;- gg + geom_bar(aes(fill=factor(vs))) # stacked \ngridExtra::grid.arrange(p1, p2, ncol=2)\n\n\n\n\n\n\n\n\n\n# Absolute bar chart: Specify both X adn Y axis. Set stat=\"identity\"\ndf &lt;- aggregate(mtcars$mpg, by=list(mtcars$cyl), FUN=mean)  # mean of mpg for every 'cyl'\nnames(df) &lt;- c(\"cyl\", \"mpg\")\nhead(df)\n\n  cyl      mpg\n1   4 26.66364\n2   6 19.74286\n3   8 15.10000\n\n#&gt;   cyl    mpg\n#&gt; 1   4  26.66\n#&gt; 2   6  19.74\n#&gt; 3   8  15.10\n\ngg_bar &lt;- ggplot(df, aes(x=cyl, y=mpg)) + geom_bar(stat = \"identity\")  # Y axis is explicit. 'stat=identity'\nprint(gg_bar)",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#distinct-color-for-bars",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#distinct-color-for-bars",
-    "title": "NB: GGPlot2",
-    "section": "Distinct color for bars",
-    "text": "Distinct color for bars\n\ngg_bar &lt;- ggplot(df, aes(x=cyl, y=mpg)) + geom_bar(stat = \"identity\", aes(fill=cyl))\nprint(gg_bar)",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#change-color-and-width-of-bars",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#change-color-and-width-of-bars",
-    "title": "NB: GGPlot2",
-    "section": "Change color and width of bars",
-    "text": "Change color and width of bars\n\ndf$cyl &lt;- as.factor(df$cyl)\ngg_bar &lt;- ggplot(df, aes(x=cyl, y=mpg)) + geom_bar(stat = \"identity\", aes(fill=cyl), width = 0.25)\ngg_bar + scale_fill_manual(values=c(\"4\"=\"steelblue\", \"6\"=\"firebrick\", \"8\"=\"darkgreen\"))",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#change-color-palette",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#change-color-palette",
-    "title": "NB: GGPlot2",
-    "section": "Change color palette",
-    "text": "Change color palette\n\nlibrary(RColorBrewer)\n\nWarning: package 'RColorBrewer' was built under R version 4.0.5\n\ndisplay.brewer.all(n=20, exact.n=FALSE)  # display available color palettes\n\n\n\n\n\n\n\nggplot(mtcars, aes(x=cyl, y=carb, fill=factor(cyl))) + geom_bar(stat=\"identity\") + scale_fill_brewer(palette=\"Reds\")  # \"Reds\" is palette name",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#line-chart-from-timeseries",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#line-chart-from-timeseries",
-    "title": "NB: GGPlot2",
-    "section": "Line chart from timeseries",
-    "text": "Line chart from timeseries\n\n# One step method.\n# install.packages(\"ggfortify\")\nlibrary(ggfortify)\n\nWarning: package 'ggfortify' was built under R version 4.0.5\n\nautoplot(AirPassengers, size=2) + labs(title=\"AirPassengers\")",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-01-GGPlot.html#area",
-    "href": "notebooks/M12_RViz/M12-01-GGPlot.html#area",
-    "title": "NB: GGPlot2",
-    "section": "Area",
-    "text": "Area\ngeom_area is similar to geom_ribbon, except that the ymin is set to 0. If you want to make overlapping area plot, use the alpha aesthetic to make the top layer translucent.\n\n# Method1: Non-Overlapping Area\ndf &lt;- reshape2::melt(economics[, c(\"date\", \"psavert\", \"uempmed\")], id=\"date\")\nhead(df, 3)\n\n        date variable value\n1 1967-07-01  psavert  12.6\n2 1967-08-01  psavert  12.6\n3 1967-09-01  psavert  11.9\n\n#&gt;         date variable value\n#&gt; 1 1967-07-01  psavert  12.5\n#&gt; 2 1967-08-01  psavert  12.5\n#&gt; 3 1967-09-01  psavert  11.7\np1 &lt;- ggplot(df, aes(x=date)) + geom_area(aes(y=value, fill=variable)) + labs(title=\"Non-Overlapping - psavert and uempmed\")\n\n# Method2: Overlapping Area\np2 &lt;- ggplot(economics, aes(x=date)) + geom_area(aes(y=psavert), fill=\"yellowgreen\", color=\"yellowgreen\") + geom_area(aes(y=uempmed), fill=\"dodgerblue\", alpha=0.7, linetype=\"dotted\") + labs(title=\"Overlapping - psavert and uempmed\")\ngridExtra::grid.arrange(p1, p2, ncol=2)",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>NB: GGPlot2</span>"
+      "<span class='chapter-number'>58</span>  <span class='chapter-title'>NB: Getting Started with GGPlot2</span>"
     ]
   },
   {
     "objectID": "notebooks/M12_RViz/M12-02-RMarkdown.html",
     "href": "notebooks/M12_RViz/M12-02-RMarkdown.html",
-    "title": "NB: R Markdown",
+    "title": "Viridis Demo",
     "section": "",
-    "text": "Introduction\nR provides a notebook style coding environment similar to Jupyter.\nHow, the R approach differs in some important ways:",
+    "text": "Programming for Data Science\n\nLiterate Programming\nR provides a notebook style coding environment similar to Jupyter called R Markdown.\nIt follows the literate programming paradigm of inter-leaving text and runnable code.\nAs with Jupyter, they can be used interactively or as exported documents into standard formats.\nR Markdown files consists of the three types of element:\n\nMetadata, written in YAML (at the top of the file).\nText, written in Markdown.\nCode, written in one of several supported programming languages.\n\nAll of these are plain text and live in the same .Rmd file.\n\n\nMarkdown\nAs the name implies, R Markdown files uses a version of Markdown to create the text components and define the code blocks.\nMardown is a simplified version of HTML markup that uses typographic symbols and line spaces instead of angle brackets.\nFor example, instead of writing this in HTML:\n\nThis is is header\n\n\nThis paragraph defines a link/\n\nYou would write this:\n\n\nThis is a header\nThis paragraph defines a link.\nThe markdown gets converted into HTML by a viewer or converter at display time.\n\n\nCode\nThe code blocks are delimmited by three backtacks ``` with a language specified in braces.\nFor example, to run a block of R code, you would enter this:\nx &lt;- 10\nprint(x)\nR Markdown also supports running code in other languages in the same document.\nTo run a Python block, you could do something like this:\nx = 10\nprint(x)\nIn RStudio, these blocks of code can be executed in place, with results output in below the cell, as with Jupyter.\n\n\nComparison to Jupyter\nR Markdown files are optimized to be published documents.\nJupyter notebooks are meant primarily to be interactive environments.\nR Markdown files are plain text.\nJupyter notebooks are written in JavaScript.\nJavaScript is the native programming language of web browsers; the notebook format is executable code that can be integrated into a web application.\n\n\nVarieties of R Markdown outputs\nR Markdown is designed to be output to several formats, including notebooks, documents, presentations, and interactive applications.\nNotebooks and documents can be output as HTML, PDF, or Word files.\nPresentations may be output in IOSlides, Beamer, or PowerPoint format.\nInteractive applications are interactive apps that can be published on the web with a framework called Shiny.\n\n\nKnitting\nKnitting is the process of compiling all the code and visual assets of an R Markdown into a single file.\n\n\nPublishing\nRMarkdown has publication in mind as an outcome. RStudio allows you to publish in these destinations:\n\nRPubs\nR Studio Connect\n\n\n\nOutputting\nThere are two ways to set the output of a document:\n\nPermanently, by modifying the YAML header:\n\n\nTransiently, by calling rmarkdown::render() by hand:\n\nrmarkdown::render(“diamond-sizes.Rmd”, output_format = “word_document”)\nThis is useful if you want to programmatically produce multiple types of output.\nRStudio’s knit button renders a file to the first format listed in its output field.\n\n\nOutput options\nTo override the default parameter values, you need to use an expanded output field. For example, if you wanted to render an html_document with a floating table of contents, you’d use:\nYou can even render to multiple outputs by supplying a list of formats:\nNote the special syntax if you don’t want to override any of the default options.\n\n\nHow It Works",
     "crumbs": [
       "M12 Visualization",
-      "<span class='chapter-number'>58</span>  <span class='chapter-title'>NB: R Markdown</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-02-RMarkdown.html#introduction",
-    "href": "notebooks/M12_RViz/M12-02-RMarkdown.html#introduction",
-    "title": "NB: R Markdown",
-    "section": "",
-    "text": "It follows the literate programming paradigm of inter-leaving text and code.\nIt uses a version of Markdown to create the text components.\nIt allows executable code blocks.\nThey can be used interactively or as exported documents into standard formats.\n\n\n\nRMarkdown is not visually rendered while your are editing.\n\nThe document has to be ‘knitted’ to see this.\nNewer versions of RStudio have a visual mode that does render Markdown, and also allows you to edit in this mode.\nThis differs from Jupyter’s cell-by-cell approach.\n\nRMarkdown allows several programming languages to be run in the same notebook.\nRMarkdown files are meant to be published documents, not work spaces for coding.\nRMarkdown is written in markdown and uses YAML to store configuration information.\n\nJupyter notebooks are written in JavaScript, which contains both configuration data and content data in the same structure.\nThis difference is what accounts for the different editing experiences. JavaScript is the native programming language of web browsers; the notebook format is executable code that can be integrated into a web application.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>58</span>  <span class='chapter-title'>NB: R Markdown</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-02-RMarkdown.html#varieties-of-r-markdown-outputs",
-    "href": "notebooks/M12_RViz/M12-02-RMarkdown.html#varieties-of-r-markdown-outputs",
-    "title": "NB: R Markdown",
-    "section": "Varieties of R Markdown outputs",
-    "text": "Varieties of R Markdown outputs\nR Markdown is designed to be output to several formats:\n\nR Notebooks\n\nDesigned to previewed\nOr output to (html|pdf|doc)_notebook\nHave Preview in RStudio toolbar (but also Knit in menu)\n\nDocuments\n\nOutput to (html|pdf|doc)_document\nHas Knit in RStudio toolbar\n\nPresentations\n\nProduce slideshows from your source file, in ioslides, beamer, or powerpoint.\n\nShiny\n\nCreate interactive apps that can be published on the web.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>58</span>  <span class='chapter-title'>NB: R Markdown</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-02-RMarkdown.html#knitting",
-    "href": "notebooks/M12_RViz/M12-02-RMarkdown.html#knitting",
-    "title": "NB: R Markdown",
-    "section": "Knitting",
-    "text": "Knitting\nKnitting is the process of compiling all the code and visual assets of an RMarkdown into a single file.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>58</span>  <span class='chapter-title'>NB: R Markdown</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-02-RMarkdown.html#publishing",
-    "href": "notebooks/M12_RViz/M12-02-RMarkdown.html#publishing",
-    "title": "NB: R Markdown",
-    "section": "Publishing",
-    "text": "Publishing\nRMarkdown has publication in mind as an outcome.\nRStudio allows you to publish in these destinations:\n\nRPubs\nR Studio Connect",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>58</span>  <span class='chapter-title'>NB: R Markdown</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-02-RMarkdown.html#outputting",
-    "href": "notebooks/M12_RViz/M12-02-RMarkdown.html#outputting",
-    "title": "NB: R Markdown",
-    "section": "Outputting",
-    "text": "Outputting\nThere are two ways to set the output of a document:\n\nPermanently, by modifying the YAML header:\ntitle: \"Viridis Demo\"\noutput: html_document\nTransiently, by calling rmarkdown::render() by hand:\n\nrmarkdown::render(\"diamond-sizes.Rmd\", output_format = \"word_document\")\n\nThis is useful if you want to programmatically produce multiple types of output.\n\nRStudio’s knit button renders a file to the first format listed in its output field.\nYou can also do it by code:\nknitr::include_graphics(\"screenshots/rmarkdown-knit.png\")\nEach output format is associated with an R function.\nYou can either write foo or pkg::foo.\nIf you omit pkg, the default is assumed to be rmarkdown.\nIt’s important to know the name of the function that makes the output because that’s where you get help.\nFor example, to figure out what parameters you can set with html_document, look at ?rmarkdown::html_document.\n\nOutput options\nTo override the default parameter values, you need to use an expanded output field. For example, if you wanted to render an html_document with a floating table of contents, you’d use:\noutput:\n  html_document:\n    toc: true\n    toc_float: true\nYou can even render to multiple outputs by supplying a list of formats:\noutput:\n  html_document:\n    toc: true\n    toc_float: true\n  pdf_document: default\nNote the special syntax if you don’t want to override any of the default options.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>58</span>  <span class='chapter-title'>NB: R Markdown</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-02-RMarkdown.html#how-it-works",
-    "href": "notebooks/M12_RViz/M12-02-RMarkdown.html#how-it-works",
-    "title": "NB: R Markdown",
-    "section": "How It Works",
-    "text": "How It Works",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>58</span>  <span class='chapter-title'>NB: R Markdown</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-02-RMarkdown.html#the-rmarkdown-spec",
-    "href": "notebooks/M12_RViz/M12-02-RMarkdown.html#the-rmarkdown-spec",
-    "title": "NB: R Markdown",
-    "section": "The RMarkdown Spec",
-    "text": "The RMarkdown Spec\nSee The RMarkown Reference Guide and RStudio’s Guide.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>58</span>  <span class='chapter-title'>NB: R Markdown</span>"
+      "<span class='chapter-number'>59</span>  <span class='chapter-title'>Viridis Demo</span>"
     ]
   },
   {
     "objectID": "notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html",
     "href": "notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html",
-    "title": "NB: Loose Ends",
+    "title": "NB: Plotly and GGPlotly",
     "section": "",
-    "text": "qplot\nqplot creates quick and simple plots that use all of the ggplot2 defaults.\nIt let’s you define a plot in a single call that gives a set of aesthetics and a data set.\nIt infers a geom from your data and mappings if you don’t supply onw. Recall this is how plot worked.\nplot(select(iris, -Species))\n# qplot(select(iris, -Species))\nqplot(displ, hwy, data = mpg)\nqplot(displ, hwy, color=class, data = mpg)\nqplot(displ, data = mpg)\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\nqplot(displ, data = mpg, geom = c('bar'))",
+    "text": "Programming for Data Science\nRelated to GGPlot are two other visualization libraries that are worth looking into.\nPlotly is a cross platform visualization library that is great for making interactive plots.\nAnd GGPlotly provides a convenient way to translate GGPlot plots into Ploty plots.\nLet quickly take a look at these.\nFirst, lets install the Tidyverse and turn off warnings.\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\noptions(warn = -1) # Turn off warnings\n\n\nPlotly in R\nPlotly runs on R, Python, JavaScript, and Matlab.\nIt uses the same model in each language, so learning it in R can help you use it in these other languages.\nWe first install it and then import it.\n\n# install.packages(\"plotly\")\n\n\nlibrary(plotly)\n\n\nAttaching package: ‘plotly’\n\n\nThe following object is masked from ‘package:ggplot2’:\n\n    last_plot\n\n\nThe following object is masked from ‘package:stats’:\n\n    filter\n\n\nThe following object is masked from ‘package:graphics’:\n\n    layout\n\n\n\n\nHere is a list of the kinds of plots you can create in Plotly:\nTypes of plots\n'bar', 'barpolar', 'box', 'candlestick', 'carpet', 'choropleth', 'choroplethmapbox', 'cone', 'contour', 'contourcarpet', 'densitymapbox', 'funnel', 'funnelarea', 'heatmap', 'heatmapgl', 'histogram', 'histogram2d', 'histogram2dcontour', 'icicle', 'image', 'indicator', 'isosurface', 'mesh3d', 'ohlc', 'parcats', 'parcoords', 'pie', 'pointcloud', 'sankey', 'scatter', 'scatter3d', 'scattercarpet', 'scattergeo', 'scattergl', 'scattermapbox', 'scatterpolar', 'scatterpolargl', 'scatterternary', 'splom', 'streamtube', 'sunburst', 'surface', 'table', 'treemap', 'violin', 'volume', 'waterfall'\nLet’s create a scatter plot.\nNote how we just specify the type and set the relevant arguments. Also note also the ~ prefix to feature names.\n\nfig1 &lt;- mpg %&gt;%\n    plot_ly(\n        x         = ~hwy, \n        y         = ~cty, \n        type      = 'scatter', \n        size      = ~displ, \n        color     = ~class,\n        hovertext = ~manufacturer,\n        mode      = \"markers\",\n        height    = 500, width = 750)\n\n\nfig1\n\n\n\n    \n        \n        \n\n\n\n\n\n\n\n    \n    \n        \n\n    \n\n\n\nHere we visualize the iris data set.\n\nfig2 &lt;- iris %&gt;%\n    plot_ly(\n        x         = ~Petal.Length, \n        y         = ~Petal.Width, \n        size      = ~Sepal.Length, \n        color     = ~Sepal.Width,\n        symbol    = ~Species,\n        type      = \"scatter\", \n        mode      = \"markers\",\n        height    = 500, width = 750)\n\n\nfig2\n\n\n\n    \n        \n        \n\n\n\n\n\n\n\n    \n    \n        \n\n    \n\n\n\n\n\nGGPlotly\nGGPlotly by Plotly lets you can convert your GGPlot figures into interactive ones powered by the Plotly library.\nIt works by calling ggplotly() with no argument right after a GGPlot definition.\nHere’s a quick example.\n\ndf &lt;- data.frame(\n    x = rnorm(100, mean = 0, sd = 1),\n    y = rnorm(100, mean = 5, sd = 10)\n)\n\n\ndf %&gt;% ggplot() + \n    aes(x, y) +\n    geom_point()\n\n\n\n\n\n\n\n\n\nggplotly()\n\n\n\n    \n        \n        \n\n\n\n\n\n\n\n\n    \n    \n        \n\n    \n\n\n\n\nggplotly(height=500, width=500)\n\n\n\n    \n        \n        \n\n\n\n\n\n\n\n    \n    \n        \n\n    \n\n\n\nYou also pass it a plot that was assigned to a variable.\nIn both cases, you can then add ploty features to your graph.\n\np &lt;- df %&gt;% ggplot() + \n    aes(x, y) +\n    geom_point(color='red')\n\n\nggplotly(p, height=500, width=500)",
     "crumbs": [
       "M12 Visualization",
-      "<span class='chapter-number'>59</span>  <span class='chapter-title'>NB: Loose Ends</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html#qplot",
-    "href": "notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html#qplot",
-    "title": "NB: Loose Ends",
-    "section": "",
-    "text": "Gotchas\nOddly, data is not the first argument, so it won’t work with %&gt;%.\nThis will fail:\n\n# mpg %&gt;% qplot(displ, hwy)\n\nAlso, data has to be called by key, e.g. data = mpg.\nThis will fail, too:\n\n# qplot(displ, hwy, mpg)\n\nHere’s a nice guide in PDF form: Getting started with qplot",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>59</span>  <span class='chapter-title'>NB: Loose Ends</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html#ggplot-in-python",
-    "href": "notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html#ggplot-in-python",
-    "title": "NB: Loose Ends",
-    "section": "GGPlot in Python",
-    "text": "GGPlot in Python\nThere are pygg plotnine and\nHard to replicate R syntax in Python.\nBut why should it? Should just implement to pattern Pythonically.\nSee example in M14-00a-Plotnine.ipynb.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>59</span>  <span class='chapter-title'>NB: Loose Ends</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html#plotly-in-r",
-    "href": "notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html#plotly-in-r",
-    "title": "NB: Loose Ends",
-    "section": "Plotly in R",
-    "text": "Plotly in R\n\ninstall.packages(\"plotly\")\n\n\n  There is a binary version available but the source version is later:\n       binary source needs_compilation\nplotly 4.10.0 4.10.2             FALSE\n\n\n\ninstalling the source package ‘plotly’\n\n\n\n\n\nlibrary(plotly)\n\n\nAttaching package: ‘plotly’\n\n\nThe following object is masked from ‘package:ggplot2’:\n\n    last_plot\n\n\nThe following object is masked from ‘package:stats’:\n\n    filter\n\n\nThe following object is masked from ‘package:graphics’:\n\n    layout\n\n\n\n\nTypes of plots\n'bar', 'barpolar', 'box', 'candlestick', 'carpet', 'choropleth', 'choroplethmapbox', 'cone', 'contour', 'contourcarpet', 'densitymapbox', 'funnel', 'funnelarea', 'heatmap', 'heatmapgl', 'histogram', 'histogram2d', 'histogram2dcontour', 'icicle', 'image', 'indicator', 'isosurface', 'mesh3d', 'ohlc', 'parcats', 'parcoords', 'pie', 'pointcloud', 'sankey', 'scatter', 'scatter3d', 'scattercarpet', 'scattergeo', 'scattergl', 'scattermapbox', 'scatterpolar', 'scatterpolargl', 'scatterternary', 'splom', 'streamtube', 'sunburst', 'surface', 'table', 'treemap', 'violin', 'volume', 'waterfall'\n\nhead(mpg)\n\n\n\nA tibble: 6 × 11\n\n\nmanufacturer\nmodel\ndispl\nyear\ncyl\ntrans\ndrv\ncty\nhwy\nfl\nclass\n\n\n&lt;chr&gt;\n&lt;chr&gt;\n&lt;dbl&gt;\n&lt;int&gt;\n&lt;int&gt;\n&lt;chr&gt;\n&lt;chr&gt;\n&lt;int&gt;\n&lt;int&gt;\n&lt;chr&gt;\n&lt;chr&gt;\n\n\n\n\naudi\na4\n1.8\n1999\n4\nauto(l5)\nf\n18\n29\np\ncompact\n\n\naudi\na4\n1.8\n1999\n4\nmanual(m5)\nf\n21\n29\np\ncompact\n\n\naudi\na4\n2.0\n2008\n4\nmanual(m6)\nf\n20\n31\np\ncompact\n\n\naudi\na4\n2.0\n2008\n4\nauto(av)\nf\n21\n30\np\ncompact\n\n\naudi\na4\n2.8\n1999\n6\nauto(l5)\nf\n16\n26\np\ncompact\n\n\naudi\na4\n2.8\n1999\n6\nmanual(m5)\nf\n18\n26\np\ncompact\n\n\n\n\n\n\n\nfig1 &lt;- mpg %&gt;%\n    plot_ly(\n        x         = ~hwy, \n        y         = ~cty, \n        size      = ~displ, \n        type      = 'scatter', \n        color     = ~class,\n        mode      = \"markers\",\n        hovertext = ~manufacturer,\n        height    = 500, width = 750)\n\n\nfig1\n\n\n\n    \n        \n        \n\n\n\n\n\n\n\n    \n    \n        \n\n    \n\n\n\n\nfig2 &lt;- iris %&gt;%\n    plot_ly(\n        x         = ~Petal.Length, \n        y         = ~Petal.Width, \n        size      = ~Sepal.Length, \n        color     = ~Sepal.Width,\n        symbol    = ~Species,\n        type      = \"scatter\", \n        mode      = \"markers\",\n        height    = 500, width = 750)\n\n\nfig2\n\n\n\n    \n        \n        \n\n\n\n\n\n\n\n    \n    \n        \n\n    \n\n\n\n\n# ?plot_ly\n\n\nGGPlotly\nBest of both worlds?\n\nWith ggplotly() by Plotly, you can convert your ggplot2 figures into interactive ones powered by plotly.js, ready for embedding into Dash applications.\n\nIf you call ggplotly() with no argument, it will display your last ggplot as a plotly plot.\nPretty cool.\nYou also pass it a plot that was assigned to a variable.\nIn both cases, you can then add ploty features to your graph.\n\ndf = data.frame(\n    x = 1:10,\n    y = 1:100:10\n)\n\n\ndf %&gt;% ggplot() + \n    aes(x, y) +\n    geom_line()\n\n\n\n\n\n\n\n\n\nggplotly()\n\n\n\n    \n        \n        \n\n\n\n\n\n\n\n    \n    \n        \n\n    \n\n\n\n\nggplotly(height=400, width=400)\n\n\n\n    \n        \n        \n\n\n\n\n\n\n\n    \n    \n        \n\n    \n\n\n\n\np = df %&gt;% ggplot() + \n    aes(x, y) +\n    geom_line()\n\n\nggplotly(p)\n\n\n\n    \n        \n        \n\n\n\n\n\n\n\n    \n    \n        \n\n    \n\n\n\n&gt;&gt;&gt; Learn more.",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>59</span>  <span class='chapter-title'>NB: Loose Ends</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html#using-in-r",
-    "href": "notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html#using-in-r",
-    "title": "NB: Loose Ends",
-    "section": "Using :: in R",
-    "text": "Using :: in R\nWhen you load libraries in R that have the same function names, R resolves this by picking a default, and then letting you access the others using :: operator to specify the library from which the method comes.\nThe rule is that the package loaded last will hide, or mask, the function from earlier packages.\nIf you want to have a certain function be the default, make sure you load it last.\nFor example, when we load tidyverse, we get this message:\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nThis means that dplyr overrides the filter() and lag() methods associated with the stats library.\nSimilarly, when you load plotly, you’ll see this:\nAttaching package: ‘plotly’\n\nThe following object is masked from ‘package:ggplot2’:\n\n    last_plot\n\nThe following object is masked from ‘package:stats’:\n\n    filter\n\nThe following object is masked from ‘package:graphics’:\n\n    layout\nOne thing I have noticed is that even though the last library masks the other functions, the help operator ?&lt;objectname&gt; does not follow this.\nAlso, in this script, note that dplyr::filter is the default, even though plotly::filter loaded after dplyr. This is because Plotly’ filter function is not used in the normal way; it appears in the context of the transforms argument to plot_ly(). No need to get into this now, but just know that that’s why it does not mask dplyr.\nExamples\nHere, we call filter by itself and it uses the one from dplyr.\n\nhead(filter(mpg, hwy &gt; 0))\n\nBut if we ask for help, we’ll get the original stats version.\n\n# ?filter\n\nAnd if we ask for help about Plotly’s version, we see this:\n\n# ?plotly",
-    "crumbs": [
-      "M12 Visualization",
-      "<span class='chapter-number'>59</span>  <span class='chapter-title'>NB: Loose Ends</span>"
+      "<span class='chapter-number'>60</span>  <span class='chapter-title'>NB: Plotly and GGPlotly</span>"
     ]
   },
   {
@@ -5765,10 +5369,10 @@
     "href": "notebooks/M12_RViz/M12-04-Plotnine.html",
     "title": "NB: GGPlot in Python with Plotnine",
     "section": "",
-    "text": "GGPlot in Python\nThere are two ports of GGPlot2 to Python: pygg and plotnine.\nThe first seems to have stopped development and is much less used.\nLet’s look at Plotnine.\n## ! conda install -c conda-forge plotnine -y\nimport pandas as pd\nimport numpy as np\nfrom pandas.api.types import CategoricalDtype\nfrom plotnine import *\nfrom plotnine.data import mpg\nOur old friend, mpg in Python:\nmpg\n\n\n\n\n\n\n\n\n\nmanufacturer\nmodel\ndispl\nyear\ncyl\ntrans\ndrv\ncty\nhwy\nfl\nclass\n\n\n\n\n0\naudi\na4\n1.8\n1999\n4\nauto(l5)\nf\n18\n29\np\ncompact\n\n\n1\naudi\na4\n1.8\n1999\n4\nmanual(m5)\nf\n21\n29\np\ncompact\n\n\n2\naudi\na4\n2.0\n2008\n4\nmanual(m6)\nf\n20\n31\np\ncompact\n\n\n3\naudi\na4\n2.0\n2008\n4\nauto(av)\nf\n21\n30\np\ncompact\n\n\n4\naudi\na4\n2.8\n1999\n6\nauto(l5)\nf\n16\n26\np\ncompact\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n229\nvolkswagen\npassat\n2.0\n2008\n4\nauto(s6)\nf\n19\n28\np\nmidsize\n\n\n230\nvolkswagen\npassat\n2.0\n2008\n4\nmanual(m6)\nf\n21\n29\np\nmidsize\n\n\n231\nvolkswagen\npassat\n2.8\n1999\n6\nauto(l5)\nf\n16\n26\np\nmidsize\n\n\n232\nvolkswagen\npassat\n2.8\n1999\n6\nmanual(m5)\nf\n18\n26\np\nmidsize\n\n\n233\nvolkswagen\npassat\n3.6\n2008\n6\nauto(s6)\nf\n17\n26\np\nmidsize\n\n\n\n\n234 rows × 11 columns",
+    "text": "GGPlot in Python\nThere are two ports of GGPlot2 to Python: pygg and plotnine.\nThe first seems to have stopped development and is much less used.\nLet’s look at Plotnine.\n# ! conda install -c conda-forge plotnine -y\nfrom plotnine import *\nfrom plotnine.data import mpg\nOur old friend, mpg in Python:\nmpg\n\n\n\n\n\n\n\n\n\nmanufacturer\nmodel\ndispl\nyear\ncyl\ntrans\ndrv\ncty\nhwy\nfl\nclass\n\n\n\n\n0\naudi\na4\n1.8\n1999\n4\nauto(l5)\nf\n18\n29\np\ncompact\n\n\n1\naudi\na4\n1.8\n1999\n4\nmanual(m5)\nf\n21\n29\np\ncompact\n\n\n2\naudi\na4\n2.0\n2008\n4\nmanual(m6)\nf\n20\n31\np\ncompact\n\n\n3\naudi\na4\n2.0\n2008\n4\nauto(av)\nf\n21\n30\np\ncompact\n\n\n4\naudi\na4\n2.8\n1999\n6\nauto(l5)\nf\n16\n26\np\ncompact\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n229\nvolkswagen\npassat\n2.0\n2008\n4\nauto(s6)\nf\n19\n28\np\nmidsize\n\n\n230\nvolkswagen\npassat\n2.0\n2008\n4\nmanual(m6)\nf\n21\n29\np\nmidsize\n\n\n231\nvolkswagen\npassat\n2.8\n1999\n6\nauto(l5)\nf\n16\n26\np\nmidsize\n\n\n232\nvolkswagen\npassat\n2.8\n1999\n6\nmanual(m5)\nf\n18\n26\np\nmidsize\n\n\n233\nvolkswagen\npassat\n3.6\n2008\n6\nauto(s6)\nf\n17\n26\np\nmidsize\n\n\n\n\n234 rows × 11 columns",
     "crumbs": [
       "M12 Visualization",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>NB: GGPlot in Python with Plotnine</span>"
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>NB: GGPlot in Python with Plotnine</span>"
     ]
   },
   {
@@ -5779,29 +5383,29 @@
     "text": "A Simple Bar Chart\n\n(ggplot(mpg)            # defining what data to use\n    + aes(x='class')    # defining what variable to use\n    + geom_bar(size=20) # defining the type of plot to use\n)\n\n\n\n\n\n\n\n\nNotice that aes() is not a helper function (a function in the argument space).\nAlso, R dots become _ in the argument names.\nNote that we don’t have to use the syntax above, which groups the functions in a single expression with (...).\nWe can do this:\n\nggplot(mpg) + aes(x='class') + geom_bar(size=20)\n\n\n\n\n\n\n\n\nOr this:\n\nggplot(mpg) + \\\n    aes(x='class') + \\\n    geom_bar(size=20)\n\n\n\n\n\n\n\n\nNote that none of these are like R due to differing white space rules.",
     "crumbs": [
       "M12 Visualization",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>NB: GGPlot in Python with Plotnine</span>"
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>NB: GGPlot in Python with Plotnine</span>"
     ]
   },
   {
-    "objectID": "notebooks/M12_RViz/M12-04-Plotnine.html#faceting",
-    "href": "notebooks/M12_RViz/M12-04-Plotnine.html#faceting",
+    "objectID": "notebooks/M12_RViz/M12-04-Plotnine.html#aesthetics",
+    "href": "notebooks/M12_RViz/M12-04-Plotnine.html#aesthetics",
     "title": "NB: GGPlot in Python with Plotnine",
-    "section": "Faceting",
-    "text": "Faceting\n\nggplot(mpg) + \\\n    aes(x = 'drv', y = 'cty', color = 'class', size='cyl') + \\\n    geom_point()\n\n\n\n\n\n\n\n\n\n(ggplot(mpg)         \n + aes(x='drv', y='cty', color='class', size='cyl')\n + geom_point()\n + facet_wrap('class')\n + theme(legend_position = \"none\")\n)",
+    "section": "Aesthetics",
+    "text": "Aesthetics\nPlotnine supports using color and size on which to map features with aes().\n\nggplot(mpg) + \\\n    aes(x = 'drv', y = 'cty', color = 'class', size='cyl') + \\\n    geom_point()",
     "crumbs": [
       "M12 Visualization",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>NB: GGPlot in Python with Plotnine</span>"
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>NB: GGPlot in Python with Plotnine</span>"
     ]
   },
   {
-    "objectID": "notebooks/M12_RViz/M12-04-Plotnine.html#the-pandas-way",
-    "href": "notebooks/M12_RViz/M12-04-Plotnine.html#the-pandas-way",
+    "objectID": "notebooks/M12_RViz/M12-04-Plotnine.html#facets",
+    "href": "notebooks/M12_RViz/M12-04-Plotnine.html#facets",
     "title": "NB: GGPlot in Python with Plotnine",
-    "section": "The Pandas Way",
-    "text": "The Pandas Way\nNote the GGPlot included the computation of counts in the geom_bar() function.\n\nggplot(mpg) + aes(x='class') + geom_bar(size=20)\n\n\n\n\n\n\n\n\n\n%matplotlib inline\n\n\n# mpg['class'].plot.bar()\n\n\nmpg['class'].value_counts().sort_index().plot.bar(rot=45);\n\n\n\n\n\n\n\n\nHowever, sometomes Pandas does do internal calculations, as with .hist():\n\nmpg['cty'].hist();\n\n\n\n\n\n\n\n\nFor faceting in Pandas, see this: https://stackoverflow.com/questions/29786227/how-do-i-plot-facet-plots-in-pandas\nNotice that it is essentially the result of a .groupby() followed by .unstack().\nSo, Pandas expects you to do the data transformations upfront.\nGGPlot2 will handle these in the geometries and facets\nGGPlot2 is easier, but Pandas separates comcerns\nAs a rule, data operations should never take place in the visualization.",
+    "section": "Facets",
+    "text": "Facets\nYou can also create facets with facet_wrap().\n\n(ggplot(mpg)         \n + aes(x='drv', y='cty', color='class', size='cyl')\n + geom_point()\n + facet_wrap('class')\n + theme(legend_position = \"none\")\n)",
     "crumbs": [
       "M12 Visualization",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>NB: GGPlot in Python with Plotnine</span>"
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>NB: GGPlot in Python with Plotnine</span>"
     ]
   },
   {
@@ -5842,7 +5446,7 @@
     "text": "Some basic facts\nProject management is an established field that is used for many activities.\n\nIt is a profession in which you can be certified as a  CPM.\nIt is a field with an established and large body of knowledge – PMBOK.\n\n\nBroadly speaking, it refers to:\n\nA class of rational methods and protocols for organizing the labor of complex activities in order to achieve specific outcomes on time and on budget.\n\nThink NASA’s space program in the 1960s.\nIts history dates to the early 20th century but becomes highly developed in the 1950s and 60s.\n\nIt is closely associated with US military operations, e.g. Gantt Charts and PERT.\nIt was later adapted to software development, due to the complexity and importances of of this kind of work.\n\n\nSource\n\nSoftware is also mission critical\n\n\n\nFrom the beginning, it has been used to support critical operations: weapons systems, air traffic control, financial systems, health care, etc.\n\n\nOnly recently are we seeing the effects of software design – in the form of data products – fail on the basis of bias and other flaws that lead to social harm\n\n\n\nIn the 1960s, the US Department of Defenses study of software problems found that:\n\n\n\n47% of software delivered could not be used, as it usually didn’t meet requirements\n\n\n29% of funded software was never delivered, as it was usually canceled due to cost/schedule overruns\n\n\n19% of software was useful after extensive rework, and it usually cost 36 times more to fix problems after release\n\n\n\nBecause of this, software engineering was developed.\n\n\nBut Software development is hard for many reasons:\n\n\n\nHardware and software are inherently complex.\n\n\nCode is imperfect and error-prone.\n\n\nCode is always an interpretation of specifications that are always underspecified. → DEBUGGING THE SPEC\n\n\n\nUnderspecified in two senses:\n\n\n\nThe inherent inadequacy of language to represent reality.\n\n\n“The map is not the terrain”\n\n\n\n\nThe fact that people don’t know what they want even when they say they do.\n\n\nThat is, reality itself changes.\n\n\n\n\n\nThe slipperiness of writing code that achieves our goals is the subject of humor:\n\nSource\n\n\nMany paradigms of the software development life cycle (SDLC) have been introduced over the years to address these issues:\n\n\n\nWaterfall\n\n\nSpiral\n\n\nEtc. → See Tutorialspoint on SDLC.\n\n\n\nThe Waterfall Model\n\n\n\n\nWaterfall Methodology\n\n\nSource\n\nWhat they all have in is a faith in the power of planning and engineering to achieve results:\n\n\n\nPlanning as the ability to predict accurately how things will unfold\n\n\nand have people understand and follow rules.\n\n\n\n\nEngineering as the operationalization of labor processes\n\n\nThe ability to treat human behavior as a tractable variable.\n\n\nthe logic of the machine applied to the the organization of labor.\n\n\n\n\n\nThese assumptions are reflected in the relationship between client and developer\n\n\n\nNotice that absence of the client in the design, building, and validation\n\n\n\nThis is partly the result of mitigating the mission creep introduced by the client.\n\n\nThe Iron Triangle\n\nThe Iron Triangle concept shows the effect of changing user requirements on a project.\nIf users want to add something to a project — a new feature, for example — this means that scope has increased.\nTherefore, either tine or resources must expand as well to allow for the change.\n\n\nThe Spiral Method\n\n\nThe Spiral Method recognizes the need to be more iterative, and introduces the client at points in an ongoing cycle. \n\n\n\nPresumably, clients are involved in objective identification and testing …\n\n\n\n\nSource\n\n\nThe methods have the virtue of being rational and comprehensive, defining all the things involved in software development\n\n\n\nBut they are very linear\n\n\n\nEven the Spiral method, which is really a 2D linear process, where phases are features and iterations are observations:\n\n\n\n\n\n\n\n\nPrimary sequence\nS = OI → AE → PD → NPP\n\n\nProcess\nP = S1 → S2 → S3 → … → SN",
     "crumbs": [
       "M13 Agile",
-      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Project Management</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Project Management</span>"
     ]
   },
   {
@@ -5853,7 +5457,7 @@
     "text": "Backstory\nAgile development is essentially a philosophy developed in response to bureaucratic software development processes.\nIt is an approach that focuses on the realities of software:\nEssentially, it is based on a mistrust of machines, plans, contracts, documents, etc.\nThe Agile Manifesto was written in 2001 after a number of lighter and more flexible approaches were developed in the 1990s.\nIt is also a collection of methods and tools:\nAgile is also counter-cultural, like many of the software movements that attended the rise of the web.",
     "crumbs": [
       "M13 Agile",
-      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Agile Development</span>"
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Agile Development</span>"
     ]
   },
   {
@@ -5864,7 +5468,7 @@
     "text": "Individuals and interactions over processes and tools\nWorking software over comprehensive documentation\nCustomer collaboration over contract negotiation\nResponding to change over following a plan\n\n\n\n\nSCRUM\nXP (Extreme Program) \nEtc.\n\n\n\nUser stories\nScrum meetings\nSprints\nTask weighting with cards\nEtc.",
     "crumbs": [
       "M13 Agile",
-      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Agile Development</span>"
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Agile Development</span>"
     ]
   },
   {
@@ -5875,7 +5479,7 @@
     "text": "Principles\nHere are the 12 Principles of Agile SD:\n\nCustomer satisfaction by early and continuous delivery of valuable software. → The “early and often” of open source development.\nWelcome changing requirements, even in late development.\nDeliver working software frequently (weeks rather than months).\nClose, daily cooperation between business people and developers.\nProjects are built around motivated individuals, who should be trusted.\nFace-to-face conversation is the best form of communication (co-location).\nWorking software is the primary measure of progress.\nSustainable development, able to maintain a constant pace.\nContinuous attention to technical excellence and good design.\nSimplicity—the art of maximizing the amount of work not done—is essential.\nBest architectures, requirements, and designs emerge from self-organizing teams.\nRegularly, the team reflects on how to become more effective, and adjusts accordingly.\n\nAs you can see, it’s all about giving teams the freedom and trust to creatively respond to client needs and change.",
     "crumbs": [
       "M13 Agile",
-      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Agile Development</span>"
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Agile Development</span>"
     ]
   },
   {
@@ -5886,7 +5490,7 @@
     "text": "Aside\nAs an aside, it’s worth noting the effect of the Web on these developments.\n\nAgile was spurred by the affordances of the Web and open source software\nAnd for teams to organize organically, without the oversight of governmental bodies or corporations\nInfluenced by the success of Open Source tools like Linux\nConsistent with Git as a tool for organically organizing software development.",
     "crumbs": [
       "M13 Agile",
-      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Agile Development</span>"
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Agile Development</span>"
     ]
   },
   {
@@ -5897,7 +5501,7 @@
     "text": "User Stories are at the heart of Agile development.\nInstead of eliciting requirements through a formal process, teams ask clients to provide statements in verbal form:\n\nAs a [type of user]\nI want [an action or behavior]\nso that [a benefit/value]\n\nThese are written on index cards.\nThese are accompanied by conversation to clarify the meaning of the sentences.\nThese are then converted into requirements:\n\nFunctional – relating specifically to how the software will work, i.e. function.\nNon-functional (so-called) – relating to the broader purpose and context of usage.\nThese map roughly onto the second and third parts of the user story.\nThey also map on MACHINE and HUMAN.\nThis page shows some examples of stories mapping onto features (so-called acceptance criteria).\n\nThese requirements are then prioritized\n\nUsing MSCW – Must / Should / Can / Won’t\nWithin the context of a scope definition in a charter (not discussed here)\nSee this link for some guidance.\n\nAfter this, requirements are serialized into a rough schedule, grouped into milestones.\nIn executing the “plan,” teams meet regularly in brief, stand-up meetings called scrums.\n\nThese happen daily.\nThese involve the development team.\nStakeholder representatives, such as the product manager, may attend too.\n\nAt regular intervals, clients are introduced to the process\n\nPrototypes, MVPs, etc. are presented.\nFeedback is elicited early and often.\n\nThe process is driven by a communication plan:\n\nFrequency of meeting.\nMode of communication – F2F, Slack, Git.\nTask management tools – Jira, Trello, Smartsheet, etc.\n\nOther artifacts are involved in this process:\n\nThe project charter.\nThe project plan.\nA Kan Ban board.",
     "crumbs": [
       "M13 Agile",
-      "<span class='chapter-number'>63</span>  <span class='chapter-title'>User Stories</span>"
+      "<span class='chapter-number'>64</span>  <span class='chapter-title'>User Stories</span>"
     ]
   },
   {
@@ -5908,216 +5512,7 @@
     "text": "O’Reilly for Higher Education contains books on all aspects of computers, programming and the Web from such publishers as O’Reilly, Sams, New Riders, Adobe. Students can access content for free.\nFollow these instructions to set up your account:\nGo to https://www.oreilly.com/library/view/temporary-access/.\nYou should see this dialog box:\n\nClick on Institution not listed? This will produce the following dialog box:\n\nIf you are first time user, enter your UVA email address and clicl on the big red button.\nThis should produce the following message:\n\nNow you can access all the books in the collection. When you return, click on Already a user? in the second dialog box.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Setting Up O'Reilly</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M10_RBasics/M10-01-Intro.html#command-line-r",
-    "href": "notebooks/M10_RBasics/M10-01-Intro.html#command-line-r",
-    "title": "NB: Introducing R",
-    "section": "Command Line R",
-    "text": "Command Line R\nR can also be run from the command line.\nR is invoked by calling R:\n&gt; R\nIf properly installed, that should produce a message like this:\nR version 4.3.1 (2023-06-16) – “Beagle Scouts” Copyright (C) 2023 The R Foundation for Statistical Computing Platform: x86_64-conda-linux-gnu (64-bit)\nR is free software and comes with ABSOLUTELY NO WARRANTY. You are welcome to redistribute it under certain conditions. Type ‘license()’ or ‘licence()’ for distribution details.\nNatural language support but running in an English locale\nR is a collaborative project with many contributors. Type ‘contributors()’ for more information and ‘citation()’ on how to cite R or R packages in publications.\nType ‘demo()’ for some demos, ‘help()’ for on-line help, or ‘help.start()’ for an HTML browser interface to help. Type ‘q()’ to quit R.\n[Previously saved workspace restored]",
-    "crumbs": [
-      "M10 Basic R",
-      "<span class='chapter-number'>49</span>  <span class='chapter-title'>NB: Introducing R</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M10_RBasics/M10-01-Intro.html#using-r-in-jupyter",
-    "href": "notebooks/M10_RBasics/M10-01-Intro.html#using-r-in-jupyter",
-    "title": "NB: Introducing R",
-    "section": "Using R in Jupyter",
-    "text": "Using R in Jupyter\nIf you want to use R within a Jupyter notebook file, you can create and load an R kernel using Anaconda’s package manager conda. In brief, here’s what you do.\nFirst, at the command line:\nconda create -n r_env r-essentials r-base\nconda activate r_env\nR # This opens the R shell\nThen, in the R shell:\nIRkernel::installspec(name = 'r_env', displayname = 'R Environment')\nquit()\nNow, fire up a Jupyter Lab or Jupyter Notebook instance from the OpenOnDemand page and select the kernel when you create a new notebook.\nNote that the name r_env can be replaced by whatever you want.",
-    "crumbs": [
-      "M10 Basic R",
-      "<span class='chapter-number'>49</span>  <span class='chapter-title'>NB: Introducing R</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#matrix",
-    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#matrix",
-    "title": "NB: R Data Structures",
-    "section": "Matrix",
-    "text": "Matrix\nA matrix is just a two-dimensional vector.\nIt too has one data type and is immutable.",
-    "crumbs": [
-      "M10 Basic R",
-      "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#array",
-    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#array",
-    "title": "NB: R Data Structures",
-    "section": "Array",
-    "text": "Array\nAn array in R is a generalization of the vector and matrix. It may have one or more dimensions.\nSo, an array with one dimension is almost the same as a vector.\nAn array with two dimensions is almost the same as a matrix.\nAn array with three or more dimensions is an n-dimensional array.\nThey are like NumPy arrays in Python.",
-    "crumbs": [
-      "M10 Basic R",
-      "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#list",
-    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#list",
-    "title": "NB: R Data Structures",
-    "section": "List",
-    "text": "List\nA list can hold items of different types and the list size can be increased on the fly.\nList contents can be accessed either by index (like mylist[[1]]) or by name (like mylist$age).\nLists are like lists in Python.\nA data frame is called a table in many languages.\nThis is the workhorse of R.\nEach column holds the same type, and the columns can have header names.\nA data frame is essential a kind of a list — a list of vectors each with the same length, but of varying data types.",
-    "crumbs": [
-      "M10 Basic R",
-      "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#summary",
-    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#summary",
-    "title": "NB: R Data Structures",
-    "section": "Summary",
-    "text": "Summary\n\n\n\nStructure\nDim\nData Type\nShape\nPython\n\n\n\n\nVector\n\\(1\\)\nsingle\n—\n—\n\n\nMatrix\n\\(2\\)\nsingle\nuniform\n—\n\n\nArray\n\\(N\\)\nsingle\nuniform\nNumPy array\n\n\nList\n\\(1\\)\nmultiple\nragged\nList, Dict\n\n\nData Frame\n\\(2\\)\nmultiple\nuniform\nPandas Data Frame\n\n\n\nThese reflect the evolution of R.\nWe mainly use Vectors and Data Frames.",
-    "crumbs": [
-      "M10 Basic R",
-      "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#sequences",
-    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#sequences",
-    "title": "NB: R Data Structures",
-    "section": "Sequences",
-    "text": "Sequences\nVectors may be created from sequences using :, seq(), and rep()\nVectors can be made out of sequences which may be generated in a few ways.\n\ns1 &lt;- 2:5\ns1\n\n\n2345\n\n\nThe seq() function is like Python’s range().\n\ns2 &lt;- seq(from=1, to=5, by=2)\ns2\n\n\n135\n\n\nYou can drop the argument names and write seq(1,5,2).\nThe rep() function will create a series of repeated values:\n\ns3 &lt;- rep(1, 5)\ns3\n\n\n11111",
-    "crumbs": [
-      "M10 Basic R",
-      "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M10_RBasics/M10-03-DataStructures.html#combining-vectors",
-    "href": "notebooks/M10_RBasics/M10-03-DataStructures.html#combining-vectors",
-    "title": "NB: R Data Structures",
-    "section": "Combining Vectors",
-    "text": "Combining Vectors\nVectors can be combined via the function c().\n\nn &lt;- c(2, 3, 5) \ns &lt;- c(\"aa\", \"bb\", \"cc\", \"dd\", \"ee\") \n c(n, s) \n\n\n'2''3''5''aa''bb''cc''dd''ee'",
-    "crumbs": [
-      "M10 Basic R",
-      "<span class='chapter-number'>51</span>  <span class='chapter-title'>NB: R Data Structures</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M10_RBasics/M10-04-DataFrames.html#data-frame-row-slices",
-    "href": "notebooks/M10_RBasics/M10-04-DataFrames.html#data-frame-row-slices",
-    "title": "NB: R Data Frames",
-    "section": "Data Frame Row Slices",
-    "text": "Data Frame Row Slices\nWe also retrieve rows from a data frame with the single square bracket operator.\nBut, we need append an extra comma character, which implies getting all columns.\nmtcar[&lt;row&gt;,]\nWhere &lt;row&gt; is a row index number or a name.\nIn Python, we would have done this:\ndf[&lt;row&gt;, :]",
-    "crumbs": [
-      "M10 Basic R",
-      "<span class='chapter-number'>52</span>  <span class='chapter-title'>NB: R Data Frames</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M10_RBasics/M10-05-ControlStructures.html#conditional-statements",
-    "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html#conditional-statements",
-    "title": "NB: R Control Structures",
-    "section": "",
-    "text": "if (&lt;condition&gt;) {\n        ## do something\n} \n\nif (&lt;condition&gt;) {\n        ## do something\n} \nelse {\n        ## do something else\n}\n\nif (&lt;condition1&gt;) {\n        ## do something\n} else if (&lt;condition2&gt;)  {\n        ## do something different\n} else {\n        ## do something different\n}\n\n\n\n\n\n\n\n\n\n\n\nif (&lt;condition1&gt;) {\n    \n}\n\nif (&lt;condition2&gt;) {\n\n}",
-    "crumbs": [
-      "M10 Basic R",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M10_RBasics/M10-05-ControlStructures.html#seq_len",
-    "href": "notebooks/M10_RBasics/M10-05-ControlStructures.html#seq_len",
-    "title": "NB: R Control Structures",
-    "section": "seq_len()",
-    "text": "seq_len()\nThe seq_len() function is also used in conjunction with for loops.\nIt generates an integer sequence based a number.\n\nfor (i in seq_len(length(x))) {\n  print(x[i])  \n}\n\n[1] \"a\"\n[1] \"b\"\n[1] \"c\"\n[1] \"d\"\n\n\nseq_len() is like seq(), but it doesn’t have the flexibility of the latter.\nIt handles the common case of beginning at \\(1\\) and stepping by \\(1\\).\n\nseq(length(x))\nseq_len(length(x))\n\n\n123456\n\n\n\n123456",
-    "crumbs": [
-      "M10 Basic R",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>NB: R Control Structures</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M10_RBasics/M10-06-Functions.html#error-trapping",
-    "href": "notebooks/M10_RBasics/M10-06-Functions.html#error-trapping",
-    "title": "NB: R Functions",
-    "section": "Error Trapping",
-    "text": "Error Trapping\nYou can assert important preconditions with stop().\nHere, we assert that the lengths of vectors x and y match.\nIf they don’t. we throw an error with stop().\n\nadd_vectors &lt;- function(x, y) {\n  if (length(x) != length(y)) {\n    stop(\"x and y must be the same length\", call. = FALSE)\n  }\n  x + y\n}\n\n\nadd_vectors(c(1, 2, 3), c(3, 3, 3))\n\n\n456\n\n\nLet’s see if it traps this error:\n\nadd_vectors(c(1, 2, 3), c(3, 3, 3, 3))\n\nERROR: Error: x and y must be the same length",
-    "crumbs": [
-      "M10 Basic R",
-      "<span class='chapter-number'>54</span>  <span class='chapter-title'>NB: R Functions</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M11_RDplyr/M11-01-Tibbles.html#tidy-data",
-    "href": "notebooks/M11_RDplyr/M11-01-Tibbles.html#tidy-data",
-    "title": "NB: The Tidyverse and Tibbles",
-    "section": "Tidy Data",
-    "text": "Tidy Data\nNote that the word “tidy” in Tidyverse stands for a specific way to structure data in data frames.\nTidy data frames have the following qualities:\nEach variable forms a column.\nEach observation forms a row.\nEach type of observational unit forms a table.",
-    "crumbs": [
-      "M11 Dplyr",
-      "<span class='chapter-number'>55</span>  <span class='chapter-title'>NB: The Tidyverse and Tibbles</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M11_RDplyr/M11-01-Tibbles.html#converting",
-    "href": "notebooks/M11_RDplyr/M11-01-Tibbles.html#converting",
-    "title": "NB: The Tidyverse and Tibbles",
-    "section": "Converting",
-    "text": "Converting\nYou can convert data frames to tibbles and tibbles to data frames with as_tibble() and as.data.frame() respectively.\nThe following demonstrates this with the built-in mtcars data frame.\n\nclass(mtcars)\n\n'data.frame'\n\n\n\nmtcars_tib &lt;- mtcars %&gt;% as_tibble()\n\n\nclass(mtcars_tib)\n\n\n'tbl_df''tbl''data.frame'\n\n\n\nmtcars_df &lt;- mtcars_tib %&gt;% as.data.frame()\n\n\nclass(mtcars_df)\n\n'data.frame'",
-    "crumbs": [
-      "M11 Dplyr",
-      "<span class='chapter-number'>55</span>  <span class='chapter-title'>NB: The Tidyverse and Tibbles</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M11_RDplyr/M11-02-Dplyr.html#why-dplyr",
-    "href": "notebooks/M11_RDplyr/M11-02-Dplyr.html#why-dplyr",
-    "title": "NB: Dplyr",
-    "section": "Why Dplyr?",
-    "text": "Why Dplyr?\nDplyr was developed to provide a clean and intelligble way to process data tables.\nIt does this by providing a simple grammar for data manipulation and for operating on data frames.\nWith this grammar, you can clearly express and communicate what it is that you are doing to a data frame that other people can understand.\nThis is useful because it provides an abstraction for data manipulation that previously did not exist within R and other programming languages.\nAnother useful contribution is that the Dplyr functions are very fast, as many key operations are coded in C++.\nNote that Dplyr does not provide any new functionality to R per se.\nEverything Dplyr does may already be done with base R.\nBut it greatly simplifies existing functionality in R.\nIn the table below, you can see that that Dplyr provides a consistent way of phrasing the someone chaotic idioms of base R.\n\n\n\ndplyr\nbase R\n\n\n\n\narrange(df, x)\ndf[order(x), , drop = FALSE]\n\n\ndistinct(df, x)\ndf[!duplicated(x), , drop = FALSE], unique()\n\n\nfilter(df, x)\ndf[which(x), , drop = FALSE], subset()\n\n\nmutate(df, z = x + y)\ndf$z &lt;- df$x + df$y, transform()\n\n\npull(df, 1)\ndf[[1]]\n\n\npull(df, x)\ndf$x\n\n\nrename(df, y = x)\nnames(df)[names(df) == \"x\"] &lt;- \"y\"\n\n\nrelocate(df, y)\ndf[union(\"y\", names(df))]\n\n\nselect(df, x, y)\ndf[c(\"x\", \"y\")], subset()\n\n\nselect(df, starts_with(\"x\"))\ndf[grepl(\"\n\n\nsummarise(df, mean(x))\nmean(df$x), tapply(), aggregate(), by()\n\n\nslice(df, c(1, 2, 5))\ndf[c(1, 2, 5), , drop = FALSE]",
-    "crumbs": [
-      "M11 Dplyr",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>NB: Dplyr</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M11_RDplyr/M11-02-Dplyr.html#a-grammar-of-data",
-    "href": "notebooks/M11_RDplyr/M11-02-Dplyr.html#a-grammar-of-data",
-    "title": "NB: Dplyr",
-    "section": "A Grammar of Data",
-    "text": "A Grammar of Data\nSome of the key “verbs” provided by the Dplyr package are:\n\nselect: return a subset of the columns of a data frame, using a flexible notation.\nfilter: extract a subset of rows from a data frame based on logical conditions.\narrange: reorder rows of a. data frame.\nrename: rename variables in a data frame.\nmutate: add new variables/columns or transform existing variables.\nsummarise / summarize: generate summary statistics of different variables in the data frame, possibly within strata.\n\n%&gt;%: the pipe operator is used to connect multiple verb actions together into a pipeline.",
-    "crumbs": [
-      "M11 Dplyr",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>NB: Dplyr</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M11_RDplyr/M11-02-Dplyr.html#common-function-properties",
-    "href": "notebooks/M11_RDplyr/M11-02-Dplyr.html#common-function-properties",
-    "title": "NB: Dplyr",
-    "section": "Common Function Properties",
-    "text": "Common Function Properties\nAll Dplyr functions have some common characteristics:\n\nThe first argument is a data frame (or tibble).\nThe succeeding arguments describe what to do with the data frame specified in the first argument.\nThe return result of a function is a new data frame.\n\nIn addition, Dplyr expects data frames to be be properly structured as tidy data.",
-    "crumbs": [
-      "M11 Dplyr",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>NB: Dplyr</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M11_RDplyr/M11-01-Tibbles.html#using-the-tidyverse",
-    "href": "notebooks/M11_RDplyr/M11-01-Tibbles.html#using-the-tidyverse",
-    "title": "NB: The Tidyverse and Tibbles",
-    "section": "Using the Tidyverse",
-    "text": "Using the Tidyverse\nTo use the Tidyverse, we often import everything:\n\ninstall.packages(\"tidyverse\")\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors",
-    "crumbs": [
-      "M11 Dplyr",
-      "<span class='chapter-number'>55</span>  <span class='chapter-title'>NB: The Tidyverse and Tibbles</span>"
-    ]
-  },
-  {
-    "objectID": "notebooks/M11_RDplyr/M11-02-Dplyr.html#installing-dplyr",
-    "href": "notebooks/M11_RDplyr/M11-02-Dplyr.html#installing-dplyr",
-    "title": "NB: Dplyr",
-    "section": "Installing Dplyr",
-    "text": "Installing Dplyr\nYou can install Dplyr directly or as part of Tidyverse, which we installed in the previous notebook.\n\n# install.packages(\"dplyr\")\n\nOnce the package is installed, you may load it into your R session by calling the library() function.\n\n# library(dplyr)\n\nOf course, you can also just install tidyverse if you plan to visualize your results.\nSince we did this in our previous notebook, we can import it now.\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nYou may get some warnings when the package is loaded because there are functions in the dplyr package that have the same name as functions in other packages. For now you can ignore the warnings.",
-    "crumbs": [
-      "M11 Dplyr",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>NB: Dplyr</span>"
+      "<span class='chapter-number'>65</span>  <span class='chapter-title'>Setting Up O'Reilly</span>"
     ]
   }
 ]

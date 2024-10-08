@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,7 +31,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html" rel="next">
-<link href="../../notebooks/M12_RViz/M12-01-GGPlot.html" rel="prev">
+<link href="../../notebooks/M12_RViz/M12-01-GettingStartedWithGGPlot.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -115,7 +81,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m12/m12-intro.html">M12 Visualization</a></li><li class="breadcrumb-item"><a href="../../notebooks/M12_RViz/M12-02-RMarkdown.html"><span class="chapter-title">NB: R Markdown</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m12/m12-intro.html">M12 Visualization</a></li><li class="breadcrumb-item"><a href="../../notebooks/M12_RViz/M12-02-RMarkdown.html"><span class="chapter-title">Viridis Demo</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -509,7 +475,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Data Types</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-02-DataTypes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Data Types and Operators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -524,12 +490,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-05-ControlStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Control Structures and Functions</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-05-ControlStructures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Control Structures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M10_RBasics/M10-06-Functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Functions</span></a>
+  <a href="../../notebooks/M10_RBasics/M10-06-Functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: R Functions</span></a>
   </div>
 </li>
       </ul>
@@ -545,12 +511,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M11_RDplyr/M11-01-Tibbles.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Introducing Tibbles</span></a>
+  <a href="../../notebooks/M11_RDplyr/M11-01-Tibbles.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: The Tidyverse and Tibbles</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M11_RDplyr/M11-02-Dplyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: The <code>dplyr</code> package</span></a>
+  <a href="../../notebooks/M11_RDplyr/M11-02-Dplyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Dplyr</span></a>
   </div>
 </li>
       </ul>
@@ -566,17 +532,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M12_RViz/M12-01-GGPlot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: GGPlot2</span></a>
+  <a href="../../notebooks/M12_RViz/M12-00-AGrammarOfGraphics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">GGPlot and the Grammar of Graphics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M12_RViz/M12-02-RMarkdown.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NB: R Markdown</span></a>
+  <a href="../../notebooks/M12_RViz/M12-01-GettingStartedWithGGPlot.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Getting Started with GGPlot2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Loose Ends</span></a>
+  <a href="../../notebooks/M12_RViz/M12-02-RMarkdown.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Viridis Demo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NB: Plotly and GGPlotly</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -638,25 +609,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#literate-programming" id="toc-literate-programming" class="nav-link active" data-scroll-target="#literate-programming">Literate Programming</a></li>
+  <li><a href="#markdown" id="toc-markdown" class="nav-link" data-scroll-target="#markdown">Markdown</a></li>
+  <li><a href="#this-is-a-header" id="toc-this-is-a-header" class="nav-link" data-scroll-target="#this-is-a-header">This is a header</a></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
+  <li><a href="#comparison-to-jupyter" id="toc-comparison-to-jupyter" class="nav-link" data-scroll-target="#comparison-to-jupyter">Comparison to Jupyter</a></li>
   <li><a href="#varieties-of-r-markdown-outputs" id="toc-varieties-of-r-markdown-outputs" class="nav-link" data-scroll-target="#varieties-of-r-markdown-outputs">Varieties of R Markdown outputs</a></li>
   <li><a href="#knitting" id="toc-knitting" class="nav-link" data-scroll-target="#knitting">Knitting</a></li>
   <li><a href="#publishing" id="toc-publishing" class="nav-link" data-scroll-target="#publishing">Publishing</a></li>
-  <li><a href="#outputting" id="toc-outputting" class="nav-link" data-scroll-target="#outputting">Outputting</a>
-  <ul class="collapse">
+  <li><a href="#outputting" id="toc-outputting" class="nav-link" data-scroll-target="#outputting">Outputting</a></li>
   <li><a href="#output-options" id="toc-output-options" class="nav-link" data-scroll-target="#output-options">Output options</a></li>
-  </ul></li>
   <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link" data-scroll-target="#how-it-works">How It Works</a></li>
-  <li><a href="#the-rmarkdown-spec" id="toc-the-rmarkdown-spec" class="nav-link" data-scroll-target="#the-rmarkdown-spec">The RMarkdown Spec</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ontoligent/DS5100-book/edit/main/notebooks/M12_RViz/M12-02-RMarkdown.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M12_RViz/M12-02-RMarkdown.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m12/m12-intro.html">M12 Visualization</a></li><li class="breadcrumb-item"><a href="../../notebooks/M12_RViz/M12-02-RMarkdown.html"><span class="chapter-title">NB: R Markdown</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m12/m12-intro.html">M12 Visualization</a></li><li class="breadcrumb-item"><a href="../../notebooks/M12_RViz/M12-02-RMarkdown.html"><span class="chapter-title">Viridis Demo</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">NB: R Markdown</span></h1>
+<h1 class="title">Viridis Demo</h1>
 </div>
 
 
@@ -673,114 +645,99 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>R provides a notebook style coding environment similar to Jupyter.</p>
+<p>Programming for Data Science</p>
+<section id="literate-programming" class="level1">
+<h1>Literate Programming</h1>
+<p>R provides a notebook style coding environment similar to <strong>Jupyter</strong> called R Markdown.</p>
+<p>It follows the <strong>literate programming</strong> paradigm of <strong>inter-leaving text and runnable code</strong>.</p>
+<p>As with Jupyter, they can be used <strong>interactively</strong> or as <strong>exported</strong> documents into standard formats.</p>
+<p>R Markdown files consists of the three types of element:</p>
+<ol type="1">
+<li><strong>Metadata</strong>, written in <strong>YAML</strong> (at the top of the file).</li>
+<li><strong>Text</strong>, written in <strong>Markdown</strong>.</li>
+<li><strong>Code</strong>, written in one of several supported <strong>programming languages</strong>.</li>
+</ol>
+<p>All of these are plain text and live in the same <code>.Rmd</code> file.</p>
+</section>
+<section id="markdown" class="level1">
+<h1>Markdown</h1>
+<p>As the name implies, R Markdown files uses a version of <a href="https://www.markdownguide.org/">Markdown</a> to create the text components and define the code blocks.</p>
+<p>Mardown is a simplified version of HTML markup that uses typographic symbols and line spaces instead of angle brackets.</p>
+<p>For example, instead of writing this in HTML:</p>
+<h1>
+This is is header
+</h1>
+<p>
+This paragraph defines a <a href="http://place.com">link</a>/
+</p>
+<p>You would write this:</p>
+</section>
+<section id="this-is-a-header" class="level1">
+<h1>This is a header</h1>
+<p>This paragraph defines a <a href="http://place.com">link</a>.</p>
+<p>The markdown gets converted into HTML by a viewer or converter at display time.</p>
+</section>
+<section id="code" class="level1">
+<h1>Code</h1>
+<p>The <strong>code blocks</strong> are delimmited by three backtacks <tt>```</tt> with a language specified in braces.</p>
+<p>For example, to run a block of R code, you would enter this:</p>
+<pre class="{r}"><code>x &lt;- 10
+print(x)</code></pre>
+<p>R Markdown also supports running code in other languages in the same document.</p>
+<p>To run a Python block, you could do something like this:</p>
+<pre class="{python}"><code>x = 10
+print(x)</code></pre>
+<p>In RStudio, these blocks of code can be executed in place, with results output in below the cell, as with Jupyter.</p>
+</section>
+<section id="comparison-to-jupyter" class="level1">
+<h1>Comparison to Jupyter</h1>
+<p>R Markdown files are optimized to be <em>published documents</em>.</p>
+<p>Jupyter notebooks are meant primarily to be interactive environments.</p>
+<p>R Markdown files are plain text.</p>
+<p>Jupyter notebooks are written in <strong>JavaScript</strong>.</p>
+<p>JavaScript is the native programming language of web browsers; the notebook format is executable code that can be integrated into a web application.</p>
+</section>
+<section id="varieties-of-r-markdown-outputs" class="level1">
+<h1>Varieties of R Markdown outputs</h1>
+<p>R Markdown is designed to be output to several formats, including notebooks, documents, presentations, and interactive applications.</p>
+<p><strong>Notebooks</strong> and documents can be output as HTML, PDF, or Word files.</p>
+<p><strong>Presentations</strong> may be output in IOSlides, Beamer, or PowerPoint format.</p>
+<p><strong>Interactive</strong> applications are interactive apps that can be published on the web with a framework called Shiny.</p>
+</section>
+<section id="knitting" class="level1">
+<h1>Knitting</h1>
+<p>Knitting is the process of compiling all the code and visual assets of an R Markdown into a single file.</p>
+</section>
+<section id="publishing" class="level1">
+<h1>Publishing</h1>
+<p>RMarkdown has publication in mind as an outcome. RStudio allows you to publish in these destinations:</p>
 <ul>
-<li>It follows the <strong>literate programming</strong> paradigm of <strong>inter-leaving text and code</strong>.</li>
-<li>It uses a version of <a href="https://www.markdownguide.org/">Markdown</a> to create the text components.</li>
-<li>It allows executable <strong>code blocks</strong>.</li>
-<li>They can be used interactively or as <strong>exported</strong> documents into standard formats.</li>
-</ul>
-<p>How, the R approach differs in some important ways:</p>
-<ul>
-<li>RMarkdown is <strong>not visually rendered</strong> while your are editing.
-<ul>
-<li>The document has to be ‘knitted’ to see this.</li>
-<li>Newer versions of RStudio have a <strong>visual mode</strong> that does render Markdown, and also allows you to edit in this mode.</li>
-<li>This differs from Jupyter’s cell-by-cell approach.</li>
-</ul></li>
-<li>RMarkdown <strong>allows several programming languages</strong> to be run in the same notebook.</li>
-<li>RMarkdown files are meant to be <em>published documents</em>, not work spaces for coding.</li>
-<li>RMarkdown is written in markdown and uses <a href="https://yaml.org/">YAML</a> to store configuration information.
-<ul>
-<li>Jupyter notebooks are written in <strong>JavaScript</strong>, which contains both configuration data and content data in the same structure.</li>
-<li>This difference is what accounts for the different editing experiences. JavaScript is the native programming language of web browsers; the notebook format is executable code that can be integrated into a web application.</li>
-</ul></li>
+<li><a href="https://rpubs.com/">RPubs</a></li>
+<li><a href="https://www.rstudio.com/products/connect/">R Studio Connect</a></li>
 </ul>
 </section>
-<section id="varieties-of-r-markdown-outputs" class="level2">
-<h2 class="anchored" data-anchor-id="varieties-of-r-markdown-outputs">Varieties of R Markdown outputs</h2>
-<p>R Markdown is designed to be output to several formats:</p>
-<ul>
-<li><strong>R Notebooks</strong>
-<ul>
-<li>Designed to previewed</li>
-<li>Or output to <code>(html|pdf|doc)_notebook</code></li>
-<li>Have Preview in RStudio toolbar (but also Knit in menu)</li>
-</ul></li>
-<li><strong>Documents</strong>
-<ul>
-<li>Output to <code>(html|pdf|doc)_document</code></li>
-<li>Has Knit in RStudio toolbar</li>
-</ul></li>
-<li><strong>Presentations</strong>
-<ul>
-<li>Produce slideshows from your source file, in ioslides, beamer, or powerpoint.</li>
-</ul></li>
-<li><strong>Shiny</strong>
-<ul>
-<li>Create interactive apps that can be published on the web.</li>
-</ul></li>
-</ul>
-</section>
-<section id="knitting" class="level2">
-<h2 class="anchored" data-anchor-id="knitting">Knitting</h2>
-<p>Knitting is the process of compiling all the code and visual assets of an RMarkdown into a single file.</p>
-</section>
-<section id="publishing" class="level2">
-<h2 class="anchored" data-anchor-id="publishing">Publishing</h2>
-<p>RMarkdown has publication in mind as an outcome.</p>
-<p>RStudio allows you to publish in these destinations:</p>
-<ul>
-<li><p><a href="https://rpubs.com/">RPubs</a></p></li>
-<li><p><a href="https://www.rstudio.com/products/connect/">R Studio Connect</a></p></li>
-</ul>
-</section>
-<section id="outputting" class="level2">
-<h2 class="anchored" data-anchor-id="outputting">Outputting</h2>
+<section id="outputting" class="level1">
+<h1>Outputting</h1>
 <p>There are two ways to set the output of a document:</p>
 <ol type="1">
-<li><p>Permanently, by modifying the YAML header:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Viridis Demo"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> html_document</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Transiently, by calling <code>rmarkdown::render()</code> by hand:</p>
-<div class="cell" data-hash="M12-02-RMarkdown_cache/html/unnamed-chunk-2_6919d01b471b6f2b17ec2d30e3700601">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">"diamond-sizes.Rmd"</span>, <span class="at">output_format =</span> <span class="st">"word_document"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This is useful if you want to programmatically produce multiple types of output.</p></li>
+<li>Permanently, by modifying the YAML header:</li>
 </ol>
+<ol start="2" type="1">
+<li>Transiently, by calling <code>rmarkdown::render()</code> by hand:</li>
+</ol>
+<p>rmarkdown::render(“diamond-sizes.Rmd”, output_format = “word_document”)</p>
+<p>This is useful if you want to programmatically produce multiple types of output.</p>
 <p>RStudio’s knit button renders a file to the first format listed in its <code>output</code> field.</p>
-<p>You can also do it by code:</p>
-<pre><code>knitr::include_graphics("screenshots/rmarkdown-knit.png")</code></pre>
-<p>Each output format is associated with an R function.</p>
-<p>You can either write <code>foo</code> or <code>pkg::foo</code>.</p>
-<p>If you omit <code>pkg</code>, the default is assumed to be rmarkdown.</p>
-<p>It’s important to know the name of the function that makes the output because that’s where you get help.</p>
-<p>For example, to figure out what parameters you can set with <code>html_document</code>, look at <code>?rmarkdown::html_document</code>.</p>
-<section id="output-options" class="level3">
-<h3 class="anchored" data-anchor-id="output-options">Output options</h3>
+</section>
+<section id="output-options" class="level1">
+<h1>Output options</h1>
 <p>To override the default parameter values, you need to use an expanded <code>output</code> field. For example, if you wanted to render an <code>html_document</code> with a floating table of contents, you’d use:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can even render to multiple outputs by supplying a list of formats:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span><span class="at"> default</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Note the special syntax if you don’t want to override any of the default options.</p>
 </section>
-</section>
-<section id="how-it-works" class="level2">
-<h2 class="anchored" data-anchor-id="how-it-works">How It Works</h2>
+<section id="how-it-works" class="level1">
+<h1>How It Works</h1>
 <p><img src="images/paste-7C07E815.png" class="img-fluid"></p>
-</section>
-<section id="the-rmarkdown-spec" class="level2">
-<h2 class="anchored" data-anchor-id="the-rmarkdown-spec">The RMarkdown Spec</h2>
-<p>See <a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf?_ga=2.194053733.950222666.1657155877-187437491.1653052010">The RMarkown Reference Guide</a> and <a href="https://rmarkdown.rstudio.com/lesson-1.html">RStudio’s Guide</a>.</p>
 
 
 </section>
@@ -1204,13 +1161,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../notebooks/M12_RViz/M12-01-GGPlot.html" class="pagination-link" aria-label="NB: GGPlot2">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">NB: GGPlot2</span></span>
+      <a href="../../notebooks/M12_RViz/M12-01-GettingStartedWithGGPlot.html" class="pagination-link" aria-label="NB: Getting Started with GGPlot2">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">NB: Getting Started with GGPlot2</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html" class="pagination-link" aria-label="NB: Loose Ends">
-        <span class="nav-page-text"><span class="chapter-title">NB: Loose Ends</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../notebooks/M12_RViz/M12-03-Qplot-and-Plotly.html" class="pagination-link" aria-label="NB: Plotly and GGPlotly">
+        <span class="nav-page-text"><span class="chapter-title">NB: Plotly and GGPlotly</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1219,4 +1176,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ontoligent/DS5100-book/edit/main/notebooks/M12_RViz/M12-02-RMarkdown.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M12_RViz/M12-02-RMarkdown.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

@@ -122,11 +122,10 @@ book:
         
     - part: modules/m13/m13-intro.qmd # "13 Agile"
       chapters: 
-        - notebooks/M13_Agile/project-management.qmd
-        - notebooks/M13_Agile/agile-dev.qmd
-        - notebooks/M13_Agile/user-stories.qmd
-        # - modules/m13/m13-activity.qmd
-        
+        - notebooks/M13_Agile/M13-01-ProjectManagement.ipynb
+        - notebooks/M13_Agile/M13-02-AgileDevelopment.ipynb
+        - notebooks/M13_Agile/M13-03-UserStories.ipynb
+    
     - part: "Appendices"
       chapters: 
         - topics/oreilly-accounts.qmd

@@ -780,21 +780,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="example-1" class="level2">
 <h2 class="anchored" data-anchor-id="example-1">Example 1</h2>
 <p>Consider the case of this simple static class, stored in <code>demo/math_ops.py</code>, to perform basic arithmetic operations.</p>
-<p>class MathOps:</p>
-<pre><code>def add(a, b):
-    return a + b
-    
-def subtract(a, b):
-    return a - b
-
-def multiply(a, b):
-    return a * b
-
-def divide(a, b):
-    if b == 0:
-        raise ValueError("Cannot divide by zero")
-    return a / b</code></pre>
-<p>if <strong>name</strong> == ‘<strong>main</strong>’: print(“This is the MathOps class. It’s meant to be imported into another module.”) print(“But since you called it directly, I’ll show you how it works!”) x = 5 y = 10 print(“5 + 10 =”, MathOps.add(x, y)) print(“5 - 10 =”, MathOps.subtract(x, y)) print(“5 * 10 =”, MathOps.multiply(x, y)) print(“5 / 10 =”, MathOps.divide(x, y))</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MathOps:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add(a, b):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> a <span class="op">+</span> b</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> subtract(a, b):</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> a <span class="op">-</span> b</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> multiply(a, b):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> a <span class="op">*</span> b</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> divide(a, b):</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> b <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Cannot divide by zero"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> a <span class="op">/</span> b</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"This is the MathOps class. It's meant to be imported into another module."</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"But since you called it directly, I'll show you how it works!"</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"5 + 10 ="</span>, MathOps.add(x, y))</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"5 - 10 ="</span>, MathOps.subtract(x, y))</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"5 * 10 ="</span>, MathOps.multiply(x, y))</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"5 / 10 ="</span>, MathOps.divide(x, y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="cell-14" class="cell" data-tags="[]" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python demo<span class="op">/</span>math_ops.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -807,28 +817,33 @@ But since you called it directly, I'll show you how it works!
 </div>
 </div>
 <p>Here is an example unittest file, stored in <code>demo/math_ops_test.py</code>, to test the methods in the class:</p>
-<p>import unittest from math_ops import MathOps</p>
-<p>class TestMathOperations(unittest.TestCase):</p>
-<pre><code>def test_add(self):
-    self.assertEqual(MathOps.add(2, 3), 5)
-    self.assertEqual(MathOps.add(-1, 1), 0)
-    self.assertEqual(MathOps.add(-1, -1), -2)
-
-def test_subtract(self):
-    self.assertEqual(MathOps.subtract(5, 3), 2)
-    self.assertEqual(MathOps.subtract(1, 1), 0)
-    self.assertEqual(MathOps.subtract(-1, -1), 0)
-
-def test_multiply(self):
-    self.assertEqual(MathOps.multiply(2, 3), 6)
-    self.assertEqual(MathOps.multiply(-2, 3), -6)
-    self.assertEqual(MathOps.multiply(0, 5), 0)
-
-def test_divide(self):
-    self.assertEqual(MathOps.divide(6, 3), 2)
-    self.assertEqual(MathOps.divide(7, 2), 3.5)
-    self.assertRaises(ValueError, MathOps.divide, 1, 0)</code></pre>
-<p>if <strong>name</strong> == ‘<strong>main</strong>’: unittest.main()</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math_ops <span class="im">import</span> MathOps </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestMathOperations(unittest.TestCase):</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_add(<span class="va">self</span>):</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(MathOps.add(<span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">5</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(MathOps.add(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="dv">0</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(MathOps.add(<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>), <span class="op">-</span><span class="dv">2</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_subtract(<span class="va">self</span>):</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(MathOps.subtract(<span class="dv">5</span>, <span class="dv">3</span>), <span class="dv">2</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(MathOps.subtract(<span class="dv">1</span>, <span class="dv">1</span>), <span class="dv">0</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(MathOps.subtract(<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>), <span class="dv">0</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_multiply(<span class="va">self</span>):</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(MathOps.multiply(<span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">6</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(MathOps.multiply(<span class="op">-</span><span class="dv">2</span>, <span class="dv">3</span>), <span class="op">-</span><span class="dv">6</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(MathOps.multiply(<span class="dv">0</span>, <span class="dv">5</span>), <span class="dv">0</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_divide(<span class="va">self</span>):</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(MathOps.divide(<span class="dv">6</span>, <span class="dv">3</span>), <span class="dv">2</span>)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(MathOps.divide(<span class="dv">7</span>, <span class="dv">2</span>), <span class="fl">3.5</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertRaises(<span class="pp">ValueError</span>, MathOps.divide, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    unittest.main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To run the test file, we put the two files in the same directory and run the test file from the command line.</p>
 <div id="cell-18" class="cell" data-tags="[]" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python demo<span class="op">/</span>math_ops_test.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -860,35 +875,41 @@ OK</code></pre>
 <section id="example-2" class="level2">
 <h2 class="anchored" data-anchor-id="example-2">Example 2</h2>
 <p>In this example, we create a class called <code>Student</code> and save it in a local file called <code>demo/student.py</code>.</p>
-<p>class Student:</p>
-<pre><code># constructor
-def __init__(self, name, courses=None):
-    self.name = name 
-    self.courses = [] if courses is None else courses 
-    self.num_courses = len(self.courses)
-    
-# enroll in a course
-def enroll_in_course(self, course_name): 
-    self.courses.append(course_name)
-    self.num_courses += 1 </code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Student:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># constructor</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, courses<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.courses <span class="op">=</span> [] <span class="cf">if</span> courses <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> courses </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.num_courses <span class="op">=</span> <span class="bu">len</span>(<span class="va">self</span>.courses)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># enroll in a course</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> enroll_in_course(<span class="va">self</span>, course_name): </span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.courses.append(course_name)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.num_courses <span class="op">+=</span> <span class="dv">1</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then we create a companion test file for our class, saving it in a file called <code>demo/student_test.py</code>.</p>
-<p>from student import Student import unittest</p>
-<p>class EnrollInTestCase(unittest.TestCase):</p>
-<pre><code>def test_is_incremented_correctly(self):
-    """
-    Test if enrollInCourse() method successfully increments the
-    num_courses attribute of the Student object 
-    """
-
-    student1 = Student('Katherine', ['DS 5100'])
-    student1.enroll_in_course("CS 5050")
-    student1.enroll_in_course("CS 5777")
-    print('Course names:', student1.courses)
-    print('Course count:', student1.num_courses)
-    
-    expected = 3
-    self.assertEqual(student1.num_courses, expected)</code></pre>
-<p>if <strong>name</strong> == ‘<strong>main</strong>’: unittest.main()</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> student <span class="im">import</span> Student</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> EnrollInTestCase(unittest.TestCase): </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_is_incremented_correctly(<span class="va">self</span>):</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">        Test if enrollInCourse() method successfully increments the</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">        num_courses attribute of the Student object </span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        student1 <span class="op">=</span> Student(<span class="st">'Katherine'</span>, [<span class="st">'DS 5100'</span>])</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        student1.enroll_in_course(<span class="st">"CS 5050"</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        student1.enroll_in_course(<span class="st">"CS 5777"</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'Course names:'</span>, student1.courses)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'Course count:'</span>, student1.num_courses)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        expected <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(student1.num_courses, expected)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    unittest.main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To run our tests, we run the test file from the command line:</p>
 <div id="cell-29" class="cell" data-tags="[]" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python demo<span class="op">/</span>student_test.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

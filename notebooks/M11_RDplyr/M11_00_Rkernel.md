@@ -18,18 +18,24 @@ You want to run R in a Jupyter notebook. This means having available an R kernel
 
 From the command line in Rivanna, create and activate an R environment. 
 
-Here we create one with the essentials and base packages for R.
+First, create one with the essentials and base packages for R using this command:
 
 ```bash
 conda create -n r_env r-essentials r-base
+```
+
+Then activate the environment with this command:
+
+```bash
 conda activate r_env
 ```
 
 You are now in an environment that runs R.
 
+
 **2. Run the R shell**
 
-Now, run R from the command line.
+Now, run R from the command line like so:
 
 ```bash
 R
@@ -37,7 +43,7 @@ R
 
 **3. Register the kernel**
 
-Once in the R interactive shell, register the kernel with the following commands.  
+Once in the R interactive shell, register the kernel with the following commands:  
 
 ```r
 install.packages("IRkernel") # Not really needed since included in r-essentials
@@ -47,7 +53,7 @@ quit()
 
 **4. Deactivate the environment**
 
-Once you are done with this, you can deactivate the environment.
+Once you are done with this, you can deactivate the environment like so:
 
 ```bash
 conda deactivate
@@ -55,13 +61,14 @@ conda deactivate
 
 **5. Run Jupyter Lab**
 
-Start Jupyter Lab from the OpenOnDemand webpage. 
+Now start Jupyter Lab from the [OpenOnDemand webpage](https://ood.hpc.virginia.edu/pun/sys/dashboard). 
 
 If you already have a session running, close it down and restart it.
 
 You should see a kernel tile like the following in the launcher window:
 
-![](./r-kernel.png)
+![](./images/r-kernel.png)
+
 
 **6. Going Forward**
 

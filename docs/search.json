@@ -280,6 +280,16 @@
     ]
   },
   {
+    "objectID": "modules/m02/m02-intro.html#videos",
+    "href": "modules/m02/m02-intro.html#videos",
+    "title": "M02 Introducing Python",
+    "section": "Videos",
+    "text": "Videos",
+    "crumbs": [
+      "M02 Introducing Python"
+    ]
+  },
+  {
     "objectID": "topics/on-data.html",
     "href": "topics/on-data.html",
     "title": "Data and Code",
@@ -1102,6 +1112,16 @@
     ]
   },
   {
+    "objectID": "modules/m03/m03-intro.html#videos",
+    "href": "modules/m03/m03-intro.html#videos",
+    "title": "M03 Control Structures",
+    "section": "Videos",
+    "text": "Videos",
+    "crumbs": [
+      "M03 Control Structures"
+    ]
+  },
+  {
     "objectID": "topics/vals-vars-expressions-statements.html",
     "href": "topics/vals-vars-expressions-statements.html",
     "title": "Values, Variables, Expressions, and Statements",
@@ -1391,6 +1411,16 @@
     "title": "M04 Functions",
     "section": "Readings",
     "text": "Readings\n\nSuggested\n\nLutz 2019, Part IV, Chapter 16: Function Basics\nLutz 2019, Part IV, Chapter 17: Scopes\n\nNon-local is for advanced users.\n\nLutz 2019, Part IV, Chapter 18. Arguments\nLutz 2019, Part IV, Chapter 19: Advanced Function Topics\n\n\n\nOptional\n\nMcKinney, 2023, Python for Data Analysis, “3.2: Functions”\nFunctions (W3S)\nGlobal and Local Variables (GFG)\nLambda Functions (Real Python)",
+    "crumbs": [
+      "M04 Functions"
+    ]
+  },
+  {
+    "objectID": "modules/m04/m04-intro.html#videos",
+    "href": "modules/m04/m04-intro.html#videos",
+    "title": "M04 Functions",
+    "section": "Videos",
+    "text": "Videos",
     "crumbs": [
       "M04 Functions"
     ]
@@ -2009,6 +2039,16 @@
     ]
   },
   {
+    "objectID": "modules/m05/m05-intro.html#videos",
+    "href": "modules/m05/m05-intro.html#videos",
+    "title": "M05 NumPy",
+    "section": "Videos",
+    "text": "Videos",
+    "crumbs": [
+      "M05 NumPy"
+    ]
+  },
+  {
     "objectID": "notebooks/M05_NumPy/M05-00-Time.html",
     "href": "notebooks/M05_NumPy/M05-00-Time.html",
     "title": "NB: Python Timing",
@@ -2584,6 +2624,16 @@
     "title": "M06 Pandas",
     "section": "Readings",
     "text": "Readings\n\nRequired\n\nMcKinney 2023, Chapter 5: Getting Started with Pandas\nGetting Started in Pandas (Official)",
+    "crumbs": [
+      "M06 Pandas"
+    ]
+  },
+  {
+    "objectID": "modules/m06/m06-intro.html#videos",
+    "href": "modules/m06/m06-intro.html#videos",
+    "title": "M06 Pandas",
+    "section": "Videos",
+    "text": "Videos",
     "crumbs": [
       "M06 Pandas"
     ]

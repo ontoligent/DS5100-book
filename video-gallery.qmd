@@ -1,88 +1,266 @@
 # Video Gallery
 
 ## M00 Preliminaries
+
+### How To Upload Assessments
+
 <iframe id="kmsembed-1_2eqvj67e" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_2eqvj67e/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M00 How To Upload Assessments"></iframe><br />
+
+### How to Use HW Notebooks
+
 <iframe id="kmsembed-1_mudla21m" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_mudla21m/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M00 How to Use HW Notebooks"></iframe><br />
 
 ## M01 Getting Started
+
+### Unix Demo
+
 <iframe id="kmsembed-1_ej0tr1o6" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_ej0tr1o6/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M01 Unix Demo"></iframe><br />
+
+### SSH for GitHub
+
 <iframe id="kmsembed-1_bbvi6k7k" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_bbvi6k7k/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M01 SSH for GitHub"></iframe><br />
+
+### Git and GitHub
+
 <iframe id="kmsembed-1_1rg4stw2" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_1rg4stw2/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M01 Git and GitHub"></iframe><br />
 
 ## M02 Introducing Python
+
+### Data and Code
+
 <iframe id="kmsembed-1_hq4ol2v8" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_hq4ol2v8/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M02 Data and Code"></iframe><br />
+
+### Data Types and Structures
+
 <iframe id="kmsembed-1_s0lxdwyp" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_s0lxdwyp/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M02 Data Types and Structures"></iframe><br />
+
+### Data Types, Literals, and Variables
+
 <iframe id="kmsembed-1_aqr51ts5" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_aqr51ts5/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M02 Data Types, Literals, and Variables"></iframe><br />
+
+### Operators and Expressions
+
 <iframe id="kmsembed-1_l6q43u51" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_l6q43u51/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M02 Operators and Expressions"></iframe><br />
+
+### Numbers
+
 <iframe id="kmsembed-1_euocdrkk" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_euocdrkk/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M02 Numbers"></iframe><br />
+
+### Strings
+
 <iframe id="kmsembed-1_jicff7ax" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_jicff7ax/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M02 Strings"></iframe><br />
+
+### Data Structures
+
 <iframe id="kmsembed-1_lvztu61o" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_lvztu61o/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M02 Data Structures"></iframe><br />
+
+### Aside on Immutables
+
 <iframe id="kmsembed-1_gg5g61pq" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_gg5g61pq/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M02 Aside on Immutables"></iframe><br />
 
 ## M03 Python Control Structures
+
+### Control Structures
+
 <iframe id="kmsembed-1_0oc8qocg" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_0oc8qocg/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M03 Control Structures"></iframe><br />
+
+### Iterables and Iterators
+
 <iframe id="kmsembed-1_2nuu4az4" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_2nuu4az4/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M03 Iterables and Iterators"></iframe><br />
+
+### Comprehensions
+
 <iframe id="kmsembed-1_lmz0pbeg" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_lmz0pbeg/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M03 Comprehensions"></iframe><br />
+
+### Nested Comprehensions
+
 <iframe id="kmsembed-1_kmjd2a3x" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_kmjd2a3x/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M03 Nested Comprehensions"></iframe><br />
 
 ## M04 Python Functions
+
+### Functions
+
 <iframe id="kmsembed-1_yqoiwt14" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_yqoiwt14/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M04 Functions"></iframe><br />
+
+### Importing
+
 <iframe id="kmsembed-1_05ulc7hn" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_05ulc7hn/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M04 Importing"></iframe><br />
+
+### Lambda Functions
+
 <iframe id="kmsembed-1_f9sthjyt" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_f9sthjyt/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M04 Lambda Functions"></iframe><br />
+
+### Recursive Functions
+
 <iframe id="kmsembed-1_14dx1la3" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_14dx1la3/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M04 Recursive Functions"></iframe><br />
+
+### Scope
+
 <iframe id="kmsembed-1_blxty7z5" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_blxty7z5/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M04 Scope"></iframe><br />
+
+### Function Groups
+
 <iframe id="kmsembed-1_5wvdqnia" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_5wvdqnia/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M04 Function Groups"></iframe><br />
 
 ## M05 Python NumPy
+
+### Timing
+
 <iframe id="kmsembed-1_iqh7lf2d" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_iqh7lf2d/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M05 Timing"></iframe><br />
+
+### NumPy Design
+
 <iframe id="kmsembed-1_yllux9iz" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_yllux9iz/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M05 NumPy Design"></iframe><br />
+
+### NumPy Indexing
+
 <iframe id="kmsembed-1_6i1y824p" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_6i1y824p/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M05 NumPy Indexing"></iframe><br />
+
+### NumPy Operations
+
 <iframe id="kmsembed-1_mg2065wj" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_mg2065wj/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M05 NumPy Operations"></iframe><br />
+
+### NumPy Functions
+
 <iframe id="kmsembed-1_zk0us6gr" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_zk0us6gr/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M05 NumPy Functions"></iframe><br />
 
 ## M06 Python Pandas
+
+### Introducing Pandas
+
 <iframe id="kmsembed-1_9aoaw9hx" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_9aoaw9hx/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M06 Introducing Pandas"></iframe><br />
+
+### Exploring Pandas
+
 <iframe id="kmsembed-1_tn181naz" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_tn181naz/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M06 Exploring Pandas"></iframe><br />
+
+### Diving Deeper Into Pandas
+
 <iframe id="kmsembed-1_kr019fk4" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_kr019fk4/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M06 Diving Deeper Into Pandas"></iframe><br />
 
 ## M07 Python Classes
+
+### Introducing Classes
+
 <iframe id="kmsembed-1_zqmql1vf" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_zqmql1vf/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M07 Introducing Classes"></iframe><br />
+
+### From Functions To Classes
+
 <iframe id="kmsembed-1_v0qc4sd3" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_v0qc4sd3/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M07 From Functions To Classes"></iframe><br />
+
+### More About Classes
+
 <iframe id="kmsembed-1_kwkabrih" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_kwkabrih/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M07 More About Classes"></iframe><br />
+
+### Understanding Class Attributes
+
 <iframe id="kmsembed-1_n2dus9qa" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_n2dus9qa/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M07 Understanding Class Attributes"></iframe><br />
+
+### Putting Your Class in a File
+
 <iframe id="kmsembed-1_ujxqmdg6" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_ujxqmdg6/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M07 Putting Your Class in a File"></iframe><br />
 
 ## M08 Python Testing
+
+### Testing and Verification
+
 <iframe id="kmsembed-1_bmqxpoyl" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_bmqxpoyl/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M08 Testing and Verification"></iframe><br />
+
+### Exception Handling
+
 <iframe id="kmsembed-1_47663xju" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_47663xju/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M08 Exception Handling"></iframe><br />
+
+### Unit Testing
+
 <iframe id="kmsembed-1_k2j08rmy" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_k2j08rmy/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M08 Unit Testing"></iframe><br />
 
 ## M09 Python Modules
+
+### Modules and Packages
+
 <iframe id="kmsembed-1_zcnuvh0b" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_zcnuvh0b/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M09 Modules and Packages"></iframe><br />
+
+### Namespaces and Paths
+
 <iframe id="kmsembed-1_kgza2qzp" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_kgza2qzp/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M09 Namespaces and Paths"></iframe><br />
+
+### User-Created Packages
+
 <iframe id="kmsembed-1_q1gpbm0w" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_q1gpbm0w/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M09 User-Created Packages"></iframe><br />
 
 ## M10 Introducing R
+
+### Introducing R
+
 <iframe id="kmsembed-1_l8xw7tpz" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_l8xw7tpz/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M10 Introducing R"></iframe><br />
+
+### R Data Types and Operators
+
 <iframe id="kmsembed-1_qowtoc4i" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_qowtoc4i/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M10 R Data Types and Operators"></iframe><br />
+
+### R Data Structures
+
 <iframe id="kmsembed-1_dj5ez3jt" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_dj5ez3jt/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M10 R Data Structures"></iframe><br />
+
+### R Factors
+
 <iframe id="kmsembed-1_bz23fog2" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_bz23fog2/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M10 R Factors"></iframe><br />
+
+### R Data Frames
+
 <iframe id="kmsembed-1_csst6v52" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_csst6v52/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M10 R Data Frames"></iframe><br />
+
+### R Control Structures
+
 <iframe id="kmsembed-1_b16svepv" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_b16svepv/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M10 R Control Structures"></iframe><br />
+
+### R Functions
+
 <iframe id="kmsembed-1_qog05kd6" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_qog05kd6/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M10 R Functions"></iframe><br />
 
 ## M11 R Tidyverse
+
+### The Tidyverse and Tibbles
+
 <iframe id="kmsembed-1_3tmp8rnp" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_3tmp8rnp/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M11 The Tidyverse and Tibbles"></iframe><br />
+
+### Dplyr
+
 <iframe id="kmsembed-1_kbzi36fo" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_kbzi36fo/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M11 Dplyr"></iframe><br />
 
 ## M12 R Visualization
+
+### GGPlot and the Grammar of Graphics
+
 <iframe id="kmsembed-1_jun909j7" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_jun909j7/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M12 GGPlot and the Grammar of Graphics"></iframe><br />
+
+### Getting Started with GGPlot
+
 <iframe id="kmsembed-1_nzodp9r1" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_nzodp9r1/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M12 Getting Started with GGPlot"></iframe><br />
+
+### R Markdown
+
 <iframe id="kmsembed-1_1mv88mg1" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_1mv88mg1/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M12 R Markdown"></iframe><br />
+
+### Plotly and GGPlotly
+
 <iframe id="kmsembed-1_llkxqifs" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_llkxqifs/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M12 Plotly and GGPlotly"></iframe><br />
+
+### GGPlot in Python
+
 <iframe id="kmsembed-1_0a6erij4" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_0a6erij4/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M12 GGPlot in Python"></iframe><br />
 
 ## M13 Agile
+
+### Project Management
+
 <iframe id="kmsembed-1_7phlirzp" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_7phlirzp/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M13 Project Management"></iframe><br />
+
+### Agile
+
 <iframe id="kmsembed-1_azrctt5e" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_azrctt5e/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M13 Agile"></iframe><br />
+
+### User Stories
+
 <iframe id="kmsembed-1_ftpwcrex" width="400" height="285" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_ftpwcrex/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M13 User Stories"></iframe><br />
+

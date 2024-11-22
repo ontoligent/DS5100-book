@@ -36,7 +36,7 @@
     "href": "video-gallery.html#m01-getting-started",
     "title": "Video Gallery",
     "section": "M01 Getting Started",
-    "text": "M01 Getting Started",
+    "text": "M01 Getting Started\n\nUnix Demo\n\n\n\n\n\nSSH for GitHub\n\n\n\n\n\nGit and GitHub",
     "crumbs": [
       "Welcome",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"
@@ -47,7 +47,7 @@
     "href": "video-gallery.html#m02-introducing-python",
     "title": "Video Gallery",
     "section": "M02 Introducing Python",
-    "text": "M02 Introducing Python",
+    "text": "M02 Introducing Python\n\nData and Code\n\n\n\n\n\nData Types and Structures\n\n\n\n\n\nData Types, Literals, and Variables\n\n\n\n\n\nOperators and Expressions\n\n\n\n\n\nNumbers\n\n\n\n\n\nStrings\n\n\n\n\n\nData Structures\n\n\n\n\n\nAside on Immutables",
     "crumbs": [
       "Welcome",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"
@@ -58,7 +58,7 @@
     "href": "video-gallery.html#m03-python-control-structures",
     "title": "Video Gallery",
     "section": "M03 Python Control Structures",
-    "text": "M03 Python Control Structures",
+    "text": "M03 Python Control Structures\n\nControl Structures\n\n\n\n\n\nIterables and Iterators\n\n\n\n\n\nComprehensions\n\n\n\n\n\nNested Comprehensions",
     "crumbs": [
       "Welcome",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"
@@ -69,7 +69,7 @@
     "href": "video-gallery.html#m04-python-functions",
     "title": "Video Gallery",
     "section": "M04 Python Functions",
-    "text": "M04 Python Functions",
+    "text": "M04 Python Functions\n\nFunctions\n\n\n\n\n\nImporting\n\n\n\n\n\nLambda Functions\n\n\n\n\n\nRecursive Functions\n\n\n\n\n\nScope\n\n\n\n\n\nFunction Groups",
     "crumbs": [
       "Welcome",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"
@@ -80,7 +80,7 @@
     "href": "video-gallery.html#m05-python-numpy",
     "title": "Video Gallery",
     "section": "M05 Python NumPy",
-    "text": "M05 Python NumPy",
+    "text": "M05 Python NumPy\n\nTiming\n\n\n\n\n\nNumPy Design\n\n\n\n\n\nNumPy Indexing\n\n\n\n\n\nNumPy Operations\n\n\n\n\n\nNumPy Functions",
     "crumbs": [
       "Welcome",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"
@@ -91,7 +91,7 @@
     "href": "video-gallery.html#m06-python-pandas",
     "title": "Video Gallery",
     "section": "M06 Python Pandas",
-    "text": "M06 Python Pandas",
+    "text": "M06 Python Pandas\n\nIntroducing Pandas\n\n\n\n\n\nExploring Pandas\n\n\n\n\n\nDiving Deeper Into Pandas",
     "crumbs": [
       "Welcome",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"
@@ -102,7 +102,7 @@
     "href": "video-gallery.html#m07-python-classes",
     "title": "Video Gallery",
     "section": "M07 Python Classes",
-    "text": "M07 Python Classes",
+    "text": "M07 Python Classes\n\nIntroducing Classes\n\n\n\n\n\nFrom Functions To Classes\n\n\n\n\n\nMore About Classes\n\n\n\n\n\nUnderstanding Class Attributes\n\n\n\n\n\nPutting Your Class in a File",
     "crumbs": [
       "Welcome",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"
@@ -113,7 +113,7 @@
     "href": "video-gallery.html#m08-python-testing",
     "title": "Video Gallery",
     "section": "M08 Python Testing",
-    "text": "M08 Python Testing",
+    "text": "M08 Python Testing\n\nTesting and Verification\n\n\n\n\n\nException Handling\n\n\n\n\n\nUnit Testing",
     "crumbs": [
       "Welcome",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"
@@ -124,7 +124,7 @@
     "href": "video-gallery.html#m09-python-modules",
     "title": "Video Gallery",
     "section": "M09 Python Modules",
-    "text": "M09 Python Modules",
+    "text": "M09 Python Modules\n\nModules and Packages\n\n\n\n\n\nNamespaces and Paths\n\n\n\n\n\nUser-Created Packages",
     "crumbs": [
       "Welcome",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"
@@ -135,7 +135,7 @@
     "href": "video-gallery.html#m10-introducing-r",
     "title": "Video Gallery",
     "section": "M10 Introducing R",
-    "text": "M10 Introducing R",
+    "text": "M10 Introducing R\n\nIntroducing R\n\n\n\n\n\nR Data Types and Operators\n\n\n\n\n\nR Data Structures\n\n\n\n\n\nR Factors\n\n\n\n\n\nR Data Frames\n\n\n\n\n\nR Control Structures\n\n\n\n\n\nR Functions",
     "crumbs": [
       "Welcome",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"
@@ -146,7 +146,7 @@
     "href": "video-gallery.html#m11-r-tidyverse",
     "title": "Video Gallery",
     "section": "M11 R Tidyverse",
-    "text": "M11 R Tidyverse",
+    "text": "M11 R Tidyverse\n\nThe Tidyverse and Tibbles\n\n\n\n\n\nDplyr",
     "crumbs": [
       "Welcome",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"
@@ -168,7 +168,7 @@
     "href": "video-gallery.html#m13-agile",
     "title": "Video Gallery",
     "section": "M13 Agile",
-    "text": "M13 Agile",
+    "text": "M13 Agile\n\nProject Management\n\n\n\n\n\nAgile\n\n\n\n\n\nUser Stories",
     "crumbs": [
       "Welcome",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"
@@ -5691,7 +5691,18 @@
     "href": "video-gallery.html#m12-r-visualization",
     "title": "Video Gallery",
     "section": "M12 R Visualization",
-    "text": "M12 R Visualization",
+    "text": "M12 R Visualization\n\nGGPlot and the Grammar of Graphics\n\n\n\n\n\nGetting Started with GGPlot\n\n\n\n\n\nR Markdown\n\n\n\n\n\nPlotly and GGPlotly\n\n\n\n\n\nGGPlot in Python",
+    "crumbs": [
+      "Welcome",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"
+    ]
+  },
+  {
+    "objectID": "video-gallery.html#m00-preliminaries",
+    "href": "video-gallery.html#m00-preliminaries",
+    "title": "Video Gallery",
+    "section": "",
+    "text": "How To Upload Assessments\n\n\n\n\n\nHow to Use HW Notebooks",
     "crumbs": [
       "Welcome",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"

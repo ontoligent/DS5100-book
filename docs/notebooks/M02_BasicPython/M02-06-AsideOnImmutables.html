@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,6 +102,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -671,6 +674,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Programming for Data Science</p>
+<div id="2ba3abaf-f40f-4db5-b69c-bc655f7bbff0" class="cell" data-tags="[]" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>html</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>iframe <span class="bu">id</span><span class="op">=</span><span class="st">"kmsembed-1_gg5g61pq"</span> width<span class="op">=</span><span class="st">"608"</span> height<span class="op">=</span><span class="st">"402"</span> src<span class="op">=</span><span class="st">"https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_gg5g61pq/uiConfId/50243942/pbc/353035032/st/0"</span> <span class="kw">class</span><span class="op">=</span><span class="st">"kmsembed"</span> allowfullscreen webkitallowfullscreen mozAllowFullScreen allow<span class="op">=</span><span class="st">"autoplay *; fullscreen *; encrypted-media *"</span> referrerPolicy<span class="op">=</span><span class="st">"no-referrer-when-downgrade"</span> sandbox<span class="op">=</span><span class="st">"allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation"</span> frameborder<span class="op">=</span><span class="st">"0"</span> title<span class="op">=</span><span class="st">"DS 5100 M02 Aside on Immutables"</span><span class="op">&gt;&lt;/</span>iframe<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<iframe id="kmsembed-1_gg5g61pq" width="608" height="402" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_gg5g61pq/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" allow="autoplay *; fullscreen *; encrypted-media *" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M02 Aside on Immutables"></iframe>
+</div>
+</div>
 <section id="what-immutable-means" class="level2">
 <h2 class="anchored" data-anchor-id="what-immutable-means">What Immutable Means</h2>
 <p>A mutable object is a data structure whose internal values can be changed.</p>
@@ -678,42 +688,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Let’s see how this works in practice.</p>
 <p>Here, we mutate a list by appending a value to it.</p>
 <div id="3c8e1f43-0e5a-4077-aae8-529a2d6f59fe" class="cell" data-tags="[]" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>a.append(<span class="dv">10</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>a.append(<span class="dv">10</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1, 2, 3, 4, 5, 10]</code></pre>
 </div>
 </div>
 <div id="492b95ea-7aac-4e6b-a3ce-01dfad500436" class="cell" data-tags="[]" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[5, 2, 3, 4, 5, 10]</code></pre>
 </div>
 </div>
 <p>If we try the same things with a tuple, we get an error.</p>
 <div id="28060b50-c8e3-49eb-aba7-ed785754c344" class="cell" data-tags="[]" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>b.append(<span class="dv">10</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>b.append(<span class="dv">10</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>AttributeError: 'tuple' object has no attribute 'append'</code></pre>
 </div>
 </div>
 <div id="c36fd9e7-092a-47c1-b6e9-22b653728417" class="cell" data-tags="[]" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>TypeError: 'tuple' object does not support item assignment</code></pre>
 </div>
 </div>
 <p>This, on the other hand, is not mutation:</p>
 <div id="e40665c5-c3ac-41b2-a6f9-ebab6aac1452" class="cell" data-tags="[]" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">10</span>] <span class="co"># A list</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">10</span>) <span class="co"># A tuple</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">10</span>] <span class="co"># A list</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">10</span>) <span class="co"># A tuple</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1, 2, 3, 4, 5, 10]
 (1, 2, 3, 4, 5, 10)</code></pre>
@@ -724,8 +734,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In mutation, the same data structure remains in place but its contents are changed.</p>
 <p>Note, however, that this works with tuples:</p>
 <div id="ac41655c-8207-449f-914f-0a873c7a2019" class="cell" data-tags="[]" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">+=</span> (<span class="dv">11</span>,)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">+=</span> (<span class="dv">11</span>,)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(1, 2, 3, 4, 5, 10, 11)</code></pre>
 </div>
@@ -742,20 +752,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Lets explore how <code>+</code> operator behaves differently between mutables and immutables.</p>
 <p>First, let’s create a function that will allow us to compare the objects as we modify them.</p>
 <div id="a142a5c2-f465-4a35-ba34-c6e70c5efb9a" class="cell" data-tags="[]" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compare_objects(trial:<span class="bu">int</span>, obj1:<span class="bu">str</span>, obj2:<span class="bu">str</span>):</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    o1 <span class="op">=</span> <span class="bu">eval</span>(obj1)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    o2 <span class="op">=</span> <span class="bu">eval</span>(obj2)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"t</span><span class="sc">{</span>trial<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>obj1<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>o1<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span><span class="bu">id</span>(o1)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"t</span><span class="sc">{</span>trial<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>obj2<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>o2<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span><span class="bu">id</span>(o2)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>obj1<span class="sc">}</span><span class="ss"> == </span><span class="sc">{</span>obj2<span class="sc">}</span><span class="ss">:"</span>, o1 <span class="op">==</span> o2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compare_objects(trial:<span class="bu">int</span>, obj1:<span class="bu">str</span>, obj2:<span class="bu">str</span>):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    o1 <span class="op">=</span> <span class="bu">eval</span>(obj1)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    o2 <span class="op">=</span> <span class="bu">eval</span>(obj2)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"t</span><span class="sc">{</span>trial<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>obj1<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>o1<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span><span class="bu">id</span>(o1)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"t</span><span class="sc">{</span>trial<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>obj2<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>o2<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span><span class="bu">id</span>(o2)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>obj1<span class="sc">}</span><span class="ss"> == </span><span class="sc">{</span>obj2<span class="sc">}</span><span class="ss">:"</span>, o1 <span class="op">==</span> o2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>List t1</strong></p>
 <p>We initialize a list and make a copy of it.</p>
 <p>Note that the two variables share the same <code>id</code>.</p>
 <div id="02b100de-265c-4d9d-a46f-eb38d57ac84a" class="cell" data-tags="[]" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>a0 <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> a0 <span class="co"># Make a copy of a list</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">1</span>, <span class="st">'a0'</span>, <span class="st">'a1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>a0 <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> a0 <span class="co"># Make a copy of a list</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">1</span>, <span class="st">'a0'</span>, <span class="st">'a1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>t1 a0 [1, 2, 3, 4, 5] 139842806146944
 t1 a1 [1, 2, 3, 4, 5] 139842806146944
@@ -767,8 +777,8 @@ a0 == a1: True</code></pre>
 <p>The original value is also changed.</p>
 <p>This is because both variables point to the same object.</p>
 <div id="46b023d3-88ea-42a0-a958-f41ec9c421de" class="cell" data-tags="[]" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">+=</span> [<span class="dv">12</span>] <span class="co"># Extend the copy</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">2</span>, <span class="st">'a0'</span>, <span class="st">'a1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">+=</span> [<span class="dv">12</span>] <span class="co"># Extend the copy</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">2</span>, <span class="st">'a0'</span>, <span class="st">'a1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>t2 a0 [1, 2, 3, 4, 5, 12] 139842806146944
 t2 a1 [1, 2, 3, 4, 5, 12] 139842806146944
@@ -786,8 +796,8 @@ then <code>a1</code> becomes a different object!</p>
 </figure>
 </div>
 <div id="8866ab11-bc43-4285-be1e-8ab92e558391" class="cell" data-tags="[]" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> a1 <span class="op">+</span> [<span class="dv">12</span>] <span class="co"># Extend the copy</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">3</span>, <span class="st">'a0'</span>, <span class="st">'a1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> a1 <span class="op">+</span> [<span class="dv">12</span>] <span class="co"># Extend the copy</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">3</span>, <span class="st">'a0'</span>, <span class="st">'a1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>t3 a0 [1, 2, 3, 4, 5, 12] 139842806146944
 t3 a1 [1, 2, 3, 4, 5, 12, 12] 139842804350592
@@ -797,9 +807,9 @@ a0 == a1: False</code></pre>
 <p><strong>List t4</strong></p>
 <p>Try it with a new object copy, to avoid any possible inference between <code>t2</code> and <code>t3</code>.</p>
 <div id="51b74402-9c1d-4508-b3c5-d30c0673ee8f" class="cell" data-tags="[]" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>a2 <span class="op">=</span> a0</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>a2 <span class="op">=</span> a2 <span class="op">+</span> [<span class="dv">12</span>] <span class="co"># Extend the copy</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">4</span>, <span class="st">'a0'</span>, <span class="st">'a2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>a2 <span class="op">=</span> a0</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>a2 <span class="op">=</span> a2 <span class="op">+</span> [<span class="dv">12</span>] <span class="co"># Extend the copy</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">4</span>, <span class="st">'a0'</span>, <span class="st">'a2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>t4 a0 [1, 2, 3, 4, 5, 12] 139842806146944
 t4 a2 [1, 2, 3, 4, 5, 12, 12] 139842804515456
@@ -811,9 +821,9 @@ a0 == a2: False</code></pre>
 <p>Let’s try this with a tuple.</p>
 <p>We see again that both variables have the same <code>id</code>.</p>
 <div id="5b746f1e-34d1-41df-b1b0-fce9c4e68cd7" class="cell" data-tags="[]" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>b0 <span class="op">=</span> (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>b1 <span class="op">=</span> b0 <span class="co"># Make a copy of a tuple</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">1</span>, <span class="st">'b0'</span>, <span class="st">'b1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>b0 <span class="op">=</span> (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>b1 <span class="op">=</span> b0 <span class="co"># Make a copy of a tuple</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">1</span>, <span class="st">'b0'</span>, <span class="st">'b1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>t1 b0 (1, 2, 3, 4, 5) 139842804681360
 t1 b1 (1, 2, 3, 4, 5) 139842804681360
@@ -824,8 +834,8 @@ b0 == b1: True</code></pre>
 <p>However, if extend the tuple with the unary operator, <code>b1</code> becomes a new object.</p>
 <p>Note how this differs from the list behavior.</p>
 <div id="2155626b-751f-4328-8e82-c7567528baa7" class="cell" data-tags="[]" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>b1 <span class="op">+=</span> (<span class="dv">12</span>,) <span class="co"># Extend the copy</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">2</span>, <span class="st">'b0'</span>, <span class="st">'b1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>b1 <span class="op">+=</span> (<span class="dv">12</span>,) <span class="co"># Extend the copy</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">2</span>, <span class="st">'b0'</span>, <span class="st">'b1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>t2 b0 (1, 2, 3, 4, 5) 139842804681360
 t2 b1 (1, 2, 3, 4, 5, 12) 139842804315424
@@ -836,8 +846,8 @@ b0 == b1: False</code></pre>
 <p>If we don’t use the unary operator, the same thing happens again.</p>
 <p>The value of <code>b1</code> becomes a new object because the variable has been reassigned.</p>
 <div id="5fa5af07-506d-4544-8148-825432296701" class="cell" data-tags="[]" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>b1 <span class="op">=</span> b1 <span class="op">+</span> (<span class="dv">12</span>,) <span class="co"># Extend the copy</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">3</span>, <span class="st">'b0'</span>, <span class="st">'b1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>b1 <span class="op">=</span> b1 <span class="op">+</span> (<span class="dv">12</span>,) <span class="co"># Extend the copy</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">3</span>, <span class="st">'b0'</span>, <span class="st">'b1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>t3 b0 (1, 2, 3, 4, 5) 139842804681360
 t3 b1 (1, 2, 3, 4, 5, 12, 12) 139842804316096
@@ -847,9 +857,9 @@ b0 == b1: False</code></pre>
 <p>Let’s look at another example.</p>
 <p>Here is a list:</p>
 <div id="ce184299-21cc-497f-b0cb-268f38c66569" class="cell" data-tags="[]" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>foo <span class="op">=</span> [<span class="st">'hi'</span>]</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>bar <span class="op">=</span> foo</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">1</span>, <span class="st">'foo'</span>, <span class="st">'bar'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>foo <span class="op">=</span> [<span class="st">'hi'</span>]</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>bar <span class="op">=</span> foo</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">1</span>, <span class="st">'foo'</span>, <span class="st">'bar'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>t1 foo ['hi'] 139842804665216
 t1 bar ['hi'] 139842804665216
@@ -857,8 +867,8 @@ foo == bar: True</code></pre>
 </div>
 </div>
 <div id="ee7a3487-6d89-41da-92a8-4d5f89cae368" class="cell" data-tags="[]" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>bar <span class="op">+=</span> [<span class="st">'bye'</span>]</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">2</span>, <span class="st">'foo'</span>, <span class="st">'bar'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>bar <span class="op">+=</span> [<span class="st">'bye'</span>]</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">2</span>, <span class="st">'foo'</span>, <span class="st">'bar'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>t2 foo ['hi', 'bye'] 139842804665216
 t2 bar ['hi', 'bye'] 139842804665216
@@ -866,8 +876,8 @@ foo == bar: True</code></pre>
 </div>
 </div>
 <div id="52e2b7e2-96b1-4a08-9225-7b916a73d8a8" class="cell" data-tags="[]" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>bar <span class="op">=</span> bar <span class="op">+</span> [<span class="st">'bye'</span>]</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">2</span>, <span class="st">'foo'</span>, <span class="st">'bar'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>bar <span class="op">=</span> bar <span class="op">+</span> [<span class="st">'bye'</span>]</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">2</span>, <span class="st">'foo'</span>, <span class="st">'bar'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>t2 foo ['hi', 'bye'] 139842804665216
 t2 bar ['hi', 'bye', 'bye'] 139842805379520
@@ -876,9 +886,9 @@ foo == bar: False</code></pre>
 </div>
 <p>And here is a tuple:</p>
 <div id="be6ad2bc-c233-42c0-87e8-019889234358" class="cell" data-tags="[]" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>foo1 <span class="op">=</span> (<span class="st">'hi'</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>bar1 <span class="op">=</span> foo1</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">1</span>, <span class="st">'foo1'</span>, <span class="st">'bar1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>foo1 <span class="op">=</span> (<span class="st">'hi'</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>bar1 <span class="op">=</span> foo1</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">1</span>, <span class="st">'foo1'</span>, <span class="st">'bar1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>t1 foo1 hi 139843849783920
 t1 bar1 hi 139843849783920
@@ -886,8 +896,8 @@ foo1 == bar1: True</code></pre>
 </div>
 </div>
 <div id="b5dec65c-5fcb-44f6-964e-5cdb45fffc77" class="cell" data-tags="[]" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>bar1 <span class="op">+=</span> (<span class="st">'bye'</span>)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">2</span>, <span class="st">'foo1'</span>, <span class="st">'bar1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>bar1 <span class="op">+=</span> (<span class="st">'bye'</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>compare_objects(<span class="dv">2</span>, <span class="st">'foo1'</span>, <span class="st">'bar1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>t2 foo1 hi 139843849783920
 t2 bar1 hibye 139842806205616

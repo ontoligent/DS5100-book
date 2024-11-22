@@ -578,89 +578,89 @@
   {
     "objectID": "notebooks/M02_BasicPython/M02-02-Numbers.html",
     "href": "notebooks/M02_BasicPython/M02-02-Numbers.html",
-    "title": "NB: Numbers",
+    "title": "My Notebook",
     "section": "",
-    "text": "Built-in Functions\nPython has many built-in mathematical functions for numbers.",
+    "text": "NB: Numbers\nProgramming for Data Science\nCode\n%%html\n&lt;iframe id=\"kmsembed-1_euocdrkk\" width=\"608\" height=\"402\" src=\"https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_euocdrkk/uiConfId/50243942/pbc/353035032/st/0\" class=\"kmsembed\" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow=\"autoplay *; fullscreen *; encrypted-media *\" referrerPolicy=\"no-referrer-when-downgrade\" sandbox=\"allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation\" frameborder=\"0\" title=\"DS 5100 M02 Numbers\"&gt;&lt;/iframe&gt;",
     "crumbs": [
       "M02 Introducing Python",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>NB: Numbers</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>My Notebook</span>"
     ]
   },
   {
     "objectID": "notebooks/M02_BasicPython/M02-02-Numbers.html#pow-power",
     "href": "notebooks/M02_BasicPython/M02-02-Numbers.html#pow-power",
-    "title": "NB: Numbers",
+    "title": "My Notebook",
     "section": "pow() Power",
-    "text": "pow() Power\n\\(2\\) raised to \\(3 = 8\\)\n\npow(2,3)\n\n8",
+    "text": "pow() Power\n\\(2\\) raised to \\(3 = 8\\)\n\n\nCode\npow(2,3)\n\n\n8",
     "crumbs": [
       "M02 Introducing Python",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>NB: Numbers</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>My Notebook</span>"
     ]
   },
   {
     "objectID": "notebooks/M02_BasicPython/M02-02-Numbers.html#abs-absolute-value",
     "href": "notebooks/M02_BasicPython/M02-02-Numbers.html#abs-absolute-value",
-    "title": "NB: Numbers",
+    "title": "My Notebook",
     "section": "abs() Absolute value",
-    "text": "abs() Absolute value\nReturns \\(2\\), the absolute value of its argument.\n\nabs(-2)\n\n2",
+    "text": "abs() Absolute value\nReturns \\(2\\), the absolute value of its argument.\n\n\nCode\nabs(-2)\n\n\n2",
     "crumbs": [
       "M02 Introducing Python",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>NB: Numbers</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>My Notebook</span>"
     ]
   },
   {
     "objectID": "notebooks/M02_BasicPython/M02-02-Numbers.html#round-round",
     "href": "notebooks/M02_BasicPython/M02-02-Numbers.html#round-round",
-    "title": "NB: Numbers",
+    "title": "My Notebook",
     "section": "round() Round",
-    "text": "round() Round\nRounding up or down its argument (to closest whole number).\nRounds up to \\(3.0\\).\n\nround(2.8)\n\n3\n\n\nRounds down to \\(1.0\\).\n\nround(1.1)\n\n1\n\n\nYou can specify how many decimal places to round to as well.\n\nround(5.36958211, 2)\n\n5.37",
+    "text": "round() Round\nRounding up or down its argument (to closest whole number).\nRounds up to \\(3.0\\).\n\n\nCode\nround(2.8)\n\n\n3\n\n\nRounds down to \\(1.0\\).\n\n\nCode\nround(1.1)\n\n\n1\n\n\nYou can specify how many decimal places to round to as well.\n\n\nCode\nround(5.36958211, 2)\n\n\n5.37",
     "crumbs": [
       "M02 Introducing Python",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>NB: Numbers</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>My Notebook</span>"
     ]
   },
   {
     "objectID": "notebooks/M02_BasicPython/M02-02-Numbers.html#math.sqrt-square-root",
     "href": "notebooks/M02_BasicPython/M02-02-Numbers.html#math.sqrt-square-root",
-    "title": "NB: Numbers",
+    "title": "My Notebook",
     "section": "math.sqrt() Square root",
-    "text": "math.sqrt() Square root\n\nmath.sqrt(12)\n\n3.4641016151377544\n\n\n\nprint(math.floor(2.5)) # returns largest whole number less than the argument\nprint(math.floor(2.9))\nprint(math.floor(2.1))\n\n2\n2\n2",
+    "text": "math.sqrt() Square root\n\n\nCode\nmath.sqrt(12)\n\n\n3.4641016151377544\n\n\n\n\nCode\nprint(math.floor(2.5)) # returns largest whole number less than the argument\nprint(math.floor(2.9))\nprint(math.floor(2.1))\n\n\n2\n2\n2",
     "crumbs": [
       "M02 Introducing Python",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>NB: Numbers</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>My Notebook</span>"
     ]
   },
   {
     "objectID": "notebooks/M02_BasicPython/M02-02-Numbers.html#math.log",
     "href": "notebooks/M02_BasicPython/M02-02-Numbers.html#math.log",
-    "title": "NB: Numbers",
+    "title": "My Notebook",
     "section": "math.log()",
-    "text": "math.log()\n\nmath.log(100, 10)\n\n2.0\n\n\n\nmath.log(256, 2)\n\n8.0",
+    "text": "math.log()\n\n\nCode\nmath.log(100, 10)\n\n\n2.0\n\n\n\n\nCode\nmath.log(256, 2)\n\n\n8.0",
     "crumbs": [
       "M02 Introducing Python",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>NB: Numbers</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>My Notebook</span>"
     ]
   },
   {
     "objectID": "notebooks/M02_BasicPython/M02-02-Numbers.html#random.random",
     "href": "notebooks/M02_BasicPython/M02-02-Numbers.html#random.random",
-    "title": "NB: Numbers",
+    "title": "My Notebook",
     "section": "random.random()",
-    "text": "random.random()\nUsing random() will return a number between \\(0\\) and \\(1\\).\n\nprint(random.random())\n\n0.605894272418689",
+    "text": "random.random()\nUsing random() will return a number between \\(0\\) and \\(1\\).\n\n\nCode\nprint(random.random())\n\n\n0.605894272418689",
     "crumbs": [
       "M02 Introducing Python",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>NB: Numbers</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>My Notebook</span>"
     ]
   },
   {
     "objectID": "notebooks/M02_BasicPython/M02-02-Numbers.html#random.randint",
     "href": "notebooks/M02_BasicPython/M02-02-Numbers.html#random.randint",
-    "title": "NB: Numbers",
+    "title": "My Notebook",
     "section": "random.randint()",
-    "text": "random.randint()\nWe may specify a range in the parentheses.\nThis will return a random integer in the range \\(1\\) to \\(100\\) inclusive.\n\nprint(random.randint(1,100))\n\n18",
+    "text": "random.randint()\nWe may specify a range in the parentheses.\nThis will return a random integer in the range \\(1\\) to \\(100\\) inclusive.\n\n\nCode\nprint(random.randint(1,100))\n\n\n18",
     "crumbs": [
       "M02 Introducing Python",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>NB: Numbers</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>My Notebook</span>"
     ]
   },
   {

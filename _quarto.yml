@@ -18,6 +18,7 @@ book:
     - part: index.qmd # 00 Welcome 
       chapters: 
         - modules/m00/m00-intro.qmd
+        - video-gallery.qmd
         
     - part: modules/m01/m01-intro.qmd # 01 Getting Started
       chapters:

@@ -2,8 +2,6 @@
 title: Python Object Types
 ---
 
-<iframe id="kmsembed-1_s0lxdwyp" width="608" height="402" src="https://343772-1.kaf.kaltura.com/embed/secure/iframe/entryId/1_s0lxdwyp/uiConfId/50243942/pbc/353035032/st/0" class="kmsembed" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerPolicy="no-referrer-when-downgrade" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DS 5100 M02 Data Types and Structures"></iframe>
-
 Python is organized into a hierarchy of object types. Sometimes, these are just call **types**.
 
 Objects are the basic unit out of which the language is constructed.

@@ -1,0 +1,40 @@
+# Activity: Using Rivanna
+
+::: callout
+**Goal:** Create your course directory structure on Rivanna.
+:::
+
+After reading the previous documents on [Rivanna](https://ontoligent.github.io/DS5100-book/topics/rivanna.html) and [Unix](https://ontoligent.github.io/DS5100-book/topics/unix.html), try this activity to get acquainted with the Rivanna high-performance computing cluster at UVA.
+
+To get started, go to [OpenOnDemand Dashboard page](https://rivanna-portal.hpc.virginia.edu/pun/sys/dashboard) and from the main menu select Clusters → Rivanna Shell Access.
+
+This should open a terminal to what is called the "shell" of the operating system.
+
+![Screenshot of Rivanna shell](../media/107383064.png)
+
+Rivanna uses Linux, a member of the Unix family of operating systems. Many cloud resources use Linux.
+
+Understanding how to do work from the command line on such systems is an essential skill of the data scientist.
+
+If you have never used the command line, have no fear! Just enter the commands exactly as shown and ask questions in the Teams chat if you are stuck.
+
+**Now, create a directory for your course and this course by entering the following commands:**
+
+```bash
+cd Documents 
+mdkir MSDS 
+cd MSDS 
+mkdir DS5100 
+cd DS5100
+```
+
+If the `Documents` directory does not exist, create that first using the mkdir command.
+
+-   `cd` means "change directory," and is a basic Unix command.
+-   `mkdir` means "make directory." It's also a basic Unix command.
+
+Note that you can use the tab key to complete path and command names as you type.
+
+You don't have to, but it would be a good idea to create subdirectories for any of your courses that use Rivanna.
+
+More information about Unix shell commands can be found the document [Unix Shell Commands](https://ontoligent.github.io/DS5100-book/topics/unix.html).

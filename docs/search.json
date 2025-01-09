@@ -232,7 +232,7 @@
     "href": "topics/rivanna.html#tools",
     "title": "About Rivanna",
     "section": "Tools ",
-    "text": "Tools \nUVA Research Computing provides you with a suite of tools to access Rivanna. These tools are accessible through the menu on the UVA OpenOnDemand Dashboard page. Below are some brief descriptions of the tools.\nFile Explorer. A web-based GUI to access the file system of the remote server. Can be used to create, move, and delete directories and files, and to edit the contents of files (see Editor). You can also upload and download files through this interface. The File Explorer is useful to view your remote content and manage files and directories without having to use the command line. Note that not all operations can be performed through this interface.\nFind under “Files” in the menu. \nEditor. A web-based text editor launched from the File Explorer to view and edit text files on the remote server.  Although not as sophisticated as VS Code (below), this is very useful for editing data and code files without having to use a command line editor. One advantage over VS Code is that it does not need to be launched – which means it does not time out like the Interactive Apps listed below.\nThe Editor is launched from the File Explorer.\nSSH Shell Access (Terminal). Access to the command line of the remote server.  Use this to open a terminal window to perform Linux commands directly.  Note that It is necessary to use a terminal to install and run certain programs on the remote server.\nFind under “Clusters” in the menu. \nYou can also access the remote command line via SSH on your local computer. Just enter the following on the command line of either a PC or Mac:\nssh -Y &lt;userid&gt;@rivanna.hpc.virginia.edu\nReplace &lt;userid&gt; with your UVA Net ID, e.g. abc2x. \nBe suer to be running VPN if you are accessing Rivanna from an off-grounds location.",
+    "text": "Tools \nUVA Research Computing provides you with a suite of tools to access Rivanna. These tools are accessible through the menu on the UVA OpenOnDemand Dashboard page. Below are some brief descriptions of the tools.\nYou can access these tools from the OnDemand page, located here: https://ood.hpc.virginia.edu/pun/sys/dashboard\nFile Explorer. A web-based GUI to access the file system of the remote server. Can be used to create, move, and delete directories and files, and to edit the contents of files (see Editor). You can also upload and download files through this interface. The File Explorer is useful to view your remote content and manage files and directories without having to use the command line. Note that not all operations can be performed through this interface.\nFind under “Files” in the menu. \nEditor. A web-based text editor launched from the File Explorer to view and edit text files on the remote server.  Although not as sophisticated as VS Code (below), this is very useful for editing data and code files without having to use a command line editor. One advantage over VS Code is that it does not need to be launched – which means it does not time out like the Interactive Apps listed below.\nThe Editor is launched from the File Explorer.\nSSH Shell Access (Terminal). Access to the command line of the remote server.  Use this to open a terminal window to perform Linux commands directly.  Note that It is necessary to use a terminal to install and run certain programs on the remote server.\nFind under “Clusters” in the menu. \nYou can also access the remote command line via SSH on your local computer. Just enter the following on the command line of either a PC or Mac:\nssh -Y &lt;userid&gt;@rivanna.hpc.virginia.edu\nReplace &lt;userid&gt; with your UVA Net ID, e.g. abc2x. \nBe suer to be running VPN if you are accessing Rivanna from an off-grounds location.",
     "crumbs": [
       "M01 Getting Started",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>About Rivanna</span>"
@@ -5687,6 +5687,127 @@
     ]
   },
   {
+    "objectID": "activities/M01-01-Using-Rivanna.html",
+    "href": "activities/M01-01-Using-Rivanna.html",
+    "title": "Activity: Using Rivanna",
+    "section": "",
+    "text": "Goal: Create your course directory structure on Rivanna.\n\n\n\nAfter reading the previous documents on Rivanna and Unix, try this activity to get acquainted with the Rivanna high-performance computing cluster at UVA.\nTo get started, go to OpenOnDemand Dashboard page and from the main menu select Clusters → Rivanna Shell Access.\nThis should open a terminal to what is called the “shell” of the operating system.\n\n\n\nScreenshot of Rivanna shell\n\n\nRivanna uses Linux, a member of the Unix family of operating systems. Many cloud resources use Linux.\nUnderstanding how to do work from the command line on such systems is an essential skill of the data scientist.\nIf you have never used the command line, have no fear! Just enter the commands exactly as shown and ask questions in the Teams chat if you are stuck.\nNow, create a directory for your course and this course by entering the following commands:\ncd Documents \nmdkir MSDS \ncd MSDS \nmkdir DS5100 \ncd DS5100\nIf the Documents directory does not exist, create that first using the mkdir command.\n\ncd means “change directory,” and is a basic Unix command.\nmkdir means “make directory.” It’s also a basic Unix command.\n\nNote that you can use the tab key to complete path and command names as you type.\nYou don’t have to, but it would be a good idea to create subdirectories for any of your courses that use Rivanna.\nMore information about Unix shell commands can be found the document Unix Shell Commands.",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>66</span>  <span class='chapter-title'>Activity: Using Rivanna</span>"
+    ]
+  },
+  {
+    "objectID": "activities/M01-02-Activity-GitHub.html",
+    "href": "activities/M01-02-Activity-GitHub.html",
+    "title": "Activity: Using Git and GitHub",
+    "section": "",
+    "text": "Steps\nFork the course GitHub hosted repository (“repo”) to your GitHub account.\nGo to https://github.com/ontoligent/DS5100-activities in your web browser.\nClick on the Fork icon in the upper right and follow the prompts to finish the process.\nYou should end up at the web page of your newly forked repo.\nYou will now have a copy of the repo in your GitHub account.\nClone the forked repo for this course inside of your course directory on Rivanna.\nFind the green Code button and click on it. You should see something like this:\nMake sure you have selected the SSH option.\nThen click on the copy icon and paste the value into the following command:\ng\nYou now have a copy the course repo to your account on Rivanna.\nThis will be the directory you created in your pre-class activities under Documents/.\nCreate a new file in your newly cloned repo.\nGo to your command line window on Rivanna.\nUse cd to move into the directory just created by the clone operation.\nMove into the directory activities/hello\nIf you get lost – for example if you moved around the file system before this step – you can cd to the absolute path:\nNote that the tilde sign ~ stands for the path to your home directory.\nUsing the file editor on Rivanna, create and save new file called &lt;userid&gt;_hello.txt, replacing &lt;userid&gt; with your actual user ID, e.g. rca2t_hello.txt.\nIn the file, introduce yourself by answering the question: What is the most recent film you watched and enjoyed?\nSave the file.\nAdd and commit the changes you made.\nNow do the following:\nPush your new file to the repo on GitHub.\nSince you have SSH set up, you can issue the following command without having to enter a password:\nCreate a Pull Request\nFinally, make a pull request to have your file added to the original site. To do this, follow these steps:\nClick on the “Pull requests” menu item (see image below) on the web page for your repo.\nClick on the green “New pull request” button.\nClick on the green “Create pull request” button.\nGive the request the title “In-class activity” and then press the green “Create pull request” button at the bottom of the form.\nNow the ball is in the instructor’s court to merge the request with the original. If you put your file in the right place and named it properly, it will be merged.",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>67</span>  <span class='chapter-title'>Activity: Using Git and GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "activities/M01-02-Activity-GitHub.html#steps",
+    "href": "activities/M01-02-Activity-GitHub.html#steps",
+    "title": "Activity: Using Git and GitHub",
+    "section": "",
+    "text": "Note\n\n\n\nThis is the course activities repo — it will be used for activities and answer keys.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nNote: This requires that you have SSH set up.\n\n\n\ngit clone git@github.com:&lt;github_user_name&gt;/DS5100-activities.git\n\n\n\n\n\n\n\nImportant\n\n\n\nBe sure to clone the repo from your GitHub account, replacing &lt;github_user_name&gt; with your GitHub user name. Do not just cut-and-paste the line above!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nMake sure you are in this directory before proceeding.\n\n\n\ncd ~/Documents/MSDS/DS5100/DS5100-activities/activities/hello \n\n\n\n\n\n\ngit add &lt;userid&gt;_hello.txt\ngit commit -m \"Created file for class\"\n\n\n\ngit push\n\n\n\n\n\n\n\nImage of pull request button on GitHub",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>67</span>  <span class='chapter-title'>Activity: Using Git and GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "activities/M01-02-Activity-GitHub.html#going-forward",
+    "href": "activities/M01-02-Activity-GitHub.html#going-forward",
+    "title": "Activity: Using Git and GitHub",
+    "section": "Going Forward",
+    "text": "Going Forward\nDuring the semester, you will not be making pull requests to submit your work. We do it here to demonstrate the concept since it is so basic to working with GitHub in the real world.\nInstead of making pull requests, you will be using a separate repository for your work So, you will be working with two repositories going forard:\n\nThe Course Activities Repo, which is where you will find homework keys and exercises after the classes in which they are used. Update as necessary. We will also use this for some of the activities from the first modules.\nYour Assessments Repo, which is where you will put your finished work as assigned.\nThe Book Repo, which is where you will find the textbook for this course along with all of the notebooks in it. You may choose to clone or fork this, or you may download individual notebooks from the site as needed.",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>67</span>  <span class='chapter-title'>Activity: Using Git and GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "activities/M02-01-Activity-Hello-World.html",
+    "href": "activities/M02-01-Activity-Hello-World.html",
+    "title": "Activity: Hello, World!",
+    "section": "",
+    "text": "Which Python?\nOnce you are in Rivanna, you will want to know which version of Python you have installed as the default.\nTo find out, from the command line type:\nThis will show you the “path” to a python interpreter. For example:\nIf you do not see “anaconda” in that path, then run the following command:\nThis will update your environment to use Anaconda’s distribution of Python.\nAfter running the command, enter the command to see which pythion is being used to confirm that it is the one from Ancaconda.",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>68</span>  <span class='chapter-title'>Activity: Hello, World!</span>"
+    ]
+  },
+  {
+    "objectID": "activities/M02-01-Activity-Hello-World.html#which-python",
+    "href": "activities/M02-01-Activity-Hello-World.html#which-python",
+    "title": "Activity: Hello, World!",
+    "section": "",
+    "text": "which python\n\n\n\nmodule load anaconda",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>68</span>  <span class='chapter-title'>Activity: Hello, World!</span>"
+    ]
+  },
+  {
+    "objectID": "activities/M02-01-Activity-Hello-World.html#aside",
+    "href": "activities/M02-01-Activity-Hello-World.html#aside",
+    "title": "Activity: Hello, World!",
+    "section": "Aside",
+    "text": "Aside\nNote that you can use module to run other programs on your Rivanna account.\nType module list to see which programs have already been installed on your account.\nType module spider to see all the programs you can install.",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>68</span>  <span class='chapter-title'>Activity: Hello, World!</span>"
+    ]
+  },
+  {
+    "objectID": "activities/M02-01-Activity-Hello-World.html#the-python-interactive-shell",
+    "href": "activities/M02-01-Activity-Hello-World.html#the-python-interactive-shell",
+    "title": "Activity: Hello, World!",
+    "section": "The Python Interactive Shell",
+    "text": "The Python Interactive Shell\nFrom the command line, enter python\nYou should get the Python Shell:\n\nThis is also called the Python standard REPL, which stands for “Read-Eval-Print Loop”.\nMake sure you see that you are using version 3 of Python.\nIf you see Python 2, exit the shell by entering quit() and try again by entering python3 at the command line.\nAt the &gt;&gt;&gt; prompt type print(\"Hello, World!\") and press return.\nIf you’ve never used Python, you’ve just completed an important ritual. If you have used Python, well, you did it again :-)",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>68</span>  <span class='chapter-title'>Activity: Hello, World!</span>"
+    ]
+  },
+  {
+    "objectID": "activities/M02-01-Activity-Hello-World.html#try-this",
+    "href": "activities/M02-01-Activity-Hello-World.html#try-this",
+    "title": "Activity: Hello, World!",
+    "section": "Try this",
+    "text": "Try this\nNow, enter following line at the prompt and press return:\nimport this\nWhat do you see?\nTo exit the Python Shell, enter quit() or exit() and hit return.",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>68</span>  <span class='chapter-title'>Activity: Hello, World!</span>"
+    ]
+  },
+  {
+    "objectID": "activities/M02-01-Activity-Hello-World.html#running-python-files",
+    "href": "activities/M02-01-Activity-Hello-World.html#running-python-files",
+    "title": "Activity: Hello, World!",
+    "section": "Running Python Files",
+    "text": "Running Python Files\nNow create a file called hello.py using the command line editor nano and write print(\"Hello, World!\").\nThen press Ctrl-0 to save the file and Ctrl-X to exit the program.\nFinally, run the program from the command line by directly invoking the Python interpreter python, like so:\npython hello.py",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>68</span>  <span class='chapter-title'>Activity: Hello, World!</span>"
+    ]
+  },
+  {
+    "objectID": "activities/M02-02-Activity-JupyterLab-on-Rivanna.html",
+    "href": "activities/M02-02-Activity-JupyterLab-on-Rivanna.html",
+    "title": "Activity: Jupyter Lab",
+    "section": "",
+    "text": "Now that we have run Python on Rivanna from the command line, let’s try it using a Jupyter Notebook.\nGo the OnDemand site to access Rivanna. As a reminder, the URL is https://rivanna-portal.hpc.virginia.edu/.\nFrom the Interactive Apps menu, select JupyterLab and fill out the form to initiate a new session. Your form should have the following values:\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nNote that you may increase the number of hours, cores, and megabytes of RAM, but asking for too much will increase the time it takes to start your session. So select just the resources needed and enter our course allocation msds_ds5100 if this value is different than in the image above).\n\n\nOnce the session is ready, launch the notebook.\nOnce you are in the notebook, use the file system tab on the left to get to the directory of your personal assessments repo.\nRemember, you created two repos for this class — one for course content from the textbook, and one for your own course work. Use the latter for this exercise.\nIn a code cell in the notebook, enter the code to print \"Hello, World!\", and run the cell.\nSave your notebook as hello-world.ipynb.\nAdd to your repo, commit changes, and push to GitHub.",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>69</span>  <span class='chapter-title'>Activity: Jupyter Lab</span>"
+    ]
+  },
+  {
     "objectID": "topics/oreilly-accounts.html",
     "href": "topics/oreilly-accounts.html",
     "title": "Setting Up O’Reilly",
@@ -5694,7 +5815,7 @@
     "text": "O’Reilly for Higher Education contains books on all aspects of computers, programming and the Web from such publishers as O’Reilly, Sams, New Riders, Adobe. Students can access content for free.\nFollow these instructions to set up your account:\nGo to https://www.oreilly.com/library/view/temporary-access/.\nYou should see this dialog box:\n\nClick on Institution not listed? This will produce the following dialog box:\n\nIf you are first time user, enter your UVA email address and clicl on the big red button.\nThis should produce the following message:\n\nNow you can access all the books in the collection. When you return, click on Already a user? in the second dialog box.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>66</span>  <span class='chapter-title'>Setting Up O'Reilly</span>"
+      "<span class='chapter-number'>70</span>  <span class='chapter-title'>Setting Up O'Reilly</span>"
     ]
   }
 ]

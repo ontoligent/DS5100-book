@@ -127,10 +127,18 @@ book:
         - notebooks/M13_Agile/M13-02-AgileDevelopment.ipynb
         - notebooks/M13_Agile/M13-03-UserStories.ipynb
     
+    - part: "Activities"
+      chapters:
+      - activities/M01-01-Using-Rivanna.qmd
+      - activities/M01-02-Activity-GitHub.qmd
+      - activities/M02-01-Activity-Hello-World.qmd
+      - activities/M02-02-Activity-JupyterLab-on-Rivanna.qmd
+        
     - part: "Appendices"
       chapters: 
         - topics/oreilly-accounts.qmd
         # - topics/refreshing-the-course-repo.qmd
+        
   
   sidebar:
     style: docked

@@ -1,5 +1,7 @@
 # About Rivanna
 
+NOTE: Rivanna has now been subsumed within UVA's HPC cluster, which also includes Afton. All references to "Rivanna" should be interpreted as "HPC".
+
 ## Introduction
 
 A useful infrastructural resource for this course is Rivanna, UVA's high-performance computing (HPC) cluster. Each student has an account on Rivanna and access to resources there based on participation in this course. We will use Rivanna in our class for both Python and R. 
@@ -36,7 +38,7 @@ Find under "Clusters" in the menu. 
 You can also access the remote command line via SSH on your local computer. Just enter the following on the command line of either a PC or Mac:
 
 ``` bash
-ssh -Y <userid>@rivanna.hpc.virginia.edu
+ssh -Y <userid>@login.hpc.virginia.edu
 ```
 
 Replace `<userid>` with your UVA Net ID, e.g. `abc2x`. 

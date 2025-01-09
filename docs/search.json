@@ -32,6 +32,17 @@
     ]
   },
   {
+    "objectID": "video-gallery.html#m00-preliminaries",
+    "href": "video-gallery.html#m00-preliminaries",
+    "title": "Video Gallery",
+    "section": "",
+    "text": "How To Upload Assessments\n\n\n\n\n\nHow to Use HW Notebooks",
+    "crumbs": [
+      "Welcome",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"
+    ]
+  },
+  {
     "objectID": "video-gallery.html#m01-getting-started",
     "href": "video-gallery.html#m01-getting-started",
     "title": "Video Gallery",
@@ -153,11 +164,11 @@
     ]
   },
   {
-    "objectID": "video-gallery.html#m12-r-visualiztion",
-    "href": "video-gallery.html#m12-r-visualiztion",
+    "objectID": "video-gallery.html#m12-r-visualization",
+    "href": "video-gallery.html#m12-r-visualization",
     "title": "Video Gallery",
-    "section": "M12 R Visualiztion",
-    "text": "M12 R Visualiztion",
+    "section": "M12 R Visualization",
+    "text": "M12 R Visualization\n\nGGPlot and the Grammar of Graphics\n\n\n\n\n\nGetting Started with GGPlot\n\n\n\n\n\nR Markdown\n\n\n\n\n\nPlotly and GGPlotly\n\n\n\n\n\nGGPlot in Python",
     "crumbs": [
       "Welcome",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"
@@ -5684,28 +5695,6 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>66</span>  <span class='chapter-title'>Setting Up O'Reilly</span>"
-    ]
-  },
-  {
-    "objectID": "video-gallery.html#m12-r-visualization",
-    "href": "video-gallery.html#m12-r-visualization",
-    "title": "Video Gallery",
-    "section": "M12 R Visualization",
-    "text": "M12 R Visualization\n\nGGPlot and the Grammar of Graphics\n\n\n\n\n\nGetting Started with GGPlot\n\n\n\n\n\nR Markdown\n\n\n\n\n\nPlotly and GGPlotly\n\n\n\n\n\nGGPlot in Python",
-    "crumbs": [
-      "Welcome",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"
-    ]
-  },
-  {
-    "objectID": "video-gallery.html#m00-preliminaries",
-    "href": "video-gallery.html#m00-preliminaries",
-    "title": "Video Gallery",
-    "section": "",
-    "text": "How To Upload Assessments\n\n\n\n\n\nHow to Use HW Notebooks",
-    "crumbs": [
-      "Welcome",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Video Gallery</span>"
     ]
   }
 ]

@@ -730,7 +730,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="steps" class="level2">
 <h2 class="anchored" data-anchor-id="steps">Steps</h2>
 <p><strong><em>Fork</em></strong> <strong>the course GitHub hosted repository (“repo”) to your GitHub account.</strong></p>
-<p>Go to <a href="https://github.com/ontoligent/DS5100-activities" class="uri">https://github.com/ontoligent/DS5100-activities</a> in your web browser.</p>
+<p>Go to the GitHub site for your course in your web browser. The site URL should look like this:</p>
+<p><code>https://github.com/ontoligent/DS5100-2025-01-O</code></p>
+<p>The actual code for the course may be found in your Canvas site on the Home page.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -765,8 +767,7 @@ Important
 </div>
 </div>
 <p>Then click on the copy icon and paste the value into the following command:</p>
-<pre class="bashco"><code>git clone git@github.com:&lt;github_user_name&gt;/DS5100-activities.git</code></pre>
-<p>g</p>
+<pre class="bashco"><code>git clone git@github.com:&lt;github_user_name&gt;/DS5100-2025-01-O.git</code></pre>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -777,11 +778,11 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Be sure to clone the repo from <em>your</em> GitHub account, replacing <code>&lt;github_user_name&gt;</code> with your GitHub user name. Do not just cut-and-paste the line above!</p>
+<p>Remember, the actual repo name in the URL may be different for you.</p>
+<p>Also be sure to clone the repo from <em>your</em> GitHub account, replacing <code>&lt;github_user_name&gt;</code> with your GitHub user name. Do not just cut-and-paste the line above!</p>
 </div>
 </div>
-<p>You now have a copy the course repo to your account on Rivanna.</p>
-<p>This will be the directory you created in your pre-class activities under Documents/.</p>
+<p>You now have a copy the course activities repo in your Rivanna account directory.</p>
 <p><strong><em>Create</em></strong> <strong>a new file in your newly cloned repo.</strong></p>
 <p>Go to your command line window on Rivanna.</p>
 <p>Use <code>cd</code> to move into the directory just created by the clone operation.</p>
@@ -799,8 +800,8 @@ Important
 <p>Make sure you are in this directory before proceeding.</p>
 </div>
 </div>
-<p>If you get lost – for example if you moved around the file system before this step – you can cd to the absolute path:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Documents/MSDS/DS5100/DS5100-activities/activities/hello </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you get lost – for example if you moved around the file system before this step – you can <code>cd</code> to the absolute path:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Documents/MSDS/DS5100/DS5100-2025-01-O/activities/hello </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Note that the tilde sign <code>~</code> stands for the path to your home directory.</p>
 <p>Using the file editor on Rivanna, create and save new file called <code>&lt;userid&gt;_hello.txt</code>, replacing <code>&lt;userid&gt;</code> with your actual user ID, e.g.&nbsp;<code>rca2t_hello.txt</code>.</p>
 <p>In the file, introduce yourself by answering the question: What is the most recent film you watched and enjoyed?</p>
@@ -811,17 +812,7 @@ Important
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Created file for class"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong><em>Push</em></strong> <strong>your new file to the repo on GitHub.</strong></p>
 <p>Since you have SSH set up, you can issue the following command without having to enter a password:</p>
-<!--
-Before proceeding, you will need to create personal access token to be able to write to your repo on GitHub. To get one, follow the instructions here --- [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
-
-Once you have created and copied your PAT to a safe place, do the following:
--->
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<!-- 
-When prompted for a password, use your PAT instead. 
-
-Note: A more efficient way to work with GitHub is to use SSH. You are free to use this option if you are comfortable following through with [the instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
--->
 <p><strong>Create a <em>Pull Request</em></strong></p>
 <p>Finally, make a pull request to have your file added to the original site. To do this, follow these steps:</p>
 <p>Click on the “Pull requests” menu item (see image below) on the web page for your repo.</p>

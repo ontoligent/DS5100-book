@@ -23,7 +23,11 @@ Also, before you get started, follow [these instructions](https://ontoligent.git
 
 ***Fork*** **the course GitHub hosted repository ("repo") to your GitHub account.**
 
-Go to <https://github.com/ontoligent/DS5100-activities> in your web browser.
+Go to the GitHub site for your course in your web browser. The site URL should look like this:
+
+`https://github.com/ontoligent/DS5100-2025-01-O`
+
+The actual code for the course may be found in your Canvas site on the Home page.
 
 ::: callout-note
 This is the course activities repo --- it will be used for activities and answer keys.
@@ -50,18 +54,17 @@ Note: This requires that you have SSH set up.
 Then click on the copy icon and paste the value into the following command:
 
 ``` bashco
-git clone git@github.com:<github_user_name>/DS5100-activities.git
+git clone git@github.com:<github_user_name>/DS5100-2025-01-O.git
 ```
 
-g
-
 ::: callout-important
-Be sure to clone the repo from *your* GitHub account, replacing `<github_user_name>` with your GitHub user name. Do not just cut-and-paste the line above!
+Remember, the actual repo name in the URL may be different for you.
+
+Also be sure to clone the repo from *your* GitHub account, replacing `<github_user_name>` with your GitHub user name. 
+Do not just cut-and-paste the line above!
 :::
 
-You now have a copy the course repo to your account on Rivanna.
-
-This will be the directory you created in your pre-class activities under Documents/.
+You now have a copy the course activities repo in your Rivanna account directory.
 
 ***Create*** **a new file in your newly cloned repo.**
 
@@ -75,10 +78,10 @@ Move into the directory `activities/hello`
 Make sure you are in this directory before proceeding.
 :::
 
-If you get lost -- for example if you moved around the file system before this step -- you can cd to the absolute path:
+If you get lost -- for example if you moved around the file system before this step -- you can `cd` to the absolute path:
 
 ``` bash
-cd ~/Documents/MSDS/DS5100/DS5100-activities/activities/hello 
+cd ~/Documents/MSDS/DS5100/DS5100-2025-01-O/activities/hello 
 ```
 
 Note that the tilde sign `~` stands for the path to your home directory.
@@ -102,24 +105,10 @@ git commit -m "Created file for class"
 
 Since you have SSH set up, you can issue the following command without having to enter a password:
 
-```{=html}
-<!--
-Before proceeding, you will need to create personal access token to be able to write to your repo on GitHub. To get one, follow the instructions here --- [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
-
-Once you have created and copied your PAT to a safe place, do the following:
--->
-```
 ``` bash
 git push
 ```
 
-```{=html}
-<!-- 
-When prompted for a password, use your PAT instead. 
-
-Note: A more efficient way to work with GitHub is to use SSH. You are free to use this option if you are comfortable following through with [the instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
--->
-```
 **Create a *Pull Request***
 
 Finally, make a pull request to have your file added to the original site. To do this, follow these steps:

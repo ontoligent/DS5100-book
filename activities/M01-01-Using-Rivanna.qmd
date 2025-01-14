@@ -6,7 +6,7 @@
 
 After reading the previous documents on [Rivanna](https://ontoligent.github.io/DS5100-book/topics/rivanna.html) and [Unix](https://ontoligent.github.io/DS5100-book/topics/unix.html), try this activity to get acquainted with the Rivanna high-performance computing cluster at UVA.
 
-To get started, go to [OpenOnDemand Dashboard page](https://rivanna-portal.hpc.virginia.edu/pun/sys/dashboard) and from the main menu select Clusters → Rivanna Shell Access.
+To get started, go to [OpenOnDemand Dashboard page](https://ood.hpc.virginia.edu/pun/sys/dashboard) and from the main menu select Clusters → Rivanna Shell Access.
 
 This should open a terminal to what is called the "shell" of the operating system.
 

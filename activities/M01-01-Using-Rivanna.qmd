@@ -10,7 +10,7 @@ To get started, go to [OpenOnDemand Dashboard page](https://ood.hpc.virginia.edu
 
 This should open a terminal to what is called the "shell" of the operating system.
 
-![Screenshot of Rivanna shell](../media/107383064.png)
+![Screenshot of Rivanna shell](../media/ssh-screenshot.png)
 
 Rivanna uses Linux, a member of the Unix family of operating systems. Many cloud resources use Linux.
 

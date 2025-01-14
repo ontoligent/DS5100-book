@@ -21,7 +21,9 @@ This course has been allocated compute and space resources on Rivanna. The names
 
 UVA Research Computing provides you with a suite of tools to access Rivanna. These tools are accessible through the menu on the UVA OpenOnDemand Dashboard page. Below are some brief descriptions of the tools.
 
-You can access these tools from the OnDemand page, located here: https://ood.hpc.virginia.edu/pun/sys/dashboard 
+You can access these tools from the OnDemand page, located here:
+
+[https://ood.hpc.virginia.edu/pun/sys/dashboard](https://ood.hpc.virginia.edu/pun/sys/dashboard)
 
 **File Explorer**. A web-based GUI to access the file system of the remote server. Can be used to create, move, and delete directories and files, and to edit the contents of files (see Editor). You can also upload and download files through this interface. The File Explorer is useful to view your remote content and manage files and directories without having to use the command line. Note that not all operations can be performed through this interface.
 

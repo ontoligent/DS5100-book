@@ -2,7 +2,7 @@
 
 Now that we have run Python on Rivanna from the command line, let's try it using a Jupyter Notebook.
 
-Go the OnDemand site to access Rivanna. As a reminder, the URL is <https://ood.hpc.virginia.edu/>.
+Go the UVA OpenOnDemand site to access Rivanna. As a reminder, the URL is <https://ood.hpc.virginia.edu/>.
 
 From the Interactive Apps menu, select JupyterLab and fill out the form to initiate a new session. Your form should have the following values:
 

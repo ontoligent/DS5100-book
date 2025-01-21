@@ -910,7 +910,7 @@
     "href": "notebooks/M02_BasicPython/M02-04-Strings.html#lower-.upper",
     "title": "NB: Strings",
     "section": ".lower(), .upper()",
-    "text": ".lower(), .upper()\nThese will conver the case of a string.\n\n'BOB'.lower()\n\n'bob'\n\n\n\n'carlos'.upper()\n\n'CARLOS'",
+    "text": ".lower(), .upper()\nThese will convert the case of a string.\n\n'BOB'.lower()\n\n'bob'\n\n\n\n'carlos'.upper()\n\n'CARLOS'",
     "crumbs": [
       "M02 Introducing Python",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>NB&colon; Strings</span>"

@@ -5685,7 +5685,7 @@
     "href": "activities/M02-01-Activity-Hello-World.html",
     "title": "Activity: Hello, World!",
     "section": "",
-    "text": "Which Python?\nOnce you are in Rivanna, you will want to know which version of Python you have installed as the default.\nTo find out, from the command line type:\nThis will show you the “path” to a python interpreter. For example:\nIf you do not see “anaconda” in that path, then run the following command:\nThis will update your environment to use Anaconda’s distribution of Python.\nAfter running the command, enter the command to see which pythion is being used to confirm that it is the one from Ancaconda.",
+    "text": "Which Python?\nOnce you are in Rivanna, you will want to know which version of Python you have installed as the default.\nTo find out, from the command line type:\nThis will show you the “path” to a python interpreter. For example:\nIf you do not see “minifprge” in that path, then run the following command:\nThis will update your environment to use Anaconda’s distribution of Python.\nAfter running the command, enter the command to see which pythion is being used to confirm that it is the one from Ancaconda.",
     "crumbs": [
       "Activities",
       "<span class='chapter-number'>68</span>  <span class='chapter-title'>Activity: Hello, World!</span>"
@@ -5696,7 +5696,7 @@
     "href": "activities/M02-01-Activity-Hello-World.html#which-python",
     "title": "Activity: Hello, World!",
     "section": "",
-    "text": "which python\n\n\n\nmodule load anaconda",
+    "text": "which python\n\n\n\nmodule load miniforge",
     "crumbs": [
       "Activities",
       "<span class='chapter-number'>68</span>  <span class='chapter-title'>Activity: Hello, World!</span>"

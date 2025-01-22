@@ -18,7 +18,7 @@ This will show you the "path" to a python interpreter. For example:
 
 ![](../media/which-python.png)
 
-If you do not see "minifprge" in that path, then run the following command:
+If you do not see "miniforge" in that path, then run the following command:
 
 ``` bash
 module load miniforge

@@ -8,7 +8,7 @@ The Unix family includes all varieties of Linux and the Mac OS (which is based o
 
 The command line that you actually interact with – the set of commands available to you – is called a shell, and there are several shells that you can run on your system. The most typical shell in use today is called bash which stands for Bourne Again Shell, since it is an improved version of bsh (The Bourne Shell). New versions of MacOS use the Z shell (zsh). The commands in these two shells are mostly similar, but there are subtle differences.
 
-Windows has shells too for its command line interface. The default shell is DOS, but is also has PowerShell  as an advanced (and very capable) option.
+Windows has shells too for its command line interface. The default shell is DOS, but it also has PowerShell as an advanced (and very capable) option.
 
 For more information, check out these resources:
 

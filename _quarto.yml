@@ -138,7 +138,10 @@ book:
       chapters: 
         - topics/oreilly-accounts.qmd
         # - topics/refreshing-the-course-repo.qmd
-        
+
+  page-footer: 
+    right: "Copyright &copy; 2025, Rafael C. Alvarado"
+
   
   sidebar:
     style: docked
@@ -147,6 +150,7 @@ book:
     background: light
     collapse-level: 1
     subtitle: Summer 2024
+
 
 # comments:
 #   hypothesis: true

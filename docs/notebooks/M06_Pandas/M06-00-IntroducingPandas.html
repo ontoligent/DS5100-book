@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DS 5100: Programming for Data Science - NB: Introducting Pandas</title>
+<title>NB: Introducting Pandas – {{&lt; var course_num &gt;}}: {{&lt; var course_title &gt;}}</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -144,13 +144,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m06/m06-intro.html">M06 Pandas</a></li><li class="breadcrumb-item"><a href="../../notebooks/M06_Pandas/M06-00-IntroducingPandas.html"><span class="chapter-title">NB: Introducting Pandas</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -179,7 +179,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -200,7 +200,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m01/m01-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M01 Getting Started</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -231,7 +231,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m02/m02-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M02 Introducing Python</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -282,7 +282,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m03/m03-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M03 Control Structures</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -318,7 +318,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m04/m04-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M04 Functions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -359,7 +359,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m05/m05-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M05 NumPy</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -400,7 +400,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m06/m06-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M06 Pandas</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -441,7 +441,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m07/m07-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M07 Classes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -482,7 +482,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m08/m08-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M08 Testing</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -508,7 +508,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m09/m09-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M09 Modules</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -534,7 +534,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m10/m10-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M10 Basic R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -575,7 +575,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m11/m11-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M11 Dplyr</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -596,7 +596,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m12/m12-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M12 Visualization</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -632,7 +632,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m13/m13-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M13 Agile</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -656,9 +656,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
  <span class="menu-text">Activities</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -687,9 +687,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="false">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -1023,10 +1023,9 @@ dtype: float64</code></pre>
 <span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1063,7 +1062,6 @@ dtype: float64</code></pre>
 </tbody>
 </table>
 
-</div>
 </div>
 </div>
 </div>
@@ -1120,10 +1118,9 @@ dtype: float64</code></pre>
 <span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1157,7 +1154,6 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-</div>
 <p>We can also pass an index of labels.</p>
 <div id="cell-57" class="cell" data-tags="[]" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="op">=</span> pd.DataFrame(</span>
@@ -1167,10 +1163,9 @@ dtype: float64</code></pre>
 <span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>df3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1200,7 +1195,6 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="naming-indexes" class="level2">
 <h2 class="anchored" data-anchor-id="naming-indexes">Naming indexes</h2>
@@ -1212,10 +1206,9 @@ dtype: float64</code></pre>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1252,7 +1245,6 @@ dtype: float64</code></pre>
 </tbody>
 </table>
 
-</div>
 </div>
 </div>
 </div>
@@ -1294,10 +1286,9 @@ dtype: float64</code></pre>
 <span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>books</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1363,17 +1354,15 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-</div>
 <p>Here we use <code>.set_index()</code> to convert some columns to index names.</p>
 <div id="cell-66" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>books <span class="op">=</span> books.set_index(<span class="bu">list</span>(books.columns[:<span class="dv">4</span>]))</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>books.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1420,7 +1409,6 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="copying-dataframes" class="level2">
 <h2 class="anchored" data-anchor-id="copying-dataframes">Copying DataFrames</h2>
@@ -1441,10 +1429,9 @@ dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1481,7 +1468,6 @@ dtype: float64</code></pre>
 </tbody>
 </table>
 
-</div>
 </div>
 </div>
 </div>
@@ -1498,10 +1484,9 @@ dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1538,7 +1523,6 @@ dtype: float64</code></pre>
 </tbody>
 </table>
 
-</div>
 </div>
 </div>
 </div>
@@ -1547,10 +1531,9 @@ dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>df_shallow</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1590,16 +1573,14 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-</div>
 <p>… while the deep copy is not.</p>
 <div id="cell-78" class="cell" data-tags="[]" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>df_deep</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1639,7 +1620,6 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-</div>
 <p>Of course, the reverse is true too — changes to the shallow copy affect the original:</p>
 <div id="cell-80" class="cell" data-tags="[]" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>df_shallow.y <span class="op">=</span> <span class="dv">99</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1648,10 +1628,9 @@ dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1688,7 +1667,6 @@ dtype: float64</code></pre>
 </tbody>
 </table>
 
-</div>
 </div>
 </div>
 </div>
@@ -1703,10 +1681,9 @@ dtype: float64</code></pre>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1743,7 +1720,6 @@ dtype: float64</code></pre>
 </tbody>
 </table>
 
-</div>
 </div>
 </div>
 </div>
@@ -1783,10 +1759,9 @@ memory usage: 200.0 bytes</code></pre>
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1826,7 +1801,6 @@ memory usage: 200.0 bytes</code></pre>
 </div>
 </div>
 </div>
-</div>
 <p>You can also change column names by just reassigning the columns property:</p>
 <div id="cell-91" class="cell" data-tags="[]" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>old_cols <span class="op">=</span> df.columns <span class="co"># Keep a copy so we can revert</span></span>
@@ -1836,10 +1810,9 @@ memory usage: 200.0 bytes</code></pre>
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1879,7 +1852,6 @@ memory usage: 200.0 bytes</code></pre>
 </div>
 </div>
 </div>
-</div>
 <div id="cell-93" class="cell" data-tags="[]" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> old_cols <span class="co"># Reset things</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1887,10 +1859,9 @@ memory usage: 200.0 bytes</code></pre>
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1930,16 +1901,14 @@ memory usage: 200.0 bytes</code></pre>
 </div>
 </div>
 </div>
-</div>
 <p>You can also transform column named easily:</p>
 <div id="cell-96" class="cell" data-tags="[]" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>df3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1969,7 +1938,6 @@ memory usage: 200.0 bytes</code></pre>
 </div>
 </div>
 </div>
-</div>
 <div id="cell-97" class="cell" data-tags="[]" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>df3.columns <span class="op">=</span> df3.columns.<span class="bu">str</span>.upper()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1977,10 +1945,9 @@ memory usage: 200.0 bytes</code></pre>
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>df3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2007,7 +1974,6 @@ memory usage: 200.0 bytes</code></pre>
 </tbody>
 </table>
 
-</div>
 </div>
 </div>
 </div>
@@ -2081,10 +2047,9 @@ Name: x, dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'x'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2114,7 +2079,6 @@ Name: x, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-</div>
 <div id="cell-113" class="cell" data-tags="[]" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(df[[<span class="st">'x'</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
@@ -2128,10 +2092,9 @@ Name: x, dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'y'</span>, <span class="st">'x'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2166,16 +2129,14 @@ Name: x, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-</div>
 <p>We can put in a list comprehension, too:</p>
 <div id="cell-118" class="cell" data-tags="[]" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>df[[col <span class="cf">for</span> col <span class="kw">in</span> df.columns <span class="cf">if</span> col <span class="kw">not</span> <span class="kw">in</span> [<span class="st">'x'</span>,<span class="st">'y'</span>]]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="60">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2205,7 +2166,6 @@ Name: x, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="adding-new-columns" class="level2">
 <h2 class="anchored" data-anchor-id="adding-new-columns">Adding New Columns</h2>
@@ -2218,10 +2178,9 @@ Name: x, dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="62">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2263,7 +2222,6 @@ Name: x, dtype: int64</code></pre>
 </tbody>
 </table>
 
-</div>
 </div>
 </div>
 </div>
@@ -2282,10 +2240,9 @@ Name: x, dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>df_drop.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="64">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2316,7 +2273,6 @@ Name: x, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-</div>
 <div id="cell-126" class="cell" data-tags="[]" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span>(df_drop[<span class="st">'x'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -2324,10 +2280,9 @@ Name: x, dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>df_drop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="66">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2367,7 +2322,6 @@ Name: x, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-</div>
 <p><code>.drop()</code> can drop one or more columns.</p>
 <p>This takes the <code>axis</code> parameter, where</p>
 <ul>
@@ -2381,10 +2335,9 @@ Name: x, dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>df_drop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="68">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2411,7 +2364,6 @@ Name: x, dtype: int64</code></pre>
 </tbody>
 </table>
 
-</div>
 </div>
 </div>
 </div>
@@ -2455,18 +2407,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2498,7 +2439,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -2506,7 +2469,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -2855,11 +2818,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-      &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M06_Pandas/M06-00-IntroducingPandas.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+<a property="dct:title" rel="cc:attributionURL" href="https://ontoligent.github.io/DS5100-book/">Programming for Data Science</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://orcid.org/0000-0002-7218-0114">Rafael C. Alvarado</a> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution 4.0 International <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a>
+</p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M06_Pandas/M06-00-IntroducingPandas.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>Copyright © 2025, Rafael C. Alvarado</p>
-</div>
+      &nbsp;
+    </div>
   </div>
 </footer>
 

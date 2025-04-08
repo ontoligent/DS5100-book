@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DS 5100: Programming for Data Science - NB: Dplyr</title>
+<title>NB: Dplyr – {{&lt; var course_num &gt;}}: {{&lt; var course_title &gt;}}</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -144,13 +144,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/m11/m11-intro.html">M11 Dplyr</a></li><li class="breadcrumb-item"><a href="../../notebooks/M11_RDplyr/M11-02-Dplyr.html"><span class="chapter-title">NB: Dplyr</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -179,7 +179,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -200,7 +200,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m01/m01-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M01 Getting Started</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -231,7 +231,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m02/m02-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M02 Introducing Python</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -282,7 +282,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m03/m03-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M03 Control Structures</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -318,7 +318,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m04/m04-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M04 Functions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -359,7 +359,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m05/m05-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M05 NumPy</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -400,7 +400,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m06/m06-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M06 Pandas</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -441,7 +441,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m07/m07-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M07 Classes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -482,7 +482,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m08/m08-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M08 Testing</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -508,7 +508,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m09/m09-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M09 Modules</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -534,7 +534,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m10/m10-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M10 Basic R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -575,7 +575,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m11/m11-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M11 Dplyr</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -596,7 +596,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m12/m12-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M12 Visualization</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -632,7 +632,7 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../modules/m13/m13-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">M13 Agile</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -656,9 +656,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
  <span class="menu-text">Activities</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -687,9 +687,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="false">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -772,7 +772,7 @@ window.Quarto = {
 <p>Everything Dplyr does may already be done with base R.</p>
 <p>But it greatly simplifies existing functionality in R.</p>
 <p>In the table below, you can see that that Dplyr provides a consistent way of phrasing the someone chaotic idioms of base R.</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>dplyr</th>
@@ -922,8 +922,7 @@ window.Quarto = {
 <div id="eb8771ba-2aca-40b9-a2aa-82f0b2ca95d5" class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span> <span class="fu">select</span>(tmpd) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 6 × 1</caption>
 <thead>
 <tr class="header">
@@ -954,15 +953,13 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 <p>In base R, we would do this:</p>
 <div id="fc34192c-7a47-44ee-9646-3935a69ea3b3" class="cell" data-tags="[]" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chicago[<span class="st">"tmpd"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 6 × 1</caption>
 <thead>
 <tr class="header">
@@ -993,7 +990,6 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 <p>Now suppose we wanted to take the first <span class="math inline">\(3\)</span> columns only.</p>
@@ -1001,8 +997,7 @@ window.Quarto = {
 <div id="858969fa-97bc-4d5b-9bab-06fad21886c4" class="cell" data-tags="[]" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chicago[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 6 × 3</caption>
 <thead>
 <tr class="header">
@@ -1051,15 +1046,13 @@ window.Quarto = {
 </table>
 </div>
 </div>
-</div>
 <p>In Dplr, we can use the names directly to create a column range slice:</p>
 <div id="c110327d-398b-4996-8186-e9d715f80906" class="cell" data-tags="[]" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(city<span class="sc">:</span>dptp) <span class="sc">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 6 × 3</caption>
 <thead>
 <tr class="header">
@@ -1108,7 +1101,6 @@ window.Quarto = {
 </table>
 </div>
 </div>
-</div>
 <p>Note the use of <code>:</code> inside the <code>select()</code> — you can use it to specify a range of variable names.</p>
 <p>You can also <em>omit</em> variables using the <code>select()</code> function by using <strong>the negative sign</strong>.</p>
 <p>With <code>select()</code> you can do:</p>
@@ -1117,8 +1109,7 @@ window.Quarto = {
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>(city<span class="sc">:</span>dptp)) <span class="sc">%&gt;%</span> </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 6 × 5</caption>
 <thead>
 <tr class="header">
@@ -1183,7 +1174,6 @@ window.Quarto = {
 </table>
 </div>
 </div>
-</div>
 <p>This indicates that we should include every variable <em>except</em> the variables <code>city</code> through <code>dptp</code>.</p>
 <p>The <code>select()</code> function also allows a special syntax that allows you to specify <strong>variable names based on patterns</strong>.</p>
 <p>If you wanted to keep every variable that ends with a “2”, we could do this:</p>
@@ -1192,8 +1182,7 @@ window.Quarto = {
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"2"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 6 × 4</caption>
 <thead>
 <tr class="header">
@@ -1250,15 +1239,13 @@ window.Quarto = {
 </table>
 </div>
 </div>
-</div>
 <p>Or if we wanted to keep every variable that starts with a “d”, we could do this:</p>
 <div id="1068074f-1162-4214-bdde-23b644336363" class="cell" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"d"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 6 × 2</caption>
 <thead>
 <tr class="header">
@@ -1299,7 +1286,6 @@ window.Quarto = {
 </table>
 </div>
 </div>
-</div>
 <p>This is super useful if you have a table with prefixes, such as <code>doc_</code>.</p>
 <p>You can also use more general <strong>regular expressions</strong> if necessary.</p>
 </section>
@@ -1309,7 +1295,7 @@ window.Quarto = {
 <p><code>ends_with()</code> is an example of a “helper function” — a function that helps make Dplyr functions more effective.</p>
 <p>There are many of these introduced by Dplyr.</p>
 <p>Here is a set of helper functions that can be especially useful with <code>select()</code>:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 26%">
 <col style="width: 42%">
@@ -1372,8 +1358,7 @@ window.Quarto = {
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pm25tmean2 <span class="sc">&gt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 6 × 8</caption>
 <thead>
 <tr class="header">
@@ -1460,15 +1445,13 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 <p>Compare this to base R:</p>
 <div id="4ee2b831-8e69-491c-8e2a-a888d6b8029f" class="cell" data-tags="[]" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">na.omit</span>(chicago[(chicago<span class="sc">$</span>pm25tmean2 <span class="sc">&gt;</span> <span class="dv">30</span>),]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 6 × 8</caption>
 <thead>
 <tr class="header">
@@ -1555,7 +1538,6 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 <p>Note that we have to filter out the <code>NA</code> values, which Dplyr does for you.</p>
@@ -1572,8 +1554,7 @@ window.Quarto = {
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(date, tmpd, pm25tmean2) <span class="sc">%&gt;%</span></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 6 × 3</caption>
 <thead>
 <tr class="header">
@@ -1622,9 +1603,8 @@ window.Quarto = {
 </table>
 </div>
 </div>
-</div>
 <p>Here’s a table of helper functions specifically associated with <code>filter()</code>:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 26%">
 <col style="width: 45%">
@@ -1684,8 +1664,7 @@ window.Quarto = {
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>chicago_by_date <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 6 × 8</caption>
 <thead>
 <tr class="header">
@@ -1774,15 +1753,13 @@ window.Quarto = {
 </table>
 </div>
 </div>
-</div>
 <p>We can now check the first few rows</p>
 <div id="b3f4e3a6-6be0-49d2-ba03-9fcfc72254c4" class="cell" data-tags="[]" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>chicago_by_date <span class="sc">%&gt;%</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date, pm25tmean2) <span class="sc">%&gt;%</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 3 × 2</caption>
 <thead>
 <tr class="header">
@@ -1811,15 +1788,13 @@ window.Quarto = {
 </table>
 </div>
 </div>
-</div>
 <p>and the last few rows.</p>
 <div id="34cdea90-60c0-43be-acf6-c17af8ef9751" class="cell" data-tags="[]" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>chicago_by_date <span class="sc">%&gt;%</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date, pm25tmean2) <span class="sc">%&gt;%</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tail</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 3 × 2</caption>
 <thead>
 <tr class="header">
@@ -1848,15 +1823,13 @@ window.Quarto = {
 </table>
 </div>
 </div>
-</div>
 <p>Columns can be arranged in descending order too by using the <code>desc()</code> helper function.</p>
 <div id="a4aa12e7-3fc1-4d36-bbb7-40d6c6664884" class="cell" data-tags="[]" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(date)) <span class="sc">%&gt;%</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 6 × 8</caption>
 <thead>
 <tr class="header">
@@ -1945,9 +1918,8 @@ window.Quarto = {
 </table>
 </div>
 </div>
-</div>
 <p>Here’s a table of helper functions specifically associated with <code>arrange()</code>:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 26%">
 <col style="width: 47%">
@@ -1991,8 +1963,7 @@ window.Quarto = {
 <div id="f282bc64-481f-410e-a1d2-2f2351452111" class="cell" data-tags="[]" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 3 × 5</caption>
 <thead>
 <tr class="header">
@@ -2036,7 +2007,6 @@ window.Quarto = {
 </table>
 </div>
 </div>
-</div>
 <p>The <code>dptp</code> column represents the dew point temperature and the <code>pm25tmean2</code> column the PM2.5 data.</p>
 <p>These names are cryptic, so let’s rename them.</p>
 <div id="0c870358-cadc-451f-9c6b-dbb745e9fcff" class="cell" data-tags="[]" data-execution_count="24">
@@ -2046,8 +2016,7 @@ window.Quarto = {
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span>  </span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 3 × 8</caption>
 <thead>
 <tr class="header">
@@ -2106,10 +2075,9 @@ window.Quarto = {
 </table>
 </div>
 </div>
-</div>
 <p>The syntax inside the <code>rename()</code> function is to have the new name on the left-hand side of the <code>=</code> sign and the old name on the right-hand side.</p>
 <p>Here’s a table of helper functions that can be used with <code>rename()</code>:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 26%">
 <col style="width: 26%">
@@ -2168,8 +2136,7 @@ window.Quarto = {
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>chicago <span class="sc">%&gt;%</span> <span class="fu">tail</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 6 × 10</caption>
 <thead>
 <tr class="header">
@@ -2274,7 +2241,6 @@ window.Quarto = {
 </table>
 </div>
 </div>
-</div>
 <p>Note how the new column name <code>pm25detrend</code> can be used immediately within the argument space of <code>mutate()</code>.</p>
 <p>Dplyr also has a related <code>transmute()</code> function.</p>
 <p>It does the same thing as <code>mutate()</code> but then <strong><em>drops all non-transformed variables</em></strong>.</p>
@@ -2287,8 +2253,7 @@ window.Quarto = {
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>chicago_detrended <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 6 × 3</caption>
 <thead>
 <tr class="header">
@@ -2337,10 +2302,9 @@ window.Quarto = {
 </table>
 </div>
 </div>
-</div>
 <p>Note that there are only three columns in the transmuted data frame.</p>
 <p>Here’s a table of helper functions specifically associated with <code>mutate()</code>:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 26%">
 <col style="width: 31%">
@@ -2443,8 +2407,7 @@ window.Quarto = {
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>years <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 6 × 4</caption>
 <thead>
 <tr class="header">
@@ -2501,7 +2464,6 @@ window.Quarto = {
 </table>
 </div>
 </div>
-</div>
 <p>To see why we add <span class="math inline">\(1900\)</span> in the preceding mutation, note that the date function returns just the last two digits of the year.</p>
 <div id="72e37fed-73eb-4ce5-977f-66c764ad49be" class="cell" data-tags="[]" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.POSIXlt</span>(chicago<span class="sc">$</span>date)<span class="sc">$</span>year <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2536,8 +2498,7 @@ window.Quarto = {
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">no2 =</span> <span class="fu">mean</span>(no2tmean2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">.groups =</span> <span class="st">"drop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 6 × 3</caption>
 <thead>
 <tr class="header">
@@ -2586,7 +2547,6 @@ window.Quarto = {
 </table>
 </div>
 </div>
-</div>
 <p>From the table, it seems there isn’t a strong relationship between <code>pm25</code> and <code>o3</code>, but there appears to be a positive correlation between <code>pm25</code> and <code>no2</code>.</p>
 <p>More sophisticated statistical modeling can help to provide precise answers to these questions, but a simple application of Dplyr functions can often get you most of the way there.</p>
 <p>Here is another example:</p>
@@ -2600,8 +2560,7 @@ window.Quarto = {
 <span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span>) </span>
 <span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>                                                    <span class="co"># COMBINE (in the result)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A tibble: 12 × 4</caption>
 <thead>
 <tr class="header">
@@ -2694,9 +2653,8 @@ window.Quarto = {
 </table>
 </div>
 </div>
-</div>
 <p>Here’s a table of helper functions specifically associated with <code>group_by()</code>:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 26%">
 <col style="width: 43%">
@@ -2787,18 +2745,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2830,7 +2777,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -2838,7 +2807,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -3187,11 +3156,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-      &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M11_RDplyr/M11-02-Dplyr.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+<a property="dct:title" rel="cc:attributionURL" href="https://ontoligent.github.io/DS5100-book/">Programming for Data Science</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://orcid.org/0000-0002-7218-0114">Rafael C. Alvarado</a> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution 4.0 International <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a>
+</p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/ontoligent/DS5100-book/blob/main/notebooks/M11_RDplyr/M11-02-Dplyr.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>Copyright © 2025, Rafael C. Alvarado</p>
-</div>
+      &nbsp;
+    </div>
   </div>
 </footer>
 

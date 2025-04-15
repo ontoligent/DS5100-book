@@ -10,7 +10,9 @@ This page describes some of the tools available for your use in this course.
 
 Resources for getting help, including a knowledge base and ticket system, are found at [the Support Option's Page](http://www.rc.virginia.edu/support/) on UVA's Research Computing website.
 
-You may need to use VPN to access Rivanna from an off-grounds location. To install VPN on your computer, go to the ITS VPN page for instructions. Note that you should connect to "UVA Anywhere," not to any of the higher security options. Course Allocation
+You may need to use VPN to access Rivanna from an off-grounds location. To install VPN on your computer, go to the ITS VPN page for instructions. Note that you should connect to "UVA Anywhere," not to any of the higher security options. 
+
+## Course Allocation
 
 This course has been allocated compute and space resources on Rivanna. The names of the resources are given below. The allocation ID needs to be entered to access certain tools. The storage path is accessible to you on the remote server.
 
@@ -43,9 +45,9 @@ You can also access the remote command line via SSH on your local computer. Just
 ssh -Y <userid>@login.hpc.virginia.edu
 ```
 
-Replace `<userid>` with your UVA Net ID, e.g. `abc2x`. 
+Replace `\<userid>` with your UVA Net ID, e.g. `abc2x`. 
 
-Be suer to be running VPN if you are accessing Rivanna from an off-grounds location.
+Be sure to be running VPN if you are accessing Rivanna from an off-grounds location.
 
 ## Interactive Apps
 
